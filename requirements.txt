@@ -1,0 +1,12 @@
+# on top of conda env `hugging` (torch 2.7.0+cu128, transformers 4.51, numpy 1.26, pandas, pythainlp, jiwer, sacrebleu)
+rtmlib            # pip install --no-deps rtmlib  (its deps pull opencv 5 / numpy 2)
+onnxruntime-gpu
+pyarrow
+pyyaml
+psutil
+scikit-learn
+nbformat
+# optional providers
+openai
+edge-tts
+soundfile

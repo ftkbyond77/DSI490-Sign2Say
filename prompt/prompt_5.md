@@ -1,0 +1,131 @@
+Optimization Version 5
+
+
+ต่อเนื่องจาก version 4 ก่อนหน้า ทำได้ดีขึ้นมาก (แม้จะยังไม่สมบูรณ์และสามารถ inference data_test/ ที่เป็น real-world data test แต่ก็ถือว่าเป็นสถาปัตยากรรมที่จัดการได้ดีขึ้นจากเดิมเวอร์ชัน 1, 2, 3)
+
+
+ต่อเนื่องจาก version 4 โดยคุณสามารถดู context ที่ผ่านมาได้ที่
+- result_reporting/
+- ThaiSLM_BLUEPRINT_v1.md, ThaiSLM_BLUEPRINT_v2.md, ThaiSLM_BLUEPRINT_v3.md
+- และโครงสร้างอื่นๆใน File project นี้
+
+
+ต่อเนื่องจาก Next Step ของ v4
+- จากปัญหาหลักคือยังขาดความหลากหลายของ signer (Signer Invariance)
+
+
+ทำให้
+-เราจำเป็นต้องเพิ่ม คลังศัพท์รวมถึง signer เข้าไปเพิ่มเติมอีก โดยอาจจะต้อง adap ต่อจาก pipeline เก่านิดหน่อย เนื่องจากข้อมูลที่จะนำมาใน step ถัดไปไม่ใช่ raw_video แต่เป็น .npy หรือ ใกล้เคียง ที่ถูก extract มาก่อนเป็นฟีเจอร์แล้ว
+- อาจจะจำเป็นต้องเทรน Boundary Tagger ด้วย Continuous Video จริง และเพิ่มคลาสตรวจจับช่วงพักมือ/เปลี่ยนท่า (Rest/Transition) เพื่อแก้ปัญหา False Accept
+
+
+โดย data ที่ฉันจะใช้มีต่อไปนี้ (นำเข้ามาเพิ่ม)
+- Namonpas/thai-sign-language-tsl51 · Datasets at Hugging Face  -> โดยข้อมูลนี้ ฉันไม่อยากให้คุณโหลดโดย load_dataset() ให้ใช้วิธีอื่นที่ optimize ด้าน resource ได้ดีกว่า (ใช้ load_dataset จะนานมาก) โดยหลังจากโหลด เก็บไว้ที่ raw_data/TSL51/
+    - 51 sign classes + null action
+    - 76 target sentences
+    - landmark data
+    - isolated signs
+    - continuous sentences
+- TSL-ONE-S -> ข้อมูลนี้ฉัน load มาเป็น .npy คุณสามารถเช็คได้ที่ raw_data/TSL-ONE-S/TSL-ONE-Pose/TSL-ONE-Pose/
+    - 4,152 video samples
+    - 184 common glosses
+    - 29 signers
+    - word-level Thai Sign Language
+    - มี benchmark deep learning
+
+
+โดยต้องเน้นย้ำว่าทั้ง 2 ข้อมูลยังเป็นข้อมูลที่ถูก Extract มาอีกที ทำให้อาจเกิดปัญหา Technical Conflict ได้ โดยอาจต้องออกแบบ Pipeline ตรงนี้เพิ่มก่อน Make Sure ว่าเช็ครายละเอียดเหล่านี้
+    - Keypoint Schema & Topology Mismatch
+    - Coordinate Normalization & Reference Frame
+    - Frame Rate (FPS) และ Temporal Dimension
+    - Label / Gloss / Ambiguity (ความขัดแย้งเชิงความหมาย)
+        - Gloss ในชุดข้อมูลหนึ่งอาจใช้คำว่า "กิน" อีกชุดใช้ "รับประทาน" หรือ "ทาน" หรือการสะกดคำที่ต่างกัน
+        - พิจารณา การใช้ Gloss Similarity หรือ Gloss-Free หรือ เทคนิคแก้ปัญหาที่ได้ประสิทธิภาพ
+    
+
+จากด้านบนอาจพิจารณาแนวทางเหล่านี้ (ให้ดูเป็นไอเดีย อาจเพิ่มเติมที่ดีกว่าได้ (หลักๆเน้นประสิทธิภาพ))
+1. Bypass RTMW-X 133 แล้ว Map เข้า prepare_parts โดยตรง:
+    - สถาปัตยกรรม Uni-Sign แท้จริงแล้วใช้เพียง Body 9, Hands 21+21, Face 18 (ไม่ได้ใช้ครบ 133 จุด)
+    - ให้เขียนฟังก์ชัน Remap Index จากชุดจุดเดิม (เช่น MediaPipe) ไปยังตำแหน่งข้อต่อที่ Uni-Sign ต้องการโดยตรง หากขาดจุดบางจุด (เช่น จุดบนใบหน้าบางจุด) สามารถใช้การ Interpolate หรือ Zero-padding ได้
+2. Temporal Resampling:
+    - ใช้ Linear Interpolation บนแกนเวลา ให้ Frame rate เสมือนตรงกับ 25 fps ก่อนเข้า Uni-Sign
+3. Gloss Mapping:
+    - เชื่อมโยง Label ของ TSL51 / TSL-ONE-S เข้ากับ Standard Schema v4 (modules/lexicon.py) หากเป็นคำใหม่ที่ TTRS ไม่มี จะเป็นการขยาย Vocabulary ทันที แต่ถ้าเป็นคำเดิม จะกลายเป็น Multi-signer instance ที่ระบบต้องการ
+
+
+แนวทางด้านบนเป็นเพียงไอเดียเบื้องต้นเท่านั้น (ควรหา optimal idea)
+
+
+โดย Next Step ที่คาดหวังสำหรับระบบหลักๆเป็น:
+1. แก้ปัญหา Signer Invariance ของ Vocabulary Bank ทันที
+2. เปิดทางให้กลับมา Fine-tune Metric Adapter (SupCon) ได้สำเร็จ
+3. ลดปัญหา Out-of-Vocabulary (OOV)
+
+
+โดยข้อสังเกตเพิ่มเติมคือ
+- TSL51
+    - มี null action ซึ่งเปรียบเสมือน จังหวะเปลี่ยนท่าหรือไม่ได้ทำท่าเป็นต้น อยากให้โมเดลเรียนรู้จากตรงนั้นด้วย
+    - ข้อมูลนี้มี sentence เบื้องต้น เช่น ฉันไปกรุงเทพ อยากให้เก็บ pattern ทำนองว่า ฉัน __ ___ ดูว่าลักษณะเป็นยังไง รวมถึงคำอื่นดูไม่ใช่แค่ฉัน เปรียบเสมือนให้โมเดลเรียนรู้การแต่งประโยคด้วยตัวเอง (ใช้ LLM เป็น Language Layer เข้ามาช่วยได้หากจำเป็น) เพราะเวลาใช้จริง มักมี grammar อะไรประมาณนี้ เริ่มจาก sentence เล็กๆเป็นต้น
+    - ลักการแต่งประโยคการเคลื่อนไหว ที่บวก null action
+- TSL-ONE-S
+    - ข้อมูลนี้เป็นระดับ word level และเก็บเป็นภาษาอังกฤษถ้าฉันเข้าไม่ผิด เช่น Gor Gai == ก,  Seven == 7, Safari World == ซาฟารีเวิร์ด (ที่แปลว่าสวนสัตว์ซาฟารี) พวกนี้ฉันอยากให้คุณ ดูข้อมูลให้เข้าใจอย่างถ่องแท้ก่อน อาจพิจารณาใช้ LLM เป็น Preprocessing ก่อนเข้า vocab bank เนื่องจากอาจทำให้เพี้ยนได้
+    - และข้อมูลระดับ word-level ฉันอยากให้พยายาม สร้างประโยคขึ้นมาให้ได้ (Frame ต่อกัน) เพื่อให้กลายเป็น Continue ได้ ซึ่งจะดีมาก ไม่เพียงแต่ word แต่ได้ sentence ซึ่งฉันมองว่าจะใช้ในงานจริงได้มากขึ้น
+    - เนื่องจากข้อมูลนี้มี signers ประมาณ 29 คน พยายามเก็บให้ครบและถูกต้อง และให้โมเดลได้เรียนรู้ครบ
+
+
+และหากมีคำศัพท์ใหม่เกิดขึ้น สำหรับการให้โมเดลได้เรียนรู้ คุณสามารถอัปเดตข้อมูลเหล่านั้นได้ที่ vocab/ เพื่อให้ฉันได้เก็บข้อมูลไว้เช็ค ว่าตอนนี้เรามีอะไะรบ้าง และเพื่อนำไปเช็คกับ inference ตอนเราเทสกับข้อมูลจริง data_test/ จะทำให้เรารู้ว่า มีคำศัพท์ที่โมเดลเรียนรู้แล้วแต่ตอบไม่ได้หรือไม่ หรือ มันไม่มีคำศัพท์ที่โมเดลเรียนรู้จริงๆเป็นต้น
+
+
+ฉันให้ความสำคัญกับการเตรียมข้อมูล รวมถึง standard schema, vocabulary bank อย่างมาก Ensure ว่าคุณสามารถออกแบบ Process เหล่านี้ได้อย่าง Robust เนื่องจากข้อมูลดีจะทำให้ model ดีเช่นกัน
+
+
+ในรอบนี้ฉันได้เพิ่ม data_test/ เป็น 5 videos (รวมของเก่า 2) เพื่อเช็คความสามารถของโมเดลเพิ่มเติม
+- และสิ่งสำคัญ รอบนี้มีข้อมูลเทสจากของจริงที่มีการใส่ intro, หน้าคั่นอะไรทำนองนั้นภายใน video และมีการเว้นช่วง ซึ่งมันไม่ใช่ภาษามือ อย่างเช่น video test1.mp4 (คุณสามารถตรวจสอบก่อนแล้วค่อยออกแบบได้) เพื่อให้ตอบโจทย์กับ real-world data, system & model นี้ต้องสามารถตรวจจับได้ ว่าจังหวะไหนเป็นการใช้ภาษามือ จังหวะไหนไม่ใช่เป็นต้น
+
+
+
+Expected Outcome: สามารถทำงานได้ดีขึ้นกว่า v4 รวมถึงสามารถตรวจจับ data_test/ ได้มากขึ้น และแบ่ง segmentation ของคำได้อย่างแม่นยำ รู้ว่าใน video มีกี่คำที่กล่าวถึง และลด GAP OOV ได้
+
+
+ด้าน Technical ฉันมองว่า v4 ทำได้ดีระดับนึง โดยรอบนี้ต่อยอดจากการเพิ่ม Pipeline ต่อเข้ากับข้อมูลด้านบนที่เพิ่มมาใหม่ (TSL51, TSL-ONE-E) โดยฉันแนะนำให้คุณไปดู data ให้ชัดเจนก่อนหลังจากโหลดมาทั้งหมด แล้วดูความแตกต่างก่อนจึงออกแบบ standard schema (centralize) ได้ หรืออาจเป็น decentralized แต่มันต้องเป็น format เดียวกันได้ก่อนเทรนโมเดล
+
+
+แนะนำให้ตรวจสอบข้อมูลที่โหลดเข้ามาทั้งหมด รวมถึง data_test/ ด้วยเพื่อความแน่ใจ
+
+
+optimize ออกแบบให้รอบนี้สามารถ hit กับข้อมูลได้จริง รวมถึง vocab ที่โมเดลเคยเรียนรู้ **มันควรตอบได้** ไม่ใช่เจอคำที่เคยเห็น แต่ตอบไม่ได้อันนี้ไม่ควรเกิดขึ้น รวมถึงการเดาคำที่ผิดแทน
+
+
+ควร Recognition & Translation อย่างแม่นยำ โดยเฉพาะในส่วน
+- Pre-processing
+- Encoder
+- Continuous Learning & Frame
+- Representation Space (ตรวจสอบด้วยว่า Latent Space ตรงนี้ไม่ได้ปนกันมั่วไปหมด ไม่งั้นโมเดลอาจเกิดความสับสนในการหยิบ)
+
+
+เรื่องวิธีการต่างๆ ฉันอนุญาตให้คุณออกแบบได้เต็มที่ ไม่ว่าจะเทคนิคอะไร แต่ขอให้ fit กับข้อมูลที่มี รวมถึงได้ประสิทธิภาพสูงสุด ถูกต้อง และครบถ้วนไม่มีตกหล่น
+
+
+ทำ Evaluation Model ด้วย (เช่น Acc เป็นต้น)
+
+
+หลังเสร็จ เขียน result_v5.md .น result_reporting/
+และใน .md นี้ควรรวม architecture ปัจจุบันที่คุณได้เปลี่ยนแปลงหรือทำให้ดีขึ้นด้วย (ไม่ต้องเขียนแยกเป็น architecture_v5.md แต่ให้รวมใน result_v5.md เลย) ทุกอย่างที่คุณทำ รวมถึงผลลัพธ์จะถูก report ใน result_v5.md
+
+
+และรัน notebook/ ด้วย เพื่อที่ฉันจะได้สามารถดูผลลัพ์ได้
+
+
+read this prompt -> recap from lastest -> see the data -> design the blueprint -> finding best blueprint that fit on this project -> build on that -> evaluation and test on data_test/ -> recap summary.
+
+
+ฉันเปลี่ยนจาก .env.example -> .env
+
+
+conda activate hugging -> for use GPU (ฉันมี torch GPU ที่นี่ (มันเลือก GPU automatically))
+
+
+หลัง clear ทุกอย่าง ให้ make sure ว่าคุณสร้างไฟล์อะไรทิ่้งไว้หรือไม่ ที่อยู่นอกเหนือคำสั่งฉัน และมันไม่เกี่ยวกับ main project -> ให้ลบออกด้วย เพื่อไม่ให้ workspace รกเกินไป
+
+
+Go Optimize

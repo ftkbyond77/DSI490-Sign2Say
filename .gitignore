@@ -1,0 +1,9 @@
+data_test/
+metadata/
+logs/
+artifacts/
+raw_data/
+result_reporting/inference/
+result_reporting/inference_v4/
+result_reporting/inference_v4_notebook/
+.env
