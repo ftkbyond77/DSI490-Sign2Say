@@ -1,12 +1,24 @@
-# on top of conda env `hugging` (torch 2.7.0+cu128, transformers 4.51, numpy 1.26, pandas, pythainlp, jiwer, sacrebleu)
-rtmlib            # pip install --no-deps rtmlib  (its deps pull opencv 5 / numpy 2)
-onnxruntime-gpu
-pyarrow
-pyyaml
-psutil
-scikit-learn
-nbformat
-# optional providers
-openai
-edge-tts
-soundfile
+# ThaiSLM v7 — Python 3.10 (conda env `hugging`). Install PyTorch for your CUDA first (training / development only), e.g.
+#   pip install torch==2.7.0 --index-url https://download.pytorch.org/whl/cu128
+# then:  pip install -r requirements.txt
+# Serving only needs numpy + onnxruntime + mediapipe (+ opencv for videos) — see webapp/api/requirements.txt.
+numpy==1.26.4
+pandas==2.2.3
+pyarrow>=14
+scikit-learn==1.6.1
+opencv-python==4.11.0.86
+mediapipe==1.0.1               # the extractor (Holistic, tasks API) — same version as @mediapipe/tasks-vision in the web demo
+onnxruntime-gpu==1.23.2        # CPU-only machines: onnxruntime==1.23.2
+onnx>=1.16                     # scripts/export_onnx.py
+transformers==4.51.3           # mT5 encoder config · DINOv2 (signer identity) · MMS-TTS Thai voice
+sentencepiece==0.2.0
+pythainlp>=5.0                 # Thai word frequencies (word prior) · word tokenizer (harvest)
+umap-learn>=0.5                # lab.ipynb latent-space plots
+matplotlib>=3.8
+pillow>=10
+nbformat>=5                    # lab.ipynb
+nbclient>=0.10
+openai>=1.40                   # optional: sentence layer + lexicon synonym checks (OPENAI_API_KEY in .env); rules fallback without it
+yt-dlp>=2026.1                 # scripts/harvest_words.py (public sign-language lessons)
+# cloud (optional): Google Cloud SDK (gcloud) for the Vertex AI training job · AWS CLI v2 for the S3 data lake (scripts/s3_sync.py)
+# web demo: Docker Desktop (docker compose up --build)

@@ -1,187 +1,100 @@
-# SIGN_DATA — Thai Sign Language raw video collection
+# ThaiSLM — Thai Sign Language → Thai text → speech
 
-Raw `.mp4` video for Thai Sign Language, collected with its labels intact.
-No pose extraction, no `.npy`, no pre-computed features — the files here are
-the videos as published, ready to feed a SignDINO-style self-supervised
-pipeline that does its own frame handling.
+A pose-based Thai Sign Language (TSL) translator for real video and a live camera: it finds where signing happens, spots each
+sign, names it from a daily-conversation vocabulary (or the full ~10k-concept dictionary), says how sure it is, lets a language
+layer write a Thai sentence from the evidence (never beyond it) — and speaks it.
+Results: `result_reporting/result_v7.md` · file map: `result_reporting/file_structure.pdf` · lab: `lab.ipynb`.
 
----
 
-## Current state (2026-09-13)
+## v7.2 — after the first live tests
 
-**5,331 clips · 25h 35m of video · 11.8 GB · zero corrupt, zero missing.**
+* **Fingerspelling** A–Z (the one-handed manual alphabet Thai deaf schools teach) and Thai ก–ฮ + 7 vowels: `models/fingerspell.npz`
+  + `models/letters_bank.npz`. Held-out people: English 83.8 % top-1 / 95.7 % top-3, Thai 92.7 % / 98.0 %. Automatic in sentences
+  (settings chosen so word sentences get no letters: `models/spotting.json` "spell") or the web's "🔤 สะกดอย่างเดียว" button.
+  Consecutive letters become one name ("JACK"); speech reads them by Thai letter names.
+* **Personal sign memory** ("ท่าของฉัน"): confirming a word / letter on a result card remembers that user's way of signing it
+  (browser only; one averaged prototype per word). Unseen signer, TSL51 test sentences: recall 0.65 → 0.80, accepted errors 14 → 12.
+* **Web**: speech for uncertain readings (setting), Web-Audio playback that live mode can use, GPU → GPU+CPU → CPU MediaPipe fallback,
+  automatic exposure / white balance / sharpening, a face box with live emotion (face not covered), real progress bar, the utterance
+  sent during the pause (results ready when the pause ends), no LLM wait when every sign is confident.
+* **Data**: +40 YouTube word clips; 32 clips of a channel whose signer looks like a data_test person were removed from both banks.
+* Non-regression (TSL51 test sentences, same harness): recall 0.642 → 0.647, accepted errors 15 → 15, WER 0.446 → 0.450 with letters
+  on (3 uncertain lone letters in 126 sentences) / 0.444 with letters off. data_test unchanged (R@1 0.41, R@5 0.73).
+* New steps: `python main.py letters …`, `train-letters`, `tune-spelling`, `study-clips`, `eval bank_add`, `harvest discover --words …`.
 
-| | clips | footage |
+## Start here
+
+```bash
+docker compose up --build                            # web demo → http://localhost:8080 (camera, live mode, speech)
+```
+```bash
+conda activate hugging                               # Python 3.10, see requirements.txt
+git lfs install && git lfs pull                      # model weights are in Git LFS
+python main.py infer --video path/to/video.mp4       # translate a video with models/ (ONNX Runtime; --backend torch for the GPU)
+python main.py test                                  # data_test/ end-to-end from the raw videos + scores
+jupyter lab lab.ipynb                                # data, latent space, tagger, segmentation, results, self-made sentence tests
+```
+`python main.py` with no arguments lists every command.
+
+## Repository map
+
+| path | what | in git |
 |---|---|---|
-| `word_level/ttrs_dictionary` | 5,043 | 6h 11m — full Thai gloss, definition, POS, category |
-| `word_level/youtube_word` | 186 | ~11h — vocabulary and fingerspelling lessons |
-| `sentence_level/youtube_sentence` | 57 | ~3h |
-| `continuous/youtube_bigsign` + `youtube_continuous` | 45 | ~6h |
+| `main.py` | the only CLI entry point (infer · test · data · prep · extract · harvest · cloud · train-seq · eval · export-onnx) | ✓ |
+| `docker-compose.yml`, `webapp/` | web demo: `web` (Next.js) · `sign-api` (FastAPI + ONNX Runtime) · `tts` (MMS-TTS Thai) · `gateway` (nginx) — see `webapp/README.md` | ✓ |
+| `models/` | **the deployable model** — everything inference loads (+ `onnx/`, `mediapipe/`). See `models/README.md` | ✓ (LFS) |
+| `modules/` | library (see below) | ✓ |
+| `scripts/` | pipeline steps: `data_prep.py` · `extract_mp.py` · `harvest_words.py` · `eval.py` · `export_onnx.py` · `infer.py` · `make_lab.py` · `s3_sync.py` · `md_to_pdf.py` · `pretrained.py` · `collect/` (v4 raw-data harvester) | ✓ |
+| `GCP/script/` | Vertex AI: `vertex.py` (upload · load-balanced launch · wait · **cleanup**) · `job_entry.py` (training stages) | ✓ |
+| `GCP/result/` | one json per GPU job: machine, region, minutes, estimated cost | ✓ |
+| `artifacts/` | `pretrained/` (Uni-Sign base, rebuilt by `python main.py pretrained`) · `eval/` (train-only bank) · `runs/<run>/` (metrics, histories) · `reports/` (evaluation json) | ✓ (no per-clip data) |
+| `vocab/` | `daily_conversation.json` (target vocabulary) · `vocab.csv` · `daily_conversation_depth.csv` | ✓ |
+| `result_reporting/` | reports (`result_vN`, `architecture_vN`, `latent_space_vN`, `file_structure`, md + pdf), figures, `inference/` outputs | ✓ (no video frames) |
+| `cloud_s3/` | local mirror of the S3 data lake: `raw_data/` · `data_prep/` · `agent_data/` (harvested by v7) | ✗ (data) |
+| `data_test/` | 5 real-world test videos — never used for training or tuning | ✗ |
+| `cache/` | local scratch (MediaPipe of data_test, self-test videos, logs) | ✗ |
 
-**TTRS is complete** — all 5,043 dictionary entries, zero failures.
+`modules/`: `mediapipe_pose` (the extractor) · `schema` (Standard Schema, handedness) · `parts` (encoder input) · `encoder` / `unisign`
+(sign encoder + training data) · `sequence` (tagger, synthesis, sequence stage) · `segment` (kinematics, windows) · `spanhead`
+(one-pass spotting) · `runtime` (ONNX / PyTorch back-ends, bank) · `decode` (decoder, calibration, filters) · `pipeline` (end to end)
+· `face` (blendshape cues) · `language` (evidence-guarded sentence) · `grammar` (TSL word order) · `tts` · `lexicon` · `identity`
+(signer faces, data prep only) · `utils` · `env`.
 
-**What actually happened with YouTube (corrected from the 2026-09-10 note):**
-the original mass failure was misdiagnosed as an IP-wide bot block. The real
-cause was that **yt-dlp had no JavaScript runtime available** to solve
-YouTube's challenge scripts, so many videos were mis-reported as "not
-available" or "Please sign in" regardless of IP. That's now fixed:
+## Data (S3 is the source of truth)
 
-- Installed **Deno** (`winget install DenoLand.Deno`), yt-dlp's default
-  challenge-solver runtime.
-- Added `--remote-components ejs:github` to the harvester so yt-dlp is
-  permitted to fetch the solver script (a separate opt-in gate).
-
-Verified: every video that previously failed with "not available" now
-resolves cleanly.
-
-**A separate, genuine, volume-triggered IP throttle does still exist.** On the
-2026-09-13 resume, after ~110 fresh successful downloads in about 35 minutes,
-YouTube began answering the real `"Sign in to confirm you're not a bot"`
-message. The circuit breaker (tightened this session to key on that exact
-phrase, not the broader phrases that also cover legitimate per-video age/
-member gates) tripped after 8 consecutive hits and stopped cleanly — no queue
-was burned; the ~806 remaining items were left completely untouched, not even
-counted as an attempt.
-
-This throttle appears to be about sustained volume in a short window, not a
-standing ban: the 2026-09-10 block took about 3 days to clear on its own, and
-this session's resume worked cleanly for ~35 minutes before retripping.
-**Hammering it with another immediate retry is likely to just retrip
-quickly** — a longer gap between attempts, and/or gentler settings, are the
-practical way through it:
+`s3://dsi490-lake-signdata/` (ap-southeast-1), SSO profile in `.env` (`AWS_PROFILE`; `aws sso login --profile …` when it expires).
 
 ```bash
-python scripts/harvest.py --sources youtube --fetch-only --workers 1 --host-interval 8
+python main.py data pull data_prep          # prepared data: Standard-Schema poses (MediaPipe + RTMW) + manifest + shards
+python main.py data pull raw_data           # raw videos / landmarks (only to rebuild data_prep)
 ```
+v7 adds `agent_data/` (YouTube single-word lessons harvested for daily-conversation words: videos, annotations, QC) — pushed by
+the project owner (see result_v7 §"S3 commands").
 
-Consider spreading remaining collection across several short sessions on
-different days rather than one long batch. `--yt-cookies-from-browser` would
-likely bypass this too, at the account-risk cost already noted below.
-
----
-
-## Layout
-
-```
-raw_data/
-  word_level/
-    ttrs_dictionary/      one isolated lexical sign per clip, Thai gloss attached
-    youtube_word/         vocabulary lessons and fingerspelling series
-  sentence_level/
-    youtube_sentence/     single utterances, phrases, conversation lessons
-  continuous/
-    youtube_bigsign/      Thai PBS "Big Sign" — signer fills the whole frame
-    youtube_continuous/   interpreted news, stories, songs, vlogs
-    parliament/           government / ministry briefings with an interpreter
-  _quarantine/            downloaded but failed decode validation — inspect, don't train
-
-metadata/
-  metadata_master.csv     every clip, one row each
-  metadata_word.csv       the same, split by level
-  metadata_sentence.csv
-  metadata_continuous.csv
-  failures.csv            what did not come down, and why
-  sources_manifest.csv    provenance and access status per source
-
-reports/
-  collection_report.pdf   the collection report
-
-state/harvest.db          SQLite catalogue — the resume point
-logs/harvest.log          full run log
-scripts/                  the harvester
-```
-
-Beside every video sits a `.json` sidecar with the complete upstream record,
-and — for YouTube material — any `.vtt` subtitle tracks the publisher had.
-For continuous clips those caption tracks are effectively the sentence-level
-annotation.
-
----
-
-## The metadata CSV
-
-`metadata/metadata_master.csv` is UTF-8 with BOM, so Excel on a Thai Windows
-machine opens it without mojibake. `pandas.read_csv(path)` handles it as-is.
-
-Key columns:
-
-| column | meaning |
-|---|---|
-| `uid` | stable primary key, `ttrs:<id>` or `yt:<id>` |
-| `level` | `word` \| `sentence` \| `continuous` |
-| `label` | the Thai gloss (TTRS) or the publisher's title (YouTube) |
-| `label_type` | `gloss` = curated per-clip gloss; `title` = weak, topic-level |
-| `rel_path` | path from the project root to the `.mp4` |
-| `sha256` | content hash — dedup and integrity |
-| `duration_sec`, `width`, `height`, `fps`, `vcodec` | decode profile from ffprobe |
-| `category_th`, `parts_of_speech_th`, `definition_th`, `synonyms_th` | TTRS lexical fields |
-| `signer_gender_th`, `signer_creator`, `reference_book_th` | TTRS signer/provenance |
-| `channel`, `upload_date`, `subtitle_files` | YouTube fields |
-| `source_page` | where the clip came from, for citation |
-
-```python
-import pandas as pd
-df = pd.read_csv("metadata/metadata_master.csv")
-words = df[(df.level == "word") & (df.label_type == "gloss")]   # clean supervision
-ssl_pool = df                                                    # everything, for SSL
-```
-
----
-
-## Running it again
-
-The catalogue is idempotent: re-running never re-downloads a clip that is
-already on disk and verified.
+## Training (one GPU job, everything else local)
 
 ```bash
-python scripts/harvest.py --status                      # where things stand
-python scripts/harvest.py                               # discover + fetch everything
-python scripts/harvest.py --sources ttrs_dictionary     # one source
-python scripts/harvest.py --sources youtube --yt-keys thaipbs_bigsign
-python scripts/harvest.py --discover-only               # catalogue, no downloads
-python scripts/harvest.py --limit 50                    # cap new downloads per source
-python scripts/make_report.py                           # regenerate CSVs + PDF
+python main.py prep shards                                            # cloud_s3/data_prep/shards (MediaPipe + RTMW views + harvested)
+python main.py cloud upload-code --tag v7 && python main.py cloud upload-data && python main.py cloud upload-models
+python main.py cloud launch --tag v7 --stage train_encoder --hours 1.2 --args "--steps 3600 --eval_every 400"
+python main.py train-seq --encoder_run artifacts/runs/<encoder_run>   # tagger + span head + decoder tables (local GPU)
+python main.py eval build --run <encoder_run> --seq <sequence_run> && python main.py eval grammar && python main.py eval spot --seq <sequence_run>
+python main.py eval isolated --run <encoder_run> --v6 && python main.py test && python main.py eval selftest --make
+python main.py export-onnx && python scripts/make_lab.py --execute
+python main.py cloud cleanup                                          # empty the bucket, delete every job, check nothing bills
 ```
 
-Useful flags: `--workers N` (default 4), `--max-height 720`, `--max-seconds`,
-`--host-interval` to slow every request down further.
+## Principles kept in every version
 
-Ctrl-C is safe. In-flight downloads are discarded, everything already verified
-is kept, and the next run picks up from there.
+* **No guessing:** every detected sign is reported as `word` (accepted) / `word?` (uncertain) / `[?] ≈ nearest`; hand transitions
+  are labelled `transition`; the sentence layer may only use a segment's candidates and a deterministic evidence guard withholds
+  unsupported sentences.
+* **Honest evaluation:** held-out *signers* for isolated signs, held-out *sentence templates* for continuous signing, tuning only
+  on tune data (out-of-fold tagger outputs); `data_test/` and the self-made sentence videos are only run and scored.
+* **One extractor everywhere (v7):** MediaPipe Holistic for the training data, the server and the browser.
 
----
+## Licensing
 
-## How it stays polite and stable
-
-- **Per-host rate limiting.** One request per configured interval plus jitter,
-  shared across all worker threads — raising `--workers` never raises the
-  request rate at any single host.
-- **Exponential backoff with full jitter** on 408/425/429/5xx/timeouts, over a
-  window that doubles per attempt. A `Retry-After` header always wins.
-- **Adaptive braking.** A 429 or 503 adds a decaying per-host cooldown, so a
-  strained server automatically gets more room.
-- **Atomic writes.** Downloads stream to `.part` and are renamed into place only
-  after content-length, sha256 and an ffprobe decode check all pass.
-- **Content deduplication** by sha256, so the same clip reached through two
-  listings is stored once.
-- **Quarantine, not deletion,** for files that download but fail validation.
-
----
-
-## Before you train on this
-
-- **Collection did not clear the licensing.** These clips came from public
-  endpoints for research use. They are not public domain. Redistribution, and
-  model release trained on them, is a separate conversation with each rights
-  holder.
-- **th-sl.com (NADT) was deliberately excluded.** The National Association of
-  the Deaf in Thailand's database is the richest Thai word-level source, but its
-  `robots.txt` carries an express machine-readable reservation against AI
-  training (`Content-Signal: ai-train=no`) and disallows this agent by name.
-  Requesting a research licence from the association directly is the
-  highest-value next step for this project.
-- **Titles are weak labels.** YouTube rows name the topic, not each sign. Treat
-  them as coarse supervision; the TTRS rows carry true per-clip glosses.
-- **Continuous clips may need cropping.** Interpreted broadcasts often put the
-  signer in a corner inset. Big Sign material does not — the signer fills the
-  frame — which makes it the better continuous subset to start from.
+Raw data came from public endpoints for research. th-sl.com (NADT) carries an explicit AI-training rights reservation; its use
+here was approved by the project owner for research only. YouTube clips (v4 and v7 harvest) remain the publishers' — research
+use only. Redistribution or release of models trained on these sources is a separate conversation with each rights holder.

@@ -7,13 +7,13 @@ encoder that sat on top of it in Uni-Sign is kept as a temporal context model.
 Keypoint normalisation reproduces `datasets.load_part_kp` of the official code exactly."""
 from __future__ import annotations
 
-import copy
 import sys
 from pathlib import Path
 
-import numpy as np
 import torch
 import torch.nn as nn
+
+from .parts import BODY_IDX, FACE_IDX, MODES, prepare_parts  # noqa: F401  (re-exported: keypoint preparation is NumPy-only)
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "third_party" / "unisign"))
@@ -21,92 +21,6 @@ from stgcn_layers import Graph, get_stgcn_chain  # noqa: E402
 
 HF_SNAP = Path.home() / ".cache/huggingface/hub/models--ZechengLi19--Uni-Sign/snapshots/eab251b7fe7e8521afc0e67be98add670ea40a0d"
 CKPTS = {"wlasl": HF_SNAP / "wlasl_pose_only_islr.pth", "csl_stage1": HF_SNAP / "csl_stage1_weight.pth"}
-MODES = ("body", "left", "right", "face_all")
-BODY_IDX = [0] + list(range(3, 11))
-FACE_IDX = list(range(23, 23 + 17))[::2] + list(range(83, 83 + 8)) + [53]
-
-
-# ----------------------------------------------------------------------------- keypoint preparation
-def _crop_scale(motion, thr):
-    result = copy.deepcopy(motion)
-    valid = motion[motion[..., 2] > thr][:, :2]
-    if len(valid) < 4:
-        return np.zeros(motion.shape), 0
-    xmin, xmax = valid[:, 0].min(), valid[:, 0].max()
-    ymin, ymax = valid[:, 1].min(), valid[:, 1].max()
-    scale = max(xmax - xmin, ymax - ymin)
-    if scale == 0:
-        return np.zeros(motion.shape), 0
-    xs, ys = (xmin + xmax - scale) / 2, (ymin + ymax - scale) / 2
-    result[..., :2] = (motion[..., :2] - [xs, ys]) / scale
-    result[..., :2] = (result[..., :2] - 0.5) * 2
-    result = np.clip(result, -1, 1)
-    result[result[..., 2] <= thr] = 0
-    return result, scale
-
-
-def prepare_parts(kp: np.ndarray, sc: np.ndarray, thr=0.3, scale_ref=None):
-    """kp [T,133,2] in [0,1] (x/W,y/H), sc [T,133] → {part: float32 [T,V,3]} (official load_part_kp).
-    scale_ref: (kp, sc) of the whole session so windows share one body scale (continuous video)."""
-    kp = kp.astype(np.float64); sc = sc.astype(np.float64)
-    out = {}
-    body = np.concatenate([kp[:, BODY_IDX], sc[:, BODY_IDX, None]], -1)
-    if scale_ref is not None:
-        rk, rs = scale_ref
-        ref = np.concatenate([rk[:, BODY_IDX].astype(np.float64), rs[:, BODY_IDX, None].astype(np.float64)], -1)
-        _, scale = _crop_scale(ref, thr)
-        valid = ref[ref[..., 2] > thr][:, :2]
-        if scale:
-            xs = (valid[:, 0].min() + valid[:, 0].max() - scale) / 2
-            ys = (valid[:, 1].min() + valid[:, 1].max() - scale) / 2
-            r = body.copy()
-            r[..., :2] = ((body[..., :2] - [xs, ys]) / scale - 0.5) * 2
-            r = np.clip(r, -1, 1); r[r[..., 2] <= thr] = 0
-            out["body"] = r
-    if "body" not in out:
-        out["body"], scale = _crop_scale(body, thr)
-    for part, sl, root in (("left", slice(91, 112), 0), ("right", slice(112, 133), 0), ("face_all", FACE_IDX, -1)):
-        k = kp[:, sl]
-        k = k - k[:, [root] if isinstance(root, int) and root >= 0 else [-1]]
-        r = np.concatenate([k, sc[:, sl, None]], -1)
-        if scale == 0:
-            r = np.zeros(r.shape)
-        else:
-            r[..., :2] = r[..., :2] / scale
-            r = np.clip(r, -1, 1)
-            r[r[..., 2] <= thr] = 0
-        out[part] = r
-    return {p: out[p].astype(np.float32) for p in MODES}
-
-
-def upsample(kp: np.ndarray, sc: np.ndarray, factor: int = 2):
-    """Linear temporal interpolation (12.5 fps corpus → 25 fps, the frame rate Uni-Sign was trained on)."""
-    T = len(kp)
-    if factor == 1 or T < 2:
-        return kp, sc
-    t_new = np.linspace(0, T - 1, (T - 1) * factor + 1)
-    i0 = np.floor(t_new).astype(int); i1 = np.minimum(i0 + 1, T - 1); w = (t_new - i0)[:, None, None]
-    kpu = kp[i0] * (1 - w) + kp[i1] * w
-    scu = np.minimum(sc[i0], sc[i1])
-    return kpu.astype(np.float32), scu.astype(np.float32)
-
-
-def collate_parts(list_of_parts, max_len=None):
-    L = max(len(p["body"]) for p in list_of_parts)
-    if max_len:
-        L = min(L, max_len)
-    B = len(list_of_parts)
-    out = {m: torch.zeros(B, L, list_of_parts[0][m].shape[1], 3) for m in MODES}
-    mask = torch.zeros(B, L, dtype=torch.bool)
-    for b, p in enumerate(list_of_parts):
-        n = min(len(p["body"]), L)
-        for m in MODES:
-            x = torch.from_numpy(p[m][:n])
-            out[m][b, :n] = x
-            if n < L:  # official collate repeats the last frame
-                out[m][b, n:] = x[-1]
-        mask[b, :n] = True
-    return out, mask
 
 
 # ----------------------------------------------------------------------------- model

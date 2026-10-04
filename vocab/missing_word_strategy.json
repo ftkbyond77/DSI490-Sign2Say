@@ -1,0 +1,23 @@
+{
+  "_doc": "v7 (prompt_9 item 4): daily-conversation words with NO Thai sign data in any source after the YouTube harvest, and how the system handles each. Policy: no sign from another sign language is added to the Thai vocabulary — every such sign would be a non-Thai sign the model then outputs for Thai users (the ASL/CSL-bias problem). Instead each word is covered by (1) a Thai synonym sign that TSL uses for the same meaning, (2) a composition of Thai signs the model knows, (3) a non-manual marker (face / head) or word order, or (4) fingerspelling. 'cover' = what the recogniser outputs and what the sentence layer may turn it into.",
+  "ไหม":            {"strategy": "manual sign from Thai phrase lessons + non-manual", "cover": "ไหม (question particle) cut from YouTube TSL question phrases (…ไหม) as their last sign — see agent_data/youtube_words/qc; the raised-brow cue is reported but only adds ไหม to a sentence once validated", "source_language": "TSL"},
+  "หรือเปล่า":       {"strategy": "same function as ไหม", "cover": "ไหม", "note": "yes/no question particle; TSL marks it like ไหม"},
+  "ราตรีสวัสดิ์":     {"strategy": "Thai synonym sign", "cover": "ฝันดี", "note": "TSL lessons use the 'good dream' sign for good night"},
+  "ยินดีที่ได้รู้จัก":  {"strategy": "composition of known Thai signs", "cover": "ยินดี + รู้จัก", "note": "the sentence layer joins them"},
+  "ความรัก":         {"strategy": "Thai synonym sign", "cover": "รัก", "note": "noun/verb use the same sign"},
+  "ที่ทำงาน":        {"strategy": "composition", "cover": "ทำงาน (+ place word if signed)"},
+  "ล่าม":            {"strategy": "fingerspelling / composition", "cover": "ภาษามือ + คน (interpreter = sign-language person) — spelled otherwise"},
+  "จะ":              {"strategy": "word order / time sign", "cover": "future is marked by a time sign (พรุ่งนี้ …) or context; no separate sign in TSL"},
+  "แล้ว":            {"strategy": "completion sign", "cover": "เสร็จ / เสร็จแล้ว (th_sl has เสร็จแล้ว)"},
+  "ทำ":              {"strategy": "verb is part of the action sign", "cover": "the specific action (ทำงาน, ทำอาหาร …)"},
+  "กับ":             {"strategy": "word order", "cover": "ด้วยกัน when it means 'together with'"},
+  "เพราะ":           {"strategy": "fingerspelling / composition", "cover": "not recognised as a sign; the sentence layer may add it as a connector"},
+  "ทั้งหมด":         {"strategy": "Thai synonym sign", "cover": "ทุก / หมด (if in the bank)"},
+  "ตาย":             {"strategy": "harvest next round", "cover": "[?] ≈ nearest (no data yet)"},
+  "นัด":             {"strategy": "harvest next round", "cover": "[?] ≈ nearest (no data yet)"},
+  "ผัก":             {"strategy": "harvest next round", "cover": "[?] ≈ nearest (no data yet)"},
+  "รถ":              {"strategy": "Thai synonym sign", "cover": "รถยนต์"},
+  "ทีวี":            {"strategy": "Thai synonym sign", "cover": "โทรทัศน์"},
+  "พัน":             {"strategy": "number composition", "cover": "หนึ่ง + พัน spelled by numbers"},
+  "แดด":             {"strategy": "Thai synonym sign", "cover": "ร้อน / ดวงอาทิตย์ (if in the bank)"}
+}

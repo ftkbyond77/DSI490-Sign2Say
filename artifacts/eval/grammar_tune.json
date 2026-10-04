@@ -1,0 +1,117 @@
+{
+  "bigram": {
+    "<s>>PLACE": 1,
+    "PLACE>SUBJ": 1,
+    "SUBJ>VERB": 19,
+    "VERB>VERB": 9,
+    "VERB></s>": 23,
+    "<s>>OBJ": 15,
+    "OBJ>SUBJ": 15,
+    "<s>>GREET": 4,
+    "GREET>SUBJ": 4,
+    "SUBJ>STATE": 7,
+    "STATE></s>": 2,
+    "SUBJ>OBJ": 7,
+    "OBJ>VERB": 7,
+    "SUBJ>ADJ": 1,
+    "ADJ></s>": 5,
+    "<s>>SUBJ": 15,
+    "SUBJ>SUBJ": 2,
+    "SUBJ></s>": 2,
+    "VERB>QUEST": 2,
+    "QUEST></s>": 3,
+    "STATE>QUEST": 1,
+    "STATE>ADJ": 4,
+    "VERB>SUBJ": 1
+  },
+  "unigram": {
+    "<s>": 35,
+    "PLACE": 1,
+    "SUBJ": 38,
+    "VERB": 35,
+    "OBJ": 22,
+    "GREET": 4,
+    "STATE": 7,
+    "ADJ": 5,
+    "QUEST": 3
+  },
+  "roles": [
+    "</s>",
+    "<s>",
+    "ADJ",
+    "GREET",
+    "LETTER",
+    "NEG",
+    "NUM",
+    "OBJ",
+    "PLACE",
+    "QUEST",
+    "STATE",
+    "SUBJ",
+    "TIME",
+    "VERB"
+  ],
+  "templates": [
+    {
+      "template": "OBJ SUBJ VERB",
+      "count": 8,
+      "example": "ขนมปัง น้อง กิน"
+    },
+    {
+      "template": "OBJ SUBJ VERB VERB",
+      "count": 7,
+      "example": "ภาษามือ คุณ เรียน ชอบ"
+    },
+    {
+      "template": "SUBJ OBJ VERB",
+      "count": 6,
+      "example": "คุณ ข้าว กิน"
+    },
+    {
+      "template": "SUBJ STATE ADJ",
+      "count": 4,
+      "example": "คุณ เกิด หูหนวก"
+    },
+    {
+      "template": "GREET SUBJ STATE",
+      "count": 2,
+      "example": "ขอบคุณ ฉัน สบายดี"
+    },
+    {
+      "template": "SUBJ VERB QUEST",
+      "count": 2,
+      "example": "คุณ ชื่อ อะไร"
+    },
+    {
+      "template": "PLACE SUBJ VERB VERB",
+      "count": 1,
+      "example": "กรุงเทพ น้อง เที่ยว ชอบ"
+    },
+    {
+      "template": "GREET SUBJ OBJ VERB VERB",
+      "count": 1,
+      "example": "ขอโทษ ฉัน ข้าว กิน ไป"
+    },
+    {
+      "template": "GREET SUBJ ADJ",
+      "count": 1,
+      "example": "ขอโทษ ฉัน หูหนวก"
+    },
+    {
+      "template": "SUBJ SUBJ SUBJ",
+      "count": 1,
+      "example": "คุณ ฉัน แฟน"
+    },
+    {
+      "template": "SUBJ STATE QUEST",
+      "count": 1,
+      "example": "คุณ เกิด ที่ไหน"
+    },
+    {
+      "template": "SUBJ VERB SUBJ",
+      "count": 1,
+      "example": "ฉัน ชื่อ แมว"
+    }
+  ],
+  "n": 35
+}

@@ -1,9 +1,98 @@
-data_test/
-metadata/
-logs/
-artifacts/
-raw_data/
-result_reporting/inference/
-result_reporting/inference_v4/
-result_reporting/inference_v4_notebook/
+# ThaiSLM — what goes to GitHub and what does not
+#
+#   IN the repo : code (modules/, scripts/, GCP/script/, webapp/), docker-compose.yml, lab.ipynb, reports (result_reporting/*.md|pdf|png),
+#                 vocab/, the deployable model (models/: *.pt / *.onnx / *.npz / *.task via Git LFS — see .gitattributes), eval bank in artifacts/,
+#                 small derived files a collaborator needs to continue (calibration/spotting/grammar json, metric reports).
+#   NOT in repo : any data — raw video, poses/landmarks, feature shards, test videos, scraped metadata, secrets.
+#                 Data lives on S3 (s3://dsi490-lake-signdata/{raw_data,data_prep}/); cloud_s3/ is its local mirror.
+
+# ---- secrets / local machine
 .env
+.env.*
+!.env.example
+.aws/
+*.pem
+*.key
+credentials*.json
+.claude/
+
+# ---- data (source of truth = S3)
+cloud_s3/
+cloud_gcs/
+raw_data/
+add-data/
+data_prep/
+data_test/
+cache/
+metadata/
+state/
+logs/
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm
+*.wav
+*.mp3
+*.vtt
+*.zip
+
+# ---- derived data inside artifacts/ (poses, feature caches, packed shards, per-clip embeddings)
+artifacts/**/pose/
+artifacts/**/pose_*/
+artifacts/cache/
+artifacts/tracks/
+artifacts/backgrounds/
+artifacts/gcs/data/
+artifacts/v5/gcs/data/
+artifacts/runs/**/*.npz
+artifacts/runs/**/*.npy
+artifacts/runs/**/*.pkl
+artifacts/runs/**/*.pt
+artifacts/v5/runs/**/*.npz
+artifacts/v5/runs/**/*.npy
+artifacts/v5/runs/**/*.pkl
+artifacts/v5/runs/**/*.pt
+artifacts/**/*.parquet
+!artifacts/pretrained/**
+
+# ---- inference outputs that contain frames of people (keep result.json / subtitle.srt / timeline.png)
+result_reporting/**/segments.jpg
+result_reporting/**/*.jpg
+!result_reporting/*.jpg
+result_reporting/inference_cli/
+
+# ---- Python / Jupyter / OS noise
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+.venv/
+venv/
+*.log
+*.tmp
+*.part
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# per-clip embeddings computed for evaluation (derived from data)
+artifacts/eval/emb_*.npy
+artifacts/eval/emb_*.npz
+# public Uni-Sign checkpoints: rebuild with `python main.py pretrained`
+artifacts/pretrained/unisign_*.pt
+
+prompt/*
+
+# ---- web demo build outputs (also in webapp/web/.gitignore)
+webapp/web/node_modules/
+webapp/web/.next/
+webapp/web/out/
+webapp/web/public/mediapipe/
+webapp/web/public/models/
+*.tsbuildinfo
+node_modules/

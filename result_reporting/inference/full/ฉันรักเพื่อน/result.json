@@ -1,0 +1,133 @@
+{
+  "title": "ฉันรักเพื่อน",
+  "fps": 25.0,
+  "n_frames": 88,
+  "duration_s": 3.52,
+  "signer_visible_frac": 1.0,
+  "signing_frac": 0.6022727272727273,
+  "mirrored_to_right_hand": true,
+  "segments": [
+    {
+      "f0": 8,
+      "f1": 72,
+      "z": 6.721142501152008,
+      "wins": [
+        [
+          8,
+          24
+        ],
+        [
+          24,
+          72
+        ]
+      ],
+      "nearest": "ฉัน",
+      "candidates": [
+        {
+          "word": "ฉัน",
+          "score": 0.5792,
+          "support": 1.0077
+        },
+        {
+          "word": "เกิด",
+          "score": 0.5143,
+          "support": 0.9417
+        },
+        {
+          "word": "ไป",
+          "score": 0.3964,
+          "support": 0.8802
+        },
+        {
+          "word": "กิน",
+          "score": 0.4619,
+          "support": 0.8482
+        },
+        {
+          "word": "คุณ",
+          "score": 0.4137,
+          "support": 0.835
+        }
+      ],
+      "score": 0.5791898369789124,
+      "margin": 0.06492388248443604,
+      "null_gap": -0.18315669894218445,
+      "p_sign": 0.8144790153694658,
+      "agree": 1.0,
+      "support_ratio": 1.2126480221718319,
+      "window_top1": "ฉัน",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.39061468702205987,
+      "status": "uncertain",
+      "t0": 0.32,
+      "t1": 2.88
+    }
+  ],
+  "face": {
+    "face_frames": 1.0,
+    "question_furrow": false,
+    "question_yesno": false,
+    "question_wh": false,
+    "negation": false,
+    "affirmation": false,
+    "emotion": "happy",
+    "emotion_th": "ดีใจ/มีความสุข",
+    "emotion_scores": {
+      "happy": 1.081,
+      "sad": 0.001,
+      "angry": 0.321,
+      "surprise": 0.0,
+      "fear": 0.0,
+      "disgust": 0.0
+    },
+    "intensity": 1.0,
+    "cues": {
+      "brow_raise_tail": -0.058,
+      "brow_raise_peak": 0.006,
+      "brow_furrow": 1.277,
+      "head_forward_tail": -0.02,
+      "head_shake_cycles": 0,
+      "head_nod_cycles": 0,
+      "mouth_open_frac": 0.0,
+      "cheek_puff": 0.001,
+      "duration_s": 3.5,
+      "brow_furrow_rel": 0.179,
+      "furrow_baseline": "clip_20th_percentile"
+    },
+    "per_segment": [
+      {
+        "brow": 0.03,
+        "furrow": -0.1,
+        "smile": 0.721,
+        "mouth": 0.031
+      }
+    ]
+  },
+  "fusion": {
+    "chosen": [
+      "ฉัน"
+    ],
+    "sentence_th": "",
+    "meaning_th": "ตรวจพบท่ามือ 1 ช่วง แต่หลักฐานไม่พอจะแปลเป็นประโยคอย่างมั่นใจ — คำที่ใกล้ที่สุด: ช่วง 1 ≈ ฉัน",
+    "confidence": 0.3,
+    "provider": "openai",
+    "latency_s": 2.3,
+    "guard_violations": [],
+    "evidence_gloss": "ฉัน?",
+    "tentative_sentence_th": "ฉัน",
+    "evidence_guard": "withheld: no accepted sign"
+  },
+  "sentence": "",
+  "timings_ms": {
+    "schema_ms": 18.0,
+    "tagger_ms": 216.8,
+    "spotting_ms": 497.7,
+    "n_windows": 80,
+    "tempo_factor": 1.0,
+    "face_ms": 3.6,
+    "language_ms": 2297.0
+  },
+  "model": "v7",
+  "vocab": "full"
+}

@@ -1,0 +1,7 @@
+node_modules/
+.next/
+out/
+public/mediapipe/
+public/models/
+next-env.d.ts
+*.tsbuildinfo

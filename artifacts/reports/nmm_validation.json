@@ -1,0 +1,19 @@
+{
+ "set": "54 YouTube TSL phrase clips, one unseen signer (labels from titles)",
+ "statement": {
+  "n": 25,
+  "yesno_cue": 0.0,
+  "wh_cue": 0.08
+ },
+ "wh_question": {
+  "n": 22,
+  "yesno_cue": 0.14,
+  "wh_cue": 0.14
+ },
+ "yesno_question": {
+  "n": 7,
+  "yesno_cue": 0.0,
+  "wh_cue": 0.43
+ },
+ "decision": "brow cues do not separate questions for this signer -> not used to change sentences (face_cues = negation only); reported as information"
+}

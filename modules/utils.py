@@ -10,16 +10,15 @@ from contextlib import contextmanager
 from pathlib import Path
 
 import numpy as np
-import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
-ART = Path(os.environ.get("THAISLM_ARTIFACTS", ROOT / "artifacts"))
-CONFIGS = ROOT / "configs"
-
-
-def load_cfg(name: str) -> dict:
-    with open(CONFIGS / f"{name}.yaml", encoding="utf-8") as f:
-        return yaml.safe_load(f)
+ART = Path(os.environ.get("THAISLM_ARTIFACTS", ROOT / "artifacts"))   # model, pretrained weights, run outputs, reports (in git)
+DATA = Path(os.environ.get("THAISLM_DATA", ROOT / "cloud_s3"))           # local mirror of s3://dsi490-lake-signdata (not in git)
+RAW = DATA / "raw_data"                                                  # raw videos / landmarks as published
+PREP = DATA / "data_prep"                                                # standard-schema outputs (this repo builds it; pushed to S3)
+CACHE = ROOT / "cache"                                                   # local scratch (not in git, not on S3)
+MODEL = Path(os.environ.get("THAISLM_MODELS", ROOT / "models"))         # the deployable model: everything inference loads (in git, LFS)
+PRETRAINED = ART / "pretrained"                                          # Uni-Sign base weights
 
 
 def get_logger(name: str = "thaislm", level: str | None = None) -> logging.Logger:

@@ -1,0 +1,51 @@
+# ThaiSLM web demo — `docker compose up --build`, then open http://localhost:8080
+#   gateway  nginx, the only published port (8080) — routes / → web, /api → sign-api, /tts → tts
+#   web      Next.js front end: camera + MediaPipe Holistic in the browser (WASM), record / process / live mode, plays the speech
+#   sign-api FastAPI + ONNX Runtime: landmarks or video → words / Thai sentence (stateless; scale with --scale sign-api=N)
+#   tts      FastAPI + MMS-TTS Thai (VITS): sentence → speech
+# The model is read from ./models (mounted read-only); OPENAI_API_KEY in .env enables the LLM sentence layer (rules otherwise).
+name: thaislm
+services:
+  gateway:
+    image: nginx:1.27-alpine
+    volumes:
+      - ./webapp/gateway/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "8080:80"
+    depends_on:
+      web:
+        condition: service_started
+      sign-api:
+        condition: service_healthy
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: webapp/web/Dockerfile
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+
+  sign-api:
+    build:
+      context: .
+      dockerfile: webapp/api/Dockerfile
+    volumes:
+      - ${THAISLM_MODELS_DIR:-./models}:/app/models:ro
+      - ./cache/live_requests:/app/requests          # diagnosis: each utterance's landmarks + result (no video); set THAISLM_SAVE_REQUESTS= to turn off
+    environment:
+      - THAISLM_MODELS=/app/models
+      - THAISLM_SAVE_REQUESTS=${THAISLM_SAVE_REQUESTS-/app/requests}
+      - TTS_URL=http://tts:8001
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4.1-mini}
+      - OPENAI_TIMEOUT_S=8
+      - ORT_THREADS=${ORT_THREADS:-8}           # 8 threads: 10 s utterance encoder 631 → 427 ms (measured)
+    restart: unless-stopped
+
+  tts:
+    build:
+      context: .
+      dockerfile: webapp/tts/Dockerfile
+    restart: unless-stopped

@@ -1,0 +1,13 @@
+# keep the docker build context small: only code (+ the MediaPipe model file) goes into images; models are mounted at run time
+**
+!modules/**
+!webapp/api/**
+!webapp/tts/**
+!webapp/web/**
+!models/mediapipe/**
+webapp/web/node_modules
+webapp/web/.next
+webapp/web/public/mediapipe
+webapp/web/public/models
+**/__pycache__
+**/*.pyc

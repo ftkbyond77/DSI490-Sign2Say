@@ -1,0 +1,1324 @@
+{
+  "results": {
+    "conversation": {
+      "summary": {
+        "videos": 5,
+        "ref_words": 22,
+        "segments": 23,
+        "recall_top1": 0.4090909090909091,
+        "recall_top5": 0.7272727272727273,
+        "ref_words_in_sentence": 0.22727272727272727,
+        "words_in_sentence": 10,
+        "words_in_sentence_correct": 5,
+        "accepted": 3,
+        "accepted_correct": 3,
+        "count_abs_err": 1.0,
+        "mean_WER_top1": 0.8742857142857142,
+        "mean_WER_sentence": 0.8357142857142857,
+        "mean_latency_ms": 4006.1800000000003
+      },
+      "videos": {
+        "test1": {
+          "ref": [
+            "สวัสดี",
+            "สบายดี",
+            "ชอบ",
+            "โกรธ",
+            "แมว",
+            "แฟน",
+            "ปรบมือ"
+          ],
+          "in_vocab": {
+            "สวัสดี": true,
+            "สบายดี": true,
+            "ชอบ": true,
+            "โกรธ": true,
+            "แมว": true,
+            "แฟน": true,
+            "ปรบมือ": true
+          },
+          "n_segments": 8,
+          "n_ref": 7,
+          "top1": [
+            "สวัสดี",
+            "สบายดี",
+            "ฉัน",
+            "ชอบ",
+            "หก",
+            "แมว",
+            "นั่ง",
+            "แมว"
+          ],
+          "accepted": [
+            "สบายดี",
+            "แมว"
+          ],
+          "used_in_sentence": [
+            "สวัสดี",
+            "สบายดี",
+            "ชอบ",
+            "แมว",
+            "นั่ง"
+          ],
+          "segments": [
+            {
+              "t0": 5.44,
+              "t1": 7.36,
+              "status": "uncertain",
+              "p": 0.28,
+              "top5": [
+                "สวัสดี",
+                "พี่",
+                "พรุ่งนี้",
+                "พี่สาว",
+                "กิน"
+              ]
+            },
+            {
+              "t0": 9.92,
+              "t1": 11.04,
+              "status": "accepted",
+              "p": 0.67,
+              "top5": [
+                "สบายดี",
+                "มีความสุข",
+                "เล่น",
+                "วันนี้",
+                "ไป"
+              ]
+            },
+            {
+              "t0": 12.64,
+              "t1": 13.28,
+              "status": "uncertain",
+              "p": 0.49,
+              "top5": [
+                "ฉัน",
+                "เกิด",
+                "ข้าว",
+                "ชอบ",
+                "กิน"
+              ]
+            },
+            {
+              "t0": 13.28,
+              "t1": 14.72,
+              "status": "uncertain",
+              "p": 0.67,
+              "top5": [
+                "ชอบ",
+                "ฉัน",
+                "คุณ",
+                "เกิด",
+                "โสด"
+              ]
+            },
+            {
+              "t0": 16.48,
+              "t1": 18.08,
+              "status": "unknown",
+              "p": 0.03,
+              "top5": [
+                "หก",
+                "โกรธ",
+                "ลม",
+                "กิน",
+                "ข้าว"
+              ]
+            },
+            {
+              "t0": 19.84,
+              "t1": 21.76,
+              "status": "accepted",
+              "p": 0.81,
+              "top5": [
+                "แมว",
+                "กิน",
+                "เที่ยว",
+                "ฉัน",
+                "เก้า"
+              ]
+            },
+            {
+              "t0": 23.52,
+              "t1": 25.44,
+              "status": "uncertain",
+              "p": 0.24,
+              "top5": [
+                "นั่ง",
+                "ครอบครัว",
+                "แฟน",
+                "ข้าว",
+                "แต่งงาน"
+              ]
+            },
+            {
+              "t0": 27.2,
+              "t1": 29.12,
+              "status": "unknown",
+              "p": 0.15,
+              "top5": [
+                "แมว",
+                "ยาย",
+                "ขอโทษ",
+                "เที่ยว",
+                "ครอบครัว"
+              ]
+            }
+          ],
+          "recall_top1": 0.5714285714285714,
+          "recall_top5": 0.8571428571428571,
+          "ref_used_in_sentence": 0.5714285714285714,
+          "precision_used": 0.8,
+          "precision_accepted": 1.0,
+          "WER_top1": 0.5714285714285714,
+          "WER_used": 0.42857142857142855,
+          "best_rank": {
+            "สวัสดี": 1,
+            "สบายดี": 1,
+            "ชอบ": 1,
+            "โกรธ": 2,
+            "แมว": 1,
+            "แฟน": 3,
+            "ปรบมือ": null
+          },
+          "sentence": "สวัสดีสบายดีชอบนั่งแมว",
+          "tentative": null,
+          "evidence_gloss": "สวัสดี? | สบายดี | ฉัน? | ชอบ? | [?]≈หก | แมว | นั่ง? | [?]≈แมว",
+          "provider": "openai+rules",
+          "face": {
+            "question_yesno": false,
+            "negation": false,
+            "emotion": "neutral"
+          },
+          "timings_ms": {
+            "schema_ms": 82.5,
+            "tagger_ms": 2078.8,
+            "spotting_ms": 430.0,
+            "n_windows": 671,
+            "tempo_factor": 1.0,
+            "face_ms": 7.1,
+            "language_ms": 5912.0,
+            "total_ms": 9836.5,
+            "mediapipe_ms": 0.1
+          },
+          "duration_s": 32.76
+        },
+        "ฉันปลอบเพื่อนร้องไห้": {
+          "ref": [
+            "ฉัน",
+            "ปลอบใจ",
+            "เพื่อน",
+            "ร้องไห้"
+          ],
+          "in_vocab": {
+            "ฉัน": true,
+            "ปลอบใจ": true,
+            "เพื่อน": true,
+            "ร้องไห้": true
+          },
+          "n_segments": 4,
+          "n_ref": 4,
+          "top1": [
+            "เพื่อน",
+            "ดู",
+            "ข้าว",
+            "เกิด"
+          ],
+          "accepted": [
+            "เพื่อน"
+          ],
+          "used_in_sentence": [
+            "เพื่อน",
+            "ดู"
+          ],
+          "segments": [
+            {
+              "t0": 1.6,
+              "t1": 3.84,
+              "status": "accepted",
+              "p": 0.96,
+              "top5": [
+                "เพื่อน",
+                "เดือน",
+                "พี่ชาย",
+                "น้า",
+                "แต่งงาน"
+              ]
+            },
+            {
+              "t0": 3.84,
+              "t1": 5.44,
+              "status": "uncertain",
+              "p": 0.16,
+              "top5": [
+                "ดู",
+                "เห็น",
+                "ร้องไห้",
+                "หูหนวก",
+                "หก"
+              ]
+            },
+            {
+              "t0": 5.44,
+              "t1": 7.36,
+              "status": "uncertain",
+              "p": 0.15,
+              "top5": [
+                "ข้าว",
+                "แต่งงาน",
+                "กรุงเทพ",
+                "สงสาร",
+                "เหงา"
+              ]
+            },
+            {
+              "t0": 7.36,
+              "t1": 9.28,
+              "status": "unknown",
+              "p": 0.1,
+              "top5": [
+                "เกิด",
+                "ข้าว",
+                "สงสาร",
+                "อยู่",
+                "ฉัน"
+              ]
+            }
+          ],
+          "recall_top1": 0.25,
+          "recall_top5": 0.75,
+          "ref_used_in_sentence": 0.25,
+          "precision_used": 0.5,
+          "precision_accepted": 1.0,
+          "WER_top1": 1.0,
+          "WER_used": 0.75,
+          "best_rank": {
+            "ฉัน": 5,
+            "ปลอบใจ": null,
+            "เพื่อน": 1,
+            "ร้องไห้": 3
+          },
+          "sentence": "เพื่อนดู[?][?]",
+          "tentative": null,
+          "evidence_gloss": "เพื่อน | ดู? | ข้าว? | [?]≈เกิด",
+          "provider": "openai",
+          "face": {
+            "question_yesno": false,
+            "negation": false,
+            "emotion": "neutral"
+          },
+          "timings_ms": {
+            "schema_ms": 56.4,
+            "tagger_ms": 591.3,
+            "spotting_ms": 244.1,
+            "n_windows": 513,
+            "tempo_factor": 1.0,
+            "face_ms": 4.8,
+            "language_ms": 1698.3,
+            "total_ms": 2804.0,
+            "mediapipe_ms": 0.8
+          },
+          "duration_s": 10.24
+        },
+        "ฉันรักเพื่อน": {
+          "ref": [
+            "ฉัน",
+            "รัก",
+            "เพื่อน"
+          ],
+          "in_vocab": {
+            "ฉัน": true,
+            "รัก": true,
+            "เพื่อน": true
+          },
+          "n_segments": 2,
+          "n_ref": 3,
+          "top1": [
+            "ฉัน",
+            "เกิด"
+          ],
+          "accepted": [],
+          "used_in_sentence": [
+            "กิน"
+          ],
+          "segments": [
+            {
+              "t0": 0.32,
+              "t1": 1.92,
+              "status": "uncertain",
+              "p": 0.27,
+              "top5": [
+                "ฉัน",
+                "เกิด",
+                "กิน",
+                "ข้าว",
+                "เที่ยว"
+              ]
+            },
+            {
+              "t0": 1.92,
+              "t1": 2.56,
+              "status": "uncertain",
+              "p": 0.42,
+              "top5": [
+                "เกิด",
+                "กิน",
+                "ขนมปัง",
+                "ฉัน",
+                "เที่ยว"
+              ]
+            }
+          ],
+          "recall_top1": 0.3333333333333333,
+          "recall_top5": 0.3333333333333333,
+          "ref_used_in_sentence": 0.0,
+          "precision_used": 0.0,
+          "precision_accepted": null,
+          "WER_top1": 0.6666666666666666,
+          "WER_used": 1.0,
+          "best_rank": {
+            "ฉัน": 1,
+            "รัก": null,
+            "เพื่อน": null
+          },
+          "sentence": "",
+          "tentative": "กินขนมปัง",
+          "evidence_gloss": "ฉัน? | เกิด?",
+          "provider": "openai",
+          "face": {
+            "question_yesno": false,
+            "negation": false,
+            "emotion": "happy"
+          },
+          "timings_ms": {
+            "schema_ms": 17.8,
+            "tagger_ms": 209.4,
+            "spotting_ms": 87.4,
+            "n_windows": 122,
+            "tempo_factor": 1.0,
+            "face_ms": 6.0,
+            "language_ms": 1444.9,
+            "total_ms": 1963.3,
+            "mediapipe_ms": 0.1
+          },
+          "duration_s": 3.52
+        },
+        "พ่อดื่มน้ำ": {
+          "ref": [
+            "พ่อ",
+            "ดื่ม",
+            "น้ำ"
+          ],
+          "in_vocab": {
+            "พ่อ": true,
+            "ดื่ม": true,
+            "น้ำ": true
+          },
+          "n_segments": 5,
+          "n_ref": 3,
+          "top1": [
+            "ศูนย์",
+            "พ่อ",
+            "น้า",
+            "เกิด",
+            "ศูนย์"
+          ],
+          "accepted": [],
+          "used_in_sentence": [
+            "บ้าน"
+          ],
+          "segments": [
+            {
+              "t0": 0.16,
+              "t1": 0.8,
+              "status": "uncertain",
+              "p": 0.63,
+              "top5": [
+                "ศูนย์",
+                "บ้าน",
+                "บอก",
+                "เรียน",
+                "อยู่บ้าน"
+              ]
+            },
+            {
+              "t0": 0.8,
+              "t1": 2.4,
+              "status": "uncertain",
+              "p": 0.19,
+              "top5": [
+                "พ่อ",
+                "เรียก",
+                "แม่",
+                "พรุ่งนี้",
+                "ยาย"
+              ]
+            },
+            {
+              "t0": 2.56,
+              "t1": 4.0,
+              "status": "uncertain",
+              "p": 0.26,
+              "top5": [
+                "น้า",
+                "อา",
+                "น้ำ",
+                "กระหายน้ำ",
+                "ห้องน้ำ"
+              ]
+            },
+            {
+              "t0": 4.0,
+              "t1": 4.96,
+              "status": "uncertain",
+              "p": 0.16,
+              "top5": [
+                "เกิด",
+                "กิน",
+                "ข้าว",
+                "ยาย",
+                "ฉัน"
+              ]
+            },
+            {
+              "t0": 4.96,
+              "t1": 6.88,
+              "status": "uncertain",
+              "p": 0.33,
+              "top5": [
+                "ศูนย์",
+                "ง่วง",
+                "พ่อ",
+                "ดื่ม",
+                "บ้าน"
+              ]
+            }
+          ],
+          "recall_top1": 0.3333333333333333,
+          "recall_top5": 1.0,
+          "ref_used_in_sentence": 0.0,
+          "precision_used": 0.0,
+          "precision_accepted": null,
+          "WER_top1": 1.3333333333333333,
+          "WER_used": 1.0,
+          "best_rank": {
+            "พ่อ": 1,
+            "ดื่ม": 4,
+            "น้ำ": 3
+          },
+          "sentence": "",
+          "tentative": "บ้าน",
+          "evidence_gloss": "ศูนย์? | พ่อ? | น้า? | เกิด? | ศูนย์?",
+          "provider": "openai",
+          "face": {
+            "question_yesno": false,
+            "negation": false,
+            "emotion": "neutral"
+          },
+          "timings_ms": {
+            "schema_ms": 47.3,
+            "tagger_ms": 510.0,
+            "spotting_ms": 220.3,
+            "n_windows": 423,
+            "tempo_factor": 1.0,
+            "face_ms": 4.2,
+            "language_ms": 1965.1,
+            "total_ms": 2977.2,
+            "mediapipe_ms": 0.1
+          },
+          "duration_s": 8.92
+        },
+        "ไปทานข้าวด้วยกันมั้ย": {
+          "ref": [
+            "ไป",
+            "กิน",
+            "ข้าว",
+            "ด้วยกัน",
+            "ไหม"
+          ],
+          "in_vocab": {
+            "ไป": true,
+            "กิน": true,
+            "ข้าว": true,
+            "ด้วยกัน": true,
+            "ไหม": false
+          },
+          "n_segments": 4,
+          "n_ref": 5,
+          "top1": [
+            "คุณ",
+            "ฉัน",
+            "ข้าว",
+            "ไป"
+          ],
+          "accepted": [],
+          "used_in_sentence": [
+            "ฉัน"
+          ],
+          "segments": [
+            {
+              "t0": 0.16,
+              "t1": 1.6,
+              "status": "uncertain",
+              "p": 0.31,
+              "top5": [
+                "คุณ",
+                "แฟน",
+                "ข้าว",
+                "ฉัน",
+                "ถาม"
+              ]
+            },
+            {
+              "t0": 1.6,
+              "t1": 2.72,
+              "status": "uncertain",
+              "p": 0.63,
+              "top5": [
+                "ฉัน",
+                "ข้าว",
+                "กิน",
+                "เกิด",
+                "คุณ"
+              ]
+            },
+            {
+              "t0": 2.72,
+              "t1": 4.64,
+              "status": "uncertain",
+              "p": 0.49,
+              "top5": [
+                "ข้าว",
+                "กิน",
+                "เกิด",
+                "ฉัน",
+                "แฟน"
+              ]
+            },
+            {
+              "t0": 4.64,
+              "t1": 6.56,
+              "status": "uncertain",
+              "p": 0.54,
+              "top5": [
+                "ไป",
+                "กลับ",
+                "น้อง",
+                "ห้า",
+                "ลาก่อน"
+              ]
+            }
+          ],
+          "recall_top1": 0.4,
+          "recall_top5": 0.6,
+          "ref_used_in_sentence": 0.0,
+          "precision_used": 0.0,
+          "precision_accepted": null,
+          "WER_top1": 0.8,
+          "WER_used": 1.0,
+          "best_rank": {
+            "ไป": 1,
+            "กิน": 2,
+            "ข้าว": 1,
+            "ด้วยกัน": null,
+            "ไหม": null
+          },
+          "sentence": "",
+          "tentative": "ฉัน",
+          "evidence_gloss": "คุณ? | ฉัน? | ข้าว? | ไป?",
+          "provider": "openai",
+          "face": {
+            "question_yesno": false,
+            "negation": false,
+            "emotion": "neutral"
+          },
+          "timings_ms": {
+            "schema_ms": 30.1,
+            "tagger_ms": 393.9,
+            "spotting_ms": 183.3,
+            "n_windows": 391,
+            "tempo_factor": 1.0,
+            "face_ms": 4.0,
+            "language_ms": 1636.9,
+            "total_ms": 2449.9,
+            "mediapipe_ms": 0.4
+          },
+          "duration_s": 6.72
+        }
+      }
+    },
+    "full": {
+      "summary": {
+        "videos": 5,
+        "ref_words": 22,
+        "segments": 22,
+        "recall_top1": 0.45454545454545453,
+        "recall_top5": 0.5909090909090909,
+        "ref_words_in_sentence": 0.22727272727272727,
+        "words_in_sentence": 8,
+        "words_in_sentence_correct": 5,
+        "accepted": 1,
+        "accepted_correct": 1,
+        "count_abs_err": 1.2,
+        "mean_WER_top1": 0.8361904761904763,
+        "mean_WER_sentence": 0.8147619047619047,
+        "mean_latency_ms": 3864.06
+      },
+      "videos": {
+        "test1": {
+          "ref": [
+            "สวัสดี",
+            "สบายดี",
+            "ชอบ",
+            "โกรธ",
+            "แมว",
+            "แฟน",
+            "ปรบมือ"
+          ],
+          "in_vocab": {
+            "สวัสดี": true,
+            "สบายดี": true,
+            "ชอบ": true,
+            "โกรธ": true,
+            "แมว": true,
+            "แฟน": true,
+            "ปรบมือ": true
+          },
+          "n_segments": 8,
+          "n_ref": 7,
+          "top1": [
+            "สวัสดี",
+            "ไป",
+            "ฉัน",
+            "ชอบ",
+            "โลก",
+            "แมว",
+            "เหมือนกัน",
+            "โฆษณา"
+          ],
+          "accepted": [],
+          "used_in_sentence": [
+            "แมว"
+          ],
+          "segments": [
+            {
+              "t0": 5.44,
+              "t1": 7.36,
+              "status": "uncertain",
+              "p": 0.62,
+              "top5": [
+                "สวัสดี",
+                "ก่อน",
+                "พี่",
+                "ครุ่นคิด",
+                "อิสราเอล"
+              ]
+            },
+            {
+              "t0": 9.92,
+              "t1": 11.04,
+              "status": "uncertain",
+              "p": 0.35,
+              "top5": [
+                "ไป",
+                "เล่น",
+                "สบายดี",
+                "กลับ",
+                "ทำงาน"
+              ]
+            },
+            {
+              "t0": 12.64,
+              "t1": 13.28,
+              "status": "uncertain",
+              "p": 0.4,
+              "top5": [
+                "ฉัน",
+                "เกิด",
+                "ข้าว",
+                "กิน",
+                "ชอบ"
+              ]
+            },
+            {
+              "t0": 13.28,
+              "t1": 14.72,
+              "status": "uncertain",
+              "p": 0.15,
+              "top5": [
+                "ชอบ",
+                "ไหว",
+                "ท้อง",
+                "สะดือ",
+                "ฉัน"
+              ]
+            },
+            {
+              "t0": 16.48,
+              "t1": 18.4,
+              "status": "uncertain",
+              "p": 0.34,
+              "top5": [
+                "โลก",
+                "น้ำตา",
+                "ไป",
+                "ฉ",
+                "หก"
+              ]
+            },
+            {
+              "t0": 19.84,
+              "t1": 21.76,
+              "status": "uncertain",
+              "p": 0.65,
+              "top5": [
+                "แมว",
+                "ลิงก์",
+                "ไป",
+                "ฉัน",
+                "ใน"
+              ]
+            },
+            {
+              "t0": 23.52,
+              "t1": 25.44,
+              "status": "uncertain",
+              "p": 0.54,
+              "top5": [
+                "เหมือนกัน",
+                "รวม",
+                "กลุ่ม",
+                "ยัง",
+                "ต่อ"
+              ]
+            },
+            {
+              "t0": 27.2,
+              "t1": 29.12,
+              "status": "uncertain",
+              "p": 0.58,
+              "top5": [
+                "โฆษณา",
+                "แมว",
+                "โฆษก",
+                "ใหญ่",
+                "บาง"
+              ]
+            }
+          ],
+          "recall_top1": 0.42857142857142855,
+          "recall_top5": 0.5714285714285714,
+          "ref_used_in_sentence": 0.14285714285714285,
+          "precision_used": 1.0,
+          "precision_accepted": null,
+          "WER_top1": 0.7142857142857143,
+          "WER_used": 0.8571428571428571,
+          "best_rank": {
+            "สวัสดี": 1,
+            "สบายดี": 3,
+            "ชอบ": 1,
+            "โกรธ": null,
+            "แมว": 1,
+            "แฟน": null,
+            "ปรบมือ": null
+          },
+          "sentence": "",
+          "tentative": "แมว",
+          "evidence_gloss": "สวัสดี? | ไป? | ฉัน? | ชอบ? | โลก? | แมว? | เหมือนกัน? | โฆษณา?",
+          "provider": "openai",
+          "face": {
+            "question_yesno": false,
+            "negation": false,
+            "emotion": "neutral"
+          },
+          "timings_ms": {
+            "schema_ms": 54.8,
+            "tagger_ms": 1941.0,
+            "spotting_ms": 1169.2,
+            "n_windows": 438,
+            "tempo_factor": 1.0,
+            "face_ms": 6.8,
+            "language_ms": 1911.3,
+            "total_ms": 5408.6,
+            "mediapipe_ms": 0.1
+          },
+          "duration_s": 32.76
+        },
+        "ฉันปลอบเพื่อนร้องไห้": {
+          "ref": [
+            "ฉัน",
+            "ปลอบใจ",
+            "เพื่อน",
+            "ร้องไห้"
+          ],
+          "in_vocab": {
+            "ฉัน": true,
+            "ปลอบใจ": true,
+            "เพื่อน": true,
+            "ร้องไห้": true
+          },
+          "n_segments": 4,
+          "n_ref": 4,
+          "top1": [
+            "เพื่อน",
+            "ดู",
+            "เกิด",
+            "สงสาร"
+          ],
+          "accepted": [
+            "เพื่อน"
+          ],
+          "used_in_sentence": [
+            "เพื่อน",
+            "ดู"
+          ],
+          "segments": [
+            {
+              "t0": 1.6,
+              "t1": 3.52,
+              "status": "accepted",
+              "p": 0.83,
+              "top5": [
+                "เพื่อน",
+                "เดือน",
+                "ชั่วคราว",
+                "มิตรภาพ",
+                "มา"
+              ]
+            },
+            {
+              "t0": 3.52,
+              "t1": 5.44,
+              "status": "uncertain",
+              "p": 0.44,
+              "top5": [
+                "ดู",
+                "เห็น",
+                "หายใจ",
+                "มองดู",
+                "กรรม"
+              ]
+            },
+            {
+              "t0": 5.44,
+              "t1": 6.08,
+              "status": "uncertain",
+              "p": 0.37,
+              "top5": [
+                "เกิด",
+                "ฉัน",
+                "ข้าว",
+                "กิน",
+                "ไป"
+              ]
+            },
+            {
+              "t0": 6.08,
+              "t1": 8.0,
+              "status": "uncertain",
+              "p": 0.23,
+              "top5": [
+                "สงสาร",
+                "อยู่",
+                "ของ",
+                "เกิด",
+                "จับ"
+              ]
+            },
+            {
+              "t0": 8.0,
+              "t1": 9.92,
+              "status": "transition",
+              "p": 0.31,
+              "top5": [
+                "เกิด",
+                "ฉัน",
+                "ข้าว",
+                "ไป",
+                "กิน"
+              ]
+            }
+          ],
+          "recall_top1": 0.25,
+          "recall_top5": 0.5,
+          "ref_used_in_sentence": 0.25,
+          "precision_used": 0.5,
+          "precision_accepted": 1.0,
+          "WER_top1": 1.0,
+          "WER_used": 0.75,
+          "best_rank": {
+            "ฉัน": 2,
+            "ปลอบใจ": null,
+            "เพื่อน": 1,
+            "ร้องไห้": null
+          },
+          "sentence": "เพื่อนดู[?][?]",
+          "tentative": null,
+          "evidence_gloss": "เพื่อน | ดู? | เกิด? | สงสาร?",
+          "provider": "openai",
+          "face": {
+            "question_yesno": false,
+            "negation": false,
+            "emotion": "neutral"
+          },
+          "timings_ms": {
+            "schema_ms": 47.2,
+            "tagger_ms": 532.0,
+            "spotting_ms": 805.4,
+            "n_windows": 328,
+            "tempo_factor": 1.0,
+            "face_ms": 4.1,
+            "language_ms": 1558.4,
+            "total_ms": 3140.0,
+            "mediapipe_ms": 0.1
+          },
+          "duration_s": 10.24
+        },
+        "ฉันรักเพื่อน": {
+          "ref": [
+            "ฉัน",
+            "รัก",
+            "เพื่อน"
+          ],
+          "in_vocab": {
+            "ฉัน": true,
+            "รัก": true,
+            "เพื่อน": true
+          },
+          "n_segments": 1,
+          "n_ref": 3,
+          "top1": [
+            "ฉัน"
+          ],
+          "accepted": [],
+          "used_in_sentence": [
+            "ฉัน"
+          ],
+          "segments": [
+            {
+              "t0": 0.32,
+              "t1": 2.88,
+              "status": "uncertain",
+              "p": 0.39,
+              "top5": [
+                "ฉัน",
+                "เกิด",
+                "ไป",
+                "กิน",
+                "คุณ"
+              ]
+            }
+          ],
+          "recall_top1": 0.3333333333333333,
+          "recall_top5": 0.3333333333333333,
+          "ref_used_in_sentence": 0.3333333333333333,
+          "precision_used": 1.0,
+          "precision_accepted": null,
+          "WER_top1": 0.6666666666666666,
+          "WER_used": 0.6666666666666666,
+          "best_rank": {
+            "ฉัน": 1,
+            "รัก": null,
+            "เพื่อน": null
+          },
+          "sentence": "",
+          "tentative": "ฉัน",
+          "evidence_gloss": "ฉัน?",
+          "provider": "openai",
+          "face": {
+            "question_yesno": false,
+            "negation": false,
+            "emotion": "happy"
+          },
+          "timings_ms": {
+            "schema_ms": 18.0,
+            "tagger_ms": 216.8,
+            "spotting_ms": 497.7,
+            "n_windows": 80,
+            "tempo_factor": 1.0,
+            "face_ms": 3.6,
+            "language_ms": 2297.0,
+            "total_ms": 3298.6,
+            "mediapipe_ms": 0.1
+          },
+          "duration_s": 3.52
+        },
+        "พ่อดื่มน้ำ": {
+          "ref": [
+            "พ่อ",
+            "ดื่ม",
+            "น้ำ"
+          ],
+          "in_vocab": {
+            "พ่อ": true,
+            "ดื่ม": true,
+            "น้ำ": true
+          },
+          "n_segments": 5,
+          "n_ref": 3,
+          "top1": [
+            "โอ",
+            "พ่อ",
+            "น้ำ",
+            "ดื่ม",
+            "ศูนย์"
+          ],
+          "accepted": [],
+          "used_in_sentence": [
+            "ศูนย์",
+            "ศูนย์"
+          ],
+          "segments": [
+            {
+              "t0": 0.16,
+              "t1": 0.8,
+              "status": "uncertain",
+              "p": 0.59,
+              "top5": [
+                "โอ",
+                "ศูนย์",
+                "ส่ง",
+                "เรียน",
+                "บ้าน"
+              ]
+            },
+            {
+              "t0": 0.8,
+              "t1": 2.72,
+              "status": "uncertain",
+              "p": 0.31,
+              "top5": [
+                "พ่อ",
+                "เรียก",
+                "ไป",
+                "ชมพู",
+                "พ่อแม่"
+              ]
+            },
+            {
+              "t0": 2.72,
+              "t1": 4.16,
+              "status": "unknown",
+              "p": 0.12,
+              "top5": [
+                "น้ำ",
+                "อา",
+                "ณ",
+                "น้า",
+                "ง"
+              ]
+            },
+            {
+              "t0": 4.16,
+              "t1": 4.96,
+              "status": "uncertain",
+              "p": 0.38,
+              "top5": [
+                "ดื่ม",
+                "กระบอก",
+                "ศูนย์",
+                "ฉ",
+                "กิน"
+              ]
+            },
+            {
+              "t0": 4.96,
+              "t1": 6.88,
+              "status": "uncertain",
+              "p": 0.72,
+              "top5": [
+                "ศูนย์",
+                "บอก",
+                "บ้าน",
+                "ความรู้",
+                "เรียน"
+              ]
+            }
+          ],
+          "recall_top1": 1.0,
+          "recall_top5": 1.0,
+          "ref_used_in_sentence": 0.0,
+          "precision_used": 0.0,
+          "precision_accepted": null,
+          "WER_top1": 1.0,
+          "WER_used": 1.0,
+          "best_rank": {
+            "พ่อ": 1,
+            "ดื่ม": 1,
+            "น้ำ": 1
+          },
+          "sentence": "",
+          "tentative": "ศูนย์ศูนย์",
+          "evidence_gloss": "โอ? | พ่อ? | [?]≈น้ำ | ดื่ม? | ศูนย์?",
+          "provider": "openai+rules",
+          "face": {
+            "question_yesno": false,
+            "negation": false,
+            "emotion": "neutral"
+          },
+          "timings_ms": {
+            "schema_ms": 43.5,
+            "tagger_ms": 707.8,
+            "spotting_ms": 1218.2,
+            "n_windows": 273,
+            "tempo_factor": 1.0,
+            "face_ms": 8.2,
+            "language_ms": 1762.0,
+            "total_ms": 4000.4,
+            "mediapipe_ms": 0.1
+          },
+          "duration_s": 8.92
+        },
+        "ไปทานข้าวด้วยกันมั้ย": {
+          "ref": [
+            "ไป",
+            "กิน",
+            "ข้าว",
+            "ด้วยกัน",
+            "ไหม"
+          ],
+          "in_vocab": {
+            "ไป": true,
+            "กิน": true,
+            "ข้าว": true,
+            "ด้วยกัน": true,
+            "ไหม": false
+          },
+          "n_segments": 4,
+          "n_ref": 5,
+          "top1": [
+            "ฉัน",
+            "เกิด",
+            "ข้าว",
+            "ไป"
+          ],
+          "accepted": [],
+          "used_in_sentence": [
+            "ข้าว",
+            "ไป"
+          ],
+          "segments": [
+            {
+              "t0": 0.16,
+              "t1": 0.8,
+              "status": "uncertain",
+              "p": 0.44,
+              "top5": [
+                "ฉัน",
+                "เกิด",
+                "ข้าว",
+                "กิน",
+                "คุณ"
+              ]
+            },
+            {
+              "t0": 0.8,
+              "t1": 2.72,
+              "status": "uncertain",
+              "p": 0.29,
+              "top5": [
+                "เกิด",
+                "ฉัน",
+                "ข้าว",
+                "คุณ",
+                "กิน"
+              ]
+            },
+            {
+              "t0": 2.72,
+              "t1": 4.64,
+              "status": "unknown",
+              "p": 0.09,
+              "top5": [
+                "ข้าว",
+                "กิน",
+                "เกิด",
+                "ฉัน",
+                "ไป"
+              ]
+            },
+            {
+              "t0": 4.64,
+              "t1": 6.56,
+              "status": "uncertain",
+              "p": 0.64,
+              "top5": [
+                "ไป",
+                "ออก",
+                "กลับ",
+                "เสด็จ",
+                "ให้"
+              ]
+            }
+          ],
+          "recall_top1": 0.4,
+          "recall_top5": 0.6,
+          "ref_used_in_sentence": 0.4,
+          "precision_used": 1.0,
+          "precision_accepted": null,
+          "WER_top1": 0.8,
+          "WER_used": 0.8,
+          "best_rank": {
+            "ไป": 1,
+            "กิน": 2,
+            "ข้าว": 1,
+            "ด้วยกัน": null,
+            "ไหม": null
+          },
+          "sentence": "",
+          "tentative": "ไปข้าว",
+          "evidence_gloss": "ฉัน? | เกิด? | [?]≈ข้าว | ไป?",
+          "provider": "openai+rules",
+          "face": {
+            "question_yesno": false,
+            "negation": false,
+            "emotion": "neutral"
+          },
+          "timings_ms": {
+            "schema_ms": 36.1,
+            "tagger_ms": 553.0,
+            "spotting_ms": 1029.1,
+            "n_windows": 254,
+            "tempo_factor": 1.0,
+            "face_ms": 6.7,
+            "language_ms": 1547.7,
+            "total_ms": 3472.7,
+            "mediapipe_ms": 0.1
+          },
+          "duration_s": 6.72
+        }
+      }
+    }
+  },
+  "model": {
+    "version": "v7",
+    "encoder_run": "enc-v7-europe-west4",
+    "sequence_run": "seq-v7",
+    "tagger_arch": "gru",
+    "extractor": "MediaPipe Holistic (tasks 1.0.1)",
+    "built": "2026-10-03 09:31",
+    "concepts": 9929,
+    "bank_eval": 14204,
+    "bank": 19680,
+    "bank_concepts": 9922,
+    "conversation_concepts": 326,
+    "aligned_sentence_words_added": 650,
+    "alignment_score_cut": 0.354,
+    "bank_added": {
+      "clips": 40,
+      "eval_clips": 39,
+      "new_concepts": [
+        "กวาดบ้าน",
+        "กินข้าว",
+        "ทิ้ง",
+        "ปิยมหาราช",
+        "ภาพพิมพ์",
+        "ไม้ประดับ"
+      ],
+      "built": "2026-10-04 04:07"
+    }
+  },
+  "llm": true,
+  "backend": "onnx"
+}

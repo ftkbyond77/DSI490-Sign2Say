@@ -1,0 +1,456 @@
+{
+  "chosen": {
+    "thr": 0.75,
+    "accept": 0.75,
+    "single_min": 0.9,
+    "run_gap": 15,
+    "w_bank": 0.5,
+    "run_min": 0.7
+  },
+  "tune": {
+    "false_letters_per_100": 0.0,
+    "letters_read": 0.702,
+    "accepted_letters": 112,
+    "accepted_wrong": 5
+  },
+  "held_out": {
+    "false_letters_per_100": 1.32,
+    "letters_read": 0.714,
+    "accepted_letters": 84,
+    "accepted_wrong": 14
+  },
+  "grid": [
+    {
+      "cfg": {
+        "thr": 0.6,
+        "single_min": 0.9,
+        "run_min": 0.7,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.26,
+      "letters_read": 0.702,
+      "accepted_letters": 112,
+      "accepted_wrong": 6
+    },
+    {
+      "cfg": {
+        "thr": 0.6,
+        "single_min": 0.9,
+        "run_min": 0.7,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.26,
+      "letters_read": 0.685,
+      "accepted_letters": 112,
+      "accepted_wrong": 6
+    },
+    {
+      "cfg": {
+        "thr": 0.6,
+        "single_min": 0.9,
+        "run_min": 0.8,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.26,
+      "letters_read": 0.702,
+      "accepted_letters": 112,
+      "accepted_wrong": 6
+    },
+    {
+      "cfg": {
+        "thr": 0.6,
+        "single_min": 0.9,
+        "run_min": 0.8,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.26,
+      "letters_read": 0.702,
+      "accepted_letters": 110,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.6,
+        "single_min": 0.97,
+        "run_min": 0.7,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.26,
+      "letters_read": 0.645,
+      "accepted_letters": 101,
+      "accepted_wrong": 6
+    },
+    {
+      "cfg": {
+        "thr": 0.6,
+        "single_min": 0.97,
+        "run_min": 0.7,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.26,
+      "letters_read": 0.629,
+      "accepted_letters": 105,
+      "accepted_wrong": 6
+    },
+    {
+      "cfg": {
+        "thr": 0.6,
+        "single_min": 0.97,
+        "run_min": 0.8,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.26,
+      "letters_read": 0.645,
+      "accepted_letters": 101,
+      "accepted_wrong": 6
+    },
+    {
+      "cfg": {
+        "thr": 0.6,
+        "single_min": 0.97,
+        "run_min": 0.8,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.26,
+      "letters_read": 0.645,
+      "accepted_letters": 103,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.6,
+        "single_min": 1.01,
+        "run_min": 0.7,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.323,
+      "accepted_letters": 57,
+      "accepted_wrong": 6
+    },
+    {
+      "cfg": {
+        "thr": 0.6,
+        "single_min": 1.01,
+        "run_min": 0.7,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.347,
+      "accepted_letters": 68,
+      "accepted_wrong": 6
+    },
+    {
+      "cfg": {
+        "thr": 0.6,
+        "single_min": 1.01,
+        "run_min": 0.8,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.323,
+      "accepted_letters": 57,
+      "accepted_wrong": 6
+    },
+    {
+      "cfg": {
+        "thr": 0.6,
+        "single_min": 1.01,
+        "run_min": 0.8,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.363,
+      "accepted_letters": 66,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.65,
+        "single_min": 0.9,
+        "run_min": 0.7,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.694,
+      "accepted_letters": 111,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.65,
+        "single_min": 0.9,
+        "run_min": 0.7,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.694,
+      "accepted_letters": 110,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.65,
+        "single_min": 0.9,
+        "run_min": 0.8,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.694,
+      "accepted_letters": 111,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.65,
+        "single_min": 0.9,
+        "run_min": 0.8,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.694,
+      "accepted_letters": 110,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.65,
+        "single_min": 0.97,
+        "run_min": 0.7,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.637,
+      "accepted_letters": 100,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.65,
+        "single_min": 0.97,
+        "run_min": 0.7,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.637,
+      "accepted_letters": 103,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.65,
+        "single_min": 0.97,
+        "run_min": 0.8,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.637,
+      "accepted_letters": 100,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.65,
+        "single_min": 0.97,
+        "run_min": 0.8,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.637,
+      "accepted_letters": 103,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.65,
+        "single_min": 1.01,
+        "run_min": 0.7,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.298,
+      "accepted_letters": 54,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.65,
+        "single_min": 1.01,
+        "run_min": 0.7,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.339,
+      "accepted_letters": 64,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.65,
+        "single_min": 1.01,
+        "run_min": 0.8,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.298,
+      "accepted_letters": 54,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.65,
+        "single_min": 1.01,
+        "run_min": 0.8,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.339,
+      "accepted_letters": 64,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.75,
+        "single_min": 0.9,
+        "run_min": 0.7,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.702,
+      "accepted_letters": 112,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.75,
+        "single_min": 0.9,
+        "run_min": 0.7,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.694,
+      "accepted_letters": 108,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.75,
+        "single_min": 0.9,
+        "run_min": 0.8,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.694,
+      "accepted_letters": 111,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.75,
+        "single_min": 0.9,
+        "run_min": 0.8,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.694,
+      "accepted_letters": 108,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.75,
+        "single_min": 0.97,
+        "run_min": 0.7,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.637,
+      "accepted_letters": 100,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.75,
+        "single_min": 0.97,
+        "run_min": 0.7,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.637,
+      "accepted_letters": 99,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.75,
+        "single_min": 0.97,
+        "run_min": 0.8,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.629,
+      "accepted_letters": 99,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.75,
+        "single_min": 0.97,
+        "run_min": 0.8,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.637,
+      "accepted_letters": 99,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.75,
+        "single_min": 1.01,
+        "run_min": 0.7,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.306,
+      "accepted_letters": 55,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.75,
+        "single_min": 1.01,
+        "run_min": 0.7,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.347,
+      "accepted_letters": 60,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.75,
+        "single_min": 1.01,
+        "run_min": 0.8,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.298,
+      "accepted_letters": 54,
+      "accepted_wrong": 5
+    },
+    {
+      "cfg": {
+        "thr": 0.75,
+        "single_min": 1.01,
+        "run_min": 0.8,
+        "accept": 0.75
+      },
+      "false_letters_per_100": 0.0,
+      "letters_read": 0.347,
+      "accepted_letters": 60,
+      "accepted_wrong": 5
+    }
+  ]
+}

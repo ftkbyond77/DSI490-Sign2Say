@@ -1,0 +1,356 @@
+{
+  "title": "ฉันปลอบเพื่อนร้องไห้",
+  "fps": 25.0,
+  "n_frames": 256,
+  "duration_s": 10.24,
+  "signer_visible_frac": 1.0,
+  "signing_frac": 0.75,
+  "mirrored_to_right_hand": false,
+  "segments": [
+    {
+      "f0": 40,
+      "f1": 88,
+      "z": 9.615231263028367,
+      "wins": [
+        [
+          40,
+          88
+        ]
+      ],
+      "nearest": "เพื่อน",
+      "candidates": [
+        {
+          "word": "เพื่อน",
+          "score": 0.7506,
+          "support": 1.1322
+        },
+        {
+          "word": "เดือน",
+          "score": 0.4189,
+          "support": 0.7932
+        },
+        {
+          "word": "ชั่วคราว",
+          "score": 0.4531,
+          "support": 0.7424
+        },
+        {
+          "word": "มิตรภาพ",
+          "score": 0.463,
+          "support": 0.7036
+        },
+        {
+          "word": "มา",
+          "score": 0.2202,
+          "support": 0.6998
+        }
+      ],
+      "score": 0.7506207227706909,
+      "margin": 0.33173543214797974,
+      "null_gap": -0.6100538969039917,
+      "p_sign": 0.9782925189783177,
+      "agree": 1.0,
+      "support_ratio": 1.604526583634659,
+      "window_top1": "เพื่อน",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.8252836967057835,
+      "status": "accepted",
+      "t0": 1.6,
+      "t1": 3.52
+    },
+    {
+      "f0": 88,
+      "f1": 136,
+      "z": 4.594032276029733,
+      "wins": [
+        [
+          88,
+          136
+        ]
+      ],
+      "nearest": "ดู",
+      "candidates": [
+        {
+          "word": "ดู",
+          "score": 0.4897,
+          "support": 0.9001
+        },
+        {
+          "word": "เห็น",
+          "score": 0.4529,
+          "support": 0.8797
+        },
+        {
+          "word": "หายใจ",
+          "score": 0.4957,
+          "support": 0.8144
+        },
+        {
+          "word": "มองดู",
+          "score": 0.4026,
+          "support": 0.7982
+        },
+        {
+          "word": "กรรม",
+          "score": 0.4616,
+          "support": 0.7906
+        }
+      ],
+      "score": 0.4897156059741974,
+      "margin": 0.03684967756271362,
+      "null_gap": -0.47578397393226624,
+      "p_sign": 0.9896654831866423,
+      "agree": 1.0,
+      "support_ratio": 1.0701967452028176,
+      "window_top1": "ดู",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.4434941891132911,
+      "status": "uncertain",
+      "t0": 3.52,
+      "t1": 5.44
+    },
+    {
+      "f0": 136,
+      "f1": 152,
+      "z": 8.83995109337933,
+      "wins": [
+        [
+          136,
+          152
+        ]
+      ],
+      "nearest": "เกิด",
+      "candidates": [
+        {
+          "word": "เกิด",
+          "score": 0.8147,
+          "support": 1.2421
+        },
+        {
+          "word": "ฉัน",
+          "score": 0.7886,
+          "support": 1.2171
+        },
+        {
+          "word": "ข้าว",
+          "score": 0.8055,
+          "support": 1.1602
+        },
+        {
+          "word": "กิน",
+          "score": 0.7667,
+          "support": 1.1529
+        },
+        {
+          "word": "ไป",
+          "score": 0.6009,
+          "support": 1.0847
+        }
+      ],
+      "score": 0.8147234916687012,
+      "margin": 0.026146411895751953,
+      "null_gap": -0.07990491390228271,
+      "p_sign": 0.9801217295229435,
+      "agree": 1.0,
+      "support_ratio": 1.0061575222865544,
+      "window_top1": "เกิด",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.37183208970877696,
+      "status": "uncertain",
+      "t0": 5.44,
+      "t1": 6.08
+    },
+    {
+      "f0": 152,
+      "f1": 200,
+      "z": 5.109594847242876,
+      "wins": [
+        [
+          152,
+          200
+        ]
+      ],
+      "nearest": "สงสาร",
+      "candidates": [
+        {
+          "word": "สงสาร",
+          "score": 0.4756,
+          "support": 0.7622
+        },
+        {
+          "word": "อยู่",
+          "score": 0.2521,
+          "support": 0.7114
+        },
+        {
+          "word": "ของ",
+          "score": 0.1587,
+          "support": 0.6562
+        },
+        {
+          "word": "เกิด",
+          "score": 0.2226,
+          "support": 0.65
+        },
+        {
+          "word": "จับ",
+          "score": 0.2901,
+          "support": 0.6452
+        }
+      ],
+      "score": 0.47558465600013733,
+      "margin": 0.22351568937301636,
+      "null_gap": -0.42519015073776245,
+      "p_sign": 0.9999977784852186,
+      "agree": 0.0,
+      "support_ratio": 1.1512115139369647,
+      "window_top1": "ข้าว",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.23483371165508785,
+      "status": "uncertain",
+      "t0": 6.08,
+      "t1": 8.0
+    },
+    {
+      "f0": 200,
+      "f1": 248,
+      "z": 7.627525239382207,
+      "wins": [
+        [
+          200,
+          248
+        ]
+      ],
+      "nearest": "เกิด",
+      "candidates": [
+        {
+          "word": "เกิด",
+          "score": 0.7182,
+          "support": 1.1456
+        },
+        {
+          "word": "ฉัน",
+          "score": 0.7058,
+          "support": 1.1344
+        },
+        {
+          "word": "ข้าว",
+          "score": 0.7087,
+          "support": 1.0634
+        },
+        {
+          "word": "ไป",
+          "score": 0.5668,
+          "support": 1.0505
+        },
+        {
+          "word": "กิน",
+          "score": 0.6595,
+          "support": 1.0457
+        }
+      ],
+      "score": 0.7182095050811768,
+      "margin": 0.012375116348266602,
+      "null_gap": 0.023433923721313477,
+      "p_sign": 0.6417466732828567,
+      "agree": 1.0,
+      "support_ratio": 1.0589228934817172,
+      "window_top1": "เกิด",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.3081674940017349,
+      "status": "transition",
+      "t0": 8.0,
+      "t1": 9.92
+    }
+  ],
+  "face": {
+    "face_frames": 1.0,
+    "question_furrow": false,
+    "question_yesno": false,
+    "question_wh": false,
+    "negation": false,
+    "affirmation": false,
+    "emotion": "neutral",
+    "emotion_th": "เป็นกลาง",
+    "emotion_scores": {
+      "happy": 0.088,
+      "sad": 0.002,
+      "angry": 0.088,
+      "surprise": 0.0,
+      "fear": 0.003,
+      "disgust": 0.0
+    },
+    "intensity": 0.0,
+    "cues": {
+      "brow_raise_tail": 2.815,
+      "brow_raise_peak": 0.197,
+      "brow_furrow": 0.599,
+      "head_forward_tail": -0.004,
+      "head_shake_cycles": 0,
+      "head_nod_cycles": 0,
+      "mouth_open_frac": 0.0,
+      "cheek_puff": 0.0,
+      "duration_s": 10.23,
+      "brow_furrow_rel": -0.02,
+      "furrow_baseline": "hands_down_frames"
+    },
+    "per_segment": [
+      {
+        "brow": -0.24,
+        "furrow": 0.13,
+        "smile": 0.002,
+        "mouth": 0.001
+      },
+      {
+        "brow": -0.04,
+        "furrow": 0.33,
+        "smile": 0.001,
+        "mouth": 0.004
+      },
+      {
+        "brow": -0.45,
+        "furrow": 0.23,
+        "smile": 0.002,
+        "mouth": 0.002
+      },
+      {
+        "brow": 3.64,
+        "furrow": -0.6,
+        "smile": 0.001,
+        "mouth": 0.002
+      }
+    ]
+  },
+  "fusion": {
+    "chosen": [
+      "เพื่อน",
+      "ดู",
+      "[?]",
+      "[?]"
+    ],
+    "sentence_th": "เพื่อนดู[?][?]",
+    "meaning_th": "เพื่อนดู[?][?]",
+    "confidence": 0.615,
+    "provider": "openai",
+    "latency_s": 1.56,
+    "guard_violations": [],
+    "evidence_gloss": "เพื่อน | ดู? | เกิด? | สงสาร?"
+  },
+  "sentence": "เพื่อนดู[?][?]",
+  "timings_ms": {
+    "schema_ms": 47.2,
+    "tagger_ms": 532.0,
+    "spotting_ms": 805.4,
+    "n_windows": 328,
+    "tempo_factor": 1.0,
+    "face_ms": 4.1,
+    "language_ms": 1558.4
+  },
+  "model": "v7",
+  "vocab": "full"
+}

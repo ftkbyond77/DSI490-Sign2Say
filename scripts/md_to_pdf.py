@@ -25,6 +25,8 @@ code { font-family: Consolas, "Leelawadee UI", monospace; font-size: 9pt; backgr
 pre { background: #f6f7fb; border: 1px solid #dde; border-radius: 6px; padding: 8px 10px; white-space: pre-wrap; word-break: break-word;
       font-size: 7.6pt; line-height: 1.35; page-break-inside: avoid; }
 pre code { background: none; padding: 0; font-size: inherit; }
+img { max-width: 100%; display: block; margin: 6px auto; page-break-inside: avoid; }
+figcaption, .cap { font-size: 8.8pt; color: #555; margin: 0 0 12px; }
 table { border-collapse: collapse; width: 100%; font-size: 9pt; margin: 8px 0; page-break-inside: avoid; }
 th, td { border: 1px solid #ccd; padding: 4px 6px; vertical-align: top; }
 th { background: #e9eef8; }
@@ -34,13 +36,13 @@ pre.mermaid svg { max-width: 100% !important; height: auto; }
 """
 
 
-def render(md_text: str, title: str) -> str:
+def render(md_text: str, title: str, base: str = "") -> str:
     md = MarkdownIt("commonmark", {"html": True}).enable("table")
     body = md.render(md_text)
     # ```mermaid fences → <pre class="mermaid"> (mermaid needs the raw text)
     body = re.sub(r'<pre><code class="language-mermaid">(.*?)</code></pre>',
                   lambda m: f'<pre class="mermaid">{m.group(1)}</pre>', body, flags=re.S)
-    return f"""<!doctype html><html><head><meta charset="utf-8"><title>{html.escape(title)}</title><style>{CSS}</style>
+    return f"""<!doctype html><html><head><meta charset="utf-8"><base href="{base}"><title>{html.escape(title)}</title><style>{CSS}</style>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script></head>
 <body>{body}
 <script>
@@ -53,7 +55,7 @@ def render(md_text: str, title: str) -> str:
 def main(src):
     src = Path(src).resolve()
     out = src.with_suffix(".pdf")
-    page = render(src.read_text(encoding="utf-8"), src.stem)
+    page = render(src.read_text(encoding="utf-8"), src.stem, src.parent.as_uri() + "/")   # base → relative image paths work
     with tempfile.TemporaryDirectory() as td:
         h = Path(td) / f"{src.stem}.html"
         h.write_text(page, encoding="utf-8")

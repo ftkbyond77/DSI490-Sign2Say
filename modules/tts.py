@@ -1,5 +1,5 @@
-"""L6 TTS behind one interface. Providers: local MMS-TTS Thai (VITS, offline), edge-tts, OpenAI TTS.
-SpeechStyle carries emotion → rate/pitch mapping and a persona hook for later accent/style work."""
+"""Speech output behind one interface. Providers: local MMS-TTS Thai (VITS, offline — the default and the web demo's TTS
+service), edge-tts, OpenAI TTS. SpeechStyle maps the signer's facial emotion (modules/face.py) to speaking rate / pitch."""
 from __future__ import annotations
 
 import io
@@ -41,7 +41,7 @@ class TTSProvider(Protocol):
 
 def write_wav(path, audio: np.ndarray, sr: int):
     a = np.clip(audio, -1, 1)
-    with wave.open(str(path), "wb") as w:
+    with wave.open(path if hasattr(path, "write") else str(path), "wb") as w:
         w.setnchannels(1); w.setsampwidth(2); w.setframerate(sr)
         w.writeframes((a * 32767).astype(np.int16).tobytes())
 
@@ -52,8 +52,12 @@ class LocalMMSTTS:
 
     def __init__(self, model="facebook/mms-tts-tha", device="cpu"):
         from transformers import AutoTokenizer, VitsModel
-        self.tok = AutoTokenizer.from_pretrained(model, local_files_only=True)
-        self.model = VitsModel.from_pretrained(model, local_files_only=True).to(device).eval()
+        try:
+            self.tok = AutoTokenizer.from_pretrained(model, local_files_only=True)
+            self.model = VitsModel.from_pretrained(model, local_files_only=True).to(device).eval()
+        except OSError:                       # not cached yet (fresh container) → download once
+            self.tok = AutoTokenizer.from_pretrained(model)
+            self.model = VitsModel.from_pretrained(model).to(device).eval()
         self.device, self.sr = device, self.model.config.sampling_rate
 
     @lru_cache(maxsize=256)
@@ -123,3 +127,33 @@ def get_tts(provider: str | None = None):
     if provider == "openai":
         return OpenAITTSProvider()
     return LocalMMSTTS()
+
+
+_TTS = {}
+
+
+def wav_bytes(audio: np.ndarray, sr: int) -> bytes:
+    buf = io.BytesIO()
+    write_wav(buf, audio, sr)
+    return buf.getvalue()
+
+
+LATIN_TH = dict(A="เอ", B="บี", C="ซี", D="ดี", E="อี", F="เอฟ", G="จี", H="เอช", I="ไอ", J="เจ", K="เค", L="แอล", M="เอ็ม", N="เอ็น", O="โอ",
+                P="พี", Q="คิว", R="อาร์", S="เอส", T="ที", U="ยู", V="วี", W="ดับเบิลยู", X="เอ็กซ์", Y="วาย", Z="แซด")
+
+
+def speakable(text: str) -> str:
+    """The Thai voice cannot read Latin script: a spelled name is read letter by letter with Thai letter names
+    ("JACK" → "เจ เอ ซี เค", "KFC" → "เค เอฟ ซี") — the user spelled letters, so no pronunciation is guessed."""
+    import re
+    return re.sub(r"[A-Za-z]+", lambda m: " " + " ".join(LATIN_TH[c.upper()] for c in m.group(0)) + " ", text).strip()
+
+
+def synthesize_wav_bytes(text: str, emotion: str = "neutral", intensity: float = 0.0, provider: str | None = None) -> bytes:
+    """Thai text → WAV bytes in the emotion's speaking style (model loaded once per process)."""
+    provider = provider or os.environ.get("TTS_PROVIDER", "local")
+    if provider not in _TTS:
+        _TTS[provider] = get_tts(provider)
+    emo = {"surprise": "surprised"}.get(emotion, emotion)
+    wav, sr = _TTS[provider].synthesize(speakable(text.replace("[?]", "").strip()), SpeechStyle.from_affect(emo, intensity))
+    return wav_bytes(wav, sr)

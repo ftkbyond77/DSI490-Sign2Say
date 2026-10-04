@@ -1,0 +1,376 @@
+{
+  "title": "พ่อดื่มน้ำ",
+  "fps": 25.0,
+  "n_frames": 223,
+  "duration_s": 8.92,
+  "signer_visible_frac": 1.0,
+  "signing_frac": 0.7309417040358744,
+  "mirrored_to_right_hand": false,
+  "segments": [
+    {
+      "f0": 4,
+      "f1": 20,
+      "z": 7.1935914790628726,
+      "wins": [
+        [
+          4,
+          20
+        ]
+      ],
+      "nearest": "โอ",
+      "candidates": [
+        {
+          "word": "โอ",
+          "score": 0.4902,
+          "support": 0.8353
+        },
+        {
+          "word": "ศูนย์",
+          "score": 0.618,
+          "support": 0.9466
+        },
+        {
+          "word": "ส่ง",
+          "score": 0.4109,
+          "support": 0.7963
+        },
+        {
+          "word": "เรียน",
+          "score": 0.4015,
+          "support": 0.7784
+        },
+        {
+          "word": "บ้าน",
+          "score": 0.3747,
+          "support": 0.7743
+        }
+      ],
+      "score": 0.6180169582366943,
+      "margin": 0.12777471542358398,
+      "null_gap": -0.4089849591255188,
+      "p_sign": 0.9235487028956413,
+      "agree": 1.0,
+      "support_ratio": 1.0684860968074152,
+      "window_top1": "ศูนย์",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.5938686807478125,
+      "status": "uncertain",
+      "t0": 0.16,
+      "t1": 0.8,
+      "repeat_of": "ศูนย์"
+    },
+    {
+      "f0": 20,
+      "f1": 68,
+      "z": 6.972503231189294,
+      "wins": [
+        [
+          20,
+          68
+        ]
+      ],
+      "nearest": "พ่อ",
+      "candidates": [
+        {
+          "word": "พ่อ",
+          "score": 0.6815,
+          "support": 1.0592
+        },
+        {
+          "word": "เรียก",
+          "score": 0.5146,
+          "support": 0.8864
+        },
+        {
+          "word": "ไป",
+          "score": 0.3269,
+          "support": 0.8107
+        },
+        {
+          "word": "ชมพู",
+          "score": 0.5286,
+          "support": 0.8087
+        },
+        {
+          "word": "พ่อแม่",
+          "score": 0.4638,
+          "support": 0.7925
+        }
+      ],
+      "score": 0.6815363764762878,
+      "margin": 0.16694432497024536,
+      "null_gap": -0.6782263517379761,
+      "p_sign": 0.882250836941724,
+      "agree": 0.0,
+      "support_ratio": 1.0786516853932584,
+      "window_top1": "พ่อ",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.31399722656708623,
+      "status": "uncertain",
+      "t0": 0.8,
+      "t1": 2.72
+    },
+    {
+      "f0": 68,
+      "f1": 104,
+      "z": 4.998941816712113,
+      "wins": [
+        [
+          68,
+          104
+        ]
+      ],
+      "nearest": "น้ำ",
+      "candidates": [
+        {
+          "word": "น้ำ",
+          "score": 0.4539,
+          "support": 0.8493
+        },
+        {
+          "word": "อา",
+          "score": 0.4303,
+          "support": 0.7789
+        },
+        {
+          "word": "ณ",
+          "score": 0.3793,
+          "support": 0.7254
+        },
+        {
+          "word": "น้า",
+          "score": 0.3911,
+          "support": 0.6973
+        },
+        {
+          "word": "ง",
+          "score": 0.4219,
+          "support": 0.6971
+        }
+      ],
+      "score": 0.45389267802238464,
+      "margin": 0.023619800806045532,
+      "null_gap": -0.24798549711704254,
+      "p_sign": 0.9444739636447694,
+      "agree": 0.0,
+      "support_ratio": 1.0755201296946773,
+      "window_top1": "น",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.11587743115252606,
+      "status": "unknown",
+      "t0": 2.72,
+      "t1": 4.16
+    },
+    {
+      "f0": 104,
+      "f1": 124,
+      "z": 8.092924154919357,
+      "wins": [
+        [
+          104,
+          124
+        ]
+      ],
+      "nearest": "ดื่ม",
+      "candidates": [
+        {
+          "word": "ดื่ม",
+          "score": 0.7853,
+          "support": 1.0944
+        },
+        {
+          "word": "กระบอก",
+          "score": 0.5179,
+          "support": 0.7952
+        },
+        {
+          "word": "ศูนย์",
+          "score": 0.4262,
+          "support": 0.7549
+        },
+        {
+          "word": "ฉ",
+          "score": 0.5268,
+          "support": 0.7544
+        },
+        {
+          "word": "กิน",
+          "score": 0.3586,
+          "support": 0.7448
+        }
+      ],
+      "score": 0.785261332988739,
+      "margin": 0.267333447933197,
+      "null_gap": -0.5782055854797363,
+      "p_sign": 0.9910967433452607,
+      "agree": 0.0,
+      "support_ratio": 1.0245379876796714,
+      "window_top1": "เกิด",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.3795381919511631,
+      "status": "uncertain",
+      "t0": 4.16,
+      "t1": 4.96
+    },
+    {
+      "f0": 124,
+      "f1": 172,
+      "z": 7.124475837494696,
+      "wins": [
+        [
+          124,
+          172
+        ]
+      ],
+      "nearest": "ศูนย์",
+      "candidates": [
+        {
+          "word": "ศูนย์",
+          "score": 0.6634,
+          "support": 0.9921
+        },
+        {
+          "word": "บอก",
+          "score": 0.4092,
+          "support": 0.8139
+        },
+        {
+          "word": "บ้าน",
+          "score": 0.3773,
+          "support": 0.7769
+        },
+        {
+          "word": "ความรู้",
+          "score": 0.4066,
+          "support": 0.7604
+        },
+        {
+          "word": "เรียน",
+          "score": 0.3689,
+          "support": 0.7458
+        }
+      ],
+      "score": 0.6634371876716614,
+      "margin": 0.2542555332183838,
+      "null_gap": -0.6484975218772888,
+      "p_sign": 0.952756718111535,
+      "agree": 1.0,
+      "support_ratio": 1.1015792291220559,
+      "window_top1": "ศูนย์",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.7193855899632771,
+      "status": "uncertain",
+      "t0": 4.96,
+      "t1": 6.88
+    }
+  ],
+  "face": {
+    "face_frames": 1.0,
+    "question_furrow": false,
+    "question_yesno": false,
+    "question_wh": false,
+    "negation": false,
+    "affirmation": false,
+    "emotion": "neutral",
+    "emotion_th": "เป็นกลาง",
+    "emotion_scores": {
+      "happy": 0.169,
+      "sad": 0.0,
+      "angry": 0.147,
+      "surprise": 0.0,
+      "fear": 0.003,
+      "disgust": 0.0
+    },
+    "intensity": 0.0,
+    "cues": {
+      "brow_raise_tail": -0.325,
+      "brow_raise_peak": 0.385,
+      "brow_furrow": 1.169,
+      "head_forward_tail": 0.016,
+      "head_shake_cycles": 0,
+      "head_nod_cycles": 1,
+      "mouth_open_frac": 0.0,
+      "cheek_puff": 0.0,
+      "duration_s": 8.9,
+      "brow_furrow_rel": 0.027,
+      "furrow_baseline": "hands_down_frames"
+    },
+    "per_segment": [
+      {
+        "brow": -0.05,
+        "furrow": 0.0,
+        "smile": 0.008,
+        "mouth": 0.001
+      },
+      {
+        "brow": 0.19,
+        "furrow": -0.0,
+        "smile": 0.0,
+        "mouth": 0.005
+      },
+      {
+        "brow": 0.12,
+        "furrow": -0.16,
+        "smile": 0.003,
+        "mouth": 0.018
+      },
+      {
+        "brow": 3.77,
+        "furrow": -0.61,
+        "smile": 0.0,
+        "mouth": 0.002
+      },
+      {
+        "brow": 6.24,
+        "furrow": -0.67,
+        "smile": 0.001,
+        "mouth": 0.001
+      }
+    ]
+  },
+  "fusion": {
+    "chosen": [
+      "ศูนย์",
+      "[?]",
+      "[?]",
+      "[?]",
+      "ศูนย์"
+    ],
+    "sentence_th": "",
+    "meaning_th": "ตรวจพบท่ามือ 5 ช่วง แต่หลักฐานไม่พอจะแปลเป็นประโยคอย่างมั่นใจ — คำที่ใกล้ที่สุด: ช่วง 1 ≈ โอ, ช่วง 2 ≈ พ่อ, ช่วง 3 ≈ น้ำ, ช่วง 4 ≈ ดื่ม, ช่วง 5 ≈ ศูนย์",
+    "confidence": 0.3,
+    "provider": "openai+rules",
+    "latency_s": 1.76,
+    "guard_reason": {
+      "not_allowed": [
+        "ดื่ม"
+      ],
+      "dropped": [],
+      "added": [],
+      "kept_sign_order": false
+    },
+    "guard_violations": [
+      "ดื่ม"
+    ],
+    "evidence_gloss": "โอ? | พ่อ? | [?]≈น้ำ | ดื่ม? | ศูนย์?",
+    "tentative_sentence_th": "ศูนย์ศูนย์",
+    "evidence_guard": "withheld: no accepted sign"
+  },
+  "sentence": "",
+  "timings_ms": {
+    "schema_ms": 43.5,
+    "tagger_ms": 707.8,
+    "spotting_ms": 1218.2,
+    "n_windows": 273,
+    "tempo_factor": 1.0,
+    "face_ms": 8.2,
+    "language_ms": 1762.0
+  },
+  "model": "v7",
+  "vocab": "full"
+}

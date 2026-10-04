@@ -1,0 +1,365 @@
+{
+  "title": "พ่อดื่มน้ำ",
+  "fps": 25.0,
+  "n_frames": 223,
+  "duration_s": 8.92,
+  "signer_visible_frac": 1.0,
+  "signing_frac": 0.7309417040358744,
+  "mirrored_to_right_hand": false,
+  "segments": [
+    {
+      "f0": 4,
+      "f1": 20,
+      "z": 5.403418064117432,
+      "wins": [
+        [
+          4,
+          20
+        ]
+      ],
+      "nearest": "ศูนย์",
+      "candidates": [
+        {
+          "word": "ศูนย์",
+          "score": 0.7089,
+          "support": 0.7089
+        },
+        {
+          "word": "บ้าน",
+          "score": 0.5056,
+          "support": 0.5056
+        },
+        {
+          "word": "บอก",
+          "score": 0.4742,
+          "support": 0.4742
+        },
+        {
+          "word": "เรียน",
+          "score": 0.3744,
+          "support": 0.3744
+        },
+        {
+          "word": "อยู่บ้าน",
+          "score": 0.3673,
+          "support": 0.3673
+        }
+      ],
+      "score": 0.7088664770126343,
+      "margin": 0.20330023765563965,
+      "null_gap": -0.4373880624771118,
+      "p_sign": 0.9235487028956413,
+      "agree": 1.0,
+      "support_ratio": 1.4020965189873416,
+      "window_top1": "ศูนย์",
+      "depth": 0.0,
+      "p_correct": 0.6285996587060468,
+      "status": "uncertain",
+      "t0": 0.16,
+      "t1": 0.8
+    },
+    {
+      "f0": 20,
+      "f1": 60,
+      "z": 4.410765647888184,
+      "wins": [
+        [
+          20,
+          60
+        ]
+      ],
+      "nearest": "พ่อ",
+      "candidates": [
+        {
+          "word": "พ่อ",
+          "score": 0.5563,
+          "support": 0.4667
+        },
+        {
+          "word": "เรียก",
+          "score": 0.4973,
+          "support": 0.361
+        },
+        {
+          "word": "แม่",
+          "score": 0.3963,
+          "support": 0.2159
+        },
+        {
+          "word": "พรุ่งนี้",
+          "score": 0.397,
+          "support": 0.2034
+        },
+        {
+          "word": "ยาย",
+          "score": 0.3939,
+          "support": 0.163
+        }
+      ],
+      "score": 0.5563397407531738,
+      "margin": 0.06279706954956055,
+      "null_gap": -0.6259191036224365,
+      "p_sign": 0.972447251342237,
+      "agree": 1.0,
+      "support_ratio": 1.292797783933518,
+      "window_top1": "พ่อ",
+      "depth": 0.0,
+      "p_correct": 0.19238485120136067,
+      "status": "uncertain",
+      "t0": 0.8,
+      "t1": 2.4
+    },
+    {
+      "f0": 64,
+      "f1": 100,
+      "z": 5.524085521697998,
+      "wins": [
+        [
+          64,
+          100
+        ]
+      ],
+      "nearest": "น้า",
+      "candidates": [
+        {
+          "word": "น้า",
+          "score": 0.5625,
+          "support": 0.4875
+        },
+        {
+          "word": "อา",
+          "score": 0.5139,
+          "support": 0.4617
+        },
+        {
+          "word": "น้ำ",
+          "score": 0.5411,
+          "support": 0.4352
+        },
+        {
+          "word": "กระหายน้ำ",
+          "score": 0.4277,
+          "support": 0.3486
+        },
+        {
+          "word": "ห้องน้ำ",
+          "score": 0.3439,
+          "support": 0.1549
+        }
+      ],
+      "score": 0.5625458359718323,
+      "margin": 0.06330990791320801,
+      "null_gap": -0.6118500232696533,
+      "p_sign": 0.9310796533193852,
+      "agree": 1.0,
+      "support_ratio": 1.055880441845354,
+      "window_top1": "น้า",
+      "depth": 0.0,
+      "p_correct": 0.2592526203067683,
+      "status": "uncertain",
+      "t0": 2.56,
+      "t1": 4.0
+    },
+    {
+      "f0": 100,
+      "f1": 124,
+      "z": 3.8580827713012695,
+      "wins": [
+        [
+          100,
+          124
+        ]
+      ],
+      "nearest": "เกิด",
+      "candidates": [
+        {
+          "word": "เกิด",
+          "score": 0.6469,
+          "support": 0.599
+        },
+        {
+          "word": "กิน",
+          "score": 0.6168,
+          "support": 0.5992
+        },
+        {
+          "word": "ข้าว",
+          "score": 0.6053,
+          "support": 0.5673
+        },
+        {
+          "word": "ยาย",
+          "score": 0.5771,
+          "support": 0.5595
+        },
+        {
+          "word": "ฉัน",
+          "score": 0.5237,
+          "support": 0.3459
+        }
+      ],
+      "score": 0.6102566719055176,
+      "margin": 0.004992783069610596,
+      "null_gap": -0.15271839499473572,
+      "p_sign": 0.952075847486655,
+      "agree": 0.0,
+      "support_ratio": 1.0003338898163605,
+      "window_top1": "เกิด",
+      "depth": 0.0,
+      "p_correct": 0.16175298322488196,
+      "status": "uncertain",
+      "t0": 4.0,
+      "t1": 4.96,
+      "visual_top1": "กิน",
+      "reranked_by_grammar": true
+    },
+    {
+      "f0": 124,
+      "f1": 172,
+      "z": 4.724578380584717,
+      "wins": [
+        [
+          124,
+          172
+        ]
+      ],
+      "nearest": "ศูนย์",
+      "candidates": [
+        {
+          "word": "ศูนย์",
+          "score": 0.6875,
+          "support": 0.5569
+        },
+        {
+          "word": "ง่วง",
+          "score": 0.5744,
+          "support": 0.4979
+        },
+        {
+          "word": "พ่อ",
+          "score": 0.5312,
+          "support": 0.4302
+        },
+        {
+          "word": "ดื่ม",
+          "score": 0.5071,
+          "support": 0.3966
+        },
+        {
+          "word": "บ้าน",
+          "score": 0.4744,
+          "support": 0.3562
+        }
+      ],
+      "score": 0.6179687976837158,
+      "margin": 0.07810813188552856,
+      "null_gap": -0.5368261337280273,
+      "p_sign": 0.952756718111535,
+      "agree": 1.0,
+      "support_ratio": 1.1184976902992567,
+      "window_top1": "ศูนย์",
+      "depth": 0.0,
+      "p_correct": 0.32996452963570133,
+      "status": "uncertain",
+      "t0": 4.96,
+      "t1": 6.88,
+      "repeat_of": "ศูนย์",
+      "visual_top1": "ง่วง",
+      "reranked_by_grammar": true
+    }
+  ],
+  "face": {
+    "face_frames": 1.0,
+    "question_furrow": false,
+    "question_yesno": false,
+    "question_wh": false,
+    "negation": false,
+    "affirmation": false,
+    "emotion": "neutral",
+    "emotion_th": "เป็นกลาง",
+    "emotion_scores": {
+      "happy": 0.169,
+      "sad": 0.0,
+      "angry": 0.147,
+      "surprise": 0.0,
+      "fear": 0.003,
+      "disgust": 0.0
+    },
+    "intensity": 0.0,
+    "cues": {
+      "brow_raise_tail": -0.325,
+      "brow_raise_peak": 0.385,
+      "brow_furrow": 1.169,
+      "head_forward_tail": 0.016,
+      "head_shake_cycles": 0,
+      "head_nod_cycles": 1,
+      "mouth_open_frac": 0.0,
+      "cheek_puff": 0.0,
+      "duration_s": 8.9,
+      "brow_furrow_rel": 0.027,
+      "furrow_baseline": "hands_down_frames"
+    },
+    "per_segment": [
+      {
+        "brow": -0.05,
+        "furrow": 0.0,
+        "smile": 0.008,
+        "mouth": 0.001
+      },
+      {
+        "brow": 0.0,
+        "furrow": 0.0,
+        "smile": 0.0,
+        "mouth": 0.003
+      },
+      {
+        "brow": 0.12,
+        "furrow": -0.15,
+        "smile": 0.002,
+        "mouth": 0.018
+      },
+      {
+        "brow": 1.53,
+        "furrow": -0.52,
+        "smile": 0.0,
+        "mouth": 0.001
+      },
+      {
+        "brow": 6.24,
+        "furrow": -0.67,
+        "smile": 0.001,
+        "mouth": 0.001
+      }
+    ]
+  },
+  "fusion": {
+    "chosen": [
+      "บ้าน",
+      "[?]",
+      "[?]",
+      "[?]",
+      "[?]"
+    ],
+    "sentence_th": "",
+    "meaning_th": "ตรวจพบท่ามือ 5 ช่วง แต่หลักฐานไม่พอจะแปลเป็นประโยคอย่างมั่นใจ — คำที่ใกล้ที่สุด: ช่วง 1 ≈ ศูนย์, ช่วง 2 ≈ พ่อ, ช่วง 3 ≈ น้า, ช่วง 4 ≈ เกิด, ช่วง 5 ≈ ศูนย์",
+    "confidence": 0.3,
+    "provider": "openai",
+    "latency_s": 1.96,
+    "guard_violations": [],
+    "evidence_gloss": "ศูนย์? | พ่อ? | น้า? | เกิด? | ศูนย์?",
+    "tentative_sentence_th": "บ้าน",
+    "evidence_guard": "withheld: no accepted sign"
+  },
+  "sentence": "",
+  "timings_ms": {
+    "schema_ms": 47.3,
+    "tagger_ms": 510.0,
+    "spotting_ms": 220.3,
+    "n_windows": 423,
+    "tempo_factor": 1.0,
+    "face_ms": 4.2,
+    "language_ms": 1965.1
+  },
+  "model": "v7",
+  "vocab": "conversation"
+}

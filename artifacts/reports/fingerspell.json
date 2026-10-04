@@ -1,0 +1,57 @@
+{
+  "held_out_people": {
+    "en": {
+      "windows": 7237,
+      "window_top1": 0.823,
+      "window_top3": 0.903,
+      "example_top1": 0.775,
+      "examples": 173,
+      "people": 8
+    },
+    "th": {
+      "windows": 2347,
+      "window_top1": 0.655,
+      "window_top3": 0.869,
+      "example_top1": 0.796,
+      "examples": 245,
+      "people": 5
+    },
+    "word_signs_called_letter": {
+      "p>=0.5": 0.007,
+      "p>=0.6": 0.007,
+      "p>=0.7": 0.007,
+      "p>=0.8": 0.0
+    }
+  },
+  "train": {
+    "en": {
+      "windows": 8438,
+      "window_top1": 0.993,
+      "window_top3": 1.0,
+      "example_top1": 0.985,
+      "examples": 408,
+      "people": 18
+    },
+    "th": {
+      "windows": 8928,
+      "window_top1": 0.928,
+      "window_top3": 0.996,
+      "example_top1": 0.997,
+      "examples": 980,
+      "people": 20
+    },
+    "word_signs_called_letter": {
+      "p>=0.5": 0.007,
+      "p>=0.6": 0.005,
+      "p>=0.7": 0.003,
+      "p>=0.8": 0.002
+    }
+  },
+  "letter_bank": {
+    "examples": 1442,
+    "letters": 75
+  },
+  "classes": 76,
+  "windows": 39712,
+  "minutes": 6.8
+}

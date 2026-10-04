@@ -1,0 +1,10 @@
+# Model weights go through Git LFS (GitHub rejects files > 100 MB; encoder ≈ 187 MB, Uni-Sign base ≈ 361 MB).
+# One-time per clone:  git lfs install
+models/*.pt filter=lfs diff=lfs merge=lfs -text
+models/*.npz filter=lfs diff=lfs merge=lfs -text
+artifacts/**/*.pt filter=lfs diff=lfs merge=lfs -text
+artifacts/**/*.pth filter=lfs diff=lfs merge=lfs -text
+artifacts/**/*.onnx filter=lfs diff=lfs merge=lfs -text
+artifacts/eval/*.npz filter=lfs diff=lfs merge=lfs -text
+models/**/*.onnx filter=lfs diff=lfs merge=lfs -text
+models/**/*.task filter=lfs diff=lfs merge=lfs -text

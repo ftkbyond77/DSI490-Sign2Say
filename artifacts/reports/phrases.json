@@ -1,0 +1,7850 @@
+{
+  "conversation": {
+    "summary_test_half": {
+      "videos": 21,
+      "ref_words": 75,
+      "segments": 39,
+      "recall_top1": 0.06666666666666667,
+      "recall_top5": 0.16,
+      "ref_words_in_sentence": 0.06666666666666667,
+      "words_in_sentence": 17,
+      "words_in_sentence_correct": 5,
+      "accepted": 6,
+      "accepted_correct": 1,
+      "count_abs_err": 1.8095238095238095,
+      "mean_WER_top1": 0.9892290249433108,
+      "mean_WER_sentence": 0.9246031746031745,
+      "mean_latency_ms": 1976.0238095238092
+    },
+    "summary_tune_half": {
+      "videos": 26,
+      "ref_words": 75,
+      "segments": 49,
+      "recall_top1": 0.12,
+      "recall_top5": 0.26666666666666666,
+      "ref_words_in_sentence": 0.06666666666666667,
+      "words_in_sentence": 23,
+      "words_in_sentence_correct": 5,
+      "accepted": 0,
+      "accepted_correct": 0,
+      "count_abs_err": 1.1538461538461537,
+      "mean_WER_top1": 0.9987179487179486,
+      "mean_WER_sentence": 0.941025641025641,
+      "mean_latency_ms": 1723.146153846154
+    },
+    "summary": {
+      "videos": 47,
+      "ref_words": 150,
+      "segments": 88,
+      "recall_top1": 0.09333333333333334,
+      "recall_top5": 0.21333333333333335,
+      "ref_words_in_sentence": 0.06666666666666667,
+      "words_in_sentence": 40,
+      "words_in_sentence_correct": 10,
+      "accepted": 6,
+      "accepted_correct": 1,
+      "count_abs_err": 1.446808510638298,
+      "mean_WER_top1": 0.9944782168186422,
+      "mean_WER_sentence": 0.9336879432624112,
+      "mean_latency_ms": 1836.1340425531919
+    },
+    "videos": {
+      "h-zQRUSpdnI": {
+        "ref": [
+          "คุณ",
+          "กินข้าว",
+          "หรือยัง"
+        ],
+        "in_vocab": {
+          "คุณ": true,
+          "กินข้าว": false,
+          "หรือยัง": false
+        },
+        "n_segments": 1,
+        "n_ref": 3,
+        "top1": [
+          "ยาย"
+        ],
+        "accepted": [],
+        "used_in_sentence": [],
+        "segments": [
+          {
+            "t0": 0.8,
+            "t1": 2.56,
+            "status": "unknown",
+            "p": 0.04,
+            "top5": [
+              "ยาย",
+              "ย่า",
+              "ทำไม",
+              "ยัง",
+              "กิน"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": null,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "คุณ": null,
+          "กินข้าว": null,
+          "หรือยัง": null
+        },
+        "sentence": "",
+        "tentative": "[?]",
+        "evidence_gloss": "[?]≈ยาย",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 21.6,
+          "tagger_ms": 215.3,
+          "spotting_ms": 86.2,
+          "n_windows": 98,
+          "tempo_factor": 1.0,
+          "face_ms": 6.0,
+          "language_ms": 5477.0,
+          "total_ms": 5816.9
+        },
+        "duration_s": 3.12,
+        "phrase": "คุณกินข้าวหรือยัง",
+        "n_ref_in_vocab": 1,
+        "split": "test"
+      },
+      "LNHoxqEveFQ": {
+        "ref": [
+          "ผม",
+          "เป็น",
+          "คนไทย"
+        ],
+        "in_vocab": {
+          "ผม": true,
+          "เป็น": false,
+          "คนไทย": false
+        },
+        "n_segments": 2,
+        "n_ref": 3,
+        "top1": [
+          "ประเทศไทย",
+          "ฉัน"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ฉัน"
+        ],
+        "segments": [
+          {
+            "t0": 0.8,
+            "t1": 1.6,
+            "status": "uncertain",
+            "p": 0.35,
+            "top5": [
+              "ประเทศไทย",
+              "เกิด",
+              "น้า",
+              "ยาก",
+              "ไข่"
+            ]
+          },
+          {
+            "t0": 1.6,
+            "t1": 2.88,
+            "status": "uncertain",
+            "p": 0.62,
+            "top5": [
+              "ฉัน",
+              "เรา",
+              "ภูมิใจ",
+              "คุณ",
+              "ถ้า"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ผม": null,
+          "เป็น": null,
+          "คนไทย": null
+        },
+        "sentence": "",
+        "tentative": "ฉัน",
+        "evidence_gloss": "ประเทศไทย? | ฉัน?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 13.3,
+          "tagger_ms": 233.3,
+          "spotting_ms": 65.9,
+          "n_windows": 114,
+          "tempo_factor": 1.0,
+          "face_ms": 2.7,
+          "language_ms": 1731.6,
+          "total_ms": 2051.3
+        },
+        "duration_s": 3.76,
+        "phrase": "ผมเป็นคนไทย",
+        "n_ref_in_vocab": 1,
+        "split": "test"
+      },
+      "MO4EJ739640": {
+        "ref": [
+          "โรงพยาบาล",
+          "ใกล้",
+          "ที่สุด",
+          "ไป",
+          "ทาง",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "โรงพยาบาล": true,
+          "ใกล้": true,
+          "ที่สุด": false,
+          "ไป": true,
+          "ทาง": false,
+          "ไหน": false
+        },
+        "n_segments": 3,
+        "n_ref": 6,
+        "top1": [
+          "โรงพยาบาล",
+          "ใกล้",
+          "หนึ่ง"
+        ],
+        "accepted": [
+          "โรงพยาบาล",
+          "หนึ่ง"
+        ],
+        "used_in_sentence": [
+          "โรงพยาบาล",
+          "ใกล้",
+          "หนึ่ง"
+        ],
+        "segments": [
+          {
+            "t0": 0.64,
+            "t1": 2.24,
+            "status": "accepted",
+            "p": 0.77,
+            "top5": [
+              "โรงพยาบาล",
+              "ภาษา",
+              "หลาน",
+              "หมอ",
+              "ชอบ"
+            ]
+          },
+          {
+            "t0": 2.24,
+            "t1": 3.52,
+            "status": "uncertain",
+            "p": 0.18,
+            "top5": [
+              "ใกล้",
+              "กอด",
+              "คน",
+              "ทำอาหาร",
+              "ปัญหา"
+            ]
+          },
+          {
+            "t0": 3.52,
+            "t1": 4.8,
+            "status": "accepted",
+            "p": 0.74,
+            "top5": [
+              "หนึ่ง",
+              "ป้า",
+              "แม่",
+              "ศูนย์",
+              "อะไร"
+            ]
+          }
+        ],
+        "recall_top1": 0.3333333333333333,
+        "recall_top5": 0.3333333333333333,
+        "ref_used_in_sentence": 0.3333333333333333,
+        "precision_used": 0.6666666666666666,
+        "precision_accepted": 0.5,
+        "WER_top1": 0.6666666666666666,
+        "WER_used": 0.6666666666666666,
+        "best_rank": {
+          "โรงพยาบาล": 1,
+          "ใกล้": 1,
+          "ที่สุด": null,
+          "ไป": null,
+          "ทาง": null,
+          "ไหน": null
+        },
+        "sentence": "โรงพยาบาลใกล้หนึ่ง",
+        "tentative": null,
+        "evidence_gloss": "โรงพยาบาล | ใกล้? | หนึ่ง",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 21.4,
+          "tagger_ms": 353.8,
+          "spotting_ms": 119.5,
+          "n_windows": 247,
+          "tempo_factor": 1.0,
+          "face_ms": 3.1,
+          "language_ms": 1826.2,
+          "total_ms": 2328.4
+        },
+        "duration_s": 5.44,
+        "phrase": "โรงพยาบาลที่ใกล้ที่สุดไปทางไหน",
+        "n_ref_in_vocab": 3,
+        "split": "test"
+      },
+      "fifAA6pgwRA": {
+        "ref": [
+          "ทิป"
+        ],
+        "in_vocab": {
+          "ทิป": false
+        },
+        "n_segments": 2,
+        "n_ref": 1,
+        "top1": [
+          "ครอบครัว",
+          "กอด"
+        ],
+        "accepted": [],
+        "used_in_sentence": [],
+        "segments": [
+          {
+            "t0": 1.12,
+            "t1": 3.04,
+            "status": "unknown",
+            "p": 0.03,
+            "top5": [
+              "ครอบครัว",
+              "ปลอบใจ",
+              "วันหยุด",
+              "สามี",
+              "ภรรยา"
+            ]
+          },
+          {
+            "t0": 3.04,
+            "t1": 4.64,
+            "status": "unknown",
+            "p": 0.09,
+            "top5": [
+              "กอด",
+              "ผลไม้",
+              "ขนมปัง",
+              "ลูก",
+              "ปลอบใจ"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": null,
+        "precision_accepted": null,
+        "WER_top1": 2.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ทิป": null
+        },
+        "sentence": "",
+        "tentative": "ไม่แน่ใจว่าพูดอะไร",
+        "evidence_gloss": "[?]≈ครอบครัว | [?]≈กอด",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 23.7,
+          "tagger_ms": 333.5,
+          "spotting_ms": 100.8,
+          "n_windows": 219,
+          "tempo_factor": 1.0,
+          "face_ms": 3.0,
+          "language_ms": 1695.7,
+          "total_ms": 2162.0
+        },
+        "duration_s": 5.52,
+        "phrase": "ให้ทิป",
+        "n_ref_in_vocab": 0,
+        "split": "test"
+      },
+      "sAWEw0Gjsxw": {
+        "ref": [
+          "ฉัน",
+          "สบายดี"
+        ],
+        "in_vocab": {
+          "ฉัน": true,
+          "สบายดี": true
+        },
+        "n_segments": 1,
+        "n_ref": 2,
+        "top1": [
+          "มีความสุข"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "สบายดี"
+        ],
+        "segments": [
+          {
+            "t0": 1.28,
+            "t1": 2.88,
+            "status": "uncertain",
+            "p": 0.2,
+            "top5": [
+              "มีความสุข",
+              "สบายดี",
+              "ไกล",
+              "คนหูดี",
+              "ไป"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.5,
+        "ref_used_in_sentence": 0.5,
+        "precision_used": 1.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 0.5,
+        "best_rank": {
+          "ฉัน": null,
+          "สบายดี": 2
+        },
+        "sentence": "",
+        "tentative": "สบายดีครับ",
+        "evidence_gloss": "มีความสุข?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 13.8,
+          "tagger_ms": 230.3,
+          "spotting_ms": 58.6,
+          "n_windows": 64,
+          "tempo_factor": 1.0,
+          "face_ms": 2.7,
+          "language_ms": 1257.1,
+          "total_ms": 1567.5
+        },
+        "duration_s": 3.24,
+        "phrase": "ฉันสบายดี",
+        "n_ref_in_vocab": 2,
+        "split": "test"
+      },
+      "0VeGlfYqBMc": {
+        "ref": [
+          "คุณ",
+          "อายุ",
+          "เท่าไหร่"
+        ],
+        "in_vocab": {
+          "คุณ": true,
+          "อายุ": true,
+          "เท่าไหร่": false
+        },
+        "n_segments": 1,
+        "n_ref": 3,
+        "top1": [
+          "อายุ"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "อายุ"
+        ],
+        "segments": [
+          {
+            "t0": 0.64,
+            "t1": 2.56,
+            "status": "uncertain",
+            "p": 0.23,
+            "top5": [
+              "อายุ",
+              "งาน",
+              "นม",
+              "ปี",
+              "ทำงาน"
+            ]
+          }
+        ],
+        "recall_top1": 0.3333333333333333,
+        "recall_top5": 0.3333333333333333,
+        "ref_used_in_sentence": 0.3333333333333333,
+        "precision_used": 1.0,
+        "precision_accepted": null,
+        "WER_top1": 0.6666666666666666,
+        "WER_used": 0.6666666666666666,
+        "best_rank": {
+          "คุณ": null,
+          "อายุ": 1,
+          "เท่าไหร่": null
+        },
+        "sentence": "",
+        "tentative": "อายุ",
+        "evidence_gloss": "อายุ?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 14.3,
+          "tagger_ms": 221.5,
+          "spotting_ms": 77.3,
+          "n_windows": 110,
+          "tempo_factor": 1.0,
+          "face_ms": 2.8,
+          "language_ms": 1468.7,
+          "total_ms": 1789.8
+        },
+        "duration_s": 3.4,
+        "phrase": "คุณอายุเท่าไหร่",
+        "n_ref_in_vocab": 2,
+        "split": "tune"
+      },
+      "bdaC1n3IeJw": {
+        "ref": [
+          "คุณ",
+          "ชื่อ",
+          "อะไร"
+        ],
+        "in_vocab": {
+          "คุณ": true,
+          "ชื่อ": true,
+          "อะไร": true
+        },
+        "n_segments": 2,
+        "n_ref": 3,
+        "top1": [
+          "ประเทศไทย",
+          "ห้า"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ห้า"
+        ],
+        "segments": [
+          {
+            "t0": 0.96,
+            "t1": 2.72,
+            "status": "unknown",
+            "p": 0.04,
+            "top5": [
+              "ประเทศไทย",
+              "ไข่",
+              "ยาก",
+              "น้องสาว",
+              "ชื่อ"
+            ]
+          },
+          {
+            "t0": 2.72,
+            "t1": 3.36,
+            "status": "uncertain",
+            "p": 0.6,
+            "top5": [
+              "ห้า",
+              "เก้า",
+              "ไม่มี",
+              "อย่า",
+              "กลับ"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.3333333333333333,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "คุณ": null,
+          "ชื่อ": 5,
+          "อะไร": null
+        },
+        "sentence": "",
+        "tentative": "ห้า",
+        "evidence_gloss": "[?]≈ประเทศไทย | ห้า?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 16.8,
+          "tagger_ms": 251.6,
+          "spotting_ms": 81.6,
+          "n_windows": 140,
+          "tempo_factor": 1.0,
+          "face_ms": 3.2,
+          "language_ms": 1376.2,
+          "total_ms": 1734.6
+        },
+        "duration_s": 4.2,
+        "phrase": "คุณชื่ออะไร",
+        "n_ref_in_vocab": 3,
+        "split": "tune"
+      },
+      "gNc9pX0KlYg": {
+        "ref": [
+          "ห้องน้ำ",
+          "ชั้น",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "ห้องน้ำ": true,
+          "ชั้น": false,
+          "ไหน": false
+        },
+        "n_segments": 2,
+        "n_ref": 3,
+        "top1": [
+          "ห้องน้ำ",
+          "อิ่ม"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ห้องน้ำ"
+        ],
+        "segments": [
+          {
+            "t0": 0.8,
+            "t1": 2.56,
+            "status": "uncertain",
+            "p": 0.29,
+            "top5": [
+              "ห้องน้ำ",
+              "วันหยุด",
+              "ตลาด",
+              "รถไฟ",
+              "ขอบคุณ"
+            ]
+          },
+          {
+            "t0": 2.56,
+            "t1": 4.48,
+            "status": "unknown",
+            "p": 0.06,
+            "top5": [
+              "อิ่ม",
+              "หมา",
+              "หมู",
+              "ดื่ม",
+              "ข้าว"
+            ]
+          }
+        ],
+        "recall_top1": 0.3333333333333333,
+        "recall_top5": 0.3333333333333333,
+        "ref_used_in_sentence": 0.3333333333333333,
+        "precision_used": 1.0,
+        "precision_accepted": null,
+        "WER_top1": 0.6666666666666666,
+        "WER_used": 0.6666666666666666,
+        "best_rank": {
+          "ห้องน้ำ": 1,
+          "ชั้น": null,
+          "ไหน": null
+        },
+        "sentence": "",
+        "tentative": "ห้องน้ำ [?]",
+        "evidence_gloss": "ห้องน้ำ? | [?]≈อิ่ม",
+        "provider": "openai",
+        "face": {
+          "question_yesno": true,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 19.9,
+          "tagger_ms": 310.1,
+          "spotting_ms": 108.3,
+          "n_windows": 233,
+          "tempo_factor": 1.0,
+          "face_ms": 3.0,
+          "language_ms": 1304.6,
+          "total_ms": 1751.9
+        },
+        "duration_s": 5.08,
+        "phrase": "ห้องน้ำอยู่ชั้นไหน",
+        "n_ref_in_vocab": 1,
+        "split": "tune"
+      },
+      "Saxv_aYR14A": {
+        "ref": [
+          "ขอโทษ",
+          "มาสาย"
+        ],
+        "in_vocab": {
+          "ขอโทษ": true,
+          "มาสาย": false
+        },
+        "n_segments": 2,
+        "n_ref": 2,
+        "top1": [
+          "น้องชาย",
+          "ล้าง"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ขอโทษ"
+        ],
+        "segments": [
+          {
+            "t0": 0.8,
+            "t1": 1.76,
+            "status": "uncertain",
+            "p": 0.16,
+            "top5": [
+              "น้องชาย",
+              "น้อง",
+              "น้องสาว",
+              "ญาติ",
+              "เด็ก"
+            ]
+          },
+          {
+            "t0": 1.76,
+            "t1": 3.2,
+            "status": "uncertain",
+            "p": 0.21,
+            "top5": [
+              "ล้าง",
+              "ขอโทษ",
+              "แต่งงาน",
+              "โรงเรียน",
+              "นอน"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.5,
+        "ref_used_in_sentence": 0.5,
+        "precision_used": 1.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 0.5,
+        "best_rank": {
+          "ขอโทษ": 2,
+          "มาสาย": null
+        },
+        "sentence": "",
+        "tentative": "ขอโทษครับ",
+        "evidence_gloss": "น้องชาย? | ล้าง?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 16.9,
+          "tagger_ms": 244.3,
+          "spotting_ms": 79.9,
+          "n_windows": 145,
+          "tempo_factor": 1.0,
+          "face_ms": 3.1,
+          "language_ms": 1781.0,
+          "total_ms": 2130.0
+        },
+        "duration_s": 3.96,
+        "phrase": "ขอโทษที่มาสาย",
+        "n_ref_in_vocab": 1,
+        "split": "test"
+      },
+      "cQ9S5HJWR58": {
+        "ref": [
+          "ท่าเรือ",
+          "ปิด",
+          "กี่",
+          "โมง"
+        ],
+        "in_vocab": {
+          "ท่าเรือ": false,
+          "ปิด": true,
+          "กี่": true,
+          "โมง": false
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "วิ่ง",
+          "ห้า"
+        ],
+        "accepted": [],
+        "used_in_sentence": [],
+        "segments": [
+          {
+            "t0": 0.32,
+            "t1": 2.24,
+            "status": "unknown",
+            "p": 0.03,
+            "top5": [
+              "วิ่ง",
+              "ไม่เป็นไร",
+              "ฉัน",
+              "ร้อน",
+              "แต่งงาน"
+            ]
+          },
+          {
+            "t0": 2.24,
+            "t1": 4.16,
+            "status": "unknown",
+            "p": 0.03,
+            "top5": [
+              "ห้า",
+              "น้องสาว",
+              "หมา",
+              "หมู",
+              "สามี"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": null,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ท่าเรือ": null,
+          "ปิด": null,
+          "กี่": null,
+          "โมง": null
+        },
+        "sentence": "",
+        "tentative": "[?] [?]",
+        "evidence_gloss": "[?]≈วิ่ง | [?]≈ห้า",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 29.7,
+          "tagger_ms": 295.9,
+          "spotting_ms": 111.5,
+          "n_windows": 237,
+          "tempo_factor": 1.0,
+          "face_ms": 2.9,
+          "language_ms": 1331.2,
+          "total_ms": 1777.9
+        },
+        "duration_s": 4.68,
+        "phrase": "ท่าเรือปิดกี่โมง",
+        "n_ref_in_vocab": 2,
+        "split": "test"
+      },
+      "eRcOuv7MrWo": {
+        "ref": [
+          "ไม่",
+          "เหมือนกัน"
+        ],
+        "in_vocab": {
+          "ไม่": false,
+          "เหมือนกัน": false
+        },
+        "n_segments": 1,
+        "n_ref": 2,
+        "top1": [
+          "ไข่"
+        ],
+        "accepted": [],
+        "used_in_sentence": [],
+        "segments": [
+          {
+            "t0": 1.6,
+            "t1": 3.04,
+            "status": "unknown",
+            "p": 0.08,
+            "top5": [
+              "ไข่",
+              "เคย",
+              "เปิด",
+              "สบายดี",
+              "อะไร"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": null,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ไม่": null,
+          "เหมือนกัน": null
+        },
+        "sentence": "",
+        "tentative": "[?]",
+        "evidence_gloss": "[?]≈ไข่",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 20.0,
+          "tagger_ms": 190.1,
+          "spotting_ms": 54.1,
+          "n_windows": 70,
+          "tempo_factor": 1.0,
+          "face_ms": 2.7,
+          "language_ms": 1720.0,
+          "total_ms": 1992.3
+        },
+        "duration_s": 3.52,
+        "phrase": "ไม่เหมือนกัน",
+        "n_ref_in_vocab": 0,
+        "split": "test"
+      },
+      "83sdNdvxYEA": {
+        "ref": [
+          "วันนี้",
+          "วัน",
+          "อะไร"
+        ],
+        "in_vocab": {
+          "วันนี้": true,
+          "วัน": true,
+          "อะไร": true
+        },
+        "n_segments": 3,
+        "n_ref": 3,
+        "top1": [
+          "วันนี้",
+          "ย่า",
+          "หนึ่ง"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "หนึ่ง"
+        ],
+        "segments": [
+          {
+            "t0": 0.32,
+            "t1": 1.28,
+            "status": "uncertain",
+            "p": 0.46,
+            "top5": [
+              "วันนี้",
+              "ตอนนี้",
+              "เกิด",
+              "สบายดี",
+              "ลูก"
+            ]
+          },
+          {
+            "t0": 1.28,
+            "t1": 3.2,
+            "status": "uncertain",
+            "p": 0.12,
+            "top5": [
+              "ย่า",
+              "หมู",
+              "ยาย",
+              "ภรรยา",
+              "แม่"
+            ]
+          },
+          {
+            "t0": 3.2,
+            "t1": 4.0,
+            "status": "uncertain",
+            "p": 0.61,
+            "top5": [
+              "หนึ่ง",
+              "ป้า",
+              "แม่",
+              "อะไร",
+              "ศูนย์"
+            ]
+          }
+        ],
+        "recall_top1": 0.3333333333333333,
+        "recall_top5": 0.6666666666666666,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 0.6666666666666666,
+        "WER_used": 1.0,
+        "best_rank": {
+          "วันนี้": 1,
+          "วัน": null,
+          "อะไร": 4
+        },
+        "sentence": "",
+        "tentative": "หนึ่ง",
+        "evidence_gloss": "วันนี้? | ย่า? | หนึ่ง?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 20.7,
+          "tagger_ms": 296.9,
+          "spotting_ms": 106.9,
+          "n_windows": 221,
+          "tempo_factor": 1.0,
+          "face_ms": 3.1,
+          "language_ms": 1307.3,
+          "total_ms": 1741.1
+        },
+        "duration_s": 4.88,
+        "phrase": "วันนี้วันอะไร",
+        "n_ref_in_vocab": 3,
+        "split": "tune"
+      },
+      "YpJ6sA1rgyo": {
+        "ref": [
+          "รถไฟ",
+          "ขบวน",
+          "ไป",
+          "ที่ไหน"
+        ],
+        "in_vocab": {
+          "รถไฟ": true,
+          "ขบวน": false,
+          "ไป": true,
+          "ที่ไหน": true
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "รถไฟ",
+          "หนึ่ง"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ตลาด"
+        ],
+        "segments": [
+          {
+            "t0": 0.48,
+            "t1": 2.08,
+            "status": "uncertain",
+            "p": 0.35,
+            "top5": [
+              "รถไฟ",
+              "ขนมปัง",
+              "ตลาด",
+              "ขาย",
+              "ปลอบใจ"
+            ]
+          },
+          {
+            "t0": 2.08,
+            "t1": 3.84,
+            "status": "unknown",
+            "p": 0.03,
+            "top5": [
+              "หนึ่ง",
+              "โสด",
+              "ปลอบใจ",
+              "ขนมปัง",
+              "เกิด"
+            ]
+          }
+        ],
+        "recall_top1": 0.25,
+        "recall_top5": 0.25,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 0.75,
+        "WER_used": 1.0,
+        "best_rank": {
+          "รถไฟ": 1,
+          "ขบวน": null,
+          "ไป": null,
+          "ที่ไหน": null
+        },
+        "sentence": "",
+        "tentative": "ตลาด [?]",
+        "evidence_gloss": "รถไฟ? | [?]≈หนึ่ง",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 17.1,
+          "tagger_ms": 274.3,
+          "spotting_ms": 98.5,
+          "n_windows": 206,
+          "tempo_factor": 1.0,
+          "face_ms": 3.0,
+          "language_ms": 1380.7,
+          "total_ms": 1778.9
+        },
+        "duration_s": 4.28,
+        "phrase": "รถไฟขบวนนี้ไปที่ไหน",
+        "n_ref_in_vocab": 3,
+        "split": "tune"
+      },
+      "VoteZ_WKxy0": {
+        "ref": [
+          "พรุ่งนี้",
+          "คุณ",
+          "ไป",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "พรุ่งนี้": true,
+          "คุณ": true,
+          "ไป": true,
+          "ไหน": false
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "น้องชาย",
+          "หนึ่ง"
+        ],
+        "accepted": [
+          "หนึ่ง"
+        ],
+        "used_in_sentence": [
+          "หนึ่ง"
+        ],
+        "segments": [
+          {
+            "t0": 0.96,
+            "t1": 2.72,
+            "status": "unknown",
+            "p": 0.06,
+            "top5": [
+              "น้องชาย",
+              "ย่า",
+              "พี่ชาย",
+              "ยาย",
+              "น้องสาว"
+            ]
+          },
+          {
+            "t0": 2.72,
+            "t1": 3.52,
+            "status": "accepted",
+            "p": 0.81,
+            "top5": [
+              "หนึ่ง",
+              "แม่",
+              "อะไร",
+              "อีก",
+              "ป้า"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": 0.0,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "พรุ่งนี้": null,
+          "คุณ": null,
+          "ไป": null,
+          "ไหน": null
+        },
+        "sentence": "หนึ่ง",
+        "tentative": null,
+        "evidence_gloss": "[?]≈น้องชาย | หนึ่ง",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 16.9,
+          "tagger_ms": 258.3,
+          "spotting_ms": 73.8,
+          "n_windows": 145,
+          "tempo_factor": 1.0,
+          "face_ms": 3.1,
+          "language_ms": 1285.8,
+          "total_ms": 1642.9
+        },
+        "duration_s": 4.2,
+        "phrase": "พรุ่งนี้คุณจะไปไหน",
+        "n_ref_in_vocab": 3,
+        "split": "test"
+      },
+      "pYOJ690bLYc": {
+        "ref": [
+          "พรุ่งนี้",
+          "พบกัน",
+          "ใหม่"
+        ],
+        "in_vocab": {
+          "พรุ่งนี้": true,
+          "พบกัน": false,
+          "ใหม่": true
+        },
+        "n_segments": 2,
+        "n_ref": 3,
+        "top1": [
+          "น้องชาย",
+          "เพื่อน"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "น้องชาย"
+        ],
+        "segments": [
+          {
+            "t0": 0.96,
+            "t1": 1.76,
+            "status": "uncertain",
+            "p": 0.15,
+            "top5": [
+              "น้องชาย",
+              "พี่ชาย",
+              "พ่อ",
+              "สามี",
+              "กลางคืน"
+            ]
+          },
+          {
+            "t0": 1.76,
+            "t1": 3.52,
+            "status": "uncertain",
+            "p": 0.15,
+            "top5": [
+              "เพื่อน",
+              "อีก",
+              "ใหม่",
+              "เที่ยว",
+              "หนึ่ง"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.3333333333333333,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "พรุ่งนี้": null,
+          "พบกัน": null,
+          "ใหม่": 3
+        },
+        "sentence": "",
+        "tentative": "น้องชาย [?]",
+        "evidence_gloss": "น้องชาย? | เพื่อน?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 14.6,
+          "tagger_ms": 238.8,
+          "spotting_ms": 88.0,
+          "n_windows": 132,
+          "tempo_factor": 1.0,
+          "face_ms": 2.9,
+          "language_ms": 2239.8,
+          "total_ms": 2589.6
+        },
+        "duration_s": 3.52,
+        "phrase": "พรุ่งนี้พบกันใหม่",
+        "n_ref_in_vocab": 2,
+        "split": "tune"
+      },
+      "7TXH1KaqN6Y": {
+        "ref": [
+          "เมื่อวานนี้",
+          "ไป",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "เมื่อวานนี้": true,
+          "ไป": true,
+          "ไหน": false
+        },
+        "n_segments": 2,
+        "n_ref": 3,
+        "top1": [
+          "ย่า",
+          "หนึ่ง"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "หนึ่ง"
+        ],
+        "segments": [
+          {
+            "t0": 0.8,
+            "t1": 2.4,
+            "status": "uncertain",
+            "p": 0.12,
+            "top5": [
+              "ย่า",
+              "ยาย",
+              "เมื่อวานนี้",
+              "ญาติ",
+              "เที่ยว"
+            ]
+          },
+          {
+            "t0": 2.4,
+            "t1": 3.2,
+            "status": "uncertain",
+            "p": 0.44,
+            "top5": [
+              "หนึ่ง",
+              "อะไร",
+              "ที่ไหน",
+              "ป้า",
+              "ร้อย"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.3333333333333333,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "เมื่อวานนี้": 3,
+          "ไป": null,
+          "ไหน": null
+        },
+        "sentence": "",
+        "tentative": "หนึ่งครับ",
+        "evidence_gloss": "ย่า? | หนึ่ง?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 15.4,
+          "tagger_ms": 260.9,
+          "spotting_ms": 89.5,
+          "n_windows": 154,
+          "tempo_factor": 1.0,
+          "face_ms": 2.9,
+          "language_ms": 1228.5,
+          "total_ms": 1600.6
+        },
+        "duration_s": 3.96,
+        "phrase": "เมื่อวานไปไหนมา",
+        "n_ref_in_vocab": 2,
+        "split": "tune"
+      },
+      "qPYYMDAK0E4": {
+        "ref": [
+          "วันนี้",
+          "อากาศ",
+          "ดี"
+        ],
+        "in_vocab": {
+          "วันนี้": true,
+          "อากาศ": false,
+          "ดี": true
+        },
+        "n_segments": 2,
+        "n_ref": 3,
+        "top1": [
+          "แต่งตัว",
+          "สบายดี"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "สบายดี"
+        ],
+        "segments": [
+          {
+            "t0": 1.12,
+            "t1": 2.72,
+            "status": "uncertain",
+            "p": 0.12,
+            "top5": [
+              "แต่งตัว",
+              "เหนื่อย",
+              "ร้อน",
+              "ด้วยกัน",
+              "ลม"
+            ]
+          },
+          {
+            "t0": 2.72,
+            "t1": 4.32,
+            "status": "uncertain",
+            "p": 0.2,
+            "top5": [
+              "สบายดี",
+              "หนาว",
+              "เล่น",
+              "แต่งงาน",
+              "มีความสุข"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "วันนี้": null,
+          "อากาศ": null,
+          "ดี": null
+        },
+        "sentence": "",
+        "tentative": "สบายดีครับ",
+        "evidence_gloss": "แต่งตัว? | สบายดี?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 21.2,
+          "tagger_ms": 300.8,
+          "spotting_ms": 102.2,
+          "n_windows": 194,
+          "tempo_factor": 1.0,
+          "face_ms": 2.9,
+          "language_ms": 1337.6,
+          "total_ms": 1770.8
+        },
+        "duration_s": 4.96,
+        "phrase": "วันนี้อากาศดี",
+        "n_ref_in_vocab": 2,
+        "split": "tune"
+      },
+      "5euOvUImNLc": {
+        "ref": [
+          "ค่า",
+          "แท๊กซี่",
+          "เท่าไหร่"
+        ],
+        "in_vocab": {
+          "ค่า": false,
+          "แท๊กซี่": false,
+          "เท่าไหร่": false
+        },
+        "n_segments": 3,
+        "n_ref": 3,
+        "top1": [
+          "แม่",
+          "เพื่อน",
+          "หมา"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "เพื่อน"
+        ],
+        "segments": [
+          {
+            "t0": 0.48,
+            "t1": 1.6,
+            "status": "unknown",
+            "p": 0.02,
+            "top5": [
+              "แม่",
+              "ภรรยา",
+              "สามี",
+              "พยาบาล",
+              "เปิด"
+            ]
+          },
+          {
+            "t0": 1.6,
+            "t1": 2.24,
+            "status": "uncertain",
+            "p": 0.54,
+            "top5": [
+              "เพื่อน",
+              "ไป",
+              "ชื่อ",
+              "มา",
+              "ไข่"
+            ]
+          },
+          {
+            "t0": 2.24,
+            "t1": 4.0,
+            "status": "unknown",
+            "p": 0.08,
+            "top5": [
+              "หมา",
+              "ตลาด",
+              "มหาวิทยาลัย",
+              "ข้าว",
+              "ลูก"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ค่า": null,
+          "แท๊กซี่": null,
+          "เท่าไหร่": null
+        },
+        "sentence": "",
+        "tentative": "เพื่อน",
+        "evidence_gloss": "[?]≈แม่ | เพื่อน? | [?]≈หมา",
+        "provider": "openai",
+        "face": {
+          "question_yesno": true,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 16.6,
+          "tagger_ms": 276.1,
+          "spotting_ms": 97.4,
+          "n_windows": 194,
+          "tempo_factor": 1.0,
+          "face_ms": 3.3,
+          "language_ms": 1315.4,
+          "total_ms": 1713.9
+        },
+        "duration_s": 4.24,
+        "phrase": "ค่าแท๊กซี่เท่าไหร่",
+        "n_ref_in_vocab": 0,
+        "split": "tune"
+      },
+      "hQ26Y7abXXI": {
+        "ref": [
+          "วันนี้",
+          "วันที่",
+          "เท่าไหร่"
+        ],
+        "in_vocab": {
+          "วันนี้": true,
+          "วันที่": false,
+          "เท่าไหร่": false
+        },
+        "n_segments": 2,
+        "n_ref": 3,
+        "top1": [
+          "วันนี้",
+          "ข้าว"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "กิน"
+        ],
+        "segments": [
+          {
+            "t0": 1.28,
+            "t1": 2.72,
+            "status": "uncertain",
+            "p": 0.32,
+            "top5": [
+              "วันนี้",
+              "ตอนนี้",
+              "ลูก",
+              "เปลี่ยน",
+              "ย่า"
+            ]
+          },
+          {
+            "t0": 2.72,
+            "t1": 4.32,
+            "status": "uncertain",
+            "p": 0.35,
+            "top5": [
+              "ข้าว",
+              "ให้",
+              "กิน",
+              "ผอม",
+              "เช้า"
+            ]
+          }
+        ],
+        "recall_top1": 0.3333333333333333,
+        "recall_top5": 0.3333333333333333,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 0.6666666666666666,
+        "WER_used": 1.0,
+        "best_rank": {
+          "วันนี้": 1,
+          "วันที่": null,
+          "เท่าไหร่": null
+        },
+        "sentence": "",
+        "tentative": "กินข้าว",
+        "evidence_gloss": "วันนี้? | ข้าว?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 19.0,
+          "tagger_ms": 309.9,
+          "spotting_ms": 84.9,
+          "n_windows": 181,
+          "tempo_factor": 1.0,
+          "face_ms": 2.9,
+          "language_ms": 1353.9,
+          "total_ms": 1776.6
+        },
+        "duration_s": 5.0,
+        "phrase": "วันนี้วันที่เท่าไหร่",
+        "n_ref_in_vocab": 1,
+        "split": "tune"
+      },
+      "dGysKzKLRMo": {
+        "ref": [
+          "ฉัน",
+          "กำลังจะ",
+          "กลับบ้าน"
+        ],
+        "in_vocab": {
+          "ฉัน": true,
+          "กำลังจะ": false,
+          "กลับบ้าน": false
+        },
+        "n_segments": 2,
+        "n_ref": 3,
+        "top1": [
+          "งาน",
+          "ฉัน"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ฉัน"
+        ],
+        "segments": [
+          {
+            "t0": 0.96,
+            "t1": 2.08,
+            "status": "uncertain",
+            "p": 0.46,
+            "top5": [
+              "งาน",
+              "ทำงาน",
+              "ฝึก",
+              "นม",
+              "ปี"
+            ]
+          },
+          {
+            "t0": 2.08,
+            "t1": 2.88,
+            "status": "uncertain",
+            "p": 0.53,
+            "top5": [
+              "ฉัน",
+              "เรา",
+              "ภูมิใจ",
+              "แต่งงาน",
+              "ปลอบใจ"
+            ]
+          }
+        ],
+        "recall_top1": 0.3333333333333333,
+        "recall_top5": 0.3333333333333333,
+        "ref_used_in_sentence": 0.3333333333333333,
+        "precision_used": 1.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 0.6666666666666666,
+        "best_rank": {
+          "ฉัน": 1,
+          "กำลังจะ": null,
+          "กลับบ้าน": null
+        },
+        "sentence": "",
+        "tentative": "ฉัน",
+        "evidence_gloss": "งาน? | ฉัน?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 16.0,
+          "tagger_ms": 224.5,
+          "spotting_ms": 80.3,
+          "n_windows": 114,
+          "tempo_factor": 1.0,
+          "face_ms": 2.9,
+          "language_ms": 1248.3,
+          "total_ms": 1577.6
+        },
+        "duration_s": 3.88,
+        "phrase": "ฉันกำลังจะกลับบ้าน",
+        "n_ref_in_vocab": 1,
+        "split": "tune"
+      },
+      "cZUz5aacguY": {
+        "ref": [
+          "ฉัน",
+          "อยาก",
+          "กลับ",
+          "โรงแรม"
+        ],
+        "in_vocab": {
+          "ฉัน": true,
+          "อยาก": true,
+          "กลับ": true,
+          "โรงแรม": false
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "อาบน้ำ",
+          "ลูก"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ลูก"
+        ],
+        "segments": [
+          {
+            "t0": 0.64,
+            "t1": 2.56,
+            "status": "unknown",
+            "p": 0.05,
+            "top5": [
+              "อาบน้ำ",
+              "ประเทศไทย",
+              "เปิด",
+              "หมู",
+              "ภรรยา"
+            ]
+          },
+          {
+            "t0": 2.56,
+            "t1": 3.84,
+            "status": "uncertain",
+            "p": 0.09,
+            "top5": [
+              "ลูก",
+              "เรา",
+              "อาบน้ำ",
+              "ฉัน",
+              "อยาก"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.5,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ฉัน": 4,
+          "อยาก": 5,
+          "กลับ": null,
+          "โรงแรม": null
+        },
+        "sentence": "",
+        "tentative": "ลูก",
+        "evidence_gloss": "[?]≈อาบน้ำ | ลูก?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 17.3,
+          "tagger_ms": 264.4,
+          "spotting_ms": 77.0,
+          "n_windows": 168,
+          "tempo_factor": 1.0,
+          "face_ms": 2.9,
+          "language_ms": 1272.4,
+          "total_ms": 1640.3
+        },
+        "duration_s": 3.92,
+        "phrase": "ฉันอยากกลับโรงแรม",
+        "n_ref_in_vocab": 3,
+        "split": "test"
+      },
+      "6t0-nYsKC1E": {
+        "ref": [
+          "ฉัน",
+          "อยาก",
+          "ไป",
+          "อนุสาวรีย์ชัย",
+          "สมรภูมิ"
+        ],
+        "in_vocab": {
+          "ฉัน": true,
+          "อยาก": true,
+          "ไป": true,
+          "อนุสาวรีย์ชัย": false,
+          "สมรภูมิ": false
+        },
+        "n_segments": 2,
+        "n_ref": 5,
+        "top1": [
+          "พี่ชาย",
+          "อยาก"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "อยาก"
+        ],
+        "segments": [
+          {
+            "t0": 0.8,
+            "t1": 2.24,
+            "status": "unknown",
+            "p": 0.07,
+            "top5": [
+              "พี่ชาย",
+              "พี่สาว",
+              "สวัสดี",
+              "วัด",
+              "น้องชาย"
+            ]
+          },
+          {
+            "t0": 2.24,
+            "t1": 3.52,
+            "status": "uncertain",
+            "p": 0.31,
+            "top5": [
+              "อยาก",
+              "ต้องการ",
+              "อิ่ม",
+              "หมู",
+              "โกรธ"
+            ]
+          }
+        ],
+        "recall_top1": 0.2,
+        "recall_top5": 0.2,
+        "ref_used_in_sentence": 0.2,
+        "precision_used": 1.0,
+        "precision_accepted": null,
+        "WER_top1": 0.8,
+        "WER_used": 0.8,
+        "best_rank": {
+          "ฉัน": null,
+          "อยาก": 1,
+          "ไป": null,
+          "อนุสาวรีย์ชัย": null,
+          "สมรภูมิ": null
+        },
+        "sentence": "",
+        "tentative": "ใครอยาก",
+        "evidence_gloss": "[?]≈พี่ชาย | อยาก?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 15.7,
+          "tagger_ms": 231.6,
+          "spotting_ms": 96.2,
+          "n_windows": 165,
+          "tempo_factor": 1.0,
+          "face_ms": 3.2,
+          "language_ms": 1492.3,
+          "total_ms": 1843.8
+        },
+        "duration_s": 3.92,
+        "phrase": "ฉันอยากไปอนุสาวรีย์ชัยสมรภูมิ",
+        "n_ref_in_vocab": 3,
+        "split": "tune"
+      },
+      "Lom3Wa6T4us": {
+        "ref": [
+          "แล้ว",
+          "พบกัน",
+          "ใหม่"
+        ],
+        "in_vocab": {
+          "แล้ว": false,
+          "พบกัน": false,
+          "ใหม่": true
+        },
+        "n_segments": 1,
+        "n_ref": 3,
+        "top1": [
+          "เที่ยว"
+        ],
+        "accepted": [],
+        "used_in_sentence": [],
+        "segments": [
+          {
+            "t0": 0.64,
+            "t1": 2.56,
+            "status": "unknown",
+            "p": 0.03,
+            "top5": [
+              "เที่ยว",
+              "อีก",
+              "ใหม่",
+              "เริ่ม",
+              "ที่ไหน"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.3333333333333333,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": null,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "แล้ว": null,
+          "พบกัน": null,
+          "ใหม่": 3
+        },
+        "sentence": "",
+        "tentative": "[?]",
+        "evidence_gloss": "[?]≈เที่ยว",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 13.8,
+          "tagger_ms": 233.2,
+          "spotting_ms": 55.6,
+          "n_windows": 114,
+          "tempo_factor": 1.0,
+          "face_ms": 3.1,
+          "language_ms": 1309.7,
+          "total_ms": 1620.6
+        },
+        "duration_s": 3.28,
+        "phrase": "แล้วพบกันใหม่",
+        "n_ref_in_vocab": 1,
+        "split": "tune"
+      },
+      "qB1BSAuWsy8": {
+        "ref": [
+          "พรุ่งนี้",
+          "ฉัน",
+          "ไปเที่ยว"
+        ],
+        "in_vocab": {
+          "พรุ่งนี้": true,
+          "ฉัน": true,
+          "ไปเที่ยว": false
+        },
+        "n_segments": 2,
+        "n_ref": 3,
+        "top1": [
+          "พี่ชาย",
+          "เที่ยว"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "เที่ยว"
+        ],
+        "segments": [
+          {
+            "t0": 0.8,
+            "t1": 1.76,
+            "status": "uncertain",
+            "p": 0.2,
+            "top5": [
+              "พี่ชาย",
+              "น้องชาย",
+              "พ่อ",
+              "กลางคืน",
+              "สามี"
+            ]
+          },
+          {
+            "t0": 1.76,
+            "t1": 2.88,
+            "status": "uncertain",
+            "p": 0.58,
+            "top5": [
+              "เที่ยว",
+              "หนึ่ง",
+              "ลุง",
+              "เข้าใจ",
+              "ที่ไหน"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "พรุ่งนี้": null,
+          "ฉัน": null,
+          "ไปเที่ยว": null
+        },
+        "sentence": "",
+        "tentative": "ใครเที่ยวครับ",
+        "evidence_gloss": "พี่ชาย? | เที่ยว?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 13.9,
+          "tagger_ms": 219.5,
+          "spotting_ms": 80.3,
+          "n_windows": 119,
+          "tempo_factor": 1.0,
+          "face_ms": 3.0,
+          "language_ms": 1307.2,
+          "total_ms": 1627.7
+        },
+        "duration_s": 3.6,
+        "phrase": "พรุ่งนี้ฉันจะไปเที่ยว",
+        "n_ref_in_vocab": 2,
+        "split": "tune"
+      },
+      "boo4sPFmEYw": {
+        "ref": [
+          "วันนี้",
+          "ไม่",
+          "ไป",
+          "ทำงาน"
+        ],
+        "in_vocab": {
+          "วันนี้": true,
+          "ไม่": false,
+          "ไป": true,
+          "ทำงาน": true
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "งาน",
+          "ห้า"
+        ],
+        "accepted": [
+          "ห้า"
+        ],
+        "used_in_sentence": [
+          "งาน",
+          "ห้า"
+        ],
+        "segments": [
+          {
+            "t0": 0.64,
+            "t1": 1.76,
+            "status": "uncertain",
+            "p": 0.21,
+            "top5": [
+              "งาน",
+              "ยาย",
+              "ทำงาน",
+              "ย่า",
+              "ฝึก"
+            ]
+          },
+          {
+            "t0": 1.76,
+            "t1": 2.72,
+            "status": "accepted",
+            "p": 0.73,
+            "top5": [
+              "ห้า",
+              "เก้า",
+              "สี่",
+              "แปด",
+              "อย่า"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.25,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": 0.0,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "วันนี้": null,
+          "ไม่": null,
+          "ไป": null,
+          "ทำงาน": 3
+        },
+        "sentence": "งานห้า",
+        "tentative": null,
+        "evidence_gloss": "งาน? | ห้า",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 13.8,
+          "tagger_ms": 218.4,
+          "spotting_ms": 81.3,
+          "n_windows": 127,
+          "tempo_factor": 1.0,
+          "face_ms": 3.2,
+          "language_ms": 1210.1,
+          "total_ms": 1531.9
+        },
+        "duration_s": 3.44,
+        "phrase": "วันนี้ไม่ไปทำงาน",
+        "n_ref_in_vocab": 3,
+        "split": "test"
+      },
+      "vxfSxRReFrw": {
+        "ref": [
+          "เดือน",
+          "หน้า"
+        ],
+        "in_vocab": {
+          "เดือน": true,
+          "หน้า": false
+        },
+        "n_segments": 2,
+        "n_ref": 2,
+        "top1": [
+          "เจ็บ",
+          "พรุ่งนี้"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "พรุ่งนี้"
+        ],
+        "segments": [
+          {
+            "t0": 1.12,
+            "t1": 2.24,
+            "status": "uncertain",
+            "p": 0.15,
+            "top5": [
+              "เจ็บ",
+              "หมู",
+              "ยาย",
+              "ยาก",
+              "ภรรยา"
+            ]
+          },
+          {
+            "t0": 2.24,
+            "t1": 3.36,
+            "status": "uncertain",
+            "p": 0.27,
+            "top5": [
+              "พรุ่งนี้",
+              "ปลา",
+              "น้องชาย",
+              "ไป",
+              "ห้า"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "เดือน": null,
+          "หน้า": null
+        },
+        "sentence": "",
+        "tentative": "พรุ่งนี้",
+        "evidence_gloss": "เจ็บ? | พรุ่งนี้?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 16.0,
+          "tagger_ms": 253.0,
+          "spotting_ms": 82.2,
+          "n_windows": 132,
+          "tempo_factor": 1.0,
+          "face_ms": 2.9,
+          "language_ms": 1362.9,
+          "total_ms": 1722.5
+        },
+        "duration_s": 4.04,
+        "phrase": "เดือนหน้า",
+        "n_ref_in_vocab": 1,
+        "split": "tune"
+      },
+      "mCOzTv9PK4E": {
+        "ref": [
+          "วันนี้",
+          "ผม",
+          "ตื่น",
+          "สาย"
+        ],
+        "in_vocab": {
+          "วันนี้": true,
+          "ผม": true,
+          "ตื่น": true,
+          "สาย": true
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "แม่",
+          "น้อง"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "น้อง"
+        ],
+        "segments": [
+          {
+            "t0": 1.44,
+            "t1": 2.72,
+            "status": "uncertain",
+            "p": 0.1,
+            "top5": [
+              "แม่",
+              "ลุง",
+              "ปู่",
+              "ป้า",
+              "หนึ่ง"
+            ]
+          },
+          {
+            "t0": 2.72,
+            "t1": 3.84,
+            "status": "uncertain",
+            "p": 0.25,
+            "top5": [
+              "น้อง",
+              "น้องชาย",
+              "สาย",
+              "น้องสาว",
+              "วันนี้"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.5,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "วันนี้": 5,
+          "ผม": null,
+          "ตื่น": null,
+          "สาย": 3
+        },
+        "sentence": "",
+        "tentative": "น้อง",
+        "evidence_gloss": "แม่? | น้อง?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 19.7,
+          "tagger_ms": 290.3,
+          "spotting_ms": 81.7,
+          "n_windows": 134,
+          "tempo_factor": 1.0,
+          "face_ms": 3.1,
+          "language_ms": 1316.1,
+          "total_ms": 1716.5
+        },
+        "duration_s": 4.76,
+        "phrase": "วันนี้ผมตื่นสาย",
+        "n_ref_in_vocab": 4,
+        "split": "test"
+      },
+      "l8j9tT399-4": {
+        "ref": [
+          "ห้องน้ำ",
+          "ไป",
+          "ทาง",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "ห้องน้ำ": true,
+          "ไป": true,
+          "ทาง": false,
+          "ไหน": false
+        },
+        "n_segments": 3,
+        "n_ref": 4,
+        "top1": [
+          "ห้องน้ำ",
+          "ที่ไหน",
+          "หนึ่ง"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "หนึ่ง"
+        ],
+        "segments": [
+          {
+            "t0": 1.12,
+            "t1": 3.04,
+            "status": "uncertain",
+            "p": 0.17,
+            "top5": [
+              "ห้องน้ำ",
+              "วันหยุด",
+              "ตลาด",
+              "รถไฟ",
+              "ไข่"
+            ]
+          },
+          {
+            "t0": 3.2,
+            "t1": 3.84,
+            "status": "uncertain",
+            "p": 0.34,
+            "top5": [
+              "ที่ไหน",
+              "อะไร",
+              "ป้า",
+              "หนึ่ง",
+              "ปู่"
+            ]
+          },
+          {
+            "t0": 3.84,
+            "t1": 4.48,
+            "status": "uncertain",
+            "p": 0.58,
+            "top5": [
+              "หนึ่ง",
+              "ป้า",
+              "แม่",
+              "อะไร",
+              "ที่ไหน"
+            ]
+          }
+        ],
+        "recall_top1": 0.25,
+        "recall_top5": 0.25,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 0.75,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ห้องน้ำ": 1,
+          "ไป": null,
+          "ทาง": null,
+          "ไหน": null
+        },
+        "sentence": "",
+        "tentative": "หนึ่ง",
+        "evidence_gloss": "ห้องน้ำ? | ที่ไหน? | หนึ่ง?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": true,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 19.5,
+          "tagger_ms": 308.4,
+          "spotting_ms": 97.2,
+          "n_windows": 184,
+          "tempo_factor": 1.0,
+          "face_ms": 3.2,
+          "language_ms": 1358.7,
+          "total_ms": 1790.8
+        },
+        "duration_s": 4.88,
+        "phrase": "ห้องน้ำไปทางไหน",
+        "n_ref_in_vocab": 2,
+        "split": "tune"
+      },
+      "M_Y7KMGLSyQ": {
+        "ref": [
+          "คุณ",
+          "กลับบ้าน",
+          "กี่",
+          "โมง"
+        ],
+        "in_vocab": {
+          "คุณ": true,
+          "กลับบ้าน": false,
+          "กี่": true,
+          "โมง": false
+        },
+        "n_segments": 1,
+        "n_ref": 4,
+        "top1": [
+          "เวลา"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "เวลา"
+        ],
+        "segments": [
+          {
+            "t0": 1.12,
+            "t1": 3.04,
+            "status": "uncertain",
+            "p": 0.11,
+            "top5": [
+              "เวลา",
+              "สาย",
+              "น้องสาว",
+              "น้องชาย",
+              "ไข่"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "คุณ": null,
+          "กลับบ้าน": null,
+          "กี่": null,
+          "โมง": null
+        },
+        "sentence": "",
+        "tentative": "เวลา",
+        "evidence_gloss": "เวลา?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 16.7,
+          "tagger_ms": 263.4,
+          "spotting_ms": 75.2,
+          "n_windows": 126,
+          "tempo_factor": 1.0,
+          "face_ms": 2.9,
+          "language_ms": 1229.5,
+          "total_ms": 1593.0
+        },
+        "duration_s": 4.0,
+        "phrase": "คุณกลับบ้านกี่โมง",
+        "n_ref_in_vocab": 2,
+        "split": "tune"
+      },
+      "f9xw1K7ET8U": {
+        "ref": [
+          "ไม่",
+          "ถูกต้อง"
+        ],
+        "in_vocab": {
+          "ไม่": false,
+          "ถูกต้อง": true
+        },
+        "n_segments": 1,
+        "n_ref": 2,
+        "top1": [
+          "ยาย"
+        ],
+        "accepted": [],
+        "used_in_sentence": [],
+        "segments": [
+          {
+            "t0": 1.92,
+            "t1": 3.84,
+            "status": "unknown",
+            "p": 0.04,
+            "top5": [
+              "ยาย",
+              "กิน",
+              "ถูกต้อง",
+              "จ่าย",
+              "ผิด"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.5,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": null,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ไม่": null,
+          "ถูกต้อง": 3
+        },
+        "sentence": "",
+        "tentative": "[?]",
+        "evidence_gloss": "[?]≈ยาย",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 16.3,
+          "tagger_ms": 253.9,
+          "spotting_ms": 69.7,
+          "n_windows": 91,
+          "tempo_factor": 1.0,
+          "face_ms": 2.9,
+          "language_ms": 1263.1,
+          "total_ms": 1612.3
+        },
+        "duration_s": 4.12,
+        "phrase": "ไม่ถูกต้อง",
+        "n_ref_in_vocab": 1,
+        "split": "tune"
+      },
+      "kTkrNxdYGEA": {
+        "ref": [
+          "ไม่",
+          "สำคัญ"
+        ],
+        "in_vocab": {
+          "ไม่": false,
+          "สำคัญ": true
+        },
+        "n_segments": 2,
+        "n_ref": 2,
+        "top1": [
+          "ไข่",
+          "ครอบครัว"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "สอน"
+        ],
+        "segments": [
+          {
+            "t0": 0.64,
+            "t1": 1.6,
+            "status": "uncertain",
+            "p": 0.22,
+            "top5": [
+              "ไข่",
+              "สอน",
+              "แต่งงาน",
+              "ใกล้",
+              "สำคัญ"
+            ]
+          },
+          {
+            "t0": 1.6,
+            "t1": 3.2,
+            "status": "unknown",
+            "p": 0.07,
+            "top5": [
+              "ครอบครัว",
+              "สำคัญ",
+              "ไข่",
+              "หมู",
+              "พัก"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.5,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ไม่": null,
+          "สำคัญ": 2
+        },
+        "sentence": "",
+        "tentative": "สอน [?]",
+        "evidence_gloss": "ไข่? | [?]≈ครอบครัว",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 14.8,
+          "tagger_ms": 234.5,
+          "spotting_ms": 81.5,
+          "n_windows": 148,
+          "tempo_factor": 1.0,
+          "face_ms": 3.0,
+          "language_ms": 1269.3,
+          "total_ms": 1607.6
+        },
+        "duration_s": 3.56,
+        "phrase": "ไม่สำคัญ",
+        "n_ref_in_vocab": 1,
+        "split": "tune"
+      },
+      "PnQ9_dzcgHo": {
+        "ref": [
+          "ฉัน",
+          "ทำงาน",
+          "เกี่ยวกับ"
+        ],
+        "in_vocab": {
+          "ฉัน": true,
+          "ทำงาน": true,
+          "เกี่ยวกับ": false
+        },
+        "n_segments": 2,
+        "n_ref": 3,
+        "top1": [
+          "งาน",
+          "ฉัน"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ฉัน"
+        ],
+        "segments": [
+          {
+            "t0": 0.96,
+            "t1": 2.08,
+            "status": "uncertain",
+            "p": 0.49,
+            "top5": [
+              "งาน",
+              "ทำงาน",
+              "ฝึก",
+              "นม",
+              "ปี"
+            ]
+          },
+          {
+            "t0": 2.08,
+            "t1": 3.04,
+            "status": "uncertain",
+            "p": 0.53,
+            "top5": [
+              "ฉัน",
+              "เรา",
+              "แต่งงาน",
+              "ภูมิใจ",
+              "ปลอบใจ"
+            ]
+          }
+        ],
+        "recall_top1": 0.3333333333333333,
+        "recall_top5": 0.6666666666666666,
+        "ref_used_in_sentence": 0.3333333333333333,
+        "precision_used": 1.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 0.6666666666666666,
+        "best_rank": {
+          "ฉัน": 1,
+          "ทำงาน": 2,
+          "เกี่ยวกับ": null
+        },
+        "sentence": "",
+        "tentative": "ฉัน",
+        "evidence_gloss": "งาน? | ฉัน?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 15.9,
+          "tagger_ms": 258.9,
+          "spotting_ms": 70.5,
+          "n_windows": 117,
+          "tempo_factor": 1.0,
+          "face_ms": 2.9,
+          "language_ms": 1268.2,
+          "total_ms": 1621.2
+        },
+        "duration_s": 4.04,
+        "phrase": "ฉันทำงานเกี่ยวกับ",
+        "n_ref_in_vocab": 2,
+        "split": "tune"
+      },
+      "Rv4aDb-zC3A": {
+        "ref": [
+          "จาก",
+          "สนามบิน",
+          "ไป",
+          "โรงแรม",
+          "ไป",
+          "ทาง",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "จาก": false,
+          "สนามบิน": true,
+          "ไป": true,
+          "โรงแรม": false,
+          "ทาง": false,
+          "ไหน": false
+        },
+        "n_segments": 3,
+        "n_ref": 7,
+        "top1": [
+          "สนามบิน",
+          "ตลาด",
+          "หนึ่ง"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "หนึ่ง"
+        ],
+        "segments": [
+          {
+            "t0": 0.48,
+            "t1": 1.92,
+            "status": "unknown",
+            "p": 0.07,
+            "top5": [
+              "สนามบิน",
+              "แม่",
+              "ประเทศไทย",
+              "ปู่",
+              "ป้า"
+            ]
+          },
+          {
+            "t0": 1.92,
+            "t1": 3.84,
+            "status": "uncertain",
+            "p": 0.12,
+            "top5": [
+              "ตลาด",
+              "ขนมปัง",
+              "อยู่บ้าน",
+              "ขาย",
+              "เกิด"
+            ]
+          },
+          {
+            "t0": 3.84,
+            "t1": 4.8,
+            "status": "uncertain",
+            "p": 0.56,
+            "top5": [
+              "หนึ่ง",
+              "ศูนย์",
+              "อะไร",
+              "ร้อย",
+              "กรุงเทพ"
+            ]
+          }
+        ],
+        "recall_top1": 0.14285714285714285,
+        "recall_top5": 0.14285714285714285,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 0.8571428571428571,
+        "WER_used": 1.0,
+        "best_rank": {
+          "จาก": null,
+          "สนามบิน": 1,
+          "ไป": null,
+          "โรงแรม": null,
+          "ทาง": null,
+          "ไหน": null
+        },
+        "sentence": "",
+        "tentative": "หนึ่ง",
+        "evidence_gloss": "[?]≈สนามบิน | ตลาด? | หนึ่ง?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 22.0,
+          "tagger_ms": 342.3,
+          "spotting_ms": 138.5,
+          "n_windows": 273,
+          "tempo_factor": 1.0,
+          "face_ms": 3.3,
+          "language_ms": 1312.5,
+          "total_ms": 1823.2
+        },
+        "duration_s": 5.6,
+        "phrase": "จากสนามบินไปโรงแรมไปทางไหน",
+        "n_ref_in_vocab": 3,
+        "split": "test"
+      },
+      "vWKCfQKVpdI": {
+        "ref": [
+          "สถานีรถไฟ",
+          "ไป",
+          "ทาง",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "สถานีรถไฟ": false,
+          "ไป": true,
+          "ทาง": false,
+          "ไหน": false
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "ขนมปัง",
+          "หนึ่ง"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ขนมปัง"
+        ],
+        "segments": [
+          {
+            "t0": 0.96,
+            "t1": 2.88,
+            "status": "uncertain",
+            "p": 0.35,
+            "top5": [
+              "ขนมปัง",
+              "ตลาด",
+              "รถไฟ",
+              "ไข่",
+              "ก๋วยเตี๋ยว"
+            ]
+          },
+          {
+            "t0": 2.88,
+            "t1": 4.0,
+            "status": "unknown",
+            "p": 0.08,
+            "top5": [
+              "หนึ่ง",
+              "ป้า",
+              "ปู่",
+              "แม่",
+              "ศูนย์"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "สถานีรถไฟ": null,
+          "ไป": null,
+          "ทาง": null,
+          "ไหน": null
+        },
+        "sentence": "",
+        "tentative": "ขนมปัง [?]",
+        "evidence_gloss": "ขนมปัง? | [?]≈หนึ่ง",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 19.4,
+          "tagger_ms": 319.2,
+          "spotting_ms": 92.8,
+          "n_windows": 189,
+          "tempo_factor": 1.0,
+          "face_ms": 3.1,
+          "language_ms": 1355.7,
+          "total_ms": 1794.8
+        },
+        "duration_s": 4.96,
+        "phrase": "สถานีรถไฟไปทางไหน",
+        "n_ref_in_vocab": 1,
+        "split": "tune"
+      },
+      "ke3ULq411-w": {
+        "ref": [
+          "รถไฟฟ้า",
+          "บีทีเอส"
+        ],
+        "in_vocab": {
+          "รถไฟฟ้า": false,
+          "บีทีเอส": false
+        },
+        "n_segments": 1,
+        "n_ref": 2,
+        "top1": [
+          "สอน"
+        ],
+        "accepted": [],
+        "used_in_sentence": [],
+        "segments": [
+          {
+            "t0": 0.48,
+            "t1": 2.4,
+            "status": "unknown",
+            "p": 0.04,
+            "top5": [
+              "สอน",
+              "เปิด",
+              "หมอ",
+              "ครอบครัว",
+              "ไข่"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": null,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "รถไฟฟ้า": null,
+          "บีทีเอส": null
+        },
+        "sentence": "",
+        "tentative": "[?]",
+        "evidence_gloss": "[?]≈สอน",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 12.6,
+          "tagger_ms": 187.7,
+          "spotting_ms": 74.7,
+          "n_windows": 108,
+          "tempo_factor": 1.0,
+          "face_ms": 2.9,
+          "language_ms": 1417.4,
+          "total_ms": 1700.8
+        },
+        "duration_s": 2.92,
+        "phrase": "รถไฟฟ้าบีทีเอส",
+        "n_ref_in_vocab": 0,
+        "split": "tune"
+      },
+      "ho_OsYZi5Dk": {
+        "ref": [
+          "ฉัน",
+          "ไม่",
+          "สบาย"
+        ],
+        "in_vocab": {
+          "ฉัน": true,
+          "ไม่": false,
+          "สบาย": false
+        },
+        "n_segments": 1,
+        "n_ref": 3,
+        "top1": [
+          "ป่วย"
+        ],
+        "accepted": [
+          "ป่วย"
+        ],
+        "used_in_sentence": [
+          "ป่วย"
+        ],
+        "segments": [
+          {
+            "t0": 1.28,
+            "t1": 3.2,
+            "status": "accepted",
+            "p": 0.83,
+            "top5": [
+              "ป่วย",
+              "หมู",
+              "พี่ชาย",
+              "พี่สาว",
+              "เรียน"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": 0.0,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ฉัน": null,
+          "ไม่": null,
+          "สบาย": null
+        },
+        "sentence": "ป่วย",
+        "tentative": null,
+        "evidence_gloss": "ป่วย",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 14.6,
+          "tagger_ms": 225.9,
+          "spotting_ms": 67.6,
+          "n_windows": 110,
+          "tempo_factor": 1.0,
+          "face_ms": 2.8,
+          "language_ms": 1301.6,
+          "total_ms": 1617.5
+        },
+        "duration_s": 3.64,
+        "phrase": "ฉันไม่สบาย",
+        "n_ref_in_vocab": 1,
+        "split": "test"
+      },
+      "uBiCtXM2xCg": {
+        "ref": [
+          "ฉัน",
+          "ชื่อ"
+        ],
+        "in_vocab": {
+          "ฉัน": true,
+          "ชื่อ": true
+        },
+        "n_segments": 1,
+        "n_ref": 2,
+        "top1": [
+          "ฉัน"
+        ],
+        "accepted": [],
+        "used_in_sentence": [],
+        "segments": [
+          {
+            "t0": 0.96,
+            "t1": 2.88,
+            "status": "unknown",
+            "p": 0.03,
+            "top5": [
+              "ฉัน",
+              "ยาก",
+              "แต่งงาน",
+              "ย่า",
+              "นม"
+            ]
+          }
+        ],
+        "recall_top1": 0.5,
+        "recall_top5": 0.5,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": null,
+        "precision_accepted": null,
+        "WER_top1": 0.5,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ฉัน": 1,
+          "ชื่อ": null
+        },
+        "sentence": "",
+        "tentative": "[?]",
+        "evidence_gloss": "[?]≈ฉัน",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 14.2,
+          "tagger_ms": 218.7,
+          "spotting_ms": 67.0,
+          "n_windows": 118,
+          "tempo_factor": 1.0,
+          "face_ms": 2.7,
+          "language_ms": 1174.4,
+          "total_ms": 1480.8
+        },
+        "duration_s": 3.52,
+        "phrase": "ฉันชื่อ",
+        "n_ref_in_vocab": 2,
+        "split": "test"
+      },
+      "DMZPJ1yJjHw": {
+        "ref": [
+          "ไม่",
+          "ยอมรับ"
+        ],
+        "in_vocab": {
+          "ไม่": false,
+          "ยอมรับ": false
+        },
+        "n_segments": 1,
+        "n_ref": 2,
+        "top1": [
+          "ไข่"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "สบายดี"
+        ],
+        "segments": [
+          {
+            "t0": 0.32,
+            "t1": 1.92,
+            "status": "uncertain",
+            "p": 0.11,
+            "top5": [
+              "ไข่",
+              "สบายดี",
+              "เกิด",
+              "เคย",
+              "น้องสาว"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ไม่": null,
+          "ยอมรับ": null
+        },
+        "sentence": "",
+        "tentative": "สบายดี",
+        "evidence_gloss": "ไข่?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 11.2,
+          "tagger_ms": 160.0,
+          "spotting_ms": 72.4,
+          "n_windows": 89,
+          "tempo_factor": 1.0,
+          "face_ms": 2.7,
+          "language_ms": 1267.4,
+          "total_ms": 1517.1
+        },
+        "duration_s": 2.64,
+        "phrase": "ไม่ยอมรับ",
+        "n_ref_in_vocab": 0,
+        "split": "tune"
+      },
+      "JRiXwxNWkwk": {
+        "ref": [
+          "ปี"
+        ],
+        "in_vocab": {
+          "ปี": true
+        },
+        "n_segments": 2,
+        "n_ref": 1,
+        "top1": [
+          "อายุ",
+          "ตอนนี้"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "วันนี้"
+        ],
+        "segments": [
+          {
+            "t0": 1.12,
+            "t1": 2.56,
+            "status": "uncertain",
+            "p": 0.21,
+            "top5": [
+              "อายุ",
+              "ปี",
+              "งาน",
+              "ย่า",
+              "ยาย"
+            ]
+          },
+          {
+            "t0": 2.56,
+            "t1": 3.52,
+            "status": "uncertain",
+            "p": 0.55,
+            "top5": [
+              "ตอนนี้",
+              "วันนี้",
+              "ลูก",
+              "กรุงเทพ",
+              "ด้วยกัน"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 1.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 2.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ปี": 2
+        },
+        "sentence": "",
+        "tentative": "วันนี้",
+        "evidence_gloss": "อายุ? | ตอนนี้?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 16.8,
+          "tagger_ms": 251.3,
+          "spotting_ms": 87.0,
+          "n_windows": 150,
+          "tempo_factor": 1.0,
+          "face_ms": 3.5,
+          "language_ms": 1220.1,
+          "total_ms": 1583.7
+        },
+        "duration_s": 4.16,
+        "phrase": "ปีนี้",
+        "n_ref_in_vocab": 1,
+        "split": "tune"
+      },
+      "MVHxnF48_34": {
+        "ref": [
+          "เดือน"
+        ],
+        "in_vocab": {
+          "เดือน": true
+        },
+        "n_segments": 2,
+        "n_ref": 1,
+        "top1": [
+          "เจ็บ",
+          "ตอนนี้"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "วันนี้"
+        ],
+        "segments": [
+          {
+            "t0": 0.96,
+            "t1": 2.08,
+            "status": "unknown",
+            "p": 0.04,
+            "top5": [
+              "เจ็บ",
+              "หมู",
+              "เดือน",
+              "เพื่อน",
+              "ยาย"
+            ]
+          },
+          {
+            "t0": 2.08,
+            "t1": 3.2,
+            "status": "uncertain",
+            "p": 0.3,
+            "top5": [
+              "ตอนนี้",
+              "วันนี้",
+              "ลูก",
+              "กี่",
+              "เท่าไร"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 1.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 2.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "เดือน": 3
+        },
+        "sentence": "",
+        "tentative": "วันนี้ [?]",
+        "evidence_gloss": "[?]≈เจ็บ | ตอนนี้?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 16.0,
+          "tagger_ms": 236.2,
+          "spotting_ms": 85.6,
+          "n_windows": 132,
+          "tempo_factor": 1.0,
+          "face_ms": 2.9,
+          "language_ms": 1313.5,
+          "total_ms": 1659.7
+        },
+        "duration_s": 4.0,
+        "phrase": "เดือนนี้",
+        "n_ref_in_vocab": 1,
+        "split": "tune"
+      },
+      "dMTxI45Vlz8": {
+        "ref": [
+          "หมอชิต",
+          "ไป",
+          "ทาง",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "หมอชิต": false,
+          "ไป": true,
+          "ทาง": false,
+          "ไหน": false
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "สามี",
+          "หนึ่ง"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "สามี"
+        ],
+        "segments": [
+          {
+            "t0": 0.48,
+            "t1": 1.92,
+            "status": "uncertain",
+            "p": 0.09,
+            "top5": [
+              "สามี",
+              "ภรรยา",
+              "หมู",
+              "น้องสาว",
+              "อา"
+            ]
+          },
+          {
+            "t0": 1.92,
+            "t1": 3.04,
+            "status": "unknown",
+            "p": 0.08,
+            "top5": [
+              "หนึ่ง",
+              "ป้า",
+              "ปู่",
+              "ศูนย์",
+              "แม่"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "หมอชิต": null,
+          "ไป": null,
+          "ทาง": null,
+          "ไหน": null
+        },
+        "sentence": "",
+        "tentative": "สามี [?]",
+        "evidence_gloss": "สามี? | [?]≈หนึ่ง",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 14.7,
+          "tagger_ms": 221.9,
+          "spotting_ms": 93.6,
+          "n_windows": 148,
+          "tempo_factor": 1.0,
+          "face_ms": 2.9,
+          "language_ms": 1337.4,
+          "total_ms": 1675.8
+        },
+        "duration_s": 3.48,
+        "phrase": "หมอชิตไปทางไหน",
+        "n_ref_in_vocab": 1,
+        "split": "test"
+      },
+      "NXEgS_V7A-M": {
+        "ref": [
+          "ลิฟต์",
+          "ไป",
+          "ทาง",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "ลิฟต์": false,
+          "ไป": true,
+          "ทาง": false,
+          "ไหน": false
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "ปลอบใจ",
+          "หนึ่ง"
+        ],
+        "accepted": [],
+        "used_in_sentence": [],
+        "segments": [
+          {
+            "t0": 1.44,
+            "t1": 2.4,
+            "status": "unknown",
+            "p": 0.04,
+            "top5": [
+              "ปลอบใจ",
+              "เรียน",
+              "ช่วย",
+              "ย่า",
+              "ยาย"
+            ]
+          },
+          {
+            "t0": 2.4,
+            "t1": 3.68,
+            "status": "unknown",
+            "p": 0.06,
+            "top5": [
+              "หนึ่ง",
+              "ป้า",
+              "ปู่",
+              "ศูนย์",
+              "อะไร"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": null,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ลิฟต์": null,
+          "ไป": null,
+          "ทาง": null,
+          "ไหน": null
+        },
+        "sentence": "",
+        "tentative": "[?] [?]",
+        "evidence_gloss": "[?]≈ปลอบใจ | [?]≈หนึ่ง",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 16.6,
+          "tagger_ms": 259.7,
+          "spotting_ms": 62.3,
+          "n_windows": 113,
+          "tempo_factor": 1.0,
+          "face_ms": 3.0,
+          "language_ms": 1406.6,
+          "total_ms": 1752.7
+        },
+        "duration_s": 3.8,
+        "phrase": "ลิฟต์ไปทางไหน",
+        "n_ref_in_vocab": 1,
+        "split": "test"
+      },
+      "Z_x8STZDYEE": {
+        "ref": [
+          "เรือ",
+          "ลำ",
+          "ไป",
+          "ที่ไหน"
+        ],
+        "in_vocab": {
+          "เรือ": false,
+          "ลำ": false,
+          "ไป": true,
+          "ที่ไหน": true
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "ไข่",
+          "หนึ่ง"
+        ],
+        "accepted": [],
+        "used_in_sentence": [],
+        "segments": [
+          {
+            "t0": 0.64,
+            "t1": 2.24,
+            "status": "unknown",
+            "p": 0.04,
+            "top5": [
+              "ไข่",
+              "เหนื่อย",
+              "ฉัน",
+              "ครอบครัว",
+              "ร้อน"
+            ]
+          },
+          {
+            "t0": 2.24,
+            "t1": 3.36,
+            "status": "unknown",
+            "p": 0.09,
+            "top5": [
+              "หนึ่ง",
+              "ป้า",
+              "ปู่",
+              "แม่",
+              "ลุง"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": null,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "เรือ": null,
+          "ลำ": null,
+          "ไป": null,
+          "ที่ไหน": null
+        },
+        "sentence": "",
+        "tentative": "[?] [?]",
+        "evidence_gloss": "[?]≈ไข่ | [?]≈หนึ่ง",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 15.9,
+          "tagger_ms": 275.4,
+          "spotting_ms": 94.9,
+          "n_windows": 167,
+          "tempo_factor": 1.0,
+          "face_ms": 3.0,
+          "language_ms": 1423.4,
+          "total_ms": 1816.1
+        },
+        "duration_s": 3.92,
+        "phrase": "เรือลำนี้ไปที่ไหน",
+        "n_ref_in_vocab": 2,
+        "split": "test"
+      },
+      "BCijlp93YxY": {
+        "ref": [
+          "ประชาสัมพันธ์",
+          "ไป",
+          "ทาง",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "ประชาสัมพันธ์": false,
+          "ไป": true,
+          "ทาง": false,
+          "ไหน": false
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "น้องชาย",
+          "ที่ไหน"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ที่ไหน"
+        ],
+        "segments": [
+          {
+            "t0": 1.12,
+            "t1": 3.04,
+            "status": "uncertain",
+            "p": 0.09,
+            "top5": [
+              "น้องชาย",
+              "พี่",
+              "เชื่อ",
+              "น้องสาว",
+              "ครอบครัว"
+            ]
+          },
+          {
+            "t0": 3.04,
+            "t1": 4.32,
+            "status": "uncertain",
+            "p": 0.52,
+            "top5": [
+              "ที่ไหน",
+              "หนึ่ง",
+              "อะไร",
+              "ป้า",
+              "ร้อย"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ประชาสัมพันธ์": null,
+          "ไป": null,
+          "ทาง": null,
+          "ไหน": null
+        },
+        "sentence": "",
+        "tentative": "ใครอยู่ที่ไหน",
+        "evidence_gloss": "น้องชาย? | ที่ไหน?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 19.0,
+          "tagger_ms": 278.0,
+          "spotting_ms": 98.5,
+          "n_windows": 183,
+          "tempo_factor": 1.0,
+          "face_ms": 2.9,
+          "language_ms": 1441.9,
+          "total_ms": 1845.8
+        },
+        "duration_s": 4.56,
+        "phrase": "ประชาสัมพันธ์ไปทางไหน",
+        "n_ref_in_vocab": 1,
+        "split": "test"
+      },
+      "zBlCW7sdIiI": {
+        "ref": [
+          "ท่าเรือ",
+          "ไป",
+          "ทาง",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "ท่าเรือ": false,
+          "ไป": true,
+          "ทาง": false,
+          "ไหน": false
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "ครอบครัว",
+          "หนึ่ง"
+        ],
+        "accepted": [
+          "หนึ่ง"
+        ],
+        "used_in_sentence": [
+          "หนึ่ง"
+        ],
+        "segments": [
+          {
+            "t0": 0.8,
+            "t1": 2.56,
+            "status": "unknown",
+            "p": 0.03,
+            "top5": [
+              "ครอบครัว",
+              "เหนื่อย",
+              "หนังสือ",
+              "ไข่",
+              "ฉัน"
+            ]
+          },
+          {
+            "t0": 2.56,
+            "t1": 4.0,
+            "status": "accepted",
+            "p": 0.74,
+            "top5": [
+              "หนึ่ง",
+              "ป้า",
+              "แม่",
+              "ลุง",
+              "ที่ไหน"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": 0.0,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ท่าเรือ": null,
+          "ไป": null,
+          "ทาง": null,
+          "ไหน": null
+        },
+        "sentence": "หนึ่ง",
+        "tentative": null,
+        "evidence_gloss": "[?]≈ครอบครัว | หนึ่ง",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 17.2,
+          "tagger_ms": 250.6,
+          "spotting_ms": 91.6,
+          "n_windows": 190,
+          "tempo_factor": 1.0,
+          "face_ms": 3.2,
+          "language_ms": 1186.9,
+          "total_ms": 1555.1
+        },
+        "duration_s": 4.32,
+        "phrase": "ท่าเรือไปทางไหน",
+        "n_ref_in_vocab": 1,
+        "split": "test"
+      },
+      "3uwyjK6wZ7A": {
+        "ref": [
+          "ฉัน",
+          "กลับ",
+          "โดย",
+          "รถไฟฟ้า"
+        ],
+        "in_vocab": {
+          "ฉัน": true,
+          "กลับ": true,
+          "โดย": false,
+          "รถไฟฟ้า": false
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "อิ่ม",
+          "กลับ"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "กลับ"
+        ],
+        "segments": [
+          {
+            "t0": 0.64,
+            "t1": 2.24,
+            "status": "uncertain",
+            "p": 0.17,
+            "top5": [
+              "อิ่ม",
+              "หมู",
+              "เปิด",
+              "หมอ",
+              "ดื่ม"
+            ]
+          },
+          {
+            "t0": 2.24,
+            "t1": 3.04,
+            "status": "uncertain",
+            "p": 0.26,
+            "top5": [
+              "กลับ",
+              "ไป",
+              "ลาก่อน",
+              "ปลา",
+              "ห้า"
+            ]
+          }
+        ],
+        "recall_top1": 0.25,
+        "recall_top5": 0.25,
+        "ref_used_in_sentence": 0.25,
+        "precision_used": 1.0,
+        "precision_accepted": null,
+        "WER_top1": 0.75,
+        "WER_used": 0.75,
+        "best_rank": {
+          "ฉัน": null,
+          "กลับ": 1,
+          "โดย": null,
+          "รถไฟฟ้า": null
+        },
+        "sentence": "",
+        "tentative": "กลับ",
+        "evidence_gloss": "อิ่ม? | กลับ?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 16.3,
+          "tagger_ms": 235.7,
+          "spotting_ms": 80.4,
+          "n_windows": 132,
+          "tempo_factor": 1.0,
+          "face_ms": 3.1,
+          "language_ms": 1231.8,
+          "total_ms": 1571.6
+        },
+        "duration_s": 3.8,
+        "phrase": "ฉันจะกลับโดยรถไฟฟ้า",
+        "n_ref_in_vocab": 2,
+        "split": "test"
+      },
+      "wbE8RDqRGdI": {
+        "ref": [
+          "ฉัน",
+          "เรียก",
+          "แท๊กซี่"
+        ],
+        "in_vocab": {
+          "ฉัน": true,
+          "เรียก": true,
+          "แท๊กซี่": false
+        },
+        "n_segments": 2,
+        "n_ref": 3,
+        "top1": [
+          "น้องสาว",
+          "น้อง"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "น้องสาว"
+        ],
+        "segments": [
+          {
+            "t0": 0.32,
+            "t1": 2.08,
+            "status": "uncertain",
+            "p": 0.19,
+            "top5": [
+              "น้องสาว",
+              "ญาติ",
+              "ยาย",
+              "น้องชาย",
+              "เกิด"
+            ]
+          },
+          {
+            "t0": 2.08,
+            "t1": 2.72,
+            "status": "uncertain",
+            "p": 0.15,
+            "top5": [
+              "น้อง",
+              "อย่า",
+              "เรียก",
+              "ข้าว",
+              "โรงเรียน"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.3333333333333333,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ฉัน": null,
+          "เรียก": 3,
+          "แท๊กซี่": null
+        },
+        "sentence": "",
+        "tentative": "น้องสาว [?]",
+        "evidence_gloss": "น้องสาว? | น้อง?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "happy"
+        },
+        "timings_ms": {
+          "schema_ms": 18.6,
+          "tagger_ms": 210.7,
+          "spotting_ms": 82.2,
+          "n_windows": 137,
+          "tempo_factor": 1.0,
+          "face_ms": 2.6,
+          "language_ms": 1360.2,
+          "total_ms": 1680.8
+        },
+        "duration_s": 3.24,
+        "phrase": "ฉันจะเรียกแท๊กซี่",
+        "n_ref_in_vocab": 2,
+        "split": "tune"
+      }
+    }
+  },
+  "full": {
+    "summary_test_half": {
+      "videos": 21,
+      "ref_words": 75,
+      "segments": 36,
+      "recall_top1": 0.05333333333333334,
+      "recall_top5": 0.16,
+      "ref_words_in_sentence": 0.04,
+      "words_in_sentence": 20,
+      "words_in_sentence_correct": 3,
+      "accepted": 3,
+      "accepted_correct": 1,
+      "count_abs_err": 1.9523809523809523,
+      "mean_WER_top1": 1.0209750566893423,
+      "mean_WER_sentence": 0.9682539682539684,
+      "mean_latency_ms": 1852.3428571428574
+    },
+    "summary_tune_half": {
+      "videos": 26,
+      "ref_words": 75,
+      "segments": 42,
+      "recall_top1": 0.16,
+      "recall_top5": 0.28,
+      "ref_words_in_sentence": 0.06666666666666667,
+      "words_in_sentence": 26,
+      "words_in_sentence_correct": 5,
+      "accepted": 2,
+      "accepted_correct": 0,
+      "count_abs_err": 1.4230769230769231,
+      "mean_WER_top1": 0.8705128205128205,
+      "mean_WER_sentence": 0.9314102564102564,
+      "mean_latency_ms": 1861.5230769230768
+    },
+    "summary": {
+      "videos": 47,
+      "ref_words": 150,
+      "segments": 78,
+      "recall_top1": 0.10666666666666667,
+      "recall_top5": 0.22,
+      "ref_words_in_sentence": 0.05333333333333334,
+      "words_in_sentence": 46,
+      "words_in_sentence_correct": 8,
+      "accepted": 5,
+      "accepted_correct": 1,
+      "count_abs_err": 1.6595744680851063,
+      "mean_WER_top1": 0.9377406281661601,
+      "mean_WER_sentence": 0.947872340425532,
+      "mean_latency_ms": 1857.4212765957448
+    },
+    "videos": {
+      "h-zQRUSpdnI": {
+        "ref": [
+          "คุณ",
+          "กินข้าว",
+          "หรือยัง"
+        ],
+        "in_vocab": {
+          "คุณ": true,
+          "กินข้าว": false,
+          "หรือยัง": false
+        },
+        "n_segments": 1,
+        "n_ref": 3,
+        "top1": [
+          "ย่า"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ยาย"
+        ],
+        "segments": [
+          {
+            "t0": 0.8,
+            "t1": 2.72,
+            "status": "uncertain",
+            "p": 0.24,
+            "top5": [
+              "ย่า",
+              "ยาย",
+              "ยัง",
+              "โซนี่",
+              "บ้าน"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "คุณ": null,
+          "กินข้าว": null,
+          "หรือยัง": null
+        },
+        "sentence": "",
+        "tentative": "ยาย",
+        "evidence_gloss": "ย่า?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 11.1,
+          "tagger_ms": 173.6,
+          "spotting_ms": 180.8,
+          "n_windows": 63,
+          "tempo_factor": 1.0,
+          "face_ms": 2.5,
+          "language_ms": 1219.0,
+          "total_ms": 1589.6
+        },
+        "duration_s": 3.12,
+        "phrase": "คุณกินข้าวหรือยัง",
+        "n_ref_in_vocab": 1,
+        "split": "test"
+      },
+      "LNHoxqEveFQ": {
+        "ref": [
+          "ผม",
+          "เป็น",
+          "คนไทย"
+        ],
+        "in_vocab": {
+          "ผม": true,
+          "เป็น": false,
+          "คนไทย": true
+        },
+        "n_segments": 1,
+        "n_ref": 3,
+        "top1": [
+          "ประเทศไทย"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ประเทศไทย"
+        ],
+        "segments": [
+          {
+            "t0": 0.8,
+            "t1": 2.72,
+            "status": "uncertain",
+            "p": 0.18,
+            "top5": [
+              "ประเทศไทย",
+              "ฉัน",
+              "เรา",
+              "ยาก",
+              "ยูเครน"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ผม": null,
+          "เป็น": null,
+          "คนไทย": null
+        },
+        "sentence": "",
+        "tentative": "ประเทศไทย",
+        "evidence_gloss": "ประเทศไทย?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 15.2,
+          "tagger_ms": 243.3,
+          "spotting_ms": 218.4,
+          "n_windows": 73,
+          "tempo_factor": 1.0,
+          "face_ms": 3.7,
+          "language_ms": 1221.4,
+          "total_ms": 1704.8
+        },
+        "duration_s": 3.76,
+        "phrase": "ผมเป็นคนไทย",
+        "n_ref_in_vocab": 2,
+        "split": "test"
+      },
+      "MO4EJ739640": {
+        "ref": [
+          "โรงพยาบาล",
+          "ใกล้",
+          "ที่สุด",
+          "ไป",
+          "ทาง",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "โรงพยาบาล": true,
+          "ใกล้": true,
+          "ที่สุด": true,
+          "ไป": true,
+          "ทาง": false,
+          "ไหน": false
+        },
+        "n_segments": 2,
+        "n_ref": 6,
+        "top1": [
+          "โรงพยาบาล",
+          "เศรษฐกิจ"
+        ],
+        "accepted": [
+          "โรงพยาบาล"
+        ],
+        "used_in_sentence": [
+          "โรงพยาบาล"
+        ],
+        "segments": [
+          {
+            "t0": 0.64,
+            "t1": 2.56,
+            "status": "accepted",
+            "p": 0.82,
+            "top5": [
+              "โรงพยาบาล",
+              "ภาษา",
+              "และ",
+              "ยาย",
+              "ศาล"
+            ]
+          },
+          {
+            "t0": 2.56,
+            "t1": 4.48,
+            "status": "uncertain",
+            "p": 0.19,
+            "top5": [
+              "เศรษฐกิจ",
+              "ใน",
+              "หนึ่ง",
+              "โครงการ",
+              "อะไร"
+            ]
+          }
+        ],
+        "recall_top1": 0.16666666666666666,
+        "recall_top5": 0.16666666666666666,
+        "ref_used_in_sentence": 0.16666666666666666,
+        "precision_used": 1.0,
+        "precision_accepted": 1.0,
+        "WER_top1": 0.8333333333333334,
+        "WER_used": 0.8333333333333334,
+        "best_rank": {
+          "โรงพยาบาล": 1,
+          "ใกล้": null,
+          "ที่สุด": null,
+          "ไป": null,
+          "ทาง": null,
+          "ไหน": null
+        },
+        "sentence": "โรงพยาบาล [?]",
+        "tentative": null,
+        "evidence_gloss": "โรงพยาบาล | เศรษฐกิจ?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 20.4,
+          "tagger_ms": 328.3,
+          "spotting_ms": 352.3,
+          "n_windows": 160,
+          "tempo_factor": 1.0,
+          "face_ms": 3.7,
+          "language_ms": 1372.0,
+          "total_ms": 2079.8
+        },
+        "duration_s": 5.44,
+        "phrase": "โรงพยาบาลที่ใกล้ที่สุดไปทางไหน",
+        "n_ref_in_vocab": 4,
+        "split": "test"
+      },
+      "fifAA6pgwRA": {
+        "ref": [
+          "ทิป"
+        ],
+        "in_vocab": {
+          "ทิป": true
+        },
+        "n_segments": 2,
+        "n_ref": 1,
+        "top1": [
+          "ฝรั่ง",
+          "กอล์ฟ"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ฝรั่ง"
+        ],
+        "segments": [
+          {
+            "t0": 1.28,
+            "t1": 3.2,
+            "status": "uncertain",
+            "p": 0.28,
+            "top5": [
+              "ฝรั่ง",
+              "สี",
+              "แผนที่",
+              "เรียบเรียง",
+              "มัน"
+            ]
+          },
+          {
+            "t0": 3.52,
+            "t1": 4.64,
+            "status": "uncertain",
+            "p": 0.16,
+            "top5": [
+              "กอล์ฟ",
+              "หอย",
+              "วอลเลย์บอล",
+              "ปฏิบัติการ",
+              "เกิด"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 2.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ทิป": null
+        },
+        "sentence": "",
+        "tentative": "ฝรั่ง [?]",
+        "evidence_gloss": "ฝรั่ง? | กอล์ฟ?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 21.4,
+          "tagger_ms": 336.2,
+          "spotting_ms": 340.8,
+          "n_windows": 138,
+          "tempo_factor": 1.0,
+          "face_ms": 3.3,
+          "language_ms": 1197.5,
+          "total_ms": 1902.3
+        },
+        "duration_s": 5.52,
+        "phrase": "ให้ทิป",
+        "n_ref_in_vocab": 1,
+        "split": "test"
+      },
+      "sAWEw0Gjsxw": {
+        "ref": [
+          "ฉัน",
+          "สบายดี"
+        ],
+        "in_vocab": {
+          "ฉัน": true,
+          "สบายดี": true
+        },
+        "n_segments": 1,
+        "n_ref": 2,
+        "top1": [
+          "แยก"
+        ],
+        "accepted": [
+          "แยก"
+        ],
+        "used_in_sentence": [
+          "แยก"
+        ],
+        "segments": [
+          {
+            "t0": 1.28,
+            "t1": 2.72,
+            "status": "accepted",
+            "p": 0.9,
+            "top5": [
+              "แยก",
+              "ไป",
+              "ผู้นำ",
+              "ประเทศไทย",
+              "เฉลย"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": 0.0,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ฉัน": null,
+          "สบายดี": null
+        },
+        "sentence": "แยก",
+        "tentative": null,
+        "evidence_gloss": "แยก",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 13.4,
+          "tagger_ms": 205.7,
+          "spotting_ms": 173.5,
+          "n_windows": 43,
+          "tempo_factor": 1.0,
+          "face_ms": 3.5,
+          "language_ms": 1360.1,
+          "total_ms": 1758.8
+        },
+        "duration_s": 3.24,
+        "phrase": "ฉันสบายดี",
+        "n_ref_in_vocab": 2,
+        "split": "test"
+      },
+      "0VeGlfYqBMc": {
+        "ref": [
+          "คุณ",
+          "อายุ",
+          "เท่าไหร่"
+        ],
+        "in_vocab": {
+          "คุณ": true,
+          "อายุ": true,
+          "เท่าไหร่": false
+        },
+        "n_segments": 1,
+        "n_ref": 3,
+        "top1": [
+          "งาน"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ปี"
+        ],
+        "segments": [
+          {
+            "t0": 0.64,
+            "t1": 2.56,
+            "status": "uncertain",
+            "p": 0.31,
+            "top5": [
+              "งาน",
+              "ทศวรรษ",
+              "ปี",
+              "อายุ",
+              "ธันวาคม"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.3333333333333333,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "คุณ": null,
+          "อายุ": 4,
+          "เท่าไหร่": null
+        },
+        "sentence": "",
+        "tentative": "ปี",
+        "evidence_gloss": "งาน?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 14.5,
+          "tagger_ms": 246.0,
+          "spotting_ms": 202.0,
+          "n_windows": 71,
+          "tempo_factor": 1.0,
+          "face_ms": 3.6,
+          "language_ms": 1188.2,
+          "total_ms": 1657.1
+        },
+        "duration_s": 3.4,
+        "phrase": "คุณอายุเท่าไหร่",
+        "n_ref_in_vocab": 2,
+        "split": "tune"
+      },
+      "bdaC1n3IeJw": {
+        "ref": [
+          "คุณ",
+          "ชื่อ",
+          "อะไร"
+        ],
+        "in_vocab": {
+          "คุณ": true,
+          "ชื่อ": true,
+          "อะไร": true
+        },
+        "n_segments": 2,
+        "n_ref": 3,
+        "top1": [
+          "ชื่อ",
+          "ประเทศไทย"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ประเทศไทย"
+        ],
+        "segments": [
+          {
+            "t0": 0.96,
+            "t1": 1.6,
+            "status": "uncertain",
+            "p": 0.42,
+            "top5": [
+              "ชื่อ",
+              "เหลน",
+              "เฉพาะ",
+              "เพื่อน",
+              "มา"
+            ]
+          },
+          {
+            "t0": 1.6,
+            "t1": 3.52,
+            "status": "uncertain",
+            "p": 0.49,
+            "top5": [
+              "ประเทศไทย",
+              "และ",
+              "นาง",
+              "ตลาด",
+              "หมู่บ้าน"
+            ]
+          }
+        ],
+        "recall_top1": 0.3333333333333333,
+        "recall_top5": 0.3333333333333333,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 0.6666666666666666,
+        "WER_used": 1.0,
+        "best_rank": {
+          "คุณ": null,
+          "ชื่อ": 1,
+          "อะไร": null
+        },
+        "sentence": "",
+        "tentative": "ประเทศไทย",
+        "evidence_gloss": "ชื่อ? | ประเทศไทย?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 19.1,
+          "tagger_ms": 272.5,
+          "spotting_ms": 306.2,
+          "n_windows": 89,
+          "tempo_factor": 1.0,
+          "face_ms": 3.3,
+          "language_ms": 1308.9,
+          "total_ms": 1913.2
+        },
+        "duration_s": 4.2,
+        "phrase": "คุณชื่ออะไร",
+        "n_ref_in_vocab": 3,
+        "split": "tune"
+      },
+      "gNc9pX0KlYg": {
+        "ref": [
+          "ห้องน้ำ",
+          "ชั้น",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "ห้องน้ำ": true,
+          "ชั้น": false,
+          "ไหน": false
+        },
+        "n_segments": 2,
+        "n_ref": 3,
+        "top1": [
+          "ห้องน้ำ",
+          "หมา"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ห้องน้ำ"
+        ],
+        "segments": [
+          {
+            "t0": 0.8,
+            "t1": 2.72,
+            "status": "uncertain",
+            "p": 0.62,
+            "top5": [
+              "ห้องน้ำ",
+              "กล่อง",
+              "ห้องเรียน",
+              "ไป",
+              "ใต้"
+            ]
+          },
+          {
+            "t0": 2.72,
+            "t1": 4.64,
+            "status": "unknown",
+            "p": 0.12,
+            "top5": [
+              "หมา",
+              "ส้อม",
+              "มัน",
+              "ดื่ม",
+              "น้อย"
+            ]
+          }
+        ],
+        "recall_top1": 0.3333333333333333,
+        "recall_top5": 0.3333333333333333,
+        "ref_used_in_sentence": 0.3333333333333333,
+        "precision_used": 1.0,
+        "precision_accepted": null,
+        "WER_top1": 0.6666666666666666,
+        "WER_used": 0.6666666666666666,
+        "best_rank": {
+          "ห้องน้ำ": 1,
+          "ชั้น": null,
+          "ไหน": null
+        },
+        "sentence": "",
+        "tentative": "ห้องน้ำ [?]",
+        "evidence_gloss": "ห้องน้ำ? | [?]≈หมา",
+        "provider": "openai",
+        "face": {
+          "question_yesno": true,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 19.8,
+          "tagger_ms": 311.1,
+          "spotting_ms": 353.3,
+          "n_windows": 149,
+          "tempo_factor": 1.0,
+          "face_ms": 3.9,
+          "language_ms": 1127.9,
+          "total_ms": 1819.1
+        },
+        "duration_s": 5.08,
+        "phrase": "ห้องน้ำอยู่ชั้นไหน",
+        "n_ref_in_vocab": 1,
+        "split": "tune"
+      },
+      "Saxv_aYR14A": {
+        "ref": [
+          "ขอโทษ",
+          "มาสาย"
+        ],
+        "in_vocab": {
+          "ขอโทษ": true,
+          "มาสาย": true
+        },
+        "n_segments": 2,
+        "n_ref": 2,
+        "top1": [
+          "น้อง",
+          "ล้าง"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "น้อง"
+        ],
+        "segments": [
+          {
+            "t0": 0.8,
+            "t1": 1.6,
+            "status": "uncertain",
+            "p": 0.68,
+            "top5": [
+              "น้อง",
+              "เด็ก",
+              "น้องชาย",
+              "สาย",
+              "ลด"
+            ]
+          },
+          {
+            "t0": 1.6,
+            "t1": 3.52,
+            "status": "uncertain",
+            "p": 0.51,
+            "top5": [
+              "ล้าง",
+              "ขอโทษ",
+              "โรงเรียน",
+              "เลีย",
+              "เรียบร้อย"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.5,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ขอโทษ": 2,
+          "มาสาย": null
+        },
+        "sentence": "",
+        "tentative": "น้อง [?]",
+        "evidence_gloss": "น้อง? | ล้าง?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 16.6,
+          "tagger_ms": 243.9,
+          "spotting_ms": 308.9,
+          "n_windows": 94,
+          "tempo_factor": 1.0,
+          "face_ms": 3.9,
+          "language_ms": 1347.4,
+          "total_ms": 1923.5
+        },
+        "duration_s": 3.96,
+        "phrase": "ขอโทษที่มาสาย",
+        "n_ref_in_vocab": 2,
+        "split": "test"
+      },
+      "cQ9S5HJWR58": {
+        "ref": [
+          "ท่าเรือ",
+          "ปิด",
+          "กี่",
+          "โมง"
+        ],
+        "in_vocab": {
+          "ท่าเรือ": true,
+          "ปิด": true,
+          "กี่": true,
+          "โมง": false
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "พา",
+          "โลก"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "พา"
+        ],
+        "segments": [
+          {
+            "t0": 0.16,
+            "t1": 2.08,
+            "status": "uncertain",
+            "p": 0.45,
+            "top5": [
+              "พา",
+              "ประเภท",
+              "เรือ",
+              "ลูก",
+              "วิธี"
+            ]
+          },
+          {
+            "t0": 2.08,
+            "t1": 4.0,
+            "status": "unknown",
+            "p": 0.09,
+            "top5": [
+              "โลก",
+              "เสียหาย",
+              "อสังหาริมทรัพย์",
+              "หมด",
+              "ทรัพย์สิน"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ท่าเรือ": null,
+          "ปิด": null,
+          "กี่": null,
+          "โมง": null
+        },
+        "sentence": "",
+        "tentative": "พา [?]",
+        "evidence_gloss": "พา? | [?]≈โลก",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 18.8,
+          "tagger_ms": 279.3,
+          "spotting_ms": 348.4,
+          "n_windows": 155,
+          "tempo_factor": 1.0,
+          "face_ms": 3.4,
+          "language_ms": 1431.8,
+          "total_ms": 2084.8
+        },
+        "duration_s": 4.68,
+        "phrase": "ท่าเรือปิดกี่โมง",
+        "n_ref_in_vocab": 3,
+        "split": "test"
+      },
+      "eRcOuv7MrWo": {
+        "ref": [
+          "ไม่",
+          "เหมือนกัน"
+        ],
+        "in_vocab": {
+          "ไม่": false,
+          "เหมือนกัน": true
+        },
+        "n_segments": 1,
+        "n_ref": 2,
+        "top1": [
+          "แยก"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ต่างกัน"
+        ],
+        "segments": [
+          {
+            "t0": 1.6,
+            "t1": 3.52,
+            "status": "uncertain",
+            "p": 0.51,
+            "top5": [
+              "แยก",
+              "ต่างกัน",
+              "นี้",
+              "หย่าร้าง",
+              "สังคม"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ไม่": null,
+          "เหมือนกัน": null
+        },
+        "sentence": "",
+        "tentative": "ต่างกัน",
+        "evidence_gloss": "แยก?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 15.2,
+          "tagger_ms": 205.5,
+          "spotting_ms": 188.9,
+          "n_windows": 47,
+          "tempo_factor": 1.0,
+          "face_ms": 3.6,
+          "language_ms": 1096.0,
+          "total_ms": 1512.0
+        },
+        "duration_s": 3.52,
+        "phrase": "ไม่เหมือนกัน",
+        "n_ref_in_vocab": 1,
+        "split": "test"
+      },
+      "83sdNdvxYEA": {
+        "ref": [
+          "วันนี้",
+          "วัน",
+          "อะไร"
+        ],
+        "in_vocab": {
+          "วันนี้": true,
+          "วัน": true,
+          "อะไร": true
+        },
+        "n_segments": 3,
+        "n_ref": 3,
+        "top1": [
+          "วันนี้",
+          "จ",
+          "หนึ่ง"
+        ],
+        "accepted": [
+          "จ",
+          "หนึ่ง"
+        ],
+        "used_in_sentence": [
+          "จ",
+          "หนึ่ง"
+        ],
+        "segments": [
+          {
+            "t0": 0.32,
+            "t1": 1.44,
+            "status": "unknown",
+            "p": 0.11,
+            "top5": [
+              "วันนี้",
+              "นี้",
+              "เกิด",
+              "ให้",
+              "ตอนนี้"
+            ]
+          },
+          {
+            "t0": 1.44,
+            "t1": 3.36,
+            "status": "accepted",
+            "p": 0.76,
+            "top5": [
+              "จ",
+              "ยาย",
+              "พิจิตร",
+              "ข้าวสาร",
+              "แม่"
+            ]
+          },
+          {
+            "t0": 3.36,
+            "t1": 4.0,
+            "status": "accepted",
+            "p": 0.78,
+            "top5": [
+              "หนึ่ง",
+              "ขึ้น",
+              "ป้า",
+              "อะไร",
+              "เธอ"
+            ]
+          }
+        ],
+        "recall_top1": 0.3333333333333333,
+        "recall_top5": 0.6666666666666666,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": 0.0,
+        "WER_top1": 0.6666666666666666,
+        "WER_used": 1.0,
+        "best_rank": {
+          "วันนี้": 1,
+          "วัน": null,
+          "อะไร": 4
+        },
+        "sentence": "จหนึ่ง",
+        "tentative": null,
+        "evidence_gloss": "[?]≈วันนี้ | จ | หนึ่ง",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 19.1,
+          "tagger_ms": 310.7,
+          "spotting_ms": 420.2,
+          "n_windows": 143,
+          "tempo_factor": 1.0,
+          "face_ms": 3.5,
+          "language_ms": 1266.6,
+          "total_ms": 2023.8
+        },
+        "duration_s": 4.88,
+        "phrase": "วันนี้วันอะไร",
+        "n_ref_in_vocab": 3,
+        "split": "tune"
+      },
+      "YpJ6sA1rgyo": {
+        "ref": [
+          "รถไฟ",
+          "ขบวน",
+          "ไป",
+          "ที่ไหน"
+        ],
+        "in_vocab": {
+          "รถไฟ": true,
+          "ขบวน": false,
+          "ไป": true,
+          "ที่ไหน": true
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "รถไฟ",
+          "ขึ้น"
+        ],
+        "accepted": [],
+        "used_in_sentence": [],
+        "segments": [
+          {
+            "t0": 0.48,
+            "t1": 2.4,
+            "status": "uncertain",
+            "p": 0.21,
+            "top5": [
+              "รถไฟ",
+              "จำหน่าย",
+              "ขนมปัง",
+              "ผลิตภัณฑ์",
+              "สินค้า"
+            ]
+          },
+          {
+            "t0": 2.4,
+            "t1": 3.84,
+            "status": "uncertain",
+            "p": 0.3,
+            "top5": [
+              "ขึ้น",
+              "ผ่าน",
+              "การเมือง",
+              "พระสงฆ์",
+              "หนึ่ง"
+            ]
+          }
+        ],
+        "recall_top1": 0.25,
+        "recall_top5": 0.25,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": null,
+        "precision_accepted": null,
+        "WER_top1": 0.75,
+        "WER_used": 1.0,
+        "best_rank": {
+          "รถไฟ": 1,
+          "ขบวน": null,
+          "ไป": null,
+          "ที่ไหน": null
+        },
+        "sentence": "",
+        "tentative": "[?] [?]",
+        "evidence_gloss": "รถไฟ? | ขึ้น?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 17.2,
+          "tagger_ms": 312.9,
+          "spotting_ms": 334.7,
+          "n_windows": 134,
+          "tempo_factor": 1.0,
+          "face_ms": 4.0,
+          "language_ms": 1379.6,
+          "total_ms": 2051.5
+        },
+        "duration_s": 4.28,
+        "phrase": "รถไฟขบวนนี้ไปที่ไหน",
+        "n_ref_in_vocab": 3,
+        "split": "tune"
+      },
+      "VoteZ_WKxy0": {
+        "ref": [
+          "พรุ่งนี้",
+          "คุณ",
+          "ไป",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "พรุ่งนี้": true,
+          "คุณ": true,
+          "ไป": true,
+          "ไหน": false
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "น้องชาย",
+          "หนึ่ง"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "หนึ่ง"
+        ],
+        "segments": [
+          {
+            "t0": 0.96,
+            "t1": 2.88,
+            "status": "uncertain",
+            "p": 0.48,
+            "top5": [
+              "น้องชาย",
+              "ยาย",
+              "พี่ชาย",
+              "สามี",
+              "พ่อ"
+            ]
+          },
+          {
+            "t0": 2.88,
+            "t1": 3.52,
+            "status": "uncertain",
+            "p": 0.7,
+            "top5": [
+              "หนึ่ง",
+              "ขึ้น",
+              "ด",
+              "D",
+              "ฎ"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "พรุ่งนี้": null,
+          "คุณ": null,
+          "ไป": null,
+          "ไหน": null
+        },
+        "sentence": "",
+        "tentative": "หนึ่งครับ",
+        "evidence_gloss": "น้องชาย? | หนึ่ง?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 21.0,
+          "tagger_ms": 270.2,
+          "spotting_ms": 273.3,
+          "n_windows": 94,
+          "tempo_factor": 1.0,
+          "face_ms": 2.7,
+          "language_ms": 1293.7,
+          "total_ms": 1864.7
+        },
+        "duration_s": 4.2,
+        "phrase": "พรุ่งนี้คุณจะไปไหน",
+        "n_ref_in_vocab": 3,
+        "split": "test"
+      },
+      "pYOJ690bLYc": {
+        "ref": [
+          "พรุ่งนี้",
+          "พบกัน",
+          "ใหม่"
+        ],
+        "in_vocab": {
+          "พรุ่งนี้": true,
+          "พบกัน": false,
+          "ใหม่": true
+        },
+        "n_segments": 2,
+        "n_ref": 3,
+        "top1": [
+          "พี่ชาย",
+          "สังคม"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "พี่ชาย"
+        ],
+        "segments": [
+          {
+            "t0": 0.96,
+            "t1": 1.76,
+            "status": "uncertain",
+            "p": 0.28,
+            "top5": [
+              "พี่ชาย",
+              "ชาย",
+              "พ่อ",
+              "น้องชาย",
+              "เพศ"
+            ]
+          },
+          {
+            "t0": 1.76,
+            "t1": 3.2,
+            "status": "uncertain",
+            "p": 0.2,
+            "top5": [
+              "สังคม",
+              "อีก",
+              "ลาออก",
+              "แยก",
+              "ดาวเทียม"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "พรุ่งนี้": null,
+          "พบกัน": null,
+          "ใหม่": null
+        },
+        "sentence": "",
+        "tentative": "พี่ชาย [?]",
+        "evidence_gloss": "พี่ชาย? | สังคม?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 16.5,
+          "tagger_ms": 234.0,
+          "spotting_ms": 262.3,
+          "n_windows": 87,
+          "tempo_factor": 1.0,
+          "face_ms": 3.1,
+          "language_ms": 1305.7,
+          "total_ms": 1824.6
+        },
+        "duration_s": 3.52,
+        "phrase": "พรุ่งนี้พบกันใหม่",
+        "n_ref_in_vocab": 2,
+        "split": "tune"
+      },
+      "7TXH1KaqN6Y": {
+        "ref": [
+          "เมื่อวานนี้",
+          "ไป",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "เมื่อวานนี้": true,
+          "ไป": true,
+          "ไหน": false
+        },
+        "n_segments": 2,
+        "n_ref": 3,
+        "top1": [
+          "ย่า",
+          "หนึ่ง"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "หนึ่ง"
+        ],
+        "segments": [
+          {
+            "t0": 0.8,
+            "t1": 2.24,
+            "status": "uncertain",
+            "p": 0.15,
+            "top5": [
+              "ย่า",
+              "ยาย",
+              "แม่",
+              "ทำไม",
+              "เพศ"
+            ]
+          },
+          {
+            "t0": 2.24,
+            "t1": 3.36,
+            "status": "uncertain",
+            "p": 0.53,
+            "top5": [
+              "หนึ่ง",
+              "ขึ้น",
+              "โดน",
+              "อะไร",
+              "ด"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "เมื่อวานนี้": null,
+          "ไป": null,
+          "ไหน": null
+        },
+        "sentence": "",
+        "tentative": "หนึ่ง",
+        "evidence_gloss": "ย่า? | หนึ่ง?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 15.4,
+          "tagger_ms": 236.5,
+          "spotting_ms": 279.1,
+          "n_windows": 99,
+          "tempo_factor": 1.0,
+          "face_ms": 4.2,
+          "language_ms": 1199.7,
+          "total_ms": 1737.9
+        },
+        "duration_s": 3.96,
+        "phrase": "เมื่อวานไปไหนมา",
+        "n_ref_in_vocab": 2,
+        "split": "tune"
+      },
+      "qPYYMDAK0E4": {
+        "ref": [
+          "วันนี้",
+          "อากาศ",
+          "ดี"
+        ],
+        "in_vocab": {
+          "วันนี้": true,
+          "อากาศ": true,
+          "ดี": true
+        },
+        "n_segments": 1,
+        "n_ref": 3,
+        "top1": [
+          "พายุ"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "พายุ"
+        ],
+        "segments": [
+          {
+            "t0": 1.12,
+            "t1": 3.04,
+            "status": "uncertain",
+            "p": 0.19,
+            "top5": [
+              "พายุ",
+              "ต่อ",
+              "รวม",
+              "กลุ่ม",
+              "ลมพายุ"
+            ]
+          },
+          {
+            "t0": 3.04,
+            "t1": 4.96,
+            "status": "transition",
+            "p": 0.09,
+            "top5": [
+              "กลุ่ม",
+              "ใหญ่",
+              "พา",
+              "ได้",
+              "หนาว"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "วันนี้": null,
+          "อากาศ": null,
+          "ดี": null
+        },
+        "sentence": "",
+        "tentative": "พายุ",
+        "evidence_gloss": "พายุ?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 18.9,
+          "tagger_ms": 317.3,
+          "spotting_ms": 334.3,
+          "n_windows": 125,
+          "tempo_factor": 1.0,
+          "face_ms": 2.9,
+          "language_ms": 1511.7,
+          "total_ms": 2189.0
+        },
+        "duration_s": 4.96,
+        "phrase": "วันนี้อากาศดี",
+        "n_ref_in_vocab": 3,
+        "split": "tune"
+      },
+      "5euOvUImNLc": {
+        "ref": [
+          "ค่า",
+          "แท๊กซี่",
+          "เท่าไหร่"
+        ],
+        "in_vocab": {
+          "ค่า": false,
+          "แท๊กซี่": false,
+          "เท่าไหร่": false
+        },
+        "n_segments": 2,
+        "n_ref": 3,
+        "top1": [
+          "แท็กซี่",
+          "ตลาด"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "เพื่อน"
+        ],
+        "segments": [
+          {
+            "t0": 0.48,
+            "t1": 2.4,
+            "status": "uncertain",
+            "p": 0.69,
+            "top5": [
+              "แท็กซี่",
+              "เพื่อน",
+              "ไป",
+              "นา",
+              "แม่"
+            ]
+          },
+          {
+            "t0": 2.4,
+            "t1": 3.84,
+            "status": "uncertain",
+            "p": 0.17,
+            "top5": [
+              "ตลาด",
+              "ทรัพย์สิน",
+              "หมา",
+              "ข้าว",
+              "กรรมสิทธิ์"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ค่า": null,
+          "แท๊กซี่": null,
+          "เท่าไหร่": null
+        },
+        "sentence": "",
+        "tentative": "เพื่อนไป[?]",
+        "evidence_gloss": "แท็กซี่? | ตลาด?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": true,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 18.0,
+          "tagger_ms": 280.0,
+          "spotting_ms": 322.8,
+          "n_windows": 125,
+          "tempo_factor": 1.0,
+          "face_ms": 3.8,
+          "language_ms": 1223.2,
+          "total_ms": 1850.9
+        },
+        "duration_s": 4.24,
+        "phrase": "ค่าแท๊กซี่เท่าไหร่",
+        "n_ref_in_vocab": 0,
+        "split": "tune"
+      },
+      "hQ26Y7abXXI": {
+        "ref": [
+          "วันนี้",
+          "วันที่",
+          "เท่าไหร่"
+        ],
+        "in_vocab": {
+          "วันนี้": true,
+          "วันที่": true,
+          "เท่าไหร่": false
+        },
+        "n_segments": 2,
+        "n_ref": 3,
+        "top1": [
+          "วันนี้",
+          "ข้าว"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ข้าว"
+        ],
+        "segments": [
+          {
+            "t0": 1.28,
+            "t1": 2.08,
+            "status": "uncertain",
+            "p": 0.22,
+            "top5": [
+              "วันนี้",
+              "นี้",
+              "ตอนนี้",
+              "เดี๋ยวนี้",
+              "เกิด"
+            ]
+          },
+          {
+            "t0": 2.08,
+            "t1": 4.0,
+            "status": "uncertain",
+            "p": 0.47,
+            "top5": [
+              "ข้าว",
+              "วันที่",
+              "หมา",
+              "แม่",
+              "ให้"
+            ]
+          }
+        ],
+        "recall_top1": 0.3333333333333333,
+        "recall_top5": 0.6666666666666666,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 0.6666666666666666,
+        "WER_used": 1.0,
+        "best_rank": {
+          "วันนี้": 1,
+          "วันที่": 2,
+          "เท่าไหร่": null
+        },
+        "sentence": "",
+        "tentative": "ข้าว",
+        "evidence_gloss": "วันนี้? | ข้าว?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 19.3,
+          "tagger_ms": 329.5,
+          "spotting_ms": 323.5,
+          "n_windows": 118,
+          "tempo_factor": 1.0,
+          "face_ms": 4.2,
+          "language_ms": 1258.8,
+          "total_ms": 1938.3
+        },
+        "duration_s": 5.0,
+        "phrase": "วันนี้วันที่เท่าไหร่",
+        "n_ref_in_vocab": 2,
+        "split": "tune"
+      },
+      "dGysKzKLRMo": {
+        "ref": [
+          "ฉัน",
+          "กำลังจะ",
+          "กลับบ้าน"
+        ],
+        "in_vocab": {
+          "ฉัน": true,
+          "กำลังจะ": false,
+          "กลับบ้าน": true
+        },
+        "n_segments": 1,
+        "n_ref": 3,
+        "top1": [
+          "งาน"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "งาน"
+        ],
+        "segments": [
+          {
+            "t0": 0.96,
+            "t1": 2.88,
+            "status": "uncertain",
+            "p": 0.48,
+            "top5": [
+              "งาน",
+              "ทำงาน",
+              "สามารถ",
+              "หน้าที่",
+              "ฉัน"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.3333333333333333,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ฉัน": 5,
+          "กำลังจะ": null,
+          "กลับบ้าน": null
+        },
+        "sentence": "",
+        "tentative": "งาน",
+        "evidence_gloss": "งาน?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 16.3,
+          "tagger_ms": 286.0,
+          "spotting_ms": 206.9,
+          "n_windows": 73,
+          "tempo_factor": 1.0,
+          "face_ms": 3.8,
+          "language_ms": 1235.6,
+          "total_ms": 1751.5
+        },
+        "duration_s": 3.88,
+        "phrase": "ฉันกำลังจะกลับบ้าน",
+        "n_ref_in_vocab": 2,
+        "split": "tune"
+      },
+      "cZUz5aacguY": {
+        "ref": [
+          "ฉัน",
+          "อยาก",
+          "กลับ",
+          "โรงแรม"
+        ],
+        "in_vocab": {
+          "ฉัน": true,
+          "อยาก": true,
+          "กลับ": true,
+          "โรงแรม": true
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "โรงแรม",
+          "ไป"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "โรงแรม"
+        ],
+        "segments": [
+          {
+            "t0": 0.64,
+            "t1": 1.76,
+            "status": "uncertain",
+            "p": 0.49,
+            "top5": [
+              "โรงแรม",
+              "ใน",
+              "กลุ่ม",
+              "โอกาส",
+              "ประเทศไทย"
+            ]
+          },
+          {
+            "t0": 1.76,
+            "t1": 3.68,
+            "status": "unknown",
+            "p": 0.06,
+            "top5": [
+              "ไป",
+              "กลับบ้าน",
+              "นาง",
+              "อยาก",
+              "ประเทศไทย"
+            ]
+          }
+        ],
+        "recall_top1": 0.25,
+        "recall_top5": 0.5,
+        "ref_used_in_sentence": 0.25,
+        "precision_used": 1.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 0.75,
+        "best_rank": {
+          "ฉัน": null,
+          "อยาก": 4,
+          "กลับ": null,
+          "โรงแรม": 1
+        },
+        "sentence": "",
+        "tentative": "โรงแรม [?]",
+        "evidence_gloss": "โรงแรม? | [?]≈ไป",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 16.7,
+          "tagger_ms": 250.4,
+          "spotting_ms": 323.6,
+          "n_windows": 109,
+          "tempo_factor": 1.0,
+          "face_ms": 3.5,
+          "language_ms": 1442.6,
+          "total_ms": 2040.3
+        },
+        "duration_s": 3.92,
+        "phrase": "ฉันอยากกลับโรงแรม",
+        "n_ref_in_vocab": 4,
+        "split": "test"
+      },
+      "6t0-nYsKC1E": {
+        "ref": [
+          "ฉัน",
+          "อยาก",
+          "ไป",
+          "อนุสาวรีย์ชัย",
+          "สมรภูมิ"
+        ],
+        "in_vocab": {
+          "ฉัน": true,
+          "อยาก": true,
+          "ไป": true,
+          "อนุสาวรีย์ชัย": false,
+          "สมรภูมิ": false
+        },
+        "n_segments": 2,
+        "n_ref": 5,
+        "top1": [
+          "พี่",
+          "อยาก"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "อยาก"
+        ],
+        "segments": [
+          {
+            "t0": 0.8,
+            "t1": 1.92,
+            "status": "uncertain",
+            "p": 0.13,
+            "top5": [
+              "พี่",
+              "ผู้ใหญ่",
+              "พี่ชาย",
+              "ไป",
+              "ครุ่นคิด"
+            ]
+          },
+          {
+            "t0": 1.92,
+            "t1": 3.84,
+            "status": "uncertain",
+            "p": 0.58,
+            "top5": [
+              "อยาก",
+              "ต้องการ",
+              "อารมณ์",
+              "ตกลง",
+              "ไป"
+            ]
+          }
+        ],
+        "recall_top1": 0.2,
+        "recall_top5": 0.4,
+        "ref_used_in_sentence": 0.2,
+        "precision_used": 1.0,
+        "precision_accepted": null,
+        "WER_top1": 0.8,
+        "WER_used": 0.8,
+        "best_rank": {
+          "ฉัน": null,
+          "อยาก": 1,
+          "ไป": 4,
+          "อนุสาวรีย์ชัย": null,
+          "สมรภูมิ": null
+        },
+        "sentence": "",
+        "tentative": "ไม่แน่ใจว่าอยากอะไร",
+        "evidence_gloss": "พี่? | อยาก?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 16.7,
+          "tagger_ms": 252.7,
+          "spotting_ms": 286.0,
+          "n_windows": 108,
+          "tempo_factor": 1.0,
+          "face_ms": 3.4,
+          "language_ms": 1335.7,
+          "total_ms": 1897.5
+        },
+        "duration_s": 3.92,
+        "phrase": "ฉันอยากไปอนุสาวรีย์ชัยสมรภูมิ",
+        "n_ref_in_vocab": 3,
+        "split": "tune"
+      },
+      "Lom3Wa6T4us": {
+        "ref": [
+          "แล้ว",
+          "พบกัน",
+          "ใหม่"
+        ],
+        "in_vocab": {
+          "แล้ว": false,
+          "พบกัน": false,
+          "ใหม่": true
+        },
+        "n_segments": 1,
+        "n_ref": 3,
+        "top1": [
+          "สังคม"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "สังคม"
+        ],
+        "segments": [
+          {
+            "t0": 0.64,
+            "t1": 2.56,
+            "status": "uncertain",
+            "p": 0.17,
+            "top5": [
+              "สังคม",
+              "อีก",
+              "แยก",
+              "ใหม่",
+              "พบ"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.3333333333333333,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "แล้ว": null,
+          "พบกัน": null,
+          "ใหม่": 4
+        },
+        "sentence": "",
+        "tentative": "สังคม",
+        "evidence_gloss": "สังคม?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 19.6,
+          "tagger_ms": 198.1,
+          "spotting_ms": 207.2,
+          "n_windows": 73,
+          "tempo_factor": 1.0,
+          "face_ms": 3.6,
+          "language_ms": 1399.8,
+          "total_ms": 1832.3
+        },
+        "duration_s": 3.28,
+        "phrase": "แล้วพบกันใหม่",
+        "n_ref_in_vocab": 1,
+        "split": "tune"
+      },
+      "qB1BSAuWsy8": {
+        "ref": [
+          "พรุ่งนี้",
+          "ฉัน",
+          "ไปเที่ยว"
+        ],
+        "in_vocab": {
+          "พรุ่งนี้": true,
+          "ฉัน": true,
+          "ไปเที่ยว": true
+        },
+        "n_segments": 1,
+        "n_ref": 3,
+        "top1": [
+          "เที่ยว"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "เที่ยว"
+        ],
+        "segments": [
+          {
+            "t0": 0.8,
+            "t1": 2.72,
+            "status": "uncertain",
+            "p": 0.48,
+            "top5": [
+              "เที่ยว",
+              "พี่ชาย",
+              "น้องชาย",
+              "เพศ",
+              "เมื่อไร"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "พรุ่งนี้": null,
+          "ฉัน": null,
+          "ไปเที่ยว": null
+        },
+        "sentence": "",
+        "tentative": "เที่ยว",
+        "evidence_gloss": "เที่ยว?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 14.5,
+          "tagger_ms": 255.5,
+          "spotting_ms": 220.3,
+          "n_windows": 78,
+          "tempo_factor": 1.0,
+          "face_ms": 2.9,
+          "language_ms": 1315.8,
+          "total_ms": 1811.9
+        },
+        "duration_s": 3.6,
+        "phrase": "พรุ่งนี้ฉันจะไปเที่ยว",
+        "n_ref_in_vocab": 3,
+        "split": "tune"
+      },
+      "boo4sPFmEYw": {
+        "ref": [
+          "วันนี้",
+          "ไม่",
+          "ไป",
+          "ทำงาน"
+        ],
+        "in_vocab": {
+          "วันนี้": true,
+          "ไม่": false,
+          "ไป": true,
+          "ทำงาน": true
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "งาน",
+          "ห้า"
+        ],
+        "accepted": [
+          "ห้า"
+        ],
+        "used_in_sentence": [
+          "งาน",
+          "ห้า"
+        ],
+        "segments": [
+          {
+            "t0": 0.64,
+            "t1": 2.08,
+            "status": "uncertain",
+            "p": 0.18,
+            "top5": [
+              "งาน",
+              "ทำงาน",
+              "สามารถ",
+              "ยาย",
+              "นายจ้าง"
+            ]
+          },
+          {
+            "t0": 2.08,
+            "t1": 2.88,
+            "status": "accepted",
+            "p": 0.88,
+            "top5": [
+              "ห้า",
+              "ยุติ",
+              "ไป",
+              "หนึ่ง",
+              "อย่า"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.5,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": 0.0,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "วันนี้": null,
+          "ไม่": null,
+          "ไป": 3,
+          "ทำงาน": 2
+        },
+        "sentence": "งานห้า",
+        "tentative": null,
+        "evidence_gloss": "งาน? | ห้า",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 14.8,
+          "tagger_ms": 244.5,
+          "spotting_ms": 245.3,
+          "n_windows": 82,
+          "tempo_factor": 1.0,
+          "face_ms": 3.8,
+          "language_ms": 1269.3,
+          "total_ms": 1780.7
+        },
+        "duration_s": 3.44,
+        "phrase": "วันนี้ไม่ไปทำงาน",
+        "n_ref_in_vocab": 3,
+        "split": "test"
+      },
+      "vxfSxRReFrw": {
+        "ref": [
+          "เดือน",
+          "หน้า"
+        ],
+        "in_vocab": {
+          "เดือน": true,
+          "หน้า": true
+        },
+        "n_segments": 1,
+        "n_ref": 2,
+        "top1": [
+          "ไป"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "นายจ้าง"
+        ],
+        "segments": [
+          {
+            "t0": 1.28,
+            "t1": 3.2,
+            "status": "uncertain",
+            "p": 0.38,
+            "top5": [
+              "ไป",
+              "เลิก",
+              "นายจ้าง",
+              "มา",
+              "เกิน"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "เดือน": null,
+          "หน้า": null
+        },
+        "sentence": "",
+        "tentative": "นายจ้าง",
+        "evidence_gloss": "ไป?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 16.0,
+          "tagger_ms": 245.5,
+          "spotting_ms": 213.4,
+          "n_windows": 85,
+          "tempo_factor": 1.0,
+          "face_ms": 3.6,
+          "language_ms": 1201.3,
+          "total_ms": 1682.7
+        },
+        "duration_s": 4.04,
+        "phrase": "เดือนหน้า",
+        "n_ref_in_vocab": 2,
+        "split": "tune"
+      },
+      "mCOzTv9PK4E": {
+        "ref": [
+          "วันนี้",
+          "ผม",
+          "ตื่น",
+          "สาย"
+        ],
+        "in_vocab": {
+          "วันนี้": true,
+          "ผม": true,
+          "ตื่น": true,
+          "สาย": true
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "อินเดีย",
+          "แม่"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "น้องชาย"
+        ],
+        "segments": [
+          {
+            "t0": 1.44,
+            "t1": 2.08,
+            "status": "unknown",
+            "p": 0.05,
+            "top5": [
+              "อินเดีย",
+              "ส",
+              "ผม",
+              "เรียน",
+              "ตา"
+            ]
+          },
+          {
+            "t0": 2.08,
+            "t1": 4.0,
+            "status": "uncertain",
+            "p": 0.15,
+            "top5": [
+              "แม่",
+              "น้องชาย",
+              "พ่อ",
+              "ลุง",
+              "แม่สาย"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.25,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "วันนี้": null,
+          "ผม": 3,
+          "ตื่น": null,
+          "สาย": null
+        },
+        "sentence": "",
+        "tentative": "น้องชาย",
+        "evidence_gloss": "[?]≈อินเดีย | แม่?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 20.3,
+          "tagger_ms": 287.6,
+          "spotting_ms": 293.6,
+          "n_windows": 87,
+          "tempo_factor": 1.0,
+          "face_ms": 3.8,
+          "language_ms": 1350.3,
+          "total_ms": 1959.2
+        },
+        "duration_s": 4.76,
+        "phrase": "วันนี้ผมตื่นสาย",
+        "n_ref_in_vocab": 4,
+        "split": "test"
+      },
+      "l8j9tT399-4": {
+        "ref": [
+          "ห้องน้ำ",
+          "ไป",
+          "ทาง",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "ห้องน้ำ": true,
+          "ไป": true,
+          "ทาง": false,
+          "ไหน": false
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "ห้องน้ำ",
+          "ที่ไหน"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ห้องน้ำ"
+        ],
+        "segments": [
+          {
+            "t0": 1.12,
+            "t1": 3.04,
+            "status": "uncertain",
+            "p": 0.54,
+            "top5": [
+              "ห้องน้ำ",
+              "ใต้",
+              "วัด",
+              "กล่อง",
+              "ใน"
+            ]
+          },
+          {
+            "t0": 3.2,
+            "t1": 4.32,
+            "status": "uncertain",
+            "p": 0.22,
+            "top5": [
+              "ที่ไหน",
+              "อะไร",
+              "หนึ่ง",
+              "เขียว",
+              "ขึ้น"
+            ]
+          }
+        ],
+        "recall_top1": 0.25,
+        "recall_top5": 0.25,
+        "ref_used_in_sentence": 0.25,
+        "precision_used": 1.0,
+        "precision_accepted": null,
+        "WER_top1": 0.75,
+        "WER_used": 0.75,
+        "best_rank": {
+          "ห้องน้ำ": 1,
+          "ไป": null,
+          "ทาง": null,
+          "ไหน": null
+        },
+        "sentence": "",
+        "tentative": "ห้องน้ำ [?]",
+        "evidence_gloss": "ห้องน้ำ? | ที่ไหน?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": true,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 20.4,
+          "tagger_ms": 329.0,
+          "spotting_ms": 319.5,
+          "n_windows": 118,
+          "tempo_factor": 1.0,
+          "face_ms": 3.8,
+          "language_ms": 1509.8,
+          "total_ms": 2186.5
+        },
+        "duration_s": 4.88,
+        "phrase": "ห้องน้ำไปทางไหน",
+        "n_ref_in_vocab": 2,
+        "split": "tune"
+      },
+      "M_Y7KMGLSyQ": {
+        "ref": [
+          "คุณ",
+          "กลับบ้าน",
+          "กี่",
+          "โมง"
+        ],
+        "in_vocab": {
+          "คุณ": true,
+          "กลับบ้าน": true,
+          "กี่": true,
+          "โมง": false
+        },
+        "n_segments": 1,
+        "n_ref": 4,
+        "top1": [
+          "เวลา"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "เวลา"
+        ],
+        "segments": [
+          {
+            "t0": 1.12,
+            "t1": 3.04,
+            "status": "uncertain",
+            "p": 0.61,
+            "top5": [
+              "เวลา",
+              "มา",
+              "สาย",
+              "ไป",
+              "หรือ"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "คุณ": null,
+          "กลับบ้าน": null,
+          "กี่": null,
+          "โมง": null
+        },
+        "sentence": "",
+        "tentative": "เวลา",
+        "evidence_gloss": "เวลา?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 17.2,
+          "tagger_ms": 284.6,
+          "spotting_ms": 219.5,
+          "n_windows": 83,
+          "tempo_factor": 1.0,
+          "face_ms": 3.6,
+          "language_ms": 1321.1,
+          "total_ms": 1849.1
+        },
+        "duration_s": 4.0,
+        "phrase": "คุณกลับบ้านกี่โมง",
+        "n_ref_in_vocab": 3,
+        "split": "tune"
+      },
+      "f9xw1K7ET8U": {
+        "ref": [
+          "ไม่",
+          "ถูกต้อง"
+        ],
+        "in_vocab": {
+          "ไม่": false,
+          "ถูกต้อง": true
+        },
+        "n_segments": 1,
+        "n_ref": 2,
+        "top1": [
+          "จิตรกร"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "จิตรกร"
+        ],
+        "segments": [
+          {
+            "t0": 1.92,
+            "t1": 3.84,
+            "status": "uncertain",
+            "p": 0.27,
+            "top5": [
+              "จิตรกร",
+              "ผิด",
+              "วาด",
+              "ต่อสู้",
+              "จ่าย"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ไม่": null,
+          "ถูกต้อง": null
+        },
+        "sentence": "",
+        "tentative": "จิตรกร",
+        "evidence_gloss": "จิตรกร?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 16.1,
+          "tagger_ms": 243.2,
+          "spotting_ms": 210.5,
+          "n_windows": 61,
+          "tempo_factor": 1.0,
+          "face_ms": 3.6,
+          "language_ms": 1246.9,
+          "total_ms": 1724.5
+        },
+        "duration_s": 4.12,
+        "phrase": "ไม่ถูกต้อง",
+        "n_ref_in_vocab": 1,
+        "split": "tune"
+      },
+      "kTkrNxdYGEA": {
+        "ref": [
+          "ไม่",
+          "สำคัญ"
+        ],
+        "in_vocab": {
+          "ไม่": false,
+          "สำคัญ": true
+        },
+        "n_segments": 2,
+        "n_ref": 2,
+        "top1": [
+          "สอน",
+          "สำคัญ"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "สำคัญ"
+        ],
+        "segments": [
+          {
+            "t0": 0.8,
+            "t1": 1.6,
+            "status": "unknown",
+            "p": 0.11,
+            "top5": [
+              "สอน",
+              "ไข่",
+              "เกิด",
+              "ใกล้",
+              "แนวทาง"
+            ]
+          },
+          {
+            "t0": 1.6,
+            "t1": 3.52,
+            "status": "uncertain",
+            "p": 0.15,
+            "top5": [
+              "สำคัญ",
+              "ครอบครัว",
+              "ชน",
+              "กลุ่ม",
+              "กีฬา"
+            ]
+          }
+        ],
+        "recall_top1": 0.5,
+        "recall_top5": 0.5,
+        "ref_used_in_sentence": 0.5,
+        "precision_used": 1.0,
+        "precision_accepted": null,
+        "WER_top1": 0.5,
+        "WER_used": 0.5,
+        "best_rank": {
+          "ไม่": null,
+          "สำคัญ": 1
+        },
+        "sentence": "",
+        "tentative": "สำคัญครับ",
+        "evidence_gloss": "[?]≈สอน | สำคัญ?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 15.3,
+          "tagger_ms": 237.5,
+          "spotting_ms": 305.7,
+          "n_windows": 98,
+          "tempo_factor": 1.0,
+          "face_ms": 3.8,
+          "language_ms": 1332.6,
+          "total_ms": 1897.8
+        },
+        "duration_s": 3.56,
+        "phrase": "ไม่สำคัญ",
+        "n_ref_in_vocab": 1,
+        "split": "tune"
+      },
+      "PnQ9_dzcgHo": {
+        "ref": [
+          "ฉัน",
+          "ทำงาน",
+          "เกี่ยวกับ"
+        ],
+        "in_vocab": {
+          "ฉัน": true,
+          "ทำงาน": true,
+          "เกี่ยวกับ": true
+        },
+        "n_segments": 1,
+        "n_ref": 3,
+        "top1": [
+          "งาน"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "งาน"
+        ],
+        "segments": [
+          {
+            "t0": 0.96,
+            "t1": 2.88,
+            "status": "uncertain",
+            "p": 0.49,
+            "top5": [
+              "งาน",
+              "สามารถ",
+              "ทำงาน",
+              "หน้าที่",
+              "แก่"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.3333333333333333,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ฉัน": null,
+          "ทำงาน": 3,
+          "เกี่ยวกับ": null
+        },
+        "sentence": "",
+        "tentative": "งาน",
+        "evidence_gloss": "งาน?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 16.4,
+          "tagger_ms": 257.7,
+          "spotting_ms": 217.2,
+          "n_windows": 78,
+          "tempo_factor": 1.0,
+          "face_ms": 3.6,
+          "language_ms": 1350.7,
+          "total_ms": 1848.7
+        },
+        "duration_s": 4.04,
+        "phrase": "ฉันทำงานเกี่ยวกับ",
+        "n_ref_in_vocab": 3,
+        "split": "tune"
+      },
+      "Rv4aDb-zC3A": {
+        "ref": [
+          "จาก",
+          "สนามบิน",
+          "ไป",
+          "โรงแรม",
+          "ไป",
+          "ทาง",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "จาก": false,
+          "สนามบิน": true,
+          "ไป": true,
+          "โรงแรม": true,
+          "ทาง": false,
+          "ไหน": false
+        },
+        "n_segments": 3,
+        "n_ref": 7,
+        "top1": [
+          "สนามบิน",
+          "ประวัติศาสตร์",
+          "หนึ่ง"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "หนึ่ง"
+        ],
+        "segments": [
+          {
+            "t0": 0.48,
+            "t1": 1.92,
+            "status": "uncertain",
+            "p": 0.27,
+            "top5": [
+              "สนามบิน",
+              "ประเทศไทย",
+              "และ",
+              "บังเอิญ",
+              "แม่"
+            ]
+          },
+          {
+            "t0": 1.92,
+            "t1": 3.84,
+            "status": "uncertain",
+            "p": 0.36,
+            "top5": [
+              "ประวัติศาสตร์",
+              "ตลาด",
+              "ซอด้วง",
+              "ลูก",
+              "พัฒนา"
+            ]
+          },
+          {
+            "t0": 3.84,
+            "t1": 4.96,
+            "status": "uncertain",
+            "p": 0.5,
+            "top5": [
+              "หนึ่ง",
+              "ขึ้น",
+              "ดาวเทียม",
+              "ด",
+              "D"
+            ]
+          }
+        ],
+        "recall_top1": 0.14285714285714285,
+        "recall_top5": 0.14285714285714285,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 0.8571428571428571,
+        "WER_used": 1.0,
+        "best_rank": {
+          "จาก": null,
+          "สนามบิน": 1,
+          "ไป": null,
+          "โรงแรม": null,
+          "ทาง": null,
+          "ไหน": null
+        },
+        "sentence": "",
+        "tentative": "หนึ่ง",
+        "evidence_gloss": "สนามบิน? | ประวัติศาสตร์? | หนึ่ง?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 21.0,
+          "tagger_ms": 350.0,
+          "spotting_ms": 444.8,
+          "n_windows": 175,
+          "tempo_factor": 1.0,
+          "face_ms": 3.1,
+          "language_ms": 1237.1,
+          "total_ms": 2059.2
+        },
+        "duration_s": 5.6,
+        "phrase": "จากสนามบินไปโรงแรมไปทางไหน",
+        "n_ref_in_vocab": 4,
+        "split": "test"
+      },
+      "vWKCfQKVpdI": {
+        "ref": [
+          "สถานีรถไฟ",
+          "ไป",
+          "ทาง",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "สถานีรถไฟ": true,
+          "ไป": true,
+          "ทาง": false,
+          "ไหน": false
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "ตลาด",
+          "หนึ่ง"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ตลาด"
+        ],
+        "segments": [
+          {
+            "t0": 0.96,
+            "t1": 2.88,
+            "status": "uncertain",
+            "p": 0.65,
+            "top5": [
+              "ตลาด",
+              "ประเทศไทย",
+              "ใน",
+              "สถานีรถไฟ",
+              "คำพิพากษา"
+            ]
+          },
+          {
+            "t0": 2.88,
+            "t1": 4.0,
+            "status": "uncertain",
+            "p": 0.29,
+            "top5": [
+              "หนึ่ง",
+              "ด",
+              "ขึ้น",
+              "D",
+              "ปู่"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.25,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "สถานีรถไฟ": 4,
+          "ไป": null,
+          "ทาง": null,
+          "ไหน": null
+        },
+        "sentence": "",
+        "tentative": "ตลาด [?]",
+        "evidence_gloss": "ตลาด? | หนึ่ง?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 19.2,
+          "tagger_ms": 320.4,
+          "spotting_ms": 324.4,
+          "n_windows": 122,
+          "tempo_factor": 1.0,
+          "face_ms": 3.8,
+          "language_ms": 1247.3,
+          "total_ms": 1918.7
+        },
+        "duration_s": 4.96,
+        "phrase": "สถานีรถไฟไปทางไหน",
+        "n_ref_in_vocab": 2,
+        "split": "tune"
+      },
+      "ke3ULq411-w": {
+        "ref": [
+          "รถไฟฟ้า",
+          "บีทีเอส"
+        ],
+        "in_vocab": {
+          "รถไฟฟ้า": true,
+          "บีทีเอส": false
+        },
+        "n_segments": 1,
+        "n_ref": 2,
+        "top1": [
+          "รถไฟฟ้า"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "รถไฟฟ้า"
+        ],
+        "segments": [
+          {
+            "t0": 0.48,
+            "t1": 2.4,
+            "status": "uncertain",
+            "p": 0.41,
+            "top5": [
+              "รถไฟฟ้า",
+              "ต้นทุน",
+              "จับ",
+              "รถไฟฟ้า (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)",
+              "เปิด"
+            ]
+          }
+        ],
+        "recall_top1": 0.5,
+        "recall_top5": 0.5,
+        "ref_used_in_sentence": 0.5,
+        "precision_used": 1.0,
+        "precision_accepted": null,
+        "WER_top1": 0.5,
+        "WER_used": 0.5,
+        "best_rank": {
+          "รถไฟฟ้า": 1,
+          "บีทีเอส": null
+        },
+        "sentence": "",
+        "tentative": "รถไฟฟ้า",
+        "evidence_gloss": "รถไฟฟ้า?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 13.2,
+          "tagger_ms": 211.2,
+          "spotting_ms": 209.3,
+          "n_windows": 71,
+          "tempo_factor": 1.0,
+          "face_ms": 2.9,
+          "language_ms": 1430.0,
+          "total_ms": 1870.0
+        },
+        "duration_s": 2.92,
+        "phrase": "รถไฟฟ้าบีทีเอส",
+        "n_ref_in_vocab": 1,
+        "split": "tune"
+      },
+      "ho_OsYZi5Dk": {
+        "ref": [
+          "ฉัน",
+          "ไม่",
+          "สบาย"
+        ],
+        "in_vocab": {
+          "ฉัน": true,
+          "ไม่": false,
+          "สบาย": false
+        },
+        "n_segments": 1,
+        "n_ref": 3,
+        "top1": [
+          "ป่วย"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ไม่สบาย"
+        ],
+        "segments": [
+          {
+            "t0": 1.28,
+            "t1": 3.2,
+            "status": "uncertain",
+            "p": 0.66,
+            "top5": [
+              "ป่วย",
+              "โต",
+              "ไม่สบาย",
+              "คนไข้",
+              "ตระกร้อ"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ฉัน": null,
+          "ไม่": null,
+          "สบาย": null
+        },
+        "sentence": "",
+        "tentative": "ไม่สบาย",
+        "evidence_gloss": "ป่วย?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 14.5,
+          "tagger_ms": 241.6,
+          "spotting_ms": 211.5,
+          "n_windows": 73,
+          "tempo_factor": 1.0,
+          "face_ms": 3.5,
+          "language_ms": 1334.7,
+          "total_ms": 1808.5
+        },
+        "duration_s": 3.64,
+        "phrase": "ฉันไม่สบาย",
+        "n_ref_in_vocab": 1,
+        "split": "test"
+      },
+      "uBiCtXM2xCg": {
+        "ref": [
+          "ฉัน",
+          "ชื่อ"
+        ],
+        "in_vocab": {
+          "ฉัน": true,
+          "ชื่อ": true
+        },
+        "n_segments": 1,
+        "n_ref": 2,
+        "top1": [
+          "สามารถ"
+        ],
+        "accepted": [],
+        "used_in_sentence": [],
+        "segments": [
+          {
+            "t0": 0.96,
+            "t1": 2.88,
+            "status": "unknown",
+            "p": 0.07,
+            "top5": [
+              "สามารถ",
+              "ยาก",
+              "ฉัน",
+              "แก่",
+              "ใน"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.5,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": null,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ฉัน": 3,
+          "ชื่อ": null
+        },
+        "sentence": "",
+        "tentative": "[?]",
+        "evidence_gloss": "[?]≈สามารถ",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 16.1,
+          "tagger_ms": 223.6,
+          "spotting_ms": 218.7,
+          "n_windows": 75,
+          "tempo_factor": 1.0,
+          "face_ms": 2.8,
+          "language_ms": 1183.9,
+          "total_ms": 1648.1
+        },
+        "duration_s": 3.52,
+        "phrase": "ฉันชื่อ",
+        "n_ref_in_vocab": 2,
+        "split": "test"
+      },
+      "DMZPJ1yJjHw": {
+        "ref": [
+          "ไม่",
+          "ยอมรับ"
+        ],
+        "in_vocab": {
+          "ไม่": false,
+          "ยอมรับ": true
+        },
+        "n_segments": 1,
+        "n_ref": 2,
+        "top1": [
+          "ยอม"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ยอม"
+        ],
+        "segments": [
+          {
+            "t0": 0.32,
+            "t1": 2.24,
+            "status": "uncertain",
+            "p": 0.49,
+            "top5": [
+              "ยอม",
+              "ยอมรับ",
+              "ตัดสิน",
+              "ผี",
+              "ส่ง"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.5,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ไม่": null,
+          "ยอมรับ": 2
+        },
+        "sentence": "",
+        "tentative": "ยอม",
+        "evidence_gloss": "ยอม?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 11.3,
+          "tagger_ms": 163.8,
+          "spotting_ms": 213.4,
+          "n_windows": 59,
+          "tempo_factor": 1.0,
+          "face_ms": 3.6,
+          "language_ms": 1292.1,
+          "total_ms": 1686.8
+        },
+        "duration_s": 2.64,
+        "phrase": "ไม่ยอมรับ",
+        "n_ref_in_vocab": 1,
+        "split": "tune"
+      },
+      "JRiXwxNWkwk": {
+        "ref": [
+          "ปี"
+        ],
+        "in_vocab": {
+          "ปี": true
+        },
+        "n_segments": 2,
+        "n_ref": 1,
+        "top1": [
+          "ปี",
+          "นี้"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "วันนี้"
+        ],
+        "segments": [
+          {
+            "t0": 1.12,
+            "t1": 2.56,
+            "status": "uncertain",
+            "p": 0.21,
+            "top5": [
+              "ปี",
+              "อายุ",
+              "งาน",
+              "ทศวรรษ",
+              "ศตวรรษ"
+            ]
+          },
+          {
+            "t0": 2.56,
+            "t1": 3.68,
+            "status": "uncertain",
+            "p": 0.54,
+            "top5": [
+              "นี้",
+              "วันนี้",
+              "ตอนนี้",
+              "เดี๋ยวนี้",
+              "เช้า"
+            ]
+          }
+        ],
+        "recall_top1": 1.0,
+        "recall_top5": 1.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ปี": 1
+        },
+        "sentence": "",
+        "tentative": "วันนี้",
+        "evidence_gloss": "ปี? | นี้?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 20.9,
+          "tagger_ms": 263.4,
+          "spotting_ms": 255.2,
+          "n_windows": 97,
+          "tempo_factor": 1.0,
+          "face_ms": 3.8,
+          "language_ms": 1251.0,
+          "total_ms": 1797.3
+        },
+        "duration_s": 4.16,
+        "phrase": "ปีนี้",
+        "n_ref_in_vocab": 1,
+        "split": "tune"
+      },
+      "MVHxnF48_34": {
+        "ref": [
+          "เดือน"
+        ],
+        "in_vocab": {
+          "เดือน": true
+        },
+        "n_segments": 2,
+        "n_ref": 1,
+        "top1": [
+          "เดือน",
+          "นี้"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "วันนี้"
+        ],
+        "segments": [
+          {
+            "t0": 0.96,
+            "t1": 2.08,
+            "status": "unknown",
+            "p": 0.11,
+            "top5": [
+              "เดือน",
+              "มกราคม",
+              "มีด",
+              "เพื่อน",
+              "กล้วย"
+            ]
+          },
+          {
+            "t0": 2.08,
+            "t1": 3.2,
+            "status": "uncertain",
+            "p": 0.46,
+            "top5": [
+              "นี้",
+              "วันนี้",
+              "ตอนนี้",
+              "เดี๋ยวนี้",
+              "เต้น"
+            ]
+          }
+        ],
+        "recall_top1": 1.0,
+        "recall_top5": 1.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "เดือน": 1
+        },
+        "sentence": "",
+        "tentative": "วันนี้",
+        "evidence_gloss": "[?]≈เดือน | นี้?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 15.9,
+          "tagger_ms": 266.0,
+          "spotting_ms": 231.7,
+          "n_windows": 85,
+          "tempo_factor": 1.0,
+          "face_ms": 3.3,
+          "language_ms": 1329.6,
+          "total_ms": 1849.3
+        },
+        "duration_s": 4.0,
+        "phrase": "เดือนนี้",
+        "n_ref_in_vocab": 1,
+        "split": "tune"
+      },
+      "dMTxI45Vlz8": {
+        "ref": [
+          "หมอชิต",
+          "ไป",
+          "ทาง",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "หมอชิต": false,
+          "ไป": true,
+          "ทาง": false,
+          "ไหน": false
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "ทรัพย์สิน",
+          "หนึ่ง"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "หนึ่ง"
+        ],
+        "segments": [
+          {
+            "t0": 0.48,
+            "t1": 2.4,
+            "status": "uncertain",
+            "p": 0.23,
+            "top5": [
+              "ทรัพย์สิน",
+              "และ",
+              "ธ",
+              "บริษัท",
+              "สามี"
+            ]
+          },
+          {
+            "t0": 2.4,
+            "t1": 3.04,
+            "status": "uncertain",
+            "p": 0.6,
+            "top5": [
+              "หนึ่ง",
+              "ด",
+              "ขึ้น",
+              "D",
+              "ฎ"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "หมอชิต": null,
+          "ไป": null,
+          "ทาง": null,
+          "ไหน": null
+        },
+        "sentence": "",
+        "tentative": "หนึ่ง",
+        "evidence_gloss": "ทรัพย์สิน? | หนึ่ง?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 14.3,
+          "tagger_ms": 241.2,
+          "spotting_ms": 312.2,
+          "n_windows": 97,
+          "tempo_factor": 1.0,
+          "face_ms": 3.8,
+          "language_ms": 1264.6,
+          "total_ms": 1838.9
+        },
+        "duration_s": 3.48,
+        "phrase": "หมอชิตไปทางไหน",
+        "n_ref_in_vocab": 1,
+        "split": "test"
+      },
+      "NXEgS_V7A-M": {
+        "ref": [
+          "ลิฟต์",
+          "ไป",
+          "ทาง",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "ลิฟต์": false,
+          "ไป": true,
+          "ทาง": false,
+          "ไหน": false
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "ช่วย",
+          "ปู่"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ปู่"
+        ],
+        "segments": [
+          {
+            "t0": 1.44,
+            "t1": 2.56,
+            "status": "unknown",
+            "p": 0.1,
+            "top5": [
+              "ช่วย",
+              "ฝุ่น",
+              "โปรแกรม",
+              "เรียน",
+              "พุทธศาสนา"
+            ]
+          },
+          {
+            "t0": 2.56,
+            "t1": 3.68,
+            "status": "uncertain",
+            "p": 0.14,
+            "top5": [
+              "ปู่",
+              "ฎ",
+              "ป้า",
+              "หนึ่ง",
+              "แม่"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ลิฟต์": null,
+          "ไป": null,
+          "ทาง": null,
+          "ไหน": null
+        },
+        "sentence": "",
+        "tentative": "ปู่",
+        "evidence_gloss": "[?]≈ช่วย | ปู่?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 16.3,
+          "tagger_ms": 236.2,
+          "spotting_ms": 224.9,
+          "n_windows": 77,
+          "tempo_factor": 1.0,
+          "face_ms": 3.0,
+          "language_ms": 1313.6,
+          "total_ms": 1797.0
+        },
+        "duration_s": 3.8,
+        "phrase": "ลิฟต์ไปทางไหน",
+        "n_ref_in_vocab": 1,
+        "split": "test"
+      },
+      "Z_x8STZDYEE": {
+        "ref": [
+          "เรือ",
+          "ลำ",
+          "ไป",
+          "ที่ไหน"
+        ],
+        "in_vocab": {
+          "เรือ": true,
+          "ลำ": false,
+          "ไป": true,
+          "ที่ไหน": true
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "อนุญาต",
+          "ป้า"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ป้า"
+        ],
+        "segments": [
+          {
+            "t0": 0.64,
+            "t1": 2.08,
+            "status": "unknown",
+            "p": 0.11,
+            "top5": [
+              "อนุญาต",
+              "เรือ",
+              "ฝ่าย",
+              "เกิด",
+              "ร้อน"
+            ]
+          },
+          {
+            "t0": 2.24,
+            "t1": 3.36,
+            "status": "uncertain",
+            "p": 0.26,
+            "top5": [
+              "ป้า",
+              "หนึ่ง",
+              "ปู่",
+              "ขึ้น",
+              "ด"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.25,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "เรือ": 2,
+          "ลำ": null,
+          "ไป": null,
+          "ที่ไหน": null
+        },
+        "sentence": "",
+        "tentative": "ป้า",
+        "evidence_gloss": "[?]≈อนุญาต | ป้า?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 15.8,
+          "tagger_ms": 237.7,
+          "spotting_ms": 273.2,
+          "n_windows": 107,
+          "tempo_factor": 1.0,
+          "face_ms": 3.0,
+          "language_ms": 1258.4,
+          "total_ms": 1791.5
+        },
+        "duration_s": 3.92,
+        "phrase": "เรือลำนี้ไปที่ไหน",
+        "n_ref_in_vocab": 3,
+        "split": "test"
+      },
+      "BCijlp93YxY": {
+        "ref": [
+          "ประชาสัมพันธ์",
+          "ไป",
+          "ทาง",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "ประชาสัมพันธ์": true,
+          "ไป": true,
+          "ทาง": false,
+          "ไหน": false
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "ประชาสัมพันธ์",
+          "ที่ไหน"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "ประชาสัมพันธ์"
+        ],
+        "segments": [
+          {
+            "t0": 0.96,
+            "t1": 2.88,
+            "status": "uncertain",
+            "p": 0.72,
+            "top5": [
+              "ประชาสัมพันธ์",
+              "ประชาธิปไตย",
+              "แบบ",
+              "ประเทศไทย",
+              "กรมประชาสัมพันธ์"
+            ]
+          },
+          {
+            "t0": 2.88,
+            "t1": 4.0,
+            "status": "uncertain",
+            "p": 0.21,
+            "top5": [
+              "ที่ไหน",
+              "อะไร",
+              "หนึ่ง",
+              "ขึ้น",
+              "ป้า"
+            ]
+          }
+        ],
+        "recall_top1": 0.25,
+        "recall_top5": 0.25,
+        "ref_used_in_sentence": 0.25,
+        "precision_used": 1.0,
+        "precision_accepted": null,
+        "WER_top1": 0.75,
+        "WER_used": 0.75,
+        "best_rank": {
+          "ประชาสัมพันธ์": 1,
+          "ไป": null,
+          "ทาง": null,
+          "ไหน": null
+        },
+        "sentence": "",
+        "tentative": "ประชาสัมพันธ์ [?]",
+        "evidence_gloss": "ประชาสัมพันธ์? | ที่ไหน?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 17.7,
+          "tagger_ms": 276.9,
+          "spotting_ms": 321.1,
+          "n_windows": 119,
+          "tempo_factor": 1.0,
+          "face_ms": 3.8,
+          "language_ms": 1464.1,
+          "total_ms": 2087.3
+        },
+        "duration_s": 4.56,
+        "phrase": "ประชาสัมพันธ์ไปทางไหน",
+        "n_ref_in_vocab": 2,
+        "split": "test"
+      },
+      "zBlCW7sdIiI": {
+        "ref": [
+          "ท่าเรือ",
+          "ไป",
+          "ทาง",
+          "ไหน"
+        ],
+        "in_vocab": {
+          "ท่าเรือ": true,
+          "ไป": true,
+          "ทาง": false,
+          "ไหน": false
+        },
+        "n_segments": 2,
+        "n_ref": 4,
+        "top1": [
+          "ครอบครัว",
+          "หนึ่ง"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "หนึ่ง"
+        ],
+        "segments": [
+          {
+            "t0": 0.8,
+            "t1": 2.72,
+            "status": "uncertain",
+            "p": 0.14,
+            "top5": [
+              "ครอบครัว",
+              "พ่อแม่",
+              "มนุษย์อวกาศ",
+              "พัสดุ",
+              "ใน"
+            ]
+          },
+          {
+            "t0": 2.72,
+            "t1": 3.84,
+            "status": "uncertain",
+            "p": 0.65,
+            "top5": [
+              "หนึ่ง",
+              "ขึ้น",
+              "อะไร",
+              "ที่ไหน",
+              "ป้า"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.0,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ท่าเรือ": null,
+          "ไป": null,
+          "ทาง": null,
+          "ไหน": null
+        },
+        "sentence": "",
+        "tentative": "หนึ่ง",
+        "evidence_gloss": "ครอบครัว? | หนึ่ง?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "neutral"
+        },
+        "timings_ms": {
+          "schema_ms": 16.8,
+          "tagger_ms": 258.0,
+          "spotting_ms": 323.3,
+          "n_windows": 123,
+          "tempo_factor": 1.0,
+          "face_ms": 3.8,
+          "language_ms": 1226.6,
+          "total_ms": 1832.3
+        },
+        "duration_s": 4.32,
+        "phrase": "ท่าเรือไปทางไหน",
+        "n_ref_in_vocab": 2,
+        "split": "test"
+      },
+      "3uwyjK6wZ7A": {
+        "ref": [
+          "ฉัน",
+          "กลับ",
+          "โดย",
+          "รถไฟฟ้า"
+        ],
+        "in_vocab": {
+          "ฉัน": true,
+          "กลับ": true,
+          "โดย": false,
+          "รถไฟฟ้า": true
+        },
+        "n_segments": 1,
+        "n_ref": 4,
+        "top1": [
+          "กลับบ้าน"
+        ],
+        "accepted": [],
+        "used_in_sentence": [],
+        "segments": [
+          {
+            "t0": 0.64,
+            "t1": 2.56,
+            "status": "unknown",
+            "p": 0.12,
+            "top5": [
+              "กลับบ้าน",
+              "รถไฟฟ้า",
+              "ต้นทุน",
+              "เปิด",
+              "งบประมาณ"
+            ]
+          }
+        ],
+        "recall_top1": 0.0,
+        "recall_top5": 0.25,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": null,
+        "precision_accepted": null,
+        "WER_top1": 1.0,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ฉัน": null,
+          "กลับ": null,
+          "โดย": null,
+          "รถไฟฟ้า": 2
+        },
+        "sentence": "",
+        "tentative": "[?]",
+        "evidence_gloss": "[?]≈กลับบ้าน",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "angry"
+        },
+        "timings_ms": {
+          "schema_ms": 15.5,
+          "tagger_ms": 257.0,
+          "spotting_ms": 223.6,
+          "n_windows": 85,
+          "tempo_factor": 1.0,
+          "face_ms": 3.6,
+          "language_ms": 1333.2,
+          "total_ms": 1835.9
+        },
+        "duration_s": 3.8,
+        "phrase": "ฉันจะกลับโดยรถไฟฟ้า",
+        "n_ref_in_vocab": 3,
+        "split": "test"
+      },
+      "wbE8RDqRGdI": {
+        "ref": [
+          "ฉัน",
+          "เรียก",
+          "แท๊กซี่"
+        ],
+        "in_vocab": {
+          "ฉัน": true,
+          "เรียก": true,
+          "แท๊กซี่": false
+        },
+        "n_segments": 2,
+        "n_ref": 3,
+        "top1": [
+          "หลัง",
+          "เรียก"
+        ],
+        "accepted": [],
+        "used_in_sentence": [
+          "หลัง"
+        ],
+        "segments": [
+          {
+            "t0": 0.32,
+            "t1": 1.76,
+            "status": "uncertain",
+            "p": 0.23,
+            "top5": [
+              "หลัง",
+              "นี้",
+              "เกิด",
+              "แท็กซี่",
+              "อะไร"
+            ]
+          },
+          {
+            "t0": 1.76,
+            "t1": 3.2,
+            "status": "uncertain",
+            "p": 0.19,
+            "top5": [
+              "เรียก",
+              "น้อง",
+              "ไป",
+              "อย่า",
+              "เดิน"
+            ]
+          }
+        ],
+        "recall_top1": 0.3333333333333333,
+        "recall_top5": 0.3333333333333333,
+        "ref_used_in_sentence": 0.0,
+        "precision_used": 0.0,
+        "precision_accepted": null,
+        "WER_top1": 0.6666666666666666,
+        "WER_used": 1.0,
+        "best_rank": {
+          "ฉัน": null,
+          "เรียก": 1,
+          "แท๊กซี่": null
+        },
+        "sentence": "",
+        "tentative": "หลัง [?]",
+        "evidence_gloss": "หลัง? | เรียก?",
+        "provider": "openai",
+        "face": {
+          "question_yesno": false,
+          "negation": false,
+          "emotion": "happy"
+        },
+        "timings_ms": {
+          "schema_ms": 13.9,
+          "tagger_ms": 200.9,
+          "spotting_ms": 261.0,
+          "n_windows": 90,
+          "tempo_factor": 1.0,
+          "face_ms": 3.0,
+          "language_ms": 1307.9,
+          "total_ms": 1789.6
+        },
+        "duration_s": 3.24,
+        "phrase": "ฉันจะเรียกแท๊กซี่",
+        "n_ref_in_vocab": 2,
+        "split": "tune"
+      }
+    }
+  }
+}

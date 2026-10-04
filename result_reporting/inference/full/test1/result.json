@@ -1,0 +1,543 @@
+{
+  "title": "test1",
+  "fps": 25.0,
+  "n_frames": 819,
+  "duration_s": 32.76,
+  "signer_visible_frac": 0.3894993894993895,
+  "signing_frac": 0.34554334554334554,
+  "mirrored_to_right_hand": false,
+  "segments": [
+    {
+      "f0": 136,
+      "f1": 184,
+      "z": 6.213230308911448,
+      "wins": [
+        [
+          136,
+          184
+        ]
+      ],
+      "nearest": "สวัสดี",
+      "candidates": [
+        {
+          "word": "สวัสดี",
+          "score": 0.5995,
+          "support": 0.8667
+        },
+        {
+          "word": "ก่อน",
+          "score": 0.4169,
+          "support": 0.8287
+        },
+        {
+          "word": "พี่",
+          "score": 0.4385,
+          "support": 0.8276
+        },
+        {
+          "word": "ครุ่นคิด",
+          "score": 0.5827,
+          "support": 0.8269
+        },
+        {
+          "word": "อิสราเอล",
+          "score": 0.5355,
+          "support": 0.7845
+        }
+      ],
+      "score": 0.5994606614112854,
+      "margin": 0.18254628777503967,
+      "null_gap": -0.5206376910209656,
+      "p_sign": 0.7632380488161289,
+      "agree": 1.0,
+      "support_ratio": 1.0115104533709185,
+      "window_top1": "พี่",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.624511657291118,
+      "status": "uncertain",
+      "t0": 5.44,
+      "t1": 7.36
+    },
+    {
+      "f0": 248,
+      "f1": 276,
+      "z": 3.93278277847564,
+      "wins": [
+        [
+          248,
+          276
+        ]
+      ],
+      "nearest": "ไป",
+      "candidates": [
+        {
+          "word": "ไป",
+          "score": 0.3716,
+          "support": 0.8554
+        },
+        {
+          "word": "เล่น",
+          "score": 0.4195,
+          "support": 0.7899
+        },
+        {
+          "word": "สบายดี",
+          "score": 0.7867,
+          "support": 0.7867
+        },
+        {
+          "word": "กลับ",
+          "score": 0.3777,
+          "support": 0.7824
+        },
+        {
+          "word": "ทำงาน",
+          "score": 0.3374,
+          "support": 0.7297
+        }
+      ],
+      "score": 0.3716013729572296,
+      "margin": -0.04793733358383179,
+      "null_gap": -0.2851107716560364,
+      "p_sign": 0.921813803059714,
+      "agree": 1.0,
+      "support_ratio": 1.136280646844027,
+      "window_top1": "ไป",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.35056595447006605,
+      "status": "uncertain",
+      "t0": 9.92,
+      "t1": 11.04
+    },
+    {
+      "f0": 316,
+      "f1": 332,
+      "z": 8.122727144135963,
+      "wins": [
+        [
+          316,
+          332
+        ]
+      ],
+      "nearest": "ฉัน",
+      "candidates": [
+        {
+          "word": "ฉัน",
+          "score": 0.7161,
+          "support": 1.1446
+        },
+        {
+          "word": "เกิด",
+          "score": 0.6857,
+          "support": 1.1131
+        },
+        {
+          "word": "ข้าว",
+          "score": 0.653,
+          "support": 1.0077
+        },
+        {
+          "word": "กิน",
+          "score": 0.616,
+          "support": 1.0022
+        },
+        {
+          "word": "ชอบ",
+          "score": 0.6142,
+          "support": 0.9914
+        }
+      ],
+      "score": 0.7160787582397461,
+      "margin": 0.030389070510864258,
+      "null_gap": -0.14520949125289917,
+      "p_sign": 0.9618259370326996,
+      "agree": 1.0,
+      "support_ratio": 1.035546801725755,
+      "window_top1": "ฉัน",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.4034108334657993,
+      "status": "uncertain",
+      "t0": 12.64,
+      "t1": 13.28
+    },
+    {
+      "f0": 332,
+      "f1": 368,
+      "z": 5.675794855085189,
+      "wins": [
+        [
+          332,
+          368
+        ]
+      ],
+      "nearest": "ชอบ",
+      "candidates": [
+        {
+          "word": "ชอบ",
+          "score": 0.4482,
+          "support": 0.8255
+        },
+        {
+          "word": "ไหว",
+          "score": 0.4571,
+          "support": 0.7679
+        },
+        {
+          "word": "ท้อง",
+          "score": 0.4457,
+          "support": 0.7585
+        },
+        {
+          "word": "สะดือ",
+          "score": 0.5419,
+          "support": 0.7546
+        },
+        {
+          "word": "ฉัน",
+          "score": 0.3174,
+          "support": 0.7459
+        }
+      ],
+      "score": 0.44824641942977905,
+      "margin": -0.00883638858795166,
+      "null_gap": -0.4728979468345642,
+      "p_sign": 0.9759476638502544,
+      "agree": 0.0,
+      "support_ratio": 1.0088675411047479,
+      "window_top1": "ชอบ",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.15121792574963597,
+      "status": "uncertain",
+      "t0": 13.28,
+      "t1": 14.72
+    },
+    {
+      "f0": 412,
+      "f1": 460,
+      "z": 3.49520724384494,
+      "wins": [
+        [
+          412,
+          460
+        ]
+      ],
+      "nearest": "โลก",
+      "candidates": [
+        {
+          "word": "โลก",
+          "score": 0.3846,
+          "support": 0.778
+        },
+        {
+          "word": "น้ำตา",
+          "score": 0.4557,
+          "support": 0.7516
+        },
+        {
+          "word": "ไป",
+          "score": 0.2541,
+          "support": 0.7378
+        },
+        {
+          "word": "ฉ",
+          "score": 0.5058,
+          "support": 0.7334
+        },
+        {
+          "word": "หก",
+          "score": 0.4146,
+          "support": 0.7267
+        }
+      ],
+      "score": 0.3845757246017456,
+      "margin": -0.07116487622261047,
+      "null_gap": -0.29248765110969543,
+      "p_sign": 0.728205376615127,
+      "agree": 1.0,
+      "support_ratio": 1.3080433542498573,
+      "window_top1": "โลก",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.34452251830931124,
+      "status": "uncertain",
+      "t0": 16.48,
+      "t1": 18.4
+    },
+    {
+      "f0": 496,
+      "f1": 544,
+      "z": 9.005655568481064,
+      "wins": [
+        [
+          496,
+          544
+        ]
+      ],
+      "nearest": "แมว",
+      "candidates": [
+        {
+          "word": "แมว",
+          "score": 0.8024,
+          "support": 1.086
+        },
+        {
+          "word": "ลิงก์",
+          "score": 0.6824,
+          "support": 0.8706
+        },
+        {
+          "word": "ไป",
+          "score": 0.274,
+          "support": 0.7578
+        },
+        {
+          "word": "ฉัน",
+          "score": 0.3221,
+          "support": 0.7506
+        },
+        {
+          "word": "ใน",
+          "score": 0.2067,
+          "support": 0.7065
+        }
+      ],
+      "score": 0.8023526668548584,
+      "margin": 0.11998242139816284,
+      "null_gap": -0.5436166524887085,
+      "p_sign": 0.945646958053112,
+      "agree": 1.0,
+      "support_ratio": 1.3721827916822313,
+      "window_top1": "แมว",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.6471222067565714,
+      "status": "uncertain",
+      "t0": 19.84,
+      "t1": 21.76
+    },
+    {
+      "f0": 588,
+      "f1": 636,
+      "z": 5.939642038022247,
+      "wins": [
+        [
+          588,
+          636
+        ]
+      ],
+      "nearest": "เหมือนกัน",
+      "candidates": [
+        {
+          "word": "เหมือนกัน",
+          "score": 0.5232,
+          "support": 0.9242
+        },
+        {
+          "word": "รวม",
+          "score": 0.4443,
+          "support": 0.8262
+        },
+        {
+          "word": "กลุ่ม",
+          "score": 0.35,
+          "support": 0.749
+        },
+        {
+          "word": "ยัง",
+          "score": 0.3048,
+          "support": 0.7418
+        },
+        {
+          "word": "ต่อ",
+          "score": 0.3047,
+          "support": 0.7254
+        }
+      ],
+      "score": 0.5232194662094116,
+      "margin": 0.0789603590965271,
+      "null_gap": -0.5130339860916138,
+      "p_sign": 0.9245555872718493,
+      "agree": 1.0,
+      "support_ratio": 1.1705365853658538,
+      "window_top1": "กลุ่ม",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.5419089685460169,
+      "status": "uncertain",
+      "t0": 23.52,
+      "t1": 25.44
+    },
+    {
+      "f0": 680,
+      "f1": 728,
+      "z": 4.262495001373751,
+      "wins": [
+        [
+          680,
+          728
+        ]
+      ],
+      "nearest": "โฆษณา",
+      "candidates": [
+        {
+          "word": "โฆษณา",
+          "score": 0.3303,
+          "support": 0.6369
+        },
+        {
+          "word": "แมว",
+          "score": 0.4037,
+          "support": 0.6873
+        },
+        {
+          "word": "โฆษก",
+          "score": 0.3742,
+          "support": 0.6368
+        },
+        {
+          "word": "ใหญ่",
+          "score": 0.2399,
+          "support": 0.6316
+        },
+        {
+          "word": "บาง",
+          "score": 0.2264,
+          "support": 0.6299
+        }
+      ],
+      "score": 0.4036811590194702,
+      "margin": 0.07333222031593323,
+      "null_gap": -0.4380784332752228,
+      "p_sign": 0.8499630058805149,
+      "agree": 1.0,
+      "support_ratio": 1.7951836536122596,
+      "window_top1": "โฆษก",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.5773959152602657,
+      "status": "uncertain",
+      "t0": 27.2,
+      "t1": 29.12,
+      "repeat_of": "แมว"
+    }
+  ],
+  "face": {
+    "face_frames": 0.39185750636132316,
+    "question_furrow": false,
+    "question_yesno": false,
+    "question_wh": false,
+    "negation": false,
+    "affirmation": false,
+    "emotion": "neutral",
+    "emotion_th": "เป็นกลาง",
+    "emotion_scores": {
+      "happy": 0.128,
+      "sad": 0.004,
+      "angry": 0.105,
+      "surprise": 0.0,
+      "fear": 0.004,
+      "disgust": 0.0
+    },
+    "intensity": 0.0,
+    "cues": {
+      "brow_raise_tail": 0.044,
+      "brow_raise_peak": 0.103,
+      "brow_furrow": 1.128,
+      "head_forward_tail": -0.041,
+      "head_shake_cycles": 0,
+      "head_nod_cycles": 1,
+      "mouth_open_frac": 0.0,
+      "cheek_puff": 0.0,
+      "duration_s": 32.74,
+      "brow_furrow_rel": 0.004,
+      "furrow_baseline": "hands_down_frames"
+    },
+    "per_segment": [
+      {
+        "brow": 0.25,
+        "furrow": -0.09,
+        "smile": 0.0,
+        "mouth": 0.024
+      },
+      {
+        "brow": -1.14,
+        "furrow": 2.95,
+        "smile": 0.093,
+        "mouth": 0.002
+      },
+      {
+        "brow": 0.04,
+        "furrow": -0.04,
+        "smile": 0.0,
+        "mouth": 0.023
+      },
+      {
+        "brow": -0.52,
+        "furrow": 0.55,
+        "smile": 0.1,
+        "mouth": 0.003
+      },
+      {
+        "brow": 0.56,
+        "furrow": -0.26,
+        "smile": 0.0,
+        "mouth": 0.01
+      },
+      {
+        "brow": 1.19,
+        "furrow": -0.36,
+        "smile": 0.002,
+        "mouth": 0.002
+      },
+      {
+        "brow": -0.15,
+        "furrow": -0.0,
+        "smile": 0.0,
+        "mouth": 0.023
+      },
+      {
+        "brow": -0.13,
+        "furrow": 0.15,
+        "smile": 0.072,
+        "mouth": 0.003
+      }
+    ]
+  },
+  "fusion": {
+    "chosen": [
+      "[?]",
+      "[?]",
+      "[?]",
+      "[?]",
+      "[?]",
+      "แมว",
+      "[?]",
+      "[?]"
+    ],
+    "sentence_th": "",
+    "meaning_th": "ตรวจพบท่ามือ 8 ช่วง แต่หลักฐานไม่พอจะแปลเป็นประโยคอย่างมั่นใจ — คำที่ใกล้ที่สุด: ช่วง 1 ≈ สวัสดี, ช่วง 2 ≈ ไป, ช่วง 3 ≈ ฉัน, ช่วง 4 ≈ ชอบ, ช่วง 5 ≈ โลก, ช่วง 6 ≈ แมว, ช่วง 7 ≈ เหมือนกัน, ช่วง 8 ≈ โฆษณา",
+    "confidence": 0.3,
+    "provider": "openai",
+    "latency_s": 1.91,
+    "guard_violations": [],
+    "evidence_gloss": "สวัสดี? | ไป? | ฉัน? | ชอบ? | โลก? | แมว? | เหมือนกัน? | โฆษณา?",
+    "tentative_sentence_th": "แมว",
+    "evidence_guard": "withheld: no accepted sign"
+  },
+  "sentence": "",
+  "timings_ms": {
+    "schema_ms": 54.8,
+    "tagger_ms": 1941.0,
+    "spotting_ms": 1169.2,
+    "n_windows": 438,
+    "tempo_factor": 1.0,
+    "face_ms": 6.8,
+    "language_ms": 1911.3
+  },
+  "model": "v7",
+  "vocab": "full"
+}

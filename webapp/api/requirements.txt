@@ -1,0 +1,11 @@
+# sign-api runtime: ONNX Runtime + NumPy inference, server-side MediaPipe for uploaded videos (no PyTorch)
+fastapi==0.115.12
+uvicorn[standard]==0.34.2
+python-multipart==0.0.20
+httpx==0.28.1
+numpy==1.26.4
+onnxruntime==1.23.2
+mediapipe==1.0.1
+opencv-python-headless==4.11.0.86
+openai>=1.40
+matplotlib>=3.8

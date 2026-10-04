@@ -1,0 +1,313 @@
+{
+  "title": "ไปทานข้าวด้วยกันมั้ย",
+  "fps": 25.0,
+  "n_frames": 168,
+  "duration_s": 6.72,
+  "signer_visible_frac": 1.0,
+  "signing_frac": 0.9285714285714286,
+  "mirrored_to_right_hand": false,
+  "segments": [
+    {
+      "f0": 4,
+      "f1": 20,
+      "z": 9.41354363848171,
+      "wins": [
+        [
+          4,
+          20
+        ]
+      ],
+      "nearest": "ฉัน",
+      "candidates": [
+        {
+          "word": "ฉัน",
+          "score": 0.8223,
+          "support": 1.2508
+        },
+        {
+          "word": "เกิด",
+          "score": 0.739,
+          "support": 1.1664
+        },
+        {
+          "word": "ข้าว",
+          "score": 0.8041,
+          "support": 1.1588
+        },
+        {
+          "word": "กิน",
+          "score": 0.7671,
+          "support": 1.1533
+        },
+        {
+          "word": "คุณ",
+          "score": 0.7168,
+          "support": 1.1381
+        }
+      ],
+      "score": 0.8223077058792114,
+      "margin": 0.08331894874572754,
+      "null_gap": -0.07593739032745361,
+      "p_sign": 0.9275668551956188,
+      "agree": 1.0,
+      "support_ratio": 1.0566055566055568,
+      "window_top1": "ฉัน",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.4380426224853418,
+      "status": "uncertain",
+      "t0": 0.16,
+      "t1": 0.8
+    },
+    {
+      "f0": 20,
+      "f1": 68,
+      "z": 6.596500327804089,
+      "wins": [
+        [
+          20,
+          68
+        ]
+      ],
+      "nearest": "เกิด",
+      "candidates": [
+        {
+          "word": "เกิด",
+          "score": 0.5094,
+          "support": 0.9368
+        },
+        {
+          "word": "ฉัน",
+          "score": 0.6167,
+          "support": 1.0452
+        },
+        {
+          "word": "ข้าว",
+          "score": 0.6283,
+          "support": 0.983
+        },
+        {
+          "word": "คุณ",
+          "score": 0.4904,
+          "support": 0.9117
+        },
+        {
+          "word": "กิน",
+          "score": 0.5222,
+          "support": 0.9084
+        }
+      ],
+      "score": 0.6166518330574036,
+      "margin": -0.011632025241851807,
+      "null_gap": -0.13464826345443726,
+      "p_sign": 0.9979992575943472,
+      "agree": 1.0,
+      "support_ratio": 1.0437381404174573,
+      "window_top1": "ฉัน",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.29227839085965607,
+      "status": "uncertain",
+      "t0": 0.8,
+      "t1": 2.72,
+      "repeat_of": "ฉัน"
+    },
+    {
+      "f0": 68,
+      "f1": 116,
+      "z": 3.8248172894989505,
+      "wins": [
+        [
+          68,
+          116
+        ]
+      ],
+      "nearest": "ข้าว",
+      "candidates": [
+        {
+          "word": "ข้าว",
+          "score": 0.4387,
+          "support": 0.7934
+        },
+        {
+          "word": "กิน",
+          "score": 0.3956,
+          "support": 0.7819
+        },
+        {
+          "word": "เกิด",
+          "score": 0.2899,
+          "support": 0.7173
+        },
+        {
+          "word": "ฉัน",
+          "score": 0.2573,
+          "support": 0.6858
+        },
+        {
+          "word": "ไป",
+          "score": 0.1882,
+          "support": 0.672
+        }
+      ],
+      "score": 0.4386945962905884,
+      "margin": 0.04306083917617798,
+      "null_gap": -0.19364620745182037,
+      "p_sign": 0.9999956943094731,
+      "agree": 0.0,
+      "support_ratio": 1.0946555819477435,
+      "window_top1": "เกิด",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.0930892899278886,
+      "status": "unknown",
+      "t0": 2.72,
+      "t1": 4.64
+    },
+    {
+      "f0": 116,
+      "f1": 164,
+      "z": 7.027282100553792,
+      "wins": [
+        [
+          116,
+          164
+        ]
+      ],
+      "nearest": "ไป",
+      "candidates": [
+        {
+          "word": "ไป",
+          "score": 0.6467,
+          "support": 1.1305
+        },
+        {
+          "word": "ออก",
+          "score": 0.5768,
+          "support": 1.0056
+        },
+        {
+          "word": "กลับ",
+          "score": 0.5642,
+          "support": 0.9689
+        },
+        {
+          "word": "เสด็จ",
+          "score": 0.5418,
+          "support": 0.8594
+        },
+        {
+          "word": "ให้",
+          "score": 0.3248,
+          "support": 0.8095
+        }
+      ],
+      "score": 0.6467087268829346,
+      "margin": 0.06988108158111572,
+      "null_gap": -0.651883602142334,
+      "p_sign": 0.9307582896862491,
+      "agree": 1.0,
+      "support_ratio": 1.405080715805281,
+      "window_top1": "ไป",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.6373408263997815,
+      "status": "uncertain",
+      "t0": 4.64,
+      "t1": 6.56
+    }
+  ],
+  "face": {
+    "face_frames": 1.0,
+    "question_furrow": false,
+    "question_yesno": false,
+    "question_wh": false,
+    "negation": false,
+    "affirmation": false,
+    "emotion": "neutral",
+    "emotion_th": "เป็นกลาง",
+    "emotion_scores": {
+      "happy": 0.436,
+      "sad": 0.0,
+      "angry": 0.054,
+      "surprise": 0.128,
+      "fear": 0.01,
+      "disgust": 0.0
+    },
+    "intensity": 0.0,
+    "cues": {
+      "brow_raise_tail": -0.758,
+      "brow_raise_peak": 0.325,
+      "brow_furrow": 1.237,
+      "head_forward_tail": 0.018,
+      "head_shake_cycles": 0,
+      "head_nod_cycles": 1,
+      "mouth_open_frac": 0.0,
+      "cheek_puff": 0.0,
+      "duration_s": 6.68,
+      "brow_furrow_rel": -0.013,
+      "furrow_baseline": "hands_down_frames"
+    },
+    "per_segment": [
+      {
+        "brow": 0.87,
+        "furrow": -0.12,
+        "smile": 0.454,
+        "mouth": 0.134
+      },
+      {
+        "brow": 0.18,
+        "furrow": -0.05,
+        "smile": 0.002,
+        "mouth": 0.035
+      },
+      {
+        "brow": 0.24,
+        "furrow": -0.06,
+        "smile": 0.0,
+        "mouth": 0.157
+      },
+      {
+        "brow": -0.77,
+        "furrow": 0.33,
+        "smile": 0.049,
+        "mouth": 0.009
+      }
+    ]
+  },
+  "fusion": {
+    "chosen": [
+      "ข้าว",
+      "[?]",
+      "[?]",
+      "ไป"
+    ],
+    "sentence_th": "",
+    "meaning_th": "ตรวจพบท่ามือ 4 ช่วง แต่หลักฐานไม่พอจะแปลเป็นประโยคอย่างมั่นใจ — คำที่ใกล้ที่สุด: ช่วง 1 ≈ ฉัน, ช่วง 2 ≈ เกิด, ช่วง 3 ≈ ข้าว, ช่วง 4 ≈ ไป",
+    "confidence": 0.3,
+    "provider": "openai+rules",
+    "latency_s": 1.55,
+    "guard_reason": {
+      "not_allowed": [],
+      "dropped": [],
+      "added": [],
+      "kept_sign_order": true
+    },
+    "guard_violations": [],
+    "evidence_gloss": "ฉัน? | เกิด? | [?]≈ข้าว | ไป?",
+    "tentative_sentence_th": "ไปข้าว",
+    "evidence_guard": "withheld: no accepted sign"
+  },
+  "sentence": "",
+  "timings_ms": {
+    "schema_ms": 36.1,
+    "tagger_ms": 553.0,
+    "spotting_ms": 1029.1,
+    "n_windows": 254,
+    "tempo_factor": 1.0,
+    "face_ms": 6.7,
+    "language_ms": 1547.7
+  },
+  "model": "v7",
+  "vocab": "full"
+}

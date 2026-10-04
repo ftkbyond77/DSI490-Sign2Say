@@ -1,0 +1,340 @@
+﻿category,word,concept,signers,instances,datasets,in_model
+pronoun_people,ฉัน,ฉัน,6,63,th_sl + tsl51 + ttrs,True
+pronoun_people,คุณ,คุณ,5,32,th_sl + tsl51 + ttrs,True
+pronoun_people,เขา,เขา,2,2,th_sl + ttrs,True
+pronoun_people,เรา,เรา,2,2,th_sl + ttrs,True
+pronoun_people,ผม,ผม,3,3,agent + th_sl + ttrs,True
+pronoun_people,เธอ,เธอ,1,1,ttrs,True
+pronoun_people,พวกเรา,พวกเรา,1,1,th_sl,True
+pronoun_people,ใคร,ใคร,1,1,th_sl,True
+pronoun_people,คน,คน,2,3,ttrs,True
+pronoun_people,ผู้ชาย,ผู้ชาย,3,3,agent + th_sl + ttrs,True
+pronoun_people,ผู้หญิง,ผู้หญิง,3,3,agent + th_sl + ttrs,True
+pronoun_people,เด็ก,เด็ก,4,4,agent + th_sl + ttrs,True
+pronoun_people,ครู,ครู,4,4,agent + th_sl + ttrs,True
+pronoun_people,นักเรียน,นักเรียน,2,2,agent + ttrs,True
+pronoun_people,หมอ,หมอ,2,2,agent + th_sl,True
+pronoun_people,พยาบาล,พยาบาล,2,2,th_sl + ttrs,True
+pronoun_people,ตำรวจ,ตำรวจ,3,3,agent + th_sl + ttrs,True
+pronoun_people,หูหนวก,หูหนวก,7,34,agent + th_sl + tsl51 + ttrs,True
+pronoun_people,คนหูดี,คนหูดี,1,1,th_sl,True
+pronoun_people,ล่าม,ล่าม,0,0,,False
+family,พ่อ,พ่อ,31,33,agent + th_sl + tslone + ttrs,True
+family,แม่,แม่,34,63,agent + th_sl + tsl51 + tslone + ttrs,True
+family,พี่,พี่,7,34,agent + th_sl + tsl51 + ttrs,True
+family,น้อง,น้อง,6,33,tsl51 + ttrs,True
+family,ลูก,ลูก,31,31,agent + th_sl + tslone + ttrs,True
+family,สามี,สามี,28,28,th_sl + tslone + ttrs,True
+family,ภรรยา,ภรรยา,28,28,th_sl + tslone + ttrs,True
+family,แฟน,แฟน,6,33,th_sl + tsl51,True
+family,เพื่อน,เพื่อน,29,29,agent + th_sl + tslone + ttrs,True
+family,ปู่,ปู่,29,29,agent + th_sl + tslone + ttrs,True
+family,ย่า,ย่า,29,30,agent + th_sl + tslone + ttrs,True
+family,ตา,ตา,33,33,agent + th_sl + tslone + ttrs,True
+family,ยาย,ยาย,30,50,th_sl + tsl51 + tslone + ttrs,True
+family,ลุง,ลุง,28,28,th_sl + tslone + ttrs,True
+family,ป้า,ป้า,28,28,th_sl + tslone + ttrs,True
+family,น้า,น้า,28,28,th_sl + tslone + ttrs,True
+family,อา,อา,28,28,th_sl + tslone + ttrs,True
+family,หลาน,หลาน,29,29,agent + th_sl + tslone + ttrs,True
+family,ครอบครัว,ครอบครัว,29,29,agent + th_sl + tslone + ttrs,True
+family,ญาติ,ญาติ,30,30,agent + th_sl + tslone + ttrs,True
+family,พี่ชาย,พี่ชาย,27,27,th_sl + tslone + ttrs,True
+family,พี่สาว,พี่สาว,28,28,th_sl + tslone + ttrs,True
+family,น้องชาย,น้องชาย,28,28,agent + th_sl + tslone + ttrs,True
+family,น้องสาว,น้องสาว,29,29,agent + th_sl + tslone + ttrs,True
+greeting_social,สวัสดี,สวัสดี,7,36,agent + th_sl + tsl51,True
+greeting_social,ขอบคุณ,ขอบคุณ,7,35,agent + th_sl + tsl51,True
+greeting_social,ขอโทษ,ขอโทษ,8,36,agent + th_sl + tsl51,True
+greeting_social,ไม่เป็นไร,ไม่เป็นไร,2,2,agent + th_sl,True
+greeting_social,ยินดี,ยินดี,1,1,th_sl,True
+greeting_social,ยินดีที่ได้รู้จัก,ยินดีที่ได้รู้จัก,0,0,,False
+greeting_social,ลาก่อน,ลาก่อน,1,1,th_sl,True
+greeting_social,พบกันใหม่,พบกันใหม่,1,1,agent,True
+greeting_social,สบายดี,สบายดี,6,33,agent + th_sl + tsl51,True
+greeting_social,ชื่อ,ชื่อ,6,34,agent + tsl51 + ttrs,True
+greeting_social,อายุ,อายุ,1,1,th_sl,True
+greeting_social,รู้จัก,รู้จัก,1,1,th_sl,True
+greeting_social,โชคดี,โชคดี,5,6,agent + th_sl,True
+greeting_social,ฝันดี,ฝันดี,1,1,th_sl,True
+greeting_social,ราตรีสวัสดิ์,ราตรีสวัสดิ์,0,0,,False
+greeting_social,ยินดีด้วย,ยินดีด้วย,1,1,th_sl,True
+greeting_social,ปรบมือ,ปรบมือ,1,2,th_sl,True
+greeting_social,ใช่,ใช่,1,1,th_sl,True
+greeting_social,ไม่ใช่,ไม่ใช่,1,1,th_sl,True
+greeting_social,ได้,ได้,1,1,th_sl,True
+greeting_social,ไม่ได้,ไม่ได้,1,1,th_sl,True
+question,อะไร,อะไร,4,22,th_sl + tsl51,True
+question,ที่ไหน,ที่ไหน,4,31,th_sl + tsl51,True
+question,เมื่อไร,เมื่อไร,3,5,th_sl,True
+question,ทำไม,ทำไม,5,32,th_sl + tsl51 + ttrs,True
+question,อย่างไร,อย่างไร,1,1,th_sl,True
+question,เท่าไร,เท่าไร,2,2,th_sl + ttrs,True
+question,ไหม,ไหม,0,0,,False
+question,หรือเปล่า,หรือเปล่า,0,0,,False
+question,กี่,กี่,1,1,ttrs,True
+negation_modal,ไม่,ไม่,1,1,th_sl,True
+negation_modal,ไม่มี,ไม่มี,2,5,agent + th_sl,True
+negation_modal,มี,มี,1,2,th_sl,True
+negation_modal,อยาก,อยาก,1,1,th_sl,True
+negation_modal,ต้องการ,ต้องการ,1,1,th_sl,True
+negation_modal,ต้อง,ต้อง,1,1,th_sl,True
+negation_modal,ควร,ควร,1,1,th_sl,True
+negation_modal,เคย,เคย,1,1,th_sl,True
+negation_modal,จะ,จะ,0,0,,False
+negation_modal,กำลัง,กำลัง,1,1,th_sl,True
+negation_modal,แล้ว,แล้ว,0,0,,False
+negation_modal,ยัง,ยัง,2,2,th_sl + ttrs,True
+negation_modal,อย่า,อย่า,4,32,th_sl + tsl51,True
+negation_modal,เป็น,เป็น,1,1,th_sl,True
+negation_modal,อยู่,อยู่,2,3,th_sl,True
+time,วันนี้,วันนี้,9,38,agent + th_sl + tsl51 + ttrs,True
+time,พรุ่งนี้,พรุ่งนี้,4,22,th_sl + tsl51 + ttrs,True
+time,เมื่อวาน,เมื่อวานนี้,3,3,th_sl + ttrs,True
+time,ตอนนี้,ตอนนี้,1,1,th_sl,True
+time,เช้า,เช้า,7,35,th_sl + tsl51 + ttrs,True
+time,กลางวัน,กลางวัน,1,1,th_sl,True
+time,เย็น,เย็น,3,4,agent + ttrs,True
+time,กลางคืน,กลางคืน,2,2,th_sl,True
+time,วัน,วัน,3,3,agent + th_sl + ttrs,True
+time,สัปดาห์,สัปดาห์,3,3,agent + th_sl + ttrs,True
+time,เดือน,เดือน,3,3,agent + th_sl + ttrs,True
+time,ปี,ปี,3,3,agent + th_sl + ttrs,True
+time,เวลา,เวลา,2,2,agent + th_sl,True
+time,ชั่วโมง,ชั่วโมง,2,2,th_sl + ttrs,True
+time,นาที,นาที,2,2,th_sl + ttrs,True
+time,ก่อน,ก่อน,1,3,th_sl + ttrs,True
+time,หลัง,หลัง,3,3,agent + th_sl + ttrs,True
+time,เร็ว,เร็ว,2,2,th_sl + ttrs,True
+time,ช้า,ช้า,1,2,th_sl,True
+time,สาย,สาย,2,2,agent + ttrs,True
+time,วันหยุด,วันหยุด,5,35,th_sl + tsl51 + ttrs,True
+time,ทุกวัน,ทุกวัน,3,3,th_sl + ttrs,True
+verb,กิน,กิน,9,36,agent + th_sl + tsl51 + ttrs,True
+verb,ดื่ม,ดื่ม,5,5,agent + th_sl + ttrs,True
+verb,ไป,ไป,7,33,agent + th_sl + tsl51,True
+verb,มา,มา,2,2,th_sl,True
+verb,กลับ,กลับ,1,1,th_sl,True
+verb,นอน,นอน,1,1,ttrs,True
+verb,ตื่น,ตื่น,2,2,th_sl,True
+verb,ทำงาน,ทำงาน,5,32,agent + tsl51 + ttrs,True
+verb,เรียน,เรียน,6,37,agent + th_sl + tsl51 + ttrs,True
+verb,อ่าน,อ่าน,3,3,th_sl + ttrs,True
+verb,เขียน,เขียน,4,4,agent + th_sl + ttrs,True
+verb,ดู,ดู,4,4,agent + th_sl + ttrs,True
+verb,ฟัง,ฟัง,3,3,agent + th_sl + ttrs,True
+verb,พูด,พูด,3,3,agent + th_sl + ttrs,True
+verb,บอก,บอก,3,3,agent + th_sl + ttrs,True
+verb,ถาม,ถาม,7,35,agent + th_sl + tsl51 + ttrs,True
+verb,ตอบ,ตอบ,3,3,agent + th_sl + ttrs,True
+verb,รู้,รู้,1,1,th_sl,True
+verb,ไม่รู้,ไม่รู้,1,1,th_sl,True
+verb,เข้าใจ,เข้าใจ,3,3,agent + th_sl + ttrs,True
+verb,คิด,คิด,1,1,th_sl,True
+verb,จำ,จำ,1,1,th_sl,True
+verb,ลืม,ลืม,2,2,th_sl + ttrs,True
+verb,รัก,รัก,4,4,agent + th_sl + ttrs,True
+verb,ชอบ,ชอบ,9,36,agent + th_sl + tsl51 + ttrs,True
+verb,เกลียด,เกลียด,2,2,th_sl + ttrs,True
+verb,ช่วย,ช่วย,4,4,agent + th_sl + ttrs,True
+verb,รอ,รอ,3,3,agent + th_sl,True
+verb,เล่น,เล่น,4,4,agent + th_sl + ttrs,True
+verb,ซื้อ,ซื้อ,2,2,th_sl,True
+verb,ขาย,ขาย,3,3,agent + th_sl,True
+verb,จ่าย,จ่าย,2,2,th_sl,True
+verb,ให้,ให้,1,1,th_sl,True
+verb,เอา,เอา,1,1,th_sl,True
+verb,ทำ,ทำ,0,0,,False
+verb,ใช้,ใช้,1,1,th_sl,True
+verb,เปิด,เปิด,3,8,th_sl + ttrs,True
+verb,ปิด,ปิด,3,4,th_sl + ttrs,True
+verb,นั่ง,นั่ง,4,4,agent + th_sl + ttrs,True
+verb,ยืน,ยืน,4,4,agent + th_sl + ttrs,True
+verb,เดิน,เดิน,3,3,agent + th_sl + ttrs,True
+verb,วิ่ง,วิ่ง,23,27,agent + th_sl + tslone + ttrs,True
+verb,ขับรถ,ขับรถ,1,1,th_sl,True
+verb,อาบน้ำ,อาบน้ำ,2,2,agent + th_sl,True
+verb,แต่งตัว,แต่งตัว,1,2,th_sl + ttrs,True
+verb,ทำอาหาร,ทำอาหาร,2,2,agent + ttrs,True
+verb,ล้าง,ล้าง,1,1,th_sl,True
+verb,ซัก,ซัก,1,1,ttrs,True
+verb,โทร,โทร,1,1,th_sl,True
+verb,ส่ง,ส่ง,2,2,th_sl + ttrs,True
+verb,หา,หา,3,3,agent + th_sl,True
+verb,เจอ,เจอ,1,1,th_sl,True
+verb,เห็น,เห็น,2,2,agent + th_sl,True
+verb,เลือก,เลือก,2,2,th_sl + ttrs,True
+verb,เริ่ม,เริ่ม,3,3,agent + th_sl + ttrs,True
+verb,หยุด,หยุด,4,4,th_sl + ttrs,True
+verb,เสร็จ,เสร็จแล้ว,2,3,th_sl,True
+verb,เปลี่ยน,เปลี่ยน,1,1,th_sl,True
+verb,พัก,พัก,1,1,th_sl,True
+verb,เที่ยว,เที่ยว,5,33,agent + th_sl + tsl51,True
+verb,แต่งงาน,แต่งงาน,7,36,th_sl + tsl51 + ttrs,True
+verb,เกิด,เกิด,5,32,th_sl + tsl51 + ttrs,True
+verb,ตาย,ตาย,0,0,,False
+verb,ปลอบใจ,ปลอบใจ,2,2,th_sl + ttrs,True
+verb,ร้องไห้,ร้องไห้,3,3,th_sl + ttrs,True
+verb,หัวเราะ,หัวเราะ,4,4,agent + th_sl + ttrs,True
+verb,ยิ้ม,ยิ้ม,4,4,agent + th_sl + ttrs,True
+verb,กอด,กอด,3,3,agent + th_sl + ttrs,True
+verb,จูบ,จูบ,3,3,agent + th_sl + ttrs,True
+verb,สอน,สอน,1,1,th_sl,True
+verb,ฝึก,ฝึก,2,2,th_sl + ttrs,True
+verb,ทะเลาะ,ทะเลาะ,2,3,th_sl + ttrs,True
+verb,สัญญา,สัญญา,1,2,th_sl,True
+verb,เชื่อ,เชื่อ,1,1,th_sl,True
+verb,หวัง,หวัง,1,1,th_sl,True
+verb,ขอ,ขอ,3,3,agent + th_sl + ttrs,True
+verb,ยืม,ยืม,2,2,th_sl + ttrs,True
+verb,คืน,คืน,1,1,ttrs,True
+verb,จอง,จอง,2,2,agent + th_sl,True
+verb,นัด,นัด,0,0,,False
+feeling_state,ดีใจ,ดีใจ,3,3,agent + th_sl + ttrs,True
+feeling_state,เสียใจ,เสียใจ,4,4,agent + th_sl + ttrs,True
+feeling_state,โกรธ,โกรธ,7,34,agent + th_sl + tsl51 + ttrs,True
+feeling_state,กลัว,กลัว,5,34,th_sl + tsl51 + ttrs,True
+feeling_state,เหนื่อย,เหนื่อย,5,32,th_sl + tsl51 + ttrs,True
+feeling_state,หิว,หิว,3,3,agent + th_sl + ttrs,True
+feeling_state,อิ่ม,อิ่ม,3,3,agent + th_sl,True
+feeling_state,กระหาย,กระหายน้ำ,2,4,th_sl + ttrs,True
+feeling_state,ป่วย,ป่วย,1,1,ttrs,True
+feeling_state,เจ็บ,เจ็บ,2,2,agent + th_sl,True
+feeling_state,ปวดหัว,ปวดหัว,2,2,th_sl + ttrs,True
+feeling_state,เศร้า,เศร้า,3,3,agent + th_sl + ttrs,True
+feeling_state,มีความสุข,มีความสุข,1,1,ttrs,True
+feeling_state,เบื่อ,เบื่อ,3,5,th_sl + ttrs,True
+feeling_state,ง่วง,ง่วง,5,24,th_sl + tsl51 + ttrs,True
+feeling_state,เหงา,เหงา,6,35,th_sl + tsl51 + ttrs,True
+feeling_state,ตกใจ,ตกใจ,2,2,th_sl + ttrs,True
+feeling_state,สนุก,สนุก,4,4,agent + th_sl + ttrs,True
+feeling_state,สบาย,สบาย,1,1,th_sl,True
+feeling_state,กังวล,กังวล,2,2,th_sl + ttrs,True
+feeling_state,อาย,อาย,2,2,th_sl + ttrs,True
+feeling_state,ภูมิใจ,ภูมิใจ,2,2,th_sl + ttrs,True
+feeling_state,สงสาร,สงสาร,3,4,th_sl + ttrs,True
+feeling_state,คิดถึง,คิดถึง,5,5,agent + th_sl + ttrs,True
+feeling_state,รำคาญ,รำคาญ,1,1,th_sl,True
+feeling_state,ห่วง,ห่วง,2,2,th_sl + ttrs,True
+adjective,ดี,ดี,4,31,th_sl + tsl51,True
+adjective,ไม่ดี,ไม่ดี,2,3,th_sl + ttrs,True
+adjective,สวย,สวย,3,3,agent + th_sl + ttrs,True
+adjective,หล่อ,หล่อ,2,2,th_sl + ttrs,True
+adjective,น่ารัก,น่ารัก,3,3,agent + th_sl + ttrs,True
+adjective,ร้อน,ร้อน,7,37,agent + th_sl + tsl51 + ttrs,True
+adjective,หนาว,หนาว,3,3,agent + th_sl + ttrs,True
+adjective,เย็น,เย็น,3,4,agent + ttrs,True
+adjective,ใหญ่,ใหญ่,2,2,th_sl + ttrs,True
+adjective,เล็ก,เล็ก,1,1,th_sl,True
+adjective,มาก,มาก,2,2,th_sl,True
+adjective,น้อย,น้อย,1,1,th_sl,True
+adjective,ยาก,ยาก,1,1,th_sl,True
+adjective,ง่าย,ง่าย,1,1,th_sl,True
+adjective,ใหม่,ใหม่,1,1,th_sl,True
+adjective,เก่า,เก่า,1,1,th_sl,True
+adjective,แพง,แพง,2,2,th_sl + ttrs,True
+adjective,ถูก,ถูก,1,1,th_sl,True
+adjective,อร่อย,อร่อย,3,3,agent + th_sl + ttrs,True
+adjective,เผ็ด,เผ็ด,3,3,agent + th_sl + ttrs,True
+adjective,หวาน,หวาน,2,2,th_sl + ttrs,True
+adjective,เค็ม,เค็ม,3,3,th_sl + ttrs,True
+adjective,เปรี้ยว,เปรี้ยว,3,3,agent + th_sl + ttrs,True
+adjective,สะอาด,สะอาด,2,3,th_sl + ttrs,True
+adjective,สกปรก,สกปรก,2,3,th_sl + ttrs,True
+adjective,เก่ง,เก่ง,3,3,agent + th_sl,True
+adjective,ขยัน,ขยัน,2,3,agent + th_sl + ttrs,True
+adjective,ขี้เกียจ,ขี้เกียจ,2,2,th_sl + ttrs,True
+adjective,ใจดี,ใจดี,1,1,th_sl,True
+adjective,สูง,สูง,3,3,th_sl + ttrs,True
+adjective,เตี้ย,เตี้ย,2,2,th_sl + ttrs,True
+adjective,อ้วน,อ้วน,3,3,th_sl + ttrs,True
+adjective,ผอม,ผอม,3,3,th_sl + ttrs,True
+adjective,ไกล,ไกล,1,1,ttrs,True
+adjective,ใกล้,ใกล้,3,3,th_sl + ttrs,True
+adjective,ถูกต้อง,ถูกต้อง,3,3,agent + th_sl,True
+adjective,ผิด,ผิด,2,4,th_sl + ttrs,True
+adjective,สำคัญ,สำคัญ,3,3,agent + th_sl + ttrs,True
+adjective,ว่าง,ว่าง,4,4,agent + th_sl + ttrs,True
+adjective,ยุ่ง,ยุ่ง,1,1,th_sl,True
+adjective,พร้อม,พร้อม,1,1,th_sl,True
+food_drink,ข้าว,ข้าว,7,36,agent + th_sl + tsl51 + ttrs,True
+food_drink,น้ำ,น้ำ,3,4,agent + th_sl + ttrs,True
+food_drink,ขนม,ขนม,3,3,agent + th_sl,True
+food_drink,ขนมปัง,ขนมปัง,7,35,agent + th_sl + tsl51 + ttrs,True
+food_drink,กาแฟ,กาแฟ,2,2,th_sl + ttrs,True
+food_drink,ชา,ชา,2,2,th_sl + ttrs,True
+food_drink,นม,นม,4,4,agent + th_sl + ttrs,True
+food_drink,ผลไม้,ผลไม้,3,3,agent + th_sl + ttrs,True
+food_drink,ไข่,ไข่,31,61,agent + th_sl + tsl51 + tslone + ttrs,True
+food_drink,ไก่,ไก่,4,5,agent + th_sl + ttrs,True
+food_drink,หมู,หมู,28,28,agent + th_sl + tslone + ttrs,True
+food_drink,ปลา,ปลา,4,4,agent + th_sl + ttrs,True
+food_drink,ผัก,ผัก,2,2,agent,True
+food_drink,ก๋วยเตี๋ยว,ก๋วยเตี๋ยว,3,3,agent + th_sl + ttrs,True
+food_drink,อาหาร,อาหาร,2,2,th_sl + ttrs,True
+food_drink,ส้มตำ,ส้มตำ,3,3,th_sl + ttrs,True
+food_drink,น้ำแข็ง,น้ำแข็ง,2,2,th_sl + ttrs,True
+food_drink,เบียร์,เบียร์,2,2,th_sl + ttrs,True
+food_drink,ยา,ยา,1,1,th_sl,True
+place_thing,บ้าน,บ้าน,9,36,agent + th_sl + tsl51 + ttrs,True
+place_thing,โรงเรียน,โรงเรียน,8,36,agent + th_sl + tsl51 + ttrs,True
+place_thing,โรงพยาบาล,โรงพยาบาล,4,5,agent + th_sl + ttrs,True
+place_thing,ห้องน้ำ,ห้องน้ำ,4,4,agent + th_sl + ttrs,True
+place_thing,ตลาด,ตลาด,6,36,agent + th_sl + tsl51 + ttrs,True
+place_thing,ร้านอาหาร,ร้านอาหาร,1,2,agent + ttrs,True
+place_thing,ร้าน,ร้าน,1,1,th_sl,True
+place_thing,ที่ทำงาน,ที่ทำงาน,0,0,,False
+place_thing,มหาวิทยาลัย,มหาวิทยาลัย,1,1,th_sl,True
+place_thing,วัด,วัด,6,6,agent + th_sl + ttrs,True
+place_thing,ธนาคาร,ธนาคาร,1,2,th_sl + ttrs,True
+place_thing,สนามบิน,สนามบิน,2,2,agent + th_sl,True
+place_thing,รถ,รถ,0,0,,False
+place_thing,รถเมล์,รถเมล์,2,3,agent + th_sl + ttrs,True
+place_thing,รถไฟ,รถไฟ,2,2,agent + th_sl,True
+place_thing,เครื่องบิน,เครื่องบิน,2,2,agent + th_sl,True
+place_thing,โทรศัพท์,โทรศัพท์,3,4,th_sl + ttrs,True
+place_thing,คอมพิวเตอร์,คอมพิวเตอร์,4,4,agent + th_sl + ttrs,True
+place_thing,เงิน,เงิน,1,1,th_sl,True
+place_thing,หนังสือ,หนังสือ,4,4,agent + th_sl + ttrs,True
+place_thing,ทีวี,ทีวี,0,0,,False
+place_thing,ห้อง,ห้อง,1,1,th_sl,True
+place_thing,ประตู,ประตู,4,4,agent + th_sl + ttrs,True
+place_thing,กรุงเทพ,กรุงเทพ,8,36,agent + th_sl + tsl51 + ttrs,True
+place_thing,ประเทศไทย,ประเทศไทย,27,29,agent + th_sl + tslone + ttrs,True
+number,ศูนย์,ศูนย์,29,29,th_sl + tslone + ttrs,True
+number,หนึ่ง,หนึ่ง,29,29,th_sl + tslone + ttrs,True
+number,สอง,สอง,30,30,th_sl + tslone + ttrs,True
+number,สาม,สาม,29,29,th_sl + tslone + ttrs,True
+number,สี่,สี่,29,29,th_sl + tslone + ttrs,True
+number,ห้า,ห้า,28,28,th_sl + tslone + ttrs,True
+number,หก,หก,28,28,th_sl + tslone + ttrs,True
+number,เจ็ด,เจ็ด,29,29,th_sl + tslone + ttrs,True
+number,แปด,แปด,29,29,th_sl + tslone + ttrs,True
+number,เก้า,เก้า,29,29,th_sl + tslone + ttrs,True
+number,สิบ,สิบ,29,29,th_sl + tslone + ttrs,True
+number,ร้อย,ร้อย,1,1,th_sl,True
+number,พัน,พัน,0,0,,False
+animal_nature,แมว,แมว,7,35,agent + th_sl + tsl51 + ttrs,True
+animal_nature,หมา,หมา,3,3,agent + th_sl + ttrs,True
+animal_nature,นก,นก,2,2,th_sl + ttrs,True
+animal_nature,ฝน,ฝน,2,2,agent + ttrs,True
+animal_nature,แดด,แดด,0,0,,False
+animal_nature,ลม,ลม,2,3,th_sl + ttrs,True
+misc,ภาษามือ,ภาษามือ,4,36,th_sl + tsl51,True
+misc,ภาษา,ภาษา,1,1,th_sl,True
+misc,ไทย,ประเทศไทย,27,29,agent + th_sl + tslone + ttrs,True
+misc,งาน,งาน,1,1,th_sl,True
+misc,ปัญหา,ปัญหา,1,1,th_sl,True
+misc,ความรัก,ความรัก,1,1,agent,True
+misc,ชีวิต,ชีวิต,2,2,th_sl + ttrs,True
+misc,สุขภาพ,สุขภาพ,1,1,th_sl,True
+misc,ทั้งหมด,ทั้งหมด,0,0,,False
+misc,ด้วยกัน,ด้วยกัน,4,34,tsl51 + ttrs,True
+misc,คนเดียว,คนเดียว,2,2,th_sl + ttrs,True
+misc,อีก,อีก,1,1,th_sl,True
+misc,ด้วย,ด้วย,1,1,th_sl,True
+misc,และ,และ,1,1,ttrs,True
+misc,แต่,แต่,1,1,th_sl,True
+misc,ถ้า,ถ้า,1,1,th_sl,True
+misc,เพราะ,เพราะ,0,0,,False
+misc,กับ,กับ,0,0,,False

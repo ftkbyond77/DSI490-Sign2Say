@@ -1,0 +1,85 @@
+{
+ "conversation": {
+  "lens": [
+   8,
+   12,
+   16,
+   20,
+   24,
+   28,
+   32,
+   36,
+   40,
+   44,
+   48
+  ],
+  "stride": 4,
+  "min_inside": 0.6,
+  "delta": 0.0,
+  "act_thr": 0.5,
+  "mu_null": 5.0,
+  "csls_alpha": 0.0,
+  "one_pass": true,
+  "exact_rescore": false,
+  "lam": 6.0,
+  "gap_cost": 0.5,
+  "min_len": 14,
+  "beta": 5.0,
+  "freq_gamma": 0.0,
+  "tempo": {
+   "ref_len": 16,
+   "min_factor": 1.2,
+   "max_factor": 2.5,
+   "min_segments": 2
+  },
+  "post": {
+   "min_frames": 14,
+   "null_gap_max": 0.1,
+   "p_sign_min": 0.65,
+   "repeat_penalty": true
+  },
+  "grammar_rerank_weight": 0.5
+ },
+ "full": {
+  "lens": [
+   8,
+   12,
+   16,
+   20,
+   28,
+   36,
+   48
+  ],
+  "stride": 4,
+  "min_inside": 0.6,
+  "delta": 0.0,
+  "act_thr": 0.5,
+  "mu_null": 5.0,
+  "csls_alpha": 0.0,
+  "one_pass": true,
+  "exact_rescore": true,
+  "lam": 10.0,
+  "gap_cost": 0.5,
+  "min_len": 14,
+  "beta": 5.0,
+  "freq_gamma": 0.5,
+  "tempo": null,
+  "post": {
+   "min_frames": 8,
+   "null_gap_max": 0.0,
+   "p_sign_min": 0.65,
+   "repeat_penalty": true
+  },
+  "grammar_rerank_weight": 0.0
+ },
+ "spell": {
+  "thr": 0.75,
+  "accept": 0.75,
+  "single_min": 0.9,
+  "run_gap": 30,
+  "w_bank": 0.5,
+  "run_min": 0.7
+ },
+ "accept_min": 0.8,
+ "hand_gap_s": 0.5
+}
