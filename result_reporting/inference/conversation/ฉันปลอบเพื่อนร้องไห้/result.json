@@ -4,218 +4,222 @@
   "n_frames": 256,
   "duration_s": 10.24,
   "signer_visible_frac": 1.0,
-  "signing_frac": 0.75,
+  "signing_frac": 0.734375,
   "mirrored_to_right_hand": false,
   "segments": [
     {
       "f0": 40,
-      "f1": 96,
-      "z": 8.294200897216797,
+      "f1": 68,
+      "z": 5.969903469085693,
       "wins": [
         [
           40,
           68
-        ],
-        [
-          68,
-          96
         ]
       ],
       "nearest": "เพื่อน",
       "candidates": [
         {
           "word": "เพื่อน",
-          "score": 0.8792,
-          "support": 0.8148
+          "score": 0.5694,
+          "support": 0.5275
+        },
+        {
+          "word": "แต่งงาน",
+          "score": 0.3548,
+          "support": 0.2954
         },
         {
           "word": "เดือน",
-          "score": 0.4745,
-          "support": 0.3779
+          "score": 0.2987,
+          "support": 0.2546
         },
         {
-          "word": "พี่ชาย",
-          "score": 0.4138,
-          "support": 0.3716
+          "word": "เวลา",
+          "score": 0.3138,
+          "support": 0.2508
         },
         {
-          "word": "น้า",
-          "score": 0.4014,
-          "support": 0.3434
-        },
-        {
-          "word": "แต่งงาน",
-          "score": 0.3173,
-          "support": 0.0828
+          "word": "ซัก",
+          "score": 0.2498,
+          "support": 0.1476
         }
       ],
-      "score": 0.860537588596344,
-      "margin": 0.46667051315307617,
-      "null_gap": -0.6978501677513123,
-      "p_sign": 0.974879526985543,
+      "score": 0.5134363174438477,
+      "margin": 0.21231520175933838,
+      "null_gap": -0.5884071588516235,
+      "p_sign": 0.9552488688030281,
       "agree": 1.0,
-      "support_ratio": 2.1561259592484783,
+      "support_ratio": 1.7857142857142856,
       "window_top1": "เพื่อน",
       "depth": 0.0,
-      "p_correct": 0.9558781056764285,
-      "status": "accepted",
+      "p_correct": 0.3864519019206382,
+      "status": "uncertain",
+      "probable": true,
       "t0": 1.6,
-      "t1": 3.84
+      "t1": 2.72
     },
     {
-      "f0": 96,
-      "f1": 136,
-      "z": 3.9290671348571777,
+      "f0": 68,
+      "f1": 156,
+      "z": 4.157699108123779,
       "wins": [
         [
-          96,
-          136
+          68,
+          116
+        ],
+        [
+          116,
+          156
         ]
       ],
-      "nearest": "ดู",
+      "nearest": "ชื่อ",
       "candidates": [
         {
-          "word": "ดู",
-          "score": 0.6142,
-          "support": 0.559
+          "word": "ชื่อ",
+          "score": 0.7029,
+          "support": 0.3407
         },
         {
-          "word": "เห็น",
-          "score": 0.5716,
-          "support": 0.5064
+          "word": "แฟน",
+          "score": 0.681,
+          "support": 0.3174
         },
         {
-          "word": "ร้องไห้",
-          "score": 0.5014,
-          "support": 0.4644
+          "word": "ข้าว",
+          "score": 0.6804,
+          "support": 0.2849
         },
         {
-          "word": "หูหนวก",
-          "score": 0.4897,
-          "support": 0.4642
+          "word": "ฉัน",
+          "score": 0.6758,
+          "support": 0.2105
         },
         {
-          "word": "หก",
-          "score": 0.4587,
-          "support": 0.3596
+          "word": "ภาษามือ",
+          "score": 0.4819,
+          "support": 0.2021
         }
       ],
-      "score": 0.5304031372070312,
-      "margin": 0.0421966016292572,
-      "null_gap": -0.5015170574188232,
-      "p_sign": 0.9967182648181915,
+      "score": 0.47561079263687134,
+      "margin": 0.030194520950317383,
+      "null_gap": -0.04319232702255249,
+      "p_sign": 0.9999415343458005,
       "agree": 1.0,
-      "support_ratio": 1.1038704581358612,
-      "window_top1": "ดู",
+      "support_ratio": 1.073408947700063,
+      "window_top1": "ชื่อ",
       "depth": 0.0,
-      "p_correct": 0.16334349667311818,
+      "p_correct": 0.31339189198747236,
       "status": "uncertain",
-      "t0": 3.84,
-      "t1": 5.44
+      "probable": false,
+      "t0": 2.72,
+      "t1": 6.24
     },
     {
-      "f0": 136,
+      "f0": 156,
       "f1": 184,
-      "z": 3.247868061065674,
+      "z": 5.214426517486572,
       "wins": [
         [
-          136,
+          156,
           184
         ]
       ],
-      "nearest": "ข้าว",
+      "nearest": "ภาษามือ",
       "candidates": [
         {
-          "word": "ข้าว",
-          "score": 0.684,
-          "support": 0.2646
+          "word": "ภาษามือ",
+          "score": 0.637,
+          "support": 0.5234
         },
         {
-          "word": "แต่งงาน",
-          "score": 0.3807,
-          "support": 0.2279
+          "word": "วิ่ง",
+          "score": 0.447,
+          "support": 0.283
         },
         {
-          "word": "กรุงเทพ",
-          "score": 0.4306,
-          "support": 0.1971
+          "word": "ฉัน",
+          "score": 0.4798,
+          "support": 0.2223
+        },
+        {
+          "word": "ชอบ",
+          "score": 0.4821,
+          "support": 0.1911
         },
         {
           "word": "สงสาร",
-          "score": 0.3966,
-          "support": 0.1919
-        },
-        {
-          "word": "เหงา",
-          "score": 0.3355,
-          "support": 0.1113
+          "score": 0.372,
+          "support": 0.1903
         }
       ],
-      "score": 0.3944448232650757,
-      "margin": 0.028496742248535156,
-      "null_gap": -0.09930139780044556,
-      "p_sign": 0.9933718241751194,
+      "score": 0.48715007305145264,
+      "margin": 0.07514354586601257,
+      "null_gap": -0.2729046642780304,
+      "p_sign": 0.9999952265194486,
       "agree": 1.0,
-      "support_ratio": 1.161035541904344,
-      "window_top1": "ข้าว",
+      "support_ratio": 1.8494699646643111,
+      "window_top1": "ภาษามือ",
       "depth": 0.0,
-      "p_correct": 0.14630206038446453,
+      "p_correct": 0.33950434294096604,
       "status": "uncertain",
-      "t0": 5.44,
+      "probable": false,
+      "t0": 6.24,
       "t1": 7.36
     },
     {
       "f0": 184,
       "f1": 232,
-      "z": 3.9498331546783447,
+      "z": 3.9914815425872803,
       "wins": [
         [
           184,
           232
         ]
       ],
-      "nearest": "เกิด",
+      "nearest": "สงสาร",
       "candidates": [
         {
-          "word": "เกิด",
-          "score": 0.7186,
-          "support": 0.1895
+          "word": "สงสาร",
+          "score": 0.4018,
+          "support": 0.2489
+        },
+        {
+          "word": "แต่งงาน",
+          "score": 0.3965,
+          "support": 0.2662
+        },
+        {
+          "word": "ภาษามือ",
+          "score": 0.4745,
+          "support": 0.3238
         },
         {
           "word": "ข้าว",
-          "score": 0.6412,
-          "support": 0.4456
+          "score": 0.6605,
+          "support": 0.146
         },
         {
-          "word": "สงสาร",
-          "score": 0.4767,
-          "support": 0.2876
-        },
-        {
-          "word": "อยู่",
-          "score": 0.358,
-          "support": 0.1762
-        },
-        {
-          "word": "ฉัน",
-          "score": 0.6383,
-          "support": 0.1698
+          "word": "ขนมปัง",
+          "score": 0.4129,
+          "support": 0.146
         }
       ],
-      "score": 0.4767126441001892,
-      "margin": 0.10274046659469604,
-      "null_gap": -0.3913215100765228,
-      "p_sign": 0.9547933970888455,
+      "score": 0.3924410343170166,
+      "margin": 0.03446561098098755,
+      "null_gap": -0.15469297766685486,
+      "p_sign": 0.9293453843876099,
       "agree": 0.0,
-      "support_ratio": 1.5493741307371347,
-      "window_top1": "สงสาร",
+      "support_ratio": 1.2163786626596544,
+      "window_top1": "แต่งงาน",
       "depth": 0.0,
-      "p_correct": 0.10097514825104444,
-      "status": "unknown",
+      "p_correct": 0.08883612721524975,
+      "status": "uncertain",
+      "probable": false,
       "t0": 7.36,
       "t1": 9.28,
-      "repeat_of": "ข้าว",
-      "visual_top1": "ข้าว",
+      "repeat_of": "ภาษามือ",
+      "visual_top1": "แต่งงาน",
       "reranked_by_grammar": true
     }
   ],
@@ -252,20 +256,20 @@
     },
     "per_segment": [
       {
-        "brow": -0.23,
-        "furrow": 0.12,
+        "brow": -0.34,
+        "furrow": 0.16,
         "smile": 0.001,
-        "mouth": 0.001
+        "mouth": 0.002
       },
       {
-        "brow": -0.08,
-        "furrow": 0.39,
+        "brow": -0.14,
+        "furrow": 0.17,
         "smile": 0.001,
-        "mouth": 0.005
+        "mouth": 0.002
       },
       {
-        "brow": 2.79,
-        "furrow": -0.56,
+        "brow": 3.43,
+        "furrow": -0.59,
         "smile": 0.001,
         "mouth": 0.002
       },
@@ -279,29 +283,47 @@
   },
   "fusion": {
     "chosen": [
-      "เพื่อน",
-      "ดู",
+      "[?]",
+      "[?]",
       "[?]",
       "[?]"
     ],
-    "sentence_th": "เพื่อนดู[?][?]",
-    "meaning_th": "เพื่อนดูอะไรบางอย่าง",
-    "confidence": 0.58,
-    "provider": "openai",
-    "latency_s": 1.7,
-    "guard_violations": [],
-    "evidence_gloss": "เพื่อน | ดู? | ข้าว? | [?]≈เกิด"
+    "sentence_th": "",
+    "tentative_sentence_th": "เพื่อน",
+    "meaning_th": "ยังไม่มั่นใจพอจะแปล — ลองทำท่าช้าลง ให้มืออยู่ในกรอบ หรือกดยืนยันคำที่ถูก",
+    "confidence": 0.0,
+    "provider": "none",
+    "evidence_gloss": "เพื่อน? | ชื่อ? | ภาษามือ? | สงสาร?",
+    "evidence_guard": "withheld: no confident sign"
   },
-  "sentence": "เพื่อนดู[?][?]",
+  "sentence": "",
   "timings_ms": {
-    "schema_ms": 56.4,
-    "tagger_ms": 591.3,
-    "spotting_ms": 244.1,
-    "n_windows": 513,
+    "schema_ms": 37.6,
+    "tagger_ms": 81.9,
+    "spotting_ms": 206.9,
+    "n_windows": 502,
     "tempo_factor": 1.0,
-    "face_ms": 4.8,
-    "language_ms": 1698.3
+    "face_ms": 3.6,
+    "language_ms": 0.5
   },
-  "model": "v7",
-  "vocab": "conversation"
+  "model": "v8.1",
+  "vocab": "conversation",
+  "hand_tracking": {
+    "left": {
+      "n": 147,
+      "hit": 0.803,
+      "fallback": 0,
+      "max_gap": 10,
+      "out_below": 0
+    },
+    "right": {
+      "n": 181,
+      "hit": 0.867,
+      "fallback": 0,
+      "max_gap": 7,
+      "out_below": 0
+    },
+    "room_below": 1.47,
+    "fps": 30.0
+  }
 }

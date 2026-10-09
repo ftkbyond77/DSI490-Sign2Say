@@ -16,6 +16,7 @@ Harvested words (cloud_s3/agent_data/) come from scripts/harvest_words.py.
 from __future__ import annotations
 
 import argparse
+import re
 import json
 import os
 import sys
@@ -33,7 +34,7 @@ from modules.utils import ART, CACHE, DATA, PREP, RAW, get_logger, read_json, sa
 log = get_logger("data_prep")
 POSE = PREP / "pose"                    # Standard Schema poses, one npz per clip / video
 POSE_RAW = PREP / "pose_raw"            # RTMW-X output before harmonisation (real face points kept; for re-harmonising / face models)
-LEGACY = CACHE / "legacy_v5"            # v5 intermediates (harmonisation parameters, YouTube title/mined clips)
+LEGACY = CACHE / "prep_legacy"          # v5-era intermediates (harmonisation parameters, YouTube title/mined clips)
 
 
 def ttrs_meta() -> pd.DataFrame:
@@ -511,6 +512,59 @@ RENAME = {"tsl51_user_sign_rtmw": ("tsl51_user_sign", "t51ur:", "t51u:"), "tsl51
 POSE_MP = PREP / "pose_mp"
 
 
+# v8 label normalisation: "(ภาษามือโรงเรียน…)", "(พจนานุกรมสารสนเทศภาษามือไทย)", "(ภาษามือวิทยาลัยราชสุดา)" name the SOURCE of a dictionary
+# entry, and "(อายุเท่ากันหรือน้อยกว่า)" the politeness form of a TSL51 greeting — not a different word. Kept apart, the same word was
+# two competing classes (806 concepts; 391 had the plain word too), so a correct match to the other entry counted as an error and
+# the word's signers were split. Other parentheses (place names, real senses) are kept.
+SOURCE_NOTE = re.compile(r"\s*\((?:ภาษามือโรงเรียน[^)]*|พจนานุกรมสารสนเทศภาษามือไทย|ภาษามือวิทยาลัยราชสุดา|อายุเท่ากันหรือน้อยกว่า)\)\s*")
+
+
+def v8_concept(concept, cmap):
+    """Concept name → v8 concept (source annotations removed, then the synonym map of manifest/concepts.json)."""
+    if not isinstance(concept, str):
+        return concept
+    base = SOURCE_NOTE.sub(" ", concept).strip()
+    base = re.sub(r"\s+", " ", base)
+    if base == concept:
+        return concept
+    return cmap.get(base, base) if base else concept
+
+
+DAILY_MIN_SIGNERS, DAILY_MIN_FREQ = 2, 50
+
+
+def daily_vocab(clips):
+    """v8 'daily' vocabulary (replaces the 9.6k-concept 'full' mode in the product): the curated conversation words + every concept
+    that (a) at least DAILY_MIN_SIGNERS different people sign in the data (one signer = one-shot, recall 0.15 in v7) and (b) is a
+    common Thai word (Thai National Corpus frequency ≥ DAILY_MIN_FREQ). Letters are excluded (fingerspelling has its own model).
+    Fixed before any v8 test result was seen. Returns (sorted concepts, stats)."""
+    from pythainlp.corpus import tnc
+    freq = dict(tnc.word_freqs())
+    groups = read_json(PREP / "manifest" / "concepts.json")["groups"]
+    iso = clips[(clips.kind == "isolated") & (clips.view == "primary") & clips.concept.notna()]
+    sig = iso.groupby("concept").signer.nunique()
+    conv = set(daily_concepts()) | set(iso[iso.dataset == "tsl51"].concept)
+
+    def fq(c):
+        return max([freq.get(w, 0) for w in groups.get(c, [c])] + [freq.get(c, 0)])
+
+    def letter(c):
+        return len(c) == 1 or bool(re.fullmatch(r"[A-Za-z]{1,2}", c))
+    common = {c for c, n in sig.items() if n >= DAILY_MIN_SIGNERS and fq(c) >= DAILY_MIN_FREQ and not letter(c)}
+    words = sorted((conv & set(sig.index)) | common)
+    return words, dict(conversation=len(conv & set(sig.index)), common_multi_signer=len(common), total=len(words),
+                       rule=f"conversation list ∪ (signers ≥ {DAILY_MIN_SIGNERS} and TNC frequency ≥ {DAILY_MIN_FREQ}), letters excluded")
+
+
+def v8_agent_keep():
+    """YouTube word clips that passed the v8 quality audit (scripts/audit_youtube.py → qc/quality_v8.csv); None = no audit yet."""
+    q = DATA / "agent_data" / "youtube_words" / "qc" / "quality_v8.csv"
+    if not q.exists():
+        return None
+    d = pd.read_csv(q)
+    return set(d[d.keep.astype(bool)].clip_id)
+
+
 def daily_concepts():
     daily = read_json(ROOT / "vocab" / "daily_conversation.json")
     cmap = read_json(PREP / "manifest" / "concepts.json")["concept"]
@@ -575,11 +629,20 @@ def cmd_shards(a):
     if ag.exists():
         g = pd.read_csv(ag)
         g = g[g.status == "accepted"]
+        keep = v8_agent_keep()
+        if keep is not None:
+            log.info("agent clips: %d accepted, %d pass the v8 quality audit", len(g), int(g.clip_id.isin(keep).sum()))
+            g = g[g.clip_id.isin(keep)]
         for r in g.itertuples():
             rows.append(dict(clip_id=r.clip_id, source="agent", dataset="agent", subset="agent_youtube_words", kind="isolated", signer=r.signer,
                              gloss=r.word, concept=r.concept, role=r.role, extractor="mp", pair_id=None, recording_variation=None,
                              prim=str(POSE_MP / "agent" / f"{safe_id(r.clip_id)}.npz"), aux=None, span=(int(r.f0), int(r.f1))))
     R = pd.DataFrame(rows)
+    cmap = read_json(PREP / "manifest" / "concepts.json")["concept"]
+    before = R.concept.nunique()
+    R["concept"] = [("|".join(v8_concept(x, cmap) for x in c.split("|")) if k == "sentence" else v8_concept(c, cmap)) if isinstance(c, str) else c
+                    for c, k in zip(R.concept, R.kind)]
+    log.info("v8 concept normalisation: %d → %d concepts", before, R.concept.nunique())
     log.info("shards: %d primary clips to pack (%s)", len(R), R.source.value_counts().to_dict())
     KP, SC, off, hw, ids = [], [], [0], [], []
     meta = []
@@ -604,6 +667,9 @@ def cmd_shards(a):
     C.to_parquet(out / "clips.parquet", index=False)
     (out / "concepts.json").write_bytes((PREP / "manifest" / "concepts.json").read_bytes())
     write_json(out / "daily_concepts.json", daily_concepts())
+    dv, st = daily_vocab(C)
+    write_json(out / "daily_vocab.json", dv)
+    log.info("daily vocabulary: %s", st)
     # real between-sign movements: gaps between consecutive aligned words of the TSL51 tune sentences (v6 forced alignment, kept in params/)
     al = PREP / "params" / "tsl51_alignment_v6.json"
     tr = []

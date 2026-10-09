@@ -4,67 +4,122 @@
   "n_frames": 819,
   "duration_s": 32.76,
   "signer_visible_frac": 0.3894993894993895,
-  "signing_frac": 0.34554334554334554,
+  "signing_frac": 0.3882783882783883,
   "mirrored_to_right_hand": false,
   "segments": [
     {
-      "f0": 136,
-      "f1": 184,
-      "z": 4.345239639282227,
+      "f0": 128,
+      "f1": 176,
+      "z": 4.743162155151367,
       "wins": [
         [
-          136,
-          184
+          128,
+          176
         ]
       ],
       "nearest": "สวัสดี",
       "candidates": [
         {
           "word": "สวัสดี",
-          "score": 0.7182,
-          "support": 0.6185
+          "score": 0.5069,
+          "support": 0.3802
         },
         {
           "word": "พี่",
-          "score": 0.5245,
-          "support": 0.4287
+          "score": 0.434,
+          "support": 0.2752
         },
         {
-          "word": "พรุ่งนี้",
-          "score": 0.5287,
-          "support": 0.2845
+          "word": "พี่ชาย",
+          "score": 0.3872,
+          "support": 0.2231
         },
         {
-          "word": "พี่สาว",
-          "score": 0.4758,
-          "support": 0.2417
+          "word": "ข้าว",
+          "score": 0.5896,
+          "support": 0.124
         },
         {
           "word": "กิน",
-          "score": 0.5433,
-          "support": 0.1754
+          "score": 0.417,
+          "support": 0.1033
         }
       ],
-      "score": 0.5526735782623291,
-      "margin": 0.0768480896949768,
-      "null_gap": -0.6110355257987976,
-      "p_sign": 0.7632380488161289,
+      "score": 0.47233346104621887,
+      "margin": 0.1009761393070221,
+      "null_gap": -0.28585031628608704,
+      "p_sign": 0.9457360222935677,
       "agree": 1.0,
-      "support_ratio": 1.4427338465127129,
+      "support_ratio": 1.3815406976744184,
       "window_top1": "สวัสดี",
       "depth": 0.0,
-      "p_correct": 0.27632497906683257,
+      "p_correct": 0.2842225193252314,
       "status": "uncertain",
-      "t0": 5.44,
-      "t1": 7.36
+      "probable": false,
+      "t0": 5.12,
+      "t1": 7.04
     },
     {
-      "f0": 248,
-      "f1": 276,
-      "z": 6.377614974975586,
+      "f0": 212,
+      "f1": 232,
+      "z": 4.436095714569092,
       "wins": [
         [
-          248,
+          212,
+          232
+        ]
+      ],
+      "nearest": "น้อง",
+      "candidates": [
+        {
+          "word": "น้อง",
+          "score": 0.4055,
+          "support": 0.3967
+        },
+        {
+          "word": "เกิด",
+          "score": 0.4192,
+          "support": 0.408
+        },
+        {
+          "word": "ไข่",
+          "score": 0.3611,
+          "support": 0.3576
+        },
+        {
+          "word": "แฟน",
+          "score": 0.3534,
+          "support": 0.3529
+        },
+        {
+          "word": "น้องสาว",
+          "score": 0.3078,
+          "support": 0.3034
+        }
+      ],
+      "score": 0.41915997862815857,
+      "margin": 0.031216710805892944,
+      "null_gap": -0.2586098909378052,
+      "p_sign": 0.5955116176605225,
+      "agree": 1.0,
+      "support_ratio": 1.0284850012603983,
+      "window_top1": "เกิด",
+      "depth": 0.0,
+      "p_correct": 0.14603660377403507,
+      "status": "uncertain",
+      "probable": false,
+      "t0": 8.48,
+      "t1": 9.28,
+      "visual_top1": "เกิด",
+      "reranked_by_grammar": true
+    },
+    {
+      "f0": 232,
+      "f1": 276,
+      "z": 7.431901931762695,
+      "wins": [
+        [
+          232,
           276
         ]
       ],
@@ -72,349 +127,366 @@
       "candidates": [
         {
           "word": "สบายดี",
-          "score": 0.7821,
-          "support": 0.7501
+          "score": 0.7227,
+          "support": 0.6605
+        },
+        {
+          "word": "เหนื่อย",
+          "score": 0.4172,
+          "support": 0.3496
         },
         {
           "word": "มีความสุข",
-          "score": 0.5669,
-          "support": 0.5216
+          "score": 0.4314,
+          "support": 0.3418
         },
         {
-          "word": "เล่น",
-          "score": 0.4316,
-          "support": 0.3625
+          "word": "ยินดีด้วย",
+          "score": 0.3546,
+          "support": 0.1714
         },
         {
           "word": "วันนี้",
-          "score": 0.4491,
-          "support": 0.2988
-        },
-        {
-          "word": "ไป",
-          "score": 0.4228,
-          "support": 0.2359
+          "score": 0.3001,
+          "support": 0.123
         }
       ],
-      "score": 0.757641077041626,
-      "margin": 0.19075781106948853,
-      "null_gap": -0.6546143293380737,
-      "p_sign": 0.921813803059714,
+      "score": 0.7213058471679688,
+      "margin": 0.2950991690158844,
+      "null_gap": -0.6841699481010437,
+      "p_sign": 0.9509595540436832,
       "agree": 1.0,
-      "support_ratio": 1.4380751533742333,
+      "support_ratio": 1.8893020594965673,
       "window_top1": "สบายดี",
       "depth": 0.0,
-      "p_correct": 0.6719099264310551,
-      "status": "accepted",
-      "t0": 9.92,
+      "p_correct": 0.7185656213047334,
+      "status": "uncertain",
+      "probable": true,
+      "t0": 9.28,
       "t1": 11.04
     },
     {
-      "f0": 316,
-      "f1": 332,
-      "z": 4.342231750488281,
+      "f0": 308,
+      "f1": 328,
+      "z": 3.5834922790527344,
       "wins": [
         [
-          316,
-          332
+          308,
+          328
         ]
       ],
-      "nearest": "ฉัน",
+      "nearest": "แฟน",
       "candidates": [
         {
-          "word": "ฉัน",
-          "score": 0.6756,
-          "support": 0.6756
+          "word": "แฟน",
+          "score": 0.337,
+          "support": 0.3162
         },
         {
           "word": "เกิด",
-          "score": 0.6388,
-          "support": 0.6388
+          "score": 0.3149,
+          "support": 0.3016
+        },
+        {
+          "word": "ไป",
+          "score": 0.313,
+          "support": 0.2942
+        },
+        {
+          "word": "ฉัน",
+          "score": 0.3064,
+          "support": 0.2909
         },
         {
           "word": "ข้าว",
-          "score": 0.6104,
-          "support": 0.6104
-        },
-        {
-          "word": "ชอบ",
-          "score": 0.5934,
-          "support": 0.5934
-        },
-        {
-          "word": "กิน",
-          "score": 0.5757,
-          "support": 0.5757
+          "score": 0.2981,
+          "support": 0.1491
         }
       ],
-      "score": 0.6755601167678833,
-      "margin": 0.03675425052642822,
-      "null_gap": -0.10585957765579224,
-      "p_sign": 0.9618259370326996,
+      "score": 0.3369753360748291,
+      "margin": 0.022038280963897705,
+      "null_gap": -0.09932014346122742,
+      "p_sign": 0.5999900037050248,
       "agree": 1.0,
-      "support_ratio": 1.0576080150281777,
-      "window_top1": "ฉัน",
+      "support_ratio": 1.0484084880636604,
+      "window_top1": "แฟน",
       "depth": 0.0,
-      "p_correct": 0.48551502313070666,
+      "p_correct": 0.11115697557939687,
       "status": "uncertain",
-      "t0": 12.64,
-      "t1": 13.28
+      "probable": false,
+      "t0": 12.32,
+      "t1": 13.12
     },
     {
-      "f0": 332,
-      "f1": 368,
-      "z": 6.2752227783203125,
+      "f0": 328,
+      "f1": 376,
+      "z": 6.679150104522705,
       "wins": [
         [
-          332,
-          368
+          328,
+          376
         ]
       ],
       "nearest": "ชอบ",
       "candidates": [
         {
           "word": "ชอบ",
-          "score": 0.7819,
-          "support": 0.7123
+          "score": 0.5795,
+          "support": 0.2734
         },
         {
-          "word": "ฉัน",
-          "score": 0.7067,
-          "support": 0.6658
+          "word": "เวลา",
+          "score": 0.3415,
+          "support": 0.2638
         },
         {
-          "word": "คุณ",
-          "score": 0.6398,
-          "support": 0.5792
-        },
-        {
-          "word": "เกิด",
-          "score": 0.5429,
-          "support": 0.4628
+          "word": "ไม่",
+          "score": 0.3767,
+          "support": 0.2504
         },
         {
           "word": "โสด",
-          "score": 0.4166,
-          "support": 0.1417
+          "score": 0.343,
+          "support": 0.1756
+        },
+        {
+          "word": "ฉัน",
+          "score": 0.4321,
+          "support": 0.1457
         }
       ],
-      "score": 0.7676633596420288,
-      "margin": 0.11684942245483398,
-      "null_gap": -0.4862523674964905,
-      "p_sign": 0.9759476638502544,
+      "score": 0.5391868352890015,
+      "margin": 0.1717931032180786,
+      "null_gap": -0.5645391941070557,
+      "p_sign": 0.8328065142035485,
       "agree": 1.0,
-      "support_ratio": 1.0698407930309404,
+      "support_ratio": 1.0363912054586808,
       "window_top1": "ชอบ",
       "depth": 0.0,
-      "p_correct": 0.6686928167024289,
+      "p_correct": 0.4117187987966659,
       "status": "uncertain",
-      "t0": 13.28,
-      "t1": 14.72
+      "probable": true,
+      "t0": 13.12,
+      "t1": 15.04
     },
     {
       "f0": 412,
-      "f1": 452,
-      "z": 3.1926381587982178,
+      "f1": 460,
+      "z": 4.130342483520508,
       "wins": [
         [
           412,
-          452
+          460
         ]
       ],
-      "nearest": "หก",
+      "nearest": "โกรธ",
       "candidates": [
         {
-          "word": "หก",
-          "score": 0.5455,
-          "support": 0.3451
-        },
-        {
           "word": "โกรธ",
-          "score": 0.4433,
-          "support": 0.3078
+          "score": 0.4669,
+          "support": 0.2756
         },
         {
-          "word": "ลม",
-          "score": 0.368,
-          "support": 0.2862
+          "word": "ไข่",
+          "score": 0.4058,
+          "support": 0.181
         },
         {
-          "word": "กิน",
-          "score": 0.5272,
-          "support": 0.1597
+          "word": "พี่สาว",
+          "score": 0.3076,
+          "support": 0.1474
         },
         {
-          "word": "ข้าว",
-          "score": 0.5048,
-          "support": 0.149
+          "word": "สาม",
+          "score": 0.281,
+          "support": 0.0908
+        },
+        {
+          "word": "ดู",
+          "score": 0.3087,
+          "support": 0.0871
         }
       ],
-      "score": 0.3636253774166107,
-      "margin": 0.03764644265174866,
-      "null_gap": -0.43433117866516113,
-      "p_sign": 0.8738464519381524,
-      "agree": 0.0,
-      "support_ratio": 1.1211825860948668,
-      "window_top1": "ลม",
+      "score": 0.3409751057624817,
+      "margin": 0.10398052632808685,
+      "null_gap": -0.41181015968322754,
+      "p_sign": 0.7290827445685863,
+      "agree": 1.0,
+      "support_ratio": 1.5226519337016575,
+      "window_top1": "โกรธ",
       "depth": 0.0,
-      "p_correct": 0.03228584917545876,
-      "status": "unknown",
+      "p_correct": 0.15013696962433676,
+      "status": "uncertain",
+      "probable": false,
       "t0": 16.48,
-      "t1": 18.08
+      "t1": 18.4
     },
     {
-      "f0": 496,
-      "f1": 544,
-      "z": 6.106847286224365,
+      "f0": 492,
+      "f1": 548,
+      "z": 8.43299674987793,
       "wins": [
         [
-          496,
-          544
+          492,
+          516
+        ],
+        [
+          516,
+          532
+        ],
+        [
+          532,
+          548
         ]
       ],
       "nearest": "แมว",
       "candidates": [
         {
           "word": "แมว",
-          "score": 0.8584,
-          "support": 0.8143
+          "score": 0.7649,
+          "support": 0.7072
         },
         {
-          "word": "กิน",
-          "score": 0.6384,
-          "support": 0.4426
-        },
-        {
-          "word": "เที่ยว",
-          "score": 0.5362,
-          "support": 0.3872
-        },
-        {
-          "word": "ฉัน",
-          "score": 0.6112,
-          "support": 0.3292
+          "word": "ครอบครัว",
+          "score": 0.3972,
+          "support": 0.3465
         },
         {
           "word": "เก้า",
-          "score": 0.4955,
-          "support": 0.2373
+          "score": 0.3638,
+          "support": 0.3163
+        },
+        {
+          "word": "พี่",
+          "score": 0.2824,
+          "support": 0.2119
+        },
+        {
+          "word": "ฉัน",
+          "score": 0.3713,
+          "support": 0.0983
         }
       ],
-      "score": 0.7594490647315979,
-      "margin": 0.29185938835144043,
-      "null_gap": -0.5534918308258057,
-      "p_sign": 0.945646958053112,
+      "score": 0.7649282813072205,
+      "margin": 0.4157719910144806,
+      "null_gap": -0.6019153594970703,
+      "p_sign": 0.8214281084282059,
       "agree": 1.0,
-      "support_ratio": 1.8398102123813829,
+      "support_ratio": 2.040981240981241,
       "window_top1": "แมว",
       "depth": 0.0,
-      "p_correct": 0.8050503894504442,
+      "p_correct": 0.8933063960624748,
       "status": "accepted",
-      "t0": 19.84,
-      "t1": 21.76
+      "probable": true,
+      "t0": 19.68,
+      "t1": 21.92
     },
     {
       "f0": 588,
       "f1": 636,
-      "z": 4.090251445770264,
+      "z": 3.347687244415283,
       "wins": [
         [
           588,
           636
         ]
       ],
-      "nearest": "นั่ง",
+      "nearest": "ไข่",
       "candidates": [
         {
-          "word": "นั่ง",
-          "score": 0.4535,
-          "support": 0.3246
+          "word": "ไข่",
+          "score": 0.4374,
+          "support": 0.2408
+        },
+        {
+          "word": "เพื่อน",
+          "score": 0.3905,
+          "support": 0.2444
         },
         {
           "word": "ครอบครัว",
-          "score": 0.36,
-          "support": 0.1664
+          "score": 0.3923,
+          "support": 0.3025
         },
         {
-          "word": "แฟน",
-          "score": 0.4801,
-          "support": 0.1461
+          "word": "ลูก",
+          "score": 0.2903,
+          "support": 0.1878
         },
         {
-          "word": "ข้าว",
-          "score": 0.4883,
-          "support": 0.1348
-        },
-        {
-          "word": "แต่งงาน",
-          "score": 0.3992,
-          "support": 0.13
+          "word": "สำคัญ",
+          "score": 0.3097,
+          "support": 0.1578
         }
       ],
-      "score": 0.4522685408592224,
-      "margin": 0.09230884909629822,
-      "null_gap": -0.338344931602478,
-      "p_sign": 0.9245555872718493,
+      "score": 0.2740606963634491,
+      "margin": 0.030206650495529175,
+      "null_gap": -0.24487468600273132,
+      "p_sign": 0.9127615591976793,
       "agree": 1.0,
-      "support_ratio": 1.950721153846154,
-      "window_top1": "นั่ง",
+      "support_ratio": 1.2377250409165301,
+      "window_top1": "ครอบครัว",
       "depth": 0.0,
-      "p_correct": 0.24225924712210484,
+      "p_correct": 0.09562755908183071,
       "status": "uncertain",
+      "probable": false,
       "t0": 23.52,
-      "t1": 25.44
+      "t1": 25.44,
+      "repeat_of": "ครอบครัว",
+      "visual_top1": "เพื่อน",
+      "reranked_by_grammar": true
     },
     {
       "f0": 680,
-      "f1": 728,
-      "z": 3.722294569015503,
+      "f1": 724,
+      "z": 5.37559700012207,
       "wins": [
         [
           680,
-          728
+          724
         ]
       ],
-      "nearest": "แมว",
+      "nearest": "ครอบครัว",
       "candidates": [
         {
-          "word": "แมว",
-          "score": 0.6058,
-          "support": 0.4703
-        },
-        {
-          "word": "ยาย",
-          "score": 0.4836,
-          "support": 0.2553
-        },
-        {
-          "word": "ขอโทษ",
-          "score": 0.5383,
-          "support": 0.2131
-        },
-        {
-          "word": "เที่ยว",
-          "score": 0.5705,
-          "support": 0.1857
-        },
-        {
           "word": "ครอบครัว",
-          "score": 0.3259,
-          "support": 0.16
+          "score": 0.5356,
+          "support": 0.4437
+        },
+        {
+          "word": "แมว",
+          "score": 0.5186,
+          "support": 0.4013
+        },
+        {
+          "word": "ลูก",
+          "score": 0.3635,
+          "support": 0.1386
+        },
+        {
+          "word": "ชอบ",
+          "score": 0.3783,
+          "support": 0.1341
+        },
+        {
+          "word": "ข้าว",
+          "score": 0.3956,
+          "support": 0.1275
         }
       ],
-      "score": 0.3758815824985504,
-      "margin": 0.07811421155929565,
-      "null_gap": -0.37712058424949646,
-      "p_sign": 0.8499630058805149,
+      "score": 0.4231851100921631,
+      "margin": 0.011571228504180908,
+      "null_gap": -0.3633197844028473,
+      "p_sign": 0.9269403265281159,
       "agree": 1.0,
-      "support_ratio": 1.8421464943204071,
-      "window_top1": "แมว",
+      "support_ratio": 1.1056566159980066,
+      "window_top1": "ครอบครัว",
       "depth": 0.0,
-      "p_correct": 0.15264775978185377,
-      "status": "unknown",
+      "p_correct": 0.21035373531319693,
+      "status": "uncertain",
+      "probable": false,
       "t0": 27.2,
-      "t1": 29.12,
-      "repeat_of": "แมว"
+      "t1": 28.96
     }
   ],
   "face": {
@@ -450,27 +522,33 @@
     },
     "per_segment": [
       {
-        "brow": 0.25,
-        "furrow": -0.09,
+        "brow": 0.49,
+        "furrow": -0.14,
+        "smile": 0.0,
+        "mouth": 0.022
+      },
+      {
+        "brow": 0.2,
+        "furrow": -0.07,
+        "smile": 0.0,
+        "mouth": 0.01
+      },
+      {
+        "brow": -0.93,
+        "furrow": 1.35,
+        "smile": 0.08,
+        "mouth": 0.002
+      },
+      {
+        "brow": -0.12,
+        "furrow": 0.02,
         "smile": 0.0,
         "mouth": 0.024
       },
       {
-        "brow": -1.14,
-        "furrow": 2.95,
-        "smile": 0.093,
-        "mouth": 0.002
-      },
-      {
-        "brow": 0.04,
-        "furrow": -0.04,
-        "smile": 0.0,
-        "mouth": 0.023
-      },
-      {
-        "brow": -0.52,
-        "furrow": 0.55,
-        "smile": 0.1,
+        "brow": -0.51,
+        "furrow": 0.52,
+        "smile": 0.09,
         "mouth": 0.003
       },
       {
@@ -481,7 +559,7 @@
       },
       {
         "brow": 1.19,
-        "furrow": -0.36,
+        "furrow": -0.37,
         "smile": 0.002,
         "mouth": 0.002
       },
@@ -501,39 +579,43 @@
   },
   "fusion": {
     "chosen": [
-      "สวัสดี",
-      "สบายดี",
-      "[?]",
-      "ชอบ",
-      "[?]",
-      "แมว",
-      "นั่ง",
-      "[?]"
+      "แมว"
     ],
-    "sentence_th": "สวัสดีสบายดีชอบนั่งแมว",
-    "meaning_th": "สวัสดี สบายดี ชอบแมวนั่ง",
-    "confidence": 0.6,
-    "provider": "openai+rules",
-    "latency_s": 5.91,
-    "guard_reason": {
-      "not_allowed": [],
-      "dropped": [],
-      "added": [],
-      "kept_sign_order": true
-    },
+    "sentence_th": "แมว",
+    "meaning_th": "",
+    "confidence": 1.0,
+    "provider": "rules",
     "guard_violations": [],
-    "evidence_gloss": "สวัสดี? | สบายดี | ฉัน? | ชอบ? | [?]≈หก | แมว | นั่ง? | [?]≈แมว"
+    "evidence_gloss": "สวัสดี? | น้อง? | สบายดี? | แฟน? | ชอบ? | โกรธ? | แมว | ไข่? | ครอบครัว?"
   },
-  "sentence": "สวัสดีสบายดีชอบนั่งแมว",
+  "sentence": "แมว",
   "timings_ms": {
-    "schema_ms": 82.5,
-    "tagger_ms": 2078.8,
-    "spotting_ms": 430.0,
-    "n_windows": 671,
+    "schema_ms": 50.6,
+    "tagger_ms": 202.4,
+    "spotting_ms": 334.8,
+    "n_windows": 772,
     "tempo_factor": 1.0,
-    "face_ms": 7.1,
-    "language_ms": 5912.0
+    "face_ms": 9.1,
+    "language_ms": 2.2
   },
-  "model": "v7",
-  "vocab": "conversation"
+  "model": "v8.1",
+  "vocab": "conversation",
+  "hand_tracking": {
+    "left": {
+      "n": 152,
+      "hit": 0.961,
+      "fallback": 0,
+      "max_gap": 2,
+      "out_below": 0
+    },
+    "right": {
+      "n": 263,
+      "hit": 0.928,
+      "fallback": 0,
+      "max_gap": 3,
+      "out_below": 0
+    },
+    "room_below": 1.68,
+    "fps": 24.0
+  }
 }

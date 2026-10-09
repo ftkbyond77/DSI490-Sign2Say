@@ -41,13 +41,13 @@ MODEL_DIR = Path(os.environ.get("THAISLM_MODELS", "/app/models"))
 TTS_URL = os.environ.get("TTS_URL", "http://tts:8001")
 MAX_FRAMES = int(os.environ.get("MAX_FRAMES", 25 * 60))
 
-app = FastAPI(title="ThaiSLM sign-api", version="7.0")
+app = FastAPI(title="ThaiSLM sign-api", version="8.0")
 app.add_middleware(CORSMiddleware, allow_origins=os.environ.get("CORS_ORIGINS", "*").split(","), allow_methods=["*"], allow_headers=["*"])
 _pipes: dict[tuple, SignPipeline] = {}
 _lock = threading.Lock()
 
 
-def pipe(vocab="conversation", llm=True) -> SignPipeline:
+def pipe(vocab="daily", llm=True) -> SignPipeline:
     key = (vocab, bool(llm))
     with _lock:
         if key not in _pipes:
@@ -59,9 +59,8 @@ def pipe(vocab="conversation", llm=True) -> SignPipeline:
 def warm():
     p = pipe()
     import numpy as np
-    from modules.parts import prep
     rng = np.random.RandomState(0)
-    p.be.embed([prep(rng.uniform(0.3, 0.7, (30, 133, 2)).astype(np.float32), np.ones((30, 133), np.float32))])   # first-call latency
+    p.be.embed([p.be.prep(rng.uniform(0.3, 0.7, (30, 133, 2)).astype(np.float32), np.ones((30, 133), np.float32))])   # first-call latency
 
 
 class Frame(BaseModel):
@@ -71,6 +70,7 @@ class Frame(BaseModel):
     rh: list[list[float]] = []
     face: list[list[float]] = []
     bs: list[float] = []
+    fb: list[bool] = []                 # v8: hands filled by the browser's hand fallback [left, right]
 
 
 class MySign(BaseModel):
@@ -82,7 +82,7 @@ def _b64_to_vec(z: str):
     import numpy as np
     try:
         v = np.frombuffer(base64.b64decode(z), np.float16).astype(np.float32)
-        return v if v.shape == (768,) else None
+        return v if v.ndim == 1 and v.size in (256, 768) else None     # the pipeline drops a vector of the wrong size (older model)
     except Exception:  # noqa: BLE001
         return None
 
@@ -96,7 +96,7 @@ class TranslateRequest(BaseModel):
     frames: list[Frame]
     width: int
     height: int
-    vocab: str = "conversation"
+    vocab: str = "daily"                        # v8 default: better-calibrated confirmed words (result_v8 §6)
     llm: bool = True
     speak: bool = False
     speak_tentative: bool = False               # also speak a withheld (uncertain) reading — the user's choice in the web UI
@@ -126,9 +126,11 @@ def _speak(result, tentative=False):
 
 
 def _public(result):
-    keep = ("title", "duration_s", "n_frames", "signer_visible_frac", "signing_frac", "mirrored_to_right_hand", "sentence", "vocab", "model", "timings_ms")
+    keep = ("title", "duration_s", "n_frames", "signer_visible_frac", "signing_frac", "mirrored_to_right_hand", "sentence", "vocab", "model", "timings_ms",
+            "hand_tracking")
     out = {k: result.get(k) for k in keep}
     out["segments"] = [dict(t0=s["t0"], t1=s["t1"], status=s["status"], word=s["nearest"], p=round(s.get("p_correct", 0), 3), kind=s.get("kind", "sign"),
+                            probable=bool(s.get("probable") or s["status"] == "accepted"),
                             candidates=[c["word"] for c in s["candidates"][:5]], **({"emb": _vec_to_b64(s["emb"])} if "emb" in s else {}))
                        for s in result.get("segments", [])]
     f = result.get("fusion") or {}
@@ -149,13 +151,18 @@ def health():
 def info():
     cfg = read_json(MODEL_DIR / "config.json")
     p = pipe()
+    daily = MODEL_DIR / "vocab_daily.json"
     return dict(version=cfg.get("version"), built=cfg.get("built"), concepts_full=len(p.concepts), bank_clips=int(len(p.bank.c)),
-                conversation_concepts=int(len(p.bank.concepts_present)), llm=bool(os.environ.get("OPENAI_API_KEY")), extractor="MediaPipe Holistic 1.0.1")
+                daily_concepts=len(read_json(daily)["concepts"]) if daily.exists() else None,
+                conversation_concepts=len(read_json(MODEL_DIR / "vocab_conversation.json")["concepts"]), default_vocab=p.vocab,
+                llm=bool(os.environ.get("OPENAI_API_KEY")), extractor="MediaPipe Holistic 1.0.1 + hand fallback")
 
 
 @app.get("/v1/vocab")
 def vocab():
-    return read_json(MODEL_DIR / "vocab_conversation.json")
+    """Words a user can teach (personal sign memory): the daily vocabulary (a superset of the conversation words)."""
+    f = MODEL_DIR / "vocab_daily.json"
+    return read_json(f if f.exists() else MODEL_DIR / "vocab_conversation.json")
 
 
 STAGE_P = dict(schema=0.05, tagger=0.15, spotting=0.45, face=0.7, language=0.8)
@@ -166,8 +173,8 @@ def _check(req: TranslateRequest):
         raise HTTPException(400, "no frames")
     if len(req.frames) > MAX_FRAMES:
         raise HTTPException(413, f"too many frames (max {MAX_FRAMES})")
-    if req.vocab not in ("conversation", "full"):
-        raise HTTPException(400, "vocab must be conversation | full")
+    if req.vocab not in ("conversation", "daily", "full"):
+        raise HTTPException(400, "vocab must be conversation | daily")
 
 
 SAVE_DIR = os.environ.get("THAISLM_SAVE_REQUESTS", "")      # diagnosis: keep each utterance's landmarks + result (landmarks only, no video)
@@ -181,7 +188,7 @@ def _save_request(req: TranslateRequest, out: dict):
         d = Path(SAVE_DIR); d.mkdir(parents=True, exist_ok=True)
         rec = dict(time=time.strftime("%Y-%m-%d %H:%M:%S"), width=req.width, height=req.height, vocab=req.vocab, alphabet=req.alphabet,
                    n_user_signs=len(req.user_bank), frames=[f.model_dump() for f in req.frames],
-                   result={k: out.get(k) for k in ("sentence", "language", "face", "timings_ms", "duration_s")})
+                   result={k: out.get(k) for k in ("sentence", "language", "face", "timings_ms", "duration_s", "hand_tracking")})
         # copies without the embedding — the response itself must keep "emb" (the client saves it when the user teaches a word)
         rec["result"]["segments"] = [{k: v for k, v in sgm.items() if k != "emb"} for sgm in out.get("segments") or []]
         with gzip.open(d / f"{time.strftime('%Y%m%d_%H%M%S')}_{int(time.time() * 1000) % 1000:03d}.json.gz", "wt", encoding="utf-8") as fh:
@@ -270,7 +277,7 @@ def translate_stream(req: TranslateRequest):
 
 
 @app.post("/v1/translate/video")
-def translate_video(file: UploadFile = File(...), vocab: str = Query("conversation"), llm: bool = Query(True), speak: bool = Query(False),
+def translate_video(file: UploadFile = File(...), vocab: str = Query("daily"), llm: bool = Query(True), speak: bool = Query(False),
                     face_question: bool = Query(False), speak_tentative: bool = Query(False), alphabet: str = Query("en"),
                     spell_only: bool = Query(False)):
     path = _save_upload(file)
@@ -282,7 +289,7 @@ def translate_video(file: UploadFile = File(...), vocab: str = Query("conversati
 
 
 @app.post("/v1/translate/video/stream")
-def translate_video_stream(file: UploadFile = File(...), vocab: str = Query("conversation"), llm: bool = Query(True), speak: bool = Query(False),
+def translate_video_stream(file: UploadFile = File(...), vocab: str = Query("daily"), llm: bool = Query(True), speak: bool = Query(False),
                            face_question: bool = Query(False), speak_tentative: bool = Query(False), alphabet: str = Query("en"),
                            spell_only: bool = Query(False)):
     path = _save_upload(file)

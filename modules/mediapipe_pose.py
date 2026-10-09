@@ -51,19 +51,126 @@ def ensure_model(path=MODEL_PATH):
     return path
 
 
-class Holistic:
-    """One MediaPipe HolisticLandmarker in VIDEO mode (tracking across frames). Create one per video (timestamps restart)."""
+HAND_MODEL_PATH = Path(os.environ.get("MP_HAND_MODEL", Path(__file__).resolve().parents[1] / "models" / "mediapipe" / "hand_landmarker.task"))
 
-    def __init__(self, model_path=None, min_pose=0.5, min_hand=0.5):
+
+def wrist_raised(pose, i):
+    """A pose wrist that is visible, inside the frame and at signing height (same rule as webapp/web/lib/holistic.ts wristRaised)."""
+    ls, rs, w = pose[11], pose[12], pose[i]
+    sw = float(np.hypot(*(ls[:2] - rs[:2]))) or 0.2
+    mid_y = (ls[1] + rs[1]) / 2
+    return bool(w[3] > 0.5 and 0 < w[0] < 1 and 0 < w[1] < 1 and w[1] < mid_y + 1.3 * sw)
+
+
+def _same_hand(a, b, sw):
+    """Two 21-point detections of the same physical hand: their points coincide (mean distance < 0.15 shoulder width). Touching hands
+    (ชื่อ, สวัสดี, ขอบคุณ) have wrists close together but different fingers, so the wrist alone cannot tell them apart."""
+    return float(np.linalg.norm(a[:, :2] - b[:, :2], axis=1).mean()) < 0.15 * sw
+
+
+def fill_hands(pose, lh, rh, detected):
+    """Hand fallback (same rule as the browser's fillHands): hands from a separate HandLandmarker fill the sides Holistic missed.
+    v8.1: a detection is the hand Holistic already has only if its points coincide with it (not merely its wrist — that dropped the
+    second hand of every two-hand contact sign); the rest go to the missing side's pose wrist if within ~1 shoulder width, the nearer
+    wrist winning when both sides are missing. Returns lh, rh, (filled_left, filled_right)."""
+    sw = float(np.hypot(*(pose[11, :2] - pose[12, :2]))) or 0.2
+    out, fb = [lh, rh], [False, False]
+    have = [np.abs(h).sum() > 0 for h in out]
+    free = [d for d in detected if not any(have[k] and _same_hand(d, out[k], sw) for k in (0, 1))]
+    free = [d for i, d in enumerate(free) if not any(_same_hand(d, e, sw) for e in free[:i])]        # one detection per hand
+    pairs = []
+    for k, wi in ((0, 15), (1, 16)):
+        if have[k]:
+            continue
+        for j, d in enumerate(free):
+            dw = float(np.hypot(*(d[0, :2] - pose[wi, :2])))
+            if dw < 1.0 * sw:
+                pairs.append((dw, k, j))
+    used = set()
+    for dw, k, j in sorted(pairs):
+        if fb[k] or j in used:
+            continue
+        out[k] = free[j].astype(np.float32); fb[k] = True; used.add(j)
+    return out[0], out[1], tuple(fb)
+
+
+def fill_hands_v8(pose, lh, rh, detected):
+    """The v8 rule (kept for scripts/hand_fill_test.py): v8 hand fallback (same rule as the browser's fillHands): hands from a separate HandLandmarker fill the sides Holistic missed;
+    each goes to the nearer pose wrist, if within ~1 shoulder width. Returns lh, rh, (filled_left, filled_right)."""
+    sw = float(np.hypot(*(pose[11, :2] - pose[12, :2]))) or 0.2
+    used, fb = set(), [False, False]
+    out = [lh, rh]
+    for k, (wi, oi) in enumerate(((15, 16), (16, 15))):
+        h = out[k]
+        if np.abs(h).sum() > 0:
+            for j, d in enumerate(detected):
+                if np.hypot(*(d[0, :2] - h[0, :2])) < 0.5 * sw:
+                    used.add(j)
+            continue
+        best, bd = -1, 1e9
+        for j, d in enumerate(detected):
+            if j in used:
+                continue
+            dw = np.hypot(*(d[0, :2] - pose[wi, :2])); do = np.hypot(*(d[0, :2] - pose[oi, :2]))
+            if dw < do and dw < 1.0 * sw and dw < bd:
+                best, bd = j, dw
+        if best >= 0:
+            out[k] = detected[best].astype(np.float32); used.add(best); fb[k] = True
+    return out[0], out[1], tuple(fb)
+
+
+def hand_report(raw, fb=None):
+    """Per-utterance hand tracking (the v8 extractor metric): for each side, the share of frames with a raised, visible wrist whose 21 hand
+    points were tracked, how many came from the fallback, the longest run of lost frames; plus the capture fps. v8.1: a hand whose wrist
+    is at the bottom edge of the image is outside the picture, not lost — counted in out_below, not in hit; room_below = signing space
+    below the shoulders in shoulder widths (training videos 1.2–1.8)."""
+    pose, T = raw["pose"], len(raw["t"])
+    rep = {}
+    for name, key, wi, k in (("left", "lh", 15, 0), ("right", "rh", 16, 1)):
+        n = got = nfb = run = mx = below = 0
+        for i in range(T):
+            if not wrist_raised(pose[i], wi):
+                run = 0; continue
+            if np.abs(raw[key][i]).sum() > 0:
+                n += 1; got += 1; run = 0
+                nfb += int(bool(fb is not None and fb[i][k]))
+            elif pose[i, wi, 1] > 0.88:                  # v8.1: hand outside the picture at the bottom (resting, or a tight webcam frame):
+                below += 1                               # not a tracking miss — reported apart, with room_below for the framing advice
+            else:
+                n += 1; run += 1; mx = max(mx, run)
+        rep[name] = dict(n=n, hit=round(got / n, 3) if n else None, fallback=nfb, max_gap=mx, out_below=below)
+    ok = (pose[:, 11, 3] > 0.5) & (pose[:, 12, 3] > 0.5)
+    if ok.any():                                         # signing space below the shoulders, in shoulder widths (training videos 1.2–1.8)
+        H, W = raw.get("hw", (1, 1))
+        sw = np.hypot((pose[ok, 11, 0] - pose[ok, 12, 0]) * W / H, pose[ok, 11, 1] - pose[ok, 12, 1])
+        rep["room_below"] = round(float(np.median((1 - (pose[ok, 11, 1] + pose[ok, 12, 1]) / 2) / np.maximum(sw, 1e-3))), 2)
+    t = raw["t"]
+    rep["fps"] = round(float((T - 1) / max(t[-1] - t[0], 1e-3)), 1) if T > 1 else 0.0
+    return rep
+
+
+class Holistic:
+    """One MediaPipe HolisticLandmarker in VIDEO mode (tracking across frames). Create one per video (timestamps restart).
+    hand_fallback (v8, inference): a HandLandmarker looks for hands Holistic missed while their wrist is raised (fill_hands)."""
+
+    def __init__(self, model_path=None, min_pose=0.5, min_hand=0.5, hand_fallback=False):
         from mediapipe.tasks.python import BaseOptions, vision
         opts = vision.HolisticLandmarkerOptions(
             base_options=BaseOptions(model_asset_path=str(ensure_model(model_path or MODEL_PATH))),
             running_mode=vision.RunningMode.VIDEO, output_face_blendshapes=True,
             min_pose_detection_confidence=min_pose, min_pose_landmarks_confidence=min_pose, min_hand_landmarks_confidence=min_hand)
         self.lm = vision.HolisticLandmarker.create_from_options(opts)
+        self.hands = None
+        if hand_fallback and HAND_MODEL_PATH.exists():
+            self.hands = vision.HandLandmarker.create_from_options(vision.HandLandmarkerOptions(
+                base_options=BaseOptions(model_asset_path=str(HAND_MODEL_PATH)), running_mode=vision.RunningMode.VIDEO, num_hands=2,
+                min_hand_detection_confidence=0.5, min_hand_presence_confidence=0.5, min_tracking_confidence=0.5))
+        self.last_fb = (False, False)
 
     def close(self):
         self.lm.close()
+        if self.hands is not None:
+            self.hands.close()
 
     def frame(self, rgb, t_ms):
         import mediapipe as mp
@@ -81,6 +188,13 @@ class Holistic:
             face[:] = [(fl[i].x, fl[i].y) for i in MESH68]
         if r.face_blendshapes:
             bs[:] = [c.score for c in r.face_blendshapes[:52]]
+        self.last_fb = (False, False)
+        if self.hands is not None and r.pose_landmarks and ((not r.left_hand_landmarks and wrist_raised(pose, 15)) or
+                                                            (not r.right_hand_landmarks and wrist_raised(pose, 16))):
+            h = self.hands.detect_for_video(mp.Image(image_format=mp.ImageFormat.SRGB, data=np.ascontiguousarray(rgb)), int(t_ms))
+            det = [np.array([(p.x, p.y, p.z) for p in hl], np.float32) for hl in h.hand_landmarks]
+            if det:
+                lh, rh, self.last_fb = fill_hands(pose, lh, rh, det)
         return pose, lh, rh, face, bs
 
 
@@ -121,7 +235,7 @@ class ExposureNorm:
         return rgb if self.lut is None else cv2.LUT(rgb, self.lut)
 
 
-def extract(video, fps=25.0, crop=None, max_side=1280, model_path=None, progress=None, normalize=False):
+def extract(video, fps=25.0, crop=None, max_side=1280, model_path=None, progress=None, normalize=False, hand_fallback=False):
     """Video file → raw MediaPipe arrays (module docstring). crop = (x0, y0, x1, y1) in pixels (static signer box) or None.
     Frames are sampled at ≤ `fps` on their own timestamps (a 50 fps source is not processed twice as often).
     progress(frac) is called about every 25 processed frames (web progress bar). normalize = ExposureNorm (inference only)."""
@@ -131,9 +245,9 @@ def extract(video, fps=25.0, crop=None, max_side=1280, model_path=None, progress
     src_fps = cap.get(cv2.CAP_PROP_FPS) or 25.0
     if not np.isfinite(src_fps) or src_fps <= 1 or src_fps > 240:
         src_fps = 25.0
-    hol = Holistic(model_path)
+    hol = Holistic(model_path, hand_fallback=hand_fallback)
     norm = ExposureNorm() if normalize else None
-    T, P, L, R, F, B = [], [], [], [], [], []
+    T, P, L, R, F, B, FB = [], [], [], [], [], [], []
     i, next_t, hw = 0, 0.0, None
     try:
         while True:
@@ -154,7 +268,7 @@ def extract(video, fps=25.0, crop=None, max_side=1280, model_path=None, progress
             hw = fr.shape[:2]
             rgb = cv2.cvtColor(fr, cv2.COLOR_BGR2RGB)
             pose, lh, rh, face, bs = hol.frame(norm(rgb) if norm else rgb, t * 1000.0)
-            T.append(t); P.append(pose); L.append(lh); R.append(rh); F.append(face); B.append(bs)
+            T.append(t); P.append(pose); L.append(lh); R.append(rh); F.append(face); B.append(bs); FB.append(hol.last_fb)
             if progress and n_src and len(T) % 25 == 0:
                 progress(min(i / n_src, 1.0))
     finally:
@@ -162,7 +276,7 @@ def extract(video, fps=25.0, crop=None, max_side=1280, model_path=None, progress
     if not T:
         return None
     return dict(t=np.array(T, np.float64), hw=np.array(hw if hw else (0, 0), np.int32), pose=np.stack(P), lh=np.stack(L), rh=np.stack(R),
-                face=np.stack(F), bs=np.stack(B), src_fps=np.float32(src_fps))
+                face=np.stack(F), bs=np.stack(B), src_fps=np.float32(src_fps), fb=np.array(FB, bool))
 
 
 def from_browser(frames, hw):
@@ -171,8 +285,11 @@ def from_browser(frames, hw):
     n = len(frames)
     pose = np.zeros((n, 33, 4), np.float32); lh = np.zeros((n, 21, 3), np.float32); rh = np.zeros((n, 21, 3), np.float32)
     face = np.zeros((n, 68, 2), np.float32); bs = np.zeros((n, 52), np.float32); t = np.zeros(n, np.float64)
+    fb = np.zeros((n, 2), bool)
     for k, f in enumerate(frames):
         t[k] = float(f.get("t", 0.0)) / 1000.0
+        if f.get("fb"):
+            fb[k] = [bool(x) for x in list(f["fb"])[:2]]
         for arr, key, d in ((pose, "pose", 4), (lh, "lh", 3), (rh, "rh", 3), (face, "face", 2)):
             v = f.get(key) or []
             if len(v):
@@ -183,7 +300,8 @@ def from_browser(frames, hw):
             b = np.asarray(f["bs"], np.float32)[:52]; bs[k, :len(b)] = b
     pose[pose[..., 3] == 0, 3] = np.where(np.abs(pose[pose[..., 3] == 0, :2]).sum(-1) > 0, 1.0, 0.0)
     t = t - t[0] if n else t
-    return dict(t=t, hw=np.array(hw, np.int32), pose=pose, lh=lh, rh=rh, face=face, bs=bs, src_fps=np.float32(n / max(t[-1], 1e-3) if n > 1 else 25))
+    return dict(t=t, hw=np.array(hw, np.int32), pose=pose, lh=lh, rh=rh, face=face, bs=bs, src_fps=np.float32(n / max(t[-1], 1e-3) if n > 1 else 25),
+                fb=fb)
 
 
 def to_mp75(raw, vis_thr=0.5):

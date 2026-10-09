@@ -2,7 +2,10 @@
 
   python main.py export-onnx         # models/onnx/{encoder.onnx, encoder.int8.onnx, tagger.onnx} + parity.json
 
-What is exported
+What is exported (v8 landmark encoder, models/config.json "encoder": "lmenc")
+  encoder.onnx       inputs  x [B,T,122] (modules.lmenc.features, NumPy) · mask [B,T] → embedding [B,256] · frames [B,T,256]
+  tagger.onnx        input x [B,T,256+13] → logits [B,T,3]
+(v7 Uni-Sign, kept for reproducing v7:)
   encoder.onnx       inputs  body [B,T,9,3] · left [B,T,21,3] · right [B,T,21,3] · face_all [B,T,18,3] · mask [B,T] (1.0 = frame)
                      outputs embedding [B,768] (L2-normalised sign embedding) · frames [B,T,768] (contextual frame states)
                      (parts come from modules.parts.prepare_parts on Standard-Schema keypoints — plain NumPy)
@@ -40,6 +43,72 @@ class _EncoderGraph(torch.nn.Module):
         z = (h * w).sum(1) / w.sum(1).clamp(min=1.0)
         z = z + self.enc.head(z)
         return torch.nn.functional.normalize(z, dim=-1), h
+
+
+class _LmGraph(torch.nn.Module):
+    def __init__(self, enc):
+        super().__init__()
+        self.enc = enc
+
+    def forward(self, x, mask):
+        h = self.enc.frames(x, mask)
+        return self.enc.pool(h, mask), h
+
+
+def export_lmenc():
+    """v8: the compact landmark encoder (fp32; it is small enough that int8 brings nothing worth a parity risk)."""
+    from modules import lmenc
+    from modules.sequence import N_KIN, Tagger
+    OUT.mkdir(parents=True, exist_ok=True)
+    for f in OUT.glob("*.onnx"):
+        f.unlink()
+    enc = lmenc.load_model(MODEL / "encoder.pt", "cpu").float().eval()
+    g = _LmGraph(enc).eval()
+    rng = np.random.RandomState(0)
+    x = torch.from_numpy(lmenc.features(rng.uniform(0.3, 0.7, (40, 133, 2)).astype(np.float32), np.ones((40, 133), np.float32))[None])
+    torch.onnx.export(g, (x, torch.ones(1, 40)), str(OUT / "encoder.onnx"), input_names=["x", "mask"], output_names=["embedding", "frames"],
+                      dynamic_axes={"x": {0: "B", 1: "T"}, "mask": {0: "B", 1: "T"}, "embedding": {0: "B"}, "frames": {0: "B", 1: "T"}},
+                      opset_version=17, do_constant_folding=True, dynamo=False)
+    D = enc.emb_dim
+    tg = Tagger(d_in=D + N_KIN); tg.load_state_dict(torch.load(MODEL / "tagger.pt", map_location="cpu")); tg.eval()
+    torch.onnx.export(tg, (torch.randn(1, 50, D + N_KIN),), str(OUT / "tagger.onnx"), input_names=["x"], output_names=["logits"],
+                      dynamic_axes={"x": {0: "B", 1: "T"}, "logits": {0: "B", 1: "T"}}, opset_version=17, dynamo=False)
+    return enc, tg
+
+
+def parity_lmenc(enc, tg):
+    """ONNX Runtime vs PyTorch on real windows and whole utterances (data_test landmarks): embedding cosine, frame states, tagger logits."""
+    import onnxruntime as ort
+    from modules import lmenc
+    from modules.mediapipe_pose import load_raw, to_standard
+    from modules.parts import to_iso
+    from modules.segment import kin_features
+    so = ort.SessionOptions()
+    se = ort.InferenceSession(str(OUT / "encoder.onnx"), so, providers=["CPUExecutionProvider"])
+    st = ort.InferenceSession(str(OUT / "tagger.onnx"), so, providers=["CPUExecutionProvider"])
+    feats, utts = [], []
+    for f in sorted((ROOT / "cache" / "data_test_mp").glob("*.npz")):
+        d = to_standard(load_raw(f))
+        kp, sc = to_iso(d["kp"], tuple(int(x) for x in d["hw"])), d["sc"]
+        utts.append((kp, sc))
+        for a in range(0, len(kp) - 24, 9):
+            feats.append(lmenc.prep(kp[a:a + 24], sc[a:a + 24]))
+    Zt = lmenc.embed(enc, feats, device="cpu")
+    Zo = np.concatenate([se.run(None, {"x": f[None], "mask": np.ones((1, len(f)), np.float32)})[0] for f in feats])
+    cos = (Zt * Zo).sum(1)
+    hd, ld = [], []
+    for kp, sc in utts:
+        f = lmenc.features(kp, sc)
+        with torch.no_grad():
+            ht = enc.frames(torch.from_numpy(f[None]), torch.ones(1, len(f)))[0].numpy()
+        ho = se.run(None, {"x": f[None], "mask": np.ones((1, len(f)), np.float32)})[1][0]
+        hd.append(float(np.abs(ht - ho).max()))
+        x = np.concatenate([ho, kin_features(kp, sc)], 1)[None].astype(np.float32)
+        with torch.no_grad():
+            lt = tg(torch.from_numpy(x)).numpy()
+        ld.append(float(np.abs(lt - st.run(None, {"x": x})[0]).max()))
+    return dict(n_windows=len(feats), cos_mean=float(cos.mean()), cos_min=float(cos.min()), frames_max_abs_diff=max(hd), tagger_max_abs_diff=max(ld),
+                size_mb=round((OUT / "encoder.onnx").stat().st_size / 1e6, 2))
 
 
 def export():
@@ -129,6 +198,12 @@ def parity(enc, tg):
 
 
 if __name__ == "__main__":
+    if read_json(MODEL / "config.json").get("encoder") == "lmenc":
+        enc, tg = export_lmenc()
+        rep = parity_lmenc(enc, tg)
+        write_json(OUT / "parity.json", rep)
+        log.info("onnx files (MB): %s · parity %s", {f.name: round(f.stat().st_size / 1e6, 2) for f in OUT.glob("*.onnx")}, rep)
+        raise SystemExit(0)
     enc, tg = export()
     rep = parity(enc, tg)
     write_json(OUT / "parity.json", rep)

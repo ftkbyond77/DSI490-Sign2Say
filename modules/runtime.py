@@ -2,9 +2,11 @@
 
     be = OnnxBackend(models_dir, device="cpu")      # models/onnx/encoder.onnx + tagger.onnx
     be = TorchBackend(models_dir, device="cuda")    # models/encoder.pt + tagger.pt
-    Z    = be.embed(parts_list)                      # [N,768] L2-normalised sign embeddings of N windows / clips
-    H    = be.frames(kp_iso, sc)                     # [T,768] contextual frame states (tagger input)
+    x    = be.prep(kp_iso, sc)                       # encoder input of one window (v8: landmark features; v7: Uni-Sign parts)
+    Z    = be.embed([x, ...])                        # [N,D] L2-normalised sign embeddings (v8 D = 256, v7 768)
+    H    = be.frames(kp_iso, sc)                     # [T,D] contextual frame states (tagger input)
     prob = be.tag(x)                                 # [T,3]   non-sign / sign-begin / sign-inside
+The encoder kind is read from models/config.json "encoder" ("lmenc" = v8 landmark encoder, otherwise v7 Uni-Sign).
 
 Vocabulary scoring (`concept_scores`, `window_table`) is NumPy and identical for both back-ends.
 """
@@ -18,9 +20,32 @@ import numpy as np
 from .parts import MODES, collate_np, prepare_parts
 
 
+def encoder_kind(model_dir):
+    import json
+    try:
+        return json.loads((Path(model_dir) / "config.json").read_text(encoding="utf-8")).get("encoder", "unisign")
+    except Exception:  # noqa: BLE001
+        return "unisign"
+
+
 def _softmax(x):
     e = np.exp(x - x.max(-1, keepdims=True))
     return e / e.sum(-1, keepdims=True)
+
+
+def _frames_feats(run_frames, f, dim, chunk=400, overlap=50):
+    """v8: frame states of a long utterance from its landmark features (same chunking / blending as v7)."""
+    T = len(f)
+    out = np.zeros((T, dim), np.float32); wsum = np.zeros(T, np.float32)
+    step = chunk - overlap
+    for a in range(0, max(1, T - overlap), step):
+        b = min(T, a + chunk)
+        h = run_frames(f[a:b])
+        w = np.minimum(np.arange(1, b - a + 1), np.arange(b - a, 0, -1)).clip(max=25).astype(np.float32)
+        out[a:b] += h * w[:, None]; wsum[a:b] += w
+        if b == T:
+            break
+    return out / np.maximum(wsum, 1e-6)[:, None]
 
 
 def _frames_chunked(run_frames, kp_iso, sc, chunk=400, overlap=50):
@@ -58,8 +83,19 @@ class OnnxBackend:
         self.precision = "int8" if use_int8 else "fp32"
         self.tagger = ort.InferenceSession(str(md / "tagger.onnx"), so, providers=prov)
         self.device = "cuda" if prov[0] != "CPUExecutionProvider" else "cpu"
+        self.kind = encoder_kind(model_dir)
+        if self.kind == "lmenc":
+            from . import lmenc
+            self.prep, self._lm = lmenc.prep, lmenc
+            self.dim = int(self.enc.get_outputs()[0].shape[-1])
+        else:
+            from .parts import prep
+            self.prep, self.dim = prep, 768
 
     def _run(self, parts_list):
+        if self.kind == "lmenc":
+            x, m = self._lm.collate_np(parts_list)
+            return self.enc.run(None, {"x": x, "mask": m})
         P, M = collate_np(parts_list)
         feeds = {k: P[k] for k in MODES}
         feeds["mask"] = M
@@ -67,15 +103,17 @@ class OnnxBackend:
 
     def embed(self, parts_list, bs=64):
         if not parts_list:
-            return np.zeros((0, 768), np.float32)
-        order = np.argsort([len(p["body"]) for p in parts_list])
-        out = np.zeros((len(parts_list), 768), np.float32)
+            return np.zeros((0, self.dim), np.float32)
+        order = np.argsort([len(p) if self.kind == "lmenc" else len(p["body"]) for p in parts_list])
+        out = np.zeros((len(parts_list), self.dim), np.float32)
         for i in range(0, len(order), bs):
             idx = order[i:i + bs]
             out[idx] = self._run([parts_list[j] for j in idx])[0]
         return out
 
     def frames(self, kp_iso, sc):
+        if self.kind == "lmenc":
+            return _frames_feats(lambda f: self._run([f])[1][0], self._lm.features(kp_iso, sc), self.dim)
         return _frames_chunked(lambda p: self._run([p])[1][0], kp_iso, sc)
 
     def tag(self, x):
@@ -92,17 +130,30 @@ class TorchBackend:
         md = Path(model_dir)
         self.torch = torch
         self.device = device if (device != "cuda" or torch.cuda.is_available()) else "cpu"
-        self.model = encoder if encoder is not None else load_encoder(md, md / "encoder.pt", device=self.device)
+        self.kind = encoder_kind(md)
+        if self.kind == "lmenc":
+            from . import lmenc
+            self._lm, self.prep = lmenc, lmenc.prep
+            self.model = encoder if encoder is not None else lmenc.load_model(md / "encoder.pt", self.device)
+            self.dim = self.model.emb_dim
+        else:
+            from .parts import prep
+            self.prep, self.dim = prep, 768
+            self.model = encoder if encoder is not None else load_encoder(md, md / "encoder.pt", device=self.device)
         if tagger is None:
-            tagger = Tagger(arch=tagger_arch).to(self.device)
+            tagger = Tagger(d_in=self.dim + 13, arch=tagger_arch).to(self.device)
             tagger.load_state_dict(torch.load(md / "tagger.pt", map_location=self.device))
         self.tg = tagger.eval()
 
     def embed(self, parts_list, bs=256):
+        if self.kind == "lmenc":
+            return self._lm.embed(self.model, parts_list, device=self.device, bs=bs)
         from .encoder import embed_parts
         return embed_parts(self.model, parts_list, bs=bs, device=self.device)
 
     def frames(self, kp_iso, sc):
+        if self.kind == "lmenc":
+            return self._lm.frames_long(self.model, kp_iso, sc, device=self.device)
         from .encoder import frame_features
         return frame_features(self.model, kp_iso, sc, device=self.device)
 
@@ -150,7 +201,7 @@ def table_from_Z(Z, wins, bank: Bank, null_proto, topk=50):
     """Window embeddings → the decoder's table: top-k concepts, z-statistics over the vocabulary, similarity to the null prototype."""
     if not len(wins):
         return dict(wins=[], top_idx=np.zeros((0, topk), np.int32), top_sc=np.zeros((0, topk), np.float32), mu=np.zeros(0), sd=np.zeros(0),
-                    null=np.zeros(0), Z=np.zeros((0, 768), np.float32))
+                    null=np.zeros(0), Z=np.zeros((0, len(null_proto)), np.float32))
     S = bank.scores(Z)
     valid = S > -1.5
     k = min(topk, int(valid.sum(1).min()))
@@ -164,9 +215,8 @@ def table_from_Z(Z, wins, bank: Bank, null_proto, topk=50):
 
 def window_table(backend, kp, sc, wins, bank: Bank, null_proto, topk=50, prep_fn=None):
     """Exact (teacher) table: every window embedded on its own by the encoder (slow on CPU; training / evaluation)."""
-    from .parts import prep
-    prep_fn = prep_fn or prep
-    Z = backend.embed([prep_fn(kp[a:b], sc[a:b]) for a, b in wins]) if len(wins) else np.zeros((0, 768), np.float32)
+    prep_fn = prep_fn or backend.prep
+    Z = backend.embed([prep_fn(kp[a:b], sc[a:b]) for a, b in wins]) if len(wins) else np.zeros((0, len(null_proto)), np.float32)
     return table_from_Z(Z, wins, bank, null_proto, topk)
 
 

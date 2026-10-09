@@ -4,268 +4,274 @@
   "n_frames": 223,
   "duration_s": 8.92,
   "signer_visible_frac": 1.0,
-  "signing_frac": 0.7309417040358744,
+  "signing_frac": 0.7354260089686099,
   "mirrored_to_right_hand": false,
   "segments": [
     {
-      "f0": 4,
-      "f1": 20,
-      "z": 5.403418064117432,
+      "f0": 0,
+      "f1": 32,
+      "z": 5.398843288421631,
       "wins": [
         [
-          4,
-          20
+          0,
+          32
         ]
       ],
-      "nearest": "ศูนย์",
+      "nearest": "ห้า",
       "candidates": [
         {
-          "word": "ศูนย์",
-          "score": 0.7089,
-          "support": 0.7089
+          "word": "ห้า",
+          "score": 0.5548,
+          "support": 0.3295
         },
         {
-          "word": "บ้าน",
-          "score": 0.5056,
-          "support": 0.5056
+          "word": "เก้า",
+          "score": 0.3633,
+          "support": 0.2052
         },
         {
-          "word": "บอก",
-          "score": 0.4742,
-          "support": 0.4742
+          "word": "พ่อ",
+          "score": 0.3725,
+          "support": 0.2
         },
         {
-          "word": "เรียน",
-          "score": 0.3744,
-          "support": 0.3744
+          "word": "ข้าว",
+          "score": 0.5697,
+          "support": 0.1975
         },
         {
-          "word": "อยู่บ้าน",
-          "score": 0.3673,
-          "support": 0.3673
+          "word": "ชื่อ",
+          "score": 0.5112,
+          "support": 0.1167
         }
       ],
-      "score": 0.7088664770126343,
-      "margin": 0.20330023765563965,
-      "null_gap": -0.4373880624771118,
-      "p_sign": 0.9235487028956413,
+      "score": 0.4957503378391266,
+      "margin": 0.19415906071662903,
+      "null_gap": -0.3121134042739868,
+      "p_sign": 0.9399448479991406,
       "agree": 1.0,
-      "support_ratio": 1.4020965189873416,
-      "window_top1": "ศูนย์",
+      "support_ratio": 1.6057504873294348,
+      "window_top1": "ห้า",
       "depth": 0.0,
-      "p_correct": 0.6285996587060468,
+      "p_correct": 0.4109407578492079,
       "status": "uncertain",
-      "t0": 0.16,
-      "t1": 0.8
+      "probable": true,
+      "t0": 0.0,
+      "t1": 1.28
     },
     {
-      "f0": 20,
-      "f1": 60,
-      "z": 4.410765647888184,
+      "f0": 32,
+      "f1": 68,
+      "z": 6.132527828216553,
       "wins": [
         [
-          20,
-          60
+          32,
+          68
         ]
       ],
       "nearest": "พ่อ",
       "candidates": [
         {
           "word": "พ่อ",
-          "score": 0.5563,
-          "support": 0.4667
-        },
-        {
-          "word": "เรียก",
-          "score": 0.4973,
-          "support": 0.361
+          "score": 0.6442,
+          "support": 0.3693
         },
         {
           "word": "แม่",
-          "score": 0.3963,
-          "support": 0.2159
+          "score": 0.5493,
+          "support": 0.3479
         },
         {
-          "word": "พรุ่งนี้",
-          "score": 0.397,
-          "support": 0.2034
+          "word": "ดี",
+          "score": 0.4442,
+          "support": 0.2268
+        },
+        {
+          "word": "สิบ",
+          "score": 0.4526,
+          "support": 0.2018
         },
         {
           "word": "ยาย",
-          "score": 0.3939,
-          "support": 0.163
+          "score": 0.4042,
+          "support": 0.1779
         }
       ],
-      "score": 0.5563397407531738,
-      "margin": 0.06279706954956055,
-      "null_gap": -0.6259191036224365,
-      "p_sign": 0.972447251342237,
+      "score": 0.6283258199691772,
+      "margin": 0.13849827647209167,
+      "null_gap": -0.5226096510887146,
+      "p_sign": 0.9991865697834226,
       "agree": 1.0,
-      "support_ratio": 1.292797783933518,
+      "support_ratio": 1.0615119287151482,
       "window_top1": "พ่อ",
       "depth": 0.0,
-      "p_correct": 0.19238485120136067,
+      "p_correct": 0.3922495954753542,
       "status": "uncertain",
-      "t0": 0.8,
-      "t1": 2.4
+      "probable": true,
+      "t0": 1.28,
+      "t1": 2.72
     },
     {
-      "f0": 64,
-      "f1": 100,
-      "z": 5.524085521697998,
+      "f0": 68,
+      "f1": 96,
+      "z": 5.601116180419922,
       "wins": [
         [
-          64,
-          100
+          68,
+          96
         ]
       ],
       "nearest": "น้า",
       "candidates": [
         {
           "word": "น้า",
-          "score": 0.5625,
-          "support": 0.4875
+          "score": 0.4772,
+          "support": 0.4293
         },
         {
           "word": "อา",
-          "score": 0.5139,
-          "support": 0.4617
+          "score": 0.37,
+          "support": 0.3239
         },
         {
           "word": "น้ำ",
-          "score": 0.5411,
-          "support": 0.4352
+          "score": 0.3416,
+          "support": 0.3181
         },
         {
-          "word": "กระหายน้ำ",
-          "score": 0.4277,
-          "support": 0.3486
-        },
-        {
-          "word": "ห้องน้ำ",
-          "score": 0.3439,
-          "support": 0.1549
-        }
-      ],
-      "score": 0.5625458359718323,
-      "margin": 0.06330990791320801,
-      "null_gap": -0.6118500232696533,
-      "p_sign": 0.9310796533193852,
-      "agree": 1.0,
-      "support_ratio": 1.055880441845354,
-      "window_top1": "น้า",
-      "depth": 0.0,
-      "p_correct": 0.2592526203067683,
-      "status": "uncertain",
-      "t0": 2.56,
-      "t1": 4.0
-    },
-    {
-      "f0": 100,
-      "f1": 124,
-      "z": 3.8580827713012695,
-      "wins": [
-        [
-          100,
-          124
-        ]
-      ],
-      "nearest": "เกิด",
-      "candidates": [
-        {
-          "word": "เกิด",
-          "score": 0.6469,
-          "support": 0.599
-        },
-        {
-          "word": "กิน",
-          "score": 0.6168,
-          "support": 0.5992
-        },
-        {
-          "word": "ข้าว",
-          "score": 0.6053,
-          "support": 0.5673
+          "word": "เพื่อน",
+          "score": 0.3598,
+          "support": 0.3042
         },
         {
           "word": "ยาย",
-          "score": 0.5771,
-          "support": 0.5595
-        },
-        {
-          "word": "ฉัน",
-          "score": 0.5237,
-          "support": 0.3459
+          "score": 0.2596,
+          "support": 0.0737
         }
       ],
-      "score": 0.6102566719055176,
-      "margin": 0.004992783069610596,
-      "null_gap": -0.15271839499473572,
-      "p_sign": 0.952075847486655,
-      "agree": 0.0,
-      "support_ratio": 1.0003338898163605,
-      "window_top1": "เกิด",
+      "score": 0.477230042219162,
+      "margin": 0.10726884007453918,
+      "null_gap": -0.30317190289497375,
+      "p_sign": 0.9999933970826014,
+      "agree": 1.0,
+      "support_ratio": 1.3254090768755789,
+      "window_top1": "น้า",
       "depth": 0.0,
-      "p_correct": 0.16175298322488196,
+      "p_correct": 0.3332533667726555,
       "status": "uncertain",
-      "t0": 4.0,
-      "t1": 4.96,
-      "visual_top1": "กิน",
+      "probable": false,
+      "t0": 2.72,
+      "t1": 3.84
+    },
+    {
+      "f0": 96,
+      "f1": 116,
+      "z": 4.37278413772583,
+      "wins": [
+        [
+          96,
+          116
+        ]
+      ],
+      "nearest": "ข้าว",
+      "candidates": [
+        {
+          "word": "ข้าว",
+          "score": 0.6011,
+          "support": 0.4603
+        },
+        {
+          "word": "ยาย",
+          "score": 0.627,
+          "support": 0.5218
+        },
+        {
+          "word": "แฟน",
+          "score": 0.5671,
+          "support": 0.3251
+        },
+        {
+          "word": "แม่",
+          "score": 0.4629,
+          "support": 0.2927
+        },
+        {
+          "word": "ไป",
+          "score": 0.409,
+          "support": 0.2437
+        }
+      ],
+      "score": 0.5061615705490112,
+      "margin": 0.043267667293548584,
+      "null_gap": -0.12851166725158691,
+      "p_sign": 0.8637716522812845,
+      "agree": 1.0,
+      "support_ratio": 1.1336085161850968,
+      "window_top1": "ยาย",
+      "depth": 0.0,
+      "p_correct": 0.2309736696108239,
+      "status": "uncertain",
+      "probable": false,
+      "t0": 3.84,
+      "t1": 4.64,
+      "visual_top1": "ยาย",
       "reranked_by_grammar": true
     },
     {
-      "f0": 124,
-      "f1": 172,
-      "z": 4.724578380584717,
+      "f0": 116,
+      "f1": 168,
+      "z": 7.032959461212158,
       "wins": [
         [
-          124,
-          172
+          116,
+          132
+        ],
+        [
+          132,
+          168
         ]
       ],
       "nearest": "ศูนย์",
       "candidates": [
         {
           "word": "ศูนย์",
-          "score": 0.6875,
-          "support": 0.5569
-        },
-        {
-          "word": "ง่วง",
-          "score": 0.5744,
-          "support": 0.4979
+          "score": 0.6191,
+          "support": 0.5624
         },
         {
           "word": "พ่อ",
-          "score": 0.5312,
-          "support": 0.4302
+          "score": 0.4295,
+          "support": 0.3544
         },
         {
           "word": "ดื่ม",
-          "score": 0.5071,
-          "support": 0.3966
+          "score": 0.3274,
+          "support": 0.1998
         },
         {
-          "word": "บ้าน",
-          "score": 0.4744,
-          "support": 0.3562
+          "word": "เก้า",
+          "score": 0.2685,
+          "support": 0.1817
+        },
+        {
+          "word": "หมู",
+          "score": 0.2588,
+          "support": 0.1174
         }
       ],
-      "score": 0.6179687976837158,
-      "margin": 0.07810813188552856,
-      "null_gap": -0.5368261337280273,
-      "p_sign": 0.952756718111535,
+      "score": 0.5764191746711731,
+      "margin": 0.25349438190460205,
+      "null_gap": -0.7524845600128174,
+      "p_sign": 0.9558956385805057,
       "agree": 1.0,
-      "support_ratio": 1.1184976902992567,
+      "support_ratio": 1.5869074492099324,
       "window_top1": "ศูนย์",
       "depth": 0.0,
-      "p_correct": 0.32996452963570133,
+      "p_correct": 0.5192756100766706,
       "status": "uncertain",
-      "t0": 4.96,
-      "t1": 6.88,
-      "repeat_of": "ศูนย์",
-      "visual_top1": "ง่วง",
-      "reranked_by_grammar": true
+      "probable": true,
+      "t0": 4.64,
+      "t1": 6.72
     }
   ],
   "face": {
@@ -301,65 +307,81 @@
     },
     "per_segment": [
       {
-        "brow": -0.05,
-        "furrow": 0.0,
-        "smile": 0.008,
+        "brow": -0.1,
+        "furrow": 0.09,
+        "smile": 0.005,
         "mouth": 0.001
       },
       {
-        "brow": 0.0,
-        "furrow": 0.0,
+        "brow": 0.54,
+        "furrow": -0.09,
         "smile": 0.0,
-        "mouth": 0.003
+        "mouth": 0.011
       },
       {
-        "brow": 0.12,
-        "furrow": -0.15,
+        "brow": 0.11,
+        "furrow": -0.16,
         "smile": 0.002,
-        "mouth": 0.018
+        "mouth": 0.035
       },
       {
-        "brow": 1.53,
-        "furrow": -0.52,
+        "brow": 0.91,
+        "furrow": -0.36,
+        "smile": 0.019,
+        "mouth": 0.001
+      },
+      {
+        "brow": 7.18,
+        "furrow": -0.69,
         "smile": 0.0,
-        "mouth": 0.001
-      },
-      {
-        "brow": 6.24,
-        "furrow": -0.67,
-        "smile": 0.001,
-        "mouth": 0.001
+        "mouth": 0.002
       }
     ]
   },
   "fusion": {
     "chosen": [
-      "บ้าน",
+      "[?]",
       "[?]",
       "[?]",
       "[?]",
       "[?]"
     ],
     "sentence_th": "",
-    "meaning_th": "ตรวจพบท่ามือ 5 ช่วง แต่หลักฐานไม่พอจะแปลเป็นประโยคอย่างมั่นใจ — คำที่ใกล้ที่สุด: ช่วง 1 ≈ ศูนย์, ช่วง 2 ≈ พ่อ, ช่วง 3 ≈ น้า, ช่วง 4 ≈ เกิด, ช่วง 5 ≈ ศูนย์",
-    "confidence": 0.3,
-    "provider": "openai",
-    "latency_s": 1.96,
-    "guard_violations": [],
-    "evidence_gloss": "ศูนย์? | พ่อ? | น้า? | เกิด? | ศูนย์?",
-    "tentative_sentence_th": "บ้าน",
-    "evidence_guard": "withheld: no accepted sign"
+    "tentative_sentence_th": "พ่อห้าศูนย์",
+    "meaning_th": "ยังไม่มั่นใจพอจะแปล — ลองทำท่าช้าลง ให้มืออยู่ในกรอบ หรือกดยืนยันคำที่ถูก",
+    "confidence": 0.0,
+    "provider": "none",
+    "evidence_gloss": "ห้า? | พ่อ? | น้า? | ข้าว? | ศูนย์?",
+    "evidence_guard": "withheld: no confident sign"
   },
   "sentence": "",
   "timings_ms": {
-    "schema_ms": 47.3,
-    "tagger_ms": 510.0,
-    "spotting_ms": 220.3,
-    "n_windows": 423,
+    "schema_ms": 32.9,
+    "tagger_ms": 64.3,
+    "spotting_ms": 177.2,
+    "n_windows": 418,
     "tempo_factor": 1.0,
-    "face_ms": 4.2,
-    "language_ms": 1965.1
+    "face_ms": 4.1,
+    "language_ms": 0.5
   },
-  "model": "v7",
-  "vocab": "conversation"
+  "model": "v8.1",
+  "vocab": "conversation",
+  "hand_tracking": {
+    "left": {
+      "n": 268,
+      "hit": 0.321,
+      "fallback": 0,
+      "max_gap": 182,
+      "out_below": 182
+    },
+    "right": {
+      "n": 268,
+      "hit": 0.981,
+      "fallback": 0,
+      "max_gap": 3,
+      "out_below": 0
+    },
+    "room_below": 1.16,
+    "fps": 30.0
+  }
 }

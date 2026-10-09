@@ -1,0 +1,326 @@
+{
+  "conversation": {
+    "real_test_x1.0": {
+      "n_sentences": 126,
+      "seg_f1": 0.8594933725886106,
+      "count_abs_err": 0.7380952380952381,
+      "exact_count_rate": 0.4444444444444444,
+      "words_pred": 4.23015873015873,
+      "words_gt": 3.5714285714285716,
+      "word_recall_top1": 0.6355555555555555,
+      "word_recall_top5": 0.8022222222222222,
+      "word_precision_top1": 0.5365853658536586,
+      "spot_f1": 0.5818921668362157,
+      "bag_recall": 0.6622222222222223,
+      "WER": 0.5297619047619048,
+      "accepted": {
+        "n": 39,
+        "correct": 32,
+        "precision": 0.8205128205128205,
+        "per_sentence": 0.30952380952380953
+      }
+    },
+    "real_test_x1.5": {
+      "n_sentences": 126,
+      "seg_f1": 0.8670045122426074,
+      "count_abs_err": 0.5158730158730159,
+      "exact_count_rate": 0.6031746031746031,
+      "words_pred": 3.8968253968253967,
+      "words_gt": 3.5714285714285716,
+      "word_recall_top1": 0.6377777777777778,
+      "word_recall_top5": 0.7777777777777778,
+      "word_precision_top1": 0.5845213849287169,
+      "spot_f1": 0.6099893730074389,
+      "bag_recall": 0.6688888888888889,
+      "WER": 0.44576719576719576,
+      "accepted": {
+        "n": 27,
+        "correct": 22,
+        "precision": 0.8148148148148148,
+        "per_sentence": 0.21428571428571427
+      }
+    },
+    "real_test_x2.0": {
+      "n_sentences": 126,
+      "seg_f1": 0.8440464738083784,
+      "count_abs_err": 0.6587301587301587,
+      "exact_count_rate": 0.5,
+      "words_pred": 3.7222222222222223,
+      "words_gt": 3.5714285714285716,
+      "word_recall_top1": 0.6266666666666667,
+      "word_recall_top5": 0.7533333333333333,
+      "word_precision_top1": 0.6012793176972282,
+      "spot_f1": 0.6137105549510338,
+      "bag_recall": 0.6511111111111111,
+      "WER": 0.46560846560846564,
+      "accepted": {
+        "n": 12,
+        "correct": 10,
+        "precision": 0.8333333333333334,
+        "per_sentence": 0.09523809523809523
+      }
+    },
+    "real_tune_x1.0": {
+      "n_sentences": 126,
+      "seg_f1": 0.8065072493643923,
+      "count_abs_err": 0.5952380952380952,
+      "exact_count_rate": 0.46825396825396826,
+      "words_pred": 3.746031746031746,
+      "words_gt": 3.3095238095238093,
+      "word_recall_top1": 0.5683453237410072,
+      "word_recall_top5": 0.7122302158273381,
+      "word_precision_top1": 0.5021186440677966,
+      "spot_f1": 0.5331833520809898,
+      "bag_recall": 0.5899280575539568,
+      "WER": 0.5726190476190477,
+      "accepted": {
+        "n": 31,
+        "correct": 29,
+        "precision": 0.9354838709677419,
+        "per_sentence": 0.24603174603174602
+      }
+    },
+    "real_tune_x1.5": {
+      "n_sentences": 126,
+      "seg_f1": 0.8147896195515244,
+      "count_abs_err": 0.5555555555555556,
+      "exact_count_rate": 0.5,
+      "words_pred": 3.1666666666666665,
+      "words_gt": 3.3095238095238093,
+      "word_recall_top1": 0.5635491606714629,
+      "word_recall_top5": 0.6834532374100719,
+      "word_precision_top1": 0.5889724310776943,
+      "spot_f1": 0.5759803921568628,
+      "bag_recall": 0.5827338129496403,
+      "WER": 0.49232804232804234,
+      "accepted": {
+        "n": 17,
+        "correct": 16,
+        "precision": 0.9411764705882353,
+        "per_sentence": 0.1349206349206349
+      }
+    },
+    "real_tune_x2.0": {
+      "n_sentences": 126,
+      "seg_f1": 0.8146384479717815,
+      "count_abs_err": 0.5079365079365079,
+      "exact_count_rate": 0.5714285714285714,
+      "words_pred": 2.9285714285714284,
+      "words_gt": 3.3095238095238093,
+      "word_recall_top1": 0.5539568345323741,
+      "word_recall_top5": 0.6786570743405276,
+      "word_precision_top1": 0.6260162601626016,
+      "spot_f1": 0.5877862595419846,
+      "bag_recall": 0.5707434052757794,
+      "WER": 0.47063492063492063,
+      "accepted": {
+        "n": 9,
+        "correct": 8,
+        "precision": 0.8888888888888888,
+        "per_sentence": 0.07142857142857142
+      }
+    },
+    "synth_tune": {
+      "n_sentences": 120,
+      "seg_f1": 0.872795214045214,
+      "count_abs_err": 1.275,
+      "exact_count_rate": 0.31666666666666665,
+      "words_pred": 5.283333333333333,
+      "words_gt": 4.025,
+      "word_recall_top1": 0.6708860759493671,
+      "word_recall_top5": 0.8607594936708861,
+      "word_precision_top1": 0.083596214511041,
+      "spot_f1": 0.14866760168302945,
+      "bag_recall": 0.11180124223602485,
+      "WER": 1.19375,
+      "accepted": {
+        "n": 0,
+        "correct": 0,
+        "precision": null,
+        "per_sentence": 0.0
+      }
+    },
+    "synth_test": {
+      "n_sentences": 120,
+      "seg_f1": 0.8717289192289193,
+      "count_abs_err": 1.1833333333333333,
+      "exact_count_rate": 0.2833333333333333,
+      "words_pred": 5.066666666666666,
+      "words_gt": 3.95,
+      "word_recall_top1": 0.7209302325581395,
+      "word_recall_top5": 0.8953488372093024,
+      "word_precision_top1": 0.10197368421052631,
+      "spot_f1": 0.1786743515850144,
+      "bag_recall": 0.13924050632911392,
+      "WER": 1.1733333333333331,
+      "accepted": {
+        "n": 3,
+        "correct": 3,
+        "precision": 1.0,
+        "per_sentence": 0.025
+      }
+    }
+  },
+  "daily": {
+    "real_test_x1.0": {
+      "n_sentences": 126,
+      "seg_f1": 0.8719147254861541,
+      "count_abs_err": 0.5952380952380952,
+      "exact_count_rate": 0.5476190476190477,
+      "words_pred": 4.0396825396825395,
+      "words_gt": 3.5714285714285716,
+      "word_recall_top1": 0.5577777777777778,
+      "word_recall_top5": 0.7488888888888889,
+      "word_precision_top1": 0.4931237721021611,
+      "spot_f1": 0.5234619395203336,
+      "bag_recall": 0.5777777777777777,
+      "WER": 0.5720899470899471,
+      "accepted": {
+        "n": 82,
+        "correct": 77,
+        "precision": 0.9390243902439024,
+        "per_sentence": 0.6507936507936508
+      }
+    },
+    "real_test_x1.5": {
+      "n_sentences": 126,
+      "seg_f1": 0.8884136146040907,
+      "count_abs_err": 0.40476190476190477,
+      "exact_count_rate": 0.6349206349206349,
+      "words_pred": 3.515873015873016,
+      "words_gt": 3.5714285714285716,
+      "word_recall_top1": 0.5577777777777778,
+      "word_recall_top5": 0.7244444444444444,
+      "word_precision_top1": 0.5665914221218962,
+      "spot_f1": 0.5621500559910415,
+      "bag_recall": 0.5711111111111111,
+      "WER": 0.46560846560846564,
+      "accepted": {
+        "n": 77,
+        "correct": 75,
+        "precision": 0.974025974025974,
+        "per_sentence": 0.6111111111111112
+      }
+    },
+    "real_test_x2.0": {
+      "n_sentences": 126,
+      "seg_f1": 0.8300980324789848,
+      "count_abs_err": 0.5555555555555556,
+      "exact_count_rate": 0.5317460317460317,
+      "words_pred": 3.238095238095238,
+      "words_gt": 3.5714285714285716,
+      "word_recall_top1": 0.5111111111111111,
+      "word_recall_top5": 0.6777777777777778,
+      "word_precision_top1": 0.5637254901960784,
+      "spot_f1": 0.5361305361305361,
+      "bag_recall": 0.5266666666666666,
+      "WER": 0.498015873015873,
+      "accepted": {
+        "n": 67,
+        "correct": 67,
+        "precision": 1.0,
+        "per_sentence": 0.5317460317460317
+      }
+    },
+    "real_tune_x1.0": {
+      "n_sentences": 126,
+      "seg_f1": 0.8265203050917336,
+      "count_abs_err": 0.5396825396825397,
+      "exact_count_rate": 0.5476190476190477,
+      "words_pred": 3.611111111111111,
+      "words_gt": 3.3095238095238093,
+      "word_recall_top1": 0.486810551558753,
+      "word_recall_top5": 0.657074340527578,
+      "word_precision_top1": 0.4461538461538462,
+      "spot_f1": 0.46559633027522934,
+      "bag_recall": 0.5011990407673861,
+      "WER": 0.6287037037037037,
+      "accepted": {
+        "n": 72,
+        "correct": 68,
+        "precision": 0.9444444444444444,
+        "per_sentence": 0.5714285714285714
+      }
+    },
+    "real_tune_x1.5": {
+      "n_sentences": 126,
+      "seg_f1": 0.8190413202317965,
+      "count_abs_err": 0.5793650793650794,
+      "exact_count_rate": 0.48412698412698413,
+      "words_pred": 2.8412698412698414,
+      "words_gt": 3.3095238095238093,
+      "word_recall_top1": 0.46522781774580335,
+      "word_recall_top5": 0.6378896882494005,
+      "word_precision_top1": 0.5418994413407822,
+      "spot_f1": 0.5006451612903225,
+      "bag_recall": 0.4748201438848921,
+      "WER": 0.5506613756613756,
+      "accepted": {
+        "n": 61,
+        "correct": 61,
+        "precision": 1.0,
+        "per_sentence": 0.48412698412698413
+      }
+    },
+    "real_tune_x2.0": {
+      "n_sentences": 126,
+      "seg_f1": 0.8086041824137065,
+      "count_abs_err": 0.6428571428571429,
+      "exact_count_rate": 0.46825396825396826,
+      "words_pred": 2.6825396825396823,
+      "words_gt": 3.3095238095238093,
+      "word_recall_top1": 0.47002398081534774,
+      "word_recall_top5": 0.6187050359712231,
+      "word_precision_top1": 0.5798816568047337,
+      "spot_f1": 0.5192052980132451,
+      "bag_recall": 0.47961630695443647,
+      "WER": 0.5271164021164021,
+      "accepted": {
+        "n": 53,
+        "correct": 53,
+        "precision": 1.0,
+        "per_sentence": 0.42063492063492064
+      }
+    },
+    "synth_tune": {
+      "n_sentences": 120,
+      "seg_f1": 0.8898963025278815,
+      "count_abs_err": 1.0833333333333333,
+      "exact_count_rate": 0.375,
+      "words_pred": 5.108333333333333,
+      "words_gt": 4.025,
+      "word_recall_top1": 0.462406015037594,
+      "word_recall_top5": 0.5902255639097744,
+      "word_precision_top1": 0.200652528548124,
+      "spot_f1": 0.279863481228669,
+      "bag_recall": 0.2587991718426501,
+      "WER": 1.0102777777777778,
+      "accepted": {
+        "n": 25,
+        "correct": 18,
+        "precision": 0.72,
+        "per_sentence": 0.20833333333333334
+      }
+    },
+    "synth_test": {
+      "n_sentences": 120,
+      "seg_f1": 0.8903942353942356,
+      "count_abs_err": 0.9583333333333334,
+      "exact_count_rate": 0.36666666666666664,
+      "words_pred": 4.841666666666667,
+      "words_gt": 3.95,
+      "word_recall_top1": 0.5063829787234042,
+      "word_recall_top5": 0.6638297872340425,
+      "word_precision_top1": 0.20481927710843373,
+      "spot_f1": 0.29166666666666663,
+      "bag_recall": 0.26582278481012656,
+      "WER": 0.9965277777777779,
+      "accepted": {
+        "n": 18,
+        "correct": 15,
+        "precision": 0.8333333333333334,
+        "per_sentence": 0.15
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "n_windows": 417,
+  "models": {
+    "v7": {
+      "aligned|conversation": {
+        "R1": 0.5204,
+        "R5": 0.7746
+      },
+      "aligned|all": {
+        "R1": 0.2854,
+        "R5": 0.4317
+      },
+      "boundaries_moved|conversation": {
+        "R1": 0.5204,
+        "R5": 0.7626
+      },
+      "boundaries_moved|all": {
+        "R1": 0.247,
+        "R5": 0.3693
+      }
+    },
+    "enc-v8a": {
+      "aligned|conversation": {
+        "R1": 0.5492,
+        "R5": 0.6954
+      },
+      "aligned|all": {
+        "R1": 0.3237,
+        "R5": 0.4724
+      },
+      "boundaries_moved|conversation": {
+        "R1": 0.4796,
+        "R5": 0.6307
+      },
+      "boundaries_moved|all": {
+        "R1": 0.259,
+        "R5": 0.3645
+      }
+    },
+    "enc-v8b": {
+      "aligned|conversation": {
+        "R1": 0.554,
+        "R5": 0.6547
+      },
+      "aligned|all": {
+        "R1": 0.3597,
+        "R5": 0.4748
+      },
+      "boundaries_moved|conversation": {
+        "R1": 0.47,
+        "R5": 0.5923
+      },
+      "boundaries_moved|all": {
+        "R1": 0.2926,
+        "R5": 0.3837
+      }
+    },
+    "enc-v8c": {
+      "aligned|conversation": {
+        "R1": 0.4844,
+        "R5": 0.6739
+      },
+      "aligned|all": {
+        "R1": 0.3309,
+        "R5": 0.4748
+      },
+      "boundaries_moved|conversation": {
+        "R1": 0.458,
+        "R5": 0.6547
+      },
+      "boundaries_moved|all": {
+        "R1": 0.2902,
+        "R5": 0.4269
+      }
+    },
+    "enc-v8a+enc-v8b+enc-v8c": {
+      "aligned|conversation": {
+        "R1": 0.5971,
+        "R5": 0.7722
+      },
+      "aligned|all": {
+        "R1": 0.3717,
+        "R5": 0.5659
+      },
+      "boundaries_moved|conversation": {
+        "R1": 0.5683,
+        "R5": 0.717
+      },
+      "boundaries_moved|all": {
+        "R1": 0.2998,
+        "R5": 0.5108
+      }
+    }
+  }
+}

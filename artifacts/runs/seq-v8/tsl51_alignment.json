@@ -1,0 +1,8339 @@
+{
+  "t51s:กรุงเทพ_var_1__ฉัน_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 46,
+        "f1": 70,
+        "concept": "กรุงเทพ",
+        "score": 0.4063
+      },
+      {
+        "f0": 72,
+        "f1": 96,
+        "concept": "ฉัน",
+        "score": 0.3836
+      },
+      {
+        "f0": 154,
+        "f1": 182,
+        "concept": "เที่ยว",
+        "score": 0.4625
+      },
+      {
+        "f0": 196,
+        "f1": 244,
+        "concept": "ชอบ",
+        "score": 0.6976
+      }
+    ],
+    "T": 251,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "กรุงเทพ",
+      "ฉัน",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__ฉัน_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 46,
+        "f1": 70,
+        "concept": "กรุงเทพ",
+        "score": 0.3169
+      },
+      {
+        "f0": 72,
+        "f1": 96,
+        "concept": "ฉัน",
+        "score": 0.3817
+      },
+      {
+        "f0": 156,
+        "f1": 180,
+        "concept": "เที่ยว",
+        "score": 0.4209
+      },
+      {
+        "f0": 202,
+        "f1": 250,
+        "concept": "ชอบ",
+        "score": 0.645
+      }
+    ],
+    "T": 251,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "กรุงเทพ",
+      "ฉัน",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__ฉัน_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 18,
+        "f1": 42,
+        "concept": "กรุงเทพ",
+        "score": 0.4367
+      },
+      {
+        "f0": 86,
+        "f1": 110,
+        "concept": "ฉัน",
+        "score": 0.4007
+      },
+      {
+        "f0": 172,
+        "f1": 196,
+        "concept": "เที่ยว",
+        "score": 0.4147
+      },
+      {
+        "f0": 226,
+        "f1": 250,
+        "concept": "ชอบ",
+        "score": 0.5265
+      }
+    ],
+    "T": 251,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "กรุงเทพ",
+      "ฉัน",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__ฉัน_var_2__เที่ยว_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 48,
+        "f1": 72,
+        "concept": "กรุงเทพ",
+        "score": 0.3026
+      },
+      {
+        "f0": 78,
+        "f1": 102,
+        "concept": "ฉัน",
+        "score": 0.2279
+      },
+      {
+        "f0": 158,
+        "f1": 182,
+        "concept": "เที่ยว",
+        "score": 0.4011
+      },
+      {
+        "f0": 196,
+        "f1": 244,
+        "concept": "ชอบ",
+        "score": 0.6734
+      }
+    ],
+    "T": 250,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "กรุงเทพ",
+      "ฉัน",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__ฉัน_var_2__เที่ยว_var_1__ชอบ_var_1_no_space_3": {
+    "segments": [
+      {
+        "f0": 44,
+        "f1": 68,
+        "concept": "กรุงเทพ",
+        "score": 0.2906
+      },
+      {
+        "f0": 76,
+        "f1": 100,
+        "concept": "ฉัน",
+        "score": 0.2359
+      },
+      {
+        "f0": 152,
+        "f1": 192,
+        "concept": "เที่ยว",
+        "score": 0.4641
+      },
+      {
+        "f0": 202,
+        "f1": 250,
+        "concept": "ชอบ",
+        "score": 0.5374
+      }
+    ],
+    "T": 250,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "กรุงเทพ",
+      "ฉัน",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__ฉัน_var_2__เที่ยว_var_1__ชอบ_var_1_no_space_4": {
+    "segments": [
+      {
+        "f0": 28,
+        "f1": 52,
+        "concept": "กรุงเทพ",
+        "score": 0.2116
+      },
+      {
+        "f0": 88,
+        "f1": 112,
+        "concept": "ฉัน",
+        "score": 0.2349
+      },
+      {
+        "f0": 176,
+        "f1": 208,
+        "concept": "เที่ยว",
+        "score": 0.3812
+      },
+      {
+        "f0": 226,
+        "f1": 250,
+        "concept": "ชอบ",
+        "score": 0.5201
+      }
+    ],
+    "T": 250,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "กรุงเทพ",
+      "ฉัน",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__น้อง_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 46,
+        "f1": 70,
+        "concept": "กรุงเทพ",
+        "score": 0.49
+      },
+      {
+        "f0": 72,
+        "f1": 96,
+        "concept": "น้อง",
+        "score": 0.1001
+      },
+      {
+        "f0": 142,
+        "f1": 166,
+        "concept": "เที่ยว",
+        "score": 0.4533
+      },
+      {
+        "f0": 182,
+        "f1": 226,
+        "concept": "ชอบ",
+        "score": 0.7531
+      }
+    ],
+    "T": 250,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "กรุงเทพ",
+      "น้อง",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__น้อง_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 58,
+        "f1": 82,
+        "concept": "กรุงเทพ",
+        "score": 0.4687
+      },
+      {
+        "f0": 118,
+        "f1": 142,
+        "concept": "น้อง",
+        "score": 0.0791
+      },
+      {
+        "f0": 168,
+        "f1": 192,
+        "concept": "เที่ยว",
+        "score": 0.4479
+      },
+      {
+        "f0": 210,
+        "f1": 250,
+        "concept": "ชอบ",
+        "score": 0.7266
+      }
+    ],
+    "T": 251,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "กรุงเทพ",
+      "น้อง",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__น้อง_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 6,
+        "f1": 30,
+        "concept": "กรุงเทพ",
+        "score": 0.366
+      },
+      {
+        "f0": 34,
+        "f1": 58,
+        "concept": "น้อง",
+        "score": 0.1784
+      },
+      {
+        "f0": 146,
+        "f1": 170,
+        "concept": "เที่ยว",
+        "score": 0.3905
+      },
+      {
+        "f0": 192,
+        "f1": 236,
+        "concept": "ชอบ",
+        "score": 0.7223
+      }
+    ],
+    "T": 251,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "กรุงเทพ",
+      "น้อง",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__พี่_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 34,
+        "f1": 62,
+        "concept": "กรุงเทพ",
+        "score": 0.4133
+      },
+      {
+        "f0": 78,
+        "f1": 102,
+        "concept": "พี่",
+        "score": 0.4341
+      },
+      {
+        "f0": 148,
+        "f1": 172,
+        "concept": "เที่ยว",
+        "score": 0.3736
+      },
+      {
+        "f0": 182,
+        "f1": 230,
+        "concept": "ชอบ",
+        "score": 0.7339
+      }
+    ],
+    "T": 251,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "กรุงเทพ",
+      "พี่",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__พี่_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 46,
+        "f1": 70,
+        "concept": "กรุงเทพ",
+        "score": 0.3904
+      },
+      {
+        "f0": 74,
+        "f1": 122,
+        "concept": "พี่",
+        "score": 0.5007
+      },
+      {
+        "f0": 156,
+        "f1": 184,
+        "concept": "เที่ยว",
+        "score": 0.4399
+      },
+      {
+        "f0": 198,
+        "f1": 242,
+        "concept": "ชอบ",
+        "score": 0.7468
+      }
+    ],
+    "T": 251,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "กรุงเทพ",
+      "พี่",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__พี่_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 44,
+        "f1": 68,
+        "concept": "กรุงเทพ",
+        "score": 0.4103
+      },
+      {
+        "f0": 86,
+        "f1": 110,
+        "concept": "พี่",
+        "score": 0.4378
+      },
+      {
+        "f0": 160,
+        "f1": 184,
+        "concept": "เที่ยว",
+        "score": 0.4822
+      },
+      {
+        "f0": 196,
+        "f1": 244,
+        "concept": "ชอบ",
+        "score": 0.7535
+      }
+    ],
+    "T": 251,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "กรุงเทพ",
+      "พี่",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__ยาย_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_7": {
+    "segments": [
+      {
+        "f0": 40,
+        "f1": 60,
+        "concept": "กรุงเทพ",
+        "score": 0.4266
+      },
+      {
+        "f0": 86,
+        "f1": 110,
+        "concept": "ยาย",
+        "score": 0.5582
+      },
+      {
+        "f0": 174,
+        "f1": 198,
+        "concept": "เที่ยว",
+        "score": 0.3656
+      },
+      {
+        "f0": 214,
+        "f1": 262,
+        "concept": "ชอบ",
+        "score": 0.6487
+      }
+    ],
+    "T": 301,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "กรุงเทพ",
+      "ยาย",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__ยาย_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_8": {
+    "segments": [
+      {
+        "f0": 48,
+        "f1": 72,
+        "concept": "กรุงเทพ",
+        "score": 0.2966
+      },
+      {
+        "f0": 106,
+        "f1": 130,
+        "concept": "ยาย",
+        "score": 0.5344
+      },
+      {
+        "f0": 222,
+        "f1": 246,
+        "concept": "เที่ยว",
+        "score": 0.3665
+      },
+      {
+        "f0": 256,
+        "f1": 300,
+        "concept": "ชอบ",
+        "score": 0.6118
+      }
+    ],
+    "T": 301,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "กรุงเทพ",
+      "ยาย",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__ยาย_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_9": {
+    "segments": [
+      {
+        "f0": 56,
+        "f1": 80,
+        "concept": "กรุงเทพ",
+        "score": 0.2965
+      },
+      {
+        "f0": 112,
+        "f1": 140,
+        "concept": "ยาย",
+        "score": 0.5554
+      },
+      {
+        "f0": 186,
+        "f1": 206,
+        "concept": "เที่ยว",
+        "score": 0.3057
+      },
+      {
+        "f0": 242,
+        "f1": 286,
+        "concept": "ชอบ",
+        "score": 0.7248
+      }
+    ],
+    "T": 451,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "กรุงเทพ",
+      "ยาย",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__ยาย_var_1__เที่ยว_var_1__ชอบ_var_1_with_space_5": {
+    "segments": [
+      {
+        "f0": 60,
+        "f1": 84,
+        "concept": "กรุงเทพ",
+        "score": 0.368
+      },
+      {
+        "f0": 168,
+        "f1": 192,
+        "concept": "ยาย",
+        "score": 0.56
+      },
+      {
+        "f0": 338,
+        "f1": 362,
+        "concept": "เที่ยว",
+        "score": 0.3277
+      },
+      {
+        "f0": 420,
+        "f1": 448,
+        "concept": "ชอบ",
+        "score": 0.6795
+      }
+    ],
+    "T": 451,
+    "role": "sentence_test",
+    "variation": "with_space",
+    "glosses": [
+      "กรุงเทพ",
+      "ยาย",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__ยาย_var_1__เที่ยว_var_1__ชอบ_var_1_with_space_6": {
+    "segments": [
+      {
+        "f0": 28,
+        "f1": 56,
+        "concept": "กรุงเทพ",
+        "score": 0.3591
+      },
+      {
+        "f0": 168,
+        "f1": 192,
+        "concept": "ยาย",
+        "score": 0.5606
+      },
+      {
+        "f0": 314,
+        "f1": 346,
+        "concept": "เที่ยว",
+        "score": 0.3013
+      },
+      {
+        "f0": 390,
+        "f1": 430,
+        "concept": "ชอบ",
+        "score": 0.7402
+      }
+    ],
+    "T": 450,
+    "role": "sentence_test",
+    "variation": "with_space",
+    "glosses": [
+      "กรุงเทพ",
+      "ยาย",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__ยาย_var_1__เที่ยว_var_1__ชอบ_var_1_with_space_7": {
+    "segments": [
+      {
+        "f0": 66,
+        "f1": 90,
+        "concept": "กรุงเทพ",
+        "score": 0.3982
+      },
+      {
+        "f0": 156,
+        "f1": 180,
+        "concept": "ยาย",
+        "score": 0.5594
+      },
+      {
+        "f0": 286,
+        "f1": 318,
+        "concept": "เที่ยว",
+        "score": 0.2942
+      },
+      {
+        "f0": 384,
+        "f1": 412,
+        "concept": "ชอบ",
+        "score": 0.6873
+      }
+    ],
+    "T": 450,
+    "role": "sentence_test",
+    "variation": "with_space",
+    "glosses": [
+      "กรุงเทพ",
+      "ยาย",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__แฟน_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 48,
+        "f1": 72,
+        "concept": "กรุงเทพ",
+        "score": 0.3443
+      },
+      {
+        "f0": 82,
+        "f1": 106,
+        "concept": "แฟน",
+        "score": 0.3969
+      },
+      {
+        "f0": 148,
+        "f1": 172,
+        "concept": "เที่ยว",
+        "score": 0.37
+      },
+      {
+        "f0": 194,
+        "f1": 238,
+        "concept": "ชอบ",
+        "score": 0.7344
+      }
+    ],
+    "T": 250,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "กรุงเทพ",
+      "แฟน",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__แฟน_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_3": {
+    "segments": [
+      {
+        "f0": 52,
+        "f1": 76,
+        "concept": "กรุงเทพ",
+        "score": 0.4015
+      },
+      {
+        "f0": 94,
+        "f1": 114,
+        "concept": "แฟน",
+        "score": 0.3542
+      },
+      {
+        "f0": 150,
+        "f1": 174,
+        "concept": "เที่ยว",
+        "score": 0.3459
+      },
+      {
+        "f0": 186,
+        "f1": 230,
+        "concept": "ชอบ",
+        "score": 0.7407
+      }
+    ],
+    "T": 251,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "กรุงเทพ",
+      "แฟน",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__แฟน_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_4": {
+    "segments": [
+      {
+        "f0": 50,
+        "f1": 74,
+        "concept": "กรุงเทพ",
+        "score": 0.407
+      },
+      {
+        "f0": 74,
+        "f1": 98,
+        "concept": "แฟน",
+        "score": 0.3324
+      },
+      {
+        "f0": 154,
+        "f1": 178,
+        "concept": "เที่ยว",
+        "score": 0.4024
+      },
+      {
+        "f0": 196,
+        "f1": 240,
+        "concept": "ชอบ",
+        "score": 0.7263
+      }
+    ],
+    "T": 251,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "กรุงเทพ",
+      "แฟน",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__แม่_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 42,
+        "f1": 66,
+        "concept": "กรุงเทพ",
+        "score": 0.4796
+      },
+      {
+        "f0": 70,
+        "f1": 94,
+        "concept": "แม่",
+        "score": 0.5087
+      },
+      {
+        "f0": 156,
+        "f1": 176,
+        "concept": "เที่ยว",
+        "score": 0.5116
+      },
+      {
+        "f0": 192,
+        "f1": 240,
+        "concept": "ชอบ",
+        "score": 0.731
+      }
+    ],
+    "T": 251,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "กรุงเทพ",
+      "แม่",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__แม่_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 34,
+        "f1": 62,
+        "concept": "กรุงเทพ",
+        "score": 0.4373
+      },
+      {
+        "f0": 70,
+        "f1": 94,
+        "concept": "แม่",
+        "score": 0.5682
+      },
+      {
+        "f0": 150,
+        "f1": 178,
+        "concept": "เที่ยว",
+        "score": 0.4598
+      },
+      {
+        "f0": 200,
+        "f1": 248,
+        "concept": "ชอบ",
+        "score": 0.738
+      }
+    ],
+    "T": 250,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "กรุงเทพ",
+      "แม่",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:กรุงเทพ_var_1__แม่_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_3": {
+    "segments": [
+      {
+        "f0": 48,
+        "f1": 72,
+        "concept": "กรุงเทพ",
+        "score": 0.3561
+      },
+      {
+        "f0": 78,
+        "f1": 102,
+        "concept": "แม่",
+        "score": 0.5538
+      },
+      {
+        "f0": 160,
+        "f1": 184,
+        "concept": "เที่ยว",
+        "score": 0.4309
+      },
+      {
+        "f0": 210,
+        "f1": 250,
+        "concept": "ชอบ",
+        "score": 0.59
+      }
+    ],
+    "T": 250,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "กรุงเทพ",
+      "แม่",
+      "เที่ยว",
+      "ชอบ"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__คุณ_var_1__กิน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 46,
+        "f1": 70,
+        "concept": "ขนมปัง",
+        "score": 0.3452
+      },
+      {
+        "f0": 78,
+        "f1": 94,
+        "concept": "คุณ",
+        "score": 0.2069
+      },
+      {
+        "f0": 152,
+        "f1": 176,
+        "concept": "กิน",
+        "score": 0.2571
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "คุณ",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__คุณ_var_1__กิน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 56,
+        "f1": 64,
+        "concept": "ขนมปัง",
+        "score": 0.4166
+      },
+      {
+        "f0": 74,
+        "f1": 90,
+        "concept": "คุณ",
+        "score": 0.3029
+      },
+      {
+        "f0": 150,
+        "f1": 174,
+        "concept": "กิน",
+        "score": 0.1829
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "คุณ",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__คุณ_var_1__กิน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 56,
+        "f1": 64,
+        "concept": "ขนมปัง",
+        "score": 0.4624
+      },
+      {
+        "f0": 78,
+        "f1": 106,
+        "concept": "คุณ",
+        "score": 0.2845
+      },
+      {
+        "f0": 140,
+        "f1": 164,
+        "concept": "กิน",
+        "score": 0.3107
+      }
+    ],
+    "T": 175,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "คุณ",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__ฉัน_var_1__กิน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 46,
+        "f1": 70,
+        "concept": "ขนมปัง",
+        "score": 0.4426
+      },
+      {
+        "f0": 80,
+        "f1": 104,
+        "concept": "ฉัน",
+        "score": 0.4472
+      },
+      {
+        "f0": 148,
+        "f1": 164,
+        "concept": "กิน",
+        "score": 0.3814
+      }
+    ],
+    "T": 175,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "ฉัน",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__ฉัน_var_1__กิน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 62,
+        "f1": 82,
+        "concept": "ขนมปัง",
+        "score": 0.4925
+      },
+      {
+        "f0": 82,
+        "f1": 106,
+        "concept": "ฉัน",
+        "score": 0.4022
+      },
+      {
+        "f0": 166,
+        "f1": 174,
+        "concept": "กิน",
+        "score": 0.2665
+      }
+    ],
+    "T": 175,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "ฉัน",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__ฉัน_var_1__กิน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 46,
+        "f1": 70,
+        "concept": "ขนมปัง",
+        "score": 0.2928
+      },
+      {
+        "f0": 82,
+        "f1": 106,
+        "concept": "ฉัน",
+        "score": 0.3728
+      },
+      {
+        "f0": 128,
+        "f1": 172,
+        "concept": "กิน",
+        "score": 0.1603
+      }
+    ],
+    "T": 175,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "ฉัน",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__ฉัน_var_2__กิน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 52,
+        "f1": 76,
+        "concept": "ขนมปัง",
+        "score": 0.4349
+      },
+      {
+        "f0": 88,
+        "f1": 104,
+        "concept": "ฉัน",
+        "score": 0.3963
+      },
+      {
+        "f0": 150,
+        "f1": 174,
+        "concept": "กิน",
+        "score": 0.123
+      }
+    ],
+    "T": 175,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "ฉัน",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__ฉัน_var_2__กิน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 42,
+        "f1": 66,
+        "concept": "ขนมปัง",
+        "score": 0.4095
+      },
+      {
+        "f0": 78,
+        "f1": 102,
+        "concept": "ฉัน",
+        "score": 0.2756
+      },
+      {
+        "f0": 150,
+        "f1": 174,
+        "concept": "กิน",
+        "score": 0.2104
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "ฉัน",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__ฉัน_var_2__กิน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 42,
+        "f1": 66,
+        "concept": "ขนมปัง",
+        "score": 0.3475
+      },
+      {
+        "f0": 78,
+        "f1": 94,
+        "concept": "ฉัน",
+        "score": 0.3543
+      },
+      {
+        "f0": 136,
+        "f1": 172,
+        "concept": "กิน",
+        "score": 0.3071
+      }
+    ],
+    "T": 175,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "ฉัน",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__น้อง_var_1__กิน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 46,
+        "f1": 62,
+        "concept": "ขนมปัง",
+        "score": 0.3351
+      },
+      {
+        "f0": 72,
+        "f1": 96,
+        "concept": "น้อง",
+        "score": 0.0902
+      },
+      {
+        "f0": 128,
+        "f1": 176,
+        "concept": "กิน",
+        "score": 0.2651
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "น้อง",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__น้อง_var_1__กิน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 2,
+        "f1": 26,
+        "concept": "ขนมปัง",
+        "score": 0.2218
+      },
+      {
+        "f0": 74,
+        "f1": 98,
+        "concept": "น้อง",
+        "score": 0.1065
+      },
+      {
+        "f0": 126,
+        "f1": 174,
+        "concept": "กิน",
+        "score": 0.373
+      }
+    ],
+    "T": 175,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "น้อง",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__น้อง_var_1__กิน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 0,
+        "f1": 24,
+        "concept": "ขนมปัง",
+        "score": 0.1402
+      },
+      {
+        "f0": 88,
+        "f1": 112,
+        "concept": "น้อง",
+        "score": 0.0894
+      },
+      {
+        "f0": 126,
+        "f1": 174,
+        "concept": "กิน",
+        "score": 0.2354
+      }
+    ],
+    "T": 175,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "น้อง",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__พี่_var_1__กิน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 6,
+        "f1": 50,
+        "concept": "ขนมปัง",
+        "score": 0.321
+      },
+      {
+        "f0": 82,
+        "f1": 106,
+        "concept": "พี่",
+        "score": 0.4217
+      },
+      {
+        "f0": 152,
+        "f1": 176,
+        "concept": "กิน",
+        "score": 0.248
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "พี่",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__พี่_var_1__กิน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 0,
+        "f1": 20,
+        "concept": "ขนมปัง",
+        "score": 0.2723
+      },
+      {
+        "f0": 80,
+        "f1": 112,
+        "concept": "พี่",
+        "score": 0.4222
+      },
+      {
+        "f0": 132,
+        "f1": 176,
+        "concept": "กิน",
+        "score": 0.2757
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "พี่",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__พี่_var_1__กิน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 2,
+        "f1": 18,
+        "concept": "ขนมปัง",
+        "score": 0.3439
+      },
+      {
+        "f0": 88,
+        "f1": 112,
+        "concept": "พี่",
+        "score": 0.3863
+      },
+      {
+        "f0": 154,
+        "f1": 174,
+        "concept": "กิน",
+        "score": 0.1393
+      }
+    ],
+    "T": 175,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "พี่",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__ยาย_var_1__กิน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 36,
+        "f1": 60,
+        "concept": "ขนมปัง",
+        "score": 0.4138
+      },
+      {
+        "f0": 74,
+        "f1": 110,
+        "concept": "ยาย",
+        "score": 0.4615
+      },
+      {
+        "f0": 200,
+        "f1": 224,
+        "concept": "กิน",
+        "score": 0.3026
+      }
+    ],
+    "T": 226,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "ยาย",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__ยาย_var_1__กิน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 52,
+        "concept": "ขนมปัง",
+        "score": 0.3245
+      },
+      {
+        "f0": 84,
+        "f1": 112,
+        "concept": "ยาย",
+        "score": 0.4603
+      },
+      {
+        "f0": 192,
+        "f1": 216,
+        "concept": "กิน",
+        "score": 0.2852
+      }
+    ],
+    "T": 226,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "ยาย",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__ยาย_var_1__กิน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 54,
+        "f1": 62,
+        "concept": "ขนมปัง",
+        "score": 0.4599
+      },
+      {
+        "f0": 104,
+        "f1": 124,
+        "concept": "ยาย",
+        "score": 0.4947
+      },
+      {
+        "f0": 200,
+        "f1": 224,
+        "concept": "กิน",
+        "score": 0.0973
+      }
+    ],
+    "T": 225,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "ยาย",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__แฟน_var_1__กิน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 44,
+        "f1": 68,
+        "concept": "ขนมปัง",
+        "score": 0.2724
+      },
+      {
+        "f0": 86,
+        "f1": 110,
+        "concept": "แฟน",
+        "score": 0.3456
+      },
+      {
+        "f0": 120,
+        "f1": 144,
+        "concept": "กิน",
+        "score": 0.1282
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "แฟน",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__แฟน_var_1__กิน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 42,
+        "f1": 66,
+        "concept": "ขนมปัง",
+        "score": 0.2167
+      },
+      {
+        "f0": 80,
+        "f1": 104,
+        "concept": "แฟน",
+        "score": 0.3605
+      },
+      {
+        "f0": 124,
+        "f1": 172,
+        "concept": "กิน",
+        "score": 0.3704
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "แฟน",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__แฟน_var_1__กิน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 2,
+        "f1": 22,
+        "concept": "ขนมปัง",
+        "score": 0.2027
+      },
+      {
+        "f0": 80,
+        "f1": 104,
+        "concept": "แฟน",
+        "score": 0.4496
+      },
+      {
+        "f0": 124,
+        "f1": 172,
+        "concept": "กิน",
+        "score": 0.233
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "แฟน",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__แมว_var_1__กิน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 42,
+        "f1": 66,
+        "concept": "ขนมปัง",
+        "score": 0.5635
+      },
+      {
+        "f0": 100,
+        "f1": 124,
+        "concept": "แมว",
+        "score": 0.6981
+      },
+      {
+        "f0": 164,
+        "f1": 188,
+        "concept": "กิน",
+        "score": 0.3275
+      }
+    ],
+    "T": 200,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "แมว",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__แมว_var_1__กิน_var_1_no_space_3": {
+    "segments": [
+      {
+        "f0": 44,
+        "f1": 68,
+        "concept": "ขนมปัง",
+        "score": 0.5783
+      },
+      {
+        "f0": 96,
+        "f1": 120,
+        "concept": "แมว",
+        "score": 0.7086
+      },
+      {
+        "f0": 160,
+        "f1": 184,
+        "concept": "กิน",
+        "score": 0.2718
+      }
+    ],
+    "T": 200,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "แมว",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__แมว_var_1__กิน_var_1_no_space_4": {
+    "segments": [
+      {
+        "f0": 42,
+        "f1": 70,
+        "concept": "ขนมปัง",
+        "score": 0.5807
+      },
+      {
+        "f0": 110,
+        "f1": 134,
+        "concept": "แมว",
+        "score": 0.6994
+      },
+      {
+        "f0": 136,
+        "f1": 160,
+        "concept": "กิน",
+        "score": 0.1464
+      }
+    ],
+    "T": 201,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "แมว",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__แมว_var_1__กิน_var_1_with_space_2": {
+    "segments": [
+      {
+        "f0": 58,
+        "f1": 78,
+        "concept": "ขนมปัง",
+        "score": 0.5178
+      },
+      {
+        "f0": 176,
+        "f1": 200,
+        "concept": "แมว",
+        "score": 0.7145
+      },
+      {
+        "f0": 234,
+        "f1": 258,
+        "concept": "กิน",
+        "score": 0.2429
+      }
+    ],
+    "T": 300,
+    "role": "sentence_test",
+    "variation": "with_space",
+    "glosses": [
+      "ขนมปัง",
+      "แมว",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__แมว_var_1__กิน_var_1_with_space_3": {
+    "segments": [
+      {
+        "f0": 50,
+        "f1": 74,
+        "concept": "ขนมปัง",
+        "score": 0.4255
+      },
+      {
+        "f0": 132,
+        "f1": 156,
+        "concept": "แมว",
+        "score": 0.7085
+      },
+      {
+        "f0": 286,
+        "f1": 298,
+        "concept": "กิน",
+        "score": 0.2311
+      }
+    ],
+    "T": 300,
+    "role": "sentence_test",
+    "variation": "with_space",
+    "glosses": [
+      "ขนมปัง",
+      "แมว",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__แมว_var_1__กิน_var_1_with_space_4": {
+    "segments": [
+      {
+        "f0": 52,
+        "f1": 76,
+        "concept": "ขนมปัง",
+        "score": 0.5111
+      },
+      {
+        "f0": 164,
+        "f1": 188,
+        "concept": "แมว",
+        "score": 0.7257
+      },
+      {
+        "f0": 230,
+        "f1": 250,
+        "concept": "กิน",
+        "score": 0.3554
+      }
+    ],
+    "T": 300,
+    "role": "sentence_test",
+    "variation": "with_space",
+    "glosses": [
+      "ขนมปัง",
+      "แมว",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__แม่_var_1__กิน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 46,
+        "f1": 70,
+        "concept": "ขนมปัง",
+        "score": 0.4016
+      },
+      {
+        "f0": 80,
+        "f1": 104,
+        "concept": "แม่",
+        "score": 0.7004
+      },
+      {
+        "f0": 164,
+        "f1": 176,
+        "concept": "กิน",
+        "score": 0.2251
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "แม่",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__แม่_var_1__กิน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 36,
+        "f1": 52,
+        "concept": "ขนมปัง",
+        "score": 0.3909
+      },
+      {
+        "f0": 90,
+        "f1": 114,
+        "concept": "แม่",
+        "score": 0.6096
+      },
+      {
+        "f0": 140,
+        "f1": 176,
+        "concept": "กิน",
+        "score": 0.2279
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "แม่",
+      "กิน"
+    ]
+  },
+  "t51s:ขนมปัง_var_1__แม่_var_1__กิน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 8,
+        "f1": 56,
+        "concept": "ขนมปัง",
+        "score": 0.3012
+      },
+      {
+        "f0": 74,
+        "f1": 98,
+        "concept": "แม่",
+        "score": 0.6866
+      },
+      {
+        "f0": 156,
+        "f1": 168,
+        "concept": "กิน",
+        "score": 0.3775
+      }
+    ],
+    "T": 175,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขนมปัง",
+      "แม่",
+      "กิน"
+    ]
+  },
+  "t51s:ขอบคุณ_เปิดมือสองข้าง__ฉัน_var_1__สบายดี_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 40,
+        "concept": "ขอบคุณ",
+        "score": 0.7154
+      },
+      {
+        "f0": 72,
+        "f1": 96,
+        "concept": "ฉัน",
+        "score": 0.3996
+      },
+      {
+        "f0": 106,
+        "f1": 150,
+        "concept": "สบายดี",
+        "score": 0.5101
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขอบคุณ",
+      "ฉัน",
+      "สบายดี"
+    ]
+  },
+  "t51s:ขอบคุณ_เปิดมือสองข้าง__ฉัน_var_1__สบายดี_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 42,
+        "concept": "ขอบคุณ",
+        "score": 0.699
+      },
+      {
+        "f0": 74,
+        "f1": 98,
+        "concept": "ฉัน",
+        "score": 0.4287
+      },
+      {
+        "f0": 108,
+        "f1": 156,
+        "concept": "สบายดี",
+        "score": 0.4997
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขอบคุณ",
+      "ฉัน",
+      "สบายดี"
+    ]
+  },
+  "t51s:ขอบคุณ_เปิดมือสองข้าง__ฉัน_var_1__สบายดี_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 42,
+        "concept": "ขอบคุณ",
+        "score": 0.7138
+      },
+      {
+        "f0": 72,
+        "f1": 96,
+        "concept": "ฉัน",
+        "score": 0.4411
+      },
+      {
+        "f0": 106,
+        "f1": 150,
+        "concept": "สบายดี",
+        "score": 0.6373
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขอบคุณ",
+      "ฉัน",
+      "สบายดี"
+    ]
+  },
+  "t51s:ขอบคุณ_เปิดมือสองข้าง__ฉัน_var_2__สบายดี_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 40,
+        "concept": "ขอบคุณ",
+        "score": 0.7048
+      },
+      {
+        "f0": 56,
+        "f1": 80,
+        "concept": "ฉัน",
+        "score": 0.2125
+      },
+      {
+        "f0": 116,
+        "f1": 156,
+        "concept": "สบายดี",
+        "score": 0.4233
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขอบคุณ",
+      "ฉัน",
+      "สบายดี"
+    ]
+  },
+  "t51s:ขอบคุณ_เปิดมือสองข้าง__ฉัน_var_2__สบายดี_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 48,
+        "concept": "ขอบคุณ",
+        "score": 0.7336
+      },
+      {
+        "f0": 66,
+        "f1": 78,
+        "concept": "ฉัน",
+        "score": 0.2765
+      },
+      {
+        "f0": 114,
+        "f1": 158,
+        "concept": "สบายดี",
+        "score": 0.4336
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขอบคุณ",
+      "ฉัน",
+      "สบายดี"
+    ]
+  },
+  "t51s:ขอบคุณ_เปิดมือสองข้าง__ฉัน_var_2__สบายดี_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 42,
+        "concept": "ขอบคุณ",
+        "score": 0.6854
+      },
+      {
+        "f0": 60,
+        "f1": 84,
+        "concept": "ฉัน",
+        "score": 0.2412
+      },
+      {
+        "f0": 110,
+        "f1": 158,
+        "concept": "สบายดี",
+        "score": 0.5151
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขอบคุณ",
+      "ฉัน",
+      "สบายดี"
+    ]
+  },
+  "t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2_no_space_0": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 38,
+        "concept": "ขอโทษ",
+        "score": 0.6396
+      },
+      {
+        "f0": 74,
+        "f1": 118,
+        "concept": "ฉัน",
+        "score": 0.4347
+      },
+      {
+        "f0": 144,
+        "f1": 156,
+        "concept": "ข้าว",
+        "score": 0.2532
+      },
+      {
+        "f0": 160,
+        "f1": 188,
+        "concept": "กิน",
+        "score": 0.1805
+      },
+      {
+        "f0": 200,
+        "f1": 248,
+        "concept": "ไป",
+        "score": 0.4936
+      }
+    ],
+    "T": 326,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขอโทษ",
+      "ฉัน",
+      "ข้าว",
+      "กิน",
+      "ไป"
+    ]
+  },
+  "t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2_no_space_1": {
+    "segments": [
+      {
+        "f0": 8,
+        "f1": 32,
+        "concept": "ขอโทษ",
+        "score": 0.586
+      },
+      {
+        "f0": 88,
+        "f1": 112,
+        "concept": "ฉัน",
+        "score": 0.3347
+      },
+      {
+        "f0": 132,
+        "f1": 152,
+        "concept": "ข้าว",
+        "score": 0.2572
+      },
+      {
+        "f0": 198,
+        "f1": 222,
+        "concept": "กิน",
+        "score": 0.0936
+      },
+      {
+        "f0": 266,
+        "f1": 282,
+        "concept": "ไป",
+        "score": 0.4393
+      }
+    ],
+    "T": 326,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขอโทษ",
+      "ฉัน",
+      "ข้าว",
+      "กิน",
+      "ไป"
+    ]
+  },
+  "t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2_no_space_2": {
+    "segments": [
+      {
+        "f0": 8,
+        "f1": 40,
+        "concept": "ขอโทษ",
+        "score": 0.6741
+      },
+      {
+        "f0": 66,
+        "f1": 90,
+        "concept": "ฉัน",
+        "score": 0.2931
+      },
+      {
+        "f0": 96,
+        "f1": 120,
+        "concept": "ข้าว",
+        "score": 0.1818
+      },
+      {
+        "f0": 166,
+        "f1": 190,
+        "concept": "กิน",
+        "score": 0.0923
+      },
+      {
+        "f0": 206,
+        "f1": 250,
+        "concept": "ไป",
+        "score": 0.5856
+      }
+    ],
+    "T": 326,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขอโทษ",
+      "ฉัน",
+      "ข้าว",
+      "กิน",
+      "ไป"
+    ]
+  },
+  "t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__หูหนวก_var_2_no_space_0": {
+    "segments": [
+      {
+        "f0": 6,
+        "f1": 46,
+        "concept": "ขอโทษ",
+        "score": 0.6168
+      },
+      {
+        "f0": 58,
+        "f1": 82,
+        "concept": "ฉัน",
+        "score": 0.4229
+      },
+      {
+        "f0": 100,
+        "f1": 128,
+        "concept": "หูหนวก",
+        "score": 0.7656
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ขอโทษ",
+      "ฉัน",
+      "หูหนวก"
+    ]
+  },
+  "t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__หูหนวก_var_2_no_space_1": {
+    "segments": [
+      {
+        "f0": 10,
+        "f1": 38,
+        "concept": "ขอโทษ",
+        "score": 0.6335
+      },
+      {
+        "f0": 62,
+        "f1": 86,
+        "concept": "ฉัน",
+        "score": 0.4496
+      },
+      {
+        "f0": 114,
+        "f1": 146,
+        "concept": "หูหนวก",
+        "score": 0.8019
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ขอโทษ",
+      "ฉัน",
+      "หูหนวก"
+    ]
+  },
+  "t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__หูหนวก_var_2_no_space_2": {
+    "segments": [
+      {
+        "f0": 6,
+        "f1": 42,
+        "concept": "ขอโทษ",
+        "score": 0.6333
+      },
+      {
+        "f0": 68,
+        "f1": 92,
+        "concept": "ฉัน",
+        "score": 0.4188
+      },
+      {
+        "f0": 122,
+        "f1": 158,
+        "concept": "หูหนวก",
+        "score": 0.7837
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ขอโทษ",
+      "ฉัน",
+      "หูหนวก"
+    ]
+  },
+  "t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__ข้าว_var_1__กิน_var_1__ไป_var_2_no_space_0": {
+    "segments": [
+      {
+        "f0": 8,
+        "f1": 36,
+        "concept": "ขอโทษ",
+        "score": 0.6515
+      },
+      {
+        "f0": 80,
+        "f1": 104,
+        "concept": "ฉัน",
+        "score": 0.2466
+      },
+      {
+        "f0": 124,
+        "f1": 148,
+        "concept": "ข้าว",
+        "score": 0.1378
+      },
+      {
+        "f0": 176,
+        "f1": 200,
+        "concept": "กิน",
+        "score": 0.1237
+      },
+      {
+        "f0": 242,
+        "f1": 290,
+        "concept": "ไป",
+        "score": 0.4052
+      }
+    ],
+    "T": 326,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขอโทษ",
+      "ฉัน",
+      "ข้าว",
+      "กิน",
+      "ไป"
+    ]
+  },
+  "t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__ข้าว_var_1__กิน_var_1__ไป_var_2_no_space_1": {
+    "segments": [
+      {
+        "f0": 4,
+        "f1": 28,
+        "concept": "ขอโทษ",
+        "score": 0.5
+      },
+      {
+        "f0": 70,
+        "f1": 94,
+        "concept": "ฉัน",
+        "score": 0.2075
+      },
+      {
+        "f0": 122,
+        "f1": 146,
+        "concept": "ข้าว",
+        "score": 0.1327
+      },
+      {
+        "f0": 172,
+        "f1": 196,
+        "concept": "กิน",
+        "score": 0.1034
+      },
+      {
+        "f0": 238,
+        "f1": 278,
+        "concept": "ไป",
+        "score": 0.6023
+      }
+    ],
+    "T": 326,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขอโทษ",
+      "ฉัน",
+      "ข้าว",
+      "กิน",
+      "ไป"
+    ]
+  },
+  "t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__ข้าว_var_1__กิน_var_1__ไป_var_2_no_space_2": {
+    "segments": [
+      {
+        "f0": 6,
+        "f1": 42,
+        "concept": "ขอโทษ",
+        "score": 0.6644
+      },
+      {
+        "f0": 74,
+        "f1": 98,
+        "concept": "ฉัน",
+        "score": 0.2418
+      },
+      {
+        "f0": 122,
+        "f1": 146,
+        "concept": "ข้าว",
+        "score": 0.1316
+      },
+      {
+        "f0": 174,
+        "f1": 198,
+        "concept": "กิน",
+        "score": 0.1241
+      },
+      {
+        "f0": 230,
+        "f1": 278,
+        "concept": "ไป",
+        "score": 0.4899
+      }
+    ],
+    "T": 326,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขอโทษ",
+      "ฉัน",
+      "ข้าว",
+      "กิน",
+      "ไป"
+    ]
+  },
+  "t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__หูหนวก_var_2_no_space_0": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 36,
+        "concept": "ขอโทษ",
+        "score": 0.7397
+      },
+      {
+        "f0": 72,
+        "f1": 88,
+        "concept": "ฉัน",
+        "score": 0.3239
+      },
+      {
+        "f0": 132,
+        "f1": 172,
+        "concept": "หูหนวก",
+        "score": 0.8241
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขอโทษ",
+      "ฉัน",
+      "หูหนวก"
+    ]
+  },
+  "t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__หูหนวก_var_2_no_space_1": {
+    "segments": [
+      {
+        "f0": 10,
+        "f1": 54,
+        "concept": "ขอโทษ",
+        "score": 0.6849
+      },
+      {
+        "f0": 68,
+        "f1": 92,
+        "concept": "ฉัน",
+        "score": 0.2474
+      },
+      {
+        "f0": 110,
+        "f1": 150,
+        "concept": "หูหนวก",
+        "score": 0.8003
+      }
+    ],
+    "T": 175,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขอโทษ",
+      "ฉัน",
+      "หูหนวก"
+    ]
+  },
+  "t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__หูหนวก_var_2_no_space_2": {
+    "segments": [
+      {
+        "f0": 10,
+        "f1": 38,
+        "concept": "ขอโทษ",
+        "score": 0.6709
+      },
+      {
+        "f0": 68,
+        "f1": 92,
+        "concept": "ฉัน",
+        "score": 0.2993
+      },
+      {
+        "f0": 110,
+        "f1": 154,
+        "concept": "หูหนวก",
+        "score": 0.8019
+      }
+    ],
+    "T": 175,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ขอโทษ",
+      "ฉัน",
+      "หูหนวก"
+    ]
+  },
+  "t51s:คุณ_var_1__ข้าว_var_1__กิน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 38,
+        "concept": "คุณ",
+        "score": 0.1417
+      },
+      {
+        "f0": 52,
+        "f1": 76,
+        "concept": "ข้าว",
+        "score": 0.1622
+      },
+      {
+        "f0": 166,
+        "f1": 174,
+        "concept": "กิน",
+        "score": 0.3568
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:คุณ_var_1__ข้าว_var_1__กิน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 50,
+        "concept": "คุณ",
+        "score": 0.2
+      },
+      {
+        "f0": 112,
+        "f1": 120,
+        "concept": "ข้าว",
+        "score": 0.4432
+      },
+      {
+        "f0": 154,
+        "f1": 174,
+        "concept": "กิน",
+        "score": 0.4616
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:คุณ_var_1__ข้าว_var_1__กิน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 22,
+        "f1": 54,
+        "concept": "คุณ",
+        "score": 0.2321
+      },
+      {
+        "f0": 54,
+        "f1": 82,
+        "concept": "ข้าว",
+        "score": 0.315
+      },
+      {
+        "f0": 148,
+        "f1": 172,
+        "concept": "กิน",
+        "score": 0.5229
+      }
+    ],
+    "T": 175,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:คุณ_var_1__ฉัน_var_1__แต่งงาน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 20,
+        "f1": 44,
+        "concept": "คุณ",
+        "score": 0.3903
+      },
+      {
+        "f0": 56,
+        "f1": 80,
+        "concept": "ฉัน",
+        "score": 0.3392
+      },
+      {
+        "f0": 114,
+        "f1": 138,
+        "concept": "แต่งงาน",
+        "score": 0.5119
+      }
+    ],
+    "T": 150,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "ฉัน",
+      "แต่งงาน"
+    ]
+  },
+  "t51s:คุณ_var_1__ฉัน_var_1__แต่งงาน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 18,
+        "f1": 46,
+        "concept": "คุณ",
+        "score": 0.3031
+      },
+      {
+        "f0": 48,
+        "f1": 72,
+        "concept": "ฉัน",
+        "score": 0.4061
+      },
+      {
+        "f0": 98,
+        "f1": 122,
+        "concept": "แต่งงาน",
+        "score": 0.5288
+      }
+    ],
+    "T": 150,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "ฉัน",
+      "แต่งงาน"
+    ]
+  },
+  "t51s:คุณ_var_1__ฉัน_var_1__แต่งงาน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 22,
+        "f1": 46,
+        "concept": "คุณ",
+        "score": 0.207
+      },
+      {
+        "f0": 74,
+        "f1": 114,
+        "concept": "ฉัน",
+        "score": 0.5106
+      },
+      {
+        "f0": 116,
+        "f1": 140,
+        "concept": "แต่งงาน",
+        "score": 0.5872
+      }
+    ],
+    "T": 151,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "ฉัน",
+      "แต่งงาน"
+    ]
+  },
+  "t51s:คุณ_var_1__ฉัน_var_1__แฟน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 20,
+        "f1": 32,
+        "concept": "คุณ",
+        "score": 0.2743
+      },
+      {
+        "f0": 34,
+        "f1": 58,
+        "concept": "ฉัน",
+        "score": 0.4732
+      },
+      {
+        "f0": 106,
+        "f1": 130,
+        "concept": "แฟน",
+        "score": 0.4087
+      }
+    ],
+    "T": 151,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "ฉัน",
+      "แฟน"
+    ]
+  },
+  "t51s:คุณ_var_1__ฉัน_var_1__แฟน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 26,
+        "f1": 50,
+        "concept": "คุณ",
+        "score": 0.2501
+      },
+      {
+        "f0": 66,
+        "f1": 90,
+        "concept": "ฉัน",
+        "score": 0.3816
+      },
+      {
+        "f0": 118,
+        "f1": 150,
+        "concept": "แฟน",
+        "score": 0.3965
+      }
+    ],
+    "T": 151,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "ฉัน",
+      "แฟน"
+    ]
+  },
+  "t51s:คุณ_var_1__ฉัน_var_1__แฟน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 20,
+        "f1": 44,
+        "concept": "คุณ",
+        "score": 0.2342
+      },
+      {
+        "f0": 58,
+        "f1": 82,
+        "concept": "ฉัน",
+        "score": 0.3584
+      },
+      {
+        "f0": 110,
+        "f1": 150,
+        "concept": "แฟน",
+        "score": 0.5024
+      }
+    ],
+    "T": 151,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "ฉัน",
+      "แฟน"
+    ]
+  },
+  "t51s:คุณ_var_1__ฉัน_var_2__แต่งงาน_var_1_no_space_7": {
+    "segments": [
+      {
+        "f0": 4,
+        "f1": 28,
+        "concept": "คุณ",
+        "score": 0.275
+      },
+      {
+        "f0": 56,
+        "f1": 80,
+        "concept": "ฉัน",
+        "score": 0.2635
+      },
+      {
+        "f0": 108,
+        "f1": 132,
+        "concept": "แต่งงาน",
+        "score": 0.5915
+      }
+    ],
+    "T": 150,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "ฉัน",
+      "แต่งงาน"
+    ]
+  },
+  "t51s:คุณ_var_1__ฉัน_var_2__แต่งงาน_var_1_no_space_8": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 38,
+        "concept": "คุณ",
+        "score": 0.2854
+      },
+      {
+        "f0": 52,
+        "f1": 72,
+        "concept": "ฉัน",
+        "score": 0.2617
+      },
+      {
+        "f0": 102,
+        "f1": 126,
+        "concept": "แต่งงาน",
+        "score": 0.5258
+      }
+    ],
+    "T": 150,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "ฉัน",
+      "แต่งงาน"
+    ]
+  },
+  "t51s:คุณ_var_1__ฉัน_var_2__แต่งงาน_var_1_no_space_9": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 36,
+        "concept": "คุณ",
+        "score": 0.2841
+      },
+      {
+        "f0": 48,
+        "f1": 72,
+        "concept": "ฉัน",
+        "score": 0.2833
+      },
+      {
+        "f0": 100,
+        "f1": 124,
+        "concept": "แต่งงาน",
+        "score": 0.5688
+      }
+    ],
+    "T": 150,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "ฉัน",
+      "แต่งงาน"
+    ]
+  },
+  "t51s:คุณ_var_1__ฉัน_var_2__แต่งงาน_var_1_with_space_3": {
+    "segments": [
+      {
+        "f0": 0,
+        "f1": 24,
+        "concept": "คุณ",
+        "score": 0.2686
+      },
+      {
+        "f0": 76,
+        "f1": 100,
+        "concept": "ฉัน",
+        "score": 0.5113
+      },
+      {
+        "f0": 154,
+        "f1": 178,
+        "concept": "แต่งงาน",
+        "score": 0.4459
+      }
+    ],
+    "T": 226,
+    "role": "sentence_test",
+    "variation": "with_space",
+    "glosses": [
+      "คุณ",
+      "ฉัน",
+      "แต่งงาน"
+    ]
+  },
+  "t51s:คุณ_var_1__ฉัน_var_2__แต่งงาน_var_1_with_space_4": {
+    "segments": [
+      {
+        "f0": 32,
+        "f1": 56,
+        "concept": "คุณ",
+        "score": 0.1688
+      },
+      {
+        "f0": 82,
+        "f1": 122,
+        "concept": "ฉัน",
+        "score": 0.5396
+      },
+      {
+        "f0": 150,
+        "f1": 174,
+        "concept": "แต่งงาน",
+        "score": 0.6159
+      }
+    ],
+    "T": 226,
+    "role": "sentence_test",
+    "variation": "with_space",
+    "glosses": [
+      "คุณ",
+      "ฉัน",
+      "แต่งงาน"
+    ]
+  },
+  "t51s:คุณ_var_1__ฉัน_var_2__แต่งงาน_var_1_with_space_5": {
+    "segments": [
+      {
+        "f0": 18,
+        "f1": 42,
+        "concept": "คุณ",
+        "score": 0.2141
+      },
+      {
+        "f0": 74,
+        "f1": 94,
+        "concept": "ฉัน",
+        "score": 0.3916
+      },
+      {
+        "f0": 156,
+        "f1": 180,
+        "concept": "แต่งงาน",
+        "score": 0.7042
+      }
+    ],
+    "T": 226,
+    "role": "sentence_test",
+    "variation": "with_space",
+    "glosses": [
+      "คุณ",
+      "ฉัน",
+      "แต่งงาน"
+    ]
+  },
+  "t51s:คุณ_var_1__ฉัน_var_2__แฟน_var_1_no_space_6": {
+    "segments": [
+      {
+        "f0": 26,
+        "f1": 62,
+        "concept": "คุณ",
+        "score": 0.1719
+      },
+      {
+        "f0": 62,
+        "f1": 86,
+        "concept": "ฉัน",
+        "score": 0.2358
+      },
+      {
+        "f0": 118,
+        "f1": 146,
+        "concept": "แฟน",
+        "score": 0.3898
+      }
+    ],
+    "T": 150,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "ฉัน",
+      "แฟน"
+    ]
+  },
+  "t51s:คุณ_var_1__ฉัน_var_2__แฟน_var_1_no_space_7": {
+    "segments": [
+      {
+        "f0": 26,
+        "f1": 58,
+        "concept": "คุณ",
+        "score": 0.1931
+      },
+      {
+        "f0": 60,
+        "f1": 76,
+        "concept": "ฉัน",
+        "score": 0.3446
+      },
+      {
+        "f0": 124,
+        "f1": 148,
+        "concept": "แฟน",
+        "score": 0.386
+      }
+    ],
+    "T": 151,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "ฉัน",
+      "แฟน"
+    ]
+  },
+  "t51s:คุณ_var_1__ฉัน_var_2__แฟน_var_1_no_space_8": {
+    "segments": [
+      {
+        "f0": 2,
+        "f1": 30,
+        "concept": "คุณ",
+        "score": 0.3271
+      },
+      {
+        "f0": 32,
+        "f1": 56,
+        "concept": "ฉัน",
+        "score": 0.2713
+      },
+      {
+        "f0": 108,
+        "f1": 148,
+        "concept": "แฟน",
+        "score": 0.4284
+      }
+    ],
+    "T": 150,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "ฉัน",
+      "แฟน"
+    ]
+  },
+  "t51s:คุณ_var_1__ฉัน_var_2__แฟน_var_1_with_space_2": {
+    "segments": [
+      {
+        "f0": 20,
+        "f1": 48,
+        "concept": "คุณ",
+        "score": 0.1159
+      },
+      {
+        "f0": 62,
+        "f1": 86,
+        "concept": "ฉัน",
+        "score": 0.411
+      },
+      {
+        "f0": 136,
+        "f1": 160,
+        "concept": "แฟน",
+        "score": 0.4787
+      }
+    ],
+    "T": 225,
+    "role": "tagger_train",
+    "variation": "with_space",
+    "glosses": [
+      "คุณ",
+      "ฉัน",
+      "แฟน"
+    ]
+  },
+  "t51s:คุณ_var_1__ฉัน_var_2__แฟน_var_1_with_space_3": {
+    "segments": [
+      {
+        "f0": 24,
+        "f1": 48,
+        "concept": "คุณ",
+        "score": 0.0996
+      },
+      {
+        "f0": 106,
+        "f1": 126,
+        "concept": "ฉัน",
+        "score": 0.4147
+      },
+      {
+        "f0": 146,
+        "f1": 170,
+        "concept": "แฟน",
+        "score": 0.5219
+      }
+    ],
+    "T": 225,
+    "role": "tagger_train",
+    "variation": "with_space",
+    "glosses": [
+      "คุณ",
+      "ฉัน",
+      "แฟน"
+    ]
+  },
+  "t51s:คุณ_var_1__ฉัน_var_2__แฟน_var_1_with_space_4": {
+    "segments": [
+      {
+        "f0": 2,
+        "f1": 14,
+        "concept": "คุณ",
+        "score": 0.2077
+      },
+      {
+        "f0": 72,
+        "f1": 96,
+        "concept": "ฉัน",
+        "score": 0.5012
+      },
+      {
+        "f0": 146,
+        "f1": 170,
+        "concept": "แฟน",
+        "score": 0.471
+      }
+    ],
+    "T": 226,
+    "role": "tagger_train",
+    "variation": "with_space",
+    "glosses": [
+      "คุณ",
+      "ฉัน",
+      "แฟน"
+    ]
+  },
+  "t51s:คุณ_var_1__ชื่อ_var_1__อะไร_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 2,
+        "f1": 30,
+        "concept": "คุณ",
+        "score": 0.1777
+      },
+      {
+        "f0": 62,
+        "f1": 86,
+        "concept": "ชื่อ",
+        "score": 0.7236
+      },
+      {
+        "f0": 134,
+        "f1": 150,
+        "concept": "อะไร",
+        "score": 0.4079
+      }
+    ],
+    "T": 150,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "ชื่อ",
+      "อะไร"
+    ]
+  },
+  "t51s:คุณ_var_1__ชื่อ_var_1__อะไร_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 8,
+        "f1": 32,
+        "concept": "คุณ",
+        "score": 0.2252
+      },
+      {
+        "f0": 52,
+        "f1": 76,
+        "concept": "ชื่อ",
+        "score": 0.6234
+      },
+      {
+        "f0": 126,
+        "f1": 150,
+        "concept": "อะไร",
+        "score": 0.3893
+      }
+    ],
+    "T": 151,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "ชื่อ",
+      "อะไร"
+    ]
+  },
+  "t51s:คุณ_var_1__ชื่อ_var_1__อะไร_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 36,
+        "concept": "คุณ",
+        "score": 0.2758
+      },
+      {
+        "f0": 50,
+        "f1": 70,
+        "concept": "ชื่อ",
+        "score": 0.5403
+      },
+      {
+        "f0": 126,
+        "f1": 150,
+        "concept": "อะไร",
+        "score": 0.2837
+      }
+    ],
+    "T": 150,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "ชื่อ",
+      "อะไร"
+    ]
+  },
+  "t51s:คุณ_var_1__เกิด_var_2__ที่ไหน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 36,
+        "concept": "คุณ",
+        "score": 0.212
+      },
+      {
+        "f0": 60,
+        "f1": 80,
+        "concept": "เกิด",
+        "score": 0.3597
+      },
+      {
+        "f0": 150,
+        "f1": 174,
+        "concept": "ที่ไหน",
+        "score": 0.3354
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "เกิด",
+      "ที่ไหน"
+    ]
+  },
+  "t51s:คุณ_var_1__เกิด_var_2__ที่ไหน_var_1_no_space_3": {
+    "segments": [
+      {
+        "f0": 6,
+        "f1": 30,
+        "concept": "คุณ",
+        "score": 0.1966
+      },
+      {
+        "f0": 68,
+        "f1": 80,
+        "concept": "เกิด",
+        "score": 0.4051
+      },
+      {
+        "f0": 144,
+        "f1": 168,
+        "concept": "ที่ไหน",
+        "score": 0.358
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "เกิด",
+      "ที่ไหน"
+    ]
+  },
+  "t51s:คุณ_var_1__เกิด_var_2__ที่ไหน_var_1_no_space_4": {
+    "segments": [
+      {
+        "f0": 20,
+        "f1": 44,
+        "concept": "คุณ",
+        "score": 0.2495
+      },
+      {
+        "f0": 72,
+        "f1": 84,
+        "concept": "เกิด",
+        "score": 0.3566
+      },
+      {
+        "f0": 144,
+        "f1": 168,
+        "concept": "ที่ไหน",
+        "score": 0.3484
+      }
+    ],
+    "T": 175,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "เกิด",
+      "ที่ไหน"
+    ]
+  },
+  "t51s:คุณ_var_1__เกิด_var_2__หูหนวก_var_2_no_space_0": {
+    "segments": [
+      {
+        "f0": 0,
+        "f1": 24,
+        "concept": "คุณ",
+        "score": 0.2057
+      },
+      {
+        "f0": 54,
+        "f1": 74,
+        "concept": "เกิด",
+        "score": 0.4684
+      },
+      {
+        "f0": 118,
+        "f1": 166,
+        "concept": "หูหนวก",
+        "score": 0.8186
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:คุณ_var_1__เกิด_var_2__หูหนวก_var_2_no_space_1": {
+    "segments": [
+      {
+        "f0": 0,
+        "f1": 24,
+        "concept": "คุณ",
+        "score": 0.1869
+      },
+      {
+        "f0": 54,
+        "f1": 78,
+        "concept": "เกิด",
+        "score": 0.4264
+      },
+      {
+        "f0": 122,
+        "f1": 158,
+        "concept": "หูหนวก",
+        "score": 0.7302
+      }
+    ],
+    "T": 175,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:คุณ_var_1__เกิด_var_2__หูหนวก_var_2_no_space_2": {
+    "segments": [
+      {
+        "f0": 0,
+        "f1": 24,
+        "concept": "คุณ",
+        "score": 0.1377
+      },
+      {
+        "f0": 56,
+        "f1": 76,
+        "concept": "เกิด",
+        "score": 0.454
+      },
+      {
+        "f0": 122,
+        "f1": 158,
+        "concept": "หูหนวก",
+        "score": 0.7863
+      }
+    ],
+    "T": 175,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:คุณ_var_1__ไป_var_2__ที่ไหน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 36,
+        "concept": "คุณ",
+        "score": 0.2665
+      },
+      {
+        "f0": 52,
+        "f1": 88,
+        "concept": "ไป",
+        "score": 0.5165
+      },
+      {
+        "f0": 128,
+        "f1": 152,
+        "concept": "ที่ไหน",
+        "score": 0.4132
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "ไป",
+      "ที่ไหน"
+    ]
+  },
+  "t51s:คุณ_var_1__ไป_var_2__ที่ไหน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 10,
+        "f1": 34,
+        "concept": "คุณ",
+        "score": 0.3071
+      },
+      {
+        "f0": 56,
+        "f1": 96,
+        "concept": "ไป",
+        "score": 0.4918
+      },
+      {
+        "f0": 134,
+        "f1": 174,
+        "concept": "ที่ไหน",
+        "score": 0.3454
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "ไป",
+      "ที่ไหน"
+    ]
+  },
+  "t51s:คุณ_var_1__ไป_var_2__ที่ไหน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 36,
+        "concept": "คุณ",
+        "score": 0.297
+      },
+      {
+        "f0": 56,
+        "f1": 96,
+        "concept": "ไป",
+        "score": 0.5014
+      },
+      {
+        "f0": 130,
+        "f1": 174,
+        "concept": "ที่ไหน",
+        "score": 0.4367
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "คุณ",
+      "ไป",
+      "ที่ไหน"
+    ]
+  },
+  "t51s:ฉัน_var_1__ข้าว_var_1__กิน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 48,
+        "concept": "ฉัน",
+        "score": 0.4045
+      },
+      {
+        "f0": 78,
+        "f1": 86,
+        "concept": "ข้าว",
+        "score": 0.4481
+      },
+      {
+        "f0": 132,
+        "f1": 144,
+        "concept": "กิน",
+        "score": 0.2783
+      }
+    ],
+    "T": 175,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ฉัน",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:ฉัน_var_1__ข้าว_var_1__กิน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 18,
+        "f1": 46,
+        "concept": "ฉัน",
+        "score": 0.4489
+      },
+      {
+        "f0": 58,
+        "f1": 82,
+        "concept": "ข้าว",
+        "score": 0.2179
+      },
+      {
+        "f0": 150,
+        "f1": 174,
+        "concept": "กิน",
+        "score": 0.1902
+      }
+    ],
+    "T": 175,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ฉัน",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:ฉัน_var_1__ข้าว_var_1__กิน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 10,
+        "f1": 34,
+        "concept": "ฉัน",
+        "score": 0.3793
+      },
+      {
+        "f0": 88,
+        "f1": 96,
+        "concept": "ข้าว",
+        "score": 0.4501
+      },
+      {
+        "f0": 134,
+        "f1": 158,
+        "concept": "กิน",
+        "score": 0.1925
+      }
+    ],
+    "T": 175,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ฉัน",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:ฉัน_var_1__ชื่อ_var_1__แมว_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 18,
+        "f1": 54,
+        "concept": "ฉัน",
+        "score": 0.4786
+      },
+      {
+        "f0": 54,
+        "f1": 70,
+        "concept": "ชื่อ",
+        "score": 0.6263
+      },
+      {
+        "f0": 114,
+        "f1": 138,
+        "concept": "แมว",
+        "score": 0.803
+      }
+    ],
+    "T": 151,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ฉัน",
+      "ชื่อ",
+      "แมว"
+    ]
+  },
+  "t51s:ฉัน_var_1__ชื่อ_var_1__แมว_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 20,
+        "f1": 48,
+        "concept": "ฉัน",
+        "score": 0.5147
+      },
+      {
+        "f0": 54,
+        "f1": 78,
+        "concept": "ชื่อ",
+        "score": 0.6181
+      },
+      {
+        "f0": 122,
+        "f1": 146,
+        "concept": "แมว",
+        "score": 0.8204
+      }
+    ],
+    "T": 150,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ฉัน",
+      "ชื่อ",
+      "แมว"
+    ]
+  },
+  "t51s:ฉัน_var_1__ชื่อ_var_1__แมว_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 38,
+        "concept": "ฉัน",
+        "score": 0.6443
+      },
+      {
+        "f0": 60,
+        "f1": 80,
+        "concept": "ชื่อ",
+        "score": 0.6007
+      },
+      {
+        "f0": 114,
+        "f1": 138,
+        "concept": "แมว",
+        "score": 0.8166
+      }
+    ],
+    "T": 151,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ฉัน",
+      "ชื่อ",
+      "แมว"
+    ]
+  },
+  "t51s:ฉัน_var_1__เกิด_var_2__หูหนวก_var_2_no_space_2": {
+    "segments": [
+      {
+        "f0": 18,
+        "f1": 46,
+        "concept": "ฉัน",
+        "score": 0.4526
+      },
+      {
+        "f0": 58,
+        "f1": 70,
+        "concept": "เกิด",
+        "score": 0.4821
+      },
+      {
+        "f0": 116,
+        "f1": 156,
+        "concept": "หูหนวก",
+        "score": 0.7472
+      }
+    ],
+    "T": 175,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ฉัน",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:ฉัน_var_1__เกิด_var_2__หูหนวก_var_2_no_space_3": {
+    "segments": [
+      {
+        "f0": 16,
+        "f1": 44,
+        "concept": "ฉัน",
+        "score": 0.5917
+      },
+      {
+        "f0": 50,
+        "f1": 70,
+        "concept": "เกิด",
+        "score": 0.4877
+      },
+      {
+        "f0": 106,
+        "f1": 146,
+        "concept": "หูหนวก",
+        "score": 0.7978
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ฉัน",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:ฉัน_var_1__เกิด_var_2__หูหนวก_var_2_no_space_4": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 44,
+        "concept": "ฉัน",
+        "score": 0.6317
+      },
+      {
+        "f0": 46,
+        "f1": 70,
+        "concept": "เกิด",
+        "score": 0.4909
+      },
+      {
+        "f0": 108,
+        "f1": 152,
+        "concept": "หูหนวก",
+        "score": 0.7726
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ฉัน",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:ฉัน_var_2__ข้าว_var_1__กิน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 22,
+        "f1": 34,
+        "concept": "ฉัน",
+        "score": 0.3843
+      },
+      {
+        "f0": 102,
+        "f1": 126,
+        "concept": "ข้าว",
+        "score": 0.1568
+      },
+      {
+        "f0": 154,
+        "f1": 166,
+        "concept": "กิน",
+        "score": 0.3703
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ฉัน",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:ฉัน_var_2__ข้าว_var_1__กิน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 28,
+        "f1": 44,
+        "concept": "ฉัน",
+        "score": 0.2477
+      },
+      {
+        "f0": 68,
+        "f1": 76,
+        "concept": "ข้าว",
+        "score": 0.3108
+      },
+      {
+        "f0": 144,
+        "f1": 168,
+        "concept": "กิน",
+        "score": 0.2579
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ฉัน",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:ฉัน_var_2__ข้าว_var_1__กิน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 20,
+        "f1": 32,
+        "concept": "ฉัน",
+        "score": 0.4211
+      },
+      {
+        "f0": 114,
+        "f1": 138,
+        "concept": "ข้าว",
+        "score": 0.1828
+      },
+      {
+        "f0": 146,
+        "f1": 170,
+        "concept": "กิน",
+        "score": 0.2544
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ฉัน",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:ฉัน_var_2__ชื่อ_var_1__แมว_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 0,
+        "f1": 24,
+        "concept": "ฉัน",
+        "score": 0.3143
+      },
+      {
+        "f0": 58,
+        "f1": 78,
+        "concept": "ชื่อ",
+        "score": 0.595
+      },
+      {
+        "f0": 118,
+        "f1": 142,
+        "concept": "แมว",
+        "score": 0.8043
+      }
+    ],
+    "T": 151,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ฉัน",
+      "ชื่อ",
+      "แมว"
+    ]
+  },
+  "t51s:ฉัน_var_2__ชื่อ_var_1__แมว_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 0,
+        "f1": 20,
+        "concept": "ฉัน",
+        "score": 0.3092
+      },
+      {
+        "f0": 54,
+        "f1": 78,
+        "concept": "ชื่อ",
+        "score": 0.3888
+      },
+      {
+        "f0": 118,
+        "f1": 142,
+        "concept": "แมว",
+        "score": 0.7891
+      }
+    ],
+    "T": 151,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ฉัน",
+      "ชื่อ",
+      "แมว"
+    ]
+  },
+  "t51s:ฉัน_var_2__ชื่อ_var_1__แมว_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 0,
+        "f1": 24,
+        "concept": "ฉัน",
+        "score": 0.2954
+      },
+      {
+        "f0": 56,
+        "f1": 64,
+        "concept": "ชื่อ",
+        "score": 0.635
+      },
+      {
+        "f0": 110,
+        "f1": 134,
+        "concept": "แมว",
+        "score": 0.7961
+      }
+    ],
+    "T": 151,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ฉัน",
+      "ชื่อ",
+      "แมว"
+    ]
+  },
+  "t51s:ฉัน_var_2__เกิด_var_2__หูหนวก_var_2_no_space_0": {
+    "segments": [
+      {
+        "f0": 10,
+        "f1": 34,
+        "concept": "ฉัน",
+        "score": 0.3181
+      },
+      {
+        "f0": 56,
+        "f1": 80,
+        "concept": "เกิด",
+        "score": 0.3969
+      },
+      {
+        "f0": 114,
+        "f1": 154,
+        "concept": "หูหนวก",
+        "score": 0.6677
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ฉัน",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:ฉัน_var_2__เกิด_var_2__หูหนวก_var_2_no_space_1": {
+    "segments": [
+      {
+        "f0": 18,
+        "f1": 30,
+        "concept": "ฉัน",
+        "score": 0.4474
+      },
+      {
+        "f0": 70,
+        "f1": 86,
+        "concept": "เกิด",
+        "score": 0.496
+      },
+      {
+        "f0": 120,
+        "f1": 168,
+        "concept": "หูหนวก",
+        "score": 0.8007
+      }
+    ],
+    "T": 175,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ฉัน",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:ฉัน_var_2__เกิด_var_2__หูหนวก_var_2_no_space_2": {
+    "segments": [
+      {
+        "f0": 20,
+        "f1": 28,
+        "concept": "ฉัน",
+        "score": 0.4295
+      },
+      {
+        "f0": 64,
+        "f1": 80,
+        "concept": "เกิด",
+        "score": 0.4378
+      },
+      {
+        "f0": 122,
+        "f1": 170,
+        "concept": "หูหนวก",
+        "score": 0.8198
+      }
+    ],
+    "T": 175,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ฉัน",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:น้อง_var_1__ข้าว_var_1__กิน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 32,
+        "f1": 64,
+        "concept": "น้อง",
+        "score": 0.1295
+      },
+      {
+        "f0": 126,
+        "f1": 150,
+        "concept": "ข้าว",
+        "score": 0.1713
+      },
+      {
+        "f0": 192,
+        "f1": 204,
+        "concept": "กิน",
+        "score": 0.3007
+      }
+    ],
+    "T": 226,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "น้อง",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:น้อง_var_1__ข้าว_var_1__กิน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 32,
+        "f1": 56,
+        "concept": "น้อง",
+        "score": 0.0826
+      },
+      {
+        "f0": 70,
+        "f1": 94,
+        "concept": "ข้าว",
+        "score": 0.188
+      },
+      {
+        "f0": 212,
+        "f1": 224,
+        "concept": "กิน",
+        "score": 0.2869
+      }
+    ],
+    "T": 225,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "น้อง",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:น้อง_var_1__ข้าว_var_1__กิน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 46,
+        "f1": 70,
+        "concept": "น้อง",
+        "score": 0.1876
+      },
+      {
+        "f0": 126,
+        "f1": 150,
+        "concept": "ข้าว",
+        "score": 0.2056
+      },
+      {
+        "f0": 196,
+        "f1": 216,
+        "concept": "กิน",
+        "score": 0.2738
+      }
+    ],
+    "T": 225,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "น้อง",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:น้อง_var_1__เกิด_var_2__หูหนวก_var_2_no_space_0": {
+    "segments": [
+      {
+        "f0": 0,
+        "f1": 20,
+        "concept": "น้อง",
+        "score": 0.1338
+      },
+      {
+        "f0": 58,
+        "f1": 78,
+        "concept": "เกิด",
+        "score": 0.5069
+      },
+      {
+        "f0": 122,
+        "f1": 154,
+        "concept": "หูหนวก",
+        "score": 0.7508
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "น้อง",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:น้อง_var_1__เกิด_var_2__หูหนวก_var_2_no_space_1": {
+    "segments": [
+      {
+        "f0": 24,
+        "f1": 48,
+        "concept": "น้อง",
+        "score": 0.0867
+      },
+      {
+        "f0": 56,
+        "f1": 72,
+        "concept": "เกิด",
+        "score": 0.4743
+      },
+      {
+        "f0": 116,
+        "f1": 140,
+        "concept": "หูหนวก",
+        "score": 0.7465
+      }
+    ],
+    "T": 175,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "น้อง",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:น้อง_var_1__เกิด_var_2__หูหนวก_var_2_no_space_2": {
+    "segments": [
+      {
+        "f0": 26,
+        "f1": 50,
+        "concept": "น้อง",
+        "score": 0.0858
+      },
+      {
+        "f0": 66,
+        "f1": 78,
+        "concept": "เกิด",
+        "score": 0.3626
+      },
+      {
+        "f0": 122,
+        "f1": 170,
+        "concept": "หูหนวก",
+        "score": 0.8134
+      }
+    ],
+    "T": 175,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "น้อง",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:พรุ่งนี้_var_1__คุณ_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2__ที่ไหน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 52,
+        "f1": 72,
+        "concept": "พรุ่งนี้",
+        "score": 0.1696
+      },
+      {
+        "f0": 72,
+        "f1": 96,
+        "concept": "คุณ",
+        "score": 0.2337
+      },
+      {
+        "f0": 156,
+        "f1": 164,
+        "concept": "ข้าว",
+        "score": 0.3565
+      },
+      {
+        "f0": 192,
+        "f1": 216,
+        "concept": "กิน",
+        "score": 0.1899
+      },
+      {
+        "f0": 230,
+        "f1": 246,
+        "concept": "ไป",
+        "score": 0.4049
+      },
+      {
+        "f0": 296,
+        "f1": 320,
+        "concept": "ที่ไหน",
+        "score": 0.2777
+      }
+    ],
+    "T": 325,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "พรุ่งนี้",
+      "คุณ",
+      "ข้าว",
+      "กิน",
+      "ไป",
+      "ที่ไหน"
+    ]
+  },
+  "t51s:พรุ่งนี้_var_1__คุณ_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2__ที่ไหน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 28,
+        "f1": 68,
+        "concept": "พรุ่งนี้",
+        "score": 0.3547
+      },
+      {
+        "f0": 74,
+        "f1": 86,
+        "concept": "คุณ",
+        "score": 0.3096
+      },
+      {
+        "f0": 108,
+        "f1": 116,
+        "concept": "ข้าว",
+        "score": 0.4911
+      },
+      {
+        "f0": 164,
+        "f1": 188,
+        "concept": "กิน",
+        "score": 0.1361
+      },
+      {
+        "f0": 214,
+        "f1": 238,
+        "concept": "ไป",
+        "score": 0.3642
+      },
+      {
+        "f0": 258,
+        "f1": 306,
+        "concept": "ที่ไหน",
+        "score": 0.3215
+      }
+    ],
+    "T": 326,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "พรุ่งนี้",
+      "คุณ",
+      "ข้าว",
+      "กิน",
+      "ไป",
+      "ที่ไหน"
+    ]
+  },
+  "t51s:พรุ่งนี้_var_1__คุณ_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2__ที่ไหน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 34,
+        "f1": 62,
+        "concept": "พรุ่งนี้",
+        "score": 0.2886
+      },
+      {
+        "f0": 76,
+        "f1": 100,
+        "concept": "คุณ",
+        "score": 0.2562
+      },
+      {
+        "f0": 104,
+        "f1": 124,
+        "concept": "ข้าว",
+        "score": 0.1623
+      },
+      {
+        "f0": 156,
+        "f1": 180,
+        "concept": "กิน",
+        "score": 0.1238
+      },
+      {
+        "f0": 202,
+        "f1": 226,
+        "concept": "ไป",
+        "score": 0.2833
+      },
+      {
+        "f0": 282,
+        "f1": 306,
+        "concept": "ที่ไหน",
+        "score": 0.3436
+      }
+    ],
+    "T": 326,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "พรุ่งนี้",
+      "คุณ",
+      "ข้าว",
+      "กิน",
+      "ไป",
+      "ที่ไหน"
+    ]
+  },
+  "t51s:พี่_var_1__ข้าว_var_1__กิน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 34,
+        "f1": 58,
+        "concept": "พี่",
+        "score": 0.4207
+      },
+      {
+        "f0": 108,
+        "f1": 136,
+        "concept": "ข้าว",
+        "score": 0.3877
+      },
+      {
+        "f0": 204,
+        "f1": 216,
+        "concept": "กิน",
+        "score": 0.3705
+      }
+    ],
+    "T": 226,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "พี่",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:พี่_var_1__ข้าว_var_1__กิน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 24,
+        "f1": 48,
+        "concept": "พี่",
+        "score": 0.4114
+      },
+      {
+        "f0": 60,
+        "f1": 76,
+        "concept": "ข้าว",
+        "score": 0.2261
+      },
+      {
+        "f0": 192,
+        "f1": 216,
+        "concept": "กิน",
+        "score": 0.3001
+      }
+    ],
+    "T": 226,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "พี่",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:พี่_var_1__ข้าว_var_1__กิน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 36,
+        "f1": 60,
+        "concept": "พี่",
+        "score": 0.3738
+      },
+      {
+        "f0": 160,
+        "f1": 184,
+        "concept": "ข้าว",
+        "score": 0.1771
+      },
+      {
+        "f0": 188,
+        "f1": 220,
+        "concept": "กิน",
+        "score": 0.2674
+      }
+    ],
+    "T": 225,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "พี่",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:พี่_var_1__เกิด_var_2__หูหนวก_var_2_no_space_0": {
+    "segments": [
+      {
+        "f0": 38,
+        "f1": 62,
+        "concept": "พี่",
+        "score": 0.3864
+      },
+      {
+        "f0": 68,
+        "f1": 88,
+        "concept": "เกิด",
+        "score": 0.4589
+      },
+      {
+        "f0": 130,
+        "f1": 154,
+        "concept": "หูหนวก",
+        "score": 0.7472
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "พี่",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:พี่_var_1__เกิด_var_2__หูหนวก_var_2_no_space_1": {
+    "segments": [
+      {
+        "f0": 30,
+        "f1": 54,
+        "concept": "พี่",
+        "score": 0.4533
+      },
+      {
+        "f0": 66,
+        "f1": 82,
+        "concept": "เกิด",
+        "score": 0.4591
+      },
+      {
+        "f0": 124,
+        "f1": 172,
+        "concept": "หูหนวก",
+        "score": 0.7784
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "พี่",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:พี่_var_1__เกิด_var_2__หูหนวก_var_2_no_space_2": {
+    "segments": [
+      {
+        "f0": 32,
+        "f1": 56,
+        "concept": "พี่",
+        "score": 0.4402
+      },
+      {
+        "f0": 58,
+        "f1": 82,
+        "concept": "เกิด",
+        "score": 0.3709
+      },
+      {
+        "f0": 134,
+        "f1": 174,
+        "concept": "หูหนวก",
+        "score": 0.781
+      }
+    ],
+    "T": 175,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "พี่",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__คุณ_var_1__เรียน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 8,
+        "f1": 32,
+        "concept": "ภาษามือ",
+        "score": 0.515
+      },
+      {
+        "f0": 58,
+        "f1": 82,
+        "concept": "คุณ",
+        "score": 0.1448
+      },
+      {
+        "f0": 102,
+        "f1": 126,
+        "concept": "เรียน",
+        "score": 0.735
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "คุณ",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__คุณ_var_1__เรียน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 38,
+        "concept": "ภาษามือ",
+        "score": 0.4839
+      },
+      {
+        "f0": 62,
+        "f1": 86,
+        "concept": "คุณ",
+        "score": 0.1307
+      },
+      {
+        "f0": 104,
+        "f1": 128,
+        "concept": "เรียน",
+        "score": 0.7738
+      }
+    ],
+    "T": 175,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "คุณ",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__คุณ_var_1__เรียน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 36,
+        "concept": "ภาษามือ",
+        "score": 0.5019
+      },
+      {
+        "f0": 58,
+        "f1": 82,
+        "concept": "คุณ",
+        "score": 0.2499
+      },
+      {
+        "f0": 102,
+        "f1": 126,
+        "concept": "เรียน",
+        "score": 0.7793
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "คุณ",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__คุณ_var_1__เรียน_var_1__ชอบ_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 58,
+        "concept": "ภาษามือ",
+        "score": 0.4905
+      },
+      {
+        "f0": 60,
+        "f1": 84,
+        "concept": "คุณ",
+        "score": 0.2451
+      },
+      {
+        "f0": 104,
+        "f1": 128,
+        "concept": "เรียน",
+        "score": 0.7722
+      },
+      {
+        "f0": 140,
+        "f1": 184,
+        "concept": "ชอบ",
+        "score": 0.6999
+      }
+    ],
+    "T": 225,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "คุณ",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__คุณ_var_1__เรียน_var_1__ชอบ_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 36,
+        "concept": "ภาษามือ",
+        "score": 0.5043
+      },
+      {
+        "f0": 58,
+        "f1": 82,
+        "concept": "คุณ",
+        "score": 0.2407
+      },
+      {
+        "f0": 106,
+        "f1": 130,
+        "concept": "เรียน",
+        "score": 0.7689
+      },
+      {
+        "f0": 146,
+        "f1": 190,
+        "concept": "ชอบ",
+        "score": 0.74
+      }
+    ],
+    "T": 226,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "คุณ",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__คุณ_var_1__เรียน_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 10,
+        "f1": 34,
+        "concept": "ภาษามือ",
+        "score": 0.4839
+      },
+      {
+        "f0": 68,
+        "f1": 96,
+        "concept": "คุณ",
+        "score": 0.161
+      },
+      {
+        "f0": 122,
+        "f1": 154,
+        "concept": "เรียน",
+        "score": 0.7726
+      },
+      {
+        "f0": 168,
+        "f1": 216,
+        "concept": "ชอบ",
+        "score": 0.7051
+      }
+    ],
+    "T": 226,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "คุณ",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ฉัน_var_1__เรียน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 8,
+        "f1": 32,
+        "concept": "ภาษามือ",
+        "score": 0.5986
+      },
+      {
+        "f0": 48,
+        "f1": 80,
+        "concept": "ฉัน",
+        "score": 0.3751
+      },
+      {
+        "f0": 94,
+        "f1": 118,
+        "concept": "เรียน",
+        "score": 0.7582
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "ฉัน",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ฉัน_var_1__เรียน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 8,
+        "f1": 52,
+        "concept": "ภาษามือ",
+        "score": 0.479
+      },
+      {
+        "f0": 68,
+        "f1": 104,
+        "concept": "ฉัน",
+        "score": 0.4054
+      },
+      {
+        "f0": 124,
+        "f1": 148,
+        "concept": "เรียน",
+        "score": 0.7719
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "ฉัน",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ฉัน_var_1__เรียน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 6,
+        "f1": 30,
+        "concept": "ภาษามือ",
+        "score": 0.5175
+      },
+      {
+        "f0": 54,
+        "f1": 82,
+        "concept": "ฉัน",
+        "score": 0.425
+      },
+      {
+        "f0": 104,
+        "f1": 128,
+        "concept": "เรียน",
+        "score": 0.7137
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "ฉัน",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ฉัน_var_1__เรียน_var_1__ชอบ_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 8,
+        "f1": 44,
+        "concept": "ภาษามือ",
+        "score": 0.4601
+      },
+      {
+        "f0": 58,
+        "f1": 82,
+        "concept": "ฉัน",
+        "score": 0.3368
+      },
+      {
+        "f0": 104,
+        "f1": 128,
+        "concept": "เรียน",
+        "score": 0.7558
+      },
+      {
+        "f0": 140,
+        "f1": 184,
+        "concept": "ชอบ",
+        "score": 0.7013
+      }
+    ],
+    "T": 225,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "ฉัน",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ฉัน_var_1__เรียน_var_1__ชอบ_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 40,
+        "concept": "ภาษามือ",
+        "score": 0.4667
+      },
+      {
+        "f0": 76,
+        "f1": 100,
+        "concept": "ฉัน",
+        "score": 0.3149
+      },
+      {
+        "f0": 118,
+        "f1": 142,
+        "concept": "เรียน",
+        "score": 0.7792
+      },
+      {
+        "f0": 158,
+        "f1": 206,
+        "concept": "ชอบ",
+        "score": 0.6967
+      }
+    ],
+    "T": 226,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "ฉัน",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ฉัน_var_1__เรียน_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 4,
+        "f1": 28,
+        "concept": "ภาษามือ",
+        "score": 0.4159
+      },
+      {
+        "f0": 62,
+        "f1": 86,
+        "concept": "ฉัน",
+        "score": 0.3254
+      },
+      {
+        "f0": 100,
+        "f1": 124,
+        "concept": "เรียน",
+        "score": 0.7448
+      },
+      {
+        "f0": 132,
+        "f1": 172,
+        "concept": "ชอบ",
+        "score": 0.7241
+      }
+    ],
+    "T": 225,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "ฉัน",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1_no_space_4": {
+    "segments": [
+      {
+        "f0": 10,
+        "f1": 34,
+        "concept": "ภาษามือ",
+        "score": 0.6064
+      },
+      {
+        "f0": 64,
+        "f1": 76,
+        "concept": "ฉัน",
+        "score": 0.2895
+      },
+      {
+        "f0": 112,
+        "f1": 136,
+        "concept": "เรียน",
+        "score": 0.7694
+      }
+    ],
+    "T": 250,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "ฉัน",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1_no_space_5": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 34,
+        "concept": "ภาษามือ",
+        "score": 0.5903
+      },
+      {
+        "f0": 64,
+        "f1": 88,
+        "concept": "ฉัน",
+        "score": 0.4502
+      },
+      {
+        "f0": 108,
+        "f1": 132,
+        "concept": "เรียน",
+        "score": 0.7433
+      }
+    ],
+    "T": 250,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "ฉัน",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1_no_space_6": {
+    "segments": [
+      {
+        "f0": 8,
+        "f1": 56,
+        "concept": "ภาษามือ",
+        "score": 0.6148
+      },
+      {
+        "f0": 58,
+        "f1": 70,
+        "concept": "ฉัน",
+        "score": 0.4104
+      },
+      {
+        "f0": 104,
+        "f1": 128,
+        "concept": "เรียน",
+        "score": 0.7834
+      }
+    ],
+    "T": 250,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "ฉัน",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1_with_space_5": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 62,
+        "concept": "ภาษามือ",
+        "score": 0.7004
+      },
+      {
+        "f0": 82,
+        "f1": 106,
+        "concept": "ฉัน",
+        "score": 0.7076
+      },
+      {
+        "f0": 172,
+        "f1": 196,
+        "concept": "เรียน",
+        "score": 0.7644
+      }
+    ],
+    "T": 251,
+    "role": "tagger_train",
+    "variation": "with_space",
+    "glosses": [
+      "ภาษามือ",
+      "ฉัน",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1_with_space_6": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 58,
+        "concept": "ภาษามือ",
+        "score": 0.6494
+      },
+      {
+        "f0": 88,
+        "f1": 112,
+        "concept": "ฉัน",
+        "score": 0.7237
+      },
+      {
+        "f0": 176,
+        "f1": 200,
+        "concept": "เรียน",
+        "score": 0.7915
+      }
+    ],
+    "T": 251,
+    "role": "tagger_train",
+    "variation": "with_space",
+    "glosses": [
+      "ภาษามือ",
+      "ฉัน",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1_with_space_7": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 58,
+        "concept": "ภาษามือ",
+        "score": 0.6753
+      },
+      {
+        "f0": 96,
+        "f1": 132,
+        "concept": "ฉัน",
+        "score": 0.7185
+      },
+      {
+        "f0": 182,
+        "f1": 206,
+        "concept": "เรียน",
+        "score": 0.8033
+      }
+    ],
+    "T": 250,
+    "role": "tagger_train",
+    "variation": "with_space",
+    "glosses": [
+      "ภาษามือ",
+      "ฉัน",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 10,
+        "f1": 42,
+        "concept": "ภาษามือ",
+        "score": 0.6566
+      },
+      {
+        "f0": 64,
+        "f1": 80,
+        "concept": "ฉัน",
+        "score": 0.3981
+      },
+      {
+        "f0": 124,
+        "f1": 148,
+        "concept": "เรียน",
+        "score": 0.8197
+      },
+      {
+        "f0": 178,
+        "f1": 226,
+        "concept": "ชอบ",
+        "score": 0.7164
+      }
+    ],
+    "T": 250,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "ฉัน",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1__ชอบ_var_1_no_space_3": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 62,
+        "concept": "ภาษามือ",
+        "score": 0.6095
+      },
+      {
+        "f0": 72,
+        "f1": 96,
+        "concept": "ฉัน",
+        "score": 0.4245
+      },
+      {
+        "f0": 130,
+        "f1": 154,
+        "concept": "เรียน",
+        "score": 0.7961
+      },
+      {
+        "f0": 182,
+        "f1": 206,
+        "concept": "ชอบ",
+        "score": 0.5098
+      }
+    ],
+    "T": 250,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "ฉัน",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1__ชอบ_var_1_no_space_4": {
+    "segments": [
+      {
+        "f0": 4,
+        "f1": 44,
+        "concept": "ภาษามือ",
+        "score": 0.6295
+      },
+      {
+        "f0": 62,
+        "f1": 94,
+        "concept": "ฉัน",
+        "score": 0.3352
+      },
+      {
+        "f0": 120,
+        "f1": 144,
+        "concept": "เรียน",
+        "score": 0.8046
+      },
+      {
+        "f0": 172,
+        "f1": 220,
+        "concept": "ชอบ",
+        "score": 0.6664
+      }
+    ],
+    "T": 250,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "ฉัน",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1__ชอบ_var_1_with_space_2": {
+    "segments": [
+      {
+        "f0": 42,
+        "f1": 78,
+        "concept": "ภาษามือ",
+        "score": 0.6241
+      },
+      {
+        "f0": 120,
+        "f1": 140,
+        "concept": "ฉัน",
+        "score": 0.5102
+      },
+      {
+        "f0": 230,
+        "f1": 254,
+        "concept": "เรียน",
+        "score": 0.8141
+      },
+      {
+        "f0": 326,
+        "f1": 374,
+        "concept": "ชอบ",
+        "score": 0.5868
+      }
+    ],
+    "T": 376,
+    "role": "sentence_test",
+    "variation": "with_space",
+    "glosses": [
+      "ภาษามือ",
+      "ฉัน",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1__ชอบ_var_1_with_space_3": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 42,
+        "concept": "ภาษามือ",
+        "score": 0.6885
+      },
+      {
+        "f0": 106,
+        "f1": 130,
+        "concept": "ฉัน",
+        "score": 0.4489
+      },
+      {
+        "f0": 218,
+        "f1": 242,
+        "concept": "เรียน",
+        "score": 0.7833
+      },
+      {
+        "f0": 316,
+        "f1": 364,
+        "concept": "ชอบ",
+        "score": 0.6314
+      }
+    ],
+    "T": 375,
+    "role": "sentence_test",
+    "variation": "with_space",
+    "glosses": [
+      "ภาษามือ",
+      "ฉัน",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1__ชอบ_var_1_with_space_4": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 44,
+        "concept": "ภาษามือ",
+        "score": 0.671
+      },
+      {
+        "f0": 112,
+        "f1": 136,
+        "concept": "ฉัน",
+        "score": 0.459
+      },
+      {
+        "f0": 232,
+        "f1": 256,
+        "concept": "เรียน",
+        "score": 0.7716
+      },
+      {
+        "f0": 324,
+        "f1": 372,
+        "concept": "ชอบ",
+        "score": 0.576
+      }
+    ],
+    "T": 375,
+    "role": "sentence_test",
+    "variation": "with_space",
+    "glosses": [
+      "ภาษามือ",
+      "ฉัน",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__น้อง_var_1__เรียน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 8,
+        "f1": 36,
+        "concept": "ภาษามือ",
+        "score": 0.5243
+      },
+      {
+        "f0": 90,
+        "f1": 98,
+        "concept": "น้อง",
+        "score": 0.1683
+      },
+      {
+        "f0": 110,
+        "f1": 134,
+        "concept": "เรียน",
+        "score": 0.7718
+      }
+    ],
+    "T": 175,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "น้อง",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__น้อง_var_1__เรียน_var_1_no_space_3": {
+    "segments": [
+      {
+        "f0": 8,
+        "f1": 48,
+        "concept": "ภาษามือ",
+        "score": 0.5986
+      },
+      {
+        "f0": 104,
+        "f1": 128,
+        "concept": "น้อง",
+        "score": 0.1437
+      },
+      {
+        "f0": 142,
+        "f1": 166,
+        "concept": "เรียน",
+        "score": 0.7404
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "น้อง",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__น้อง_var_1__เรียน_var_1_no_space_4": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 56,
+        "concept": "ภาษามือ",
+        "score": 0.5547
+      },
+      {
+        "f0": 76,
+        "f1": 100,
+        "concept": "น้อง",
+        "score": 0.0922
+      },
+      {
+        "f0": 114,
+        "f1": 138,
+        "concept": "เรียน",
+        "score": 0.7755
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "น้อง",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__น้อง_var_1__เรียน_var_1__ชอบ_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 38,
+        "concept": "ภาษามือ",
+        "score": 0.5282
+      },
+      {
+        "f0": 78,
+        "f1": 102,
+        "concept": "น้อง",
+        "score": 0.0727
+      },
+      {
+        "f0": 120,
+        "f1": 144,
+        "concept": "เรียน",
+        "score": 0.7659
+      },
+      {
+        "f0": 176,
+        "f1": 224,
+        "concept": "ชอบ",
+        "score": 0.6839
+      }
+    ],
+    "T": 251,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "น้อง",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__น้อง_var_1__เรียน_var_1__ชอบ_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 10,
+        "f1": 38,
+        "concept": "ภาษามือ",
+        "score": 0.5255
+      },
+      {
+        "f0": 62,
+        "f1": 86,
+        "concept": "น้อง",
+        "score": 0.0768
+      },
+      {
+        "f0": 114,
+        "f1": 138,
+        "concept": "เรียน",
+        "score": 0.7608
+      },
+      {
+        "f0": 166,
+        "f1": 214,
+        "concept": "ชอบ",
+        "score": 0.7313
+      }
+    ],
+    "T": 251,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "น้อง",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__น้อง_var_1__เรียน_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 36,
+        "concept": "ภาษามือ",
+        "score": 0.4214
+      },
+      {
+        "f0": 78,
+        "f1": 102,
+        "concept": "น้อง",
+        "score": 0.0721
+      },
+      {
+        "f0": 126,
+        "f1": 150,
+        "concept": "เรียน",
+        "score": 0.7905
+      },
+      {
+        "f0": 186,
+        "f1": 234,
+        "concept": "ชอบ",
+        "score": 0.6627
+      }
+    ],
+    "T": 250,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "น้อง",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__พี่_var_1__เรียน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 16,
+        "f1": 40,
+        "concept": "ภาษามือ",
+        "score": 0.4644
+      },
+      {
+        "f0": 98,
+        "f1": 118,
+        "concept": "พี่",
+        "score": 0.4242
+      },
+      {
+        "f0": 138,
+        "f1": 162,
+        "concept": "เรียน",
+        "score": 0.7455
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "พี่",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__พี่_var_1__เรียน_var_1_no_space_3": {
+    "segments": [
+      {
+        "f0": 10,
+        "f1": 38,
+        "concept": "ภาษามือ",
+        "score": 0.5825
+      },
+      {
+        "f0": 72,
+        "f1": 112,
+        "concept": "พี่",
+        "score": 0.5501
+      },
+      {
+        "f0": 118,
+        "f1": 142,
+        "concept": "เรียน",
+        "score": 0.7996
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "พี่",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__พี่_var_1__เรียน_var_1_no_space_4": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 36,
+        "concept": "ภาษามือ",
+        "score": 0.5448
+      },
+      {
+        "f0": 80,
+        "f1": 104,
+        "concept": "พี่",
+        "score": 0.4496
+      },
+      {
+        "f0": 126,
+        "f1": 150,
+        "concept": "เรียน",
+        "score": 0.7699
+      }
+    ],
+    "T": 175,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "พี่",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__พี่_var_1__เรียน_var_1__ชอบ_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 42,
+        "concept": "ภาษามือ",
+        "score": 0.5134
+      },
+      {
+        "f0": 86,
+        "f1": 110,
+        "concept": "พี่",
+        "score": 0.4472
+      },
+      {
+        "f0": 130,
+        "f1": 154,
+        "concept": "เรียน",
+        "score": 0.7845
+      },
+      {
+        "f0": 182,
+        "f1": 230,
+        "concept": "ชอบ",
+        "score": 0.7275
+      }
+    ],
+    "T": 251,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "พี่",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__พี่_var_1__เรียน_var_1__ชอบ_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 36,
+        "concept": "ภาษามือ",
+        "score": 0.5595
+      },
+      {
+        "f0": 92,
+        "f1": 112,
+        "concept": "พี่",
+        "score": 0.4647
+      },
+      {
+        "f0": 130,
+        "f1": 154,
+        "concept": "เรียน",
+        "score": 0.7851
+      },
+      {
+        "f0": 170,
+        "f1": 214,
+        "concept": "ชอบ",
+        "score": 0.7328
+      }
+    ],
+    "T": 251,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "พี่",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__พี่_var_1__เรียน_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 6,
+        "f1": 38,
+        "concept": "ภาษามือ",
+        "score": 0.4667
+      },
+      {
+        "f0": 76,
+        "f1": 108,
+        "concept": "พี่",
+        "score": 0.4947
+      },
+      {
+        "f0": 124,
+        "f1": 148,
+        "concept": "เรียน",
+        "score": 0.7702
+      },
+      {
+        "f0": 166,
+        "f1": 210,
+        "concept": "ชอบ",
+        "score": 0.7312
+      }
+    ],
+    "T": 251,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "พี่",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ยาย_var_1__เรียน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 36,
+        "concept": "ภาษามือ",
+        "score": 0.4596
+      },
+      {
+        "f0": 60,
+        "f1": 92,
+        "concept": "ยาย",
+        "score": 0.5786
+      },
+      {
+        "f0": 138,
+        "f1": 162,
+        "concept": "เรียน",
+        "score": 0.7871
+      }
+    ],
+    "T": 225,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "ยาย",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ยาย_var_1__เรียน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 6,
+        "f1": 34,
+        "concept": "ภาษามือ",
+        "score": 0.5716
+      },
+      {
+        "f0": 62,
+        "f1": 90,
+        "concept": "ยาย",
+        "score": 0.5349
+      },
+      {
+        "f0": 134,
+        "f1": 162,
+        "concept": "เรียน",
+        "score": 0.729
+      }
+    ],
+    "T": 226,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "ยาย",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ยาย_var_1__เรียน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 36,
+        "concept": "ภาษามือ",
+        "score": 0.5832
+      },
+      {
+        "f0": 74,
+        "f1": 94,
+        "concept": "ยาย",
+        "score": 0.5837
+      },
+      {
+        "f0": 144,
+        "f1": 168,
+        "concept": "เรียน",
+        "score": 0.7582
+      }
+    ],
+    "T": 225,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "ยาย",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ยาย_var_1__เรียน_var_1__ชอบ_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 38,
+        "concept": "ภาษามือ",
+        "score": 0.4627
+      },
+      {
+        "f0": 80,
+        "f1": 104,
+        "concept": "ยาย",
+        "score": 0.5691
+      },
+      {
+        "f0": 148,
+        "f1": 172,
+        "concept": "เรียน",
+        "score": 0.7758
+      },
+      {
+        "f0": 184,
+        "f1": 228,
+        "concept": "ชอบ",
+        "score": 0.7276
+      }
+    ],
+    "T": 301,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "ยาย",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ยาย_var_1__เรียน_var_1__ชอบ_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 4,
+        "f1": 32,
+        "concept": "ภาษามือ",
+        "score": 0.5279
+      },
+      {
+        "f0": 74,
+        "f1": 98,
+        "concept": "ยาย",
+        "score": 0.5425
+      },
+      {
+        "f0": 152,
+        "f1": 176,
+        "concept": "เรียน",
+        "score": 0.7252
+      },
+      {
+        "f0": 200,
+        "f1": 248,
+        "concept": "ชอบ",
+        "score": 0.7207
+      }
+    ],
+    "T": 300,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "ยาย",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__ยาย_var_1__เรียน_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 10,
+        "f1": 34,
+        "concept": "ภาษามือ",
+        "score": 0.521
+      },
+      {
+        "f0": 76,
+        "f1": 96,
+        "concept": "ยาย",
+        "score": 0.5004
+      },
+      {
+        "f0": 148,
+        "f1": 172,
+        "concept": "เรียน",
+        "score": 0.7539
+      },
+      {
+        "f0": 192,
+        "f1": 240,
+        "concept": "ชอบ",
+        "score": 0.7319
+      }
+    ],
+    "T": 300,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "ยาย",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__แฟน_var_1__เรียน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 8,
+        "f1": 56,
+        "concept": "ภาษามือ",
+        "score": 0.5125
+      },
+      {
+        "f0": 56,
+        "f1": 80,
+        "concept": "แฟน",
+        "score": 0.3673
+      },
+      {
+        "f0": 116,
+        "f1": 140,
+        "concept": "เรียน",
+        "score": 0.7514
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "แฟน",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__แฟน_var_1__เรียน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 36,
+        "concept": "ภาษามือ",
+        "score": 0.4413
+      },
+      {
+        "f0": 56,
+        "f1": 76,
+        "concept": "แฟน",
+        "score": 0.4185
+      },
+      {
+        "f0": 112,
+        "f1": 136,
+        "concept": "เรียน",
+        "score": 0.7686
+      }
+    ],
+    "T": 175,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "แฟน",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__แฟน_var_1__เรียน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 4,
+        "f1": 28,
+        "concept": "ภาษามือ",
+        "score": 0.425
+      },
+      {
+        "f0": 56,
+        "f1": 80,
+        "concept": "แฟน",
+        "score": 0.3874
+      },
+      {
+        "f0": 106,
+        "f1": 130,
+        "concept": "เรียน",
+        "score": 0.7496
+      }
+    ],
+    "T": 175,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "แฟน",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__แฟน_var_1__เรียน_var_1__ชอบ_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 16,
+        "f1": 40,
+        "concept": "ภาษามือ",
+        "score": 0.6023
+      },
+      {
+        "f0": 60,
+        "f1": 92,
+        "concept": "แฟน",
+        "score": 0.3935
+      },
+      {
+        "f0": 118,
+        "f1": 146,
+        "concept": "เรียน",
+        "score": 0.7765
+      },
+      {
+        "f0": 160,
+        "f1": 204,
+        "concept": "ชอบ",
+        "score": 0.767
+      }
+    ],
+    "T": 225,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "แฟน",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__แฟน_var_1__เรียน_var_1__ชอบ_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 42,
+        "concept": "ภาษามือ",
+        "score": 0.5905
+      },
+      {
+        "f0": 58,
+        "f1": 82,
+        "concept": "แฟน",
+        "score": 0.3669
+      },
+      {
+        "f0": 124,
+        "f1": 148,
+        "concept": "เรียน",
+        "score": 0.7333
+      },
+      {
+        "f0": 168,
+        "f1": 216,
+        "concept": "ชอบ",
+        "score": 0.7758
+      }
+    ],
+    "T": 225,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "แฟน",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__แฟน_var_1__เรียน_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 2,
+        "f1": 42,
+        "concept": "ภาษามือ",
+        "score": 0.5308
+      },
+      {
+        "f0": 44,
+        "f1": 76,
+        "concept": "แฟน",
+        "score": 0.3995
+      },
+      {
+        "f0": 112,
+        "f1": 136,
+        "concept": "เรียน",
+        "score": 0.7659
+      },
+      {
+        "f0": 168,
+        "f1": 216,
+        "concept": "ชอบ",
+        "score": 0.7042
+      }
+    ],
+    "T": 225,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "แฟน",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__แม่_var_1__เรียน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 4,
+        "f1": 36,
+        "concept": "ภาษามือ",
+        "score": 0.5494
+      },
+      {
+        "f0": 56,
+        "f1": 80,
+        "concept": "แม่",
+        "score": 0.572
+      },
+      {
+        "f0": 108,
+        "f1": 132,
+        "concept": "เรียน",
+        "score": 0.7909
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "แม่",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__แม่_var_1__เรียน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 8,
+        "f1": 32,
+        "concept": "ภาษามือ",
+        "score": 0.5571
+      },
+      {
+        "f0": 58,
+        "f1": 78,
+        "concept": "แม่",
+        "score": 0.5751
+      },
+      {
+        "f0": 106,
+        "f1": 130,
+        "concept": "เรียน",
+        "score": 0.7419
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "แม่",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__แม่_var_1__เรียน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 36,
+        "concept": "ภาษามือ",
+        "score": 0.4982
+      },
+      {
+        "f0": 60,
+        "f1": 76,
+        "concept": "แม่",
+        "score": 0.6009
+      },
+      {
+        "f0": 110,
+        "f1": 138,
+        "concept": "เรียน",
+        "score": 0.7742
+      }
+    ],
+    "T": 175,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "แม่",
+      "เรียน"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__แม่_var_1__เรียน_var_1__ชอบ_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 38,
+        "concept": "ภาษามือ",
+        "score": 0.5273
+      },
+      {
+        "f0": 66,
+        "f1": 90,
+        "concept": "แม่",
+        "score": 0.6226
+      },
+      {
+        "f0": 122,
+        "f1": 146,
+        "concept": "เรียน",
+        "score": 0.7596
+      },
+      {
+        "f0": 166,
+        "f1": 210,
+        "concept": "ชอบ",
+        "score": 0.7231
+      }
+    ],
+    "T": 226,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "แม่",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__แม่_var_1__เรียน_var_1__ชอบ_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 36,
+        "concept": "ภาษามือ",
+        "score": 0.5153
+      },
+      {
+        "f0": 64,
+        "f1": 88,
+        "concept": "แม่",
+        "score": 0.6529
+      },
+      {
+        "f0": 118,
+        "f1": 142,
+        "concept": "เรียน",
+        "score": 0.7629
+      },
+      {
+        "f0": 164,
+        "f1": 204,
+        "concept": "ชอบ",
+        "score": 0.7604
+      }
+    ],
+    "T": 226,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "แม่",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ภาษามือ_var_1__แม่_var_1__เรียน_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 4,
+        "f1": 28,
+        "concept": "ภาษามือ",
+        "score": 0.456
+      },
+      {
+        "f0": 56,
+        "f1": 80,
+        "concept": "แม่",
+        "score": 0.6558
+      },
+      {
+        "f0": 118,
+        "f1": 142,
+        "concept": "เรียน",
+        "score": 0.7568
+      },
+      {
+        "f0": 160,
+        "f1": 204,
+        "concept": "ชอบ",
+        "score": 0.7472
+      }
+    ],
+    "T": 225,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ภาษามือ",
+      "แม่",
+      "เรียน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ยาย_var_1__ข้าว_var_1__กิน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 24,
+        "f1": 48,
+        "concept": "ยาย",
+        "score": 0.4596
+      },
+      {
+        "f0": 154,
+        "f1": 162,
+        "concept": "ข้าว",
+        "score": 0.5032
+      },
+      {
+        "f0": 210,
+        "f1": 234,
+        "concept": "กิน",
+        "score": 0.2263
+      }
+    ],
+    "T": 276,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ยาย",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:ยาย_var_1__ข้าว_var_1__กิน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 38,
+        "f1": 58,
+        "concept": "ยาย",
+        "score": 0.4279
+      },
+      {
+        "f0": 84,
+        "f1": 108,
+        "concept": "ข้าว",
+        "score": 0.1826
+      },
+      {
+        "f0": 234,
+        "f1": 258,
+        "concept": "กิน",
+        "score": 0.1964
+      }
+    ],
+    "T": 276,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ยาย",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:ยาย_var_1__ข้าว_var_1__กิน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 32,
+        "f1": 56,
+        "concept": "ยาย",
+        "score": 0.4784
+      },
+      {
+        "f0": 132,
+        "f1": 140,
+        "concept": "ข้าว",
+        "score": 0.4963
+      },
+      {
+        "f0": 182,
+        "f1": 222,
+        "concept": "กิน",
+        "score": 0.2544
+      }
+    ],
+    "T": 275,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ยาย",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:ยาย_var_1__เกิด_var_2__หูหนวก_var_2_no_space_0": {
+    "segments": [
+      {
+        "f0": 14,
+        "f1": 58,
+        "concept": "ยาย",
+        "score": 0.5659
+      },
+      {
+        "f0": 90,
+        "f1": 106,
+        "concept": "เกิด",
+        "score": 0.4552
+      },
+      {
+        "f0": 148,
+        "f1": 192,
+        "concept": "หูหนวก",
+        "score": 0.7693
+      }
+    ],
+    "T": 226,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ยาย",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:ยาย_var_1__เกิด_var_2__หูหนวก_var_2_no_space_1": {
+    "segments": [
+      {
+        "f0": 34,
+        "f1": 66,
+        "concept": "ยาย",
+        "score": 0.5124
+      },
+      {
+        "f0": 114,
+        "f1": 138,
+        "concept": "เกิด",
+        "score": 0.4626
+      },
+      {
+        "f0": 180,
+        "f1": 220,
+        "concept": "หูหนวก",
+        "score": 0.8321
+      }
+    ],
+    "T": 226,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ยาย",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:ยาย_var_1__เกิด_var_2__หูหนวก_var_2_no_space_2": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 60,
+        "concept": "ยาย",
+        "score": 0.5784
+      },
+      {
+        "f0": 106,
+        "f1": 122,
+        "concept": "เกิด",
+        "score": 0.5023
+      },
+      {
+        "f0": 164,
+        "f1": 212,
+        "concept": "หูหนวก",
+        "score": 0.8185
+      }
+    ],
+    "T": 225,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ยาย",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:วันนี้_var_1__คุณ_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2__ที่ไหน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 6,
+        "f1": 30,
+        "concept": "วันนี้",
+        "score": 0.6223
+      },
+      {
+        "f0": 48,
+        "f1": 64,
+        "concept": "คุณ",
+        "score": 0.2858
+      },
+      {
+        "f0": 80,
+        "f1": 88,
+        "concept": "ข้าว",
+        "score": 0.4997
+      },
+      {
+        "f0": 142,
+        "f1": 166,
+        "concept": "กิน",
+        "score": 0.1745
+      },
+      {
+        "f0": 186,
+        "f1": 202,
+        "concept": "ไป",
+        "score": 0.4481
+      },
+      {
+        "f0": 230,
+        "f1": 270,
+        "concept": "ที่ไหน",
+        "score": 0.4224
+      }
+    ],
+    "T": 400,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "วันนี้",
+      "คุณ",
+      "ข้าว",
+      "กิน",
+      "ไป",
+      "ที่ไหน"
+    ]
+  },
+  "t51s:วันนี้_var_1__คุณ_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2__ที่ไหน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 10,
+        "f1": 34,
+        "concept": "วันนี้",
+        "score": 0.4737
+      },
+      {
+        "f0": 68,
+        "f1": 84,
+        "concept": "คุณ",
+        "score": 0.2665
+      },
+      {
+        "f0": 108,
+        "f1": 132,
+        "concept": "ข้าว",
+        "score": 0.4495
+      },
+      {
+        "f0": 164,
+        "f1": 188,
+        "concept": "กิน",
+        "score": 0.1894
+      },
+      {
+        "f0": 232,
+        "f1": 248,
+        "concept": "ไป",
+        "score": 0.3659
+      },
+      {
+        "f0": 292,
+        "f1": 324,
+        "concept": "ที่ไหน",
+        "score": 0.3911
+      }
+    ],
+    "T": 325,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "วันนี้",
+      "คุณ",
+      "ข้าว",
+      "กิน",
+      "ไป",
+      "ที่ไหน"
+    ]
+  },
+  "t51s:วันนี้_var_1__คุณ_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2__ที่ไหน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 6,
+        "f1": 30,
+        "concept": "วันนี้",
+        "score": 0.5305
+      },
+      {
+        "f0": 68,
+        "f1": 92,
+        "concept": "คุณ",
+        "score": 0.2457
+      },
+      {
+        "f0": 106,
+        "f1": 114,
+        "concept": "ข้าว",
+        "score": 0.2302
+      },
+      {
+        "f0": 162,
+        "f1": 186,
+        "concept": "กิน",
+        "score": 0.1737
+      },
+      {
+        "f0": 218,
+        "f1": 238,
+        "concept": "ไป",
+        "score": 0.4014
+      },
+      {
+        "f0": 284,
+        "f1": 308,
+        "concept": "ที่ไหน",
+        "score": 0.2622
+      }
+    ],
+    "T": 325,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "วันนี้",
+      "คุณ",
+      "ข้าว",
+      "กิน",
+      "ไป",
+      "ที่ไหน"
+    ]
+  },
+  "t51s:สวัสดี_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__สบายดี_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 36,
+        "f1": 60,
+        "concept": "สวัสดี",
+        "score": 0.395
+      },
+      {
+        "f0": 76,
+        "f1": 100,
+        "concept": "ฉัน",
+        "score": 0.377
+      },
+      {
+        "f0": 120,
+        "f1": 160,
+        "concept": "สบายดี",
+        "score": 0.5372
+      }
+    ],
+    "T": 175,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "สวัสดี",
+      "ฉัน",
+      "สบายดี"
+    ]
+  },
+  "t51s:สวัสดี_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__สบายดี_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 34,
+        "f1": 58,
+        "concept": "สวัสดี",
+        "score": 0.415
+      },
+      {
+        "f0": 78,
+        "f1": 102,
+        "concept": "ฉัน",
+        "score": 0.3764
+      },
+      {
+        "f0": 118,
+        "f1": 154,
+        "concept": "สบายดี",
+        "score": 0.6918
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "สวัสดี",
+      "ฉัน",
+      "สบายดี"
+    ]
+  },
+  "t51s:สวัสดี_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__สบายดี_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 36,
+        "f1": 60,
+        "concept": "สวัสดี",
+        "score": 0.4388
+      },
+      {
+        "f0": 80,
+        "f1": 100,
+        "concept": "ฉัน",
+        "score": 0.4068
+      },
+      {
+        "f0": 112,
+        "f1": 156,
+        "concept": "สบายดี",
+        "score": 0.6311
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "สวัสดี",
+      "ฉัน",
+      "สบายดี"
+    ]
+  },
+  "t51s:สวัสดี_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__สบายดี_var_1_no_space_4": {
+    "segments": [
+      {
+        "f0": 28,
+        "f1": 52,
+        "concept": "สวัสดี",
+        "score": 0.4589
+      },
+      {
+        "f0": 64,
+        "f1": 88,
+        "concept": "ฉัน",
+        "score": 0.1834
+      },
+      {
+        "f0": 96,
+        "f1": 132,
+        "concept": "สบายดี",
+        "score": 0.5661
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "สวัสดี",
+      "ฉัน",
+      "สบายดี"
+    ]
+  },
+  "t51s:สวัสดี_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__สบายดี_var_1_no_space_5": {
+    "segments": [
+      {
+        "f0": 34,
+        "f1": 58,
+        "concept": "สวัสดี",
+        "score": 0.4494
+      },
+      {
+        "f0": 66,
+        "f1": 90,
+        "concept": "ฉัน",
+        "score": 0.1652
+      },
+      {
+        "f0": 100,
+        "f1": 136,
+        "concept": "สบายดี",
+        "score": 0.4945
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "สวัสดี",
+      "ฉัน",
+      "สบายดี"
+    ]
+  },
+  "t51s:สวัสดี_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__สบายดี_var_1_no_space_6": {
+    "segments": [
+      {
+        "f0": 32,
+        "f1": 56,
+        "concept": "สวัสดี",
+        "score": 0.4901
+      },
+      {
+        "f0": 70,
+        "f1": 90,
+        "concept": "ฉัน",
+        "score": 0.196
+      },
+      {
+        "f0": 100,
+        "f1": 140,
+        "concept": "สบายดี",
+        "score": 0.5152
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "สวัสดี",
+      "ฉัน",
+      "สบายดี"
+    ]
+  },
+  "t51s:สวัสดี_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__สบายดี_var_1_with_space_5": {
+    "segments": [
+      {
+        "f0": 44,
+        "f1": 72,
+        "concept": "สวัสดี",
+        "score": 0.6878
+      },
+      {
+        "f0": 96,
+        "f1": 128,
+        "concept": "ฉัน",
+        "score": 0.3686
+      },
+      {
+        "f0": 158,
+        "f1": 202,
+        "concept": "สบายดี",
+        "score": 0.5029
+      }
+    ],
+    "T": 251,
+    "role": "tagger_train",
+    "variation": "with_space",
+    "glosses": [
+      "สวัสดี",
+      "ฉัน",
+      "สบายดี"
+    ]
+  },
+  "t51s:สวัสดี_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__สบายดี_var_1_with_space_6": {
+    "segments": [
+      {
+        "f0": 38,
+        "f1": 66,
+        "concept": "สวัสดี",
+        "score": 0.6634
+      },
+      {
+        "f0": 88,
+        "f1": 124,
+        "concept": "ฉัน",
+        "score": 0.5538
+      },
+      {
+        "f0": 160,
+        "f1": 208,
+        "concept": "สบายดี",
+        "score": 0.5251
+      }
+    ],
+    "T": 250,
+    "role": "tagger_train",
+    "variation": "with_space",
+    "glosses": [
+      "สวัสดี",
+      "ฉัน",
+      "สบายดี"
+    ]
+  },
+  "t51s:สวัสดี_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__สบายดี_var_1_with_space_7": {
+    "segments": [
+      {
+        "f0": 30,
+        "f1": 58,
+        "concept": "สวัสดี",
+        "score": 0.6497
+      },
+      {
+        "f0": 82,
+        "f1": 114,
+        "concept": "ฉัน",
+        "score": 0.4099
+      },
+      {
+        "f0": 152,
+        "f1": 200,
+        "concept": "สบายดี",
+        "score": 0.5053
+      }
+    ],
+    "T": 250,
+    "role": "tagger_train",
+    "variation": "with_space",
+    "glosses": [
+      "สวัสดี",
+      "ฉัน",
+      "สบายดี"
+    ]
+  },
+  "t51s:แฟน_var_1__ข้าว_var_1__กิน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 20,
+        "f1": 48,
+        "concept": "แฟน",
+        "score": 0.4729
+      },
+      {
+        "f0": 136,
+        "f1": 144,
+        "concept": "ข้าว",
+        "score": 0.5826
+      },
+      {
+        "f0": 196,
+        "f1": 220,
+        "concept": "กิน",
+        "score": 0.4124
+      }
+    ],
+    "T": 225,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "แฟน",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:แฟน_var_1__ข้าว_var_1__กิน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 12,
+        "f1": 36,
+        "concept": "แฟน",
+        "score": 0.4658
+      },
+      {
+        "f0": 52,
+        "f1": 64,
+        "concept": "ข้าว",
+        "score": 0.2343
+      },
+      {
+        "f0": 200,
+        "f1": 216,
+        "concept": "กิน",
+        "score": 0.3463
+      }
+    ],
+    "T": 226,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "แฟน",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:แฟน_var_1__ข้าว_var_1__กิน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 32,
+        "f1": 56,
+        "concept": "แฟน",
+        "score": 0.4457
+      },
+      {
+        "f0": 60,
+        "f1": 76,
+        "concept": "ข้าว",
+        "score": 0.3147
+      },
+      {
+        "f0": 182,
+        "f1": 206,
+        "concept": "กิน",
+        "score": 0.3401
+      }
+    ],
+    "T": 225,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "แฟน",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:แฟน_var_1__เกิด_var_2__หูหนวก_var_2_no_space_0": {
+    "segments": [
+      {
+        "f0": 32,
+        "f1": 52,
+        "concept": "แฟน",
+        "score": 0.4235
+      },
+      {
+        "f0": 56,
+        "f1": 80,
+        "concept": "เกิด",
+        "score": 0.4768
+      },
+      {
+        "f0": 126,
+        "f1": 158,
+        "concept": "หูหนวก",
+        "score": 0.8072
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "แฟน",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:แฟน_var_1__เกิด_var_2__หูหนวก_var_2_no_space_1": {
+    "segments": [
+      {
+        "f0": 26,
+        "f1": 42,
+        "concept": "แฟน",
+        "score": 0.4022
+      },
+      {
+        "f0": 58,
+        "f1": 74,
+        "concept": "เกิด",
+        "score": 0.4728
+      },
+      {
+        "f0": 118,
+        "f1": 150,
+        "concept": "หูหนวก",
+        "score": 0.8039
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "แฟน",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:แฟน_var_1__เกิด_var_2__หูหนวก_var_2_no_space_2": {
+    "segments": [
+      {
+        "f0": 4,
+        "f1": 32,
+        "concept": "แฟน",
+        "score": 0.5563
+      },
+      {
+        "f0": 46,
+        "f1": 70,
+        "concept": "เกิด",
+        "score": 0.4702
+      },
+      {
+        "f0": 116,
+        "f1": 152,
+        "concept": "หูหนวก",
+        "score": 0.7481
+      }
+    ],
+    "T": 175,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "แฟน",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:แม่_var_1__ข้าว_var_1__กิน_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 22,
+        "f1": 46,
+        "concept": "แม่",
+        "score": 0.5565
+      },
+      {
+        "f0": 118,
+        "f1": 142,
+        "concept": "ข้าว",
+        "score": 0.1811
+      },
+      {
+        "f0": 144,
+        "f1": 172,
+        "concept": "กิน",
+        "score": 0.3792
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "แม่",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:แม่_var_1__ข้าว_var_1__กิน_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 18,
+        "f1": 42,
+        "concept": "แม่",
+        "score": 0.5615
+      },
+      {
+        "f0": 114,
+        "f1": 126,
+        "concept": "ข้าว",
+        "score": 0.4428
+      },
+      {
+        "f0": 132,
+        "f1": 176,
+        "concept": "กิน",
+        "score": 0.1945
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "แม่",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:แม่_var_1__ข้าว_var_1__กิน_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 26,
+        "f1": 50,
+        "concept": "แม่",
+        "score": 0.5139
+      },
+      {
+        "f0": 136,
+        "f1": 144,
+        "concept": "ข้าว",
+        "score": 0.3346
+      },
+      {
+        "f0": 144,
+        "f1": 168,
+        "concept": "กิน",
+        "score": 0.1201
+      }
+    ],
+    "T": 176,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "แม่",
+      "ข้าว",
+      "กิน"
+    ]
+  },
+  "t51s:แม่_var_1__เกิด_var_2__หูหนวก_var_2_no_space_0": {
+    "segments": [
+      {
+        "f0": 20,
+        "f1": 48,
+        "concept": "แม่",
+        "score": 0.6431
+      },
+      {
+        "f0": 78,
+        "f1": 94,
+        "concept": "เกิด",
+        "score": 0.4832
+      },
+      {
+        "f0": 134,
+        "f1": 174,
+        "concept": "หูหนวก",
+        "score": 0.6673
+      }
+    ],
+    "T": 175,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "แม่",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:แม่_var_1__เกิด_var_2__หูหนวก_var_2_no_space_1": {
+    "segments": [
+      {
+        "f0": 20,
+        "f1": 44,
+        "concept": "แม่",
+        "score": 0.6217
+      },
+      {
+        "f0": 72,
+        "f1": 92,
+        "concept": "เกิด",
+        "score": 0.5736
+      },
+      {
+        "f0": 132,
+        "f1": 156,
+        "concept": "หูหนวก",
+        "score": 0.7137
+      }
+    ],
+    "T": 176,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "แม่",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:แม่_var_1__เกิด_var_2__หูหนวก_var_2_no_space_2": {
+    "segments": [
+      {
+        "f0": 20,
+        "f1": 44,
+        "concept": "แม่",
+        "score": 0.6369
+      },
+      {
+        "f0": 64,
+        "f1": 88,
+        "concept": "เกิด",
+        "score": 0.5282
+      },
+      {
+        "f0": 134,
+        "f1": 158,
+        "concept": "หูหนวก",
+        "score": 0.5802
+      }
+    ],
+    "T": 175,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "แม่",
+      "เกิด",
+      "หูหนวก"
+    ]
+  },
+  "t51s:ไข่_var_2__คุณ_var_1__กิน_var_1__ชอบ_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 28,
+        "f1": 52,
+        "concept": "ไข่",
+        "score": 0.5479
+      },
+      {
+        "f0": 62,
+        "f1": 86,
+        "concept": "คุณ",
+        "score": 0.1181
+      },
+      {
+        "f0": 104,
+        "f1": 148,
+        "concept": "กิน",
+        "score": 0.1798
+      },
+      {
+        "f0": 160,
+        "f1": 208,
+        "concept": "ชอบ",
+        "score": 0.74
+      }
+    ],
+    "T": 225,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "คุณ",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__คุณ_var_1__กิน_var_1__ชอบ_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 24,
+        "f1": 44,
+        "concept": "ไข่",
+        "score": 0.6517
+      },
+      {
+        "f0": 60,
+        "f1": 84,
+        "concept": "คุณ",
+        "score": 0.1522
+      },
+      {
+        "f0": 104,
+        "f1": 128,
+        "concept": "กิน",
+        "score": 0.1219
+      },
+      {
+        "f0": 170,
+        "f1": 218,
+        "concept": "ชอบ",
+        "score": 0.7193
+      }
+    ],
+    "T": 226,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "คุณ",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__คุณ_var_1__กิน_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 22,
+        "f1": 34,
+        "concept": "ไข่",
+        "score": 0.5756
+      },
+      {
+        "f0": 38,
+        "f1": 62,
+        "concept": "คุณ",
+        "score": 0.1144
+      },
+      {
+        "f0": 90,
+        "f1": 114,
+        "concept": "กิน",
+        "score": 0.1078
+      },
+      {
+        "f0": 152,
+        "f1": 200,
+        "concept": "ชอบ",
+        "score": 0.6569
+      }
+    ],
+    "T": 225,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "คุณ",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__ฉัน_var_1__กิน_var_1__ชอบ_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 22,
+        "f1": 46,
+        "concept": "ไข่",
+        "score": 0.5016
+      },
+      {
+        "f0": 54,
+        "f1": 78,
+        "concept": "ฉัน",
+        "score": 0.3468
+      },
+      {
+        "f0": 106,
+        "f1": 130,
+        "concept": "กิน",
+        "score": 0.0481
+      },
+      {
+        "f0": 168,
+        "f1": 216,
+        "concept": "ชอบ",
+        "score": 0.7284
+      }
+    ],
+    "T": 226,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "ฉัน",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__ฉัน_var_1__กิน_var_1__ชอบ_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 30,
+        "f1": 50,
+        "concept": "ไข่",
+        "score": 0.6033
+      },
+      {
+        "f0": 68,
+        "f1": 92,
+        "concept": "ฉัน",
+        "score": 0.3553
+      },
+      {
+        "f0": 112,
+        "f1": 136,
+        "concept": "กิน",
+        "score": 0.0523
+      },
+      {
+        "f0": 174,
+        "f1": 222,
+        "concept": "ชอบ",
+        "score": 0.6699
+      }
+    ],
+    "T": 226,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "ฉัน",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__ฉัน_var_1__กิน_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 24,
+        "f1": 48,
+        "concept": "ไข่",
+        "score": 0.6001
+      },
+      {
+        "f0": 58,
+        "f1": 82,
+        "concept": "ฉัน",
+        "score": 0.3562
+      },
+      {
+        "f0": 100,
+        "f1": 124,
+        "concept": "กิน",
+        "score": 0.0539
+      },
+      {
+        "f0": 170,
+        "f1": 218,
+        "concept": "ชอบ",
+        "score": 0.6132
+      }
+    ],
+    "T": 226,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "ฉัน",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__ฉัน_var_2__กิน_var_1__ชอบ_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 28,
+        "f1": 48,
+        "concept": "ไข่",
+        "score": 0.6057
+      },
+      {
+        "f0": 62,
+        "f1": 74,
+        "concept": "ฉัน",
+        "score": 0.3648
+      },
+      {
+        "f0": 114,
+        "f1": 138,
+        "concept": "กิน",
+        "score": 0.0496
+      },
+      {
+        "f0": 182,
+        "f1": 226,
+        "concept": "ชอบ",
+        "score": 0.6252
+      }
+    ],
+    "T": 226,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "ฉัน",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__ฉัน_var_2__กิน_var_1__ชอบ_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 20,
+        "f1": 44,
+        "concept": "ไข่",
+        "score": 0.5897
+      },
+      {
+        "f0": 56,
+        "f1": 80,
+        "concept": "ฉัน",
+        "score": 0.3584
+      },
+      {
+        "f0": 102,
+        "f1": 126,
+        "concept": "กิน",
+        "score": 0.0681
+      },
+      {
+        "f0": 170,
+        "f1": 218,
+        "concept": "ชอบ",
+        "score": 0.7166
+      }
+    ],
+    "T": 226,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "ฉัน",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__ฉัน_var_2__กิน_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 22,
+        "f1": 38,
+        "concept": "ไข่",
+        "score": 0.521
+      },
+      {
+        "f0": 54,
+        "f1": 74,
+        "concept": "ฉัน",
+        "score": 0.301
+      },
+      {
+        "f0": 102,
+        "f1": 126,
+        "concept": "กิน",
+        "score": 0.1081
+      },
+      {
+        "f0": 180,
+        "f1": 224,
+        "concept": "ชอบ",
+        "score": 0.5664
+      }
+    ],
+    "T": 225,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "ฉัน",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__น้อง_var_1__กิน_var_1__ชอบ_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 34,
+        "f1": 58,
+        "concept": "ไข่",
+        "score": 0.522
+      },
+      {
+        "f0": 88,
+        "f1": 112,
+        "concept": "น้อง",
+        "score": 0.1143
+      },
+      {
+        "f0": 126,
+        "f1": 166,
+        "concept": "กิน",
+        "score": 0.226
+      },
+      {
+        "f0": 186,
+        "f1": 234,
+        "concept": "ชอบ",
+        "score": 0.666
+      }
+    ],
+    "T": 276,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "น้อง",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__น้อง_var_1__กิน_var_1__ชอบ_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 24,
+        "f1": 44,
+        "concept": "ไข่",
+        "score": 0.4193
+      },
+      {
+        "f0": 82,
+        "f1": 106,
+        "concept": "น้อง",
+        "score": 0.1105
+      },
+      {
+        "f0": 118,
+        "f1": 142,
+        "concept": "กิน",
+        "score": 0.1323
+      },
+      {
+        "f0": 178,
+        "f1": 226,
+        "concept": "ชอบ",
+        "score": 0.6667
+      }
+    ],
+    "T": 276,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "น้อง",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__น้อง_var_1__กิน_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 24,
+        "f1": 48,
+        "concept": "ไข่",
+        "score": 0.4062
+      },
+      {
+        "f0": 78,
+        "f1": 102,
+        "concept": "น้อง",
+        "score": 0.1171
+      },
+      {
+        "f0": 122,
+        "f1": 170,
+        "concept": "กิน",
+        "score": 0.3161
+      },
+      {
+        "f0": 184,
+        "f1": 232,
+        "concept": "ชอบ",
+        "score": 0.6979
+      }
+    ],
+    "T": 276,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "น้อง",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__พี่_var_1__กิน_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 24,
+        "f1": 40,
+        "concept": "ไข่",
+        "score": 0.415
+      },
+      {
+        "f0": 74,
+        "f1": 98,
+        "concept": "พี่",
+        "score": 0.3798
+      },
+      {
+        "f0": 118,
+        "f1": 158,
+        "concept": "กิน",
+        "score": 0.1446
+      },
+      {
+        "f0": 178,
+        "f1": 226,
+        "concept": "ชอบ",
+        "score": 0.6033
+      }
+    ],
+    "T": 275,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "พี่",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__พี่_var_1__กิน_var_1__ชอบ_var_1_no_space_3": {
+    "segments": [
+      {
+        "f0": 22,
+        "f1": 38,
+        "concept": "ไข่",
+        "score": 0.5581
+      },
+      {
+        "f0": 78,
+        "f1": 102,
+        "concept": "พี่",
+        "score": 0.4197
+      },
+      {
+        "f0": 126,
+        "f1": 174,
+        "concept": "กิน",
+        "score": 0.2473
+      },
+      {
+        "f0": 194,
+        "f1": 242,
+        "concept": "ชอบ",
+        "score": 0.6341
+      }
+    ],
+    "T": 276,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "พี่",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__พี่_var_1__กิน_var_1__ชอบ_var_1_no_space_4": {
+    "segments": [
+      {
+        "f0": 22,
+        "f1": 34,
+        "concept": "ไข่",
+        "score": 0.5173
+      },
+      {
+        "f0": 62,
+        "f1": 94,
+        "concept": "พี่",
+        "score": 0.4589
+      },
+      {
+        "f0": 118,
+        "f1": 158,
+        "concept": "กิน",
+        "score": 0.1082
+      },
+      {
+        "f0": 174,
+        "f1": 222,
+        "concept": "ชอบ",
+        "score": 0.6014
+      }
+    ],
+    "T": 276,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "พี่",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__ยาย_var_1__กิน_var_1__ชอบ_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 20,
+        "f1": 40,
+        "concept": "ไข่",
+        "score": 0.6323
+      },
+      {
+        "f0": 60,
+        "f1": 96,
+        "concept": "ยาย",
+        "score": 0.4798
+      },
+      {
+        "f0": 142,
+        "f1": 186,
+        "concept": "กิน",
+        "score": 0.2467
+      },
+      {
+        "f0": 196,
+        "f1": 244,
+        "concept": "ชอบ",
+        "score": 0.697
+      }
+    ],
+    "T": 276,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "ยาย",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__ยาย_var_1__กิน_var_1__ชอบ_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 22,
+        "f1": 42,
+        "concept": "ไข่",
+        "score": 0.5053
+      },
+      {
+        "f0": 74,
+        "f1": 98,
+        "concept": "ยาย",
+        "score": 0.4816
+      },
+      {
+        "f0": 150,
+        "f1": 190,
+        "concept": "กิน",
+        "score": 0.2079
+      },
+      {
+        "f0": 202,
+        "f1": 250,
+        "concept": "ชอบ",
+        "score": 0.6942
+      }
+    ],
+    "T": 276,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "ยาย",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__ยาย_var_1__กิน_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 26,
+        "f1": 46,
+        "concept": "ไข่",
+        "score": 0.5856
+      },
+      {
+        "f0": 82,
+        "f1": 106,
+        "concept": "ยาย",
+        "score": 0.4682
+      },
+      {
+        "f0": 156,
+        "f1": 180,
+        "concept": "กิน",
+        "score": 0.0922
+      },
+      {
+        "f0": 204,
+        "f1": 252,
+        "concept": "ชอบ",
+        "score": 0.7296
+      }
+    ],
+    "T": 276,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "ยาย",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__แฟน_var_1__กิน_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 22,
+        "f1": 46,
+        "concept": "ไข่",
+        "score": 0.8031
+      },
+      {
+        "f0": 84,
+        "f1": 108,
+        "concept": "แฟน",
+        "score": 0.4824
+      },
+      {
+        "f0": 110,
+        "f1": 134,
+        "concept": "กิน",
+        "score": 0.3687
+      },
+      {
+        "f0": 172,
+        "f1": 220,
+        "concept": "ชอบ",
+        "score": 0.6879
+      }
+    ],
+    "T": 250,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "แฟน",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__แฟน_var_1__กิน_var_1__ชอบ_var_1_no_space_3": {
+    "segments": [
+      {
+        "f0": 22,
+        "f1": 46,
+        "concept": "ไข่",
+        "score": 0.798
+      },
+      {
+        "f0": 62,
+        "f1": 86,
+        "concept": "แฟน",
+        "score": 0.3949
+      },
+      {
+        "f0": 98,
+        "f1": 122,
+        "concept": "กิน",
+        "score": 0.299
+      },
+      {
+        "f0": 156,
+        "f1": 204,
+        "concept": "ชอบ",
+        "score": 0.7829
+      }
+    ],
+    "T": 251,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "แฟน",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__แฟน_var_1__กิน_var_1__ชอบ_var_1_no_space_4": {
+    "segments": [
+      {
+        "f0": 30,
+        "f1": 54,
+        "concept": "ไข่",
+        "score": 0.7919
+      },
+      {
+        "f0": 86,
+        "f1": 110,
+        "concept": "แฟน",
+        "score": 0.3399
+      },
+      {
+        "f0": 116,
+        "f1": 140,
+        "concept": "กิน",
+        "score": 0.3682
+      },
+      {
+        "f0": 180,
+        "f1": 228,
+        "concept": "ชอบ",
+        "score": 0.7604
+      }
+    ],
+    "T": 250,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "แฟน",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__แฟน_var_1__กิน_var_1__ชอบ_var_1_with_space_2": {
+    "segments": [
+      {
+        "f0": 28,
+        "f1": 48,
+        "concept": "ไข่",
+        "score": 0.7023
+      },
+      {
+        "f0": 100,
+        "f1": 144,
+        "concept": "แฟน",
+        "score": 0.5605
+      },
+      {
+        "f0": 176,
+        "f1": 200,
+        "concept": "กิน",
+        "score": 0.1879
+      },
+      {
+        "f0": 284,
+        "f1": 328,
+        "concept": "ชอบ",
+        "score": 0.765
+      }
+    ],
+    "T": 376,
+    "role": "tagger_train",
+    "variation": "with_space",
+    "glosses": [
+      "ไข่",
+      "แฟน",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__แฟน_var_1__กิน_var_1__ชอบ_var_1_with_space_3": {
+    "segments": [
+      {
+        "f0": 22,
+        "f1": 46,
+        "concept": "ไข่",
+        "score": 0.7387
+      },
+      {
+        "f0": 122,
+        "f1": 150,
+        "concept": "แฟน",
+        "score": 0.4444
+      },
+      {
+        "f0": 220,
+        "f1": 244,
+        "concept": "กิน",
+        "score": 0.2395
+      },
+      {
+        "f0": 344,
+        "f1": 372,
+        "concept": "ชอบ",
+        "score": 0.6949
+      }
+    ],
+    "T": 375,
+    "role": "tagger_train",
+    "variation": "with_space",
+    "glosses": [
+      "ไข่",
+      "แฟน",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__แฟน_var_1__กิน_var_1__ชอบ_var_1_with_space_4": {
+    "segments": [
+      {
+        "f0": 26,
+        "f1": 50,
+        "concept": "ไข่",
+        "score": 0.6871
+      },
+      {
+        "f0": 104,
+        "f1": 148,
+        "concept": "แฟน",
+        "score": 0.5181
+      },
+      {
+        "f0": 204,
+        "f1": 228,
+        "concept": "กิน",
+        "score": 0.1899
+      },
+      {
+        "f0": 334,
+        "f1": 374,
+        "concept": "ชอบ",
+        "score": 0.6978
+      }
+    ],
+    "T": 375,
+    "role": "tagger_train",
+    "variation": "with_space",
+    "glosses": [
+      "ไข่",
+      "แฟน",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__แมว_var_1__กิน_var_1__ชอบ_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 34,
+        "f1": 46,
+        "concept": "ไข่",
+        "score": 0.5672
+      },
+      {
+        "f0": 88,
+        "f1": 112,
+        "concept": "แมว",
+        "score": 0.7711
+      },
+      {
+        "f0": 120,
+        "f1": 144,
+        "concept": "กิน",
+        "score": 0.0908
+      },
+      {
+        "f0": 194,
+        "f1": 222,
+        "concept": "ชอบ",
+        "score": 0.5504
+      }
+    ],
+    "T": 226,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "แมว",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__แมว_var_1__กิน_var_1__ชอบ_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 20,
+        "f1": 40,
+        "concept": "ไข่",
+        "score": 0.5981
+      },
+      {
+        "f0": 68,
+        "f1": 92,
+        "concept": "แมว",
+        "score": 0.7416
+      },
+      {
+        "f0": 112,
+        "f1": 136,
+        "concept": "กิน",
+        "score": 0.1333
+      },
+      {
+        "f0": 180,
+        "f1": 224,
+        "concept": "ชอบ",
+        "score": 0.6676
+      }
+    ],
+    "T": 225,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "แมว",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__แมว_var_1__กิน_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 20,
+        "f1": 44,
+        "concept": "ไข่",
+        "score": 0.4507
+      },
+      {
+        "f0": 76,
+        "f1": 100,
+        "concept": "แมว",
+        "score": 0.7499
+      },
+      {
+        "f0": 114,
+        "f1": 138,
+        "concept": "กิน",
+        "score": 0.0778
+      },
+      {
+        "f0": 176,
+        "f1": 224,
+        "concept": "ชอบ",
+        "score": 0.6618
+      }
+    ],
+    "T": 225,
+    "role": "sentence_test",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "แมว",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__แม่_var_1__กิน_var_1__ชอบ_var_1_no_space_0": {
+    "segments": [
+      {
+        "f0": 24,
+        "f1": 48,
+        "concept": "ไข่",
+        "score": 0.5425
+      },
+      {
+        "f0": 60,
+        "f1": 88,
+        "concept": "แม่",
+        "score": 0.5898
+      },
+      {
+        "f0": 118,
+        "f1": 166,
+        "concept": "กิน",
+        "score": 0.224
+      },
+      {
+        "f0": 176,
+        "f1": 224,
+        "concept": "ชอบ",
+        "score": 0.6984
+      }
+    ],
+    "T": 225,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "แม่",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__แม่_var_1__กิน_var_1__ชอบ_var_1_no_space_1": {
+    "segments": [
+      {
+        "f0": 20,
+        "f1": 44,
+        "concept": "ไข่",
+        "score": 0.3869
+      },
+      {
+        "f0": 60,
+        "f1": 84,
+        "concept": "แม่",
+        "score": 0.646
+      },
+      {
+        "f0": 106,
+        "f1": 130,
+        "concept": "กิน",
+        "score": 0.1783
+      },
+      {
+        "f0": 174,
+        "f1": 222,
+        "concept": "ชอบ",
+        "score": 0.7677
+      }
+    ],
+    "T": 226,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "แม่",
+      "กิน",
+      "ชอบ"
+    ]
+  },
+  "t51s:ไข่_var_2__แม่_var_1__กิน_var_1__ชอบ_var_1_no_space_2": {
+    "segments": [
+      {
+        "f0": 20,
+        "f1": 44,
+        "concept": "ไข่",
+        "score": 0.5132
+      },
+      {
+        "f0": 64,
+        "f1": 88,
+        "concept": "แม่",
+        "score": 0.5882
+      },
+      {
+        "f0": 112,
+        "f1": 136,
+        "concept": "กิน",
+        "score": 0.0848
+      },
+      {
+        "f0": 170,
+        "f1": 218,
+        "concept": "ชอบ",
+        "score": 0.7641
+      }
+    ],
+    "T": 225,
+    "role": "tagger_train",
+    "variation": "no_space",
+    "glosses": [
+      "ไข่",
+      "แม่",
+      "กิน",
+      "ชอบ"
+    ]
+  }
+}

@@ -7,6 +7,8 @@ RUN npm ci || npm install
 COPY webapp/web/ ./
 # the exact MediaPipe Holistic model the server and the training data use
 COPY models/mediapipe/holistic_landmarker.task ./public/models/holistic_landmarker.task
+# v8: the hand fallback (HandLandmarker, same hand model family) for frames where Holistic loses a raised hand
+COPY models/mediapipe/hand_landmarker.task ./public/models/hand_landmarker.task
 RUN node scripts/copy-mediapipe.mjs && npm run build
 
 FROM node:22-alpine

@@ -2,7 +2,7 @@ import type { LmFrame } from "./holistic";
 import { userBank } from "./mysigns";
 
 export type Segment = { t0: number; t1: number; status: "accepted" | "uncertain" | "unknown" | "transition"; word: string; p: number; candidates: string[];
-  emb?: string; kind?: "sign" | "letter" };
+  emb?: string; kind?: "sign" | "letter"; probable?: boolean };
 export type TranslateResult = {
   uid?: number;                 // client-side identity of one result card (never from the server)
   title?: string;
@@ -19,11 +19,15 @@ export type TranslateResult = {
   audio_wav_b64?: string | null;
   spoken?: "sentence" | "tentative";
   speculative?: boolean;
+  /** v8: share of frames with a raised hand whose 21 points were tracked (per side), fallback count, longest gap, capture fps */
+  hand_tracking?: { left: HandSide; right: HandSide; fps: number; room_below?: number };
 };
+/** out_below (v8.1): lost frames whose wrist was at the bottom edge of the image (hand outside the frame, not blur) */
+export type HandSide = { n: number; hit: number | null; fallback: number; max_gap: number; out_below?: number };
 /** speak: "off" | "confident" (only a sentence the evidence supports) | "all" (also an uncertain reading, marked as such). */
 export type Speak = "off" | "confident" | "all";
 export type Alphabet = "en" | "th" | "both" | "off";
-export type Options = { vocab: "conversation" | "full"; llm: boolean; speak: Speak; faceQuestion: boolean; alphabet: Alphabet };
+export type Options = { vocab: "conversation" | "daily"; llm: boolean; speak: Speak; faceQuestion: boolean; alphabet: Alphabet };
 export type Progress = { stage: string; p: number };
 type OnProgress = (x: Progress) => void;
 
@@ -88,7 +92,7 @@ export async function info() {
   return check(await fetch("/api/v1/info"));
 }
 
-/** Words a user can teach (personal sign memory): the conversation vocabulary + the English letters. */
+/** Words a user can teach (personal sign memory): the daily vocabulary (1,366 words) + the English letters. */
 export async function vocabList(): Promise<string[]> {
   const v = await check(await fetch("/api/v1/vocab"));
   return [...(v.concepts as string[]), ...Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i))];

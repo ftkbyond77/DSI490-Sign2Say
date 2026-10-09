@@ -1,0 +1,1969 @@
+{
+ "summary": {
+  "holistic_left": 0.909,
+  "holistic_right": 0.91,
+  "holistic_duplicates": 0,
+  "holistic_max_gap_mean": 1.38,
+  "v8_left": 0.961,
+  "v8_right": 0.955,
+  "v8_duplicates": 0,
+  "v8_max_gap_mean": 1.05,
+  "new_left": 0.965,
+  "new_right": 0.966,
+  "new_duplicates": 0,
+  "new_max_gap_mean": 1.0
+ },
+ "by_word": {
+  "ชื่อ": {
+   "holistic": 0.947,
+   "v8": 0.969,
+   "new": 0.969
+  },
+  "สวัสดี": {
+   "holistic": 0.97,
+   "v8": 0.973,
+   "new": 0.975
+  },
+  "ขอบคุณ": {
+   "holistic": 0.922,
+   "v8": 0.958,
+   "new": 0.98
+  },
+  "ขอโทษ": {
+   "holistic": 0.849,
+   "v8": 0.955,
+   "new": 0.959
+  },
+  "ฉัน": {
+   "holistic": 0.989,
+   "v8": 0.989,
+   "new": 0.989
+  }
+ },
+ "videos": {
+  "tsl51_user:ชื่อ_var_1_0.mp4": {
+   "word": "ชื่อ",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 15,
+     "hit": 0.933,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 16,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 15,
+     "hit": 0.933,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 16,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 15,
+     "hit": 0.933,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 16,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ชื่อ_var_1_1.mp4": {
+   "word": "ชื่อ",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 20,
+     "hit": 0.9,
+     "fallback": 0,
+     "max_gap": 2
+    },
+    "right": {
+     "n": 21,
+     "hit": 0.905,
+     "fallback": 0,
+     "max_gap": 2
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 20,
+     "hit": 0.95,
+     "fallback": 1,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 21,
+     "hit": 0.952,
+     "fallback": 1,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 20,
+     "hit": 0.95,
+     "fallback": 1,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 21,
+     "hit": 0.952,
+     "fallback": 1,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ชื่อ_var_1_2.mp4": {
+   "word": "ชื่อ",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 14,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 16,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 14,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 16,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 14,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 16,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ชื่อ_var_1_3.mp4": {
+   "word": "ชื่อ",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 18,
+     "hit": 0.944,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 20,
+     "hit": 0.95,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 18,
+     "hit": 0.944,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 20,
+     "hit": 0.95,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 18,
+     "hit": 0.944,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 20,
+     "hit": 0.95,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ชื่อ_var_1_4.mp4": {
+   "word": "ชื่อ",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 16,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 17,
+     "hit": 0.941,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 16,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 17,
+     "hit": 1.0,
+     "fallback": 1,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 16,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 17,
+     "hit": 1.0,
+     "fallback": 1,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ชื่อ_var_1_5.mp4": {
+   "word": "ชื่อ",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 19,
+     "hit": 0.895,
+     "fallback": 0,
+     "max_gap": 2
+    },
+    "right": {
+     "n": 20,
+     "hit": 0.9,
+     "fallback": 0,
+     "max_gap": 2
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 19,
+     "hit": 0.947,
+     "fallback": 1,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 20,
+     "hit": 0.95,
+     "fallback": 1,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 19,
+     "hit": 0.947,
+     "fallback": 1,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 20,
+     "hit": 0.95,
+     "fallback": 1,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:สวัสดี_อายุเท่ากันหรือน้อยกว่า_0.mp4": {
+   "word": "สวัสดี",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 23,
+     "hit": 0.957,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 23,
+     "hit": 0.957,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 23,
+     "hit": 0.957,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:สวัสดี_อายุเท่ากันหรือน้อยกว่า_1.mp4": {
+   "word": "สวัสดี",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 25,
+     "hit": 0.88,
+     "fallback": 0,
+     "max_gap": 3
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 25,
+     "hit": 0.92,
+     "fallback": 1,
+     "max_gap": 2
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 25,
+     "hit": 0.92,
+     "fallback": 1,
+     "max_gap": 2
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:สวัสดี_อายุเท่ากันหรือน้อยกว่า_2.mp4": {
+   "word": "สวัสดี",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 28,
+     "hit": 0.929,
+     "fallback": 0,
+     "max_gap": 2
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 28,
+     "hit": 0.929,
+     "fallback": 0,
+     "max_gap": 2
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 28,
+     "hit": 0.929,
+     "fallback": 0,
+     "max_gap": 2
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:สวัสดี_อายุเท่ากันหรือน้อยกว่า_3.mp4": {
+   "word": "สวัสดี",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 29,
+     "hit": 0.966,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 29,
+     "hit": 0.966,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 29,
+     "hit": 0.966,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:สวัสดี_อายุเท่ากันหรือน้อยกว่า_4.mp4": {
+   "word": "สวัสดี",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 26,
+     "hit": 0.962,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 26,
+     "hit": 0.962,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 26,
+     "hit": 0.962,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:สวัสดี_อายุเท่ากันหรือน้อยกว่า_5.mp4": {
+   "word": "สวัสดี",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 28,
+     "hit": 0.964,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 28,
+     "hit": 0.964,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 28,
+     "hit": 0.964,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ขอบคุณ_เปิดมือสองข้าง_0.mp4": {
+   "word": "ขอบคุณ",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 28,
+     "hit": 0.893,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 28,
+     "hit": 0.929,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 28,
+     "hit": 1.0,
+     "fallback": 3,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 28,
+     "hit": 0.964,
+     "fallback": 1,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 28,
+     "hit": 1.0,
+     "fallback": 3,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 28,
+     "hit": 0.964,
+     "fallback": 1,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ขอบคุณ_เปิดมือสองข้าง_1.mp4": {
+   "word": "ขอบคุณ",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 26,
+     "hit": 0.885,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 26,
+     "hit": 0.923,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 26,
+     "hit": 0.962,
+     "fallback": 2,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 26,
+     "hit": 0.923,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 26,
+     "hit": 0.962,
+     "fallback": 2,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 26,
+     "hit": 1.0,
+     "fallback": 2,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ขอบคุณ_เปิดมือสองข้าง_2.mp4": {
+   "word": "ขอบคุณ",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 25,
+     "hit": 0.92,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 24,
+     "hit": 0.958,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 25,
+     "hit": 0.96,
+     "fallback": 1,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 24,
+     "hit": 0.958,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 25,
+     "hit": 0.96,
+     "fallback": 1,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 24,
+     "hit": 1.0,
+     "fallback": 1,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ขอบคุณ_เปิดมือสองข้าง_3.mp4": {
+   "word": "ขอบคุณ",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 26,
+     "hit": 0.962,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 25,
+     "hit": 0.84,
+     "fallback": 0,
+     "max_gap": 2
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 26,
+     "hit": 0.962,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 25,
+     "hit": 0.84,
+     "fallback": 0,
+     "max_gap": 2
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 26,
+     "hit": 0.962,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 25,
+     "hit": 1.0,
+     "fallback": 4,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ขอบคุณ_เปิดมือสองข้าง_4.mp4": {
+   "word": "ขอบคุณ",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 24,
+     "hit": 0.833,
+     "fallback": 0,
+     "max_gap": 3
+    },
+    "right": {
+     "n": 25,
+     "hit": 0.88,
+     "fallback": 0,
+     "max_gap": 2
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 24,
+     "hit": 0.958,
+     "fallback": 3,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 25,
+     "hit": 0.96,
+     "fallback": 2,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 24,
+     "hit": 0.958,
+     "fallback": 3,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 25,
+     "hit": 1.0,
+     "fallback": 3,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ขอบคุณ_เปิดมือสองข้าง_5.mp4": {
+   "word": "ขอบคุณ",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 25,
+     "hit": 0.88,
+     "fallback": 0,
+     "max_gap": 2
+    },
+    "right": {
+     "n": 25,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 25,
+     "hit": 0.92,
+     "fallback": 1,
+     "max_gap": 2
+    },
+    "right": {
+     "n": 25,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 25,
+     "hit": 0.92,
+     "fallback": 1,
+     "max_gap": 2
+    },
+    "right": {
+     "n": 25,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ขอโทษ_อายุเท่ากันหรือน้อยกว่า_0.mp4": {
+   "word": "ขอโทษ",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 21,
+     "hit": 0.619,
+     "fallback": 0,
+     "max_gap": 5
+    },
+    "right": {
+     "n": 23,
+     "hit": 0.391,
+     "fallback": 0,
+     "max_gap": 6
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 21,
+     "hit": 0.952,
+     "fallback": 7,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 23,
+     "hit": 0.87,
+     "fallback": 11,
+     "max_gap": 3
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 21,
+     "hit": 0.952,
+     "fallback": 7,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 23,
+     "hit": 0.87,
+     "fallback": 11,
+     "max_gap": 3
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ขอโทษ_อายุเท่ากันหรือน้อยกว่า_1.mp4": {
+   "word": "ขอโทษ",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 22,
+     "hit": 0.909,
+     "fallback": 0,
+     "max_gap": 2
+    },
+    "right": {
+     "n": 24,
+     "hit": 0.417,
+     "fallback": 0,
+     "max_gap": 3
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 22,
+     "hit": 1.0,
+     "fallback": 2,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 24,
+     "hit": 0.917,
+     "fallback": 12,
+     "max_gap": 2
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 22,
+     "hit": 1.0,
+     "fallback": 2,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 24,
+     "hit": 0.917,
+     "fallback": 12,
+     "max_gap": 2
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ขอโทษ_อายุเท่ากันหรือน้อยกว่า_2.mp4": {
+   "word": "ขอโทษ",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 24,
+     "hit": 0.875,
+     "fallback": 0,
+     "max_gap": 2
+    },
+    "right": {
+     "n": 24,
+     "hit": 0.917,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 24,
+     "hit": 0.917,
+     "fallback": 1,
+     "max_gap": 2
+    },
+    "right": {
+     "n": 24,
+     "hit": 1.0,
+     "fallback": 2,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 24,
+     "hit": 0.958,
+     "fallback": 2,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 24,
+     "hit": 1.0,
+     "fallback": 2,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ขอโทษ_อายุเท่ากันหรือน้อยกว่า_3.mp4": {
+   "word": "ขอโทษ",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 25,
+     "hit": 0.92,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 26,
+     "hit": 0.923,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 25,
+     "hit": 0.96,
+     "fallback": 1,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 26,
+     "hit": 0.962,
+     "fallback": 1,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 25,
+     "hit": 1.0,
+     "fallback": 2,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 26,
+     "hit": 0.962,
+     "fallback": 1,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ขอโทษ_อายุเท่ากันหรือน้อยกว่า_4.mp4": {
+   "word": "ขอโทษ",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 23,
+     "hit": 0.826,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 26,
+     "hit": 0.846,
+     "fallback": 0,
+     "max_gap": 3
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 23,
+     "hit": 0.957,
+     "fallback": 3,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 26,
+     "hit": 0.885,
+     "fallback": 1,
+     "max_gap": 3
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 23,
+     "hit": 0.957,
+     "fallback": 3,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 26,
+     "hit": 0.885,
+     "fallback": 1,
+     "max_gap": 3
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ขอโทษ_อายุเท่ากันหรือน้อยกว่า_5.mp4": {
+   "word": "ขอโทษ",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 23,
+     "hit": 0.913,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 23,
+     "hit": 0.87,
+     "fallback": 0,
+     "max_gap": 3
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 23,
+     "hit": 0.957,
+     "fallback": 1,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 23,
+     "hit": 0.957,
+     "fallback": 2,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 23,
+     "hit": 0.957,
+     "fallback": 1,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 23,
+     "hit": 0.957,
+     "fallback": 2,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ฉัน_var_1_0.mp4": {
+   "word": "ฉัน",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 11,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 11,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 11,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ฉัน_var_1_1.mp4": {
+   "word": "ฉัน",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 11,
+     "hit": 0.909,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 11,
+     "hit": 0.909,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 11,
+     "hit": 0.909,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ฉัน_var_1_2.mp4": {
+   "word": "ฉัน",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 7,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 7,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 7,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ฉัน_var_1_3.mp4": {
+   "word": "ฉัน",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 9,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 9,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 9,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ฉัน_var_1_4.mp4": {
+   "word": "ฉัน",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 10,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 10,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 10,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "tsl51_user:ฉัน_var_1_5.mp4": {
+   "word": "ฉัน",
+   "source": "tsl51_user",
+   "holistic": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 15,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 15,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 15,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 15.0,
+    "duplicates": 0
+   }
+  },
+  "th_sl:th_sl_00001.mp4": {
+   "word": "สวัสดี",
+   "source": "th_sl",
+   "holistic": {
+    "left": {
+     "n": 29,
+     "hit": 0.931,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 31,
+     "hit": 0.935,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 16.7,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 29,
+     "hit": 0.931,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 31,
+     "hit": 0.935,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 16.7,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 29,
+     "hit": 0.931,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "right": {
+     "n": 31,
+     "hit": 0.968,
+     "fallback": 1,
+     "max_gap": 1
+    },
+    "fps": 16.7,
+    "duplicates": 0
+   }
+  },
+  "th_sl:th_sl_00002.mp4": {
+   "word": "สวัสดี",
+   "source": "th_sl",
+   "holistic": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 21,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 16.7,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 21,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 16.7,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 21,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 16.7,
+    "duplicates": 0
+   }
+  },
+  "th_sl:th_sl_00003.mp4": {
+   "word": "ขอบคุณ",
+   "source": "th_sl",
+   "holistic": {
+    "left": {
+     "n": 21,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 22,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 16.7,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 21,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 22,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 16.7,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 21,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 22,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 16.7,
+    "duplicates": 0
+   }
+  },
+  "th_sl:th_sl_00004.mp4": {
+   "word": "ขอโทษ",
+   "source": "th_sl",
+   "holistic": {
+    "left": {
+     "n": 27,
+     "hit": 0.926,
+     "fallback": 0,
+     "max_gap": 2
+    },
+    "right": {
+     "n": 29,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 16.7,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 27,
+     "hit": 0.926,
+     "fallback": 0,
+     "max_gap": 2
+    },
+    "right": {
+     "n": 29,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 16.7,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 27,
+     "hit": 0.926,
+     "fallback": 0,
+     "max_gap": 2
+    },
+    "right": {
+     "n": 29,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 16.7,
+    "duplicates": 0
+   }
+  },
+  "th_sl:th_sl_00005.mp4": {
+   "word": "ขอโทษ",
+   "source": "th_sl",
+   "holistic": {
+    "left": {
+     "n": 23,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 25,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 16.7,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 23,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 25,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 16.7,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 23,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 25,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "fps": 16.7,
+    "duplicates": 0
+   }
+  },
+  "th_sl:th_sl_00164.mp4": {
+   "word": "ฉัน",
+   "source": "th_sl",
+   "holistic": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 15,
+     "hit": 0.933,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 16.7,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 15,
+     "hit": 0.933,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 16.7,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 0,
+     "hit": null,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 15,
+     "hit": 0.933,
+     "fallback": 0,
+     "max_gap": 1
+    },
+    "fps": 16.7,
+    "duplicates": 0
+   }
+  },
+  "th_sl:th_sl_07627.mp4": {
+   "word": "ขอโทษ",
+   "source": "th_sl",
+   "holistic": {
+    "left": {
+     "n": 23,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 26,
+     "hit": 0.923,
+     "fallback": 0,
+     "max_gap": 2
+    },
+    "fps": 16.7,
+    "duplicates": 0
+   },
+   "v8": {
+    "left": {
+     "n": 23,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 26,
+     "hit": 0.923,
+     "fallback": 0,
+     "max_gap": 2
+    },
+    "fps": 16.7,
+    "duplicates": 0
+   },
+   "new": {
+    "left": {
+     "n": 23,
+     "hit": 1.0,
+     "fallback": 0,
+     "max_gap": 0
+    },
+    "right": {
+     "n": 26,
+     "hit": 0.923,
+     "fallback": 0,
+     "max_gap": 2
+    },
+    "fps": 16.7,
+    "duplicates": 0
+   }
+  }
+ }
+}

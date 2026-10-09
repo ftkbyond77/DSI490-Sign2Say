@@ -137,6 +137,7 @@ def merge_letters(signs):
             st = "accepted" if all(x["status"] == "accepted" for x in run) else "uncertain"
             p = float(min(x.get("p_correct", 0) for x in run))
             out.append(dict(f0=run[0]["f0"], f1=run[-1]["f1"], status=st, p_correct=p, nearest=word, kind="spelled",
+                            probable=all(x.get("probable") or x["status"] == "accepted" for x in run),
                             candidates=[dict(word=word, score=p)], letters=[x["nearest"] for x in run]))
             run.clear()
     for s in signs:
@@ -177,7 +178,11 @@ def compose_sentence(segments, face=None, grammar=None, roles=None, use_llm=True
     # no guessing: only confident signs (status accepted, P(correct) ≥ accept_min) enter the sentence; the others are shown as [?]
     sure = [s for s in signs if s["status"] == "accepted"]
     if not sure:
-        return dict(chosen=["[?]"] * len(signs), sentence_th="", meaning_th="ยังไม่มั่นใจพอจะแปล — ลองทำท่าช้าลง ให้มืออยู่ในกรอบ หรือกดยืนยันคำที่ถูก",
+        # v8.1: the "น่าจะเป็น" reading — top-1 of the segments in the calibrated probable tier, Thai order; never the sentence itself
+        prob = [dict(s, status="accepted") for s in signs if s.get("probable")]
+        tent = rules_compose(prob, face, roles)["sentence_th"] if prob else ""
+        return dict(chosen=["[?]"] * len(signs), sentence_th="", tentative_sentence_th=tent,
+                    meaning_th="ยังไม่มั่นใจพอจะแปล — ลองทำท่าช้าลง ให้มืออยู่ในกรอบ หรือกดยืนยันคำที่ถูก",
                     confidence=0.0, provider="none", evidence_gloss=evidence_gloss(signs), evidence_guard="withheld: no confident sign")
     signs_all, signs = signs, sure
     allowed = allowed_words(signs)

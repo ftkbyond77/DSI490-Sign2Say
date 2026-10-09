@@ -1,0 +1,150 @@
+lang	topic	text
+th	greeting	สวัสดีครับ
+th	greeting	สวัสดีค่ะ ยินดีที่ได้รู้จัก
+th	greeting	สบายดีไหม
+th	greeting	เป็นยังไงบ้าง
+th	greeting	ฉันสบายดี ขอบคุณ
+th	greeting	ขอบคุณมากครับ
+th	greeting	ขอโทษครับ
+th	greeting	ไม่เป็นไร
+th	greeting	แล้วเจอกันใหม่นะ
+th	greeting	ลาก่อน
+th	intro	ผมชื่อสมชาย
+th	intro	คุณชื่ออะไร
+th	intro	คุณอายุเท่าไหร่
+th	intro	ฉันอายุยี่สิบห้าปี
+th	intro	ฉันเป็นคนหูหนวก
+th	intro	ฉันหูตึง
+th	intro	คุณเป็นคนหูหนวกไหม
+th	intro	คุณมาจากไหน
+th	intro	ฉันมาจากเชียงใหม่
+th	intro	บ้านคุณอยู่ที่ไหน
+th	intro	ฉันอยู่กรุงเทพ
+th	intro	คุณทำงานอะไร
+th	intro	ฉันเป็นครู
+th	intro	ฉันเป็นนักเรียน
+th	intro	ฉันเรียนภาษามือ
+th	intro	คุณเข้าใจภาษามือไหม
+th	where	วันนี้คุณไปไหน
+th	where	วันนี้คุณไปไหนมา
+th	where	ไปไหนมาคะ
+th	where	ห้องน้ำอยู่ที่ไหน
+th	where	โรงพยาบาลอยู่ที่ไหน
+th	where	ตลาดอยู่ไกลไหม
+th	where	ฉันจะไปโรงเรียน
+th	where	พรุ่งนี้คุณจะไปไหน
+th	where	เมื่อวานฉันไปตลาดกับแม่
+th	time	ตอนนี้กี่โมงแล้ว
+th	time	วันนี้วันอะไร
+th	time	คุณจะมาเมื่อไหร่
+th	time	พรุ่งนี้เช้าเจอกัน
+th	time	ฉันตื่นนอนตอนเช้า
+th	food	กินข้าวหรือยัง
+th	food	ฉันกินข้าวแล้ว
+th	food	ฉันหิวข้าว
+th	food	ฉันอิ่มแล้ว
+th	food	คุณชอบกินอะไร
+th	food	ฉันชอบกินไข่
+th	food	ฉันไม่ชอบกินผัก
+th	food	อร่อยมาก
+th	food	ขอน้ำหนึ่งแก้วครับ
+th	food	ฉันอยากดื่มกาแฟ
+th	shop	อันนี้ราคาเท่าไหร่
+th	shop	แพงมาก
+th	shop	ลดราคาได้ไหม
+th	shop	ฉันอยากซื้อเสื้อ
+th	shop	ฉันไม่มีเงิน
+th	help	ช่วยด้วย
+th	help	ฉันไม่สบาย
+th	help	ฉันปวดหัว
+th	help	ฉันต้องการหมอ
+th	help	โทรหาตำรวจ
+th	help	ฉันหลงทาง
+th	help	ช่วยพูดช้าๆหน่อยได้ไหม
+th	help	ฉันไม่เข้าใจ
+th	help	ช่วยเขียนให้หน่อย
+th	help	พูดอีกครั้งได้ไหม
+th	feel	ฉันมีความสุข
+th	feel	ฉันเหนื่อยมาก
+th	feel	ฉันง่วงนอน
+th	feel	ฉันรักคุณ
+th	feel	ฉันคิดถึงแม่
+th	feel	ฉันกลัว
+th	feel	อย่าโกรธนะ
+th	family	ฉันมีพี่สาวหนึ่งคน
+th	family	พ่อแม่ของฉันอยู่ต่างจังหวัด
+th	family	ลูกของคุณอายุเท่าไหร่
+th	family	ฉันมีแมวสองตัว
+th	family	แม่ของฉันเป็นครู
+th	work	ฉันทำงานที่โรงพยาบาล
+th	work	วันนี้ฉันไม่ไปทำงาน
+th	work	พรุ่งนี้วันหยุด
+th	work	ฉันเลิกงานห้าโมงเย็น
+th	weather	วันนี้อากาศร้อนมาก
+th	weather	ฝนตก
+th	weather	วันนี้หนาว
+th	travel	ฉันอยากไปเที่ยวเชียงใหม่
+th	travel	ฉันขึ้นรถเมล์ไปทำงาน
+th	travel	สถานีรถไฟอยู่ไหน
+th	travel	ไปสนามบินยังไง
+th	misc	ใช่
+th	misc	ไม่ใช่
+th	misc	ได้
+th	misc	ไม่ได้
+th	misc	ทำไมคุณมาสาย
+th	misc	ใครเป็นคนทำ
+th	misc	คุณกำลังทำอะไรอยู่
+th	misc	รอสักครู่นะ
+en	greeting	Hello, how are you?
+en	greeting	Nice to meet you.
+en	greeting	Thank you very much.
+en	greeting	I'm sorry.
+en	greeting	See you tomorrow.
+en	greeting	Goodbye.
+en	intro	What is your name?
+en	intro	My name is John.
+en	intro	How old are you?
+en	intro	I am deaf.
+en	intro	Where are you from?
+en	intro	Where do you live?
+en	intro	I live in Bangkok.
+en	intro	What do you do for work?
+en	intro	I am a teacher.
+en	intro	I am learning sign language.
+en	where	Where did you go today?
+en	where	Where is the bathroom?
+en	where	Where is the hospital?
+en	where	I am going to school.
+en	time	What time is it now?
+en	time	When will you come?
+en	food	Have you eaten yet?
+en	food	I am hungry.
+en	food	I like to eat eggs.
+en	food	I don't like vegetables.
+en	food	Can I have a glass of water?
+en	food	This is delicious.
+en	shop	How much is this?
+en	shop	It is too expensive.
+en	help	Help!
+en	help	I am sick.
+en	help	I have a headache.
+en	help	I need a doctor.
+en	help	Please call the police.
+en	help	I don't understand.
+en	help	Please speak slowly.
+en	help	Can you write it down?
+en	feel	I am very tired.
+en	feel	I love you.
+en	feel	I miss my mother.
+en	family	I have one older sister.
+en	family	My mother is a teacher.
+en	work	Tomorrow is a holiday.
+en	weather	It is very hot today.
+en	weather	It is raining.
+en	travel	I want to travel to Chiang Mai.
+en	travel	How do I get to the airport?
+en	misc	Yes.
+en	misc	No.
+en	misc	Why are you late?
+en	misc	What are you doing?
+en	misc	Please wait a moment.

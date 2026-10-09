@@ -1,0 +1,627 @@
+{
+  "title": "test1",
+  "fps": 25.0,
+  "n_frames": 819,
+  "duration_s": 32.76,
+  "signer_visible_frac": 0.3894993894993895,
+  "signing_frac": 0.3882783882783883,
+  "mirrored_to_right_hand": false,
+  "segments": [
+    {
+      "f0": 126,
+      "f1": 174,
+      "z": 8.931631905077682,
+      "wins": [
+        [
+          126,
+          174
+        ]
+      ],
+      "nearest": "สวัสดี",
+      "candidates": [
+        {
+          "word": "สวัสดี",
+          "score": 0.6453,
+          "support": 0.7789
+        },
+        {
+          "word": "อิสราเอล",
+          "score": 0.595,
+          "support": 0.7195
+        },
+        {
+          "word": "กิน",
+          "score": 0.4091,
+          "support": 0.6022
+        },
+        {
+          "word": "ก่อน",
+          "score": 0.3069,
+          "support": 0.5128
+        },
+        {
+          "word": "พี่",
+          "score": 0.2927,
+          "support": 0.4873
+        }
+      ],
+      "score": 0.645254373550415,
+      "margin": 0.05026125907897949,
+      "null_gap": -0.6603686809539795,
+      "p_sign": 0.945719695587953,
+      "agree": 1.0,
+      "support_ratio": 1.0522200502652892,
+      "window_top1": "สวัสดี",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.45351080517932957,
+      "status": "uncertain",
+      "probable": true,
+      "t0": 5.04,
+      "t1": 6.96
+    },
+    {
+      "f0": 220,
+      "f1": 232,
+      "z": 6.587665927988865,
+      "wins": [
+        [
+          220,
+          232
+        ]
+      ],
+      "nearest": "กัมพูชา",
+      "candidates": [
+        {
+          "word": "กัมพูชา",
+          "score": 0.5164,
+          "support": 0.6504
+        },
+        {
+          "word": "แฟน",
+          "score": 0.4077,
+          "support": 0.5708
+        },
+        {
+          "word": "น้อง",
+          "score": 0.3813,
+          "support": 0.5604
+        },
+        {
+          "word": "เกิด",
+          "score": 0.3417,
+          "support": 0.5554
+        },
+        {
+          "word": "คุณ",
+          "score": 0.3418,
+          "support": 0.5524
+        }
+      ],
+      "score": 0.5163591504096985,
+      "margin": 0.10868096351623535,
+      "null_gap": -0.16734319925308228,
+      "p_sign": 0.9425246536731721,
+      "agree": 1.0,
+      "support_ratio": 1.1494452149791956,
+      "window_top1": "กัมพูชา",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.3456793848352182,
+      "status": "uncertain",
+      "probable": false,
+      "t0": 8.8,
+      "t1": 9.28
+    },
+    {
+      "f0": 232,
+      "f1": 280,
+      "z": 12.912364668180436,
+      "wins": [
+        [
+          232,
+          280
+        ]
+      ],
+      "nearest": "สบายดี",
+      "candidates": [
+        {
+          "word": "สบายดี",
+          "score": 0.8998,
+          "support": 0.8998
+        },
+        {
+          "word": "พัฒนา",
+          "score": 0.3523,
+          "support": 0.5468
+        },
+        {
+          "word": "มี",
+          "score": 0.2087,
+          "support": 0.4575
+        },
+        {
+          "word": "สนใจ",
+          "score": 0.2658,
+          "support": 0.4384
+        },
+        {
+          "word": "บน",
+          "score": 0.2428,
+          "support": 0.4381
+        }
+      ],
+      "score": 0.8997539281845093,
+      "margin": 0.5474874973297119,
+      "null_gap": -0.9191006422042847,
+      "p_sign": 0.8717129245400429,
+      "agree": 1.0,
+      "support_ratio": 1.5914786967418548,
+      "window_top1": "สบายดี",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.9264065152580739,
+      "status": "accepted",
+      "probable": true,
+      "t0": 9.28,
+      "t1": 11.2
+    },
+    {
+      "f0": 312,
+      "f1": 324,
+      "z": 6.188966187120804,
+      "wins": [
+        [
+          312,
+          324
+        ]
+      ],
+      "nearest": "เกิด",
+      "candidates": [
+        {
+          "word": "เกิด",
+          "score": 0.2683,
+          "support": 0.482
+        },
+        {
+          "word": "กัมพูชา",
+          "score": 0.4162,
+          "support": 0.5502
+        },
+        {
+          "word": "ฉัน",
+          "score": 0.246,
+          "support": 0.4602
+        },
+        {
+          "word": "คุณ",
+          "score": 0.238,
+          "support": 0.4486
+        },
+        {
+          "word": "ญี่ปุ่น",
+          "score": 0.2594,
+          "support": 0.4355
+        }
+      ],
+      "score": 0.4161810576915741,
+      "margin": 0.1478467583656311,
+      "null_gap": -0.18143624067306519,
+      "p_sign": 0.6666500707467398,
+      "agree": 1.0,
+      "support_ratio": 1.0856870229007631,
+      "window_top1": "กัมพูชา",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.2693590215894652,
+      "status": "uncertain",
+      "probable": false,
+      "t0": 12.48,
+      "t1": 12.96,
+      "repeat_of": "กัมพูชา"
+    },
+    {
+      "f0": 324,
+      "f1": 372,
+      "z": 8.360475137947812,
+      "wins": [
+        [
+          324,
+          372
+        ]
+      ],
+      "nearest": "ชอบ",
+      "candidates": [
+        {
+          "word": "ชอบ",
+          "score": 0.5925,
+          "support": 0.7811
+        },
+        {
+          "word": "ฉัน",
+          "score": 0.3913,
+          "support": 0.6055
+        },
+        {
+          "word": "เดือน",
+          "score": 0.341,
+          "support": 0.5282
+        },
+        {
+          "word": "สร้อยคอ",
+          "score": 0.4211,
+          "support": 0.5245
+        },
+        {
+          "word": "ไม่",
+          "score": 0.2528,
+          "support": 0.4994
+        }
+      ],
+      "score": 0.5924508571624756,
+      "margin": 0.20117056369781494,
+      "null_gap": -0.4920085072517395,
+      "p_sign": 0.9161398313939572,
+      "agree": 1.0,
+      "support_ratio": 1.1003893214682983,
+      "window_top1": "ชอบ",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.5507625633706678,
+      "status": "uncertain",
+      "probable": true,
+      "t0": 12.96,
+      "t1": 14.88
+    },
+    {
+      "f0": 414,
+      "f1": 450,
+      "z": 7.271633141900004,
+      "wins": [
+        [
+          414,
+          450
+        ]
+      ],
+      "nearest": "ไข่เค็ม",
+      "candidates": [
+        {
+          "word": "ไข่เค็ม",
+          "score": 0.4499,
+          "support": 0.5243
+        },
+        {
+          "word": "โกรธ",
+          "score": 0.3619,
+          "support": 0.5202
+        },
+        {
+          "word": "อิสราเอล",
+          "score": 0.3235,
+          "support": 0.448
+        },
+        {
+          "word": "กิน",
+          "score": 0.1707,
+          "support": 0.3638
+        },
+        {
+          "word": "บ้าน",
+          "score": 0.1562,
+          "support": 0.356
+        }
+      ],
+      "score": 0.4498521387577057,
+      "margin": 0.0879870355129242,
+      "null_gap": -0.5892882347106934,
+      "p_sign": 0.9499080922868516,
+      "agree": 1.0,
+      "support_ratio": 1.266938971648246,
+      "window_top1": "ไข่เค็ม",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.24967576095712254,
+      "status": "uncertain",
+      "probable": false,
+      "t0": 16.56,
+      "t1": 18.0
+    },
+    {
+      "f0": 494,
+      "f1": 546,
+      "z": 11.61447186320575,
+      "wins": [
+        [
+          494,
+          522
+        ],
+        [
+          522,
+          534
+        ],
+        [
+          534,
+          546
+        ]
+      ],
+      "nearest": "แมว",
+      "candidates": [
+        {
+          "word": "แมว",
+          "score": 0.7335,
+          "support": 0.8753
+        },
+        {
+          "word": "ฉัน",
+          "score": 0.255,
+          "support": 0.4693
+        },
+        {
+          "word": "นกฮูก",
+          "score": 0.369,
+          "support": 0.4522
+        },
+        {
+          "word": "ไป",
+          "score": 0.2071,
+          "support": 0.449
+        },
+        {
+          "word": "ครอบครัว",
+          "score": 0.2622,
+          "support": 0.4409
+        }
+      ],
+      "score": 0.7334576845169067,
+      "margin": 0.47846293449401855,
+      "null_gap": -0.5210330486297607,
+      "p_sign": 0.8846148859996062,
+      "agree": 1.0,
+      "support_ratio": 1.5926356589147286,
+      "window_top1": "แมว",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.8995410958873247,
+      "status": "accepted",
+      "probable": true,
+      "t0": 19.76,
+      "t1": 21.84
+    },
+    {
+      "f0": 588,
+      "f1": 636,
+      "z": 8.785285082819033,
+      "wins": [
+        [
+          588,
+          636
+        ]
+      ],
+      "nearest": "เหมือนกัน",
+      "candidates": [
+        {
+          "word": "เหมือนกัน",
+          "score": 0.5669,
+          "support": 0.7674
+        },
+        {
+          "word": "สำคัญ",
+          "score": 0.3295,
+          "support": 0.5183
+        },
+        {
+          "word": "ปิด",
+          "score": 0.3436,
+          "support": 0.5157
+        },
+        {
+          "word": "ปากีสถาน",
+          "score": 0.2961,
+          "support": 0.4115
+        },
+        {
+          "word": "เต็ม",
+          "score": 0.2248,
+          "support": 0.3975
+        }
+      ],
+      "score": 0.5669158697128296,
+      "margin": 0.23739147186279297,
+      "null_gap": -0.516753613948822,
+      "p_sign": 0.9127615591976793,
+      "agree": 0.0,
+      "support_ratio": 1.2002849002849003,
+      "window_top1": "เหมือนกัน",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.3240072396856147,
+      "status": "uncertain",
+      "probable": false,
+      "t0": 23.52,
+      "t1": 25.44
+    },
+    {
+      "f0": 680,
+      "f1": 728,
+      "z": 6.66865161639434,
+      "wins": [
+        [
+          680,
+          728
+        ]
+      ],
+      "nearest": "ฝุ่น",
+      "candidates": [
+        {
+          "word": "ฝุ่น",
+          "score": 0.4087,
+          "support": 0.5413
+        },
+        {
+          "word": "ครอบครัว",
+          "score": 0.348,
+          "support": 0.5267
+        },
+        {
+          "word": "ไป",
+          "score": 0.2096,
+          "support": 0.4515
+        },
+        {
+          "word": "แมว",
+          "score": 0.2807,
+          "support": 0.4225
+        },
+        {
+          "word": "โฆษก",
+          "score": 0.2846,
+          "support": 0.4159
+        }
+      ],
+      "score": 0.4087069034576416,
+      "margin": 0.06071442365646362,
+      "null_gap": -0.4044380784034729,
+      "p_sign": 0.8496952993174394,
+      "agree": 0.0,
+      "support_ratio": 1.1771128184391428,
+      "window_top1": "ครอบครัว",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.12347488756464166,
+      "status": "uncertain",
+      "probable": false,
+      "t0": 27.2,
+      "t1": 29.12
+    }
+  ],
+  "face": {
+    "face_frames": 0.39185750636132316,
+    "question_furrow": false,
+    "question_yesno": false,
+    "question_wh": false,
+    "negation": false,
+    "affirmation": false,
+    "emotion": "neutral",
+    "emotion_th": "เป็นกลาง",
+    "emotion_scores": {
+      "happy": 0.128,
+      "sad": 0.004,
+      "angry": 0.105,
+      "surprise": 0.0,
+      "fear": 0.004,
+      "disgust": 0.0
+    },
+    "intensity": 0.0,
+    "cues": {
+      "brow_raise_tail": 0.044,
+      "brow_raise_peak": 0.103,
+      "brow_furrow": 1.128,
+      "head_forward_tail": -0.041,
+      "head_shake_cycles": 0,
+      "head_nod_cycles": 1,
+      "mouth_open_frac": 0.0,
+      "cheek_puff": 0.0,
+      "duration_s": 32.74,
+      "brow_furrow_rel": 0.004,
+      "furrow_baseline": "hands_down_frames"
+    },
+    "per_segment": [
+      {
+        "brow": 0.49,
+        "furrow": -0.14,
+        "smile": 0.0,
+        "mouth": 0.022
+      },
+      {
+        "brow": 0.2,
+        "furrow": -0.07,
+        "smile": 0.0,
+        "mouth": 0.01
+      },
+      {
+        "brow": -0.93,
+        "furrow": 1.35,
+        "smile": 0.08,
+        "mouth": 0.002
+      },
+      {
+        "brow": -0.3,
+        "furrow": 0.13,
+        "smile": 0.0,
+        "mouth": 0.03
+      },
+      {
+        "brow": -0.5,
+        "furrow": 0.5,
+        "smile": 0.081,
+        "mouth": 0.003
+      },
+      {
+        "brow": 0.42,
+        "furrow": -0.25,
+        "smile": 0.0,
+        "mouth": 0.01
+      },
+      {
+        "brow": 1.19,
+        "furrow": -0.37,
+        "smile": 0.002,
+        "mouth": 0.002
+      },
+      {
+        "brow": -0.15,
+        "furrow": -0.0,
+        "smile": 0.0,
+        "mouth": 0.023
+      },
+      {
+        "brow": -0.13,
+        "furrow": 0.15,
+        "smile": 0.072,
+        "mouth": 0.003
+      }
+    ]
+  },
+  "fusion": {
+    "chosen": [
+      "สบายดี",
+      "แมว"
+    ],
+    "sentence_th": "สบายดีแมว",
+    "meaning_th": "",
+    "confidence": 1.0,
+    "provider": "rules",
+    "guard_violations": [],
+    "evidence_gloss": "สวัสดี? | กัมพูชา? | สบายดี | เกิด? | ชอบ? | ไข่เค็ม? | แมว | เหมือนกัน? | ฝุ่น?"
+  },
+  "sentence": "สบายดีแมว",
+  "timings_ms": {
+    "schema_ms": 48.3,
+    "tagger_ms": 229.3,
+    "spotting_ms": 676.4,
+    "n_windows": 1006,
+    "tempo_factor": 1.0,
+    "face_ms": 4.6,
+    "language_ms": 0.6
+  },
+  "model": "v8.1",
+  "vocab": "daily",
+  "hand_tracking": {
+    "left": {
+      "n": 152,
+      "hit": 0.961,
+      "fallback": 0,
+      "max_gap": 2,
+      "out_below": 0
+    },
+    "right": {
+      "n": 263,
+      "hit": 0.928,
+      "fallback": 0,
+      "max_gap": 3,
+      "out_below": 0
+    },
+    "room_below": 1.68,
+    "fps": 24.0
+  }
+}

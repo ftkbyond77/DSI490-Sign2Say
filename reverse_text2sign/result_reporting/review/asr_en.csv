@@ -1,0 +1,54 @@
+﻿ref,hyp,wer,errs,n,ms
+"Hello, how are you?","Hello, how are you?",0.0,0,4,903
+Nice to meet you.,Nice to meet you,0.0,0,4,670
+Thank you very much.,Thank you very much.,0.0,0,4,734
+I'm sorry.,I'm sorry.,0.0,0,2,685
+See you tomorrow.,See you tomorrow.,0.0,0,3,687
+Goodbye.,Goodbye.,0.0,0,1,565
+What is your name?,What is your name?,0.0,0,4,675
+My name is John.,My name is John.,0.0,0,4,759
+How old are you?,How old are you,0.0,0,4,692
+I am deaf.,I am deaf.,0.0,0,3,638
+Where are you from?,Where are you from?,0.0,0,4,703
+Where do you live?,Where do you live?,0.0,0,4,676
+I live in Bangkok.,I live in Bangkok.,0.0,0,4,698
+What do you do for work?,What do you do for work?,0.0,0,6,725
+I am a teacher.,I am a teacher.,0.0,0,4,656
+I am learning sign language.,I am learning sign language.,0.0,0,5,744
+Where did you go today?,Where did you go today?,0.0,0,5,724
+Where is the bathroom?,Where is the bathroom?,0.0,0,4,701
+Where is the hospital?,Where is the hospital?,0.0,0,4,707
+I am going to school.,I am going to school.,0.0,0,5,733
+What time is it now?,What time is it now?,0.0,0,5,795
+When will you come?,When will you come?,0.0,0,4,671
+Have you eaten yet?,Have you eaten yet?,0.0,0,4,731
+I am hungry.,I am hungry.,0.0,0,3,667
+I like to eat eggs.,I like to eat eggs.,0.0,0,5,744
+I don't like vegetables.,I don't like vegetables.,0.0,0,4,729
+Can I have a glass of water?,Can I have a glass of water?,0.0,0,7,794
+This is delicious.,This is delicious.,0.0,0,3,671
+How much is this?,How much is this?,0.0,0,4,655
+It is too expensive.,It is too expensive.,0.0,0,4,731
+Help!,Help.,0.0,0,1,579
+I am sick.,I am sick.,0.0,0,3,660
+I have a headache.,I have a headache.,0.0,0,4,682
+I need a doctor.,I need a doctor.,0.0,0,4,693
+Please call the police.,Please call the police.,0.0,0,4,707
+I don't understand.,I don't understand.,0.0,0,3,738
+Please speak slowly.,Please speak slowly.,0.0,0,3,708
+Can you write it down?,Can you write it down?,0.0,0,5,735
+I am very tired.,I am very tired.,0.0,0,4,740
+I love you.,I love you.,0.0,0,3,678
+I miss my mother.,I miss my mother.,0.0,0,4,682
+I have one older sister.,I have one older sister,0.0,0,5,713
+My mother is a teacher.,My mother is a teacher.,0.0,0,5,790
+Tomorrow is a holiday.,Tomorrow is a holiday.,0.0,0,4,733
+It is very hot today.,It is very hot today.,0.0,0,5,705
+It is raining.,It is raining.,0.0,0,3,626
+I want to travel to Chiang Mai.,I want to travel to Chang Mai.,0.14285714285714285,1,7,781
+How do I get to the airport?,How do I get to the airport?,0.0,0,7,752
+Yes.,Yes.,0.0,0,1,557
+No.,No.,0.0,0,1,563
+Why are you late?,Why are you late?,0.0,0,4,799
+What are you doing?,What are you doing?,0.0,0,4,669
+Please wait a moment.,Please wait a moment.,0.0,0,4,771

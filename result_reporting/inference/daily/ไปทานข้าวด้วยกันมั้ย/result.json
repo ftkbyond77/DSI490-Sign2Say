@@ -1,0 +1,270 @@
+{
+  "title": "ไปทานข้าวด้วยกันมั้ย",
+  "fps": 25.0,
+  "n_frames": 168,
+  "duration_s": 6.72,
+  "signer_visible_frac": 1.0,
+  "signing_frac": 0.9226190476190477,
+  "mirrored_to_right_hand": false,
+  "segments": [
+    {
+      "f0": 6,
+      "f1": 54,
+      "z": 4.7642125940929905,
+      "wins": [
+        [
+          6,
+          54
+        ]
+      ],
+      "nearest": "ตลาด",
+      "candidates": [
+        {
+          "word": "ตลาด",
+          "score": 0.2884,
+          "support": 0.466
+        },
+        {
+          "word": "ตา",
+          "score": 0.2231,
+          "support": 0.4129
+        },
+        {
+          "word": "เวลา",
+          "score": 0.1952,
+          "support": 0.4041
+        },
+        {
+          "word": "เป็น",
+          "score": 0.1486,
+          "support": 0.3986
+        },
+        {
+          "word": "ตอบ",
+          "score": 0.2034,
+          "support": 0.3852
+        }
+      ],
+      "score": 0.2883688509464264,
+      "margin": 0.06526288390159607,
+      "null_gap": -0.2907191812992096,
+      "p_sign": 0.9722867358941585,
+      "agree": 0.0,
+      "support_ratio": 1.0,
+      "window_top1": "ตลาด",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.06785165490663515,
+      "status": "unknown",
+      "probable": false,
+      "t0": 0.24,
+      "t1": 2.16
+    },
+    {
+      "f0": 54,
+      "f1": 114,
+      "z": 8.234976119432785,
+      "wins": [
+        [
+          54,
+          102
+        ],
+        [
+          102,
+          114
+        ]
+      ],
+      "nearest": "อิสราเอล",
+      "candidates": [
+        {
+          "word": "อิสราเอล",
+          "score": 0.5193,
+          "support": 0.6438
+        },
+        {
+          "word": "ไข่เค็ม",
+          "score": 0.3723,
+          "support": 0.4468
+        },
+        {
+          "word": "ดอกไม้",
+          "score": 0.2687,
+          "support": 0.426
+        },
+        {
+          "word": "ตลาด",
+          "score": 0.2411,
+          "support": 0.4188
+        },
+        {
+          "word": "เกย์",
+          "score": 0.2924,
+          "support": 0.4144
+        }
+      ],
+      "score": 0.5193151235580444,
+      "margin": 0.14697983860969543,
+      "null_gap": -0.556019127368927,
+      "p_sign": 0.9999690828720728,
+      "agree": 1.0,
+      "support_ratio": 2.0957095709570956,
+      "window_top1": "อิสราเอล",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.5579737965870797,
+      "status": "uncertain",
+      "probable": true,
+      "t0": 2.16,
+      "t1": 4.56
+    },
+    {
+      "f0": 114,
+      "f1": 162,
+      "z": 7.5719724676240086,
+      "wins": [
+        [
+          114,
+          162
+        ]
+      ],
+      "nearest": "กลับบ้าน",
+      "candidates": [
+        {
+          "word": "กลับบ้าน",
+          "score": 0.4999,
+          "support": 0.6533
+        },
+        {
+          "word": "ไป",
+          "score": 0.3449,
+          "support": 0.5868
+        },
+        {
+          "word": "ออก",
+          "score": 0.3586,
+          "support": 0.573
+        },
+        {
+          "word": "กลับ",
+          "score": 0.2789,
+          "support": 0.4813
+        },
+        {
+          "word": "ย่า",
+          "score": 0.3216,
+          "support": 0.4697
+        }
+      ],
+      "score": 0.4998936653137207,
+      "margin": 0.15500503778457642,
+      "null_gap": -0.5219088196754456,
+      "p_sign": 0.9782611127942801,
+      "agree": 0.0,
+      "support_ratio": 1.4107843137254903,
+      "window_top1": "ไป",
+      "depth": 0.0,
+      "exact": true,
+      "p_correct": 0.20928790439412767,
+      "status": "uncertain",
+      "probable": false,
+      "t0": 4.56,
+      "t1": 6.48
+    }
+  ],
+  "face": {
+    "face_frames": 1.0,
+    "question_furrow": false,
+    "question_yesno": false,
+    "question_wh": false,
+    "negation": false,
+    "affirmation": false,
+    "emotion": "neutral",
+    "emotion_th": "เป็นกลาง",
+    "emotion_scores": {
+      "happy": 0.436,
+      "sad": 0.0,
+      "angry": 0.054,
+      "surprise": 0.128,
+      "fear": 0.01,
+      "disgust": 0.0
+    },
+    "intensity": 0.0,
+    "cues": {
+      "brow_raise_tail": -0.758,
+      "brow_raise_peak": 0.325,
+      "brow_furrow": 1.237,
+      "head_forward_tail": 0.018,
+      "head_shake_cycles": 0,
+      "head_nod_cycles": 1,
+      "mouth_open_frac": 0.0,
+      "cheek_puff": 0.0,
+      "duration_s": 6.68,
+      "brow_furrow_rel": -0.013,
+      "furrow_baseline": "hands_down_frames"
+    },
+    "per_segment": [
+      {
+        "brow": 0.22,
+        "furrow": -0.05,
+        "smile": 0.27,
+        "mouth": 0.063
+      },
+      {
+        "brow": 0.28,
+        "furrow": -0.08,
+        "smile": 0.0,
+        "mouth": 0.138
+      },
+      {
+        "brow": -0.76,
+        "furrow": 0.31,
+        "smile": 0.031,
+        "mouth": 0.01
+      }
+    ]
+  },
+  "fusion": {
+    "chosen": [
+      "[?]",
+      "[?]",
+      "[?]"
+    ],
+    "sentence_th": "",
+    "tentative_sentence_th": "อิสราเอล",
+    "meaning_th": "ยังไม่มั่นใจพอจะแปล — ลองทำท่าช้าลง ให้มืออยู่ในกรอบ หรือกดยืนยันคำที่ถูก",
+    "confidence": 0.0,
+    "provider": "none",
+    "evidence_gloss": "[?]≈ตลาด | อิสราเอล? | กลับบ้าน?",
+    "evidence_guard": "withheld: no confident sign"
+  },
+  "sentence": "",
+  "timings_ms": {
+    "schema_ms": 21.5,
+    "tagger_ms": 70.0,
+    "spotting_ms": 324.6,
+    "n_windows": 503,
+    "tempo_factor": 1.0,
+    "face_ms": 7.1,
+    "language_ms": 0.9
+  },
+  "model": "v8.1",
+  "vocab": "daily",
+  "hand_tracking": {
+    "left": {
+      "n": 0,
+      "hit": null,
+      "fallback": 0,
+      "max_gap": 0,
+      "out_below": 0
+    },
+    "right": {
+      "n": 154,
+      "hit": 0.981,
+      "fallback": 0,
+      "max_gap": 1,
+      "out_below": 0
+    },
+    "room_below": 1.41,
+    "fps": 25.0
+  }
+}

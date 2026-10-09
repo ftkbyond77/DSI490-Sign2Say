@@ -23,13 +23,13 @@
         "csls_alpha": 0.0,
         "one_pass": true,
         "exact_rescore": false,
-        "lam": 6.0,
+        "lam": 8.0,
         "gap_cost": 0.5,
-        "min_len": 14,
+        "min_len": 8,
         "beta": 5.0,
         "freq_gamma": 0.0,
         "tempo": {
-          "ref_len": 16,
+          "ref_len": 20,
           "min_factor": 1.2,
           "max_factor": 2.5,
           "min_segments": 2
@@ -37,18 +37,18 @@
         "post": {
           "min_frames": 14,
           "null_gap_max": 0.1,
-          "p_sign_min": 0.65,
+          "p_sign_min": 0.45,
           "repeat_penalty": true
         },
-        "grammar_rerank_weight": 0.5
+        "grammar_rerank_weight": 0.0
       },
       "phrase": {
-        "recall": 0.225,
-        "precision": 0.1836734693877551,
-        "count_err": 1.1538461538461537,
-        "score": 0.20145211930926218
+        "recall": 0.16279069767441862,
+        "precision": 0.14285714285714285,
+        "count_err": 1.3793103448275863,
+        "score": 0.09628823462023142
       },
-      "tsl51": 0.8233890650432564,
+      "tsl51": 0.8447806506504418,
       "change": "tuned on TSL51 only"
     },
     "chosen": {
@@ -66,7 +66,7 @@
           44,
           48
         ],
-        "stride": 4,
+        "stride": 2,
         "min_inside": 0.6,
         "delta": 0.0,
         "act_thr": 0.5,
@@ -80,7 +80,7 @@
         "beta": 5.0,
         "freq_gamma": 0.0,
         "tempo": {
-          "ref_len": 16,
+          "ref_len": 20,
           "min_factor": 1.2,
           "max_factor": 2.5,
           "min_segments": 2
@@ -88,124 +88,115 @@
         "post": {
           "min_frames": 14,
           "null_gap_max": 0.1,
-          "p_sign_min": 0.65,
+          "p_sign_min": 0.45,
           "repeat_penalty": true
         },
-        "grammar_rerank_weight": 0.5
+        "grammar_rerank_weight": 0.0
       },
       "phrase": {
-        "recall": 0.225,
-        "precision": 0.18,
-        "count_err": 1.1153846153846154,
-        "score": 0.20346153846153844
+        "recall": 0.16279069767441862,
+        "precision": 0.11864406779661017,
+        "count_err": 1.0344827586206897,
+        "score": 0.11866445571065475
       },
-      "change": "min_len 10 stride 4 lam 6.0 tempo {'ref_len': 16, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 2}",
-      "tsl51": 0.8135402114030577
+      "change": "min_len 10 stride 2 lam 6.0 tempo {'ref_len': 20, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 2}",
+      "tsl51": 0.8248814517419495
     },
     "top": [
       {
         "phrase": {
-          "recall": 0.3,
-          "precision": 0.17105263157894737,
-          "count_err": 1.0384615384615385,
-          "score": 0.2816801619433198
+          "recall": 0.16279069767441862,
+          "precision": 0.11864406779661017,
+          "count_err": 1.0344827586206897,
+          "score": 0.11866445571065475
         },
-        "change": "min_len 8 stride 4 lam 4.0 tempo {'ref_len': 16, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 2}",
-        "tsl51": 0.6988994831579739
+        "change": "min_len 10 stride 2 lam 6.0 tempo {'ref_len': 20, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 2}",
+        "tsl51": 0.8248814517419495
       },
       {
         "phrase": {
-          "recall": 0.3,
-          "precision": 0.17105263157894737,
-          "count_err": 1.0384615384615385,
-          "score": 0.2816801619433198
+          "recall": 0.16279069767441862,
+          "precision": 0.11864406779661017,
+          "count_err": 1.0344827586206897,
+          "score": 0.11866445571065475
         },
-        "change": "min_len 8 stride 4 lam 4.0 tempo {'ref_len': 20, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}",
-        "tsl51": 0.6946616729556797
+        "change": "min_len 10 stride 2 lam 6.0 tempo {'ref_len': 20, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}"
       },
       {
         "phrase": {
-          "recall": 0.3,
-          "precision": 0.17105263157894737,
-          "count_err": 1.0384615384615385,
-          "score": 0.2816801619433198
+          "recall": 0.16279069767441862,
+          "precision": 0.11864406779661017,
+          "count_err": 1.0344827586206897,
+          "score": 0.11866445571065475
         },
-        "change": "min_len 8 stride 4 lam 4.0 tempo {'ref_len': 28, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}",
-        "tsl51": 0.6771874926457275
+        "change": "min_len 10 stride 2 lam 6.0 tempo {'ref_len': 28, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}"
       },
       {
         "phrase": {
-          "recall": 0.25,
-          "precision": 0.1746031746031746,
-          "count_err": 0.6923076923076923,
-          "score": 0.2680708180708181
+          "recall": 0.16279069767441862,
+          "precision": 0.11864406779661017,
+          "count_err": 1.0344827586206897,
+          "score": 0.11866445571065475
         },
-        "change": "min_len 14 stride 4 lam 4.0 tempo {'ref_len': 16, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 2}",
-        "tsl51": 0.78509000049581
+        "change": "min_len 12 stride 2 lam 6.0 tempo {'ref_len': 20, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 2}"
       },
       {
         "phrase": {
-          "recall": 0.25,
-          "precision": 0.1746031746031746,
-          "count_err": 0.6923076923076923,
-          "score": 0.2680708180708181
+          "recall": 0.16279069767441862,
+          "precision": 0.11864406779661017,
+          "count_err": 1.0344827586206897,
+          "score": 0.11866445571065475
         },
-        "change": "min_len 14 stride 4 lam 4.0 tempo {'ref_len': 20, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}",
-        "tsl51": 0.7780368254264729
+        "change": "min_len 12 stride 2 lam 6.0 tempo {'ref_len': 20, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}"
       },
       {
         "phrase": {
-          "recall": 0.25,
-          "precision": 0.1746031746031746,
-          "count_err": 0.6923076923076923,
-          "score": 0.2680708180708181
+          "recall": 0.16279069767441862,
+          "precision": 0.11864406779661017,
+          "count_err": 1.0344827586206897,
+          "score": 0.11866445571065475
         },
-        "change": "min_len 14 stride 4 lam 4.0 tempo {'ref_len': 28, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}",
-        "tsl51": 0.7599880127630612
+        "change": "min_len 12 stride 2 lam 6.0 tempo {'ref_len': 28, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}"
       },
       {
         "phrase": {
-          "recall": 0.25,
-          "precision": 0.18181818181818182,
-          "count_err": 0.7307692307692307,
-          "score": 0.26783216783216784
+          "recall": 0.16279069767441862,
+          "precision": 0.11475409836065574,
+          "count_err": 1.0344827586206897,
+          "score": 0.11671947099267753
         },
-        "change": "min_len 10 stride 2 lam 4.0 tempo {'ref_len': 16, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 2}",
-        "tsl51": 0.7506942817495879
+        "change": "min_len 8 stride 2 lam 6.0 tempo {'ref_len': 20, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 2}"
       },
       {
         "phrase": {
-          "recall": 0.25,
-          "precision": 0.18181818181818182,
-          "count_err": 0.7307692307692307,
-          "score": 0.26783216783216784
+          "recall": 0.16279069767441862,
+          "precision": 0.11475409836065574,
+          "count_err": 1.0344827586206897,
+          "score": 0.11671947099267753
         },
-        "change": "min_len 10 stride 2 lam 4.0 tempo {'ref_len': 20, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}",
-        "tsl51": 0.7432871451469234
+        "change": "min_len 8 stride 2 lam 6.0 tempo {'ref_len': 20, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}"
       },
       {
         "phrase": {
-          "recall": 0.25,
-          "precision": 0.18181818181818182,
-          "count_err": 0.7307692307692307,
-          "score": 0.26783216783216784
+          "recall": 0.16279069767441862,
+          "precision": 0.11475409836065574,
+          "count_err": 1.0344827586206897,
+          "score": 0.11671947099267753
         },
-        "change": "min_len 10 stride 2 lam 4.0 tempo {'ref_len': 28, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}",
-        "tsl51": 0.7170514935447896
+        "change": "min_len 8 stride 2 lam 6.0 tempo {'ref_len': 28, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}"
       },
       {
         "phrase": {
-          "recall": 0.25,
-          "precision": 0.18181818181818182,
-          "count_err": 0.7307692307692307,
-          "score": 0.26783216783216784
+          "recall": 0.16279069767441862,
+          "precision": 0.1206896551724138,
+          "count_err": 1.0689655172413792,
+          "score": 0.11623897353648759
         },
-        "change": "min_len 12 stride 2 lam 4.0 tempo {'ref_len': 16, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 2}",
-        "tsl51": 0.7506942817495879
+        "change": "min_len 14 stride 2 lam 6.0 tempo {'ref_len': 20, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 2}"
       }
     ]
   },
-  "full": {
+  "daily": {
     "before": {
       "cfg": {
         "lens": [
@@ -213,39 +204,43 @@
           12,
           16,
           20,
+          24,
           28,
+          32,
           36,
+          40,
+          44,
           48
         ],
-        "stride": 4,
+        "stride": 2,
         "min_inside": 0.6,
         "delta": 0.0,
         "act_thr": 0.5,
         "mu_null": 5.0,
         "csls_alpha": 0.0,
         "one_pass": true,
-        "exact_rescore": true,
+        "exact_rescore": false,
         "lam": 10.0,
         "gap_cost": 0.5,
-        "min_len": 14,
+        "min_len": 8,
         "beta": 5.0,
-        "freq_gamma": 0.5,
+        "freq_gamma": 0.0,
         "tempo": null,
         "post": {
-          "min_frames": 8,
-          "null_gap_max": 0.0,
+          "min_frames": 14,
+          "null_gap_max": 0.1,
           "p_sign_min": 0.65,
           "repeat_penalty": true
         },
         "grammar_rerank_weight": 0.0
       },
       "phrase": {
-        "recall": 0.24,
-        "precision": 0.2857142857142857,
-        "count_err": 1.4230769230769231,
-        "score": 0.24054945054945054
+        "recall": 0.14,
+        "precision": 0.14893617021276595,
+        "count_err": 1.4482758620689655,
+        "score": 0.06964049889948642
       },
-      "tsl51": 0.7767067573802283,
+      "tsl51": 0.8168368354977077,
       "change": "tuned on TSL51 only"
     },
     "chosen": {
@@ -255,138 +250,136 @@
           12,
           16,
           20,
+          24,
           28,
+          32,
           36,
+          40,
+          44,
           48
         ],
-        "stride": 4,
+        "stride": 2,
         "min_inside": 0.6,
         "delta": 0.0,
         "act_thr": 0.5,
         "mu_null": 5.0,
         "csls_alpha": 0.0,
         "one_pass": true,
-        "exact_rescore": true,
-        "lam": 10.0,
+        "exact_rescore": false,
+        "lam": 8.0,
         "gap_cost": 0.5,
-        "min_len": 14,
+        "min_len": 10,
         "beta": 5.0,
-        "freq_gamma": 0.5,
+        "freq_gamma": 0.0,
         "tempo": null,
         "post": {
-          "min_frames": 8,
-          "null_gap_max": 0.0,
+          "min_frames": 14,
+          "null_gap_max": 0.1,
           "p_sign_min": 0.65,
           "repeat_penalty": true
         },
         "grammar_rerank_weight": 0.0
       },
       "phrase": {
-        "recall": 0.24,
-        "precision": 0.2857142857142857,
-        "count_err": 1.4230769230769231,
-        "score": 0.24054945054945054
+        "recall": 0.18,
+        "precision": 0.16071428571428573,
+        "count_err": 1.1379310344827587,
+        "score": 0.14656403940886698
       },
-      "tsl51": 0.7767067573802283,
-      "change": "tuned on TSL51 only"
+      "change": "min_len 10 stride 2 lam 8.0 tempo None",
+      "tsl51": 0.8099171236734942
     },
     "top": [
       {
         "phrase": {
-          "recall": 0.28,
-          "precision": 0.2978723404255319,
-          "count_err": 1.2307692307692308,
-          "score": 0.3058592471358429
+          "recall": 0.18,
+          "precision": 0.16071428571428573,
+          "count_err": 1.1379310344827587,
+          "score": 0.14656403940886698
         },
-        "change": "min_len 14 stride 2 lam 8.0 tempo None",
-        "tsl51": 0.7345952658273405
+        "change": "min_len 10 stride 2 lam 8.0 tempo None",
+        "tsl51": 0.8099171236734942
       },
       {
         "phrase": {
-          "recall": 0.28,
-          "precision": 0.2978723404255319,
-          "count_err": 1.2307692307692308,
-          "score": 0.3058592471358429
+          "recall": 0.18,
+          "precision": 0.16071428571428573,
+          "count_err": 1.1379310344827587,
+          "score": 0.14656403940886698
         },
-        "change": "min_len 14 stride 2 lam 8.0 tempo {'ref_len': 20, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}",
-        "tsl51": 0.7234944277547235
+        "change": "min_len 10 stride 2 lam 8.0 tempo {'ref_len': 20, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}"
       },
       {
         "phrase": {
-          "recall": 0.28,
-          "precision": 0.2978723404255319,
-          "count_err": 1.2307692307692308,
-          "score": 0.3058592471358429
+          "recall": 0.18,
+          "precision": 0.16071428571428573,
+          "count_err": 1.1379310344827587,
+          "score": 0.14656403940886698
         },
-        "change": "min_len 14 stride 2 lam 8.0 tempo {'ref_len': 28, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}",
-        "tsl51": 0.7151474728448137
+        "change": "min_len 10 stride 2 lam 8.0 tempo {'ref_len': 28, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}"
       },
       {
         "phrase": {
-          "recall": 0.24,
-          "precision": 0.2608695652173913,
-          "count_err": 1.2692307692307692,
-          "score": 0.24351170568561872
+          "recall": 0.18,
+          "precision": 0.16071428571428573,
+          "count_err": 1.1379310344827587,
+          "score": 0.14656403940886698
         },
-        "change": "min_len 14 stride 4 lam 8.0 tempo None",
-        "tsl51": 0.7389131037649288
+        "change": "min_len 12 stride 2 lam 8.0 tempo None"
       },
       {
         "phrase": {
-          "recall": 0.24,
-          "precision": 0.2608695652173913,
-          "count_err": 1.2692307692307692,
-          "score": 0.24351170568561872
+          "recall": 0.18,
+          "precision": 0.16071428571428573,
+          "count_err": 1.1379310344827587,
+          "score": 0.14656403940886698
         },
-        "change": "min_len 14 stride 4 lam 8.0 tempo {'ref_len': 20, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}",
-        "tsl51": 0.7261825006116731
+        "change": "min_len 12 stride 2 lam 8.0 tempo {'ref_len': 20, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}"
       },
       {
         "phrase": {
-          "recall": 0.24,
-          "precision": 0.2608695652173913,
-          "count_err": 1.2692307692307692,
-          "score": 0.24351170568561872
+          "recall": 0.18,
+          "precision": 0.16071428571428573,
+          "count_err": 1.1379310344827587,
+          "score": 0.14656403940886698
         },
-        "change": "min_len 14 stride 4 lam 8.0 tempo {'ref_len': 28, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}",
-        "tsl51": 0.710728505188482
+        "change": "min_len 12 stride 2 lam 8.0 tempo {'ref_len': 28, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}"
       },
       {
         "phrase": {
-          "recall": 0.24,
-          "precision": 0.2857142857142857,
-          "count_err": 1.4230769230769231,
-          "score": 0.24054945054945054
+          "recall": 0.18,
+          "precision": 0.16071428571428573,
+          "count_err": 1.1379310344827587,
+          "score": 0.14656403940886698
         },
-        "tsl51": 0.7767067573802283,
-        "change": "tuned on TSL51 only"
+        "change": "min_len 14 stride 2 lam 8.0 tempo None"
       },
       {
         "phrase": {
-          "recall": 0.24,
-          "precision": 0.2857142857142857,
-          "count_err": 1.4230769230769231,
-          "score": 0.24054945054945054
+          "recall": 0.18,
+          "precision": 0.16071428571428573,
+          "count_err": 1.1379310344827587,
+          "score": 0.14656403940886698
         },
-        "change": "min_len 10 stride 2 lam 10.0 tempo None"
+        "change": "min_len 14 stride 2 lam 8.0 tempo {'ref_len': 20, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}"
       },
       {
         "phrase": {
-          "recall": 0.24,
-          "precision": 0.2857142857142857,
-          "count_err": 1.4230769230769231,
-          "score": 0.24054945054945054
+          "recall": 0.18,
+          "precision": 0.16071428571428573,
+          "count_err": 1.1379310344827587,
+          "score": 0.14656403940886698
         },
-        "change": "min_len 10 stride 2 lam 10.0 tempo {'ref_len': 20, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}"
+        "change": "min_len 14 stride 2 lam 8.0 tempo {'ref_len': 28, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}"
       },
       {
         "phrase": {
-          "recall": 0.24,
-          "precision": 0.2857142857142857,
-          "count_err": 1.4230769230769231,
-          "score": 0.24054945054945054
+          "recall": 0.16,
+          "precision": 0.14285714285714285,
+          "count_err": 1.1379310344827587,
+          "score": 0.11763546798029556
         },
-        "change": "min_len 10 stride 2 lam 10.0 tempo {'ref_len': 28, 'min_factor': 1.2, 'max_factor': 2.5, 'min_segments': 1}"
+        "change": "min_len 8 stride 2 lam 8.0 tempo None"
       }
     ]
   }

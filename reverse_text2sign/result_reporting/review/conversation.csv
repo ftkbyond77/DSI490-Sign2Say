@@ -1,0 +1,150 @@
+﻿lang,topic,text,thai,tsl,kinds,n,signs,phrases,spelled,text_cards,all_signed,sentence_type,fallbacks,translation_conf,motion_conf
+th,greeting,สวัสดีครับ,สวัสดีครับ,สวัสดี,s,1,1,0,0,0,True,greeting,,1.0,0.895
+th,greeting,สวัสดีค่ะ ยินดีที่ได้รู้จัก,สวัสดีค่ะ ยินดีที่ได้รู้จัก,สวัสดี ยินดี รู้จัก,s s s,3,3,0,0,0,True,greeting|statement,,0.85,0.895
+th,greeting,สบายดีไหม,สบายดีไหม,สบายดี,s,1,1,0,0,0,True,yn_question,,0.85,0.905
+th,greeting,เป็นยังไงบ้าง,เป็นยังไงบ้าง,สบายดี,s,1,1,0,0,0,True,yn_question,,0.85,0.905
+th,greeting,ฉันสบายดี ขอบคุณ,ฉันสบายดี ขอบคุณ,ฉันสบายดี ขอบคุณ,p s,2,2,1,0,0,True,statement|greeting,,0.95,0.843
+th,greeting,ขอบคุณมากครับ,ขอบคุณมากครับ,ขอบคุณ มาก,s s,2,2,0,0,0,True,statement,,0.85,0.92
+th,greeting,ขอโทษครับ,ขอโทษครับ,ขอโทษ,s,1,1,0,0,0,True,greeting,,1.0,0.893
+th,greeting,ไม่เป็นไร,ไม่เป็นไร,ไม่เป็นไร,s,1,1,0,0,0,True,statement,,0.85,0.92
+th,greeting,แล้วเจอกันใหม่นะ,แล้วเจอกันใหม่นะ,พบกันใหม่,s,1,1,0,0,0,True,statement,,0.85,0.92
+th,greeting,ลาก่อน,ลาก่อน,ลาก่อน,s,1,1,0,0,0,True,greeting,,1.0,0.92
+th,intro,ผมชื่อสมชาย,ผมชื่อสมชาย,ฉัน ชื่อ สมชาย,s s f,3,2,0,1,0,False,statement,สมชาย:fingerspell,0.6,0.852
+th,intro,คุณชื่ออะไร,คุณชื่ออะไร,คุณชื่ออะไร,p,1,1,1,0,0,True,wh_question,,0.95,0.902
+th,intro,คุณอายุเท่าไหร่,คุณอายุเท่าไหร่,คุณอายุเท่าไหร่,p,1,1,1,0,0,True,wh_question,,0.95,0.906
+th,intro,ฉันอายุยี่สิบห้าปี,ฉันอายุยี่สิบห้าปี,ฉัน อายุ ยี่สิบห้า ปี,s s s s,4,4,0,0,0,True,statement,,1.0,0.878
+th,intro,ฉันเป็นคนหูหนวก,ฉันเป็นคนหูหนวก,ฉัน คนหูหนวก,s s,2,2,0,0,0,True,statement,,1.0,0.92
+th,intro,ฉันหูตึง,ฉันหูตึง,ฉัน หูตึง,s s,2,2,0,0,0,True,statement,,1.0,0.92
+th,intro,คุณเป็นคนหูหนวกไหม,คุณเป็นคนหูหนวกไหม,คุณ คนหูหนวก,s s,2,2,0,0,0,True,yn_question,,1.0,0.9
+th,intro,คุณมาจากไหน,คุณมาจากไหน,คุณ มาจากไหน,s s,2,2,0,0,0,True,wh_question,,1.0,0.9
+th,intro,ฉันมาจากเชียงใหม่,ฉันมาจากเชียงใหม่,เชียงใหม่ ฉัน มา,s s s,3,3,0,0,0,True,statement,,0.85,0.858
+th,intro,บ้านคุณอยู่ที่ไหน,บ้านคุณอยู่ที่ไหน,บ้าน คุณ อยู่ ที่ไหน,s s s s,4,4,0,0,0,True,wh_question,,1.0,0.9
+th,intro,ฉันอยู่กรุงเทพ,ฉันอยู่กรุงเทพ,กรุงเทพ ฉัน อยู่,s s s,3,3,0,0,0,True,statement,,1.0,0.92
+th,intro,คุณทำงานอะไร,คุณทำงานอะไร,คุณ ทำงาน อะไร,s s s,3,3,0,0,0,True,wh_question,,1.0,0.9
+th,intro,ฉันเป็นครู,ฉันเป็นครู,ฉัน ครู,s s,2,2,0,0,0,True,statement,,1.0,0.902
+th,intro,ฉันเป็นนักเรียน,ฉันเป็นนักเรียน,ฉัน นักเรียน,s s,2,2,0,0,0,True,statement,,1.0,0.899
+th,intro,ฉันเรียนภาษามือ,ฉันเรียนภาษามือ,ภาษามือ ฉัน เรียน,s s s,3,3,0,0,0,True,statement,,1.0,0.846
+th,intro,คุณเข้าใจภาษามือไหม,คุณเข้าใจภาษามือไหม,ภาษามือ คุณ เข้าใจ,s s s,3,3,0,0,0,True,yn_question,,1.0,0.846
+th,where,วันนี้คุณไปไหน,วันนี้คุณไปไหน,วันนี้ คุณ ไป ที่ไหน,s s s s,4,4,0,0,0,True,wh_question,,0.85,0.846
+th,where,วันนี้คุณไปไหนมา,วันนี้คุณไปไหนมา,วันนี้ คุณ ไป ที่ไหน,s s s s,4,4,0,0,0,True,wh_question,,0.85,0.846
+th,where,ไปไหนมาคะ,ไปไหนมาคะ,ไป ที่ไหน,s s,2,2,0,0,0,True,wh_question,,0.85,0.846
+th,where,ห้องน้ำอยู่ที่ไหน,ห้องน้ำอยู่ที่ไหน,ห้องน้ำ อยู่ ที่ไหน,s s s,3,3,0,0,0,True,wh_question,,1.0,0.906
+th,where,โรงพยาบาลอยู่ที่ไหน,โรงพยาบาลอยู่ที่ไหน,โรงพยาบาล อยู่ ที่ไหน,s s s,3,3,0,0,0,True,wh_question,,1.0,0.92
+th,where,ตลาดอยู่ไกลไหม,ตลาดอยู่ไกลไหม,ตลาด อยู่ ไกล,s s s,3,3,0,0,0,True,yn_question,,1.0,0.888
+th,where,ฉันจะไปโรงเรียน,ฉันจะไปโรงเรียน,โรงเรียน ฉัน ไป,s s s,3,3,0,0,0,True,statement,,1.0,0.846
+th,where,พรุ่งนี้คุณจะไปไหน,พรุ่งนี้คุณจะไปไหน,พรุ่งนี้คุณจะไปไหน,p,1,1,1,0,0,True,wh_question,,0.95,0.92
+th,where,เมื่อวานฉันไปตลาดกับแม่,เมื่อวานฉันไปตลาดกับแม่,เมื่อวานนี้ แม่ ตลาด ฉัน ไป,s s s s s,5,5,0,0,0,True,statement,,1.0,0.846
+th,time,ตอนนี้กี่โมงแล้ว,ตอนนี้กี่โมงแล้ว,ตอนนี้ เวลา เท่าไร,s s s,3,3,0,0,0,True,wh_question,,0.85,0.657
+th,time,วันนี้วันอะไร,วันนี้วันอะไร,วันนี้วันอะไร,p,1,1,1,0,0,True,wh_question,,0.95,0.92
+th,time,คุณจะมาเมื่อไหร่,คุณจะมาเมื่อไหร่,คุณ มา เมื่อไร,s s s,3,3,0,0,0,True,wh_question,,0.85,0.9
+th,time,พรุ่งนี้เช้าเจอกัน,พรุ่งนี้เช้าเจอกัน,พรุ่งนี้ เช้า เจอ,s s s,3,3,0,0,0,True,statement,,0.85,0.901
+th,time,ฉันตื่นนอนตอนเช้า,ฉันตื่นนอนตอนเช้า,เช้า ฉัน ตื่น,s s s,3,3,0,0,0,True,statement,,0.85,0.898
+th,food,กินข้าวหรือยัง,กินข้าวหรือยัง,ข้าว กิน ยัง,s s s,3,3,0,0,0,True,yn_question,,0.8,0.716
+th,food,ฉันกินข้าวแล้ว,ฉันกินข้าวแล้ว,ฉัน ข้าว กิน เสร็จแล้ว,s s s s,4,4,0,0,0,True,statement,,0.8,0.716
+th,food,ฉันหิวข้าว,ฉันหิวข้าว,ฉัน ข้าว หิว,s s s,3,3,0,0,0,True,statement,,0.8,0.716
+th,food,ฉันอิ่มแล้ว,ฉันอิ่มแล้ว,ฉัน อิ่ม เสร็จแล้ว,s s s,3,3,0,0,0,True,statement,,0.85,0.795
+th,food,คุณชอบกินอะไร,คุณชอบกินอะไร,คุณ กิน ชอบ อะไร,s s s s,4,4,0,0,0,True,wh_question,,1.0,0.89
+th,food,ฉันชอบกินไข่,ฉันชอบกินไข่,ไข่ ฉัน กิน ชอบ,s s s s,4,4,0,0,0,True,statement,,1.0,0.79
+th,food,ฉันไม่ชอบกินผัก,ฉันไม่ชอบกินผัก,ผัก ฉัน กิน ไม่ชอบ,s s s s,4,4,0,0,0,True,statement,,1.0,0.869
+th,food,อร่อยมาก,อร่อยมาก,อร่อย มาก,s s,2,2,0,0,0,True,statement,,1.0,0.92
+th,food,ขอน้ำหนึ่งแก้วครับ,ขอน้ำหนึ่งแก้วครับ,น้ำ หนึ่ง ขอ,s s s,3,3,0,0,0,True,statement,,0.8,0.877
+th,food,ฉันอยากดื่มกาแฟ,ฉันอยากดื่มกาแฟ,กาแฟ ฉัน ดื่ม อยาก,s s s s,4,4,0,0,0,True,statement,,1.0,0.822
+th,shop,อันนี้ราคาเท่าไหร่,อันนี้ราคาเท่าไหร่,นี้ เงิน เท่าไร,s s s,3,3,0,0,0,True,wh_question,,0.85,0.2
+th,shop,แพงมาก,แพงมาก,แพง มาก,s s,2,2,0,0,0,True,statement,,1.0,0.92
+th,shop,ลดราคาได้ไหม,ลดราคาได้ไหม,ลดราคา ได้,f s,2,1,0,1,0,False,yn_question,ลดราคา:fingerspell,0.6,0.92
+th,shop,ฉันอยากซื้อเสื้อ,ฉันอยากซื้อเสื้อ,เสื้อ ฉัน ซื้อ อยาก,f s s s,4,3,0,1,0,False,statement,เสื้อ:fingerspell,0.6,0.822
+th,shop,ฉันไม่มีเงิน,ฉันไม่มีเงิน,ฉัน ไม่มีเงิน,s s,2,2,0,0,0,True,statement,,1.0,0.92
+th,help,ช่วยด้วย,ช่วยด้วย,ช่วย,s,1,1,0,0,0,True,statement,,0.85,0.92
+th,help,ฉันไม่สบาย,ฉันไม่สบาย,ฉันไม่สบาย,p,1,1,1,0,0,True,statement,,0.95,0.888
+th,help,ฉันปวดหัว,ฉันปวดหัว,ฉัน ปวดหัว,s s,2,2,0,0,0,True,statement,,1.0,0.833
+th,help,ฉันต้องการหมอ,ฉันต้องการหมอ,หมอ ฉัน ต้องการ,s s s,3,3,0,0,0,True,statement,,1.0,0.876
+th,help,โทรหาตำรวจ,โทรหาตำรวจ,โทร ตำรวจ,s s,2,2,0,0,0,True,statement,,0.85,0.92
+th,help,ฉันหลงทาง,ฉันหลงทาง,ฉัน หลงทาง,s s,2,2,0,0,0,True,statement,,1.0,0.905
+th,help,ช่วยพูดช้าๆหน่อยได้ไหม,ช่วยพูดช้าๆหน่อยได้ไหม,ช้า พูด ช่วย ได้,s s s s,4,4,0,0,0,True,yn_question,,1.0,0.849
+th,help,ฉันไม่เข้าใจ,ฉันไม่เข้าใจ,ฉัน ไม่เข้าใจ,s s,2,2,0,0,0,True,statement,,1.0,0.92
+th,help,ช่วยเขียนให้หน่อย,ช่วยเขียนให้หน่อย,เขียน ช่วย,s s,2,2,0,0,0,True,statement,,1.0,0.92
+th,help,พูดอีกครั้งได้ไหม,พูดอีกครั้งได้ไหม,ซ้ำ พูด ได้,s s s,3,3,0,0,0,True,yn_question,,0.85,0.849
+th,feel,ฉันมีความสุข,ฉันมีความสุข,ฉัน มีความสุข,s s,2,2,0,0,0,True,statement,,1.0,0.92
+th,feel,ฉันเหนื่อยมาก,ฉันเหนื่อยมาก,ฉัน เหนื่อย มาก,s s s,3,3,0,0,0,True,statement,,1.0,0.808
+th,feel,ฉันง่วงนอน,ฉันง่วงนอน,ฉัน ง่วงนอน,s s,2,2,0,0,0,True,statement,,1.0,0.92
+th,feel,ฉันรักคุณ,ฉันรักคุณ,คุณ ฉัน รัก,s s s,3,3,0,0,0,True,statement,,1.0,0.9
+th,feel,ฉันคิดถึงแม่,ฉันคิดถึงแม่,แม่ ฉัน คิดถึง,s s s,3,3,0,0,0,True,statement,,1.0,0.92
+th,feel,ฉันกลัว,ฉันกลัว,ฉัน กลัว,s s,2,2,0,0,0,True,statement,,1.0,0.919
+th,feel,อย่าโกรธนะ,อย่าโกรธนะ,อย่า โกรธ,s s,2,2,0,0,0,True,statement,,1.0,0.92
+th,family,ฉันมีพี่สาวหนึ่งคน,ฉันมีพี่สาวหนึ่งคน,พี่สาว หนึ่ง ฉัน มี,s s s s,4,4,0,0,0,True,statement,,1.0,0.827
+th,family,พ่อแม่ของฉันอยู่ต่างจังหวัด,พ่อแม่ของฉันอยู่ต่างจังหวัด,ฉัน พ่อแม่ อยู่ ต่างจังหวัด,s s s s,4,4,0,0,0,True,statement,,1.0,0.876
+th,family,ลูกของคุณอายุเท่าไหร่,ลูกของคุณอายุเท่าไหร่,คุณ ลูก อายุ เท่าไร,s s s s,4,4,0,0,0,True,wh_question,,0.85,0.792
+th,family,ฉันมีแมวสองตัว,ฉันมีแมวสองตัว,แมว สอง ฉัน มี,s s s s,4,4,0,0,0,True,statement,,1.0,0.827
+th,family,แม่ของฉันเป็นครู,แม่ของฉันเป็นครู,ฉัน แม่ ครู,s s s,3,3,0,0,0,True,statement,,1.0,0.902
+th,work,ฉันทำงานที่โรงพยาบาล,ฉันทำงานที่โรงพยาบาล,โรงพยาบาล ฉัน ทำงาน,s s s,3,3,0,0,0,True,statement,,1.0,0.916
+th,work,วันนี้ฉันไม่ไปทำงาน,วันนี้ฉันไม่ไปทำงาน,วันนี้ ฉัน ทำงาน ไป ไม่,s s s s s,5,5,0,0,0,True,negative,,1.0,0.846
+th,work,พรุ่งนี้วันหยุด,พรุ่งนี้วันหยุด,พรุ่งนี้ วันหยุด,s s,2,2,0,0,0,True,statement,,1.0,0.901
+th,work,ฉันเลิกงานห้าโมงเย็น,ฉันเลิกงานห้าโมงเย็น,เย็น ห้า โมง ฉัน งาน เลิก,s s f s s s,6,5,0,1,0,False,statement,โมง:fingerspell,0.6,0.918
+th,weather,วันนี้อากาศร้อนมาก,วันนี้อากาศร้อนมาก,วันนี้ อากาศ ร้อน มาก,s s s s,4,4,0,0,0,True,statement,,1.0,0.879
+th,weather,ฝนตก,ฝนตก,ฝนตก,s,1,1,0,0,0,True,statement,,1.0,0.92
+th,weather,วันนี้หนาว,วันนี้หนาว,วันนี้ หนาว,s s,2,2,0,0,0,True,statement,,1.0,0.92
+th,travel,ฉันอยากไปเที่ยวเชียงใหม่,ฉันอยากไปเที่ยวเชียงใหม่,เชียงใหม่ ฉัน ไปเที่ยว อยาก,s s s s,4,4,0,0,0,True,statement,,1.0,0.822
+th,travel,ฉันขึ้นรถเมล์ไปทำงาน,ฉันขึ้นรถเมล์ไปทำงาน,รถเมล์ ฉัน ขึ้น ไป ทำงาน,s s s s s,5,5,0,0,0,True,statement,,1.0,0.846
+th,travel,สถานีรถไฟอยู่ไหน,สถานีรถไฟอยู่ไหน,สถานีรถไฟ อยู่ ที่ไหน,s s s,3,3,0,0,0,True,wh_question,,0.85,0.92
+th,travel,ไปสนามบินยังไง,ไปสนามบินยังไง,สนามบิน ไป อย่างไร,s s s,3,3,0,0,0,True,wh_question,,0.85,0.846
+th,misc,ใช่,ใช่,ใช่,s,1,1,0,0,0,True,statement,,1.0,0.92
+th,misc,ไม่ใช่,ไม่ใช่,ไม่ใช่,s,1,1,0,0,0,True,negative,,1.0,0.92
+th,misc,ได้,ได้,ได้,s,1,1,0,0,0,True,statement,,1.0,0.92
+th,misc,ไม่ได้,ไม่ได้,ไม่ได้,s,1,1,0,0,0,True,negative,,1.0,0.92
+th,misc,ทำไมคุณมาสาย,ทำไมคุณมาสาย,คุณ มาสาย ทำไม,s s s,3,3,0,0,0,True,wh_question,,1.0,0.9
+th,misc,ใครเป็นคนทำ,ใครเป็นคนทำ,คน ทำ ใคร,s f s,3,2,0,1,0,False,wh_question,ทำ:fingerspell,0.6,0.891
+th,misc,คุณกำลังทำอะไรอยู่,คุณกำลังทำอะไรอยู่,คุณ อยู่ ทำ อะไร,s s f s,4,3,0,1,0,False,wh_question,ทำ:fingerspell,0.6,0.9
+th,misc,รอสักครู่นะ,รอสักครู่นะ,แว๊บเดียว รอ,s s,2,2,0,0,0,True,statement,,0.85,0.92
+en,greeting,"Hello, how are you?",สวัสดีค่ะ เป็นไงบ้าง,สวัสดี สบายดี,s s,2,2,0,0,0,True,greeting|yn_question,,0.85,0.895
+en,greeting,Nice to meet you.,ยินดีที่ได้รู้จัก,ยินดี รู้จัก,s s,2,2,0,0,0,True,statement,,0.85,0.896
+en,greeting,Thank you very much.,ขอบคุณมากครับ,ขอบคุณ มาก,s s,2,2,0,0,0,True,statement,,0.85,0.92
+en,greeting,I'm sorry.,ฉันขอโทษ,ขอโทษ ฉัน,s s,2,2,0,0,0,True,statement,,1.0,0.893
+en,greeting,See you tomorrow.,เจอกันพรุ่งนี้,พรุ่งนี้ เจอ,s s,2,2,0,0,0,True,statement,,0.85,0.901
+en,greeting,Goodbye.,บายบาย,บ๊ายบาย,s,1,1,0,0,0,True,statement,,0.85,0.914
+en,intro,What is your name?,คุณชื่ออะไร?,คุณชื่ออะไร,p,1,1,1,0,0,True,wh_question,,0.95,0.902
+en,intro,My name is John.,ผมชื่อจอห์น,ฉัน ชื่อ จอห์น,s s f,3,2,0,1,0,False,statement,จอห์น:fingerspell,0.6,0.852
+en,intro,How old are you?,คุณอายุเท่าไหร่?,คุณอายุเท่าไหร่,p,1,1,1,0,0,True,wh_question,,0.95,0.906
+en,intro,I am deaf.,ฉันหูหนวก,ฉัน หูหนวก,s s,2,2,0,0,0,True,statement,,1.0,0.92
+en,intro,Where are you from?,คุณมาจากไหน?,คุณ มาจากไหน,s s,2,2,0,0,0,True,wh_question,,1.0,0.9
+en,intro,Where do you live?,คุณอยู่ที่ไหน?,คุณ อยู่ ที่ไหน,s s s,3,3,0,0,0,True,wh_question,,1.0,0.9
+en,intro,I live in Bangkok.,ฉันอยู่ กรุงเทพ,ฉัน อยู่ กรุงเทพ,s s s,3,3,0,0,0,True,statement|statement,,1.0,0.92
+en,intro,What do you do for work?,คุณทำงานอะไร?,คุณ ทำงาน อะไร,s s s,3,3,0,0,0,True,wh_question,,1.0,0.9
+en,intro,I am a teacher.,ฉันเป็นครู,ฉัน ครู,s s,2,2,0,0,0,True,statement,,1.0,0.902
+en,intro,I am learning sign language.,ฉันกำลังเรียนรู้ภาษาสัญลักษณ์,ภาษามือ ฉัน เรียนรู้,s s s,3,3,0,0,0,True,statement,,0.85,0.846
+en,where,Where did you go today?,คุณไปไหนวันนี้?,วันนี้ คุณ ไป ที่ไหน,s s s s,4,4,0,0,0,True,wh_question,,0.85,0.846
+en,where,Where is the bathroom?,ห้องน้ำอยู่ไหน?,ห้องน้ำ อยู่ ที่ไหน,s s s,3,3,0,0,0,True,wh_question,,0.85,0.906
+en,where,Where is the hospital?,โรงพยาบาลอยู่ไหน?,โรงพยาบาล อยู่ ที่ไหน,s s s,3,3,0,0,0,True,wh_question,,0.85,0.92
+en,where,I am going to school.,ฉันจะไปโรงเรียน,โรงเรียน ฉัน ไป,s s s,3,3,0,0,0,True,statement,,1.0,0.846
+en,time,What time is it now?,เวลากี่โมงแล้ว?,เวลา เท่าไร,s s,2,2,0,0,0,True,wh_question,,0.85,0.719
+en,time,When will you come?,คุณจะมาเมื่อไหร่?,คุณ มา เมื่อไร,s s s,3,3,0,0,0,True,wh_question,,0.85,0.9
+en,food,Have you eaten yet?,คุณกินไปแล้วเหรอ?,คุณ กิน ไป,s s s,3,3,0,0,0,True,yn_question,,1.0,0.846
+en,food,I am hungry.,ฉันหิว,ฉัน หิว,s s,2,2,0,0,0,True,statement,,1.0,0.92
+en,food,I like to eat eggs.,ฉันชอบกินไข่,ไข่ ฉัน กิน ชอบ,s s s s,4,4,0,0,0,True,statement,,1.0,0.79
+en,food,I don't like vegetables.,ฉันไม่ชอบผัก,ฉัน ผัก ไม่ชอบ,s s s,3,3,0,0,0,True,statement,,1.0,0.869
+en,food,Can I have a glass of water?,ขอแก้วน้ำหน่อยได้ไหม?,แก้วน้ำ ขอ ได้,s s s,3,3,0,0,0,True,yn_question,,1.0,0.912
+en,food,This is delicious.,มันอร่อยมาก,อร่อย มาก,s s,2,2,0,0,0,True,statement,,1.0,0.92
+en,shop,How much is this?,ราคานี้เท่าไหร่?,ราคา นี้ เท่าไร,f s s,3,2,0,1,0,False,wh_question,ราคา:fingerspell,0.6,0.2
+en,shop,It is too expensive.,มันแพงเกินไป,แพง เกิน ไป,s s s,3,3,0,0,0,True,statement,,0.8,0.846
+en,help,Help!,ช่วยด้วย!,ช่วย,s,1,1,0,0,0,True,statement,,0.85,0.92
+en,help,I am sick.,ฉันเจ็บป่วย,ฉัน ป่วย,s s,2,2,0,0,0,True,statement,,0.85,0.92
+en,help,I have a headache.,ฉันมีปวดหัว,ปวดหัว ฉัน มี,s s s,3,3,0,0,0,True,statement,,1.0,0.827
+en,help,I need a doctor.,ฉันต้องการหมอ,หมอ ฉัน ต้องการ,s s s,3,3,0,0,0,True,statement,,1.0,0.876
+en,help,Please call the police.,ได้โปรดโทรหาตำรวจ,โทร ตำรวจ,s s,2,2,0,0,0,True,statement,,0.85,0.92
+en,help,I don't understand.,ฉันไม่เข้าใจ,ฉัน ไม่เข้าใจ,s s,2,2,0,0,0,True,statement,,1.0,0.92
+en,help,Please speak slowly.,ได้โปรดพูดช้าๆ,ช้า พูด,s s,2,2,0,0,0,True,statement,,1.0,0.849
+en,help,Can you write it down?,คุณเขียนมันไว้ได้ไหม?,เขา คุณ เขียน ได้,s s s s,4,4,0,0,0,True,yn_question,,0.95,0.9
+en,feel,I am very tired.,ฉันเหนื่อยมาก,ฉัน เหนื่อย มาก,s s s,3,3,0,0,0,True,statement,,1.0,0.808
+en,feel,I love you.,ฉันรักเธอ,เธอ ฉัน รัก,s s s,3,3,0,0,0,True,statement,,1.0,0.92
+en,feel,I miss my mother.,ฉันคิดถึงแม่,แม่ ฉัน คิดถึง,s s s,3,3,0,0,0,True,statement,,1.0,0.92
+en,family,I have one older sister.,ฉันมีน้องสาวใหญ่คนหนึ่ง,น้องสาว คน หนึ่ง ฉัน มี ใหญ่,s s s s s s,6,6,0,0,0,True,statement,,1.0,0.827
+en,family,My mother is a teacher.,แม่ฉันเป็นครู,แม่ ฉัน ครู,s s s,3,3,0,0,0,True,statement,,1.0,0.902
+en,work,Tomorrow is a holiday.,พรุ่งนี้เป็นวันหยุด,พรุ่งนี้ วันหยุด,s s,2,2,0,0,0,True,statement,,1.0,0.901
+en,weather,It is very hot today.,วันนี้ร้อนมาก,วันนี้ ร้อน มาก,s s s,3,3,0,0,0,True,statement,,1.0,0.879
+en,weather,It is raining.,ฝนตกแล้ว,ฝนตก,s,1,1,0,0,0,True,statement,,1.0,0.92
+en,travel,I want to travel to Chiang Mai.,ฉันอยากไปเชียงใหม่,เชียงใหม่ ฉัน ไป อยาก,s s s s,4,4,0,0,0,True,statement,,1.0,0.822
+en,travel,How do I get to the airport?,ฉันจะไปสนามบินได้ยังไง?,ฉัน สนามบิน ไป อย่างไร,s s s s,4,4,0,0,0,True,wh_question,,0.85,0.846
+en,misc,Yes.,ใช่แล้ว,ใช่,s,1,1,0,0,0,True,statement,,0.85,0.92
+en,misc,No.,- ไม่ ไม่,ไม่,s,1,1,0,0,0,True,negative,,1.0,0.92
+en,misc,Why are you late?,ทำไมถึงมาสาย?,ทำไม มาสาย,s s,2,2,0,0,0,True,wh_question,,0.85,0.92
+en,misc,What are you doing?,คุณกำลังทำอะไร?,คุณ ทำ อะไร,s f s,3,2,0,1,0,False,wh_question,ทำ:fingerspell,0.6,0.9
+en,misc,Please wait a moment.,ได้โปรดรอสักครู่,แว๊บเดียว รอ,s s,2,2,0,0,0,True,statement,,0.85,0.92

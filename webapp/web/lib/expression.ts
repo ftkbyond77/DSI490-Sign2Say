@@ -32,7 +32,7 @@ export class ExpressionModel {
 
   /** Feed the current video frame + the 68 face points (0..1); returns the smoothed expression, or null before the first prediction. */
   update(src: CanvasImageSource, vw: number, vh: number, face: number[][], t: number): Emotion | null {
-    if (this.net && this.crop && face.length === 68 && !this.busy && t - this.last > 140) {
+    if (this.net && this.crop && face.length === 68 && !this.busy && t - this.last > 400) {   // v8: ~2.5/s (was 7/s): it shares the GPU with MediaPipe
       let x0 = 1, y0 = 1, x1 = 0, y1 = 0;
       for (const p of face) { x0 = Math.min(x0, p[0]); y0 = Math.min(y0, p[1]); x1 = Math.max(x1, p[0]); y1 = Math.max(y1, p[1]); }
       const cx = (x0 + x1) / 2 * vw, cy = ((y0 + y1) / 2 - (y1 - y0) * 0.08) * vh;   // the 68 points stop at the brows: shift up a little

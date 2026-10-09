@@ -1,5 +1,8 @@
-# tts service: MMS-TTS Thai (VITS) on CPU
+# tts service (v8): VachanaTTS — Thai VITS voices on ONNX Runtime (CPU), no PyTorch
 fastapi==0.115.12
 uvicorn[standard]==0.34.2
 numpy==1.26.4
-transformers==4.51.3
+vachanatts==0.0.7
+onnxruntime==1.23.2
+pythainlp==5.1.2
+requests==2.32.3

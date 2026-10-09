@@ -1,0 +1,77 @@
+{
+  "n_windows": 450,
+  "models": {
+    "v7": {
+      "aligned|conversation": {
+        "R1": 0.6133,
+        "R5": 0.7911
+      },
+      "aligned|all": {
+        "R1": 0.3289,
+        "R5": 0.4667
+      },
+      "boundaries_moved|conversation": {
+        "R1": 0.5889,
+        "R5": 0.7822
+      },
+      "boundaries_moved|all": {
+        "R1": 0.2733,
+        "R5": 0.4
+      }
+    },
+    "enc-v8a": {
+      "aligned|conversation": {
+        "R1": 0.5622,
+        "R5": 0.72
+      },
+      "aligned|all": {
+        "R1": 0.3689,
+        "R5": 0.5111
+      },
+      "boundaries_moved|conversation": {
+        "R1": 0.48,
+        "R5": 0.6511
+      },
+      "boundaries_moved|all": {
+        "R1": 0.2867,
+        "R5": 0.42
+      }
+    },
+    "enc-v8c": {
+      "aligned|conversation": {
+        "R1": 0.56,
+        "R5": 0.78
+      },
+      "aligned|all": {
+        "R1": 0.34,
+        "R5": 0.5489
+      },
+      "boundaries_moved|conversation": {
+        "R1": 0.5467,
+        "R5": 0.7267
+      },
+      "boundaries_moved|all": {
+        "R1": 0.32,
+        "R5": 0.5244
+      }
+    },
+    "enc-v8a+enc-v8c": {
+      "aligned|conversation": {
+        "R1": 0.64,
+        "R5": 0.8333
+      },
+      "aligned|all": {
+        "R1": 0.3956,
+        "R5": 0.5889
+      },
+      "boundaries_moved|conversation": {
+        "R1": 0.5867,
+        "R5": 0.7978
+      },
+      "boundaries_moved|all": {
+        "R1": 0.3267,
+        "R5": 0.5378
+      }
+    }
+  }
+}

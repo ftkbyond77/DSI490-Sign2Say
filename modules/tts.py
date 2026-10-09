@@ -1,5 +1,11 @@
-"""Speech output behind one interface. Providers: local MMS-TTS Thai (VITS, offline — the default and the web demo's TTS
-service), edge-tts, OpenAI TTS. SpeechStyle maps the signer's facial emotion (modules/face.py) to speaking rate / pitch."""
+"""Speech output behind one interface. SpeechStyle maps the signer's facial emotion (modules/face.py) to speaking rate / pitch.
+
+Providers (.env TTS_PROVIDER, voice TTS_VOICE / TTS_MODEL):
+  vachana  VachanaTTS (v8 default): Thai VITS voices trained with Piper, ONNX Runtime on the CPU, no PyTorch, MIT licence.
+           Voices th_f_1 · th_m_1 · th_f_2 · th_m_2 (TTS_VOICE). Chosen in v8 on intelligibility (Thai ASR round trip) and speed
+           against the v7 voice — scripts/bench_tts.py, result_v8.md.
+  local    a transformers VITS model (TTS_MODEL, default facebook/mms-tts-tha = the v7 voice; e.g. VIZINTZOR/MMS-TTS-THAI-FEMALEV2)
+  edge     Microsoft Edge neural voices (network)        openai   OpenAI TTS (network, paid)"""
 from __future__ import annotations
 
 import io
@@ -47,10 +53,11 @@ def write_wav(path, audio: np.ndarray, sr: int):
 
 
 class LocalMMSTTS:
-    """facebook/mms-tts-tha (VITS). Offline; rate via speaking_rate, pitch via resampling."""
+    """A transformers VITS model (facebook/mms-tts-tha or a Thai fine-tune of it). Offline; rate via speaking_rate, pitch via resampling."""
     name = "local_mms"
 
-    def __init__(self, model="facebook/mms-tts-tha", device="cpu"):
+    def __init__(self, model=None, device="cpu"):
+        model = model or os.environ.get("TTS_MODEL") or "facebook/mms-tts-tha"
         from transformers import AutoTokenizer, VitsModel
         try:
             self.tok = AutoTokenizer.from_pretrained(model, local_files_only=True)
@@ -77,6 +84,49 @@ class LocalMMSTTS:
             f = 2 ** (style.pitch_semitones / 12)
             idx = np.arange(0, len(wav), f)
             wav = np.interp(idx, np.arange(len(wav)), wav).astype(np.float32)
+        return wav, self.sr
+
+
+class VachanaTTS:
+    """VachanaTTS (VIZINTZOR, Piper VITS, ONNX Runtime). Voices are downloaded once into TTS_VOICE_DIR (the TTS image bakes them in).
+    Rate → length_scale; pitch via resampling (as the MMS provider)."""
+    name = "vachana"
+
+    def __init__(self, voice=None, voice_dir=None):
+        from pathlib import Path
+        self.voice = voice or os.environ.get("TTS_VOICE_VACHANA") or "th_f_1"
+        self.dir = Path(voice_dir or os.environ.get("TTS_VOICE_DIR") or Path.home() / ".cache" / "vachanatts")
+        self.dir.mkdir(parents=True, exist_ok=True)
+        cwd = os.getcwd()
+        try:                                    # vachanatts keeps its voices in ./voices
+            os.chdir(self.dir)
+            from vachanatts.main import load_voice
+            self.v = load_voice(self.voice)
+        finally:
+            os.chdir(cwd)
+        self.sr = int(self.v.config.sample_rate)
+
+    @lru_cache(maxsize=256)
+    def _synth(self, text, rate):
+        import wave as _w
+        from vachanatts.config import SpeechConfig
+        buf = io.BytesIO()
+        with _w.open(buf, "wb") as wf:
+            self.v.synthesize_wav(text, wf, SpeechConfig(volume=1.0, length_scale=1.0 / rate, noise_scale=0.667, noise_w_scale=0.8))
+        buf.seek(0)
+        with _w.open(buf) as wf:
+            a = np.frombuffer(wf.readframes(wf.getnframes()), np.int16).astype(np.float32) / 32767
+            self.sr = wf.getframerate()
+        return a
+
+    def synthesize(self, text: str, style: SpeechStyle | None = None):
+        style = style or SpeechStyle()
+        if not text.strip():
+            return np.zeros(1, np.float32), self.sr
+        wav = self._synth(text, float(style.rate))
+        if style.pitch_semitones:
+            f = 2 ** (style.pitch_semitones / 12)
+            wav = np.interp(np.arange(0, len(wav), f), np.arange(len(wav)), wav).astype(np.float32)
         return wav, self.sr
 
 
@@ -121,7 +171,9 @@ class OpenAITTSProvider:
 
 
 def get_tts(provider: str | None = None):
-    provider = provider or os.environ.get("TTS_PROVIDER", "local")
+    provider = provider or os.environ.get("TTS_PROVIDER", "vachana")
+    if provider == "vachana":
+        return VachanaTTS()
     if provider == "edge":
         return EdgeTTSProvider()
     if provider == "openai":
@@ -151,7 +203,7 @@ def speakable(text: str) -> str:
 
 def synthesize_wav_bytes(text: str, emotion: str = "neutral", intensity: float = 0.0, provider: str | None = None) -> bytes:
     """Thai text → WAV bytes in the emotion's speaking style (model loaded once per process)."""
-    provider = provider or os.environ.get("TTS_PROVIDER", "local")
+    provider = provider or os.environ.get("TTS_PROVIDER", "vachana")
     if provider not in _TTS:
         _TTS[provider] = get_tts(provider)
     emo = {"surprise": "surprised"}.get(emotion, emotion)
