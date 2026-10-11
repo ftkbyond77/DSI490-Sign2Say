@@ -69,8 +69,11 @@ def retarget(kp, sc, mid_to=(0.75, 0.45), sw_to=0.22):
 class Synth:
     """Continuous sentences from isolated clips. pools: dict signer → list of clip dict(row, f0, f1, concept); null_rows: list."""
 
-    def __init__(self, store, pools, null_rows, rest_rows, seed=0, cross_dataset=0.35, max_len=900, speed=(0.9, 1.7)):
+    def __init__(self, store, pools, null_rows, rest_rows, seed=0, cross_dataset=0.35, max_len=900, speed=(0.9, 1.7), fluent=0.0,
+                 fluent_trim=(0.15, 0.3), fluent_overlap=(0, 4)):
         self.store, self.pools, self.null_rows, self.rest_rows = store, pools, null_rows, rest_rows
+        self.fluent = fluent        # pitty: share of sentences signed fluently (sign cores, no pauses, curved joins — see _fluent_core)
+        self.fluent_trim, self.fluent_overlap = fluent_trim, fluent_overlap
         self.speed = speed
         self.signers = [s for s, v in pools.items() if len(v) >= 6]
         self.all_clips = [c for v in pools.values() for c in v]
@@ -123,10 +126,19 @@ class Synth:
         r = self._rest(rng.randint(5, 25))
         if r:
             put(*r, 0)
+        fl = self.fluent > 0 and rng.rand() < self.fluent
         for j, c in enumerate(picks):
             kp, sc = self._clip(c)
+            if fl:
+                kp, sc = _fluent_core(kp, sc, rng.uniform(*self.fluent_trim))
             kp, sc = resample(kp, sc, rng.uniform(*self.speed))
-            if KP:
+            if KP and fl:
+                bk, bs, o = _fluent_join(KP[-1], SC[-1], kp, sc, rng, overlap=self.fluent_overlap)
+                if o:                                   # cross-fade: the last o frames of A and first o of B become one blend
+                    KP[-1], SC[-1], Y[-1] = KP[-1][:-o], SC[-1][:-o], Y[-1][:-o]
+                    kp, sc = kp[o:], sc[o:]
+                put(bk, bs, 0)
+            elif KP:
                 u = rng.rand()
                 if u < 0.3:
                     r = self._rest(rng.randint(6, 30))
@@ -157,6 +169,39 @@ class Synth:
 def _bridge(k0, k1, s0, s1, n):
     w = np.linspace(0, 1, n + 2)[1:-1, None, None]
     return (k0[None] * (1 - w) + k1[None] * w).astype(np.float32), np.minimum(s0, s1)[None].repeat(n, 0)
+
+
+# pitty: fluent synthetic signing. Isolated recordings hold still before and after every sign; glued together, those holds are
+# the seams the tagger learns to cut at — and fluent signing has none (data_test: one run of P(sign) per sentence). Keep the
+# sign core (hands up, minus `trim` of it on each side) and join with a curve that continues both signs' velocities.
+def _fluent_core(kp, sc, trim):
+    up = np.zeros(len(kp), bool)
+    for w in (9, 10):                                         # wrists above the lower chest (retargeted: shoulders y 0.45, width 0.22)
+        up |= (sc[:, w] > 0.3) & (kp[:, w, 1] < 0.45 + 1.3 * 0.22)
+    i = np.flatnonzero(up)
+    a, b = (i[0], i[-1] + 1) if len(i) >= 4 else (0, len(kp))
+    t = int(round((b - a) * trim))
+    if b - a - 2 * t >= 6:
+        a, b = a + t, b - t
+    return kp[a:b], sc[a:b]
+
+
+def _fluent_join(ka, sa, kb, sb, rng, speed=0.02, overlap=(0, 4)):
+    """join A → B: either a 1–4 frame cross-fade of A's last and B's first frames (returned with o = its length; the caller
+    drops those frames from A and B) or, when o = 0, a cubic Hermite curve that keeps both signs' velocities, length ∝ wrist travel."""
+    va = ka[-1] - ka[-2] if len(ka) > 1 else np.zeros_like(ka[-1])
+    vb = kb[1] - kb[0] if len(kb) > 1 else np.zeros_like(kb[0])
+    d = float(np.linalg.norm(ka[-1, [9, 10]] - kb[0, [9, 10]], axis=1).max())
+    n = int(np.clip(round(d / speed), 1, 8))
+    s = np.linspace(0, 1, n + 2)[1:-1, None, None]; m = n + 1
+    bk = ((2 * s ** 3 - 3 * s ** 2 + 1) * ka[-1][None] + (s ** 3 - 2 * s ** 2 + s) * (va * m)[None]
+          + (-2 * s ** 3 + 3 * s ** 2) * kb[0][None] + (s ** 3 - s ** 2) * (vb * m)[None]).astype(np.float32)
+    bs = np.minimum(sa[-1], sb[0])[None].repeat(n, 0)
+    o = int(min(rng.randint(overlap[0], overlap[1] + 1), len(ka) // 3, len(kb) // 3))
+    if o:
+        w = np.linspace(0, 1, o + 2)[1:-1, None, None]
+        return (ka[-o:] * (1 - w) + kb[:o] * w).astype(np.float32), np.minimum(sa[-o:], sb[:o]), o
+    return bk, bs, 0
 
 
 # ----------------------------------------------------------------------------- windows × bank
@@ -283,8 +328,13 @@ def stage_sequence(a, paths_, load_model):
     nulls = idx[(idx.concept == NULL) & (idx.role == "train")].merge(clips[["clip_id", "row"]], on="clip_id")
     null_rows = [dict(row=int(r.row), f0=0, f1=0, concept=NULL) for r in nulls.itertuples()]
     rest_rows = [dict(row=int(r.row), f0=int(r.f0), f1=int(r.f1)) for r in iso[(iso.role == "train") & (iso.dataset != "tslone") & ((iso.n_frames - (iso.f1 - iso.f0)) >= 10)].itertuples()]
-    synth_tr = Synth(store, train_pools, null_rows, rest_rows, seed=1, speed=(0.8, 2.4))
-    synth_ho = Synth(store, heldout_pools, null_rows, rest_rows, seed=2, cross_dataset=0.0, speed=(0.8, 2.4))
+    fluent = float(getattr(a, "fluent", 0.0) or 0.0)       # pitty: share of fluent synthetic sentences (0 = v7)
+    ftrim = tuple(float(x) for x in str(getattr(a, "fluent_trim", "0.15,0.3") or "0.15,0.3").split(","))
+    fover = tuple(int(x) for x in str(getattr(a, "fluent_overlap", "0,4") or "0,4").split(","))
+    fkw = dict(fluent=fluent, fluent_trim=ftrim, fluent_overlap=fover)
+    synth_tr = Synth(store, train_pools, null_rows, rest_rows, seed=1, speed=(0.8, 2.4), **fkw)
+    synth_ho = Synth(store, heldout_pools, null_rows, rest_rows, seed=2, cross_dataset=0.0, speed=(0.8, 2.4), **fkw)
+    log.info("synthetic sentences: fluent share %.2f · trim %s · cross-fade %s", fluent, ftrim, fover)
     syn_train, distill = [], []
 
     def distill_windows(T, y=None, n=24):
