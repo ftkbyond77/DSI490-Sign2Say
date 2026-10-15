@@ -16,12 +16,13 @@ from scipy.signal import savgol_filter
 from scipy.spatial.transform import Rotation as R
 
 from ..data.quality import L_SH, R_SH, L_EL, R_EL, L_WR, R_WR, NOSE, present, rest_position
-from .rig import BONES, BONE_INDEX, FINGERS, SEGS, get_rig, identity_pose
+from .rig import BONES, BONE_INDEX, FINGERS, SEGS, SIDES, get_rig, identity_pose
 
 # avatar surface anchors measured from the VRM mesh (rig frame, metres) — see result_v1.md §3.2
 AV_NOSE = np.array([0.0, 1.574, -0.084])
 AV_MOUTH = np.array([0.0, 1.541, -0.066])
 AV_CHEST_FRONT_Z = -0.118                      # torso front surface (y 1.20–1.40)
+CONTACT_GAP = 0.05                             # m between the wrists of touching hands (≈ two hand thicknesses of the avatar)
 FINGER_LM = {"Thumb": [1, 2, 3, 4], "Index": [5, 6, 7, 8], "Middle": [9, 10, 11, 12], "Ring": [13, 14, 15, 16], "Little": [17, 18, 19, 20]}
 MORPHS = ["Fcl_BRW_Surprised", "Fcl_BRW_Angry", "Fcl_BRW_Sorrow", "Fcl_EYE_Close_L", "Fcl_EYE_Close_R", "Fcl_EYE_Spread",
           "Fcl_MTH_A", "Fcl_MTH_I", "Fcl_MTH_U", "Fcl_MTH_O", "Fcl_MTH_Fun", "Fcl_MTH_Angry"]
@@ -174,8 +175,97 @@ def _rest_frames(pose, vis, hw):
 
 
 # ----------------------------------------------------------------------------- main
-def retarget(raw, rig=None):
-    """cleaned raw MediaPipe dict → dict(q [T,B,4] local quats (x,y,z,w), morph [T,M], meta)."""
+def retarget(raw, rig=None, face_depth=True):
+    """cleaned raw MediaPipe dict → dict(q [T,B,4] local quats (x,y,z,w), morph [T,M], meta).
+    face_depth: second pass that corrects the hands' depth where they overlap the face (face_depth_shift)."""
+    rig = rig or get_rig()
+    out = _retarget(raw, rig)
+    if face_depth:
+        shift, info = face_depth_shift(out["q"], rig)
+        out["meta"].update(info)
+        if shift is not None:
+            q2 = _retarget(raw, rig, wrist_shift=shift)["q"]
+            out["q"] = q2
+    return out
+
+
+FACE_BOX = dict(x=0.07, y0=-0.05, y1=0.13)     # head-local region in front of the face (chin … forehead, cheek to cheek), m
+FACE_GAP = 0.03                                # closest hand point → nose plane during a face-located run, m
+FACE_SHIFT_MAX = 0.15                          # m: the systematic depth bias measured on face runs (median 14 cm) — never more
+HAND_POINTS = ["MiddleProximal"] + [f"{f}Tip" for f in FINGERS]
+
+
+def _runs_of(mask, min_len=3, bridge=3):
+    m = mask.copy()
+    idx = np.flatnonzero(m)
+    for a, b in zip(idx[:-1], idx[1:]):
+        if 1 < b - a <= bridge + 1:
+            m[a:b] = True
+    out, i, T = [], 0, len(m)
+    while i < T:
+        if not m[i]:
+            i += 1; continue
+        j = i
+        while j < T and m[j]:
+            j += 1
+        if j - i >= min_len:
+            out.append((i, j))
+        i = j
+    return out
+
+
+def face_depth_shift(q, rig, ramp=5):
+    """Depth of hands at the face (v2). MediaPipe's pose depth is unreliable; in v1 a hand that pinched the nose (ห้องน้ำ) or
+    covered the face (หน้ากาก) stayed ~20 cm IN FRONT of the face — right from the front camera, wrong in 3D. Signers do not
+    hold a hand in front of their own face unless the sign is made there, so for every run of frames in which a hand overlaps the
+    face (head-local box, chin to forehead) the whole run is moved in depth by ONE constant, so that its closest approach is
+    FACE_GAP in front of the nose plane (or out of the face if it penetrated) — but never by more than FACE_SHIFT_MAX: face runs
+    sat 7–22 cm in front (median 14 cm) across the dictionary, a systematic bias of the depth scaling, while a few signs are
+    really made in front of the face (a pane of glass, a book) and must not be pulled onto it; monocular landmarks cannot tell
+    those apart (apparent hand size was tested and does not separate them, result_v2.md §5.3). The recording's own relative depth
+    motion inside the run is kept (a sign that starts at the eyes and moves away still moves away).
+    Returns ({side: [T,3] wrist shift} | None, meta)."""
+    T = len(q)
+    names = ["head"] + [f"{s}{p}" for s in SIDES for p in HAND_POINTS]
+    fk = rig.fk(np.asarray(q, np.float32), names=names)
+    hp, hr = fk["head"]
+    z_face = float((AV_NOSE - rig.rest["head"])[2])
+    shift = {s: np.zeros((T, 3)) for s in SIDES}
+    meta = dict(face_runs=0, face_gap_before=None, face_shift_max=0.0)
+    gaps = []
+    for s in SIDES:
+        L = np.stack([hr.inv().apply(fk[f"{s}{p}"][0] - hp) for p in HAND_POINTS], 1)            # [T, P, 3] head-local
+        inside = (np.abs(L[..., 0]) < FACE_BOX["x"]) & (L[..., 1] > FACE_BOX["y0"]) & (L[..., 1] < FACE_BOX["y1"]) & \
+                 (L[..., 2] < z_face + 0.04)                                                       # in front of (or at) the face
+        gap = np.where(inside, z_face - L[..., 2], np.inf).min(1)                                  # m in front of the nose plane
+        dz = np.zeros(T)
+        for a, b in _runs_of(np.isfinite(gap)):
+            g = float(gap[a:b].min())
+            d = float(np.clip(g - FACE_GAP, -0.05, FACE_SHIFT_MAX))
+            if abs(d) < 0.01:
+                continue
+            gaps.append(g)
+            meta["face_runs"] += 1
+            env = np.zeros(T)
+            env[a:b] = 1.0
+            for r in range(1, ramp + 1):
+                w = 0.5 + 0.5 * np.cos(np.pi * r / (ramp + 1))
+                if a - r >= 0:
+                    env[a - r] = max(env[a - r], w)
+                if b - 1 + r < T:
+                    env[b - 1 + r] = max(env[b - 1 + r], w)
+            dz = np.where(np.abs(env * d) > np.abs(dz), env * d, dz)
+        if np.any(dz):
+            # head-local +z (towards the back of the head) in the world frame, per frame
+            shift[s] = hr.apply(np.stack([np.zeros(T), np.zeros(T), dz], 1))
+            meta["face_shift_max"] = max(meta["face_shift_max"], float(np.abs(dz).max()))
+    if not gaps:
+        return None, meta
+    meta["face_gap_before"] = round(float(np.median(gaps)), 3)
+    return shift, meta
+
+
+def _retarget(raw, rig, wrist_shift=None):
     rig = rig or get_rig()
     hw = tuple(int(v) for v in raw["hw"])
     pose, vis = raw["pose"], raw["pose"][:, :, 3]
@@ -239,16 +329,29 @@ def retarget(raw, rig=None):
         tgt_face = av_mouth + k * (Wg - s_mouth)
         d_face = np.linalg.norm((Wg - s_mouth)[:, :2], axis=1) / sw_s
         w_face = np.exp(-(d_face / 0.55) ** 2)[:, None]
-        tg[side] = dict(W_t=(1 - w_face) * tgt_sh + w_face * tgt_face, Wg=Wg, hm=hm, hp=hp)
+        W_t = (1 - w_face) * tgt_sh + w_face * tgt_face
+        if wrist_shift is not None:
+            W_t = W_t + wrist_shift[side]
+        tg[side] = dict(W_t=W_t, Wg=Wg, hm=hm, hp=hp)
     # two-hand contact (wai, clapping, hands touching): keep the hands' RELATIVE position of the signer — each wrist placed
     # around the avatar's midpoint of the two targets by the signer's own wrist-to-wrist vector, blended by closeness
     rel = tg["left"]["Wg"] - tg["right"]["Wg"]
     dh = np.linalg.norm(rel, axis=1) / sw_s
     wc = np.clip(1.0 - dh / 0.7, 0.0, 1.0)[:, None] ** 1.5
     mid = (tg["left"]["W_t"] + tg["right"]["W_t"]) / 2
-    tg["left"]["W_t"] = (1 - wc) * tg["left"]["W_t"] + wc * (mid + k * rel / 2)
-    tg["right"]["W_t"] = (1 - wc) * tg["right"]["W_t"] + wc * (mid - k * rel / 2)
+    rel_av = k * rel
+    # hands that touch keep a minimum lateral gap (two hand thicknesses): the avatar's palms meet, they do not pass through
+    lat = rel_av[:, 0]
+    short = (wc[:, 0] > 0.3) & (np.abs(lat) < CONTACT_GAP)
+    rel_av[short, 0] = np.where(lat[short] > 0, 1.0, -1.0) * CONTACT_GAP      # ties: the left hand on the avatar's left (−X)
+    tg["left"]["W_t"] = (1 - wc) * tg["left"]["W_t"] + wc * (mid + rel_av / 2)
+    tg["right"]["W_t"] = (1 - wc) * tg["right"]["W_t"] + wc * (mid - rel_av / 2)
     meta["contact_frames"] = int((wc[:, 0] > 0.3).sum())
+    # palm-to-palm frames reconstructed by the cleaner (one merged detection, edge-on): the palms face each other — the across-palm
+    # axis loses its lateral component, so each palm normal points at the other hand (contact constraint, retarget only there)
+    cm = np.asarray(raw.get("contact", np.zeros(T, bool)), bool)
+    w_cm = np.convolve(cm.astype(float), np.ones(5) / 5, "same") if cm.any() else np.zeros(T)
+    meta["contact_reconstructed"] = int(cm.sum())
     for si, (side, sh, el, wr) in enumerate(SIDES_):
         S_av = fk[f"{side}UpperArm"][0]
         L1 = np.linalg.norm(rig.rest[f"{side}LowerArm"] - rig.rest[f"{side}UpperArm"])
@@ -292,6 +395,9 @@ def retarget(raw, rig=None):
             # palm axes smoothed over tracked runs: an edge-on palm makes index→pinky unreliable for single frames and the
             # orientation flips (the source of most wrist pops in the first library build)
             pv, sv = hm[:, 9] - hm[:, 0], hm[:, 5] - hm[:, 17]
+            if w_cm.any():
+                sv = sv.copy()
+                sv[:, 0] *= 1.0 - np.clip(w_cm, 0, 1)
             pv, sv = _smooth_runs(_n(pv), hp), _smooth_runs(_n(sv), hp)
             hand_w = align(pv, sv, p0, s0)
             rel = lo_w.inv() * hand_w

@@ -178,8 +178,42 @@ def _build(f):
             _WORKER.start()
         _QUEUE.put((f, h))
     entry = dict(id=f.stem, file=f.name, title=title, author=author, vrm_version=version,
-                 thumb=f"/avatars/{thumb}" if thumb else None, scale=round(fit.scale, 4))
+                 thumb=f"/avatars/{thumb}" if thumb else None, scale=round(fit.scale, 4), check=check(j, fit, m, version))
     return entry, fit, h
+
+
+# the motion's face channels → the morphs a VRoid model carries, or the standard VRM expression the browser uses instead
+FACE_CHANNELS = {"Fcl_BRW_Surprised": "surprised", "Fcl_BRW_Angry": "angry", "Fcl_BRW_Sorrow": "sad", "Fcl_EYE_Close_L": "blinkLeft",
+                 "Fcl_EYE_Close_R": "blinkRight", "Fcl_EYE_Spread": None, "Fcl_MTH_A": "aa", "Fcl_MTH_I": "ih", "Fcl_MTH_U": "ou",
+                 "Fcl_MTH_O": "oh", "Fcl_MTH_Fun": "happy", "Fcl_MTH_Angry": None}
+V0_PRESET = {"a": "aa", "i": "ih", "u": "ou", "o": "oh", "e": "ee", "blink_l": "blinkLeft", "blink_r": "blinkRight", "joy": "happy",
+             "sorrow": "sad", "fun": "relaxed"}
+
+
+def check(j, fit, meta, version):
+    """what this character can show of the motion — computed when the file appears in vrm/, so a new model is validated on
+    arrival (result_v2.md §6): the rig drives the signing bones (Fit raised otherwise), which optional bones were folded, how
+    many face channels it can show (VRoid morphs directly, else the nearest standard expression), and its licence terms."""
+    morphs = {n for mesh in j.get("meshes", []) for n in (mesh.get("extras", {}).get("targetNames") or [])}
+    ext = j.get("extensions", {})
+    if "VRM" in ext:
+        presets = {V0_PRESET.get((g.get("presetName") or "").lower(), (g.get("presetName") or "").lower())
+                   for g in ext["VRM"].get("blendShapeMaster", {}).get("blendShapeGroups", [])}
+        lic = dict(commercial=meta.get("commercialUssageName"), licence=meta.get("licenseName"))
+    else:
+        presets = set(ext.get("VRMC_vrm", {}).get("expressions", {}).get("preset", {}))
+        lic = dict(commercial=meta.get("commercialUsage"), licence=meta.get("licenseUrl"))
+    direct = [c for c in FACE_CHANNELS if c in morphs]
+    via = [c for c, e in FACE_CHANNELS.items() if c not in morphs and e and e in presets]
+    missing = [c for c in FACE_CHANNELS if c not in direct and c not in via]
+    warn = []
+    if fit.folded:
+        warn.append(f"no {', '.join(fit.folded)} bone — its rotation is carried by the neighbouring bones")
+    if len(direct) < len(FACE_CHANNELS):
+        warn.append(f"face: {len(direct)} channels as morphs, {len(via)} through whole-face expressions, {len(missing)} not shown")
+    return dict(ok=True, vrm=version, folded=fit.folded, face_direct=len(direct), face_expression=len(via),
+                face_missing=missing, licence=lic, warnings=warn,
+                proportions=dict(torso=round(fit.scale, 3), head=round(fit.head_scale, 3), shoulders=round(fit.sw_scale, 3)))
 
 
 def catalogue():
@@ -201,6 +235,10 @@ def catalogue():
             _, _, e, fit, h = _MEMO[f.name]
             if e is None:
                 continue
+            if not e.get("thumb"):                    # a headshot stored since (by any API worker: the cache is shared)
+                made = CACHE_DIR / f"{h}.png"
+                if made.exists():
+                    e["thumb"] = f"/avatars/{made.name}"
             opt = CACHE_DIR / f"{h}.vrm"
             if opt.exists():
                 e.update(url=f"/avatars/{opt.name}", bytes=opt.stat().st_size, optimised=True)
@@ -212,6 +250,32 @@ def catalogue():
     for k, (e, _) in enumerate(out):
         e["label"] = "Default" if k == 0 else f"Model {k}"
     return out
+
+
+def set_thumbnail(avatar_id, data, side=160):
+    """store a picker thumbnail for a character whose file has none (VRM 1.0 exports often omit meta.thumbnailImage): the
+    browser renders a headshot once and posts it here; kept in the content-addressed cache, so it is made only once. A
+    character that already has a thumbnail (embedded or made before) is never overwritten. → the thumbnail URL or None."""
+    catalogue()
+    with _LOCK:
+        for name, (size, mtime, e, fit, h) in _MEMO.items():
+            if e is None or e["id"] != avatar_id:
+                continue
+            if e.get("thumb"):
+                return e["thumb"]
+            img = Image.open(io.BytesIO(data))
+            img.load()
+            if img.width > 1024 or img.height > 1024:
+                raise ValueError("thumbnail too large")
+            img.thumbnail((side, side * 2), Image.LANCZOS)
+            out = CACHE_DIR / f"{h}.png"
+            CACHE_DIR.mkdir(parents=True, exist_ok=True)
+            tmp = out.with_name(out.name + f".{os.getpid()}.tmp")
+            img.convert("RGBA").save(tmp, "PNG", optimize=True)
+            os.replace(tmp, out)
+            e["thumb"] = f"/avatars/{out.name}"
+            return e["thumb"]
+    return None
 
 
 def fit_for(avatar_id):

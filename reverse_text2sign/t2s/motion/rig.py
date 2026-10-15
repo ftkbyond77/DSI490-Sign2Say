@@ -27,6 +27,16 @@ BONES = (["spine", "chest", "upperChest", "neck", "head"] +
          [f"{s}{b}" for s in SIDES for b in ["Shoulder", "UpperArm", "LowerArm", "Hand"]] +
          [f"{s}{f}{g}" for s in SIDES for f in FINGERS for g in SEGS])
 BONE_INDEX = {b: i for i, b in enumerate(BONES)}
+# the motion uses VRM 0.x thumb names (Proximal · Intermediate · Distal); VRM 1.0 — and three-vrm for EVERY model, it renames
+# VRM 0.x thumbs on load — calls the same three joints Metacarpal · Proximal · Distal. Used by the rig loader (VRM 1.0 files),
+# the browser binding (service/web/src/avatar.ts mirrors this table) and the .vrma export.
+TO_VRM1 = {f"{s}Thumb{a}": f"{s}Thumb{b}" for s in SIDES for a, b in (("Proximal", "Metacarpal"), ("Intermediate", "Proximal"))}
+FROM_VRM1 = {v: k for k, v in TO_VRM1.items()}
+# what a body needs to sign (VRM requires the limbs; fingers are optional in the spec but signing is impossible without them).
+# Optional in-between bones (chest, upperChest, neck, shoulders) may be absent: Fit folds their rotation into the nearest
+# present ancestor / child so the visible pose is the same.
+REQUIRED = ({"hips", "spine", "head"} | {f"{s}{b}" for s in SIDES for b in ("UpperArm", "LowerArm", "Hand")} |
+            {f"{s}{f}{g}" for s in SIDES for f in FINGERS for g in SEGS if not (f == "Thumb" and g == "Proximal")})
 
 
 class Rig:
@@ -39,19 +49,31 @@ class Rig:
         par = {c: i for i, n in enumerate(nodes) for c in n.get("children", [])}
         ext = j["extensions"]
         hb = ({x["bone"]: x["node"] for x in ext["VRM"]["humanoid"]["humanBones"]} if "VRM" in ext
-              else {k: v["node"] for k, v in ext["VRMC_vrm"]["humanoid"]["humanBones"].items()})
+              else {FROM_VRM1.get(k, k): v["node"] for k, v in ext["VRMC_vrm"]["humanoid"]["humanBones"].items()})
         self.version = "0" if "VRM" in ext else "1"
-        if any("rotation" in nodes[i] for i in hb.values()):
-            raise ValueError("bones with rest rotations are not supported (VRoid exports have none)")
+        missing = REQUIRED - set(hb)
+        if missing:
+            raise ValueError(f"humanoid bones missing: {sorted(missing)}")
+        # normalized humanoid bones (three-vrm / UniVRM) sit at the raw bones' REST WORLD positions with identity rotation, so
+        # only the world positions matter: full TRS chain (Blender / other exporters store rest rotations and scales, VRoid does not)
+        memo = {}
 
-        def wpos(i):
-            p = np.zeros(3)
-            while i is not None:
-                p += np.array(nodes[i].get("translation", [0, 0, 0]), float)
-                i = par.get(i)
-            return p
+        def world(i):
+            if i in memo:
+                return memo[i]
+            n = nodes[i]
+            if "matrix" in n:
+                M = np.array(n["matrix"], float).reshape(4, 4).T
+            else:
+                M = np.eye(4)
+                M[:3, :3] = R.from_quat(n.get("rotation", [0, 0, 0, 1])).as_matrix() * np.array(n.get("scale", [1, 1, 1]), float)
+                M[:3, 3] = n.get("translation", [0, 0, 0])
+            p = par.get(i)
+            memo[i] = M if p is None else world(p) @ M
+            return memo[i]
         node2bone = {v: k for k, v in hb.items()}
-        self.rest = {k: wpos(v) for k, v in hb.items()}
+        self.rest = {k: world(v)[:3, 3].copy() for k, v in hb.items()}
+        self.present = set(hb)
         self.parent = {}
         for k, v in hb.items():                       # nearest humanoid ancestor
             p = par.get(v)

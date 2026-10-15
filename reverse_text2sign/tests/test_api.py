@@ -66,3 +66,35 @@ def test_avatars(client):
         a, b = (client.post("/api/translate", json=dict(text="คุณชื่ออะไร", avatar=x["id"])).json() for x in av[:2])
         assert a["ir"]["units"] == b["ir"]["units"] and a["motion"]["frames"] == b["motion"]["frames"]
         assert a["motion"]["q"] != b["motion"]["q"]            # same signs, arms fitted to the other body
+
+
+def test_grammar_param_and_provenance(client):
+    a = client.post("/api/translate", json={"text": "ฉันไม่ชอบกินผัก", "grammar": "tsl51", "phrasebook": False}).json()["ir"]
+    b = client.post("/api/translate", json={"text": "ฉันไม่ชอบกินผัก", "grammar": "thai"}).json()["ir"]
+    assert a["grammar"]["mode"] == "tsl51" and b["grammar"]["mode"] == "thai"
+    assert [u["gloss"] for u in b["units"]] == ["ฉัน", "ไม่ชอบ", "กิน", "ผัก"] != [u["gloss"] for u in a["units"]]
+    assert all(u["provenance"]["origin"] for u in a["units"])
+    assert client.post("/api/translate", json={"text": "ฉัน", "grammar": "english"}).status_code == 422
+
+
+def test_asr_text_is_kept_apart(client):
+    r = client.post("/api/translate", json={"text": "ฉันหิวข้าว", "source": "speech",
+                                             "asr": {"raw": "ฉันหิวข้า", "applied": [], "model": "whisper-th-small"}}).json()
+    assert r["ir"]["input"]["asr"]["raw"] == "ฉันหิวข้า" and r["ir"]["input"]["text"] == "ฉันหิวข้าว"
+
+
+def test_avatar_checks(client):
+    for a in client.get("/api/avatars").json()["avatars"]:
+        c = a["check"]
+        assert c["ok"] and c["face_direct"] + c["face_expression"] >= 8, (a["file"], c)
+
+
+def test_avatar_thumbnail_never_overwritten(client):
+    """a character that has a thumbnail keeps it (the browser only fills in missing ones); unknown ids are refused."""
+    import io
+    from PIL import Image
+    b = io.BytesIO(); Image.new("RGB", (8, 8)).save(b, "PNG")
+    with_thumb = next(a for a in client.get("/api/avatars").json()["avatars"] if a["thumb"])
+    r = client.post(f"/api/avatars/{with_thumb['id']}/thumbnail", files={"image": ("t.png", b.getvalue(), "image/png")})
+    assert r.status_code == 200 and r.json()["thumb"] == with_thumb["thumb"]
+    assert client.post("/api/avatars/no-such-model/thumbnail", files={"image": ("t.png", b.getvalue(), "image/png")}).status_code == 404

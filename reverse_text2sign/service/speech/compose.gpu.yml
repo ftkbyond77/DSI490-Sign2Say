@@ -1,0 +1,17 @@
+# Optional: speech recognition on an NVIDIA GPU (Whisper-th medium, ≈ 0.7 s per short utterance on an RTX 2050).
+#   docker compose -f docker-compose.yml -f reverse_text2sign/service/speech/compose.gpu.yml up --build
+# Needs the NVIDIA driver + Docker GPU support (Docker Desktop with WSL 2, or nvidia-container-toolkit on Linux).
+services:
+  reverse-speech:
+    build:
+      args:
+        WITH_CUDA: "1"
+    environment:
+      - SPEECH_DEVICE=cuda
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

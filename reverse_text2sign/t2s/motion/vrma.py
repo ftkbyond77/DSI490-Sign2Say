@@ -14,7 +14,7 @@ import struct
 import numpy as np
 
 from .codec import decode
-from .rig import get_rig
+from .rig import TO_VRM1, get_rig
 
 EXPR = {"Fcl_MTH_A": "aa", "Fcl_MTH_I": "ih", "Fcl_MTH_U": "ou", "Fcl_MTH_O": "oh", "Fcl_EYE_Close_L": "blinkLeft",
         "Fcl_EYE_Close_R": "blinkRight", "Fcl_BRW_Surprised": "surprised", "Fcl_MTH_Fun": "happy"}
@@ -85,7 +85,7 @@ def to_vrma(payload) -> bytes:
         extensionsUsed=["VRMC_vrm_animation"],
         extensions=dict(VRMC_vrm_animation=dict(
             specVersion="1.0",
-            humanoid=dict(humanBones={b: dict(node=idx[b]) for b in skel}),
+            humanoid=dict(humanBones={TO_VRM1.get(b, b): dict(node=idx[b]) for b in skel}),
             expressions=dict(preset={n: dict(node=i) for n, i in expr_nodes.items()}))),
         scene=0, scenes=[dict(nodes=roots)], nodes=nodes,
         animations=[dict(name="signing", samplers=samplers, channels=channels)],

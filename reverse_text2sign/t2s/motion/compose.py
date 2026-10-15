@@ -114,14 +114,25 @@ def min_jerk(n):
     return 10 * u ** 3 - 15 * u ** 4 + 6 * u ** 5
 
 
-def transition(qa, qb, ma, mb, n):
-    """n in-between frames from pose a to pose b (per-bone slerp with min-jerk timing; morph lerp)."""
+FINGER_BONES = np.array([i for i, b in enumerate(BONES) if any(f in b for f in ("Thumb", "Index", "Middle", "Ring", "Little"))])
+HANDSHAPE_LEAD = 0.75          # fingers reach the next handshape at 75 % of a transition (anticipatory coarticulation)
+
+
+def transition(qa, qb, ma, mb, n, lead=HANDSHAPE_LEAD):
+    """n in-between frames from pose a to pose b: per-bone slerp with a minimum-jerk time profile; the fingers run on a
+    compressed clock so the next handshape is formed before the hand arrives (fluent signers pre-shape the hand during the
+    movement — anticipatory coarticulation; the stroke itself is never changed). Morphs lerp."""
     if n <= 0:
         return np.zeros((0,) + qa.shape, np.float32), np.zeros((0,) + ma.shape, np.float32)
     w = min_jerk(n)
+    u = np.linspace(0, 1, n + 2)[1:-1]
+    uf = np.clip(u / lead, 0, 1)
+    wf = 10 * uf ** 3 - 15 * uf ** 4 + 6 * uf ** 5
     ra, rb = R.from_quat(qa), R.from_quat(qb)
     rel = (ra.inv() * rb).as_rotvec()                                  # [B,3]
-    q = np.stack([(ra * R.from_rotvec(rel * x)).as_quat() for x in w]).astype(np.float32)
+    W = np.repeat(w[:, None], len(qa), 1)
+    W[:, FINGER_BONES] = wf[:, None]
+    q = np.stack([(ra * R.from_rotvec(rel * W[k][:, None])).as_quat() for k in range(n)]).astype(np.float32)
     m = (ma[None] * (1 - w[:, None]) + mb[None] * w[:, None]).astype(np.float32)
     return q, m
 
@@ -181,8 +192,9 @@ def neutral_pose():
 
 
 def compose(units, lib, speed=1.0, clause_ends=(), overlays=None, rig=None):
-    """units: SignUnit list (IR order). lib: motion Library. Returns q, m, segments (frame ranges per unit) and unit timings.
-    clause_ends: unit indices after which a clause ends (short hold). overlays: sentence-level non-manual marks (nmm.py)."""
+    """units: SignUnit list (IR order). lib: motion Library. Returns q, m, segments (frame ranges per unit; unit timings are
+    written into the units) and the sentence-level non-manual marks applied (nmm.py).
+    clause_ends: unit indices after which a clause ends (short hold). overlays: [{type, units, neg_units}] per clause."""
     rig = rig or get_rig()
     t = timing()
     Q, Mo, segs = [], [], []
@@ -241,21 +253,24 @@ def compose(units, lib, speed=1.0, clause_ends=(), overlays=None, rig=None):
         Q.append(rest[None]); Mo.append(M0[None]); total += 1
     q = np.concatenate(Q).astype(np.float32)
     m = np.concatenate(Mo).astype(np.float32)
+    marks = []
     if overlays:
         from .nmm import apply_overlays
-        q, m = apply_overlays(q, m, overlays, segs)
-    return q, m, segs
+        q, m, marks = apply_overlays(q, m, overlays, segs)
+    return q, m, segs, marks
 
 
-def annotate(lib_dir=None):
+def annotate(lib_dir=None, only_missing=False):
     """precompute per clip (once, offline): stroke [a, b), letter hold [a, b), avatar wrist positions at the stroke ends —
-    so a request never runs forward kinematics over whole clips."""
+    so a request never runs forward kinematics over whole clips. only_missing: clips added since (library.add)."""
     from .library import LIB, Library
     lib_dir = lib_dir or LIB
     lib = Library(lib_dir)
     rig = get_rig()
     idx = lib.index
     for k, info in idx["clips"].items():
+        if only_missing and "stroke" in info:
+            continue
         q, m, _ = lib.get(k)
         a, b = stroke(q, info["core"], rig)
         W = wrists(q[[a, b - 1]], rig)

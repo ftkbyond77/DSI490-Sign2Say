@@ -1,0 +1,86 @@
+id	category	text	checks
+h01	wh	เธอชื่ออะไร	type:wh_question;has:อะไร;last:อะไร
+h02	wh	ร้านกาแฟอยู่ที่ไหน	type:wh_question;has:ที่ไหน;last:ที่ไหน
+h03	wh	ใครมาบ้านฉันเมื่อวาน	type:wh_question;has:ใคร;has:เมื่อวาน;first:เมื่อวาน;last:ใคร
+h04	wh	ทำไมเธอร้องไห้	type:wh_question;has:ทำไม;last:ทำไม
+h05	wh	คุณจะกลับบ้านเมื่อไร	type:wh_question;has:เมื่อไร;last:เมื่อไร
+h06	wh	ไปโรงพยาบาลอย่างไร	type:wh_question;has:อย่างไร;last:อย่างไร
+h07	wh	พี่ชายของคุณทำงานอะไร	type:wh_question;has:อะไร;last:อะไร
+h08	wh	ข้าวผัดจานนี้ราคาเท่าไร	type:wh_question;has:เท่าไร;last:เท่าไร
+h09	wh	คุณชอบสีอะไร	type:wh_question;has:อะไร;last:อะไร
+h10	wh	เพื่อนของคุณอยู่ที่ไหน	type:wh_question;has:ที่ไหน;last:ที่ไหน
+h11	yn	คุณชอบกินกาแฟไหม	type:yn_question;has:กาแฟ;not:ไหม
+h12	yn	พรุ่งนี้ฝนจะตกไหม	type:yn_question;has:พรุ่งนี้;first:พรุ่งนี้
+h13	yn	คุณเคยไปภูเก็ตไหม	type:yn_question;has:ภูเก็ต
+h14	yn	เธอเป็นหมอหรือเปล่า	type:yn_question;has:หมอ
+h15	yn	คุณหิวไหม	type:yn_question;has:หิว
+h16	yn	แม่ของคุณสบายดีไหม	type:yn_question;has:แม่
+h17	yn	คุณอ่านหนังสือเล่มนี้แล้วหรือยัง	type:yn_question;has:หนังสือ;has:อ่าน
+h18	yn	เขามาจากเชียงใหม่ใช่ไหม	type:yn_question;has:เชียงใหม่
+h19	neg	ฉันไม่ชอบอากาศร้อน	type:negative|statement;neg;has:ร้อน
+h20	neg	เขาไม่มาทำงานวันนี้	neg;has:ทำงาน;first:วันนี้
+h21	neg	ฉันไม่เข้าใจคำถาม	neg;has:เข้าใจ
+h22	neg	ร้านนี้ไม่เปิดวันอาทิตย์	neg;has:เปิด
+h23	neg	ฉันไม่มีรถ	neg
+h24	neg	เขาไม่ใช่ครู	neg;has:ครู
+h25	neg	ฉันยังไม่ได้กินข้าว	neg;has:ข้าว;has:กิน
+h26	neg	อย่าเปิดหน้าต่าง	has:หน้าต่าง;has:เปิด
+h27	neg	ฉันไม่เคยไปทะเล	neg;has:ทะเล
+h28	time	เมื่อวานฉันไปตลาด	first:เมื่อวาน;has:ตลาด
+h29	time	พรุ่งนี้เช้าฉันจะไปเรียน	first:พรุ่งนี้;has:เรียน
+h30	time	ตอนนี้ฉันอยู่บ้าน	first:ตอนนี้;has:บ้าน
+h31	time	ปีหน้าฉันจะแต่งงาน	has:แต่งงาน
+h32	time	ฉันตื่นนอนตอนเช้าทุกวัน	has:ตื่น
+h33	time	เดือนที่แล้วฉันป่วย	has:ป่วย
+h34	time	กลางคืนอากาศหนาว	first:กลางคืน;has:หนาว
+h35	time	วันจันทร์ฉันไปโรงเรียน	has:โรงเรียน
+h36	num	ฉันมีลูกสามคน	has:สาม;has:ลูก
+h37	num	ฉันอายุสามสิบปี	has:สาม;has:สิบ
+h38	num	บ้านฉันมีแมวสองตัวและหมาหนึ่งตัว	has:สอง;has:หนึ่ง;has:แมว;has:หมา
+h39	num	ขอกาแฟสองแก้ว	has:สอง;has:กาแฟ
+h40	num	ฉันเรียนภาษามือมาห้าปี	has:ห้า;has:ภาษามือ
+h41	num	ห้องฉันอยู่ชั้นเจ็ด	has:เจ็ด
+h42	num	ฉันมีพี่น้องสี่คน	has:สี่
+h43	name	ฉันชื่อมานี	spell:มานี
+h44	name	เพื่อนฉันชื่อปิติ	spell:ปิติ
+h45	name	ครูของฉันชื่อสมศรี	spell:สมศรี;has:ครู
+h46	name	ฉันอยู่จังหวัดขอนแก่น	has:จังหวัด
+h47	name	แมวของฉันชื่อส้ม	spell:ส้ม
+h48	name	หมอชื่อวิชัยใจดีมาก	spell:วิชัย;has:หมอ
+h49	poly	ผมตัดผมสั้น	has:ฉัน;has:ผม;has:ตัด
+h50	poly	ผมของเธอยาวมาก	has:ผม;not:ฉัน
+h51	poly	หนูชอบกินขนม	has:ฉัน;not:หนู
+h52	poly	ในบ้านมีหนูเยอะ	has:หนู;has:บ้าน
+h53	poly	มันชอบนอน	has:เขา;not:มัน;has:นอน
+h54	poly	ฉันชอบกินมันทอด	not:เขา
+h55	poly	ตาของฉันเจ็บ	not:ตา;has:เจ็บ
+h56	poly	ตากับยายไปตลาด	has:ตา;has:ยาย
+h57	poly	เขาไปเที่ยวภูเขา	has:เขา;has:ภูเขา
+h58	poly	โทรศัพท์ของฉันเสีย	has:โทรศัพท์
+h59	poly	อีกาบินบนต้นไม้	has:ต้นไม้
+h60	long	เมื่อวานฉันกับเพื่อนไปกินข้าวที่ร้านอาหารใกล้บ้านแล้วก็ไปดูหนัง	first:เมื่อวาน;has:เพื่อน;has:กิน
+h61	long	พรุ่งนี้ฉันต้องไปโรงพยาบาลเพราะแม่ของฉันไม่สบาย	first:พรุ่งนี้;has:โรงพยาบาล;has:แม่
+h62	long	ฉันอยากเรียนภาษามือเพื่อคุยกับเพื่อนที่หูหนวก	has:ภาษามือ;has:เรียน;has:อยาก
+h63	long	ถ้าฝนตกพรุ่งนี้ฉันจะไม่ไปทำงาน	neg;has:ฝน;has:ทำงาน
+h64	long	ตอนเย็นฉันชอบออกกำลังกายที่สวนสาธารณะกับพี่สาว	has:พี่สาว;has:ชอบ
+h65	long	ช่วยบอกทางไปสถานีรถไฟให้หน่อยได้ไหม	type:yn_question;has:ช่วย
+h66	long	ลูกชายของฉันเรียนอยู่ที่มหาวิทยาลัยในกรุงเทพ	has:ลูก;has:กรุงเทพ
+h67	long	ฉันทำอาหารให้ครอบครัวทุกวันอาทิตย์	has:อาหาร;has:ครอบครัว
+h68	drop	หิวแล้ว	has:หิว
+h69	drop	ไปไหนมา	type:wh_question;has:ไป
+h70	drop	กินข้าวด้วยกันไหม	type:yn_question;has:กิน;has:ข้าว
+h71	drop	ไม่รู้	neg|has:ไม่รู้
+h72	drop	เข้าใจแล้ว	has:เข้าใจ
+h73	drop	ง่วงจัง	has:ง่วงนอน
+e01	en	What is your favourite food?	type:wh_question;has:อาหาร
+e02	en	Where is the train station?	type:wh_question;has:ที่ไหน
+e03	en	I don't like cold weather.	neg;has:หนาว
+e04	en	Do you have a pen?	type:yn_question;has:ปากกา
+e05	en	My brother is a doctor.	has:หมอ
+e06	en	I have two cats.	has:สอง;has:แมว
+e07	en	Yesterday I went to the market.	first:เมื่อวาน;has:ตลาด
+e08	en	Can you help me?	type:yn_question;has:ช่วย
+e09	en	I am not hungry.	neg;has:หิว
+e10	en	When does the shop open?	type:wh_question;has:เปิด
+e11	en	My eyes hurt.	not:ตา
+e12	en	Who is your teacher?	type:wh_question;has:ครู;has:ใคร

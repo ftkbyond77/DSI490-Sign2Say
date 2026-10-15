@@ -8,6 +8,13 @@ Sources for the rules (result_v1.md §4):
     picture comes first; word-for-word Thai order is wrong.
   * Sign-language typology: negation sign after the predicate; yes/no questions are marked non-manually on the clause.
 Thai word order itself is never "fixed" by guessing — a word the rules do not know keeps its Thai position.
+
+Grammar Format (v2, user-selectable, result_v2.md §3.2). The ordering rules above come from ONE parallel corpus (TSL51, 62
+sentences from ~14 templates), so whether they generalise is unknown until Deaf experts judge it. Two modes are offered so the
+two can be compared on the same input:
+  tsl51  the rules above (default — what v1 did)
+  thai   "Normal": the same signs (same words dropped, same lexical choices, same sentence type and face) in Thai word order.
+Only the ORDER differs between the modes; the IR records which one produced the gloss list.
 """
 from __future__ import annotations
 
@@ -59,6 +66,10 @@ NUM_WORDS = {"ศูนย์", "หนึ่ง", "สอง", "สาม", "�
              "ล้าน", "เอ็ด"}
 
 
+MODES = ("tsl51", "thai")
+RULES_VERSION = "tsl51-rules-2026.10"
+
+
 @dataclass
 class Tok:
     text: str
@@ -71,6 +82,7 @@ class Tok:
 
 FREE_PARTS = {"ที่", "ได้", "การ", "ความ", "และ", "ของ", "ก็", "จะ"}   # may glue signable parts of an unknown compound
 HAIR_CONTEXT = {"ยาว", "สั้น", "หงอก", "ร่วง", "ดำ", "หยิก", "ตรง", "สวย", "ทอง", "บาง"}
+HAIR_VERBS = {"ตัด", "สระ", "หวี", "ย้อม", "ไว้", "มัด", "ถัก"}          # "ตัดผม" / "สระผม": the object is hair; "ผมของ…" too
 
 
 def _pythainlp_pos(tokens):
@@ -107,8 +119,8 @@ def classify(tokens, lexicon_pos):
             t.kind = "drop"; t.notes.append("ได้ before a WH word (ได้ยังไง) not signed")
         elif w == "ให้" and prv is not None and prv.kind in ("verb", "modal", "motion"):
             t.kind = "drop"; t.notes.append("benefactive ให้ after a verb not signed")
-        elif w == "มัน" and i == 0 and nxt is not None and (lexicon_pos(nxt) in ("adj", "verb") or
-                                                              (i + 1 < len(ud) and ud[i + 1] in ("VERB", "ADJ"))):
+        elif w == "มัน" and i == 0 and nxt is not None and nxt not in MODAL and nxt not in MOTION and                 (lexicon_pos(nxt) == "adj" or (i + 1 < len(ud) and ud[i + 1] == "ADJ")):
+            # expletive only before a state ("มันร้อน" it's hot); before an action / attitude verb มัน is the subject pronoun
             t.kind = "drop"; t.notes.append("expletive มัน ('it is …') not signed")
         elif w == "ใน" and prv is not None and prv.text in ("อยู่", "ไป", "มา", "อาศัย"):
             t.kind = "drop"; t.notes.append("ใน after a location verb not signed")
@@ -118,7 +130,7 @@ def classify(tokens, lexicon_pos):
             t.kind = "adv"
         elif w == "ได้" and nxt_verb:
             t.kind = "drop"; t.notes.append("ได้ before a verb = past/opportunity, not 'can'")
-        elif w == "ผม" and nxt in HAIR_CONTEXT:
+        elif w == "ผม" and (nxt in HAIR_CONTEXT or nxt == "ของ" or (prv is not None and prv.text in HAIR_VERBS)):
             t.kind = "noun"; t.notes.append("ผม = hair here")
         elif w == "หนู" and not (i == 0 and nxt is not None and (lexicon_pos(nxt) in ("verb", "adj") or nxt in MODAL or nxt in MOTION)):
             t.kind = "noun"                              # "mouse" unless it opens the clause as the subject of a verb
@@ -198,8 +210,8 @@ def _np_spans(toks):
     return spans
 
 
-def reorder(toks, topicalize=True):
-    """one clause of classified tokens → Clause in TSL order."""
+def reorder(toks, topicalize=True, mode="tsl51"):
+    """one clause of classified tokens → Clause in TSL order (mode tsl51) or in Thai order (mode thai, same signs)."""
     moves = []
     keep = []
     for t in toks:
@@ -324,6 +336,10 @@ def reorder(toks, topicalize=True):
     signs = dedup
     if adv:
         moves.append("degree word after the predicate: " + " ".join(t.text for t in adv))
+    if mode == "thai":                               # Normal mode: the same signs, Thai word order
+        signs = sorted(signs, key=lambda t: t.src)
+        moves = [m for m in moves if m.startswith("drop ") or "not signed" in m or m.startswith("repeated")]
+        moves.append("Normal mode: Thai word order kept (TSL51 ordering rules off)")
     wh_inside = any(any(q in t.text for q in ("ไหน", "อะไร", "ใคร", "เท่าไร", "เมื่อไร", "ทำไม", "อย่างไร")) for t in signs)
     stype = ("wh_question" if (wh or wh_inside) else "yn_question" if ynq else "negative" if neg else
              ("greeting" if greet and len(signs) == len(greet) else "statement"))

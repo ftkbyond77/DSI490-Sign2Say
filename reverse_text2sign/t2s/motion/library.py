@@ -112,21 +112,37 @@ def _build_one(rec):
         a = max(0, int(rec["span_f0"]) - PAD); b = min(T, int(rec["span_f1"]) + PAD)
         fid = fidelity(cr, out["q"], int(rec["span_f0"]), int(rec["span_f1"]), rig)
         desc = descriptors(out["q"], int(rec["span_f0"]), int(rec["span_f1"]), rig)
+        mt = out["meta"]
+        fixes = dict(contact_mirrored=int(rep.get("contact_mirrored", 0)), face_runs=int(mt.get("face_runs", 0)),
+                     face_shift_cm=round(100 * float(mt.get("face_shift_max", 0.0)), 1),
+                     filled=int(rep.get("filled", 0)), dup=int(rep.get("dup", 0)))
         return rec["key"], dict(q=out["q"][a:b], m=out["morph"][a:b], core=[int(rec["span_f0"]) - a, int(rec["span_f1"]) - a],
-                                fidelity=fid, desc=desc, meta=out["meta"], clean=rep)
+                                fidelity=fid, desc=desc, meta=mt, clean=rep, fixes=fixes)
     except Exception as e:                                           # noqa: BLE001 — reported, never silently dropped
         return rec["key"], dict(error=f"{type(e).__name__}: {e}")
 
 
-def build(records, out_dir=LIB, procs=6):
-    """records: list of dicts with key, raw_file, mirrored, span_f0, span_f1 (+ any metadata copied into the index).
-    Written to <out_dir>.new and swapped in at the end (a memory-mapped q.bin cannot be overwritten on Windows: stop the API first)."""
-    final = Path(out_dir)
-    out_dir = final.with_name(final.name + ".new"); out_dir.mkdir(parents=True, exist_ok=True)
-    with Pool(procs) as pool:
-        res = pool.map(_build_one, records, chunksize=16)
-    meta = {r["key"]: r for r in records}
-    Q, M, index, errors, off = [], [], {}, {}, 0
+def _write(final, Q, M, index, frames):
+    """write q.bin / m.bin / index.json to <final>.new and swap it in (Windows: a memory-mapped q.bin cannot be overwritten
+    while the API runs — stop it first)."""
+    import shutil
+    final = Path(final)
+    out_dir = final.with_name(final.name + ".new")
+    shutil.rmtree(out_dir, ignore_errors=True)
+    out_dir.mkdir(parents=True)
+    np.concatenate(Q).tofile(out_dir / "q.bin")
+    np.concatenate(M).tofile(out_dir / "m.bin")
+    (out_dir / "index.json").write_text(json.dumps(dict(bones=BONES, morphs=MORPHS, fps=FPS, frames=frames, clips=index),
+                                                   ensure_ascii=False, default=_js), encoding="utf-8")
+    if final.exists():
+        shutil.rmtree(final.with_name(final.name + ".old"), ignore_errors=True)
+        final.rename(final.with_name(final.name + ".old"))
+    out_dir.rename(final)
+    shutil.rmtree(final.with_name(final.name + ".old"), ignore_errors=True)
+
+
+def _entries(res, meta, audit, off):
+    Q, M, index, errors = [], [], {}, {}
     for key, r in res:
         if "error" in r:
             errors[key] = r["error"]; continue
@@ -134,24 +150,67 @@ def build(records, out_dir=LIB, procs=6):
         Q.append(np.clip(np.round(r["q"] * 32767), -32767, 32767).astype("<i2"))
         M.append(np.clip(np.round(r["m"] * 255), 0, 255).astype(np.uint8))
         extra = {k: v for k, v in meta[key].items() if k not in ("key", "raw_file", "span_f0", "span_f1", "source_file", "trim_a", "trim_b")}
-        index[key] = dict(off=off, n=n, core=r["core"], fidelity=r["fidelity"], desc=r["desc"],
-                          alpha=round(r["meta"]["alpha"], 3), **{k: (None if isinstance(v, float) and np.isnan(v) else v)
-                                                                 for k, v in extra.items()})
+        index[key] = dict(off=off, n=n, core=r["core"], fidelity=r["fidelity"], desc=r["desc"], fixes=r["fixes"],
+                          qc=audit.get(meta[key].get("clip_id"), {}), alpha=round(r["meta"]["alpha"], 3),
+                          **{k: (None if isinstance(v, float) and np.isnan(v) else v) for k, v in extra.items()})
         off += n
-    np.concatenate(Q).tofile(out_dir / "q.bin")
-    np.concatenate(M).tofile(out_dir / "m.bin")
-    (out_dir / "index.json").write_text(json.dumps(dict(bones=BONES, morphs=MORPHS, fps=FPS, frames=off, clips=index),
-                                                   ensure_ascii=False, default=_js), encoding="utf-8")
-    import shutil
-    if final.exists():
-        shutil.rmtree(final.with_name(final.name + ".old"), ignore_errors=True)
-        final.rename(final.with_name(final.name + ".old"))
-    out_dir.rename(final)
-    shutil.rmtree(final.with_name(final.name + ".old"), ignore_errors=True)
+    return Q, M, index, errors, off
+
+
+def add(records, lib_dir=LIB, procs=4):
+    """retarget `records` and APPEND them to the existing library (new or replaced keys); returns (added keys, errors).
+    Used for clips harvested after the main build — the other clips are not recomputed."""
+    lib_dir = Path(lib_dir)
+    old = json.loads((lib_dir / "index.json").read_text(encoding="utf-8"))
+    F, B, Mn = old["frames"], len(old["bones"]), len(old["morphs"])
+    q = np.fromfile(lib_dir / "q.bin", "<i2").reshape(F, B, 4)
+    m = np.fromfile(lib_dir / "m.bin", np.uint8).reshape(F, Mn)
+    with Pool(procs) as pool:
+        res = pool.map(_build_one, records, chunksize=4)
+    keys = {r["key"] for r in records}
+    Q, M, index, off = [], [], {}, 0
+    for k, c in old["clips"].items():                    # keep the others, compacted (a replaced key drops its old frames)
+        if k in keys:
+            continue
+        Q.append(q[c["off"]:c["off"] + c["n"]]); M.append(m[c["off"]:c["off"] + c["n"]])
+        index[k] = dict(c, off=off); off += c["n"]
+    q2, m2, idx2, errors, off = _entries(res, {r["key"]: r for r in records}, _audit_metrics(), off)
+    index.update(idx2)
+    _write(lib_dir, Q + q2, M + m2, index, off)
+    return list(idx2), errors
+
+
+def build(records, out_dir=LIB, procs=6):
+    """records: list of dicts with key, raw_file, mirrored, span_f0, span_f1 (+ any metadata copied into the index).
+    Written to <out_dir>.new and swapped in at the end (a memory-mapped q.bin cannot be overwritten on Windows: stop the API first)."""
+    with Pool(procs) as pool:
+        res = pool.map(_build_one, records, chunksize=16)
+    Q, M, index, errors, off = _entries(res, {r["key"]: r for r in records}, _audit_metrics(), 0)
+    _write(out_dir, Q, M, index, off)
     print(f"library: {len(index)} clips, {off} frames, {len(errors)} errors")
     if errors:
-        (out_dir.parent / "motion_errors.json").write_text(json.dumps(errors, ensure_ascii=False, indent=1), encoding="utf-8")
+        (Path(out_dir).parent / "motion_errors.json").write_text(json.dumps(errors, ensure_ascii=False, indent=1), encoding="utf-8")
     return index, errors
+
+
+QC_FIELDS = {"hand_rate_dom": 3, "hand_gap_dom": 2, "finger_jitter": 3, "wrist_jitter": 3, "face_frac": 3, "span_s": 2,
+             "swap_frac": 3, "zoom_ratio": 2}
+
+
+def _audit_metrics():
+    """per-clip landmark-quality metrics of the Phase-1 audit (data/audit/clips_quality.parquet) → provenance in the index."""
+    import pandas as pd
+    f = paths.WORK / "audit" / "clips_quality.parquet"
+    a = pd.read_parquet(f, columns=["clip_id"] + list(QC_FIELDS)) if f.exists() else pd.DataFrame(columns=["clip_id"] + list(QC_FIELDS))
+    out = {}
+    for r in a.itertuples(index=False):
+        d = {k: round(float(getattr(r, k)), n) for k, n in QC_FIELDS.items() if getattr(r, k) == getattr(r, k)}
+        out[r.clip_id] = d
+    h = paths.HARVEST / "qc.csv"                          # targeted YouTube harvest (same metrics, t2s.data.harvest.qc)
+    if h.exists():
+        for r in pd.read_csv(h).to_dict("records"):
+            out[f"yth:{r['id']}"] = {k: round(float(r[k]), n) for k, n in QC_FIELDS.items() if k in r and r[k] == r[k]}
+    return out
 
 
 def _js(o):

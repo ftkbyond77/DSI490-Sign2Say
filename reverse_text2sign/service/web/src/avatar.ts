@@ -7,6 +7,13 @@ import { VRM, VRMLoaderPlugin, VRMUtils } from "@pixiv/three-vrm";
 
 export type Pose = { q: Float32Array; m: Float32Array }; // q [B*4] (x,y,z,w), m [M]
 
+// the motion names thumbs the VRM 0.x way (Proximal · Intermediate · Distal); three-vrm uses the VRM 1.0 names for every model
+// (it renames VRM 0.x thumbs on load), so the same three joints are Metacarpal · Proximal · Distal here (t2s/motion/rig.py TO_VRM1)
+const TO_VRM1: Record<string, string> = {
+  leftThumbProximal: "leftThumbMetacarpal", leftThumbIntermediate: "leftThumbProximal",
+  rightThumbProximal: "rightThumbMetacarpal", rightThumbIntermediate: "rightThumbProximal",
+};
+
 // VRoid face morph → standard VRM expression, for characters that do not carry VRoid's Fcl_* morphs
 const FACE_EXPR: Record<string, string> = {
   Fcl_EYE_Close_L: "blinkLeft", Fcl_EYE_Close_R: "blinkRight", Fcl_MTH_A: "aa", Fcl_MTH_I: "ih", Fcl_MTH_U: "ou", Fcl_MTH_O: "oh",
@@ -87,7 +94,7 @@ export class Avatar {
   /** bind the bone / morph names of a motion payload (again after a character change) */
   bind(boneNames: string[], morphNames: string[]) {
     const h = this.vrm!.humanoid;
-    this.bones = boneNames.map((n) => h.getNormalizedBoneNode(n as never));
+    this.bones = boneNames.map((n) => h.getNormalizedBoneNode((TO_VRM1[n] ?? n) as never));
     const meshes: THREE.Mesh[] = [];
     this.vrm!.scene.traverse((o) => {
       const m = o as THREE.Mesh;
@@ -158,4 +165,29 @@ export class Avatar {
     this.ro.disconnect();
     this.renderer.dispose();
   }
+}
+
+/** a picker thumbnail for a character whose file carries none: head and shoulders, rendered offscreen once (the API keeps it) */
+export async function headshot(vrm: VRM, w = 160, h = 200): Promise<Blob> {
+  const r = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+  r.setPixelRatio(1);
+  r.setSize(w, h, false);
+  r.outputColorSpace = THREE.SRGBColorSpace;
+  const scene = new THREE.Scene();
+  const key = new THREE.DirectionalLight(0xffffff, 1.9);
+  key.position.set(0.6, 1.8, 1.6);
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x8a8a9a, 1.6), key, vrm.scene);
+  vrm.update(0);
+  vrm.scene.updateMatrixWorld(true);
+  const head = vrm.humanoid.getNormalizedBoneNode("head")?.getWorldPosition(new THREE.Vector3()) ?? new THREE.Vector3(0, 1.5, 0);
+  const cam = new THREE.PerspectiveCamera(28, w / h, 0.05, 10);
+  const y = head.y + 0.08;                       // face in the middle, shoulders at the bottom edge (arms are still in T-pose)
+  cam.position.set(head.x, y, head.z + 0.75);
+  cam.lookAt(head.x, y - 0.01, head.z);
+  r.render(scene, cam);
+  const blob = await new Promise<Blob>((res, rej) => r.domElement.toBlob((b) => (b ? res(b) : rej(new Error("no image"))), "image/png"));
+  scene.remove(vrm.scene);
+  r.dispose();
+  r.forceContextLoss();
+  return blob;
 }

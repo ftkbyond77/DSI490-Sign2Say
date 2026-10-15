@@ -1,7 +1,14 @@
 """Landmark cleaning before retargeting — repairs the MediaPipe failure modes found in the Phase 1 audit (data/audit/swaps.jpg,
 finger_noise.jpg): one hand drawn twice on two-hand contact signs, a hand attached to the wrong arm, single-frame finger flicker,
 short tracking gaps. Nothing is invented beyond short gaps (≤ MAX_GAP frames are interpolated; longer gaps stay missing and are
-reported, the motion builder then refuses or down-grades the clip)."""
+reported, the motion builder then refuses or down-grades the clip).
+
+Palm-to-palm contact (v2, result_v2.md §5.2): when the palms are pressed together (wai / ขอบคุณ) MediaPipe often merges the two
+hands into ONE detection reported twice — after de-duplication one hand is missing exactly while the hands touch, and the avatar
+crossed its hands there. The missing hand is reconstructed as the mirror image of the tracked one about the midline between the
+two pose wrists, but only when the evidence says the sign is symmetric contact: the pose wrists touch during the gap, and in the
+frames just before AND after it both hands were tracked as mirror images of each other (shape error < MIRROR_OK palm lengths).
+Every reconstructed frame is counted in the report (`contact_mirrored`) and surfaces in the clip's provenance."""
 from __future__ import annotations
 
 import numpy as np
@@ -10,6 +17,9 @@ from scipy.signal import savgol_filter
 from ..data.quality import L_SH, R_SH, L_WR, R_WR, iso3, present
 
 MAX_GAP = 8                       # 0.32 s at 25 fps
+CONTACT_SW = 0.35                 # pose wrists closer than this (shoulder widths) = the hands touch
+MIRROR_OK = 0.35                  # mirror-shape error (palm lengths) below which the two hands are mirror images
+MAX_CONTACT_GAP = 40              # frames (1.6 s): longer merged runs are left alone
 POSE_PAIRS = [(1, 4), (2, 5), (3, 6), (7, 8), (9, 10), (11, 12), (13, 14), (15, 16), (17, 18), (19, 20), (21, 22), (23, 24),
               (25, 26), (27, 28), (29, 30), (31, 32)]
 BS_NAMES = None                   # filled lazily from the forward extractor's list
@@ -79,6 +89,47 @@ def _runs(mask):
         i = j
 
 
+def _mirror_error(a, b, hw):
+    """shape difference between hand a and the mirror image of hand b (wrist-relative, isotropic, in palm lengths)."""
+    A, B = iso3(a[None], hw)[0, :, :2], iso3(b[None], hw)[0, :, :2]
+    A, B = A - A[0], B - B[0]
+    B = B * np.array([-1.0, 1.0])
+    palm = max(float(np.linalg.norm(A[9])), float(np.linalg.norm(B[9])), 1e-6)
+    return float(np.linalg.norm(A - B, axis=1).mean() / palm)
+
+
+def _contact_mirror(hands, pose, hw, sw, rep, mask, look=6):
+    """fill merged palm-to-palm contact runs (module docstring); mask [T] marks the reconstructed frames.
+    Returns the number of reconstructed frames."""
+    P = iso3(pose, hw)
+    dwr = np.linalg.norm(P[:, L_WR, :2] - P[:, R_WR, :2], axis=1) / max(sw, 1e-6)
+    pres = [present(h) for h in hands]
+    both = pres[0] & pres[1]
+    n = 0
+    for k in (0, 1):                                       # k = the missing hand
+        miss = ~pres[k] & pres[1 - k]
+        for i, j in _runs(miss):
+            if j - i > MAX_CONTACT_GAP or np.median(dwr[i:j]) > CONTACT_SW:
+                continue
+            before = [t for t in range(max(0, i - look), i) if both[t]]
+            after = [t for t in range(j, min(len(dwr), j + look)) if both[t]]
+            if not before or not after:
+                continue
+            err = [_mirror_error(hands[k][t], hands[1 - k][t], hw) for t in before[-3:] + after[:3]]
+            if np.median(err) > MIRROR_OK:
+                continue
+            for t in range(i, j):
+                src = hands[1 - k][t]
+                xm = 0.5 * (pose[t, L_WR, 0] + pose[t, R_WR, 0])
+                m = src.copy()
+                m[:, 0] = 2 * xm - src[:, 0]
+                hands[k][t] = m
+                mask[t] = True
+                n += 1
+    rep["contact_mirrored"] = n
+    return n
+
+
 def clean(raw):
     """raw MediaPipe dict (normalised image coords) → cleaned copy + report. Works in isotropic units internally."""
     hw = tuple(int(v) for v in raw["hw"])
@@ -110,6 +161,8 @@ def clean(raw):
                 hands[k][t] = 0; hp[k] = False
             elif d_own > 0.6 * sw:
                 hands[k][t] = 0; hp[k] = False; rep["detached"] += 1
+    contact = np.zeros(T, bool)
+    _contact_mirror(hands, pose, hw, sw, rep, contact)
     # single-frame finger flicker: residual of the wrist-relative shape vs a smooth fit
     for h in hands:
         m = present(h)
@@ -156,5 +209,5 @@ def clean(raw):
     if T >= 7:
         P2[:, :, :3] = savgol_filter(pose[:, :, :3], 5, 2, axis=0)
     pose = np.where(ok[..., None], P2, pose)
-    out = dict(raw); out.update(pose=pose, lh=hands[0], rh=hands[1])
+    out = dict(raw); out.update(pose=pose, lh=hands[0], rh=hands[1], contact=contact)
     return out, rep

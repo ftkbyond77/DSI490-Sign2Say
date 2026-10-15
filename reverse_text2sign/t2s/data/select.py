@@ -89,6 +89,9 @@ def fill_rows(t, have):
             have.add(r["concept"])
     h = paths.HARVEST / "qc.csv"
     d = paths.PKG / "data" / "harvest_decisions.csv"
+
+    def _harvest_files(vid):           # qc.csv keeps the paths of the machine that harvested; the files live in the lake mirror
+        return dict(raw_file=str(paths.HARVEST / "pose_mp_raw" / f"{vid}.npz"), source_file=str(paths.HARVEST / "videos" / f"{vid}.mp4"))
     if h.exists() and d.exists():
         q = pd.read_csv(h).merge(pd.read_csv(d)[["id", "decision", "word"]], on=["id", "word"])
         q = q[(q.decision == "accept") & q.tier.notna() & ~q.word.isin(have)]
@@ -97,12 +100,12 @@ def fill_rows(t, have):
             rows.append(dict(concept=f"phrase:{r['word']}", clip_id=f"yth:{r['id']}", dataset="youtube_phrase", signer=r.get("channel"),
                              tier=r["tier"], quality=round(quality_score(r), 3), dominant=r["dominant"], mirrored=r["dominant"] == "left",
                              span_f0=int(r["span_f0"]), span_f1=int(r["span_f1"]), n_candidates=1, n_signers=1, consensus=None,
-                             gloss=r["word"], sign_variant=None, sense=None, raw_file=r["raw_file"], source_file=r["video"]))
+                             gloss=r["word"], sign_variant=None, sense=None, **_harvest_files(r["id"])))
         for r in q.sort_values("finger_jitter").drop_duplicates("word").to_dict("records"):
             rows.append(dict(concept=r["word"], clip_id=f"yth:{r['id']}", dataset="youtube_harvest", signer=r.get("channel"), tier=r["tier"],
                              quality=round(quality_score(r), 3), dominant=r["dominant"], mirrored=r["dominant"] == "left",
                              span_f0=int(r["span_f0"]), span_f1=int(r["span_f1"]), n_candidates=1, n_signers=1, consensus=None,
-                             gloss=r["word"], sign_variant=None, sense=None, raw_file=r["raw_file"], source_file=r["video"]))
+                             gloss=r["word"], sign_variant=None, sense=None, **_harvest_files(r["id"])))
     return pd.DataFrame(rows)
 
 
