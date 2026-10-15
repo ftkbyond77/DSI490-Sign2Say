@@ -15,24 +15,15 @@ Data (S3 = source of truth, cloud_s3/ = local mirror, see cloud_s3/data_prep/SCH
   python main.py study-clips --sentences "…"   # reference clips of each word / letter of a sentence (for a person preparing a test)
   python main.py pretrained                    # rebuild artifacts/pretrained/ (Uni-Sign base, needed only for training)
 
-Data quality (v8):
-  python main.py audit-youtube measure|sheets|decide   # YouTube clip audit (cuts, people, framing, hands, label check + eye check)
-
-Train (v8: everything local — the compact Thai-only encoder fits the laptop GPU):
-  python main.py train-encoder --run <run> [--ema 0.998]   # landmark encoder from scratch (resumes after an interruption)
-  python main.py train-encoder --embed_ref v7|zeroshot     # reference encoders on the same evaluation clips
-  python main.py train-encoder --report <run>              # every protocol vs v7 / zero-shot → artifacts/reports/isolated_v8.json
+Train (encoder on one Vertex AI GPU job, everything else local):
+  python main.py cloud <vertex.py args>        # upload-code / upload-data / upload-models / launch / wait / status / cleanup
   python main.py train-seq --encoder_run <dir> # tagger + span head + decoder tables on the local GPU
-  python main.py cloud <vertex.py args>        # optional Vertex AI GPU jobs: upload / launch / wait / status / cleanup
 
 Build, tune, evaluate (local):
   python main.py eval <step> [args]            # build | grammar | spot | isolated | infer | selftest | vocab | bank_add  (scripts/eval.py)
   python main.py train-letters                 # fingerspelling recogniser + letter bank (CPU, minutes) → models/fingerspell.npz, letters_bank.npz
   python main.py tune-spelling                 # letter settings on tune data (models/spotting.json "spell"), report on held-out data
   python main.py export-onnx                   # models/onnx/*.onnx for production (onnxruntime), with a parity check
-  python main.py eval external                 # public videos of people in no source (artifacts/reports/external_test_list.tsv)
-  python main.py diagnose <video|live request> [--intended "…"]   # why did my sign fail? (landmarks, segments, references)
-  python main.py bench-tts                     # Thai voices: intelligibility (ASR round trip), speed, prosody
 """
 from __future__ import annotations
 
@@ -45,8 +36,7 @@ SCRIPTS = {"prep": "scripts/data_prep.py", "eval": "scripts/eval.py", "data": "s
            "export-onnx": "scripts/export_onnx.py", "infer": "scripts/infer.py", "pretrained": "scripts/pretrained.py",
            "extract": "scripts/extract_mp.py", "harvest": "scripts/harvest_words.py", "train-seq": "GCP/script/job_entry.py",
            "letters": "scripts/harvest_letters.py", "train-letters": "scripts/train_fingerspell.py", "tune-spelling": "scripts/tune_spelling.py",
-           "study-clips": "scripts/study_clips.py", "audit-youtube": "scripts/audit_youtube.py",
-           "train-encoder": "scripts/train_encoder.py", "bench-tts": "scripts/bench_tts.py", "diagnose": "scripts/diagnose.py"}
+           "study-clips": "scripts/study_clips.py"}
 
 
 def main():
@@ -61,7 +51,7 @@ def main():
         cmd, rest = "eval", ["infer", *rest]
     if cmd == "train-seq":
         rest = ["--stage", "sequence", "--run_id", "seq-local", "--data", str(ROOT / "cloud_s3" / "data_prep" / "shards"),
-                "--models", str(ROOT / "artifacts" / "pretrained"), "--out", str(ROOT / "artifacts" / "runs" / "seq-v8"), *rest]
+                "--models", str(ROOT / "artifacts" / "pretrained"), "--out", str(ROOT / "artifacts" / "runs" / "seq-v7"), *rest]
     if cmd not in SCRIPTS:
         sys.exit(f"unknown command {cmd!r}\n{__doc__}")
     sys.path.insert(0, str(ROOT))

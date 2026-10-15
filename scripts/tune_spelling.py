@@ -47,7 +47,7 @@ def spelled(p, u, cfg):
 
 def main():
     p = SignPipeline(backend="onnx", device="cpu", vocab="conversation", use_llm=False, use_face=False, bank_file=ART / "eval" / "bank_eval.npz")
-    D = pickle.load(open(ART / "runs" / "seq-v8" / "seq_tables.pkl", "rb"))
+    D = pickle.load(open(ART / "runs" / "seq-v7" / "seq_tables.pkl", "rb"))
     neg = {sp: [] for sp in ("tune", "test")}
     for it in D["items"]:
         if it["kind"] == "real" and it["split"] in neg:

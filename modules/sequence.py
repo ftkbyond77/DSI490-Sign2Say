@@ -39,7 +39,7 @@ class Tagger(nn.Module):
     """Frame tagger: non-sign / sign-begin / sign-inside — 2-layer BiGRU over [encoder frame state ‖ 13 kinematic features]
     (chosen over a dilated TCN and a Transformer in the v6 benchmark)."""
 
-    def __init__(self, d_in=768 + N_KIN, d=192, arch="gru"):   # d_in = encoder frame-state size + kinematics
+    def __init__(self, d_in=768 + N_KIN, d=192, arch="gru"):
         super().__init__()
         assert arch == "gru", arch
         self.arch = arch
@@ -69,15 +69,17 @@ def retarget(kp, sc, mid_to=(0.75, 0.45), sw_to=0.22):
 class Synth:
     """Continuous sentences from isolated clips. pools: dict signer → list of clip dict(row, f0, f1, concept); null_rows: list."""
 
-    def __init__(self, store, pools, null_rows, rest_rows, seed=0, cross_dataset=0.35, max_len=900, speed=(0.9, 1.7)):
+    def __init__(self, store, pools, null_rows, rest_rows, seed=0, cross_dataset=0.35, max_len=900, speed=(0.9, 1.7), fluent=0.0,
+                 fluent_trim=(0.15, 0.3), fluent_overlap=(0, 4)):
         self.store, self.pools, self.null_rows, self.rest_rows = store, pools, null_rows, rest_rows
+        self.fluent = fluent        # pitty: share of sentences signed fluently (sign cores, no pauses, curved joins — see _fluent_core)
+        self.fluent_trim, self.fluent_overlap = fluent_trim, fluent_overlap
         self.speed = speed
         self.signers = [s for s, v in pools.items() if len(v) >= 6]
         self.all_clips = [c for v in pools.values() for c in v]
         self.rng = np.random.RandomState(seed)
         self.cross = cross_dataset
         self.max_len = max_len
-        self.framing_p = 0.0               # v8.1: share of sentences seen through a tight webcam frame (hands lost below it)
 
     def _clip(self, c, a=None, b=None):
         kp, sc, hw = self.store.get(c["row"], c["f0"] if a is None else a, c["f1"] if b is None else b)
@@ -124,10 +126,19 @@ class Synth:
         r = self._rest(rng.randint(5, 25))
         if r:
             put(*r, 0)
+        fl = self.fluent > 0 and rng.rand() < self.fluent
         for j, c in enumerate(picks):
             kp, sc = self._clip(c)
+            if fl:
+                kp, sc = _fluent_core(kp, sc, rng.uniform(*self.fluent_trim))
             kp, sc = resample(kp, sc, rng.uniform(*self.speed))
-            if KP:
+            if KP and fl:
+                bk, bs, o = _fluent_join(KP[-1], SC[-1], kp, sc, rng, overlap=self.fluent_overlap)
+                if o:                                   # cross-fade: the last o frames of A and first o of B become one blend
+                    KP[-1], SC[-1], Y[-1] = KP[-1][:-o], SC[-1][:-o], Y[-1][:-o]
+                    kp, sc = kp[o:], sc[o:]
+                put(bk, bs, 0)
+            elif KP:
                 u = rng.rand()
                 if u < 0.3:
                     r = self._rest(rng.randint(6, 30))
@@ -152,15 +163,45 @@ class Synth:
         live = sc.sum(1) > 0
         kp[live] = ((kp[live] - [0.75, 0.45]) @ R.T + [0.75, 0.45] + rng.uniform(-0.05, 0.05, 2)).astype(np.float32)
         kp = kp + rng.normal(0, 0.002, kp.shape).astype(np.float32)
-        if self.framing_p and rng.rand() < self.framing_p:
-            from .encoder import frame_crop
-            kp, sc = frame_crop(kp, sc, rng)
         return dict(kp=kp, sc=sc, y=y, words=words)
 
 
 def _bridge(k0, k1, s0, s1, n):
     w = np.linspace(0, 1, n + 2)[1:-1, None, None]
     return (k0[None] * (1 - w) + k1[None] * w).astype(np.float32), np.minimum(s0, s1)[None].repeat(n, 0)
+
+
+# pitty: fluent synthetic signing. Isolated recordings hold still before and after every sign; glued together, those holds are
+# the seams the tagger learns to cut at — and fluent signing has none (data_test: one run of P(sign) per sentence). Keep the
+# sign core (hands up, minus `trim` of it on each side) and join with a curve that continues both signs' velocities.
+def _fluent_core(kp, sc, trim):
+    up = np.zeros(len(kp), bool)
+    for w in (9, 10):                                         # wrists above the lower chest (retargeted: shoulders y 0.45, width 0.22)
+        up |= (sc[:, w] > 0.3) & (kp[:, w, 1] < 0.45 + 1.3 * 0.22)
+    i = np.flatnonzero(up)
+    a, b = (i[0], i[-1] + 1) if len(i) >= 4 else (0, len(kp))
+    t = int(round((b - a) * trim))
+    if b - a - 2 * t >= 6:
+        a, b = a + t, b - t
+    return kp[a:b], sc[a:b]
+
+
+def _fluent_join(ka, sa, kb, sb, rng, speed=0.02, overlap=(0, 4)):
+    """join A → B: either a 1–4 frame cross-fade of A's last and B's first frames (returned with o = its length; the caller
+    drops those frames from A and B) or, when o = 0, a cubic Hermite curve that keeps both signs' velocities, length ∝ wrist travel."""
+    va = ka[-1] - ka[-2] if len(ka) > 1 else np.zeros_like(ka[-1])
+    vb = kb[1] - kb[0] if len(kb) > 1 else np.zeros_like(kb[0])
+    d = float(np.linalg.norm(ka[-1, [9, 10]] - kb[0, [9, 10]], axis=1).max())
+    n = int(np.clip(round(d / speed), 1, 8))
+    s = np.linspace(0, 1, n + 2)[1:-1, None, None]; m = n + 1
+    bk = ((2 * s ** 3 - 3 * s ** 2 + 1) * ka[-1][None] + (s ** 3 - 2 * s ** 2 + s) * (va * m)[None]
+          + (-2 * s ** 3 + 3 * s ** 2) * kb[0][None] + (s ** 3 - s ** 2) * (vb * m)[None]).astype(np.float32)
+    bs = np.minimum(sa[-1], sb[0])[None].repeat(n, 0)
+    o = int(min(rng.randint(overlap[0], overlap[1] + 1), len(ka) // 3, len(kb) // 3))
+    if o:
+        w = np.linspace(0, 1, o + 2)[1:-1, None, None]
+        return (ka[-o:] * (1 - w) + kb[:o] * w).astype(np.float32), np.minimum(sa[-o:], sb[:o]), o
+    return bk, bs, 0
 
 
 # ----------------------------------------------------------------------------- windows × bank
@@ -212,8 +253,7 @@ def stage_sequence(a, paths_, load_model):
     5. evaluation items: poses (for exact re-scoring at tuning time), tagger probabilities, span-head window tables against the full
        and the conversation train-only banks, at 1× / 1.5× / 2× speed and after tempo normalisation; per-window teacher tables for
        the 1× test sentences (reference: what the slow exact spotting would give)."""
-    from .encoder import NULL, PoseStore, to_iso
-    from .lmenc import EncoderAPI
+    from .encoder import NULL, PoseStore, embed_parts, frame_features, load_encoder, prep, to_iso
     from .runtime import Bank, table_from_Z
     from .schema import activity
     from .spanhead import SpanHeadNP, train_span_head
@@ -222,9 +262,8 @@ def stage_sequence(a, paths_, load_model):
     t0 = time.time()
     rng = np.random.RandomState(0)
     enc_dir = Path(a.encoder_run)
-    enc = EncoderAPI(enc_dir / "encoder_best.pt", models, device=dev)          # v8 landmark encoder or v7 Uni-Sign
-    prep, D = enc.prep, enc.dim
-    store = a.store if getattr(a, "store", None) is not None else PoseStore(data / "pose_store.npz")
+    model = load_encoder(models, enc_dir / "encoder_best.pt", device=dev)
+    store = PoseStore(data / "pose_store.npz")
     clips = pd.read_parquet(data / "clips.parquet")
     clips = clips[clips.clip_id.isin(store.row) & (clips.view == "primary")].reset_index(drop=True)
     clips["row"] = clips.clip_id.map(store.row)
@@ -240,9 +279,7 @@ def stage_sequence(a, paths_, load_model):
     bank_full = Bank(Zall[trm & sign], idx.c.values[trm & sign], C)
     conv_ids = {cidx[c] for c in daily if c in cidx}
     bank_conv = Bank(Zall[trm & sign], idx.c.values[trm & sign], C, allowed=conv_ids)
-    dv = json.loads((data / "daily_vocab.json").read_text(encoding="utf-8")) if (data / "daily_vocab.json").exists() else []
-    daily_ids = {cidx[c] for c in dv if c in cidx} | conv_ids
-    banks = {"daily": Bank(Zall[trm & sign], idx.c.values[trm & sign], C, allowed=daily_ids), "conversation": bank_conv}   # v8: no 9.6k mode
+    banks = {"full": bank_full, "conversation": bank_conv}
     nm = trm & (idx.concept == NULL).values
     null_proto = Zall[nm].mean(0) if nm.any() else -Zall[trm & sign].mean(0)      # no null clips (debug subsets): 'away from all signs'
     null_proto /= np.linalg.norm(null_proto) + 1e-9
@@ -252,10 +289,10 @@ def stage_sequence(a, paths_, load_model):
     lens = list(range(8, 50, 4))
 
     def embed(parts_list):
-        return enc.embed(parts_list, bs=a.embed_bs)
+        return embed_parts(model, parts_list, bs=a.embed_bs, device=dev)
 
     def seq_feats(kp, sc):
-        return np.concatenate([enc.frames(kp, sc), kin_features(kp, sc)], 1).astype(np.float16)
+        return np.concatenate([frame_features(model, kp, sc, device=dev), kin_features(kp, sc)], 1).astype(np.float16)
 
     def active_mask(kp, sc):
         """tagger-independent superset of 'signing' (a hand up or moving) — where candidate windows are placed"""
@@ -291,9 +328,13 @@ def stage_sequence(a, paths_, load_model):
     nulls = idx[(idx.concept == NULL) & (idx.role == "train")].merge(clips[["clip_id", "row"]], on="clip_id")
     null_rows = [dict(row=int(r.row), f0=0, f1=0, concept=NULL) for r in nulls.itertuples()]
     rest_rows = [dict(row=int(r.row), f0=int(r.f0), f1=int(r.f1)) for r in iso[(iso.role == "train") & (iso.dataset != "tslone") & ((iso.n_frames - (iso.f1 - iso.f0)) >= 10)].itertuples()]
-    synth_tr = Synth(store, train_pools, null_rows, rest_rows, seed=1, speed=(0.8, 2.4))
-    synth_ho = Synth(store, heldout_pools, null_rows, rest_rows, seed=2, cross_dataset=0.0, speed=(0.8, 2.4))
-    synth_tr.framing_p = getattr(a, "framing_p", 0.0)
+    fluent = float(getattr(a, "fluent", 0.0) or 0.0)       # pitty: share of fluent synthetic sentences (0 = v7)
+    ftrim = tuple(float(x) for x in str(getattr(a, "fluent_trim", "0.15,0.3") or "0.15,0.3").split(","))
+    fover = tuple(int(x) for x in str(getattr(a, "fluent_overlap", "0,4") or "0,4").split(","))
+    fkw = dict(fluent=fluent, fluent_trim=ftrim, fluent_overlap=fover)
+    synth_tr = Synth(store, train_pools, null_rows, rest_rows, seed=1, speed=(0.8, 2.4), **fkw)
+    synth_ho = Synth(store, heldout_pools, null_rows, rest_rows, seed=2, cross_dataset=0.0, speed=(0.8, 2.4), **fkw)
+    log.info("synthetic sentences: fluent share %.2f · trim %s · cross-fade %s", fluent, ftrim, fover)
     syn_train, distill = [], []
 
     def distill_windows(T, y=None, n=24):
@@ -310,7 +351,7 @@ def stage_sequence(a, paths_, load_model):
         syn_train.append(dict(y=s["y"], x=x))
         if i < a.n_distill:
             ws = distill_windows(len(s["kp"]), s["y"])
-            distill.append((x[:, :D], ws, embed([prep(s["kp"][x0:y0], s["sc"][x0:y0]) for x0, y0 in ws]).astype(np.float16)))
+            distill.append((x[:, :768], ws, embed([prep(s["kp"][x0:y0], s["sc"][x0:y0]) for x0, y0 in ws]).astype(np.float16)))
         if (i + 1) % 500 == 0:
             log.info("synth train %d/%d (%.0fs)", i + 1, a.n_synth, time.time() - t0)
     syn_ho = []
@@ -329,7 +370,7 @@ def stage_sequence(a, paths_, load_model):
         real.append(dict(clip_id=r.clip_id, role=r.role, variation=r.recording_variation, glosses=r.concept.split("|"), kp=kp, sc=sc, x=seq_feats(kp, sc)))
     for s_ in [s for s in real if s["role"] == "tagger_train"]:
         ws = distill_windows(len(s_["kp"]), None, 40)
-        distill.append((s_["x"][:, :D], ws, embed([prep(s_["kp"][x0:y0], s_["sc"][x0:y0]) for x0, y0 in ws]).astype(np.float16)))
+        distill.append((s_["x"][:, :768], ws, embed([prep(s_["kp"][x0:y0], s_["sc"][x0:y0]) for x0, y0 in ws]).astype(np.float16)))
     log.info("synthetic: train %d, held-out %d; real sentences %d; distillation %d sequences / %d windows (%.0fs)", len(syn_train), len(syn_ho), len(real),
              len(distill), sum(len(d[1]) for d in distill), time.time() - t0)
 
@@ -346,7 +387,7 @@ def stage_sequence(a, paths_, load_model):
     for s in real:
         T = len(s["kp"])
         wins = window_list(T, lens, 2)
-        S_full = bank_full.scores(head(s["x"][:, :D].astype(np.float32), wins))
+        S_full = bank_full.scores(head(s["x"][:, :768].astype(np.float32), wins))
         gc = [cidx.get(g, -1) for g in s["glosses"]]
         S = np.stack([S_full[:, g] if g >= 0 else np.full(len(wins), -1.0) for g in gc], 1)
         segs = align_sentence(dict(wins=wins, S=S), s["glosses"], T)
@@ -391,7 +432,7 @@ def stage_sequence(a, paths_, load_model):
         return dict(boundary_f1=float(np.mean(f1s)), sign_frame_f1=float(np.mean(sign_f1)), count_abs_err=float(np.mean(cerr)), n=len(items))
 
     def train_tagger(train_set, tag):
-        tagger = Tagger(d_in=D + N_KIN).to(dev)
+        tagger = Tagger().to(dev)
         opt = torch.optim.AdamW(tagger.parameters(), lr=1e-3, weight_decay=0.01)
         bs = min(32, len(train_set))
         steps = max(1, a.epochs * (len(train_set) // bs))
@@ -403,7 +444,7 @@ def stage_sequence(a, paths_, load_model):
             for b in range(0, len(perm_) - bs + 1, bs):
                 batch = [train_set[j] for j in perm_[b:b + bs]]
                 L = max(len(s["x"]) for s in batch)
-                X = torch.zeros(bs, L, D + N_KIN); Y = torch.full((bs, L), -100, dtype=torch.long)
+                X = torch.zeros(bs, L, 768 + N_KIN); Y = torch.full((bs, L), -100, dtype=torch.long)
                 for i, s in enumerate(batch):
                     X[i, :len(s["x"])] = torch.from_numpy(s["x"].astype(np.float32)); Y[i, :len(s["y"])] = torch.from_numpy(s["y"])
                 X, Y = X.to(dev), Y.to(dev)
@@ -444,23 +485,23 @@ def stage_sequence(a, paths_, load_model):
                 f0, f1 = int(round(g["f0"] / speed)), max(int(round(g["f1"] / speed)), int(round(g["f0"] / speed)) + 1)
                 y[min(f0, T - 1)] = 1; y[f0 + 1:min(f1, T)] = 2
             it = dict(kind="real", id=f"{s['clip_id']}@{speed}", clip_id=s["clip_id"], split=split, speed=speed, variation=s["variation"], glosses=s["glosses"],
-                      y=y, prob=prob_of(tg, x), tables=tables(kp, sc, x[:, :D], head, teacher=(split == "test" and speed == 1.0)),
+                      y=y, prob=prob_of(tg, x), tables=tables(kp, sc, x[:, :768], head, teacher=(split == "test" and speed == 1.0)),
                       kp=kp.astype(np.float16), sc=sc.astype(np.float16), stretched={})
             for fct in (1.5, 2.0):               # what the decoder sees after tempo normalisation by fct
                 k2, s2 = resample(kp, sc, 1.0 / fct)
                 x2 = seq_feats(k2, s2)
-                it["stretched"][fct] = dict(prob=prob_of(tg, x2), tables=tables(k2, s2, x2[:, :D], head), kp=k2.astype(np.float16), sc=s2.astype(np.float16))
+                it["stretched"][fct] = dict(prob=prob_of(tg, x2), tables=tables(k2, s2, x2[:, :768], head), kp=k2.astype(np.float16), sc=s2.astype(np.float16))
             items.append(it)
         if (k + 1) % 50 == 0:
             log.info("items %d/%d real sentences (%.0fs)", k + 1, len(real), time.time() - t2)
     for j, s in enumerate(syn_ho):
         items.append(dict(kind="synth", id=f"synth{j}", split=s["split"], speed=1.0, glosses=s["words"], y=s["y"], prob=prob_of(tagger, s["x"]),
-                          tables=tables(s["kp"].astype(np.float32), s["sc"].astype(np.float32), s["x"][:, :D], head, teacher=(s["split"] == "test")),
+                          tables=tables(s["kp"].astype(np.float32), s["sc"].astype(np.float32), s["x"][:, :768], head, teacher=(s["split"] == "test")),
                           kp=s["kp"], sc=s["sc"], stretched={}))
-    pickle.dump(dict(items=items, concepts=concepts, conversation=sorted(conv_ids), daily=sorted(daily_ids)), open(out / "seq_tables.pkl", "wb"))
+    pickle.dump(dict(items=items, concepts=concepts, conversation=sorted(conv_ids)), open(out / "seq_tables.pkl", "wb"))
     metrics = dict(final=info_final, synth_heldout_test=evaluate(tagger, [s for s in syn_ho if s["split"] == "test"]),
                    tsl51_test=evaluate(tagger, [s for s in real if s["role"] == "sentence_test"]),
                    tsl51_tune_out_of_fold=float(np.mean([evaluate(folds[fold_of[tuple(s["glosses"])]], [s])["boundary_f1"] for s in tune])) if tune else None)
     write_json(out / "sequence_metrics.json", metrics)
-    write_json(out / "tagger_arch.json", dict(arch="gru", d_in=D + N_KIN, encoder=enc.kind))
+    write_json(out / "tagger_arch.json", dict(arch="gru"))
     log.info("sequence stage done in %.1f min: %s", (time.time() - t0) / 60, {k: v for k, v in metrics.items() if k != "final"})

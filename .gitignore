@@ -62,9 +62,6 @@ result_reporting/**/*.jpg
 !result_reporting/*.jpg
 result_reporting/inference_cli/
 
-# ---- stray files from Windows shells (`> $null` in cmd creates a file)
-/$null
-
 # ---- Python / Jupyter / OS noise
 __pycache__/
 *.py[cod]
@@ -99,6 +96,9 @@ webapp/web/public/mediapipe/
 webapp/web/public/models/
 *.tsbuildinfo
 node_modules/
+
+# ---- stray files from Windows shells (`> $null` in cmd creates a file)
+/$null
 
 # ---- reverse part (reverse_text2sign/): derived data, local caches and web build output
 reverse_text2sign/data/

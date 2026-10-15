@@ -344,7 +344,8 @@ def main():
     ap.add_argument("--encoder_run"); ap.add_argument("--n_synth", type=int, default=2500); ap.add_argument("--n_synth_heldout", type=int, default=240)
     ap.add_argument("--n_distill", type=int, default=1200); ap.add_argument("--span_epochs", type=int, default=8)
     ap.add_argument("--epochs", type=int, default=18)
-    ap.add_argument("--framing_p", type=float, default=0.0, help="share of synthetic sentences seen through a tight webcam frame")
+    ap.add_argument("--fluent", type=float, default=0.0)   # pitty: share of fluent synthetic sentences in the sequence stage (0 = v7)
+    ap.add_argument("--fluent_trim", default="0.15,0.3"); ap.add_argument("--fluent_overlap", default="0,4")   # pitty: fluent sign-core trim / cross-fade frames
     A = ap.parse_args()
     if A.stage == "train_encoder":
         stage_train_encoder(A)

@@ -1,6 +1,6 @@
 // MediaPipe Holistic in the browser — the same model (holistic_landmarker.task, tasks-vision 1.0.1) the server and the training
 // data use, so a webcam frame becomes exactly the kind of landmarks the sign model was trained on.
-import { FilesetResolver, HandLandmarker, HolisticLandmarker, type HolisticLandmarkerResult } from "@mediapipe/tasks-vision";
+import { FilesetResolver, HolisticLandmarker, type HolisticLandmarkerResult } from "@mediapipe/tasks-vision";
 
 // 478-point face mesh → 68 iBUG points (must match modules/mediapipe_pose.py MESH68)
 export const MESH68 = [127, 234, 93, 132, 58, 172, 136, 150, 152, 379, 365, 397, 288, 361, 323, 454, 356,
@@ -10,13 +10,12 @@ export const MESH68 = [127, 234, 93, 132, 58, 172, 136, 150, 152, 379, 365, 397,
   61, 39, 37, 0, 267, 269, 291, 405, 314, 17, 84, 181,
   78, 82, 13, 312, 308, 317, 14, 87];
 
-// fb = which hands came from the HandLandmarker fallback ([left, right]); counted in the per-utterance hand-tracking report
-export type LmFrame = { t: number; pose: number[][]; lh: number[][]; rh: number[][]; face: number[][]; bs: number[]; fb?: [boolean, boolean] };
+export type LmFrame = { t: number; pose: number[][]; lh: number[][]; rh: number[][]; face: number[][]; bs: number[] };
 
 const r4 = (v: number) => Math.round(v * 1e4) / 1e4;
 
 export type Delegate = "GPU" | "GPU+CPU" | "CPU";
-export type Landmarkers = { lm: HolisticLandmarker; delegate: Delegate; face?: HolisticLandmarker; hands?: HandLandmarker };
+export type Landmarkers = { lm: HolisticLandmarker; delegate: Delegate; face?: HolisticLandmarker };
 
 /** Pick the fastest set-up that works on this machine (tested on one frame, because some WebGL drivers load the face-blendshape
  *  model and then fail on the first frame with "No support of const"):
@@ -38,79 +37,15 @@ export async function createHolistic(prefer: "GPU" | "CPU" = "GPU"): Promise<Lan
     c.getContext("2d")!.fillRect(0, 0, 64, 64);
     try { lm.detectForVideo(c, 1, () => {}); return true; } catch { return false; }
   };
-  // v8: a separate hand detector for the frames where Holistic loses a hand (Holistic finds hands only through the pose wrist, so
-  // motion blur / a mis-placed wrist drops the whole hand). Same hand-landmark model family; palm detection on the whole frame.
-  const hands = async (delegate: "GPU" | "CPU") => {
-    try {
-      return await HandLandmarker.createFromOptions(fileset, {
-        baseOptions: { modelAssetPath: "/models/hand_landmarker.task", delegate }, runningMode: "VIDEO" as const, numHands: 2,
-        minHandDetectionConfidence: 0.5, minHandPresenceConfidence: 0.5, minTrackingConfidence: 0.5,
-      });
-    } catch { return undefined; }
-  };
   if (prefer === "GPU") {
-    try { const lm = await make("GPU"); if (works(lm)) return { lm, delegate: "GPU", hands: await hands("GPU") }; lm.close(); } catch { /* next option */ }
+    try { const lm = await make("GPU"); if (works(lm)) return { lm, delegate: "GPU" }; lm.close(); } catch { /* next option */ }
     try {
       const lm = await make("GPU", false);
-      if (works(lm)) return { lm, delegate: "GPU+CPU", face: await make("CPU"), hands: await hands("GPU") };
+      if (works(lm)) return { lm, delegate: "GPU+CPU", face: await make("CPU") };
       lm.close();
     } catch { /* next option */ }
   }
-  return { lm: await make("CPU"), delegate: "CPU", hands: await hands("CPU") };
-}
-
-/** A pose wrist that is visible, inside the frame and raised to signing height: its hand should be tracked. */
-export function wristRaised(pose: number[][], i: number): boolean {
-  if (pose.length < 17) return false;
-  const ls = pose[11], rs = pose[12], w = pose[i];
-  const sw = Math.hypot(ls[0] - rs[0], ls[1] - rs[1]) || 0.2;
-  const midY = (ls[1] + rs[1]) / 2;
-  return w[3] > 0.5 && w[0] > 0 && w[0] < 1 && w[1] > 0 && w[1] < 1 && w[1] < midY + 1.3 * sw;
-}
-
-/** Two 21-point detections of the same physical hand: their points coincide (mean distance < 0.15 shoulder width). Touching hands
- *  (ชื่อ, สวัสดี, ขอบคุณ) have their wrists close together but different fingers, so the wrist alone cannot tell them apart. */
-function sameHand(a: number[][], b: number[][], sw: number): boolean {
-  let d = 0;
-  for (let i = 0; i < 21; i++) d += Math.hypot(a[i][0] - b[i][0], a[i][1] - b[i][1]);
-  return d / 21 < 0.15 * sw;
-}
-
-/** Fill hands Holistic missed from the HandLandmarker result (the camera image is not mirrored, so pose 15 = the signer's left
- *  wrist). v8.1: a detection is the hand Holistic already has only if its points coincide with it (the v8 wrist-distance test dropped
- *  the second hand of every two-hand contact sign); the others go to a missing side's pose wrist within ~1 shoulder width, the nearer
- *  wrist first. Same rule as modules/mediapipe_pose.py fill_hands. */
-export function fillHands(f: LmFrame, detected: number[][][]): LmFrame {
-  if (f.pose.length < 17 || !detected.length) return f;
-  const ls = f.pose[11], rs = f.pose[12];
-  const sw = Math.hypot(ls[0] - rs[0], ls[1] - rs[1]) || 0.2;
-  const fb: [boolean, boolean] = f.fb ?? [false, false];
-  const sides = [["lh", 15], ["rh", 16]] as const;
-  const have = sides.map(([k]) => f[k].length === 21);
-  let free = detected.filter((d) => d.length === 21 && !sides.some(([k], i) => have[i] && sameHand(d, f[k], sw)));
-  free = free.filter((d, i) => !free.slice(0, i).some((e) => sameHand(d, e, sw)));          // one detection per hand
-  const pairs: [number, number, number][] = [];
-  sides.forEach(([, wi], k) => {
-    if (have[k]) return;
-    const w = f.pose[wi];
-    free.forEach((d, j) => { const dw = Math.hypot(d[0][0] - w[0], d[0][1] - w[1]); if (dw < 1.0 * sw) pairs.push([dw, k, j]); });
-  });
-  const used = new Set<number>();
-  for (const [, k, j] of pairs.sort((x, y) => x[0] - y[0])) {
-    if (used.has(j) || f[sides[k][0]].length === 21) continue;
-    f[sides[k][0]] = free[j]; fb[k] = true; used.add(j);
-  }
-  f.fb = fb;
-  return f;
-}
-
-/** Signing space visible below the shoulders, in shoulder widths (training videos: 1.2–1.8; chest-level signs need ≥ ~1). aspect = W / H. */
-export function roomBelow(f: LmFrame | null, aspect: number): number | null {
-  if (!f || f.pose.length < 17) return null;
-  const ls = f.pose[11], rs = f.pose[12];
-  if (ls[3] < 0.5 || rs[3] < 0.5) return null;
-  const sw = Math.hypot((ls[0] - rs[0]) * aspect, ls[1] - rs[1]);        // in image heights
-  return sw > 0.01 ? (1 - (ls[1] + rs[1]) / 2) / sw : null;
+  return { lm: await make("CPU"), delegate: "CPU" };
 }
 
 /** Which parts MediaPipe found in a frame (for the on-screen check). */
@@ -131,36 +66,12 @@ export function pack(res: HolisticLandmarkerResult, t: number): LmFrame {
 }
 
 /** Run the landmarker on a frame (the camera video, or the normalised canvas); MediaPipe calls back synchronously. */
-export function detect(lm: HolisticLandmarker, src: HTMLVideoElement | HTMLCanvasElement, tMs: number, hands?: HandLandmarker): LmFrame | null {
+export function detect(lm: HolisticLandmarker, src: HTMLVideoElement | HTMLCanvasElement, tMs: number): LmFrame | null {
   let out: LmFrame | null = null;
   lm.detectForVideo(src, tMs, (res) => {
     out = pack(res, tMs);
   });
-  const f = out as LmFrame | null;
-  // the fallback runs only when a raised, visible wrist has no hand (it costs a palm detection on the whole frame)
-  if (f && hands && ((!f.lh.length && wristRaised(f.pose, 15)) || (!f.rh.length && wristRaised(f.pose, 16)))) {
-    try {
-      const r = hands.detectForVideo(src, tMs);
-      fillHands(f, (r.landmarks ?? []).map((h) => h.map((p) => [r4(p.x), r4(p.y), r4(p.z)])));
-    } catch { /* the fallback is optional */ }
-  }
-  return f;
-}
-
-/** Hand tracking over an utterance: share of frames with a raised, visible wrist whose hand was tracked (per side), how many came from
- *  the fallback, and the longest run of lost frames. Shown on the result card and saved with the request (the v8 extractor metric). */
-export function handReport(frames: LmFrame[]) {
-  const side = (key: "lh" | "rh", wi: number, k: 0 | 1) => {
-    let n = 0, got = 0, fb = 0, run = 0, maxRun = 0;
-    for (const f of frames) {
-      if (!wristRaised(f.pose, wi)) { run = 0; continue; }
-      n++;
-      if (f[key].length === 21) { got++; if (f.fb?.[k]) fb++; run = 0; } else { run++; maxRun = Math.max(maxRun, run); }
-    }
-    return { n, hit: n ? got / n : 1, fallback: fb, max_gap: maxRun };
-  };
-  const t = frames.length > 1 ? (frames[frames.length - 1].t - frames[0].t) / 1000 : 0;
-  return { left: side("lh", 15, 0), right: side("rh", 16, 1), fps: t > 0 ? (frames.length - 1) / t : 0 };
+  return out;
 }
 
 /** A hand is "up" (signing) when it is detected above the lower chest — used for hands-down end-pointing in live mode. */
@@ -169,15 +80,9 @@ export function handsUp(f: LmFrame): boolean {
   const ls = f.pose[11], rs = f.pose[12];
   const sw = Math.hypot(ls[0] - rs[0], ls[1] - rs[1]) || 0.2;
   const midY = (ls[1] + rs[1]) / 2;
-  // v8.1: "up" also needs the hand inside the picture — with a tight webcam frame (shoulders low in the image) a resting hand sits at
-  // the bottom edge, still above "lower chest" in body units, and live mode never saw the hands go down (utterances ran to the cap)
-  const up = (hand: number[][]) => {
-    if (hand.length !== 21) return false;
-    const y = hand.reduce((s, p) => s + p[1], 0) / 21;
-    return y < midY + 1.5 * sw && y < 0.9;
-  };
+  const up = (hand: number[][]) => hand.length === 21 && hand.reduce((s, p) => s + p[1], 0) / 21 < midY + 1.5 * sw;
   // the body's wrist points are tracked even when a hand's 21 points drop out (fast motion, 12 fps): either counts as "up"
-  const wrist = (i: number) => f.pose[i] && f.pose[i][3] > 0.5 && f.pose[i][1] < midY + 1.3 * sw && f.pose[i][1] < 0.86;
+  const wrist = (i: number) => f.pose[i] && f.pose[i][3] > 0.5 && f.pose[i][1] < midY + 1.3 * sw;
   return up(f.lh) || up(f.rh) || wrist(15) || wrist(16);
 }
 
@@ -226,41 +131,12 @@ export class Normalizer {
     if (t - this.last > 300) { this.last = t; this.measure(v); }
     if (!this.enabled || !this.luts) return v;
     if (this.canvas.width !== v.videoWidth) { this.canvas.width = v.videoWidth; this.canvas.height = v.videoHeight; }
-    if (this.svgOk) {                              // v8: the lookup table as an SVG component-transfer filter → applied on the GPU
-      this.ctx.filter = "url(#thaislm-norm)";
-      this.ctx.drawImage(v, 0, 0);
-      this.ctx.filter = "none";
-      return this.canvas;
-    }
-    this.ctx.drawImage(v, 0, 0);                   // fallback: the same table per pixel on the CPU (v7)
+    this.ctx.drawImage(v, 0, 0);
     const img = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
     const d = img.data, [R, G, B] = this.luts;
     for (let i = 0; i < d.length; i += 4) { d[i] = R[d[i]]; d[i + 1] = G[d[i + 1]]; d[i + 2] = B[d[i + 2]]; }
     this.ctx.putImageData(img, 0, 0);
     return this.canvas;
-  }
-
-  /** One hidden <svg> filter whose per-channel tables follow this.luts (33 samples, linear in between). */
-  private svgOk = false;
-  private syncSvg() {
-    if (typeof document === "undefined" || !this.luts) return;
-    let f: Element | null = document.getElementById("thaislm-norm");
-    if (!f) {
-      const ns = "http://www.w3.org/2000/svg";
-      const svg = document.createElementNS(ns, "svg");
-      svg.setAttribute("width", "0"); svg.setAttribute("height", "0"); svg.setAttribute("style", "position:absolute");
-      const flt = document.createElementNS(ns, "filter"); flt.id = "thaislm-norm"; flt.setAttribute("color-interpolation-filters", "sRGB");
-      const ct = document.createElementNS(ns, "feComponentTransfer");
-      for (const c of ["R", "G", "B"]) { const fn = document.createElementNS(ns, `feFunc${c}`); fn.setAttribute("type", "table"); ct.appendChild(fn); }
-      flt.appendChild(ct); svg.appendChild(flt); document.body.appendChild(svg);
-      f = flt;
-    }
-    const fns = f.querySelectorAll("feFuncR, feFuncG, feFuncB");
-    this.luts.forEach((L, ch) => {
-      const vals = Array.from({ length: 33 }, (_, i) => (L[Math.min(255, i * 8)] / 255).toFixed(4)).join(" ");
-      fns[ch]?.setAttribute("tableValues", vals);
-    });
-    this.svgOk = typeof this.ctx.filter === "string";
   }
 
   private measure(v: HTMLVideoElement) {
@@ -299,7 +175,6 @@ export class Normalizer {
         for (let x = 0; x < 256; x++) L[x] = Math.round(((x / 255) ** gamma - mg) * contrast * 255 + tgt * 255);
         return L;
       }) as [Uint8ClampedArray, Uint8ClampedArray, Uint8ClampedArray];
-      this.syncSvg();
     } else this.luts = null;
     void lapVar; void wbActive;
     this.tone = active ? { brightness: Math.min(1.8, Math.max(0.75, 0.5 / Math.max(mean, 0.05))), contrast: Math.min(1.6, Math.max(0.9, contrast)) }

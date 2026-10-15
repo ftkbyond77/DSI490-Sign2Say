@@ -1,0 +1,33 @@
+{
+  "run_id": "enc-v7-us-central1",
+  "job": "projects/796579703294/locations/us-central1/customJobs/5032470089039872000",
+  "display_name": "thai-sign-training-train_encoder",
+  "submitted": "20261002-230308",
+  "profile": "a100_spot",
+  "machine": "a2-highgpu-1g",
+  "gpu": "1xNVIDIA_TESLA_A100",
+  "spot": true,
+  "timeout_h": 1.2,
+  "env_requested": "NVIDIA_L4@g2-standard-4",
+  "region": "us-central1",
+  "image": "us-docker.pkg.dev/vertex-ai/training/pytorch-gpu.2-4.py310:latest",
+  "command": "set -euo pipefail; mkdir -p /workspace /gcs/temp-gpu-bucket-job/thaislm/runs/enc-v7-us-central1 && cd /workspace && tar xzf /gcs/temp-gpu-bucket-job/thaislm/code/v7.tar.gz && pip install -q --no-cache-dir -r GCP/script/requirements_job.txt 2>&1 | tail -2; python -c \"import os,sys;from google.cloud import storage;b,p=os.environ['THAISLM_GCS'].split('/')[2],'/'.join(os.environ['THAISLM_GCS'].split('/')[3:]);os.makedirs('/tmp/data',exist_ok=True);os.makedirs('/tmp/models',exist_ok=True);[bl.download_to_filename('/tmp/data/'+bl.name.split('/')[-1]) for bl in storage.Client().list_blobs(b,prefix=p+'/data/')];[bl.download_to_filename('/tmp/models/'+bl.name.split('/')[-1]) for bl in storage.Client().list_blobs(b,prefix=p+'/models/') if bl.name.count('/')==p.count('/')+2]\" && python GCP/script/job_entry.py --run_id enc-v7-us-central1 --stage train_encoder --data /tmp/data --models /tmp/models --steps 3000 --eval_every 500 --workers 11 --embed_bs 512 --patience 3 2>&1 | tee /tmp/job.log; status=${PIPESTATUS[0]}; cp /tmp/job.log /gcs/temp-gpu-bucket-job/thaislm/runs/enc-v7-us-central1/job.log; exit $status",
+  "outputs": "gs://temp-gpu-bucket-job/thaislm/runs/enc-v7-us-central1",
+  "stage": "train_encoder",
+  "args": "--steps 3000 --eval_every 500 --workers 11 --embed_bs 512 --patience 3",
+  "code_tag": "v7",
+  "race_group": "enc-v7",
+  "billable_basis": "never ran (no container output) → 0",
+  "state": "JOB_STATE_CANCELLED",
+  "create_time": "2026-10-02 23:03:07.939204+00:00",
+  "provisioning_time": "2026-10-02 23:03:08.106522+00:00",
+  "start_time": "None",
+  "end_time": "2026-10-02 23:13:22.200339+00:00",
+  "queue_min": null,
+  "run_min": 0.0,
+  "est_cost_usd": 0.0,
+  "error": {
+    "code": 1,
+    "message": "CANCELED"
+  }
+}

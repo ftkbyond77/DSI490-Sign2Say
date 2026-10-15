@@ -2,11 +2,10 @@
 
   POST /v1/speak  {text, emotion?, intensity?}  → audio/wav
   GET  /v1/health
-Voice: VachanaTTS (v8; TTS_PROVIDER / TTS_VOICE_VACHANA, see .env). Emotion → speaking rate / pitch (modules/tts.py SpeechStyle).
+Voice: facebook/mms-tts-tha (VITS, offline). Emotion → speaking rate / pitch (modules/tts.py SpeechStyle).
 """
 from __future__ import annotations
 
-import os
 import sys
 from pathlib import Path as _P
 
@@ -28,7 +27,7 @@ from modules.tts import synthesize_wav_bytes
 def _cached(text: str, emotion: str, intensity: float) -> bytes:   # greetings and short daily sentences repeat a lot
     return synthesize_wav_bytes(text, emotion, intensity)
 
-app = FastAPI(title="ThaiSLM tts", version="8.0")
+app = FastAPI(title="ThaiSLM tts", version="7.0")
 
 
 class SpeakRequest(BaseModel):
@@ -44,7 +43,7 @@ def warm():
 
 @app.get("/v1/health")
 def health():
-    return dict(ok=True, provider=os.environ.get("TTS_PROVIDER", "vachana"), voice=os.environ.get("TTS_VOICE_VACHANA", "th_f_1"))
+    return dict(ok=True, voice="facebook/mms-tts-tha")
 
 
 @app.post("/v1/speak")

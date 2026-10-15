@@ -8,8 +8,7 @@ MediaPipe Holistic model, so both paths are identical from the Standard Schema o
 
 Every detected sign segment is reported, recognised or not:
   {t0, t1, status: accepted | uncertain | unknown | transition, p_correct, nearest, candidates: [{word, score, support}]}
-Vocabulary: 'conversation' (default — the curated conversation words, models/vocab_conversation.json) or 'daily' (v8: ~1.4k common
-Thai words that ≥ 2 people sign in the data, models/vocab_daily.json). 'full' (every concept) remains for research only.
+Vocabulary: 'conversation' (default — the daily-conversation lexicon in models/vocab_conversation.json) or 'full' (every concept).
 """
 from __future__ import annotations
 
@@ -20,7 +19,7 @@ import numpy as np
 
 from .decode import LogReg, active_from_prob, apply_csls, concept_prior, decode, postprocess, seg_features, status_of
 from .mediapipe_pose import extract, from_browser, to_standard
-from .parts import to_iso
+from .parts import prep, to_iso
 from .runtime import Bank, make_backend, rescore, rescore_windows, table_from_Z, window_table
 from .spanhead import SpanHeadNP
 from .schema import SH_L, SH_R, canonical_hands
@@ -53,7 +52,7 @@ def merge_repeats(segs, max_gap=12):
 
 
 class SignPipeline:
-    def __init__(self, model_dir=MODEL, backend="onnx", device="cpu", vocab="daily", use_llm=True, use_face=True, bank_file=None):
+    def __init__(self, model_dir=MODEL, backend="onnx", device="cpu", vocab="conversation", use_llm=True, use_face=True, bank_file=None):
         """bank_file: another bank (e.g. artifacts/eval/bank_eval.npz = training signers only, for honest evaluation)."""
         md = Path(model_dir)
         self.md = md
@@ -63,10 +62,9 @@ class SignPipeline:
         b = np.load(bank_file or md / "bank.npz", allow_pickle=False)
         self.vocab = vocab
         allowed = None
-        vf = md / f"vocab_{vocab}.json"
-        if vocab in ("conversation", "daily") and vf.exists():
+        if vocab == "conversation" and (md / "vocab_conversation.json").exists():
             cidx = {c: i for i, c in enumerate(self.concepts)}
-            allowed = {cidx[c] for c in read_json(vf)["concepts"] if c in cidx}
+            allowed = {cidx[c] for c in read_json(md / "vocab_conversation.json")["concepts"] if c in cidx}
         self.bank = Bank(b["Z"], b["c"], len(self.concepts), allowed)
         self.null_proto = np.load(md / "null_proto.npy").astype(np.float32)
         spot = read_json(md / "spotting.json")
@@ -101,7 +99,7 @@ class SignPipeline:
     # ------------------------------------------------------------------ inputs
     @staticmethod
     def landmarks_from_video(video, progress=None):
-        return extract(video, fps=25.0, progress=progress, normalize=True, hand_fallback=True)
+        return extract(video, fps=25.0, progress=progress, normalize=False)   # pitty: whole-frame exposure normalisation doubled missed hands on data_test (pitty/notebooks/pitty_phase1_hands.ipynb)
 
     @staticmethod
     def landmarks_from_browser(frames, hw):
@@ -117,7 +115,7 @@ class SignPipeline:
         return prob, H
 
     def user_bank(self, entries):
-        """Personal sign memory: [(word, embedding[D])] saved by one user (the web client keeps them) → a Bank for that user's
+        """Personal sign memory: [(word, embedding[768])] saved by one user (the web client keeps them) → a Bank for that user's
         requests only = this vocabulary's bank + those embeddings. The shared bank is never modified."""
         # one prototype per word (the mean of that word's saved examples): on held-out TSL51 test sentences of an unseen signer,
         # a 2-example prototype per word raised recall@1 0.65 → 0.80 and accepted-correct words 141 → 178 with fewer accepted
@@ -126,7 +124,7 @@ class SignPipeline:
         groups = {}
         for w, z in entries or []:
             z = np.asarray(z, np.float32).reshape(-1)
-            if w in cidx and z.shape == (self.be.dim,) and np.isfinite(z).all():
+            if w in cidx and z.shape == (768,) and np.isfinite(z).all():
                 groups.setdefault(w, []).append(z / (np.linalg.norm(z) + 1e-8))
         if not groups:
             return self.bank
@@ -146,14 +144,14 @@ class SignPipeline:
         if self.span is not None:
             table = table_from_Z(self.span(H, wins), wins, bank, self.null_proto)
         else:
-            table = window_table(self.be, kpi, sc, wins, bank, self.null_proto)
+            table = window_table(self.be, kpi, sc, wins, bank, self.null_proto, prep_fn=prep)
         seg_t = apply_csls(table, self.hub, self.spot.get("csls_alpha", 0.0))
         rank_t = apply_csls(table, self.hub, self.spot.get("csls_alpha", 0.0), self.word_prior, 1.0)
         segs = decode(seg_t, prob, self.concepts, self.spot, present, rank_table=rank_t)
         if segs and self.spot.get("exact_rescore", True) and self.span is not None:
             ws = rescore_windows(segs)
             flat = [w for x in ws for w in x]
-            Z = self.be.embed([self.be.prep(kpi[a:b], sc[a:b]) for a, b in flat])
+            Z = self.be.embed([prep(kpi[a:b], sc[a:b]) for a, b in flat])
             k, Zs = 0, []
             for x in ws:
                 Zs.append(Z[k:k + len(x)]); k += len(x)
@@ -250,7 +248,6 @@ class SignPipeline:
                                 nearest=e["letter"], candidates=e["cands"], p_correct=e["p"],
                                 # a lone letter inside word signing is never "confident": spelled names have ≥ 2 letters
                                 status="accepted" if (e["p"] >= cfg["accept"] and len(run) >= 2) else "uncertain",
-                                probable=bool(e["p"] >= cfg["accept"]),        # a clear letter may enter the "น่าจะเป็น" reading
                                 **({"emb": e["emb"]} if "emb" in e else {})))
         if spell_only:
             out = [s for s in out if s.get("kind") == "letter" or s["status"] == "transition"]
@@ -297,7 +294,6 @@ class SignPipeline:
         P = self.lr.predict(seg_features(segs, getattr(self.lr, "feats", None))) if segs else np.zeros(0)
         for s, p in zip(segs, P):
             s["p_correct"] = float(p); s["status"] = status_of(p, self.cal)
-            s["probable"] = bool(p >= float(self.cal.get("tau_probable", 2.0)))      # v8.1 "น่าจะเป็น" tier (calibrated, below accepted)
             s["t0"], s["t1"] = round(s["f0"] / 25.0, 2), round(s["f1"] / 25.0, 2)
         postprocess(segs, self.spot)
         w = self.spot.get("grammar_rerank_weight", 0.0)
@@ -341,8 +337,6 @@ class SignPipeline:
                       segments=[{k: v for k, v in s.items()} for s in segs], face=face, fusion=fusion,
                       sentence=fusion.get("sentence_th") or "", timings_ms={k: round(v, 1) for k, v in tm.items()},
                       model=self.cfg.get("version", ""), vocab=self.vocab)
-        from .mediapipe_pose import hand_report                  # v8: how well the hands were tracked in this utterance
-        result["hand_tracking"] = hand_report(raw, raw.get("fb"))
         if tts and result["sentence"]:
             from .tts import synthesize_wav_bytes
             result["audio_wav"] = synthesize_wav_bytes(result["sentence"], face.get("emotion", "neutral"), face.get("intensity", 0.0))

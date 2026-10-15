@@ -77,17 +77,25 @@ def letter_sources(letter):
     return out
 
 
-def build(out, words, per_word, tag=""):
-    """One folder per word under `out`; returns {word: [clip names]}."""
-    res = {}
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--out", default="data_test/jack_test")
+    ap.add_argument("--sentences", nargs="+", required=True)
+    ap.add_argument("--per_word", type=int, default=3)
+    a = ap.parse_args()
+    out = ROOT / a.out
+    out.mkdir(parents=True, exist_ok=True)
+    words = list(dict.fromkeys(w for s in a.sentences for w in s.split()))
+    readme = ["# Study clips (how each word is signed)", "", "Reference only: never used to train or tune the model.", "",
+              "Sentences:", ""] + [f"* {s}" for s in a.sentences] + ["", "| word | clips | note |", "|---|---|---|"]
     for i, w in enumerate(words, 1):
         is_letter = len(w) == 1 or w.startswith("สระ")
         src = letter_sources(w) if is_letter else word_sources(w)
         d = out / f"{i:02d}_{w}"
-        d.mkdir(parents=True, exist_ok=True)
+        d.mkdir(exist_ok=True)
         made = []
         for label, v, t0, t1 in src:
-            if len(made) >= per_word:
+            if len(made) >= a.per_word:
                 break
             dst = d / f"{label}.mp4"
             try:
@@ -96,35 +104,9 @@ def build(out, words, per_word, tag=""):
                 made.append(dst.name)
             except Exception as e:  # noqa: BLE001
                 log.warning("%s: %s", dst.name, e)
-        res[w] = made
-        log.info("%s%s: %d clips", tag, w, len(made))
-    return res
-
-
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default="data_test/jack_test")
-    ap.add_argument("--sentences", nargs="+", required=True)
-    ap.add_argument("--per_word", type=int, default=3)
-    ap.add_argument("--by_sentence", action="store_true", help="out/sentence-N/NN_word/ (one folder per sentence; words repeated in several sentences are copied)")
-    a = ap.parse_args()
-    out = ROOT / a.out
-    out.mkdir(parents=True, exist_ok=True)
-    readme = ["# Study clips (how each word is signed)", "", "Reference only: never used to train or tune the model.", "",
-              "Sentences:", ""] + [f"* {s}" for s in a.sentences]
-    if a.by_sentence:
-        for n, sent in enumerate(a.sentences, 1):
-            words = list(dict.fromkeys(sent.split()))
-            res = build(out / f"sentence-{n}", words, a.per_word, tag=f"s{n} ")
-            readme += ["", f"## sentence-{n}: {sent}", "", "| word | clips | note |", "|---|---|---|"]
-            for w, made in res.items():
-                readme.append(f"| {w} | {', '.join(made) if made else '-'} | {'' if made else 'no clip in any source'} |")
-    else:
-        words = list(dict.fromkeys(w for s in a.sentences for w in s.split()))
-        res = build(out, words, a.per_word)
-        readme += ["", "| word | clips | note |", "|---|---|---|"]
-        for w, made in res.items():
-            readme.append(f"| {w} | {', '.join(made) if made else '-'} | {'' if made else 'no clip in any source (see the chat summary)'} |")
+        note = "" if made else "no clip in any source (see the chat summary)"
+        readme.append(f"| {w} | {', '.join(made) if made else '-'} | {note} |")
+        log.info("%s: %d clips", w, len(made))
     (out / "README.md").write_text("\n".join(readme) + "\n", encoding="utf-8")
 
 

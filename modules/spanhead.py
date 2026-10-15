@@ -51,7 +51,6 @@ class SpanHeadNP:
         self.p = {k: z[k].astype(np.float32) for k in z.files}
 
     def __call__(self, H, wins):
-        D = self.p["q"].shape[0]                    # 768 (v7 Uni-Sign) or the v8 landmark encoder's size
         if not len(wins):
             return np.zeros((0, D), np.float32)
         p = self.p
@@ -66,7 +65,6 @@ def train_span_head(samples, epochs=8, bs=256, lr=1e-3, device="cuda", log=None,
     import torch
     import torch.nn as nn
     import torch.nn.functional as F
-    D = int(samples[0][0].shape[1])                 # frame-state size of the encoder being distilled
 
     class Head(nn.Module):
         def __init__(self):

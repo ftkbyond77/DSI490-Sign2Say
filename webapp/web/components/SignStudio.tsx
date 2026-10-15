@@ -3,8 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { openWidestCamera } from "@/lib/camera";
 import { ExpressionModel } from "@/lib/expression";
-import type { HandLandmarker, HolisticLandmarker } from "@mediapipe/tasks-vision";
-import { createHolistic, detect, draw, EmotionMeter, handsUp, Normalizer, parts, roomBelow, type Delegate, type Emotion, type LmFrame, type Tone } from "@/lib/holistic";
+import type { HolisticLandmarker } from "@mediapipe/tasks-vision";
+import { createHolistic, detect, draw, EmotionMeter, handsUp, Normalizer, parts, type Delegate, type Emotion, type LmFrame, type Tone } from "@/lib/holistic";
 import { info, speak, translateFramesStream, vocabList, translateVideoOnServerStream, type Alphabet, type Options, type Progress, type Speak, type TranslateResult } from "@/lib/api";
 import { b64ToBytes, playWav, unlockAudio } from "@/lib/audio";
 import { clearSigns, signWords } from "@/lib/mysigns";
@@ -42,10 +42,8 @@ export default function SignStudio() {
   const lmRef = useRef<HolisticLandmarker | null>(null);
   const delegateRef = useRef<Delegate>("GPU");
   const faceLmRef = useRef<HolisticLandmarker | null>(null);      // GPU+CPU mode: expressions on the CPU every few frames
-  const handsRef = useRef<HandLandmarker | null>(null);           // v8: hand fallback when Holistic loses a raised hand
-  const lastVtRef = useRef(-1);                                    // last processed video frame (skip repeats: rAF runs faster than the camera)
   const nRef = useRef(0);
-  const fileLmRef = useRef<{ lm: HolisticLandmarker; t: number; hands?: HandLandmarker } | null>(null);
+  const fileLmRef = useRef<{ lm: HolisticLandmarker; t: number } | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const rafRef = useRef<number>(0);
   const framesRef = useRef<LmFrame[]>([]);
@@ -63,20 +61,18 @@ export default function SignStudio() {
 
   const [status, setStatus] = useState<Status>("idle");
   const [mode, setMode] = useState<Mode>("manual");
-  const [opts, setOpts] = useState<Options>({ vocab: "daily", llm: true, speak: "confident", faceQuestion: false, alphabet: "en" });
+  const [opts, setOpts] = useState<Options>({ vocab: "conversation", llm: true, speak: "confident", faceQuestion: false, alphabet: "en" });
   const [nFrames, setNFrames] = useState(0);
   const [fps, setFps] = useState(0);
   const [delegate, setDelegate] = useState<Delegate | "">("");
   const [seen, setSeen] = useState(parts(null));
-  const [room, setRoom] = useState<number | null>(null);         // signing space below the shoulders (shoulder widths), smoothed
-  const roomRef = useRef<number | null>(null);
   const [exposure, setExposure] = useState("");
   const [tone, setTone] = useState<Tone>({ brightness: 1, contrast: 1 });
-  const [autoLight, setAutoLight] = useState(true);
+  const [autoLight, setAutoLight] = useState(false);   // pitty: off by default — whole-frame correction washed out skin, hands missed 2.2× more often (pitty/README.md)
   const [endMs, setEndMs] = useState(1500);
   const endRef = useRef(1500);
   endRef.current = endMs;
-  const autoLightRef = useRef(true);
+  const autoLightRef = useRef(false);
   autoLightRef.current = autoLight;
   const [liveState, setLiveState] = useState("waiting");
   const [liveNote, setLiveNote] = useState("");
@@ -89,7 +85,7 @@ export default function SignStudio() {
   const resultSeq = useRef(0);
   const [error, setError] = useState("");
   const [progress, setProgress] = useState<Progress | null>(null);
-  const [model, setModel] = useState<{ version?: string; conversation_concepts?: number; daily_concepts?: number | null; llm?: boolean } | null>(null);
+  const [model, setModel] = useState<{ version?: string; conversation_concepts?: number; concepts_full?: number; llm?: boolean } | null>(null);
   const optsRef = useRef(opts);
   optsRef.current = opts;
 
@@ -98,10 +94,10 @@ export default function SignStudio() {
   useEffect(() => {
     info().then(setModel).catch(() => setModel(null));
     vocabList().then(setVocab).catch(() => setVocab([]));
-    setOpts((o) => ({ ...o, ...load<Partial<Options>>("thaislm.opts.v8", {}) }));     // v8: earlier saved settings (9.6k vocabulary …) reset
-    setEndMs(load("thaislm.endMs", 1500)); setAutoLight(load("thaislm.autoLight", true)); refreshSigns();
+    setOpts((o) => ({ ...o, ...load<Partial<Options>>("thaislm.opts.v3", {}) }));     // v3: earlier saved settings (full vocabulary …) reset
+    setEndMs(load("thaislm.endMs", 1500)); setAutoLight(load("thaislm.autoLight", false)); refreshSigns();
   }, []);
-  useEffect(() => { save("thaislm.opts.v8", opts); }, [opts]);
+  useEffect(() => { save("thaislm.opts.v3", opts); }, [opts]);
   useEffect(() => { save("thaislm.endMs", endMs); }, [endMs]);
   useEffect(() => { save("thaislm.autoLight", autoLight); if (normRef.current) normRef.current.enabled = autoLight; }, [autoLight]);
   useEffect(() => { modeRef.current = mode; }, [mode]);
@@ -169,9 +165,8 @@ export default function SignStudio() {
     try {
       lmRef.current?.close(); lmRef.current = null;
       faceLmRef.current?.close(); faceLmRef.current = null;
-      handsRef.current?.close(); handsRef.current = null;
-      const { lm, delegate: d, hands } = await createHolistic("CPU");
-      lmRef.current = lm; handsRef.current = hands ?? null; delegateRef.current = d; setDelegate(d);
+      const { lm, delegate: d } = await createHolistic("CPU");
+      lmRef.current = lm; delegateRef.current = d; setDelegate(d);
     } catch (e) { setError(`MediaPipe ใช้งานไม่ได้: ${(e as Error).message}`); }
     finally { errRef.current = { n: 0, switching: false }; }
   }, []);
@@ -186,13 +181,10 @@ export default function SignStudio() {
       const N = normRef.current;
       let src: HTMLVideoElement | HTMLCanvasElement = v;
       try {
-        if (v.currentTime === lastVtRef.current) return;          // the camera has not delivered a new frame yet
-        lastVtRef.current = v.currentTime;
         src = N.frame(v, t);
-        f = detect(lm, src, t, handsRef.current ?? undefined); errRef.current.n = 0;
+        f = detect(lm, src, t); errRef.current.n = 0;
         const fl = faceLmRef.current;
-        // GPU+CPU mode: blendshapes need a second (CPU) Holistic pass — every 15th frame (was 8th: the CPU pass stalled the loop to ~5 fps)
-        if (f && fl && f.face.length && nRef.current++ % 15 === 0) {
+        if (f && fl && f.face.length && nRef.current++ % 8 === 0) {        // expressions (blendshapes) every 8th frame on the CPU
           const g = detect(fl, src, t);
           if (g) f.bs = g.bs;
         }
@@ -211,8 +203,6 @@ export default function SignStudio() {
       if (ctx) draw(ctx, f, c.width, c.height, statusRef.current === "recording" || live.current.state === "signing", emo);
       if (t - partsRef.current.t > 250) {
         partsRef.current.t = t; setSeen(parts(f));
-        const rb = roomBelow(f, c.width / Math.max(c.height, 1));
-        if (rb != null) { roomRef.current = roomRef.current == null ? rb : 0.8 * roomRef.current + 0.2 * rb; setRoom(roomRef.current); }
         const e = N.exp;
         setExposure(N.enabled && e.active ? `${e.label} (ความสว่างเดิม ${Math.round(e.mean * 100)}%)` : "");
         setTone(N.enabled ? N.tone : { brightness: 1, contrast: 1 });
@@ -252,8 +242,8 @@ export default function SignStudio() {
     setError(""); set("loading");
     try {
       if (!lmRef.current) {
-        const { lm, delegate: d, face, hands } = await createHolistic("GPU");
-        lmRef.current = lm; faceLmRef.current = face ?? null; handsRef.current = hands ?? null; delegateRef.current = d; setDelegate(d);
+        const { lm, delegate: d, face } = await createHolistic("GPU");
+        lmRef.current = lm; faceLmRef.current = face ?? null; delegateRef.current = d; setDelegate(d);
         exprRef.current.load();                               // in the background: the label falls back to blendshapes until it is ready
       }
       const s = await openWidestCamera();
@@ -292,7 +282,7 @@ export default function SignStudio() {
         const r = await translateVideoOnServerStream(file, optsRef.current, setProgress);
         setProgress({ stage: "done", p: 1 }); await handle({ ...r, title: file.name }); return;
       }
-      if (!fileLmRef.current) { const { lm, hands } = await createHolistic("CPU"); fileLmRef.current = { lm, t: 1000, hands }; }
+      if (!fileLmRef.current) { const { lm } = await createHolistic("CPU"); fileLmRef.current = { lm, t: 1000 }; }
       const F = fileLmRef.current;
       const FN = new Normalizer(); FN.enabled = autoLight;
       const v = document.createElement("video");
@@ -303,7 +293,7 @@ export default function SignStudio() {
       for (let t = 0; t < v.duration; t += 1 / 25) {
         v.currentTime = t;
         await new Promise((ok) => { v.onseeked = ok; });
-        const f = detect(F.lm, FN.frame(v, t * 1000), base + t * 1000, F.hands);
+        const f = detect(F.lm, FN.frame(v, t * 1000), base + t * 1000);
         if (f) frames.push({ ...f, t: t * 1000 });
         if (frames.length % 5 === 0) setProgress({ stage: "browser", p: 0.6 * (t / v.duration) });
       }
@@ -331,7 +321,6 @@ export default function SignStudio() {
           {camOn && exposure && <div className="exposure">ปรับภาพอัตโนมัติ: {exposure}</div>}
           {camOn && <div className="parts">ตรวจพบ: {chip(seen.body, "ลำตัว")}{chip(seen.face, "หน้า")}{chip(seen.brows, "คิ้ว/สีหน้า")}{chip(seen.left, "มือซ้าย")}{chip(seen.right, "มือขวา")}</div>}
         </div>
-        {camOn && room != null && room < 0.9 && <p className="note">⚠ กล้องเห็นตัวคุณถึงแค่อก — ถอยห่างกล้องหรือวางกล้องให้ต่ำลงให้เห็นถึงเอว: ท่าระดับอก (ฉัน · ชื่อ · มือแตะกัน) จะหลุดกรอบด้านล่างและระบบจะไม่มั่นใจ</p>}
         {camOn && fps > 0 && fps < 8 && <p className="note">เครื่องประมวลผลได้ {fps} fps (ช้า) — ทำท่าช้าลงเล็กน้อย และให้มืออยู่ในกรอบชัด ๆ</p>}
         {liveNote && mode === "live" && <p className="note">{liveNote}</p>}
         <div className="controls">
@@ -356,7 +345,7 @@ export default function SignStudio() {
             {(Object.keys(ALPHA_TH) as Alphabet[]).map((a) => <option key={a} value={a}>{ALPHA_TH[a]}</option>)}</select></label>
           <label>คลังคำ <select value={opts.vocab} onChange={(e) => setOpts({ ...opts, vocab: e.target.value as Options["vocab"] })}>
             <option value="conversation">บทสนทนาประจำวัน{model?.conversation_concepts ? ` (${model.conversation_concepts} คำ)` : ""}</option>
-            <option value="daily">คำที่ใช้บ่อยในชีวิตประจำวัน{model?.daily_concepts ? ` (${model.daily_concepts} คำ)` : ""}</option></select></label>
+            <option value="full">ทั้งหมด{model?.concepts_full ? ` (${model.concepts_full} คำ)` : ""} — ช้ากว่าและคลาดเคลื่อนง่าย</option></select></label>
           <label><input type="checkbox" checked={opts.llm} onChange={(e) => setOpts({ ...opts, llm: e.target.checked })} /> เรียบเรียงด้วย LLM{model && !model.llm ? " (ไม่มีคีย์ → กฎ)" : ""}</label>
           <label title="วัดแสง/คอนทราสต์/สมดุลสี/ความคมของภาพทุก 0.3 วินาที แล้วปรับทั้งภาพที่เห็นและภาพที่ส่งให้ MediaPipe">
             <input type="checkbox" checked={autoLight} onChange={(e) => setAutoLight(e.target.checked)} /> ปรับภาพอัตโนมัติ</label>

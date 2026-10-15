@@ -1,6 +1,6 @@
 """Translate any sign-language video with the deployable model in models/.
 
-  python main.py infer --video path/to/video.mp4 [--out dir] [--vocab daily|conversation] [--no_llm] [--tts] [--backend onnx|torch]
+  python main.py infer --video path/to/video.mp4 [--out dir] [--vocab conversation|full] [--no_llm] [--tts] [--backend onnx|torch]
 
 Writes result.json (segments with status / p_correct / nearest / top-5, sentence or withheld reading, face cues, timings),
 subtitle.srt (word · word? · [?] ≈ nearest), timeline.png (signer present / P(sign) / segments) and, with --tts, speech.wav.
@@ -19,7 +19,7 @@ sys.path.insert(0, str(ROOT))
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--video", required=True); ap.add_argument("--out")
-    ap.add_argument("--vocab", default="daily", choices=["daily", "conversation"])
+    ap.add_argument("--vocab", default="conversation", choices=["conversation", "full"])
     ap.add_argument("--no_llm", action="store_true"); ap.add_argument("--no_face", action="store_true"); ap.add_argument("--tts", action="store_true")
     ap.add_argument("--backend", default="onnx", choices=["onnx", "torch"]); ap.add_argument("--device", default="cpu")
     a = ap.parse_args()

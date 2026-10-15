@@ -4,64 +4,110 @@
   "n_frames": 88,
   "duration_s": 3.52,
   "signer_visible_frac": 1.0,
-  "signing_frac": 0.625,
+  "signing_frac": 0.6022727272727273,
   "mirrored_to_right_hand": true,
   "segments": [
     {
       "f0": 8,
-      "f1": 80,
-      "z": 5.427661895751953,
+      "f1": 48,
+      "z": 4.17581033706665,
       "wins": [
         [
           8,
-          40
-        ],
-        [
-          40,
-          80
+          48
         ]
       ],
       "nearest": "ฉัน",
       "candidates": [
         {
           "word": "ฉัน",
-          "score": 0.6673,
-          "support": 0.3572
+          "score": 0.8377,
+          "support": 0.6706
         },
         {
-          "word": "ขนมปัง",
-          "score": 0.5513,
-          "support": 0.3037
+          "word": "เกิด",
+          "score": 0.7319,
+          "support": 0.5287
         },
         {
-          "word": "รัก",
-          "score": 0.3914,
-          "support": 0.1416
+          "word": "กิน",
+          "score": 0.6975,
+          "support": 0.4978
         },
         {
           "word": "ข้าว",
-          "score": 0.6442,
-          "support": 0.1363
+          "score": 0.7196,
+          "support": 0.4452
         },
         {
-          "word": "ชอบ",
-          "score": 0.6107,
-          "support": 0.1217
+          "word": "เที่ยว",
+          "score": 0.6372,
+          "support": 0.254
         }
       ],
-      "score": 0.5512973070144653,
-      "margin": 0.19174158573150635,
-      "null_gap": -0.23471707105636597,
-      "p_sign": 0.7616667921248235,
-      "agree": 0.0,
-      "support_ratio": 1.176160684886401,
-      "window_top1": "ขนมปัง",
+      "score": 0.5434355735778809,
+      "margin": 0.04695802927017212,
+      "null_gap": -0.29653728008270264,
+      "p_sign": 0.9939075082540514,
+      "agree": 1.0,
+      "support_ratio": 1.2683941743900133,
+      "window_top1": "ฉัน",
       "depth": 0.0,
-      "p_correct": 0.300008024978215,
+      "p_correct": 0.2661719243995281,
       "status": "uncertain",
-      "probable": false,
       "t0": 0.32,
-      "t1": 3.2
+      "t1": 1.92
+    },
+    {
+      "f0": 48,
+      "f1": 64,
+      "z": 4.463596820831299,
+      "wins": [
+        [
+          48,
+          64
+        ]
+      ],
+      "nearest": "เกิด",
+      "candidates": [
+        {
+          "word": "เกิด",
+          "score": 0.5628,
+          "support": 0.5628
+        },
+        {
+          "word": "กิน",
+          "score": 0.4337,
+          "support": 0.4337
+        },
+        {
+          "word": "ขนมปัง",
+          "score": 0.3909,
+          "support": 0.3909
+        },
+        {
+          "word": "ฉัน",
+          "score": 0.3573,
+          "support": 0.3573
+        },
+        {
+          "word": "เที่ยว",
+          "score": 0.3538,
+          "support": 0.3538
+        }
+      ],
+      "score": 0.5628334283828735,
+      "margin": 0.12912261486053467,
+      "null_gap": -0.28761404752731323,
+      "p_sign": 0.7702782922657206,
+      "agree": 1.0,
+      "support_ratio": 1.297671201291215,
+      "window_top1": "เกิด",
+      "depth": 0.0,
+      "p_correct": 0.42045108652684193,
+      "status": "uncertain",
+      "t0": 1.92,
+      "t1": 2.56
     }
   ],
   "face": {
@@ -97,53 +143,44 @@
     },
     "per_segment": [
       {
-        "brow": 0.02,
+        "brow": 0.01,
+        "furrow": -0.41,
+        "smile": 0.675,
+        "mouth": 0.029
+      },
+      {
+        "brow": 0.07,
         "furrow": 0.0,
-        "smile": 0.734,
-        "mouth": 0.031
+        "smile": 0.809,
+        "mouth": 0.04
       }
     ]
   },
   "fusion": {
     "chosen": [
-      "[?]"
+      "[?]",
+      "กิน"
     ],
     "sentence_th": "",
-    "tentative_sentence_th": "",
-    "meaning_th": "ยังไม่มั่นใจพอจะแปล — ลองทำท่าช้าลง ให้มืออยู่ในกรอบ หรือกดยืนยันคำที่ถูก",
-    "confidence": 0.0,
-    "provider": "none",
-    "evidence_gloss": "ฉัน?",
-    "evidence_guard": "withheld: no confident sign"
+    "meaning_th": "ตรวจพบท่ามือ 2 ช่วง แต่หลักฐานไม่พอจะแปลเป็นประโยคอย่างมั่นใจ — คำที่ใกล้ที่สุด: ช่วง 1 ≈ ฉัน, ช่วง 2 ≈ เกิด",
+    "confidence": 0.3,
+    "provider": "openai",
+    "latency_s": 1.44,
+    "guard_violations": [],
+    "evidence_gloss": "ฉัน? | เกิด?",
+    "tentative_sentence_th": "กินขนมปัง",
+    "evidence_guard": "withheld: no accepted sign"
   },
   "sentence": "",
   "timings_ms": {
-    "schema_ms": 14.4,
-    "tagger_ms": 25.6,
-    "spotting_ms": 73.2,
-    "n_windows": 130,
+    "schema_ms": 17.8,
+    "tagger_ms": 209.4,
+    "spotting_ms": 87.4,
+    "n_windows": 122,
     "tempo_factor": 1.0,
-    "face_ms": 3.0,
-    "language_ms": 0.5
+    "face_ms": 6.0,
+    "language_ms": 1444.9
   },
-  "model": "v8.1",
-  "vocab": "conversation",
-  "hand_tracking": {
-    "left": {
-      "n": 106,
-      "hit": 0.887,
-      "fallback": 0,
-      "max_gap": 5,
-      "out_below": 0
-    },
-    "right": {
-      "n": 106,
-      "hit": 0.83,
-      "fallback": 0,
-      "max_gap": 14,
-      "out_below": 0
-    },
-    "room_below": 2.01,
-    "fps": 30.0
-  }
+  "model": "v7",
+  "vocab": "conversation"
 }

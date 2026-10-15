@@ -3,8 +3,7 @@
 // bank for this user's requests only. The shared model and bank never change.
 export type MySign = { word: string; z: string; t: number };
 
-// v8: a new sign encoder = a new embedding space, so signs saved with v7 cannot be reused (they would match nothing)
-const KEY = "thaislm.mysigns.v8";
+const KEY = "thaislm.mysigns";
 const PER_WORD = 3;
 const MAX = 600;
 

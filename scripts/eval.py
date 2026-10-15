@@ -4,8 +4,8 @@
   python main.py eval grammar                                                      # TSL word order (TSL51) → models/grammar.json, roles.json
   python main.py eval spot     --seq <sequence_run_dir>                            # decoder, word prior, tempo, exact re-score, calibration,
                                                                                    #   transition / repeat filters — per vocabulary
-  python main.py eval isolated --run <encoder_run_dir>                           # held-out signers, bank depth, ASL/CSL prior bias, latent space
-  python main.py test          [--tag final] [--vocab conversation|daily] [--no_llm] # data_test end-to-end from the raw videos (+ scores)
+  python main.py eval isolated --run <encoder_run_dir> [--v6]                      # held-out signers, bank depth, ASL/CSL prior bias, latent space
+  python main.py test          [--tag final] [--vocab conversation|full] [--no_llm] # data_test end-to-end from the raw videos (+ scores)
   python main.py eval selftest [--make]                                            # self-made sentence videos (held-out signers) end-to-end
   python main.py eval vocab                                                        # vocab/ exports
 
@@ -37,7 +37,7 @@ import os
 EVAL, REP, MAN = ART / "eval", ART / "reports", PREP / "manifest"
 SHARDS = Path(os.environ.get("THAISLM_SHARDS", PREP / "shards"))
 NULL = "<null>"
-VERSION = "v8.1"
+VERSION = "v7"
 LENS = list(range(8, 50, 4))
 
 
@@ -69,12 +69,7 @@ def cmd_build(a):
     shutil.copy(rd / "encoder_best.pt", MODEL / "encoder.pt")
     for f in ("tagger.pt", "span_head.npz", "null_proto.npy"):
         shutil.copy(sd / f, MODEL / f)
-    import torch
-    kind = "lmenc" if "cfg" in torch.load(rd / "encoder_best.pt", map_location="cpu") else "unisign"
-    if kind == "unisign":
-        shutil.copy(ART / "pretrained" / "mt5_config.json", MODEL / "mt5_config.json")
-    else:
-        (MODEL / "mt5_config.json").unlink(missing_ok=True)          # v8: the landmark encoder is self-contained
+    shutil.copy(ART / "pretrained" / "mt5_config.json", MODEL / "mt5_config.json")
     concepts = read_json(rd / "concept_index.json")
     write_json(MODEL / "concepts.json", concepts)
     cidx = {c: i for i, c in enumerate(concepts)}
@@ -95,15 +90,14 @@ def cmd_build(a):
     save_bank(EVAL / "bank_eval.npz", sign & (idx.role == "train").values)
     # deployment bank: every labelled clip (all roles — real users are new people anyway) + confidently aligned words of the
     # TSL51 sentence videos (continuous-signing examples of the 51 conversation words)
-    from modules.lmenc import EncoderAPI
-    from modules.parts import to_iso
+    from modules.encoder import embed_parts, load_encoder
+    from modules.parts import prep, to_iso
     from modules.encoder import PoseStore
     align = read_json(sd / "tsl51_alignment.json")
     scores = [s["score"] for v in align.values() for s in v["segments"]]
     cut = float(np.quantile(scores, 0.25)) if scores else 1.0
     store = PoseStore(SHARDS / "pose_store.npz")
-    enc = EncoderAPI(MODEL / "encoder.pt", MODEL, device="cuda")
-    prep = enc.prep
+    enc = load_encoder(MODEL, MODEL / "encoder.pt", device="cuda")
     parts, meta, cs = [], [], []
     for cid, v in align.items():
         if cid not in store.row:
@@ -114,7 +108,7 @@ def cmd_build(a):
             if s["score"] >= cut and s["concept"] in cidx and s["f1"] - s["f0"] >= 6 and s["f1"] <= len(kp):
                 parts.append(prep(kp[s["f0"]:s["f1"]], sc[s["f0"]:s["f1"]]))
                 meta.append((f"{cid}@{s['f0']}", "tsl51_sentence_aligned", "S_51_user")); cs.append(cidx[s["concept"]])
-    Zs = enc.embed(parts) if parts else np.zeros((0, enc.dim), np.float32)
+    Zs = embed_parts(enc, parts, bs=64) if parts else np.zeros((0, 768), np.float32)
     cd = save_bank(MODEL / "bank.npz", sign, (Zs, np.array(cs, np.int32), meta))
     present = set(cd.tolist())
     conv, missing = conversation_vocab(concepts, present)
@@ -123,11 +117,6 @@ def cmd_build(a):
         doc="Conversation-mode vocabulary: vocab/daily_conversation.json ∪ TSL51 words, restricted to concepts with ≥ 1 bank example. "
             "signers = distinct people / channels behind each word in models/bank.npz.",
         concepts=conv, signers={w: int(depth.get(cidx[w], 0)) for w in conv}, not_in_bank=missing))
-    if (SHARDS / "daily_vocab.json").exists():                 # v8 'daily' mode (scripts/data_prep.py daily_vocab: rule + numbers there)
-        dv = sorted(set(w for w in read_json(SHARDS / "daily_vocab.json") if w in cidx and cidx[w] in present) | set(conv))
-        write_json(MODEL / "vocab_daily.json", dict(
-            doc="Daily mode: conversation words ∪ common Thai words (TNC frequency ≥ 50) that ≥ 2 different people sign in the data; letters excluded.",
-            concepts=dv, signers={w: int(depth.get(cidx[w], 0)) for w in dv}))
     from modules.decode import frequency_prior
     try:
         from pythainlp.corpus import tnc
@@ -138,7 +127,7 @@ def cmd_build(a):
     for f in ("hub_deploy.npy", "depth_deploy.npy", "bank_deploy.npz", "onnx/rtmw-dw-x-l_simcc-cocktail14_270e-256x192_20231122.onnx",
               "onnx/rtmpose-s_simcc-body7_pt-body7_420e-256x192-acd4a1ef_20230504.onnx", "onnx/yolox_tiny_8xb8-300e_humanart-6f3252f9.onnx"):
         (MODEL / f).unlink(missing_ok=True)                    # v6 leftovers (RTMW extractor, switched-off hubness / depth priors)
-    cfg = dict(version=VERSION, encoder=kind, encoder_run=rd.name, sequence_run=sd.name, tagger_arch="gru", extractor="MediaPipe Holistic (tasks 1.0.1) + hand fallback",
+    cfg = dict(version=VERSION, encoder_run=rd.name, sequence_run=sd.name, tagger_arch="gru", extractor="MediaPipe Holistic (tasks 1.0.1)",
                built=time.strftime("%Y-%m-%d %H:%M"), concepts=C, bank_eval=int(((idx.role == "train").values & sign).sum()), bank=int(len(cd)),
                bank_concepts=len(present), conversation_concepts=len(conv), aligned_sentence_words_added=len(meta), alignment_score_cut=cut)
     write_json(MODEL / "config.json", cfg)
@@ -178,7 +167,7 @@ class Exact:
         self.cache = {}
 
     def ensure(self, reqs):
-        prep = self.be.prep
+        from modules.parts import prep
         todo, seen = [], set()
         for key, kp, sc, a, b in reqs:
             k = (key, a, b)
@@ -281,19 +270,19 @@ def cmd_spot(a):
     from modules.runtime import Bank
     be = np.load(EVAL / "bank_eval.npz")
     ctx = dict(exact=Exact(), null=np.load(sd / "null_proto.npy").astype(np.float32),
-               banks={"daily": Bank(be["Z"].astype(np.float32), be["c"], len(concepts), allowed=set(D.get("daily", D["conversation"]))),
+               banks={"full": Bank(be["Z"].astype(np.float32), be["c"], len(concepts)),
                       "conversation": Bank(be["Z"].astype(np.float32), be["c"], len(concepts), allowed=set(D["conversation"]))})
     log.info("evaluation sets: %s", {k: len(v) for k, v in sets.items()})
     tune = [k for k in sets if "_tune" in k]
     test = [k for k in sets if "_test" in k]
     base = dict(lens=LENS, stride=2, min_inside=0.6, delta=0.0, act_thr=0.5, mu_null=5.0, csls_alpha=0.0, one_pass=True, exact_rescore=True)
     spotting, calibration, report = {}, {}, {}
-    for vocab in ("conversation", "daily"):
+    for vocab in ("conversation", "full"):
         t0 = time.time()
-        conv_set = {concepts[c] for c in D["conversation" if vocab == "conversation" else "daily"]}
+        conv_set = {concepts[c] for c in D["conversation"]} if vocab == "conversation" else None
         R = lambda cfg, keys: {k: evaluate(sets[k], cfg, vocab, concepts, prior, ctx, conv_set)[0] for k in keys}  # noqa: E731
         grid = []
-        for lam, gap, min_len, beta in product([2.0, 4.0, 6.0, 8.0, 10.0], [0.5, 1.5], [8, 10, 14], [3.0, 5.0]):
+        for lam, gap, min_len, beta in product([2.0, 4.0, 6.0, 8.0, 10.0], [0.5, 1.5], [10, 14], [3.0, 5.0]):
             cfg = dict(base, lam=lam, gap_cost=gap, min_len=min_len, beta=beta, freq_gamma=0.0)
             grid.append(dict(cfg=cfg, objective=_objective(R(cfg, tune)), stage="decoder"))
         best = max(grid, key=lambda g: g["objective"])["cfg"]
@@ -333,7 +322,7 @@ def cmd_spot(a):
                 s_["p_correct"] = float(p_); s_["status"] = status_of(p_, cal)
             return segs_
         post_res = []
-        for mf, ng, ps in product([6, 8, 10, 12, 14], [0.0, 0.05, 0.1], [0.45, 0.55, 0.65]):
+        for mf, ng, ps in product([8, 10, 12, 14], [0.0, 0.05, 0.1], [0.45, 0.55, 0.65]):
             pp = dict(min_frames=mf, null_gap_max=ng, p_sign_min=ps, repeat_penalty=True)
             ok = used = cnt = 0
             for k in tune:
@@ -407,6 +396,14 @@ def cmd_isolated(a):
     target = np.nan_to_num(idx.c.values.astype(float), nan=-1).astype(int)
     out = dict(table=rows)
     embs = {"zero_shot": Z0, "v7": Z1}
+    if a.v6:              # the v6 encoder on the SAME MediaPipe clips and the same bank composition (artifacts/eval/emb_v6_encoder_mp.npz)
+        z6 = np.load(EVAL / "emb_v6_encoder_mp.npz", allow_pickle=True)
+        pos = {c: i for i, c in enumerate(z6["clip_id"])}
+        ok6 = idx.clip_id.map(pos)
+        if ok6.notna().all():
+            embs["v6"] = z6["Z"].astype(np.float32)[ok6.astype(int).values]
+        else:
+            log.warning("v6 embeddings missing for %d clips — v6 comparison skipped", int(ok6.isna().sum()))
     daily = set(read_json(MODEL / "vocab_conversation.json")["concepts"]) if (MODEL / "vocab_conversation.json").exists() else set()
     dcols = [concepts.index(c) for c in daily if c in concepts]
     protos = {"TTRS_test": (idx.dataset == "ttrs") & (idx.role == "test"), "THSL_test": (idx.dataset == "th_sl") & (idx.role == "test"),
@@ -446,6 +443,11 @@ def cmd_isolated(a):
                              new_errors_introduced=float(((p0 == t) & (p1 != t)).sum() / max((p0 == t).sum(), 1)),
                              cka_zero_shot_vs_v7=_cka(Z0[np.random.RandomState(0).choice(len(Z0), min(5000, len(Z0)), replace=False)],
                                                       Z1[np.random.RandomState(0).choice(len(Z0), min(5000, len(Z0)), replace=False)]))
+    if "v6" in embs:
+        bank6 = Bank(embs["v6"][tr], idx.c.values[tr], C)
+        S6 = bank6.scores(embs["v6"][q]); S6[:, concepts.index(NULL)] = -2
+        p6 = S6.argmax(1); err6 = p6 != t
+        out["prior_bias"]["v6_inherited_confusion_rate_same_data"] = float(((p0 == p6) & err6).sum() / max(err6.sum(), 1))
     # latent-space neighbourhoods: is a clip's nearest neighbour the same word (good) or the same signer / dataset (bias)?
     from sklearn.neighbors import NearestNeighbors
     qm = idx.role.isin(["test", "val"]).values & (idx.concept != NULL).values
@@ -514,7 +516,7 @@ def cmd_infer(a):
     canon = _canon()
     cache = ROOT / "cache" / "data_test_mp"; cache.mkdir(parents=True, exist_ok=True)
     out = {}
-    for vocab in (a.vocab.split(",") if a.vocab else ["conversation", "daily"]):
+    for vocab in (a.vocab.split(",") if a.vocab else ["conversation", "full"]):
         pipe = SignPipeline(backend=a.backend, device=a.device, vocab=vocab, use_llm=not a.no_llm)
         bank_vocab = {pipe.concepts[c] for c in pipe.bank.concepts_present}
         vids = {}
@@ -536,47 +538,6 @@ def cmd_infer(a):
         out[vocab] = dict(summary=summarise(vids), videos=vids)
         log.info("[%s] data_test: %s", vocab, out[vocab]["summary"])
     write_json(REP / f"infer_{a.tag}.json", dict(results=out, model=read_json(MODEL / "config.json"), llm=not a.no_llm, backend=a.backend))
-
-
-def cmd_external(a):
-    """v8 external test: short public videos by people who are in NO source (new channels; list = artifacts/reports/external_test_list.tsv:
-    YouTube id, kind, reference glosses from the title, checked by eye). The videos are only downloaded for this test
-    (cache/ext_test/videos, deleted afterwards) — the list + the json report are what is kept. Same scoring as data_test.
-    --fallback also reports how many raised-hand frames the v8 hand fallback recovers on these videos."""
-    from modules.mediapipe_pose import extract, hand_report, load_raw, save_raw
-    from modules.pipeline import SignPipeline
-    canon = _canon()
-    items = [l.rstrip("\r\n").split("\t") for l in open(REP / "external_test_list.tsv", encoding="utf-8") if l.strip()]
-    vdir = ROOT / "cache" / "ext_test" / "videos"
-    hands = {}
-    for fb in (False, True):
-        cache = ROOT / "cache" / "ext_test" / ("mp_fb" if fb else "mp"); cache.mkdir(parents=True, exist_ok=True)
-        for vid, kind, ref in items:
-            f = cache / f"{vid}.npz"
-            if not f.exists() and (vdir / f"{vid}.mp4").exists():
-                raw = extract(vdir / f"{vid}.mp4", normalize=True, hand_fallback=fb)
-                save_raw(f, raw)
-                np.save(cache / f"{vid}_fb.npy", raw["fb"])
-            if f.exists():
-                fbf = cache / f"{vid}_fb.npy"
-                hands.setdefault(vid, {})["fallback" if fb else "holistic"] = hand_report(load_raw(f), np.load(fbf) if fbf.exists() else None)
-    out = dict(hand_tracking=hands)
-    for vocab in a.vocab.split(","):
-        pipe = SignPipeline(backend=a.backend, device=a.device, vocab=vocab, use_llm=False)
-        bank_vocab = {pipe.concepts[c] for c in pipe.bank.concepts_present}
-        vids = {}
-        for vid, kind, ref in items:
-            f = ROOT / "cache" / "ext_test" / ("mp_fb" if a.fallback else "mp") / f"{vid}.npz"
-            if not f.exists():
-                continue
-            t = time.perf_counter()
-            r = pipe.run_landmarks(load_raw(f), title=vid)
-            r["timings_ms"]["total_ms"] = round((time.perf_counter() - t) * 1000, 1)
-            vids[vid] = dict(score_video(r, ref.split(), canon, bank_vocab), kind=kind)
-        out[vocab] = dict(summary=summarise(vids), summary_in_vocab=summarise({k: v for k, v in vids.items() if all(v["in_vocab"].values())}),
-                          videos=vids)
-        log.info("[%s] external: %s", vocab, out[vocab]["summary"])
-    write_json(REP / f"external_{a.tag}.json", out)
 
 
 # ----------------------------------------------------------------------------- self-made sentence videos (held-out signers)
@@ -697,7 +658,7 @@ def cmd_selftest(a):
     meta = pd.read_csv(out_dir / "selftest.csv")
     canon = _canon()
     res = {}
-    for vocab in ("conversation", "daily"):
+    for vocab in ("conversation", "full"):
         pipe = SignPipeline(backend=a.backend, device=a.device, vocab=vocab, use_llm=not a.no_llm, bank_file=EVAL / "bank_eval.npz")
         bank_vocab = {pipe.concepts[c] for c in pipe.bank.concepts_present}
         vids = {}
@@ -714,7 +675,7 @@ def cmd_selftest(a):
         res[vocab] = dict(summary=summarise(vids), by_speed={str(s): summarise({k: v for k, v in vids.items() if v["speed"] == s}) for s in sorted(set(meta.speed))},
                           by_source={s: summarise({k: v for k, v in vids.items() if v["source"] == s}) for s in sorted(set(meta.source))}, videos=vids)
         log.info("[%s] self-test: %s", vocab, res[vocab]["summary"])
-    write_json(REP / f"selftest_{a.tag}.json", res)
+    write_json(REP / "selftest.json", res)
 
 
 # ----------------------------------------------------------------------------- real phrases by an unseen person
@@ -743,7 +704,7 @@ def cmd_phrases(a):
     ph = ph[ph.kind == "phrase"]
     split = phrase_split(list(ph.id))
     res = {}
-    for vocab in ("conversation", "daily"):
+    for vocab in ("conversation", "full"):
         pipe = SignPipeline(backend=a.backend, device=a.device, vocab=vocab, use_llm=not a.no_llm, bank_file=EVAL / "bank_eval.npz")
         bank_vocab = {pipe.concepts[c] for c in pipe.bank.concepts_present}
         vids = {}
@@ -761,7 +722,7 @@ def cmd_phrases(a):
         res[vocab] = dict(summary_test_half=summarise({k: v for k, v in vids.items() if v["split"] == "test"}),
                           summary_tune_half=summarise({k: v for k, v in vids.items() if v["split"] == "tune"}), summary=summarise(vids), videos=vids)
         log.info("[%s] phrases (unseen person, real sentences) TEST half: %s", vocab, res[vocab]["summary_test_half"])
-    write_json(REP / f"phrases_{a.tag}.json", res)
+    write_json(REP / "phrases.json", res)
 
 
 def cmd_qparticle(a):
@@ -867,12 +828,12 @@ def cmd_tune_natural(a):
     from modules.runtime import Bank
     be = np.load(EVAL / "bank_eval.npz")
     ctx = dict(exact=Exact(), null=np.load(sd / "null_proto.npy").astype(np.float32),
-               banks={"daily": Bank(be["Z"].astype(np.float32), be["c"], len(concepts), allowed=set(D.get("daily", D["conversation"]))),
+               banks={"full": Bank(be["Z"].astype(np.float32), be["c"], len(concepts)),
                       "conversation": Bank(be["Z"].astype(np.float32), be["c"], len(concepts), allowed=set(D["conversation"]))})
     spot_all = read_json(MODEL / "spotting.json")
     cal_all = read_json(MODEL / "segment_calibration.json")
     report = {}
-    for vocab in ("conversation", "daily"):
+    for vocab in ("conversation", "full"):
         pipe = SignPipeline(backend="torch", device="cuda", vocab=vocab, use_llm=False, use_face=False, bank_file=EVAL / "bank_eval.npz")
         bank_vocab = {pipe.concepts[c] for c in pipe.bank.concepts_present}
         _tag, _cache = pipe._tag, {}
@@ -945,89 +906,6 @@ def cmd_tune_natural(a):
     write_json(REP / "natural_tuning.json", report)
 
 
-def cmd_calibrate(a):
-    """v8 confidence rule: P(correct) = logistic model on the tune decodes (as before), but the 'accepted' threshold must give
-    precision ≥ --accept_precision on EVERY real tune speed (1×, 1.5×, 2×) separately — a pooled threshold let the slow, clear
-    tune sentences hide the fast ones, and the self-made test showed confident errors. Uses only tune data; keeps spotting.json."""
-    from modules.decode import FEATS, LogReg, seg_features
-    from modules.runtime import Bank
-    sd = run_dir(a.seq)
-    D = pickle.load(open(sd / "seq_tables.pkl", "rb"))
-    concepts, sets = D["concepts"], _sets(D["items"])
-    prior = np.load(MODEL / "freq_prior.npy") if (MODEL / "freq_prior.npy").exists() else None
-    be = np.load(EVAL / "bank_eval.npz")
-    ctx = dict(exact=Exact(), null=np.load(sd / "null_proto.npy").astype(np.float32),
-               banks={"daily": Bank(be["Z"].astype(np.float32), be["c"], len(concepts), allowed=set(D.get("daily", D["conversation"]))),
-                      "conversation": Bank(be["Z"].astype(np.float32), be["c"], len(concepts), allowed=set(D["conversation"]))})
-    spot, cal_all, rep_ = read_json(MODEL / "spotting.json"), read_json(MODEL / "segment_calibration.json"), {}
-    for vocab in ("conversation", "daily"):
-        tune = [k for k in sets if "_tune" in k]
-        segs = {k: evaluate(sets[k], spot[vocab], vocab, concepts, prior, ctx)[1] for k in tune}
-        X = {k: np.concatenate([seg_features(s_, FEATS) for s_, _ in segs[k]] or [np.zeros((0, len(FEATS)))]) for k in tune}
-        y = {k: np.concatenate([np.array(c, float) for _, c in segs[k]] or [np.zeros(0)]) for k in tune}
-        lr = LogReg().fit(np.concatenate(list(X.values())), np.concatenate(list(y.values())))
-
-        def tau_for(prec, keys):
-            taus = []
-            for k in keys:
-                p_ = lr.predict(X[k]); t_k = 0.95
-                for t in np.linspace(0.05, 0.95, 91):
-                    mm = p_ >= t
-                    if mm.sum() >= 10 and y[k][mm].mean() >= prec:
-                        t_k = float(t); break
-                taus.append(t_k)
-            return max(taus)
-        real = [k for k in tune if k.startswith("real_tune")]
-        cal = dict(model=lr.to_dict(FEATS), tau_accept=tau_for(a.accept_precision, real), tau_uncertain=tau_for(0.45, real), fitted_on=tune,
-                   rule=f"precision >= {a.accept_precision} on each of {real}",
-                   # v8.1 "น่าจะเป็น" tier: shown as word? and spoken only if the user asks for uncertain readings; never in the sentence
-                   tau_probable=tau_for(a.probable_precision, real), rule_probable=f"precision >= {a.probable_precision} on each of {real}")
-        cal_all[vocab] = cal
-        rep_[vocab] = {k: dict(accepted=int((lr.predict(X[k]) >= max(cal["tau_accept"], spot.get("accept_min", 0.8))).sum()),
-                               precision=float(y[k][lr.predict(X[k]) >= max(cal["tau_accept"], spot.get("accept_min", 0.8))].mean())
-                               if (lr.predict(X[k]) >= max(cal["tau_accept"], spot.get("accept_min", 0.8))).any() else None) for k in tune}
-        for k in tune:
-            mm = lr.predict(X[k]) >= cal["tau_probable"]
-            rep_[vocab][k].update(probable=int(mm.sum()), probable_precision=float(y[k][mm].mean()) if mm.any() else None,
-                                  segments=int(len(y[k])), top1_correct=int(y[k].sum()))
-        log.info("[%s] calibration: tau_accept %.2f (%s) · tau_probable %.2f · tune %s", vocab, cal["tau_accept"], cal["rule"],
-                 cal["tau_probable"], rep_[vocab])
-    write_json(MODEL / "segment_calibration.json", cal_all)
-    write_json(REP / "calibration_v8.json", rep_)
-
-
-def cmd_spotreport(a):
-    """Every continuous-signing set (TSL51 tune/test at 1× / 1.5× / 2×, synthetic held-out) decoded with the FINAL models/spotting.json
-    and segment_calibration.json (after natural-signing tuning and `calibrate`) — nothing is chosen here. → reports/spotting_final_<tag>.json"""
-    from modules.decode import FEATS, LogReg, seg_features
-    from modules.runtime import Bank
-    sd = run_dir(a.seq)
-    D = pickle.load(open(sd / "seq_tables.pkl", "rb"))
-    concepts, sets = D["concepts"], _sets(D["items"])
-    prior = np.load(MODEL / "freq_prior.npy") if (MODEL / "freq_prior.npy").exists() else None
-    be = np.load(EVAL / "bank_eval.npz")
-    ctx = dict(exact=Exact(), null=np.load(sd / "null_proto.npy").astype(np.float32),
-               banks={"daily": Bank(be["Z"].astype(np.float32), be["c"], len(concepts), allowed=set(D.get("daily", D["conversation"]))),
-                      "conversation": Bank(be["Z"].astype(np.float32), be["c"], len(concepts), allowed=set(D["conversation"]))})
-    spot, cal_all = read_json(MODEL / "spotting.json"), read_json(MODEL / "segment_calibration.json")
-    out = {}
-    for vocab in ("conversation", "daily"):
-        cal = cal_all[vocab]; lr = LogReg.from_dict(cal["model"]); tau = max(cal["tau_accept"], spot.get("accept_min", 0.8))
-        vset = {concepts[c] for c in D["conversation" if vocab == "conversation" else "daily"]}
-        out[vocab] = {}
-        for k in sets:
-            res, segs = evaluate(sets[k], spot[vocab], vocab, concepts, prior, ctx, vset)
-            P = np.concatenate([lr.predict(seg_features(s_, FEATS)) for s_, _ in segs if s_] or [np.zeros(0)])
-            C = np.concatenate([np.array(c, float) for s_, c in segs if s_] or [np.zeros(0)])
-            m = P >= tau
-            res["accepted"] = dict(n=int(m.sum()), correct=int(C[m].sum()), precision=float(C[m].mean()) if m.any() else None,
-                                   per_sentence=float(m.sum() / max(len(sets[k]), 1)))
-            out[vocab][k] = res
-            log.info("[%s] %-16s WER %.3f R@1 %.3f P@1 %.3f segF1 %.3f · accepted %s", vocab, k, res["WER"], res["word_recall_top1"], res["word_precision_top1"],
-                     res["seg_f1"], res["accepted"])
-    write_json(REP / f"spotting_final_{a.tag}.json", out)
-
-
 # ----------------------------------------------------------------------------- vocab exports
 def cmd_vocab(a):
     clips = pd.read_parquet(SHARDS / "clips.parquet")
@@ -1084,7 +962,6 @@ def cmd_bank_add(a):
         log.info("bank_add: nothing new"); return
     concepts = read_json(MODEL / "concepts.json")
     be = make_backend(MODEL, "onnx", "cpu")
-    prep = be.prep                                       # the deployed encoder's own window input (v8 landmark features)
     rows, Z = [], []
     for r in new.itertuples():
         f = PREP / "pose_mp" / "agent" / f"agent_yt_{r.clip_id.split(':')[-1]}.npz"
@@ -1135,11 +1012,6 @@ def cmd_bank_add(a):
         doc="Conversation-mode vocabulary: vocab/daily_conversation.json ∪ TSL51 words, restricted to concepts with ≥ 1 bank example. "
             "signers = distinct people / channels behind each word in models/bank.npz.",
         concepts=conv, signers={w: int(depth.get(cidx[w], 0)) for w in conv}, not_in_bank=missing))
-    if (SHARDS / "daily_vocab.json").exists():                 # v8 'daily' mode (scripts/data_prep.py daily_vocab: rule + numbers there)
-        dv = sorted(set(w for w in read_json(SHARDS / "daily_vocab.json") if w in cidx and cidx[w] in present) | set(conv))
-        write_json(MODEL / "vocab_daily.json", dict(
-            doc="Daily mode: conversation words ∪ common Thai words (TNC frequency ≥ 50) that ≥ 2 different people sign in the data; letters excluded.",
-            concepts=dv, signers={w: int(depth.get(cidx[w], 0)) for w in dv}))
     cfg = read_json(MODEL / "config.json")
     cfg.update(bank=int(len(fb["c"])), concepts=len(concepts), conversation_concepts=len(conv),
                bank_added=dict(clips=n_dep, eval_clips=n_eval, new_concepts=added_concepts, built=time.strftime("%Y-%m-%d %H:%M")))
@@ -1153,21 +1025,16 @@ def main():
     sub = ap.add_subparsers(dest="cmd", required=True)
     b = sub.add_parser("build"); b.add_argument("--run", required=True); b.add_argument("--seq", required=True)
     sub.add_parser("grammar"); sub.add_parser("vocab"); sub.add_parser("qparticle"); sub.add_parser("bank_add")
-    sr = sub.add_parser("spotreport"); sr.add_argument("--seq", required=True); sr.add_argument("--tag", default="v8")
-    ca = sub.add_parser("calibrate"); ca.add_argument("--seq", required=True); ca.add_argument("--accept_precision", type=float, default=0.85)
-    ca.add_argument("--probable_precision", type=float, default=0.7)
-    ex = sub.add_parser("external"); ex.add_argument("--tag", default="v8"); ex.add_argument("--vocab", default="conversation")
-    ex.add_argument("--fallback", action="store_true"); ex.add_argument("--backend", default="onnx"); ex.add_argument("--device", default="cpu")
     tn = sub.add_parser("tune_natural"); tn.add_argument("--seq", required=True)
     s = sub.add_parser("spot"); s.add_argument("--seq", required=True); s.add_argument("--accept_precision", type=float, default=0.85)
-    i = sub.add_parser("isolated"); i.add_argument("--run", required=True)
+    i = sub.add_parser("isolated"); i.add_argument("--run", required=True); i.add_argument("--v6", action="store_true")
     for name in ("infer", "selftest", "phrases"):
         n = sub.add_parser(name); n.add_argument("--tag", default="final"); n.add_argument("--no_llm", action="store_true"); n.add_argument("--tts", action="store_true")
         n.add_argument("--backend", default="onnx"); n.add_argument("--device", default="cpu"); n.add_argument("--vocab", default="")
         if name == "selftest":
             n.add_argument("--make", action="store_true"); n.add_argument("--make_only", action="store_true"); n.add_argument("--per_signer", type=int, default=14)
     a = ap.parse_args()
-    dict(build=cmd_build, grammar=cmd_grammar, spot=cmd_spot, isolated=cmd_isolated, infer=cmd_infer, selftest=cmd_selftest, phrases=cmd_phrases, qparticle=cmd_qparticle, tune_natural=cmd_tune_natural, vocab=cmd_vocab, bank_add=cmd_bank_add, external=cmd_external, calibrate=cmd_calibrate, spotreport=cmd_spotreport)[a.cmd](a)
+    dict(build=cmd_build, grammar=cmd_grammar, spot=cmd_spot, isolated=cmd_isolated, infer=cmd_infer, selftest=cmd_selftest, phrases=cmd_phrases, qparticle=cmd_qparticle, tune_natural=cmd_tune_natural, vocab=cmd_vocab, bank_add=cmd_bank_add)[a.cmd](a)
 
 
 if __name__ == "__main__":

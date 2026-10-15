@@ -27,13 +27,6 @@ export default function ResultCard({ r, latest, onSaved, vocab = [] }: { r: Tran
     unlockAudio();
     await playWav(await speak(sayText, r.face?.emotion, r.face?.intensity));
   };
-  const ht = r.hand_tracking;
-  const pct = (x: number | null | undefined) => (x == null ? "–" : `${Math.round(x * 100)}%`);
-  const lowHands = ht && [ht.left, ht.right].some((h) => h.n >= 10 && h.hit != null && h.hit < 0.7);
-  // v8.1: most lost frames had the wrist at the bottom edge → the hand was outside the picture (camera too close / too high), not blurred
-  // (out_below frames are not counted as lost: a resting hand below the picture is fine; the framing advice needs a tight frame)
-  const tight = !!ht && ht.room_below != null && ht.room_below < 0.9;
-  const outOfFrame = tight && !!ht && (ht.left.out_below ?? 0) + (ht.right.out_below ?? 0) >= 5;
   const cues = [r.face?.question_yesno && (r.face?.question_furrow ? "คำถาม ไหม (ขมวดคิ้ว · ทดลอง)" : "คำถาม (คิ้วยก)"), r.face?.negation && "ปฏิเสธ (ส่ายหัว)",
     r.face?.affirmation && "ยืนยัน (พยักหน้า)", r.face?.emotion && r.face.emotion !== "neutral" && `อารมณ์: ${r.face.emotion_th}`].filter(Boolean) as string[];
   return (
@@ -43,14 +36,14 @@ export default function ResultCard({ r, latest, onSaved, vocab = [] }: { r: Tran
         <button className="ghost" onClick={replay} disabled={!sayText} title={shown ? "ฟังอีกครั้ง" : "ฟังคำอ่านที่ไม่แน่ใจ"}>🔊{!shown && sayText ? "?" : ""}</button>
       </header>
       <p className={`sentence ${shown ? "" : "muted"}`}>
-        {shown || (tentative ? `น่าจะเป็น: ${tentative.replaceAll("[?]", "").trim()} (ยังไม่ยืนยัน)` : signs.length ? "ยังไม่มั่นใจ (ต่ำกว่า 80%) — กด [?] เพื่อสอนคำที่ทำจริง" : "ไม่พบท่ามือ")}
+        {shown || (signs.length ? "ยังไม่มั่นใจ (ต่ำกว่า 80%) — กด [?] เพื่อสอนคำที่ทำจริง" : "ไม่พบท่ามือ")}
       </p>
       <div className="chips">
         {signs.map((s, i) => (
           <span key={i} className="chipwrap">
             <button className={`chip ${saved[i] ? "accepted saved" : s.status}`} onClick={() => { setOpen(open === i ? -1 : i); setTyped(""); }}
               title={`${LABEL[s.status]} p=${s.p} · ${s.t0}–${s.t1}s — กดเพื่อยืนยัน/แก้คำ แล้วบันทึกเป็นท่าของฉัน`}>
-              {saved[i] ? `${saved[i]} ✓` : s.status === "accepted" ? s.word : s.probable ? `${s.word}?` : "[?]"}
+              {saved[i] ? `${saved[i]} ✓` : s.status === "accepted" ? s.word : "[?]"}
             </button>
             {open === i && (
               <span className="menu">
@@ -80,12 +73,7 @@ export default function ResultCard({ r, latest, onSaved, vocab = [] }: { r: Tran
         <span>คลังคำ: {r.vocab}</span>
         {r.mirrored_to_right_hand && <span>ถนัดซ้าย → สะท้อนเป็นขวา</span>}
         <span>{Math.round(r.timings_ms?.total_ms ?? 0)} ms</span>
-        {ht && <span title="สัดส่วนเฟรมที่ยกมือแล้วระบบจับจุดมือได้ครบ 21 จุด (รวมตัวช่วยจับมือสำรอง)">
-          จับมือได้ ซ้าย {pct(ht.left.hit)} · ขวา {pct(ht.right.hit)} · {ht.fps.toFixed(0)} fps</span>}
       </footer>
-      {(lowHands || outOfFrame) && (outOfFrame
-        ? <p className="note">มือออกนอกกรอบด้านล่าง — กล้องเห็นตัวคุณถึงแค่อก ถอยห่างกล้องหรือวางกล้องให้ต่ำลงให้เห็นถึงเอว (ท่าระดับอก เช่น ฉัน · ชื่อ ต้องอยู่ในภาพทั้งมือ)</p>
-        : <p className="note">มือหลุดบ่อยในประโยคนี้ — ลองเพิ่มแสง ให้มืออยู่ในกรอบ และทำท่าช้าลงเล็กน้อย (ภาพเบลอทำให้จับมือไม่ได้)</p>)}
     </article>
   );
 }

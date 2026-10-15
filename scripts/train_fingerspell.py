@@ -110,7 +110,7 @@ def collect(max_none_clips=2500):
     log.info("+ word signs (not a letter): %d windows", sum(len(x) for x in X) - n0)
     # hard negatives: continuous signing that is not spelling — the TSL51 *tune* sentences (test sentences are never used)
     import pickle
-    D = pickle.load(open(ART / "runs" / "seq-v8" / "seq_tables.pkl", "rb"))
+    D = pickle.load(open(ART / "runs" / "seq-v7" / "seq_tables.pkl", "rb"))
     n1 = sum(len(x) for x in X)
     for it in D["items"]:
         if it["kind"] == "real" and it["split"] == "tune" and it["speed"] == 1.0:
@@ -211,9 +211,9 @@ def evaluate(model, classes, X, y, g):
 
 def letter_bank(X_items):
     """Encoder embeddings of the training letter examples → models/letters_bank.npz (Z, letter)."""
+    from modules.parts import prep
     from modules.runtime import make_backend
     be = make_backend(MODEL, "onnx", "cpu")
-    prep = be.prep                                   # the deployed encoder's own input (v8 landmark features)
     Z, lab = [], []
     batch = []
     for letter, kpi, sc in X_items:
@@ -254,14 +254,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--epochs", type=int, default=60)
     ap.add_argument("--no_bank", action="store_true")
-    ap.add_argument("--bank_only", action="store_true", help="only rebuild models/letters_bank.npz (after a new sign encoder)")
     a = ap.parse_args()
     t0 = time.time()
-    if a.bank_only:
-        Z, lab = letter_bank(bank_items())
-        np.savez(MODEL / "letters_bank.npz", Z=Z, letter=lab)
-        log.info("letters_bank.npz rebuilt: %d examples, %d letters, dim %d", len(lab), len(set(lab)), Z.shape[1])
-        return
     X, y, g, role = collect()
     classes = [c for c in EN_LETTERS + TH_LETTERS if c in set(y)] + [NONE]
     log.info("windows %d · classes %d · people %d (test %d)", len(X), len(classes), len(set(g)), len(set(g[role == "test"])))
