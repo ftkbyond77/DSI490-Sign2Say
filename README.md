@@ -98,3 +98,39 @@ python main.py cloud cleanup                                          # empty th
 Raw data came from public endpoints for research. th-sl.com (NADT) carries an explicit AI-training rights reservation; its use
 here was approved by the project owner for research only. YouTube clips (v4 and v7 harvest) remain the publishers' — research
 use only. Redistribution or release of models trained on these sources is a separate conversation with each rights holder.
+
+
+## Mac first; cloud only for heavy training
+
+Local commands never launch a cloud job automatically. PyTorch helpers choose CUDA
+when available, otherwise Apple MPS, otherwise CPU. Set `DEVICE=cpu` to force CPU
+if an operation is unsupported on MPS. ONNX web inference stays on CPU; Docker on
+Mac does not expose Apple MPS, so run Python natively for MPS acceleration.
+Install native macOS PyTorch in your Python environment (`pip install torch`), then
+the project dependencies. The default requirements now use CPU ONNX Runtime.
+
+```bash
+# Local sequence training (requires prepared shards and complete encoder run)
+python main.py train-seq --encoder_run artifacts/runs/<run> --out artifacts/runs/seq-local-mac
+# Explicit CPU fallback
+python main.py train-seq --encoder_run artifacts/runs/<run> --device cpu
+# Build/tune use the same local device selection
+DEVICE=cpu python main.py eval build --run <run> --seq seq-local-mac
+# Torch inference on Apple GPU; ONNX remains the default CPU backend
+python main.py infer --video clip.mp4 --backend torch --device mps
+# A small local encoder experiment (no cloud job)
+python GCP/script/job_entry.py --stage train_encoder --device auto --steps 20 --eval_every 10 --out artifacts/runs/enc-local-smoke
+```
+
+Non-CUDA training defaults to 0 data-loader workers, P=8 and embedding batches of
+16; explicit CLI values override these. CUDA keeps the original 10 / 48 / 384
+settings. CPU/MPS use FP32; CUDA uses BF16 only when the GPU supports it. A request
+for unavailable hardware fails with a clear error instead of silently changing it.
+MPS operator coverage and available memory still need checking with your datasets;
+use CPU or smaller batches if needed. Existing browser personal-sign embeddings
+must be regenerated when changing the encoder.
+
+Use the explicit `cloud` commands only for heavy training. GPU prices and the
+cheapest machine depend on region, availability and runtime: the existing
+multi-region launcher has not been changed into an automatic cheapest-GPU picker.
+Set a bounded `--hours`, fetch the results, and inspect running jobs afterwards.

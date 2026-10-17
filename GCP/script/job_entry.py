@@ -27,7 +27,7 @@ import numpy as np
 import pandas as pd
 import torch
 
-from modules.utils import get_logger, seed_all, write_json
+from modules.utils import get_logger, seed_all, write_json, device as resolve_device, inference_precision
 
 log = get_logger("job")
 A = None
@@ -253,7 +253,7 @@ def stage_train_encoder(a):
         try:
             P_, M_ = collate(parts, dev)
             y = torch.as_tensor(y, dtype=torch.long, device=dev)
-            with torch.autocast(dev, dtype=torch.bfloat16, enabled=dev == "cuda"):
+            with inference_precision(dev):
                 z = model(P_, M_)
             # proxy loss only for concepts seen from ≥ 2 signers (+ null); single-signer words are shaped by SupCon on augmented views
             cm = multi_mask[y]
@@ -332,11 +332,11 @@ def main():
     ap.add_argument("--stage", required=True); ap.add_argument("--run_id", default="local")
     ap.add_argument("--gcs"); ap.add_argument("--data"); ap.add_argument("--models"); ap.add_argument("--out")
     ap.add_argument("--steps", type=int, default=3600); ap.add_argument("--eval_every", type=int, default=400)
-    ap.add_argument("--P", type=int, default=48); ap.add_argument("--K", type=int, default=2); ap.add_argument("--null_frac", type=float, default=0.08)
+    ap.add_argument("--P", type=int, default=None); ap.add_argument("--K", type=int, default=2); ap.add_argument("--null_frac", type=float, default=0.08)
     ap.add_argument("--lr_gcn", type=float, default=1e-4); ap.add_argument("--lr_mt5", type=float, default=2e-5); ap.add_argument("--lr_head", type=float, default=5e-4)
     ap.add_argument("--mt5_layers", type=int, default=8); ap.add_argument("--s", type=float, default=30.0); ap.add_argument("--margin", type=float, default=0.25)
-    ap.add_argument("--temp", type=float, default=0.07); ap.add_argument("--w_supcon", type=float, default=0.5); ap.add_argument("--workers", type=int, default=10)
-    ap.add_argument("--limit_eval", type=int, default=0); ap.add_argument("--device", default="cuda"); ap.add_argument("--embed_bs", type=int, default=384)
+    ap.add_argument("--temp", type=float, default=0.07); ap.add_argument("--w_supcon", type=float, default=0.5); ap.add_argument("--workers", type=int, default=None)
+    ap.add_argument("--limit_eval", type=int, default=0); ap.add_argument("--device", default=None, help="auto (default), cpu, mps, cuda; DEVICE env also supported"); ap.add_argument("--embed_bs", type=int, default=None)
     ap.add_argument("--patience", type=int, default=3); ap.add_argument("--ckpt_every", type=int, default=2); ap.add_argument("--ema", type=float, default=0.998)
     ap.add_argument("--init", default="wlasl", help="wlasl | ckpt:<path>")
     ap.add_argument("--signer_aug", type=float, default=0.3); ap.add_argument("--mirror", type=float, default=0.1)
@@ -345,6 +345,16 @@ def main():
     ap.add_argument("--n_distill", type=int, default=1200); ap.add_argument("--span_epochs", type=int, default=8)
     ap.add_argument("--epochs", type=int, default=18)
     A = ap.parse_args()
+    A.device = resolve_device(A.device)
+    gpu = torch.device(A.device).type == "cuda"
+    # Avoid duplicating the pose store in macOS spawned DataLoader workers.
+    if A.workers is None:
+        A.workers = 10 if gpu else 0
+    if A.P is None:
+        A.P = 48 if gpu else 8
+    if A.embed_bs is None:
+        A.embed_bs = 384 if gpu else 16
+    log.info("device=%s workers=%d P=%d embed_bs=%d", A.device, A.workers, A.P, A.embed_bs)
     if A.stage == "train_encoder":
         stage_train_encoder(A)
     elif A.stage == "sequence":

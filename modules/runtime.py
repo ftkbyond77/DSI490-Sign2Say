@@ -85,13 +85,14 @@ class OnnxBackend:
 class TorchBackend:
     name = "torch"
 
-    def __init__(self, model_dir, device="cuda", encoder=None, tagger=None, tagger_arch="gru"):
+    def __init__(self, model_dir, device=None, encoder=None, tagger=None, tagger_arch="gru"):
         import torch
         from .encoder import load_encoder
         from .sequence import Tagger
         md = Path(model_dir)
         self.torch = torch
-        self.device = device if (device != "cuda" or torch.cuda.is_available()) else "cpu"
+        from .utils import device as resolve_device
+        self.device = resolve_device(device)
         self.model = encoder if encoder is not None else load_encoder(md, md / "encoder.pt", device=self.device)
         if tagger is None:
             tagger = Tagger(arch=tagger_arch).to(self.device)

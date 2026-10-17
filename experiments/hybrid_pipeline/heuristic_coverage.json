@@ -1,0 +1,12 @@
+{
+  "vocab": 326,
+  "reference_clips": 2332,
+  "concepts_with_references": 310,
+  "excluded": {
+    "val": 178,
+    "test": 762,
+    "missing_pose_or_metadata": 638
+  },
+  "mask_provenance": "prepared scores may include interpolation; not raw observed rate",
+  "split_policy": "training references only"
+}
