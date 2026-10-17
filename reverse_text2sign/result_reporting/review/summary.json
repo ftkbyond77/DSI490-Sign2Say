@@ -1,0 +1,177 @@
+{
+ "data": [
+  {
+   "source": "ttrs",
+   "clips": 5043,
+   "tier_a": 4501,
+   "tier_b": 378,
+   "rejected": 164,
+   "selected": 4077
+  },
+  {
+   "source": "th_sl",
+   "clips": 7719,
+   "tier_a": 7153,
+   "tier_b": 356,
+   "rejected": 210,
+   "selected": 5507
+  },
+  {
+   "source": "tsl51_user_sign",
+   "clips": 547,
+   "tier_a": 490,
+   "tier_b": 30,
+   "rejected": 27,
+   "selected": 23
+  },
+  {
+   "source": "youtube_agent",
+   "clips": 561,
+   "tier_a": 462,
+   "tier_b": 37,
+   "rejected": 62,
+   "selected": 43
+  },
+  {
+   "source": "youtube_harvest (2026-10-10)",
+   "clips": 122,
+   "tier_a": 93,
+   "tier_b": 16,
+   "rejected": 37,
+   "selected": 84
+  }
+ ],
+ "fail_reasons": {
+  "hand_gap_dom": 514,
+  "hand_rate_dom": 505,
+  "swap_frac": 388,
+  "finger_jitter": 275,
+  "span_s": 172,
+  "face_frac": 34,
+  "no_signing": 29,
+  "hand_out_frac": 27,
+  "zoom_ratio": 19,
+  "wrist_jitter": 13,
+  "shoulder_frac": 3,
+  "no_mediapipe": 1
+ },
+ "tsl51": {
+  "exact": 62,
+  "n": 62,
+  "exact_no_topicalisation": 26,
+  "word_for_word_baseline": 14
+ },
+ "conversation": {
+  "en": {
+   "sentences": 53,
+   "all_signed": 0.943,
+   "units": 135,
+   "sign_rate": 0.978,
+   "spelled": 3,
+   "text_cards": 0,
+   "recorded_phrases": 2
+  },
+  "th": {
+   "sentences": 96,
+   "all_signed": 0.938,
+   "units": 254,
+   "sign_rate": 0.976,
+   "spelled": 6,
+   "text_cards": 0,
+   "recorded_phrases": 6
+  }
+ },
+ "library": {
+  "signs": 9694,
+  "phrases": 40,
+  "frames": 620739,
+  "by_source": {
+   "th_sl": 5507,
+   "ttrs": 4077,
+   "youtube_harvest": 44,
+   "youtube_agent": 43,
+   "tsl51_user_sign": 23
+  },
+  "tiers": {
+   "A": 9231,
+   "B": 463
+  },
+  "wrist_median": 0.06657781112474939,
+  "wrist_p90": 0.1015800889790795,
+  "elbow_median": 0.09381395111290164,
+  "finger_median": 0.23223943063748187,
+  "finger_p90": 0.3793954444590489,
+  "two_handed": 0.6891891891891891,
+  "location": {
+   "chest": 0.811,
+   "face": 0.128,
+   "low": 0.044,
+   "head": 0.018
+  },
+  "q_bin_mb": 203.6
+ },
+ "backtranslate": {
+  "avatar": {
+   "top1": 0.525,
+   "top5": 0.627,
+   "top10": 0.678,
+   "median_rank": 1.0
+  },
+  "human": {
+   "top1": 0.63,
+   "top5": 0.709,
+   "top10": 0.745,
+   "median_rank": 1.0
+  },
+  "n": 1000,
+  "cos_avatar_human_median": 0.8444873690605164,
+  "by_tier": {
+   "A": {
+    "n": 983,
+    "top1_avatar": 0.5228891149542217,
+    "top1_human": 0.6286876907426246
+   },
+   "B": {
+    "n": 17,
+    "top1_avatar": 0.6470588235294118,
+    "top1_human": 0.7058823529411765
+   }
+  }
+ },
+ "latency": {
+  "thai": {
+   "p50_ms": 59.4,
+   "p95_ms": 101.7,
+   "gzip_kb_median": 28.2,
+   "n": 30
+  },
+  "english": {
+   "p50_ms": 497.2,
+   "p95_ms": 741.5,
+   "gzip_kb_median": 19.2,
+   "n": 8
+  }
+ },
+ "asr": {
+  "thai": {
+   "cer": 0.162,
+   "exact": 64,
+   "n": 96,
+   "median_ms": 1912,
+   "p95_ms": 2101,
+   "empty": 0
+  },
+  "english": {
+   "wer": 0.0048,
+   "exact": 52,
+   "n": 53,
+   "median_ms": 705
+  }
+ },
+ "tempo": {
+  "n": 28,
+  "median_real": 2.04,
+  "median_citation": 4.0600000000000005,
+  "median_conversational": 2.6416666666666666
+ }
+}

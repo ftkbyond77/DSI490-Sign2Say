@@ -33,7 +33,7 @@
    "min_segments": 2
   },
   "post": {
-   "min_frames": 14,
+   "min_frames": 10,
    "null_gap_max": 0.1,
    "p_sign_min": 0.65,
    "repeat_penalty": true

@@ -1,0 +1,70 @@
+﻿clip_id,concept,signer,category,source_file,span_f0,span_f1,yt_f0,decision,reason,source
+agent:yt:_9wHIoiNfrQ,กระดูก,yt_person_026,อนุชิต จำปามูล,agent_data\youtube_words\videos\_9wHIoiNfrQ.mp4,14.0,87.0,10.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:34ntv25B8fw,กระป๋อง,yt_person_039,,agent_data\youtube_words\videos\34ntv25B8fw.mp4,23.0,100.0,58.0,reject,child learner,agent_youtube_words
+agent:yt:pXRIJ4yQJ-U,กระหล่ำปลี,yt_person_039,,agent_data\youtube_words\videos\pXRIJ4yQJ-U.mp4,0.0,84.0,0.0,reject,child learner,agent_youtube_words
+agent:yt:qWHBq-Z7HPU,กระเป๋า,yt_person_039,,agent_data\youtube_words\videos\qWHBq-Z7HPU.mp4,22.0,70.0,50.0,reject,child learner,agent_youtube_words
+agent:yt:XSMEON14P68,กระเพาะปัสสาวะ,yt_person_026,อนุชิต จำปามูล,agent_data\youtube_words\videos\XSMEON14P68.mp4,17.0,90.0,7.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:ZFuzlBztCuA,กลับรถ,yt_person_004,poopaye patato,agent_data\youtube_words\videos\ZFuzlBztCuA.mp4,15.0,34.0,18.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:XPkvRXFtDO8,กวาดบ้าน,yt_person_022,,agent_data\youtube_words\videos\XPkvRXFtDO8.mp4,0.0,103.0,18.0,reject,child learner,agent_youtube_words
+agent:yt:DoifXtGF3Ds,กินข้าว,yt_person_022,,agent_data\youtube_words\videos\DoifXtGF3Ds.mp4,12.0,58.0,17.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:-sCDJiTMGJc,กีต้าร์,yt_person_030,,agent_data\youtube_words\videos\-sCDJiTMGJc.mp4,15.0,52.0,13.0,reject,child learner,agent_youtube_words
+agent:yt:eBszPTIyQHI,ข้าวต้มมัด,yt_person_022,,agent_data\youtube_words\videos\eBszPTIyQHI.mp4,11.0,84.0,28.0,reject,picture overlay + caption,agent_youtube_words
+agent:yt:qlJnFeTyiKY,ข้าวต้มมัด,yt_person_030,,agent_data\youtube_words\videos\qlJnFeTyiKY.mp4,20.0,89.0,35.0,reject,child (scout) learner,agent_youtube_words
+agent:yt:wfC2jJHOHm4,ข้าวหลาม,yt_person_022,,agent_data\youtube_words\videos\wfC2jJHOHm4.mp4,12.0,85.0,26.0,reject,picture overlay + caption,agent_youtube_words
+agent:yt:LgtkRVvCGEE,ความรัก,yt_person_006,MyNameFluke,agent_data\youtube_words\videos\LgtkRVvCGEE.mp4,0.0,63.0,43.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:Qwl7EkE2wKY,ความสุข,yt_person_006,,agent_data\youtube_words\videos\Qwl7EkE2wKY.mp4,0.0,98.0,6.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:BCjo5TyMWaQ,คัดจมูก,yt_person_026,อนุชิต จำปามูล,agent_data\youtube_words\videos\BCjo5TyMWaQ.mp4,17.0,81.0,21.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:ndyGrQp9mIE,คัน,yt_person_026,อนุชิต จำปามูล,agent_data\youtube_words\videos\ndyGrQp9mIE.mp4,18.0,92.0,32.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:ZUaYfO847pE,จำหน่าย,yt_person_022,,agent_data\youtube_words\videos\ZUaYfO847pE.mp4,11.0,54.0,29.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:VtYK43Zi-Dk,จุฬา,yt_person_022,,agent_data\youtube_words\videos\VtYK43Zi-Dk.mp4,13.0,85.0,23.0,reject,child learner,agent_youtube_words
+agent:yt:4oBGeOP_zdQ,ชี้,yt_person_022,Deaf OraThai Tay,agent_data\youtube_words\videos\4oBGeOP_zdQ.mp4,16.0,62.0,30.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:K-cpzFX1CMk,ดวงจันทร์,yt_person_030,niparin palasorn,agent_data\youtube_words\videos\K-cpzFX1CMk.mp4,29.0,43.0,72.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:h8e2eVJArSg,ดวงตา,yt_person_039,Super Top,agent_data\youtube_words\videos\h8e2eVJArSg.mp4,20.0,72.0,27.0,reject,child learner,agent_youtube_words
+agent:yt:L4VAxjVTfeA,ดวงอาทิตย์,yt_person_030,niparin palasorn,agent_data\youtube_words\videos\L4VAxjVTfeA.mp4,16.0,57.0,71.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:-UGu4KXVGY8,ดุด่า,yt_person_026,Anuchit Jampamoon,agent_data\youtube_words\videos\-UGu4KXVGY8.mp4,16.0,69.0,13.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:KdxJ66B1cYs,ตาชั่ง,yt_person_040,Setsatian School,agent_data\youtube_words\videos\KdxJ66B1cYs.mp4,14.0,78.0,9.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:GpCyaDorZNg,ทางโค้ง,yt_person_004,,agent_data\youtube_words\videos\GpCyaDorZNg.mp4,12.0,52.0,29.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:CULj41x_vIw,ทิ้ง,yt_person_026,Anuchit Jampamoon,agent_data\youtube_words\videos\CULj41x_vIw.mp4,20.0,44.0,34.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:WQd3sDH8GTY,ทุ่งนา,yt_person_022,,agent_data\youtube_words\videos\WQd3sDH8GTY.mp4,12.0,82.0,17.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:Amb93G8TYUc,นา,yt_person_022,,agent_data\youtube_words\videos\Amb93G8TYUc.mp4,12.0,98.0,19.0,reject,picture overlay,agent_youtube_words
+agent:yt:LngokCiAYRY,บอกลา,yt_person_026,Anuchit Jampamoon,agent_data\youtube_words\videos\LngokCiAYRY.mp4,21.0,76.0,31.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:KQWiL3ID6X8,ปฎัก,yt_person_022,,agent_data\youtube_words\videos\KQWiL3ID6X8.mp4,15.0,68.0,33.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:clP0z9-8sqk,ปิดประตู,yt_person_026,Anuchit Jampamoon,agent_data\youtube_words\videos\clP0z9-8sqk.mp4,18.0,94.0,18.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:xRMuew-Z7QU,ปีหน้า,yt_person_004,,agent_data\youtube_words\videos\xRMuew-Z7QU.mp4,14.0,70.0,22.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:lCZKNgzy9Ro,ผัก,yt_person_039,,agent_data\youtube_words\videos\lCZKNgzy9Ro.mp4,4.0,79.0,0.0,reject,child learner,agent_youtube_words
+agent:yt:rJ3gbrLiW9g,ผัก,yt_person_022,,agent_data\youtube_words\videos\rJ3gbrLiW9g.mp4,16.0,60.0,27.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:7xiNFBS-WeE,พบกันใหม่,yt_person_004,,agent_data\youtube_words\videos\7xiNFBS-WeE.mp4,12.0,68.0,45.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:97MaW4caQI0,ภาคภูมิใจ,yt_person_040,Setsatian School,agent_data\youtube_words\videos\97MaW4caQI0.mp4,14.0,82.0,14.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:7Ryf7129o3A,ภาพ,yt_person_026,,agent_data\youtube_words\videos\7Ryf7129o3A.mp4,15.0,90.0,10.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:ku-FINC-2VU,ภาพพิมพ์,yt_person_022,,agent_data\youtube_words\videos\ku-FINC-2VU.mp4,12.0,90.0,30.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:OA31mUnsptg,ภูมิปัญญา,yt_person_022,,agent_data\youtube_words\videos\OA31mUnsptg.mp4,13.0,105.0,34.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:dEOGwXxpk7I,มัด,yt_person_030,,agent_data\youtube_words\videos\dEOGwXxpk7I.mp4,24.0,91.0,46.0,reject,child (scout) learner,agent_youtube_words
+agent:yt:gjXx3LF2Jxw,ม้าก้านกล้วย,yt_person_022,,agent_data\youtube_words\videos\gjXx3LF2Jxw.mp4,0.0,27.0,0.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:z-WZMsudczQ,รถจักรยานยนต์,yt_person_004,,agent_data\youtube_words\videos\z-WZMsudczQ.mp4,13.0,37.0,13.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:pgjEoyBPG_Q,ระฆัง,yt_person_022,,agent_data\youtube_words\videos\pgjEoyBPG_Q.mp4,14.0,59.0,24.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:F1laqn_gSHQ,รุ้ง,yt_person_022,,agent_data\youtube_words\videos\F1laqn_gSHQ.mp4,11.0,78.0,19.0,reject,picture overlay,agent_youtube_words
+agent:yt:H5N8ekODzCs,ฤดูฝน,yt_person_004,poopaye patato,agent_data\youtube_words\videos\H5N8ekODzCs.mp4,13.0,52.0,19.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:L9Jr2T219Qw,ล้างหน้า,yt_person_022,,agent_data\youtube_words\videos\L9Jr2T219Qw.mp4,15.0,101.0,30.0,reject,child learner,agent_youtube_words
+agent:yt:WOSNaQ6NYm0,สบายใจ,yt_person_004,poopaye patato,agent_data\youtube_words\videos\WOSNaQ6NYm0.mp4,13.0,48.0,39.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:QclwLSaypT0,สระว่ายน้ำ,yt_person_004,poopaye patato,agent_data\youtube_words\videos\QclwLSaypT0.mp4,13.0,72.0,13.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:9LlP-JC2kpI,สีเข้ม,yt_person_026,,agent_data\youtube_words\videos\9LlP-JC2kpI.mp4,20.0,104.0,25.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:m5OKqE37yXE,สุกร,yt_person_022,,agent_data\youtube_words\videos\m5OKqE37yXE.mp4,11.0,53.0,26.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:6CJT35CDBJc,หนาม,yt_person_022,,agent_data\youtube_words\videos\6CJT35CDBJc.mp4,14.0,104.0,24.0,reject,picture overlay,agent_youtube_words
+agent:yt:p_qhkRU5ZCM,หุ่นไล่กา,yt_person_022,,agent_data\youtube_words\videos\p_qhkRU5ZCM.mp4,15.0,101.0,23.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:VPYk0buQ7JY,อนุสาวรีย์,yt_person_004,,agent_data\youtube_words\videos\VPYk0buQ7JY.mp4,12.0,46.0,19.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:aGGBh3JMz4Y,ฮาลาล,yt_person_027,Islamic​ Studies​ for​ the​ Deaf​ in​ Thailand​,agent_data\youtube_words\videos\aGGBh3JMz4Y.mp4,56.0,102.0,205.0,reject,caption box overlay,agent_youtube_words
+agent:yt:b2zcHRdnKsI,เข็มฉีดยา,yt_person_039,,agent_data\youtube_words\videos\b2zcHRdnKsI.mp4,18.0,67.0,32.0,reject,child learner,agent_youtube_words
+agent:yt:dFl7iQB6DvM,เข่า,yt_person_026,อนุชิต จำปามูล,agent_data\youtube_words\videos\dFl7iQB6DvM.mp4,16.0,111.0,16.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:KCTseBtw18U,เซเว่นอีเลฟเว่น,yt_person_004,,agent_data\youtube_words\videos\KCTseBtw18U.mp4,13.0,51.0,17.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:VQZ6n6NhyCM,เนื้อปลา,yt_person_022,,agent_data\youtube_words\videos\VQZ6n6NhyCM.mp4,14.0,65.0,23.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:jZrEtXA008k,เรือสำเภา,yt_person_022,,agent_data\youtube_words\videos\jZrEtXA008k.mp4,12.0,115.0,19.0,reject,picture overlay,agent_youtube_words
+agent:yt:uKb_pq3BDCk,เรือใบ,yt_person_022,,agent_data\youtube_words\videos\uKb_pq3BDCk.mp4,13.0,72.0,26.0,reject,picture overlay,agent_youtube_words
+agent:yt:KXQXF-aiwZI,เลี้ยงสัตว์,yt_person_022,,agent_data\youtube_words\videos\KXQXF-aiwZI.mp4,12.0,72.0,28.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:8ZRxpSienBk,เลี้ยวซ้าย,yt_person_004,,agent_data\youtube_words\videos\8ZRxpSienBk.mp4,12.0,48.0,21.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:qgRH2HPiYCA,เล่านิทาน,yt_person_022,,agent_data\youtube_words\videos\qgRH2HPiYCA.mp4,12.0,88.0,11.0,reject,child learner,agent_youtube_words
+agent:yt:50TSWm3JRP4,เสื้อ,yt_person_030,ruttpong,agent_data\youtube_words\videos\50TSWm3JRP4.mp4,18.0,53.0,13.0,reject,child learner,agent_youtube_words
+agent:yt:xmIPUcmn8D4,เหลา,yt_person_030,,agent_data\youtube_words\videos\xmIPUcmn8D4.mp4,32.0,79.0,100.0,reject,child (scout) learner,agent_youtube_words
+agent:yt:hle1iQmRXH0,แช่น้ำ,yt_person_030,,agent_data\youtube_words\videos\hle1iQmRXH0.mp4,19.0,96.0,36.0,reject,child (scout) learner,agent_youtube_words
+agent:yt:c5xHFW53XOE,แบ่งปัน,yt_person_022,,agent_data\youtube_words\videos\c5xHFW53XOE.mp4,14.0,60.0,17.0,reject,child learner,agent_youtube_words
+agent:yt:dlQbiPBaTWs,โรคประจำตัว,yt_person_025,doyouhearmedoc,agent_data\youtube_words\videos\dlQbiPBaTWs.mp4,0.0,98.0,226.0,accept,"adult signer, clean framing",agent_youtube_words
+agent:yt:99Pp4SD2LvM,ใบตอง,yt_person_030,,agent_data\youtube_words\videos\99Pp4SD2LvM.mp4,22.0,65.0,35.0,reject,child (scout) learner,agent_youtube_words

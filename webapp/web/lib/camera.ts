@@ -8,7 +8,10 @@ export async function openWidestCamera(): Promise<MediaStream> {
   const maxW = caps.width?.max, maxH = caps.height?.max;
   if (!maxW || !maxH) return s;
   const a = maxW / maxH;
-  const tries = [720, 768, 900, 960, 1080].filter((h) => h <= maxH).map((h) => ({ w: Math.min(maxW, Math.round((h * a) / 16) * 16), h }));
+  // pitty: ?cam=480 (or 360/540/…) asks for that many lines first — a lighter frame for slow machines (A/B test; default unchanged)
+  const want = Number(new URLSearchParams(window.location.search).get("cam")) || 0;
+  const lines = want ? [want, 720] : [720, 768, 900, 960, 1080];
+  const tries = lines.filter((h) => h <= maxH).map((h) => ({ w: Math.min(maxW, Math.round((h * a) / 16) * 16), h }));
   for (const t of tries) {
     try {
       await tr.applyConstraints({ width: { exact: t.w }, height: { exact: t.h }, frameRate: { ideal: 30 }, resizeMode: "none" } as MediaTrackConstraints);

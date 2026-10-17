@@ -22,6 +22,12 @@ Results: `result_reporting/result_v7.md` · file map: `result_reporting/file_str
   on (3 uncertain lone letters in 126 sentences) / 0.444 with letters off. data_test unchanged (R@1 0.41, R@5 0.73).
 * New steps: `python main.py letters …`, `train-letters`, `tune-spelling`, `study-clips`, `eval bank_add`, `harvest discover --words …`.
 
+## Reverse part — text / speech → Thai Sign Language avatar
+
+everse_text2sign/\ (own README inside): Thai / English text or speech → TSL structure → motion from the recorded-sign library → 3D avatar.
+\docker compose up --build\ also starts it at **http://localhost:8081** (everse-web\ · everse-api\ · everse-speech\); the forward demo stays at :8080.
+Forward (\modules/\, \webapp/\, \models/\) and reverse share nothing at run time; branch \pitty\ is the forward base.
+
 ## Start here
 
 ```bash

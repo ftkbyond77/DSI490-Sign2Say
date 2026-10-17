@@ -96,3 +96,14 @@ webapp/web/public/mediapipe/
 webapp/web/public/models/
 *.tsbuildinfo
 node_modules/
+
+# ---- stray files from Windows shells (`> $null` in cmd creates a file)
+/$null
+
+# ---- reverse part (reverse_text2sign/): derived data, local caches and web build output
+reverse_text2sign/data/
+reverse_text2sign/service/web/node_modules/
+reverse_text2sign/service/web/dist/
+reverse_text2sign/service/web/public/avatar.vrm
+reverse_text2sign/result_reporting/review/renders/
+reverse_text2sign/prompt/*

@@ -1,0 +1,43 @@
+{
+ "c0": 0.25,
+ "c1": 0.003,
+ "tempo": 1.0,
+ "stroke_speed": 1.5,
+ "min_s": 0.18,
+ "max_s": 0.4,
+ "rest_c0": 0.556,
+ "rest_c1": 0.0,
+ "clause_hold_s": 0.25,
+ "hold_cap_s": 0.12,
+ "text_pause_s": 0.9,
+ "letter_hold_s": 0.3,
+ "letter_trans_s": 0.12,
+ "evidence": {
+  "reach": {
+   "c0": 0.4563042159188607,
+   "c1": 0.00014580330396288325,
+   "n": 1965,
+   "median_dur": 0.44,
+   "median_dist": 1.2553865909576416,
+   "by_distance": {
+    "0.30-0.79": 0.4,
+    "0.79-1.05": 0.44,
+    "1.05-1.25": 0.44,
+    "1.25-1.47": 0.44,
+    "1.47-1.72": 0.44,
+    "1.72-3.19": 0.44
+   }
+  },
+  "sentence_tempo": {
+   "median_ratio": 1.554,
+   "n": 252,
+   "note": "TSL51 researcher: sentence span / (isolated spans + transitions)"
+  },
+  "conversational_tempo": {
+   "n": 28,
+   "median_ratio": 0.577,
+   "stroke_factor": 0.583,
+   "transition_factor": 0.207
+  }
+ }
+}

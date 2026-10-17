@@ -2,6 +2,7 @@
 #   gateway  nginx, the only published port (8080) — routes / → web, /api → sign-api, /tts → tts
 #   web      Next.js front end: camera + MediaPipe Holistic in the browser (WASM), record / process / live mode, plays the speech
 #   sign-api FastAPI + ONNX Runtime: landmarks or video → words / Thai sentence (stateless; scale with --scale sign-api=N)
+#   (+ the reverse part: reverse-web / reverse-api / reverse-speech on :8081 — see the block at the end)
 #   tts      FastAPI + MMS-TTS Thai (VITS): sentence → speech
 # The model is read from ./models (mounted read-only); OPENAI_API_KEY in .env enables the LLM sentence layer (rules otherwise).
 name: thaislm
@@ -49,3 +50,48 @@ services:
       context: .
       dockerfile: webapp/tts/Dockerfile
     restart: unless-stopped
+
+# ---- reverse part: Thai / English text or speech → Thai Sign Language avatar → http://localhost:8081 (reverse_text2sign/)
+  #   reverse-web     nginx: the built three-vrm front end + /api proxy (the only published port of this part)
+  #   reverse-api     FastAPI: text → TSL structure (IR) → motion timeline from the recorded-sign library (models mounted read-only)
+  #   reverse-speech  Thai / English speech recognition (Whisper, CTranslate2 int8) + English → Thai translation (NLLB-200 600M)
+  reverse-web:
+    build:
+      context: .
+      dockerfile: reverse_text2sign/service/web/Dockerfile
+    ports:
+      - "8081:80"
+    volumes:
+      - ./reverse_text2sign/models/avatar.vrm:/usr/share/nginx/html/avatar.vrm:ro
+      - ./reverse_text2sign/vrm:/srv/vrm:ro                       # character picker: original files (until optimised)
+      - reverse-avatars:/srv/avatars:ro                           # optimised copies + thumbnails written by reverse-api
+    depends_on:
+      reverse-api:
+        condition: service_healthy
+    restart: unless-stopped
+
+  reverse-api:
+    build:
+      context: .
+      dockerfile: reverse_text2sign/service/api/Dockerfile
+    volumes:
+      - ./reverse_text2sign/models:/app/models:ro
+      - ./reverse_text2sign/vrm:/app/vrm:ro                       # every *.vrm here is a selectable character (any file name)
+      - reverse-avatars:/cache/avatars
+    environment:
+      - T2S_MODELS=/app/models
+      - T2S_VRM_DIR=/app/vrm
+      - T2S_AVATAR_CACHE=/cache/avatars
+      - T2S_SPEECH_URL=http://reverse-speech:8002
+    restart: unless-stopped
+
+  reverse-speech:
+    build:
+      context: .
+      dockerfile: reverse_text2sign/service/speech/Dockerfile
+    environment:
+      - SPEECH_THREADS=${T2S_SPEECH_THREADS:-4}
+    restart: unless-stopped
+
+volumes:
+  reverse-avatars:          # reverse part: content-addressed optimised characters (rebuilt automatically if deleted)

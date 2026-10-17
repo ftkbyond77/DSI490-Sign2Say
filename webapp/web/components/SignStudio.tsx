@@ -68,11 +68,11 @@ export default function SignStudio() {
   const [seen, setSeen] = useState(parts(null));
   const [exposure, setExposure] = useState("");
   const [tone, setTone] = useState<Tone>({ brightness: 1, contrast: 1 });
-  const [autoLight, setAutoLight] = useState(true);
+  const [autoLight, setAutoLight] = useState(false);   // pitty: off by default — whole-frame correction washed out skin, hands missed 2.2× more often (pitty/README.md)
   const [endMs, setEndMs] = useState(1500);
   const endRef = useRef(1500);
   endRef.current = endMs;
-  const autoLightRef = useRef(true);
+  const autoLightRef = useRef(false);
   autoLightRef.current = autoLight;
   const [liveState, setLiveState] = useState("waiting");
   const [liveNote, setLiveNote] = useState("");
@@ -95,7 +95,7 @@ export default function SignStudio() {
     info().then(setModel).catch(() => setModel(null));
     vocabList().then(setVocab).catch(() => setVocab([]));
     setOpts((o) => ({ ...o, ...load<Partial<Options>>("thaislm.opts.v3", {}) }));     // v3: earlier saved settings (full vocabulary …) reset
-    setEndMs(load("thaislm.endMs", 1500)); setAutoLight(load("thaislm.autoLight", true)); refreshSigns();
+    setEndMs(load("thaislm.endMs", 1500)); setAutoLight(load("thaislm.autoLight", false)); refreshSigns();
   }, []);
   useEffect(() => { save("thaislm.opts.v3", opts); }, [opts]);
   useEffect(() => { save("thaislm.endMs", endMs); }, [endMs]);

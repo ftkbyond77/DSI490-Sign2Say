@@ -99,7 +99,7 @@ class SignPipeline:
     # ------------------------------------------------------------------ inputs
     @staticmethod
     def landmarks_from_video(video, progress=None):
-        return extract(video, fps=25.0, progress=progress, normalize=True)
+        return extract(video, fps=25.0, progress=progress, normalize=False)   # pitty: whole-frame exposure normalisation doubled missed hands on data_test (pitty/notebooks/pitty_phase1_hands.ipynb)
 
     @staticmethod
     def landmarks_from_browser(frames, hw):

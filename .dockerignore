@@ -5,6 +5,12 @@
 !webapp/tts/**
 !webapp/web/**
 !models/mediapipe/**
+# reverse (text/speech → sign, port 8081): code only — its models/ are mounted at run time
+!reverse_text2sign/t2s/**
+!reverse_text2sign/service/**
+reverse_text2sign/service/web/node_modules
+reverse_text2sign/service/web/dist
+reverse_text2sign/service/web/public/avatar.vrm
 webapp/web/node_modules
 webapp/web/.next
 webapp/web/public/mediapipe
