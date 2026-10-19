@@ -36,7 +36,7 @@ export default function ResultCard({ r, latest, onSaved, vocab = [] }: { r: Tran
         <button className="ghost" onClick={replay} disabled={!sayText} title={shown ? "ฟังอีกครั้ง" : "ฟังคำอ่านที่ไม่แน่ใจ"}>🔊{!shown && sayText ? "?" : ""}</button>
       </header>
       <p className={`sentence ${shown ? "" : "muted"}`}>
-        {shown || (signs.length ? "ยังไม่มั่นใจ (ต่ำกว่า 80%) — กด [?] เพื่อสอนคำที่ทำจริง" : "ไม่พบท่ามือ")}
+        {shown || (signs.length ? "ยังไม่มั่นใจ (ต่ำกว่า 70%) — กด [?] เพื่อสอนคำที่ทำจริง" : "ไม่พบท่ามือ")}
       </p>
       <div className="chips">
         {signs.map((s, i) => (

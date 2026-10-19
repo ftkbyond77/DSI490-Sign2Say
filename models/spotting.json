@@ -35,8 +35,9 @@
   "post": {
    "min_frames": 10,
    "null_gap_max": 0.1,
-   "p_sign_min": 0.65,
-   "repeat_penalty": true
+   "p_sign_min": 0.55,
+   "repeat_penalty": true,
+   "min_hand_frac": 0.3
   },
   "grammar_rerank_weight": 0.5
  },
@@ -80,6 +81,6 @@
   "w_bank": 0.5,
   "run_min": 0.7
  },
- "accept_min": 0.8,
+ "accept_min": 0.7,
  "hand_gap_s": 0.5
 }
