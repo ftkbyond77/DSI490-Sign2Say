@@ -1,0 +1,14 @@
+/Users/voltrondata/github-actions-runner/_work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.l1dcachesize'. Detail: [errno 1] Operation not permitted
+/Users/voltrondata/github-actions-runner/_work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.l2cachesize'. Detail: [errno 1] Operation not permitted
+/Users/voltrondata/github-actions-runner/_work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.l3cachesize'. Detail: [errno 1] Operation not permitted
+/Users/voltrondata/github-actions-runner/_work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.optional.neon'. Detail: [errno 1] Operation not permitted
+          pair  tune_pipeline_confusions  n_queries  true_mean  wrong_mean  wrong_max_beats_true                                                       cause                                                evidence
+     ไป → กลับ                         8          9      0.528       0.685                     8 unresolved: variant/label/similar pose/automatic boundaries pair_cosines + nearest_neighbours + visual_review_queue
+เที่ยว → หนึ่ง                         3          3      0.237       0.270                     2 unresolved: variant/label/similar pose/automatic boundaries pair_cosines + nearest_neighbours + visual_review_queue
+ภาษามือ → วิ่ง                         6         24      0.287       0.143                     6 unresolved: variant/label/similar pose/automatic boundaries pair_cosines + nearest_neighbours + visual_review_queue
+      กิน → ดู                         6         51      0.202       0.168                    12 unresolved: variant/label/similar pose/automatic boundaries pair_cosines + nearest_neighbours + visual_review_queue
+  ข้าว → ไม่มี                         3         24      0.218       0.109                     6 unresolved: variant/label/similar pose/automatic boundaries pair_cosines + nearest_neighbours + visual_review_queue
+  ยาย → ที่ไหน                         0         18      0.234       0.074                     0 unresolved: variant/label/similar pose/automatic boundaries pair_cosines + nearest_neighbours + visual_review_queue
+    ยาย → ญาติ                        14         18      0.234       0.272                    12 unresolved: variant/label/similar pose/automatic boundaries pair_cosines + nearest_neighbours + visual_review_queue
+   คุณ → หนึ่ง                         6         24      0.174       0.170                     9 unresolved: variant/label/similar pose/automatic boundaries pair_cosines + nearest_neighbours + visual_review_queue
+     คุณ → ป้า                         3         24      0.174       0.136                    13 unresolved: variant/label/similar pose/automatic boundaries pair_cosines + nearest_neighbours + visual_review_queue

@@ -1,0 +1,5 @@
+mode,delta,ci_low,ci_high,improved,unchanged,worsened,conclusion,note
+filters_all,0.0006613756613756617,-0.005952380952380952,0.007936507936507936,1,124,1,ไม่มีนัยสำคัญ,clip bootstrap; not independent signers
+grammar_clean_selected,-0.012566137566137565,-0.036375661375661374,0.010582010582010581,13,104,9,ไม่มีนัยสำคัญ,clip bootstrap; not independent signers
+grammar_off,0.031084656084656083,0.00396825396825397,0.05755621693121669,10,93,23,WER เพิ่มขึ้น,clip bootstrap; not independent signers
+grammar_original,0.0,0.0,0.0,0,126,0,ไม่มีนัยสำคัญ,clip bootstrap; not independent signers

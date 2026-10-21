@@ -1,0 +1,168 @@
+{
+  "instructions": "Geometry estimates are not human labels. Review true sign and boundaries before training. Do not fill labels from filename alone.",
+  "segments": [
+    {
+      "pair_id": "pair01",
+      "video": "ฉันแอบชอบคุณ.MOV",
+      "t0": 10.08,
+      "t1": 11.2,
+      "proposed_reference": "ชอบ",
+      "boundary_verified": false,
+      "true_word": null,
+      "notes": "ผู้ใช้ยืนยันภาพที่ 1=ฉัน, ภาพ 2–4=ชอบ, ภาพสุดท้าย=ไม่ได้ทำท่า ช่วงเดิม 10.08–11.20s ปนหลายหน่วย ห้ามใช้ทั้งช่วงเป็นตัวอย่างชอบ–ข้าวที่ยืนยันแล้ว ยังไม่ได้ระบุ boundary ที่แน่นอน",
+      "review_status": "mixed_signs_and_rest",
+      "eligible_hard_negative": false,
+      "frame_annotations": [
+        {
+          "time_s": 10.19,
+          "label": "ฉัน",
+          "kind": "sign",
+          "verified": true,
+          "source": "user-confirmed screenshot; timestamp rounded to 0.01s"
+        },
+        {
+          "time_s": 10.42,
+          "label": "ชอบ",
+          "kind": "sign",
+          "verified": true,
+          "source": "user-confirmed screenshot; timestamp rounded to 0.01s"
+        },
+        {
+          "time_s": 10.64,
+          "label": "ชอบ",
+          "kind": "sign",
+          "verified": true,
+          "source": "user-confirmed screenshot; timestamp rounded to 0.01s"
+        },
+        {
+          "time_s": 10.86,
+          "label": "ชอบ",
+          "kind": "sign",
+          "verified": true,
+          "source": "user-confirmed screenshot; timestamp rounded to 0.01s"
+        },
+        {
+          "time_s": 11.09,
+          "label": null,
+          "kind": "rest",
+          "verified": true,
+          "source": "user-confirmed screenshot; timestamp rounded to 0.01s"
+        }
+      ]
+    },
+    {
+      "pair_id": "pair02",
+      "video": "ฉันยังลืมคุณไม่ได้.MOV",
+      "t0": 3.84,
+      "t1": 5.28,
+      "proposed_reference": "ฉัน",
+      "boundary_verified": false,
+      "true_word": null,
+      "notes": ""
+    },
+    {
+      "pair_id": "pair03",
+      "video": "ฉันแอบชอบคุณ.MOV",
+      "t0": 7.36,
+      "t1": 8.32,
+      "proposed_reference": "ฉัน",
+      "boundary_verified": false,
+      "true_word": null,
+      "notes": ""
+    },
+    {
+      "pair_id": "pair04",
+      "video": "ฉันยังลืมคุณไม่ได้.MOV",
+      "t0": 6.56,
+      "t1": 8.48,
+      "proposed_reference": "ลืม",
+      "boundary_verified": false,
+      "true_word": null,
+      "notes": ""
+    },
+    {
+      "pair_id": "pair05",
+      "video": "มีอะไรให้ฉันช่วยไหม.MOV",
+      "t0": 11.84,
+      "t1": 12.64,
+      "proposed_reference": "ช่วย",
+      "boundary_verified": false,
+      "true_word": null,
+      "notes": ""
+    }
+  ],
+  "hand_attributes": [
+    {
+      "clip_id": "thsl:th_sl_00164",
+      "word": "ฉัน",
+      "intervals": [],
+      "verified": false
+    },
+    {
+      "clip_id": "thsl:th_sl_00172",
+      "word": "คุณ",
+      "intervals": [],
+      "verified": false
+    },
+    {
+      "clip_id": "thsl:th_sl_00204",
+      "word": "แฟน",
+      "intervals": [],
+      "verified": false
+    },
+    {
+      "clip_id": "thsl:th_sl_00213",
+      "word": "ญาติ",
+      "intervals": [],
+      "verified": false
+    },
+    {
+      "clip_id": "thsl:th_sl_00449",
+      "word": "ขนมปัง",
+      "intervals": [],
+      "verified": false
+    },
+    {
+      "clip_id": "thsl:th_sl_00451",
+      "word": "ข้าว",
+      "intervals": [],
+      "verified": false
+    },
+    {
+      "clip_id": "thsl:th_sl_00827",
+      "word": "ชอบ",
+      "intervals": [],
+      "verified": false
+    },
+    {
+      "clip_id": "thsl:th_sl_00842",
+      "word": "ลืม",
+      "intervals": [],
+      "verified": false
+    },
+    {
+      "clip_id": "thsl:th_sl_01604",
+      "word": "ชอบ",
+      "intervals": [],
+      "verified": false
+    },
+    {
+      "clip_id": "thsl:th_sl_02122",
+      "word": "ช่วย",
+      "intervals": [],
+      "verified": false
+    },
+    {
+      "clip_id": "thsl:th_sl_07657",
+      "word": "แฟน",
+      "intervals": [],
+      "verified": false
+    },
+    {
+      "clip_id": "thsl:th_sl_07692",
+      "word": "ญาติ",
+      "intervals": [],
+      "verified": false
+    }
+  ]
+}

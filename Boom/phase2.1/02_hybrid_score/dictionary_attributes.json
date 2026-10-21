@@ -1,0 +1,3795 @@
+{
+  "5 องค์กรเครือข่าย": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book1:20"
+    }
+  ],
+  "กบ": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "กรกฎาคม": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:49"
+    }
+  ],
+  "กระชาย (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "กระต่าย": [
+    {
+      "hands": 2,
+      "location_zone": "face",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "กระถิน (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "กระทิง": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "together"
+      ],
+      "relation": "together",
+      "source": "book2:None"
+    }
+  ],
+  "กระท้อน (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "กระเจี๊ยบเขียว (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "กระเจี๊ยบแดง (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "กระเทียม (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "กล้วย": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "กล้วยน้ำว้า (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "กล้วยหอม (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "กล้วยไข่ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "กวาง": [
+    {
+      "hands": 2,
+      "location_zone": "face",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "กะหล่ำดอก": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "กะหล่ำปลี": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "กะเพรา": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "กันยายน": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:50"
+    }
+  ],
+  "กา": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "กิ้งกือ": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "กุมภาพันธ์": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:47"
+    }
+  ],
+  "กุยช่าย": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "กุ้ง": [
+    {
+      "hands": 2,
+      "location_zone": "face",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ขนมปัง (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "side"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ขนุน": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "apart",
+        "up"
+      ],
+      "relation": "apart",
+      "source": "book2:None"
+    }
+  ],
+  "ขม": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [
+        "touch"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ขมิ้น (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ขอบคุณ (อายุเท่ากันหรือน้อยกว่า)": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book1:2"
+    },
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:2"
+    }
+  ],
+  "ขอโทษ (อายุเท่ากันหรือน้อยกว่า)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:3"
+    },
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book1:3"
+    }
+  ],
+  "ขิง": [
+    {
+      "hands": 2,
+      "location_zone": "arm",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ข่า (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "arm",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ข้าว (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ข้าวเหนียว": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ข้าวโพด": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ข้าวโพดอ่อน (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "คนปกติ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book1:9"
+    }
+  ],
+  "คนหูตึง (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book1:9"
+    }
+  ],
+  "คนหูหนวก": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [
+        "down",
+        "side"
+      ],
+      "relation": null,
+      "source": "book1:8"
+    }
+  ],
+  "ครอบครัว": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle",
+        "together"
+      ],
+      "relation": "together",
+      "source": "book1:None"
+    }
+  ],
+  "ควาย": [
+    {
+      "hands": 2,
+      "location_zone": "face",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "คางคก": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [
+        "touch"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ค่ำ": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book1:36"
+    }
+  ],
+  "ค้างคาว": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "งู": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "งูจงอาง": [
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "งูสามเหลี่ยม": [
+    {
+      "hands": 2,
+      "location_zone": "arm",
+      "motion": [
+        "touch"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "งูเหลือม": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "apart",
+        "up"
+      ],
+      "relation": "apart",
+      "source": "book2:None"
+    }
+  ],
+  "งูเห่า": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "จระเข้": [
+    {
+      "hands": 2,
+      "location_zone": "face",
+      "motion": [
+        "down",
+        "up"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "จิงโจ้": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "จิ้งจก": [
+    {
+      "hands": 2,
+      "location_zone": "face",
+      "motion": [
+        "apart",
+        "up"
+      ],
+      "relation": "apart",
+      "source": "book2:None"
+    }
+  ],
+  "จืด": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ชมพู่": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ชมพู่มะเหมี่ยว": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ชะนี": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "alternate"
+      ],
+      "relation": "alternate",
+      "source": "book2:None"
+    }
+  ],
+  "ชะอม (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "apart",
+        "circle",
+        "side",
+        "up"
+      ],
+      "relation": "apart",
+      "source": "book3:None"
+    }
+  ],
+  "ชื่อ-นามสกุล": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "touch"
+      ],
+      "relation": null,
+      "source": "book1:6"
+    }
+  ],
+  "ชื่อภาษามือ": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book1:7"
+    }
+  ],
+  "ชื่อสะกดนิ้วมืออักษรไทย": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:8"
+    }
+  ],
+  "ช้าง": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ซอสถั่วเหลือง": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ซอสพริก": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [
+        "down",
+        "side"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ซอสมะเขือเทศ": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "side"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ซีอิ๊วขาว": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "side",
+        "up"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ซีอิ๊วดำ": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "side"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ญาติ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "ดอกแค (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle",
+        "down"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ตะขาบ": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "side"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ตะพาบน้ำ": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "apart",
+        "up"
+      ],
+      "relation": "apart",
+      "source": "book2:None"
+    }
+  ],
+  "ตะไคร้ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "side"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ตั๊กแตน": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ตา": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "ตำลึง (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ตุ๊กแก": [
+    {
+      "hands": 2,
+      "location_zone": "face",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ต่อ": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ต้นหอม (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ถั่วงอก (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ถั่วฝักยาว (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [
+        "apart",
+        "circle",
+        "up"
+      ],
+      "relation": "apart",
+      "source": "book3:None"
+    }
+  ],
+  "ถั่วพู (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "apart",
+        "circle",
+        "up"
+      ],
+      "relation": "apart",
+      "source": "book3:None"
+    }
+  ],
+  "ถั่วลันเตา (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ถั่วแขก (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle",
+        "side"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ถั่วแระ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ถาม (ภาษามือวิทยาลัยราชสุดา)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:17"
+    }
+  ],
+  "ทับทิม (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ทำไม (ภาษามือวิทยาลัยราชสุดา)": [
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book1:56"
+    }
+  ],
+  "ทุเรียน": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "touch"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ธรรมดา (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ธันวาคม": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:52"
+    }
+  ],
+  "นก": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "นกกระจอกเทศ": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "นกยูง": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "up"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "นกฮูก": [
+    {
+      "hands": 2,
+      "location_zone": "face",
+      "motion": [
+        "side",
+        "up"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "นกแก้ว": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "นม": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "นามสกุล": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:6"
+    }
+  ],
+  "น้อง": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "น้องชาย": [
+    {
+      "hands": 1,
+      "location_zone": "low",
+      "motion": [],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "น้องสาว": [
+    {
+      "hands": 1,
+      "location_zone": "low",
+      "motion": [],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "น้อยหน่า": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "alternate"
+      ],
+      "relation": "alternate",
+      "source": "book2:None"
+    }
+  ],
+  "น้า (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "น้ำตาลทราย": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "น้ำปลา": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "side"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "น้ำมันพืช (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "น้ำส้มสายชู": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "น้ำเต้า (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "บวบเหลี่ยม (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "apart",
+        "up"
+      ],
+      "relation": "apart",
+      "source": "book3:None"
+    }
+  ],
+  "บะหมี่ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "apart",
+        "up"
+      ],
+      "relation": "apart",
+      "source": "book3:None"
+    }
+  ],
+  "บุ้ง": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "บ่าย": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book1:34"
+    }
+  ],
+  "ปลวก": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ปลา": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ปลาฉลาม": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ปลาช่อน": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ปลาดาว": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ปลาดุก": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ปลาทู นึ่ง": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ปลานิล": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ปลาวาฬ": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ปลาหมึก": [
+    {
+      "hands": 2,
+      "location_zone": "face",
+      "motion": [
+        "alternate"
+      ],
+      "relation": "alternate",
+      "source": "book2:None"
+    }
+  ],
+  "ปลาโลมา": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ปลิง": [
+    {
+      "hands": 2,
+      "location_zone": "face",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ปะการัง": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "apart",
+        "up"
+      ],
+      "relation": "apart",
+      "source": "book2:None"
+    }
+  ],
+  "ปาด": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ปี": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book1:53"
+    }
+  ],
+  "ปู": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ปู่-ตา": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "ป้า น้า อาผู้หญิง": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [
+        "down",
+        "up"
+      ],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "ผงชูรส": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "side"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ผลไม้": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ผักกระเฉด (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ผักกวางตุ้ง (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "up"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ผักกาดขาวปลี (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "apart",
+        "up"
+      ],
+      "relation": "apart",
+      "source": "book3:None"
+    }
+  ],
+  "ผักกาดหอม (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ผักคะน้า (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ผักชี (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ผักบุ้ง (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ผีเสื้อ": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ผึ้ง": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "touch"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ผู้ชาย": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "ผู้หญิง": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "ผู้ใหญ่ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "ฝรั่ง (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ฝักกระถิน (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "apart",
+        "up"
+      ],
+      "relation": "apart",
+      "source": "book3:None"
+    }
+  ],
+  "พบ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "side",
+        "together"
+      ],
+      "relation": "together",
+      "source": "book1:12"
+    }
+  ],
+  "พบกันใหม่ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle",
+        "together"
+      ],
+      "relation": "together",
+      "source": "book1:12"
+    }
+  ],
+  "พริก (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "พริกขี้หนู (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "พริกชี้ฟ้าเขียว (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "พริกชี้ฟ้าแดง (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "พริกป่น": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "พริกหยวก (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "พริกเหลือง (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "พริกไทย (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "พริกไทยสด (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [
+        "touch",
+        "up"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "พรุ่งนี้": [
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book1:44"
+    }
+  ],
+  "พฤษภาคม": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:48"
+    }
+  ],
+  "พวกเขา (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "พวกเรา (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "พี่": [
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "พี่ชาย-น้องชาย ร่วมบิดาหรือมารดาเดียวกัน": [
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "พี่น้อง (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "side"
+      ],
+      "relation": null,
+      "source": "book1:None"
+    },
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "พี่สาว-น้องสาว ร่วมบิดาหรือมารดาเดียวกัน": [
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "พืช": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "alternate"
+      ],
+      "relation": "alternate",
+      "source": "book3:None"
+    }
+  ],
+  "พุทรา": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ฟักทอง (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ฟักเขียว (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ภรรยา": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "ภาษามือ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book1:7"
+    }
+  ],
+  "มกราคม": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:46"
+    }
+  ],
+  "มด": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "มะกรูด": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "มะกอก": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "มะขาม": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "มะขามเทศ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "มะนาว (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "มะปราง": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "มะพร้าว": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "มะม่วง": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "มะม่วงหิมพานต์ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "touch"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "มะยม (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "มะระจีน (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "มะระไทย (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "มะรืนนี้ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [],
+      "relation": null,
+      "source": "book1:44"
+    }
+  ],
+  "มะละกอ": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "มะเขือ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "side"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "มะเขือพวง (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "มะเขือยาว": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "side"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "มะเขือเทศ": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    },
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "มะเฟือง": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "มังคุด": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "apart",
+        "circle",
+        "up"
+      ],
+      "relation": "apart",
+      "source": "book2:None"
+    }
+  ],
+  "มันฝรั่ง": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "touch",
+        "up"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "มันแกว (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "up"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "มิถุนายน": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:49"
+    }
+  ],
+  "มีนาคม": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:47"
+    }
+  ],
+  "ม้า": [
+    {
+      "hands": 2,
+      "location_zone": "face",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ม้าน้ำ": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ม้าลาย": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ยาย (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "ยีราฟ": [
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [
+        "side",
+        "up"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ยุง": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "touch"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ย่า-ยาย": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "ระกำ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ละมุด": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ลา": [
+    {
+      "hands": 2,
+      "location_zone": "face",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ลางสาด": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ลำไย": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ลิง": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "up"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ลิ้นจี่": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ลุง": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "ลูก (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "ลูกตาล": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [
+        "together"
+      ],
+      "relation": "together",
+      "source": "book2:None"
+    }
+  ],
+  "วัน เดือน ปี": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle",
+        "down"
+      ],
+      "relation": null,
+      "source": "book1:39"
+    }
+  ],
+  "วันจันทร์ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book1:39"
+    }
+  ],
+  "วันพฤหัสบดี (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:41"
+    }
+  ],
+  "วันพุธ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book1:40"
+    }
+  ],
+  "วันศุกร์ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book1:41"
+    }
+  ],
+  "วันอังคาร": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book1:40"
+    }
+  ],
+  "วันอาทิตย์ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book1:42"
+    }
+  ],
+  "วันเสาร์ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [],
+      "relation": null,
+      "source": "book1:42"
+    }
+  ],
+  "วัว": [
+    {
+      "hands": 2,
+      "location_zone": "face",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "วุ้นเส้น (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "apart",
+        "down",
+        "side",
+        "up"
+      ],
+      "relation": "apart",
+      "source": "book3:None"
+    }
+  ],
+  "สตรอเบอรี่": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "สนุก": [
+    {
+      "hands": 2,
+      "location_zone": "face",
+      "motion": [],
+      "relation": null,
+      "source": "book1:4"
+    }
+  ],
+  "สวัสดี (อายุเท่ากันหรือน้อยกว่า)": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book1:1"
+    },
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [],
+      "relation": null,
+      "source": "book1:1"
+    }
+  ],
+  "สะตอ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "apart",
+        "up"
+      ],
+      "relation": "apart",
+      "source": "book3:None"
+    }
+  ],
+  "สะระแหน่ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "side",
+        "up"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "สัตว์": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "สับปะรด": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "สัปดาห์": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "side",
+        "up"
+      ],
+      "relation": null,
+      "source": "book1:43"
+    }
+  ],
+  "สามี": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "สายบัว": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "สิงหาคม": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:50"
+    }
+  ],
+  "สิงโต": [
+    {
+      "hands": 2,
+      "location_zone": "face",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "สี": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "สีกากี": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "สีขาว": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "side"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "สีครีม": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [
+        "touch"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "สีชมพู": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "สีดำ": [
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "สีทอง": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "สีน้ำตาล": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [
+        "side"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "สีฟ้า": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "สีม่วง": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "สีส้ม": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "สีเขียว": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "สีเข้ม": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "สีเงิน": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "touch"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "สีเทา": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "alternate",
+        "circle",
+        "side"
+      ],
+      "relation": "alternate",
+      "source": "book2:None"
+    }
+  ],
+  "สีเหลือง": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "สีแดง": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [
+        "side"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "สุนัข": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    },
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ส้ม": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ส้มโอ": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "หงส์": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "หนอน": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "หนู": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "หน่อไม้": [
+    {
+      "hands": 2,
+      "location_zone": "arm",
+      "motion": [
+        "down",
+        "side"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "หน่อไม้ฝรั่ง": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "up"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "หมัด": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "หมี": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "หมีแพนด้า": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "หมู": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [
+        "side"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "หมูป่า": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "หลาน": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "หวาน": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "หอมหัวใหญ่": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "หอมแดง": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "หอย": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "หอยทาก": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "หอยนางรม": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "together"
+      ],
+      "relation": "together",
+      "source": "book2:None"
+    }
+  ],
+  "หอยแครง": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "up"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "หอยแมลงภู่": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "หัวปลี": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "หิ่งห้อย": [
+    {
+      "hands": 2,
+      "location_zone": "face",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ห่าน": [
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "องุ่น": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "side"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "อย่างไร": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book1:57"
+    }
+  ],
+  "อร่อย": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "อะไร (ภาษามือวิทยาลัยราชสุดา)": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:55"
+    }
+  ],
+  "อา": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "อายุ": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book1:53"
+    }
+  ],
+  "อาหาร": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [
+        "together",
+        "up"
+      ],
+      "relation": "together",
+      "source": "book3:None"
+    }
+  ],
+  "อึ่งอ่าง": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [
+        "apart",
+        "up"
+      ],
+      "relation": "apart",
+      "source": "book2:None"
+    }
+  ],
+  "อูฐ": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "อ้อย": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ฮิปโปโปเตมัส": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "เกลือ": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "เขา": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "เขียด": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "เค็ม": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "เงาะ": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "alternate"
+      ],
+      "relation": "alternate",
+      "source": "book2:None"
+    }
+  ],
+  "เชอรี่ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "เช้า": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book1:35"
+    }
+  ],
+  "เดือน": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "side"
+      ],
+      "relation": null,
+      "source": "book1:46"
+    }
+  ],
+  "เด็ก (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:None"
+    }
+  ],
+  "เด็กทารก": [
+    {
+      "hands": 2,
+      "location_zone": null,
+      "motion": [
+        "alternate",
+        "circle"
+      ],
+      "relation": "alternate",
+      "source": "book1:None"
+    }
+  ],
+  "เต่า": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "เต้าเจี้ยว": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "เที่ยงคืน": [
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [],
+      "relation": null,
+      "source": "book1:37"
+    }
+  ],
+  "เท่าไร": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:57"
+    }
+  ],
+  "เปรี้ยว": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "เป็ด": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "เผือก (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "side"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "เผ็ด": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "เพื่อน": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "alternate"
+      ],
+      "relation": "alternate",
+      "source": "book1:None"
+    }
+  ],
+  "เมษายน": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:48"
+    }
+  ],
+  "เมื่อวานซืน (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [],
+      "relation": null,
+      "source": "book1:45"
+    }
+  ],
+  "เมื่อวานนี้ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [],
+      "relation": null,
+      "source": "book1:45"
+    }
+  ],
+  "เมื่อไร": [
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book1:58"
+    },
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book1:58"
+    }
+  ],
+  "เม่น": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "side"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "เย็น": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book1:34"
+    }
+  ],
+  "เรียน (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book1:11"
+    }
+  ],
+  "เวลา (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:33"
+    }
+  ],
+  "เสือ": [
+    {
+      "hands": 2,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "เสือดาว": [
+    {
+      "hands": 2,
+      "location_zone": "face",
+      "motion": [
+        "touch"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "เสือโคร่ง": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "เส้นหมี่ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "apart",
+        "up"
+      ],
+      "relation": "apart",
+      "source": "book3:None"
+    }
+  ],
+  "เส้นเล็ก (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "apart",
+        "up"
+      ],
+      "relation": "apart",
+      "source": "book3:None"
+    }
+  ],
+  "เส้นใหญ่ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "apart",
+        "up"
+      ],
+      "relation": "apart",
+      "source": "book3:None"
+    }
+  ],
+  "เหยี่ยว": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "เหา": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "เห็ด (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "up"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "เห็ดนางฟ้า (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "side"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "เห็ดฟาง (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down",
+        "up"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "เห็บ": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "แกะ": [
+    {
+      "hands": 2,
+      "location_zone": "arm",
+      "motion": [
+        "side"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "แคนตาลูป": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "แครอท": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [
+        "together"
+      ],
+      "relation": "together",
+      "source": "book3:None"
+    }
+  ],
+  "แตงกวา (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "แตงร้าน (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [
+        "apart",
+        "up"
+      ],
+      "relation": "apart",
+      "source": "book3:None"
+    }
+  ],
+  "แตงโม": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "แตงไทย (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "แตน": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "แป้งมัน": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "แพะ": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "แฟน (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book1:85"
+    }
+  ],
+  "แมงกะพรุน": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "แมงป่อง": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "แมงมุม": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "แมลงปอ": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "แมลงวัน": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "แมลงสาบ": [
+    {
+      "hands": 2,
+      "location_zone": "face",
+      "motion": [
+        "up"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "แมลงหวี่": [
+    {
+      "hands": 2,
+      "location_zone": null,
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "แมลงเม่า": [
+    {
+      "hands": 2,
+      "location_zone": "face",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "แมว": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [
+        "side"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "แมวน้ำ": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "แรด": [
+    {
+      "hands": 1,
+      "location_zone": null,
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "แอปเปิ้ล": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "โชคดี (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [],
+      "relation": null,
+      "source": "book1:13"
+    }
+  ],
+  "โสด": [
+    {
+      "hands": 1,
+      "location_zone": "chest",
+      "motion": [
+        "touch"
+      ],
+      "relation": null,
+      "source": "book1:86"
+    }
+  ],
+  "โหระพา (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ใคร (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book1:55"
+    }
+  ],
+  "ใช่ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [
+        "down",
+        "up"
+      ],
+      "relation": null,
+      "source": "book1:10"
+    }
+  ],
+  "ใบมะกรูด (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ใบแมงลัก (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ไก่": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ไข่ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": null,
+      "motion": [
+        "touch"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ไข่นกกระทา (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [
+        "down",
+        "side",
+        "touch",
+        "up"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ไข่เป็ด (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [
+        "touch"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ไข่ไก่ (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "mouth",
+      "motion": [
+        "touch"
+      ],
+      "relation": null,
+      "source": "book3:None"
+    }
+  ],
+  "ไดโนเสาร์": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ],
+  "ไม่สบาย": [
+    {
+      "hands": 1,
+      "location_zone": "face",
+      "motion": [],
+      "relation": null,
+      "source": "book1:5"
+    }
+  ],
+  "ไม่สบายใจ": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [
+        "down"
+      ],
+      "relation": null,
+      "source": "book1:5"
+    }
+  ],
+  "ไม่เป็นไร (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)": [
+    {
+      "hands": 2,
+      "location_zone": "chest",
+      "motion": [],
+      "relation": null,
+      "source": "book1:13"
+    }
+  ],
+  "ไส้เดือน": [
+    {
+      "hands": 1,
+      "location_zone": "mouth",
+      "motion": [
+        "circle"
+      ],
+      "relation": null,
+      "source": "book2:None"
+    }
+  ]
+}

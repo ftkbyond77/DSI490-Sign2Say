@@ -1,0 +1,37 @@
+# Hybrid phase 2.1 — real six-video experiment
+
+Results are descriptive on these six videos; no population-level superiority claim.
+
+Production scoring: 0.70 * candidate softmax(T=1) + 0.30 * rule agreement. This is not a calibrated probability.
+
+Uncovered dictionary entries receive zero in current production code; inspect coverage bias.
+
+Original p_correct calibrator is not validated for hybrid rankings.
+
+Timed ground truth is required for Segment F1, aligned Recall@1/5 and accepted precision.
+
+
+## Metrics
+```
+ sentence_WER sentence_output                          reference_type                        video      mode  n_pred  n_ref   WER  proposed_gloss_WER  token_accuracy  exact_sentence  substitutions  deletions  insertions segment_F1  presence_recall1  presence_recall5 recall1 recall5 accepted_correct  accepted_total accepted_precision  count_error  inference_s  extraction_s  latency_s  real_time_factor                                                             prediction                            reference
+        1.000                 filename sentence; proposed sign tokens       ฉันยังลืมคุณไม่ได้.MOV   ai_only       8      6 1.333               1.333           0.000           0.000              6          0           2       None             0.167             0.500    None    None             None               0               None            2        2.507        17.411     19.918             1.627                       ยาย | ไป | คุณ | ชอบ | ญาติ | เป็น | อย่า | เกิด    ฉัน | ยัง | ลืม | คุณ | ไม่ | ได้
+        1.000                 filename sentence; proposed sign tokens       ฉันยังลืมคุณไม่ได้.MOV hybrid030       8      6 1.333               1.333           0.000           0.000              6          0           2       None             0.167             0.500    None    None             None               0               None            2        2.273        17.411     19.684             1.608                      ญาติ | ไป | คุณ | ชอบ | ญาติ | เป็น | อย่า | เกิด    ฉัน | ยัง | ลืม | คุณ | ไม่ | ได้
+        1.000                 filename sentence; proposed sign tokens             ฉันแอบชอบคุณ.MOV hybrid030       8      4 2.000               2.000           0.000           0.000              4          0           4       None             0.000             0.500    None    None             None               0               None            4        2.566        20.576     23.142             1.780               แฟน | แต่งงาน | เกิด | เป็น | แฟน | แต่งงาน | ข้าว | ถาม                ฉัน | แอบ | ชอบ | คุณ
+        1.000                 filename sentence; proposed sign tokens             ฉันแอบชอบคุณ.MOV   ai_only       8      4 2.000               2.000           0.000           0.000              4          0           4       None             0.000             0.500    None    None             None               0               None            4        2.109        20.576     22.685             1.745               แฟน | แต่งงาน | เกิด | เป็น | แฟน | แต่งงาน | ข้าว | ถาม                ฉัน | แอบ | ชอบ | คุณ
+        0.750           เรียน filename sentence; proposed sign tokens     ตอนนี้กำลังเรียนภาษา.MOV   ai_only       9      4 1.750               1.750           0.500           0.000              2          0           5       None             0.500             0.500    None    None             None               1               None            5        2.229        23.017     25.246             1.901 เกิด | ตอนนี้ | เรียน | กรุงเทพ | โสด | วันนี้ | เรียน | กรุงเทพ | คุณ        ตอนนี้ | กำลัง | เรียน | ภาษา
+        0.750           เรียน filename sentence; proposed sign tokens     ตอนนี้กำลังเรียนภาษา.MOV hybrid030       9      4 1.750               1.750           0.500           0.000              2          0           5       None             0.500             0.500    None    None             None               1               None            5        2.785        23.017     25.803             1.943 น้อง | ตอนนี้ | เรียน | กรุงเทพ | โสด | วันนี้ | เรียน | กรุงเทพ | คุณ        ตอนนี้ | กำลัง | เรียน | ภาษา
+        1.000                 filename sentence; proposed sign tokens      มีอะไรให้ฉันช่วยไหม.MOV hybrid030       9      6 1.500               1.500           0.000           0.000              6          0           3       None             0.000             0.167    None    None             None               0               None            3        2.453        22.017     24.470             1.738              เกิด | ข้าว | ยาย | ถูก | กิน | เกิด | สิบ | ขนมปัง | ยาย   มี | อะไร | ให้ | ฉัน | ช่วย | ไหม
+        1.000                 filename sentence; proposed sign tokens      มีอะไรให้ฉันช่วยไหม.MOV   ai_only       9      6 1.500               1.500           0.000           0.000              6          0           3       None             0.000             0.167    None    None             None               0               None            3        2.895        22.017     24.912             1.769              เกิด | ข้าว | ยาย | ถูก | กิน | เกิด | สิบ | ขนมปัง | ยาย   มี | อะไร | ให้ | ฉัน | ช่วย | ไหม
+        1.000    เพื่อนเพื่อน filename sentence; proposed sign tokens เราจะเป็นเพื่อนกันตลอดไป.MOV   ai_only       8      5 1.200               1.600           0.000           0.000              5          0           1       None             0.000             0.000    None    None             None               2               None            3        2.552        21.276     23.828             1.584               ยาย | แฟน | เพื่อน | กิน | แต่งงาน | อะไร | เพื่อน | กิน เรา | จะ | เป็นเพื่อน | กัน | ตลอดไป
+        1.000    เพื่อนเพื่อน filename sentence; proposed sign tokens เราจะเป็นเพื่อนกันตลอดไป.MOV hybrid030       8      5 1.200               1.600           0.000           0.000              5          0           1       None             0.000             0.000    None    None             None               2               None            3        3.151        21.276     24.427             1.624               ข้าว | แฟน | เพื่อน | กิน | เที่ยว | อะไร | เพื่อน | กิน เรา | จะ | เป็นเพื่อน | กัน | ตลอดไป
+        1.000                 filename sentence; proposed sign tokens          เล่นเกมส์กันไหม.MOV hybrid030       9      4 2.500               2.250           0.000           0.000              4          0           6       None             0.000             0.250    None    None             None               0               None            5        2.068        22.178     24.247             1.612          ญาติ | เกิด | ถูก | ญาติ | ฉัน | ถูก | ญาติ | ยินดีด้วย | ยาย             เล่น | เกมส์ | กัน | ไหม
+        1.000                 filename sentence; proposed sign tokens          เล่นเกมส์กันไหม.MOV   ai_only       9      4 2.500               2.250           0.000           0.000              4          0           6       None             0.000             0.250    None    None             None               0               None            5        2.850        22.178     25.029             1.664            ญาติ | เกิด | ถูก | ญาติ | เกิด | ถูก | ญาติ | เกิด | ไม่ดี             เล่น | เกมส์ | กัน | ไหม
+```
+
+
+## Change categories
+```
+assessment
+unchanged                                    44
+coverage asymmetry; truth not established     7
+```
