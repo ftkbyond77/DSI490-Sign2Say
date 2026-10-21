@@ -1,0 +1,51 @@
+ตัวอย่างไวยากรณ์ภาษามือไทย
+
+The examples of Thai Sign Language Grammar
+
+ภาษามือไทย
+
+ภาษาไทย
+
+Thai Sign Language
+
+A: ชื่อ-ภาษามือ (ขมวดคิ้ว)
+
+A
+
+คุณชื่อภาษามืออะไร
+
+Name-Sign
+
+What is your name sign?
+
+อภิวัจน์
+
+ผมชื่ออภิวัจน์
+
+Aphiwat
+
+My name is Aphiwat.
+
+ชื่อ-ภาษามือ (เลิกคิ้ว)
+
+แล้วคุณล่ะชื่อภาษามืออะไร
+
+Name-Sign
+
+And you, What is your
+
+name sign?
+
+พิธุฬห์
+
+ผมชื่อพิรุฬห์
+
+Piroon
+
+My name is Piroon.
+
+มิ9
+
+รง.
+
+ก

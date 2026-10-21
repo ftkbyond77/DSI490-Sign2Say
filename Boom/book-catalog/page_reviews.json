@@ -1,0 +1,1772 @@
+{
+  "b1p001": {
+    "kind": "cover",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p002": {
+    "kind": "publication",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p003": {
+    "kind": "preface",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p004": {
+    "kind": "preface",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p005": {
+    "kind": "introduction",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p006": {
+    "kind": "introduction",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p007": {
+    "kind": "contents",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p008": {
+    "kind": "movement_legend",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p009": {
+    "kind": "movement_legend",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p010": {
+    "kind": "section_title",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p011": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p012": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p013": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p014": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p015": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p016": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p017": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p018": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p019": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p020": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p021": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p022": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p023": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p024": {
+    "kind": "grammar_text",
+    "note": "ตารางตัวอย่างไวยากรณ์ ไม่ใช่รายการท่าใหม่; เก็บข้อความ OCR และภาพทั้งหน้า",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p026": {
+    "kind": "grammar_text",
+    "note": "ตารางตัวอย่างไวยากรณ์ ไม่ใช่รายการท่าใหม่; เก็บข้อความ OCR และภาพทั้งหน้า",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p025": {
+    "kind": "grammar_illustrations",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 3
+  },
+  "b1p027": {
+    "kind": "grammar_illustrations",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 1
+  },
+  "b1p028": {
+    "kind": "section_title",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p029": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 3
+  },
+  "b1p030": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 3
+  },
+  "b1p031": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 3
+  },
+  "b1p032": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 3
+  },
+  "b1p033": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 3
+  },
+  "b1p034": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 3
+  },
+  "b1p035": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 3
+  },
+  "b1p036": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 3
+  },
+  "b1p037": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 3
+  },
+  "b1p038": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 3
+  },
+  "b1p039": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 3
+  },
+  "b1p040": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 3
+  },
+  "b1p041": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p042": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p043": {
+    "kind": "section_title",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p044": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 1
+  },
+  "b1p045": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p046": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p047": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p048": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p049": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 1
+  },
+  "b1p050": {
+    "kind": "section_title",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p051": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p052": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p053": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p054": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p055": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p056": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p057": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p058": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p059": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p060": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p061": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p062": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p063": {
+    "kind": "vocabulary",
+    "note": "PDF หน้านี้ถัดจากหน้าพิมพ์ 50 เป็น 52; ไม่เติมเดือนที่ไม่อยู่ในภาพ",
+    "review_status": "image_reviewed",
+    "entries": 1
+  },
+  "b1p064": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p065": {
+    "kind": "section_title",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p066": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p067": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p068": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p069": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p070": {
+    "kind": "grammar_text",
+    "note": "ตัวอย่างวันนี้วันอะไร/อังคาร/เรียนภาษามือวันอะไร/มะรืน",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p071": {
+    "kind": "grammar_illustrations",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 4
+  },
+  "b1p072": {
+    "kind": "section_title",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p080": {
+    "kind": "section_title",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p073": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p074": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p075": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p076": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p077": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p078": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p079": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p081": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 1
+  },
+  "b1p082": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p083": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p084": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p085": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p086": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p087": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p088": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 1
+  },
+  "b1p090": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 1
+  },
+  "b1p091": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p092": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p093": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p094": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p095": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p089": {
+    "kind": "section_title",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p096": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p097": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b1p098": {
+    "kind": "grammar_text",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p099": {
+    "kind": "grammar_illustrations",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 4
+  },
+  "b1p100": {
+    "kind": "index",
+    "note": "ดรรชนีอ้างหน้าของคำ ไม่ใช่ท่าใหม่",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p101": {
+    "kind": "index",
+    "note": "ดรรชนีอ้างหน้าของคำ ไม่ใช่ท่าใหม่",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p102": {
+    "kind": "index",
+    "note": "ดรรชนีอ้างหน้าของคำ ไม่ใช่ท่าใหม่",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p103": {
+    "kind": "index",
+    "note": "ดรรชนีอ้างหน้าของคำ ไม่ใช่ท่าใหม่",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b1p104": {
+    "kind": "back_cover",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b2p001": {
+    "kind": "cover",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b2p002": {
+    "kind": "publication",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b2p003": {
+    "kind": "preface",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b2p004": {
+    "kind": "preface",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b2p005": {
+    "kind": "introduction",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b2p006": {
+    "kind": "contents",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b2p007": {
+    "kind": "movement_legend",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b2p008": {
+    "kind": "movement_legend",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b2p009": {
+    "kind": "section_title",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b2p010": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 1
+  },
+  "b2p011": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p012": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p013": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p014": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p015": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p016": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p017": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p018": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p019": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 1
+  },
+  "b2p020": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p022": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 4
+  },
+  "b2p024": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p021": {
+    "kind": "grammar_text",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b2p023": {
+    "kind": "section_title",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b2p025": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p026": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p027": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p028": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 1
+  },
+  "b2p030": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 4
+  },
+  "b2p032": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p033": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p034": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p035": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p036": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p029": {
+    "kind": "grammar_text",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b2p031": {
+    "kind": "section_title",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b2p037": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p038": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p039": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p040": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p041": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p042": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p043": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p044": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p045": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p046": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p047": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p048": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p049": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p050": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p051": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p052": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p053": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p054": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 1
+  },
+  "b2p056": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 3
+  },
+  "b2p058": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p059": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p060": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p055": {
+    "kind": "grammar_text",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b2p057": {
+    "kind": "section_title",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b2p061": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p062": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p063": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p064": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p065": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p066": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p067": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p068": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p069": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p070": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p071": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p072": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p073": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p074": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p075": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p076": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p077": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p078": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 1
+  },
+  "b2p079": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p080": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p081": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p082": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p083": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p084": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p085": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p086": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p087": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p088": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 1
+  },
+  "b2p089": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p090": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p091": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p092": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p093": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p094": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p095": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p096": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p097": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p098": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p099": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p100": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p101": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p102": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 1
+  },
+  "b2p103": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p104": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p105": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p106": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p107": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p108": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p109": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p110": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p111": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b2p112": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 1
+  },
+  "b2p114": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 4
+  },
+  "b2p113": {
+    "kind": "grammar_text",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b2p115": {
+    "kind": "index",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b2p116": {
+    "kind": "index",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b2p117": {
+    "kind": "index",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b2p118": {
+    "kind": "index",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b2p119": {
+    "kind": "back_cover",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b3p001": {
+    "kind": "cover",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b3p002": {
+    "kind": "publication",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b3p003": {
+    "kind": "preface",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b3p004": {
+    "kind": "preface",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b3p005": {
+    "kind": "introduction",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b3p006": {
+    "kind": "introduction",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b3p007": {
+    "kind": "contents",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b3p008": {
+    "kind": "contents",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b3p009": {
+    "kind": "movement_legend",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b3p010": {
+    "kind": "movement_legend",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b3p011": {
+    "kind": "movement_legend",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b3p012": {
+    "kind": "movement_legend",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b3p013": {
+    "kind": "movement_legend",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b3p014": {
+    "kind": "section_title",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b3p015": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 1
+  },
+  "b3p016": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p017": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p018": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p019": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p020": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p021": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p022": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p023": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p024": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p025": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p026": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p027": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p028": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p029": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p030": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p031": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p032": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p033": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p034": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p035": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p036": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p037": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p038": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p039": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p040": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p041": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p042": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p043": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p044": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p045": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p046": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p047": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p048": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p049": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p050": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p051": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p052": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p053": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p054": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 1
+  },
+  "b3p056": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 5
+  },
+  "b3p058": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 1
+  },
+  "b3p059": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p060": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p055": {
+    "kind": "grammar_text",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b3p057": {
+    "kind": "section_title",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 0
+  },
+  "b3p061": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p062": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p063": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p064": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p065": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p066": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p067": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p068": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p069": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p070": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p071": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  },
+  "b3p072": {
+    "kind": "vocabulary",
+    "note": "",
+    "review_status": "image_reviewed",
+    "entries": 2
+  }
+}

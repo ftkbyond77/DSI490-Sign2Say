@@ -129,7 +129,8 @@ def _public(result):
     keep = ("title", "duration_s", "n_frames", "signer_visible_frac", "signing_frac", "mirrored_to_right_hand", "sentence", "vocab", "model", "timings_ms")
     out = {k: result.get(k) for k in keep}
     out["segments"] = [dict(t0=s["t0"], t1=s["t1"], status=s["status"], word=s["nearest"], p=round(s.get("p_correct", 0), 3), kind=s.get("kind", "sign"),
-                            candidates=[c["word"] for c in s["candidates"][:5]], **({"emb": _vec_to_b64(s["emb"])} if "emb" in s else {}))
+                            candidates=[dict(word=c["word"], score=c.get("score"), ai_prob=c.get("ai_prob"), pose_score=c.get("pose_score"), fused_score=c.get("fused_score")) for c in s["candidates"][:5]],
+                            **({"symbolic": s["symbolic"]} if "symbolic" in s else {}), **({"emb": _vec_to_b64(s["emb"])} if "emb" in s else {}))
                        for s in result.get("segments", [])]
     f = result.get("fusion") or {}
     out["language"] = {k: f.get(k) for k in ("sentence_th", "tentative_sentence_th", "meaning_th", "evidence_gloss", "evidence_guard", "provider", "chosen")}

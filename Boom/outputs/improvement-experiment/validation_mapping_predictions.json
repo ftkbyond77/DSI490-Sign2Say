@@ -1,0 +1,2494 @@
+[
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_08_0260",
+    "expected": "แม่",
+    "predicted": "แม่",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_08_0273",
+    "expected": "อา",
+    "predicted": "อา",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_08_0271",
+    "expected": "ป้า",
+    "predicted": "ปู่",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_08_0279",
+    "expected": "พี่สาว",
+    "predicted": "พี่สาว",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_08_0261",
+    "expected": "ลูก",
+    "predicted": "ลูก",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_08_0259",
+    "expected": "พ่อ",
+    "predicted": "พ่อ",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_08_0283",
+    "expected": "ครอบครัว",
+    "predicted": "ครอบครัว",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_08_0263",
+    "expected": "ย่า",
+    "predicted": "ยาย",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_08_0264",
+    "expected": "ตา",
+    "predicted": "ตา",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_08_0274",
+    "expected": "เพื่อน",
+    "predicted": "เพื่อน",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_06_0204",
+    "expected": "เจ็ด",
+    "predicted": "เจ็ด",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_06_0205",
+    "expected": "แปด",
+    "predicted": "แปด",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_08_0281",
+    "expected": "ญาติ",
+    "predicted": "ญาติ",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_08_0280",
+    "expected": "น้องสาว",
+    "predicted": "น้องสาว",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_06_0199",
+    "expected": "สอง",
+    "predicted": "สอง",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_08_0258",
+    "expected": "ภรรยา",
+    "predicted": "ภรรยา",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_25_0923",
+    "expected": "วิ่ง",
+    "predicted": "วิ่ง",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_08_0257",
+    "expected": "สามี",
+    "predicted": "สามี",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_01_0002",
+    "expected": "ประเทศไทย",
+    "predicted": "ประเทศไทย",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_06_0197",
+    "expected": "ศูนย์",
+    "predicted": "ศูนย์",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_06_0206",
+    "expected": "เก้า",
+    "predicted": "เก้า",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_08_0277",
+    "expected": "พี่ชาย",
+    "predicted": "พี่ชาย",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_08_0278",
+    "expected": "น้องชาย",
+    "predicted": "น้องชาย",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_28_0978",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_06_0201",
+    "expected": "สี่",
+    "predicted": "สี่",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_06_0203",
+    "expected": "หก",
+    "predicted": "หก",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_06_0202",
+    "expected": "ห้า",
+    "predicted": "ห้า",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_08_0270",
+    "expected": "ลุง",
+    "predicted": "ลุง",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_06_0207",
+    "expected": "สิบ",
+    "predicted": "สิบ",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_08_0262",
+    "expected": "ปู่",
+    "predicted": "ปู่",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_08_0272",
+    "expected": "น้า",
+    "predicted": "อา",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_08_0265",
+    "expected": "ยาย",
+    "predicted": "ยาย",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_06_0200",
+    "expected": "สาม",
+    "predicted": "สาม",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_08_0268",
+    "expected": "หลาน",
+    "predicted": "หลาน",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_06_0198",
+    "expected": "หนึ่ง",
+    "predicted": "หนึ่ง",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:06_28_0983",
+    "expected": "หมู",
+    "predicted": "หมู",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_08_0260",
+    "expected": "แม่",
+    "predicted": "แม่",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_08_0273",
+    "expected": "อา",
+    "predicted": "อา",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_08_0271",
+    "expected": "ป้า",
+    "predicted": "ปู่",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_08_0279",
+    "expected": "พี่สาว",
+    "predicted": "พี่สาว",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_08_0261",
+    "expected": "ลูก",
+    "predicted": "ลูก",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_08_0259",
+    "expected": "พ่อ",
+    "predicted": "พ่อ",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_08_0283",
+    "expected": "ครอบครัว",
+    "predicted": "ครอบครัว",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_08_0263",
+    "expected": "ย่า",
+    "predicted": "ยาย",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_08_0264",
+    "expected": "ตา",
+    "predicted": "ตา",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_08_0274",
+    "expected": "เพื่อน",
+    "predicted": "เพื่อน",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_06_0204",
+    "expected": "เจ็ด",
+    "predicted": "เจ็ด",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_06_0205",
+    "expected": "แปด",
+    "predicted": "แปด",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_08_0281",
+    "expected": "ญาติ",
+    "predicted": "ญาติ",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_08_0280",
+    "expected": "น้องสาว",
+    "predicted": "น้องสาว",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_06_0199",
+    "expected": "สอง",
+    "predicted": "สอง",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_08_0258",
+    "expected": "ภรรยา",
+    "predicted": "ภรรยา",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_25_0923",
+    "expected": "วิ่ง",
+    "predicted": "วิ่ง",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_08_0257",
+    "expected": "สามี",
+    "predicted": "สามี",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_01_0002",
+    "expected": "ประเทศไทย",
+    "predicted": "ประเทศไทย",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_06_0197",
+    "expected": "ศูนย์",
+    "predicted": "ศูนย์",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_06_0206",
+    "expected": "เก้า",
+    "predicted": "เก้า",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_08_0277",
+    "expected": "พี่ชาย",
+    "predicted": "พี่ชาย",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_08_0278",
+    "expected": "น้องชาย",
+    "predicted": "น้องชาย",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_28_0978",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_06_0201",
+    "expected": "สี่",
+    "predicted": "สี่",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_06_0203",
+    "expected": "หก",
+    "predicted": "หก",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_06_0202",
+    "expected": "ห้า",
+    "predicted": "ห้า",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_08_0270",
+    "expected": "ลุง",
+    "predicted": "ลุง",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_06_0207",
+    "expected": "สิบ",
+    "predicted": "สิบ",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_08_0262",
+    "expected": "ปู่",
+    "predicted": "ปู่",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_08_0272",
+    "expected": "น้า",
+    "predicted": "อา",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_08_0265",
+    "expected": "ยาย",
+    "predicted": "ยาย",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_06_0200",
+    "expected": "สาม",
+    "predicted": "สาม",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_08_0268",
+    "expected": "หลาน",
+    "predicted": "หลาน",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_06_0198",
+    "expected": "หนึ่ง",
+    "predicted": "หนึ่ง",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:06_28_0983",
+    "expected": "หมู",
+    "predicted": "หมู",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_08_0260",
+    "expected": "แม่",
+    "predicted": "แม่",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_08_0273",
+    "expected": "อา",
+    "predicted": "อา",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_08_0271",
+    "expected": "ป้า",
+    "predicted": "ป้า",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_08_0279",
+    "expected": "พี่สาว",
+    "predicted": "พี่สาว",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_08_0261",
+    "expected": "ลูก",
+    "predicted": "ลูก",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_08_0259",
+    "expected": "พ่อ",
+    "predicted": "พ่อ",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_08_0283",
+    "expected": "ครอบครัว",
+    "predicted": "ครอบครัว",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_08_0263",
+    "expected": "ย่า",
+    "predicted": "ย่า",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_08_0264",
+    "expected": "ตา",
+    "predicted": "ตา",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_08_0274",
+    "expected": "เพื่อน",
+    "predicted": "เพื่อน",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_06_0204",
+    "expected": "เจ็ด",
+    "predicted": "เจ็ด",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_06_0205",
+    "expected": "แปด",
+    "predicted": "แปด",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_08_0281",
+    "expected": "ญาติ",
+    "predicted": "ญาติ",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_08_0280",
+    "expected": "น้องสาว",
+    "predicted": "น้องสาว",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_06_0199",
+    "expected": "สอง",
+    "predicted": "สอง",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_08_0258",
+    "expected": "ภรรยา",
+    "predicted": "ภรรยา",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_25_0923",
+    "expected": "วิ่ง",
+    "predicted": "วิ่ง",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_08_0257",
+    "expected": "สามี",
+    "predicted": "สามี",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_01_0002",
+    "expected": "ประเทศไทย",
+    "predicted": "ประเทศไทย",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_06_0197",
+    "expected": "ศูนย์",
+    "predicted": "ศูนย์",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_06_0206",
+    "expected": "เก้า",
+    "predicted": "เก้า",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_08_0277",
+    "expected": "พี่ชาย",
+    "predicted": "พี่ชาย",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_08_0278",
+    "expected": "น้องชาย",
+    "predicted": "น้องชาย",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_28_0978",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_06_0201",
+    "expected": "สี่",
+    "predicted": "สี่",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_06_0203",
+    "expected": "หก",
+    "predicted": "หก",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_06_0202",
+    "expected": "ห้า",
+    "predicted": "ห้า",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_08_0270",
+    "expected": "ลุง",
+    "predicted": "ลุง",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_06_0207",
+    "expected": "สิบ",
+    "predicted": "สิบ",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_08_0262",
+    "expected": "ปู่",
+    "predicted": "ปู่",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_08_0272",
+    "expected": "น้า",
+    "predicted": "น้า",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_08_0265",
+    "expected": "ยาย",
+    "predicted": "ยาย",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_06_0200",
+    "expected": "สาม",
+    "predicted": "สาม",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_08_0268",
+    "expected": "หลาน",
+    "predicted": "หลาน",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_06_0198",
+    "expected": "หนึ่ง",
+    "predicted": "หนึ่ง",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:11_28_0983",
+    "expected": "หมู",
+    "predicted": "หมู",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_08_0260",
+    "expected": "แม่",
+    "predicted": "แม่",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_08_0273",
+    "expected": "อา",
+    "predicted": "อา",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_08_0271",
+    "expected": "ป้า",
+    "predicted": "ป้า",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_08_0279",
+    "expected": "พี่สาว",
+    "predicted": "พี่สาว",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_08_0261",
+    "expected": "ลูก",
+    "predicted": "ลูก",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_08_0259",
+    "expected": "พ่อ",
+    "predicted": "พ่อ",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_08_0283",
+    "expected": "ครอบครัว",
+    "predicted": "ครอบครัว",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_08_0263",
+    "expected": "ย่า",
+    "predicted": "ย่า",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_08_0264",
+    "expected": "ตา",
+    "predicted": "ตา",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_08_0274",
+    "expected": "เพื่อน",
+    "predicted": "เพื่อน",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_06_0204",
+    "expected": "เจ็ด",
+    "predicted": "เจ็ด",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_06_0205",
+    "expected": "แปด",
+    "predicted": "แปด",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_08_0281",
+    "expected": "ญาติ",
+    "predicted": "ญาติ",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_08_0280",
+    "expected": "น้องสาว",
+    "predicted": "น้องสาว",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_06_0199",
+    "expected": "สอง",
+    "predicted": "สอง",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_08_0258",
+    "expected": "ภรรยา",
+    "predicted": "ภรรยา",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_25_0923",
+    "expected": "วิ่ง",
+    "predicted": "วิ่ง",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_08_0257",
+    "expected": "สามี",
+    "predicted": "สามี",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_01_0002",
+    "expected": "ประเทศไทย",
+    "predicted": "ประเทศไทย",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_06_0197",
+    "expected": "ศูนย์",
+    "predicted": "ศูนย์",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_06_0206",
+    "expected": "เก้า",
+    "predicted": "เก้า",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_08_0277",
+    "expected": "พี่ชาย",
+    "predicted": "พี่ชาย",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_08_0278",
+    "expected": "น้องชาย",
+    "predicted": "น้องชาย",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_28_0978",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_06_0201",
+    "expected": "สี่",
+    "predicted": "สี่",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_06_0203",
+    "expected": "หก",
+    "predicted": "หก",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_06_0202",
+    "expected": "ห้า",
+    "predicted": "ห้า",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_08_0270",
+    "expected": "ลุง",
+    "predicted": "ลุง",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_06_0207",
+    "expected": "สิบ",
+    "predicted": "สิบ",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_08_0262",
+    "expected": "ปู่",
+    "predicted": "ปู่",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_08_0272",
+    "expected": "น้า",
+    "predicted": "น้า",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_08_0265",
+    "expected": "ยาย",
+    "predicted": "ยาย",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_06_0200",
+    "expected": "สาม",
+    "predicted": "สาม",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_08_0268",
+    "expected": "หลาน",
+    "predicted": "หลาน",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_06_0198",
+    "expected": "หนึ่ง",
+    "predicted": "หนึ่ง",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:11_28_0983",
+    "expected": "หมู",
+    "predicted": "หมู",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_08_0260",
+    "expected": "แม่",
+    "predicted": "แม่",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_08_0273",
+    "expected": "อา",
+    "predicted": "อา",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_08_0271",
+    "expected": "ป้า",
+    "predicted": "ป้า",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_08_0279",
+    "expected": "พี่สาว",
+    "predicted": "พี่สาว",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_08_0261",
+    "expected": "ลูก",
+    "predicted": "ลูก",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_08_0259",
+    "expected": "พ่อ",
+    "predicted": "พ่อ",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_08_0283",
+    "expected": "ครอบครัว",
+    "predicted": "ครอบครัว",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_08_0263",
+    "expected": "ย่า",
+    "predicted": "ย่า",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_08_0264",
+    "expected": "ตา",
+    "predicted": "ตา",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_08_0274",
+    "expected": "เพื่อน",
+    "predicted": "เพื่อน",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_06_0204",
+    "expected": "เจ็ด",
+    "predicted": "เจ็ด",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_06_0205",
+    "expected": "แปด",
+    "predicted": "แปด",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_08_0281",
+    "expected": "ญาติ",
+    "predicted": "ญาติ",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_08_0280",
+    "expected": "น้องสาว",
+    "predicted": "น้องสาว",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_06_0199",
+    "expected": "สอง",
+    "predicted": "สอง",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_08_0258",
+    "expected": "ภรรยา",
+    "predicted": "ภรรยา",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_25_0923",
+    "expected": "วิ่ง",
+    "predicted": "วิ่ง",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_08_0257",
+    "expected": "สามี",
+    "predicted": "สามี",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_01_0002",
+    "expected": "ประเทศไทย",
+    "predicted": "ประเทศไทย",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_06_0197",
+    "expected": "ศูนย์",
+    "predicted": "ศูนย์",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_06_0206",
+    "expected": "เก้า",
+    "predicted": "เก้า",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_08_0277",
+    "expected": "พี่ชาย",
+    "predicted": "พี่ชาย",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_08_0278",
+    "expected": "น้องชาย",
+    "predicted": "น้องชาย",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_28_0978",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_06_0201",
+    "expected": "สี่",
+    "predicted": "สี่",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_06_0203",
+    "expected": "หก",
+    "predicted": "เก้า",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_06_0202",
+    "expected": "ห้า",
+    "predicted": "ห้า",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_08_0270",
+    "expected": "ลุง",
+    "predicted": "ลุง",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_06_0207",
+    "expected": "สิบ",
+    "predicted": "สิบ",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_08_0262",
+    "expected": "ปู่",
+    "predicted": "ปู่",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_08_0272",
+    "expected": "น้า",
+    "predicted": "น้า",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_08_0265",
+    "expected": "ยาย",
+    "predicted": "ย่า",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_06_0200",
+    "expected": "สาม",
+    "predicted": "สาม",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_08_0268",
+    "expected": "หลาน",
+    "predicted": "หลาน",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_06_0198",
+    "expected": "หนึ่ง",
+    "predicted": "หนึ่ง",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "tslone:19_28_0983",
+    "expected": "หมู",
+    "predicted": "หมู",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_08_0260",
+    "expected": "แม่",
+    "predicted": "แม่",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_08_0273",
+    "expected": "อา",
+    "predicted": "อา",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_08_0271",
+    "expected": "ป้า",
+    "predicted": "ป้า",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_08_0279",
+    "expected": "พี่สาว",
+    "predicted": "พี่สาว",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_08_0261",
+    "expected": "ลูก",
+    "predicted": "ลูก",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_08_0259",
+    "expected": "พ่อ",
+    "predicted": "พ่อ",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_08_0283",
+    "expected": "ครอบครัว",
+    "predicted": "ครอบครัว",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_08_0263",
+    "expected": "ย่า",
+    "predicted": "ย่า",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_08_0264",
+    "expected": "ตา",
+    "predicted": "ตา",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_08_0274",
+    "expected": "เพื่อน",
+    "predicted": "เพื่อน",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_06_0204",
+    "expected": "เจ็ด",
+    "predicted": "เจ็ด",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_06_0205",
+    "expected": "แปด",
+    "predicted": "แปด",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_08_0281",
+    "expected": "ญาติ",
+    "predicted": "ญาติ",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_08_0280",
+    "expected": "น้องสาว",
+    "predicted": "น้องสาว",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_06_0199",
+    "expected": "สอง",
+    "predicted": "สอง",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_08_0258",
+    "expected": "ภรรยา",
+    "predicted": "ภรรยา",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_25_0923",
+    "expected": "วิ่ง",
+    "predicted": "วิ่ง",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_08_0257",
+    "expected": "สามี",
+    "predicted": "สามี",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_01_0002",
+    "expected": "ประเทศไทย",
+    "predicted": "ประเทศไทย",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_06_0197",
+    "expected": "ศูนย์",
+    "predicted": "ศูนย์",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_06_0206",
+    "expected": "เก้า",
+    "predicted": "เก้า",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_08_0277",
+    "expected": "พี่ชาย",
+    "predicted": "พี่ชาย",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_08_0278",
+    "expected": "น้องชาย",
+    "predicted": "น้องชาย",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_28_0978",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_06_0201",
+    "expected": "สี่",
+    "predicted": "สี่",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_06_0203",
+    "expected": "หก",
+    "predicted": "เก้า",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_06_0202",
+    "expected": "ห้า",
+    "predicted": "ห้า",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_08_0270",
+    "expected": "ลุง",
+    "predicted": "ลุง",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_06_0207",
+    "expected": "สิบ",
+    "predicted": "สิบ",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_08_0262",
+    "expected": "ปู่",
+    "predicted": "ปู่",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_08_0272",
+    "expected": "น้า",
+    "predicted": "น้า",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_08_0265",
+    "expected": "ยาย",
+    "predicted": "ย่า",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_06_0200",
+    "expected": "สาม",
+    "predicted": "สาม",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_08_0268",
+    "expected": "หลาน",
+    "predicted": "หลาน",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_06_0198",
+    "expected": "หนึ่ง",
+    "predicted": "หนึ่ง",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "tslone:19_28_0983",
+    "expected": "หมู",
+    "predicted": "หมู",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_03973",
+    "expected": "โทร",
+    "predicted": "โทรศัพท์",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_03984",
+    "expected": "เสร็จแล้ว",
+    "predicted": "เสร็จแล้ว",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_03995",
+    "expected": "ห้อง",
+    "predicted": "ห้องน้ำ",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04004",
+    "expected": "กำลัง",
+    "predicted": "นม",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04016",
+    "expected": "ประเทศไทย",
+    "predicted": "ประเทศไทย",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04018",
+    "expected": "ประเทศไทย",
+    "predicted": "ประเทศไทย",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04054",
+    "expected": "ถูกต้อง",
+    "predicted": "ถูก",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04055",
+    "expected": "เมื่อไร",
+    "predicted": "พ่อ",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04066",
+    "expected": "ผิด",
+    "predicted": "ย่า",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04084",
+    "expected": "กระหายน้ำ",
+    "predicted": "อยาก",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04089",
+    "expected": "กอด",
+    "predicted": "กอด",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04092",
+    "expected": "คิดถึง",
+    "predicted": "คิดถึง",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04097",
+    "expected": "ง่วง",
+    "predicted": "กลางคืน",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04101",
+    "expected": "ก่อน",
+    "predicted": "ปลอบใจ",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04152",
+    "expected": "ทุกคน",
+    "predicted": "อิ่ม",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04211",
+    "expected": "ตื่น",
+    "predicted": "ตื่น",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04214",
+    "expected": "ดื่ม",
+    "predicted": "ดื่ม",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04217",
+    "expected": "รอ",
+    "predicted": "รอ",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04231",
+    "expected": "สบาย",
+    "predicted": "มีความสุข",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04250",
+    "expected": "ก่อน",
+    "predicted": "สวัสดี",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04251",
+    "expected": "เรา",
+    "predicted": "วิ่ง",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04257",
+    "expected": "ทุกคน",
+    "predicted": "นักเรียน",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04324",
+    "expected": "อา",
+    "predicted": "ยา",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04349",
+    "expected": "ควร",
+    "predicted": "ต้อง",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04580",
+    "expected": "กลางวัน",
+    "predicted": "ใช้",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04649",
+    "expected": "แต่",
+    "predicted": "ไข่",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04677",
+    "expected": "ส้มตำ",
+    "predicted": "ทำอาหาร",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04680",
+    "expected": "คอมพิวเตอร์",
+    "predicted": "รถไฟ",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04695",
+    "expected": "เป็น",
+    "predicted": "อะไร",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04698",
+    "expected": "ด้วย",
+    "predicted": "ต้อง",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04777",
+    "expected": "เบื่อ",
+    "predicted": "เบื่อ",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04778",
+    "expected": "กระหายน้ำ",
+    "predicted": "น้ำ",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04823",
+    "expected": "กลางคืน",
+    "predicted": "พัก",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04826",
+    "expected": "เบื่อ",
+    "predicted": "น้องชาย",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_04901",
+    "expected": "ไม่",
+    "predicted": "อย่า",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_05011",
+    "expected": "ฝันดี",
+    "predicted": "แม่",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_05063",
+    "expected": "เค็ม",
+    "predicted": "หนึ่ง",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_05087",
+    "expected": "แต่งตัว",
+    "predicted": "เหนื่อย",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_05089",
+    "expected": "ร้าน",
+    "predicted": "มาก",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_05102",
+    "expected": "คนเดียว",
+    "predicted": "หนึ่ง",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "thsl:th_sl_05158",
+    "expected": "พวกเรา",
+    "predicted": "วิ่ง",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_03973",
+    "expected": "โทร",
+    "predicted": "โทรศัพท์",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_03984",
+    "expected": "เสร็จแล้ว",
+    "predicted": "เสร็จแล้ว",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_03995",
+    "expected": "ห้อง",
+    "predicted": "ห้องน้ำ",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04004",
+    "expected": "กำลัง",
+    "predicted": "นม",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04016",
+    "expected": "ประเทศไทย",
+    "predicted": "ประเทศไทย",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04018",
+    "expected": "ประเทศไทย",
+    "predicted": "ประเทศไทย",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04054",
+    "expected": "ถูกต้อง",
+    "predicted": "ถูก",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04055",
+    "expected": "เมื่อไร",
+    "predicted": "พ่อ",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04066",
+    "expected": "ผิด",
+    "predicted": "ย่า",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04084",
+    "expected": "กระหายน้ำ",
+    "predicted": "อยาก",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04089",
+    "expected": "กอด",
+    "predicted": "กอด",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04092",
+    "expected": "คิดถึง",
+    "predicted": "คิดถึง",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04097",
+    "expected": "ง่วง",
+    "predicted": "กลางคืน",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04101",
+    "expected": "ก่อน",
+    "predicted": "ปลอบใจ",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04152",
+    "expected": "ทุกคน",
+    "predicted": "อิ่ม",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04211",
+    "expected": "ตื่น",
+    "predicted": "ตื่น",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04214",
+    "expected": "ดื่ม",
+    "predicted": "ดื่ม",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04217",
+    "expected": "รอ",
+    "predicted": "รอ",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04231",
+    "expected": "สบาย",
+    "predicted": "มีความสุข",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04250",
+    "expected": "ก่อน",
+    "predicted": "สวัสดี",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04251",
+    "expected": "เรา",
+    "predicted": "วิ่ง",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04257",
+    "expected": "ทุกคน",
+    "predicted": "นักเรียน",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04324",
+    "expected": "อา",
+    "predicted": "ยา",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04349",
+    "expected": "ควร",
+    "predicted": "ต้อง",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04580",
+    "expected": "กลางวัน",
+    "predicted": "ใช้",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04649",
+    "expected": "แต่",
+    "predicted": "ไข่",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04677",
+    "expected": "ส้มตำ",
+    "predicted": "ทำอาหาร",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04680",
+    "expected": "คอมพิวเตอร์",
+    "predicted": "รถไฟ",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04695",
+    "expected": "เป็น",
+    "predicted": "อะไร",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04698",
+    "expected": "ด้วย",
+    "predicted": "ต้อง",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04777",
+    "expected": "เบื่อ",
+    "predicted": "เบื่อ",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04778",
+    "expected": "กระหายน้ำ",
+    "predicted": "น้ำ",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04823",
+    "expected": "กลางคืน",
+    "predicted": "พัก",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04826",
+    "expected": "เบื่อ",
+    "predicted": "น้องชาย",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_04901",
+    "expected": "ไม่",
+    "predicted": "อย่า",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_05011",
+    "expected": "ฝันดี",
+    "predicted": "แม่",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_05063",
+    "expected": "เค็ม",
+    "predicted": "หนึ่ง",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_05087",
+    "expected": "แต่งตัว",
+    "predicted": "เหนื่อย",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_05089",
+    "expected": "ร้าน",
+    "predicted": "มาก",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_05102",
+    "expected": "คนเดียว",
+    "predicted": "หนึ่ง",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "thsl:th_sl_05158",
+    "expected": "พวกเรา",
+    "predicted": "วิ่ง",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "ttrs:62cd15f966b04b724e9df3dd",
+    "expected": "ร้องไห้",
+    "predicted": "โกรธ",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "ttrs:62d4fc2966b04b724ea15636",
+    "expected": "อ่าน",
+    "predicted": "อ่าน",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "ttrs:62ddfb5466b04b724ea59c6c",
+    "expected": "ผอม",
+    "predicted": "เหงา",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "ttrs:62ddfb8b66b04b724ea59ca8",
+    "expected": "เหงา",
+    "predicted": "ภูมิใจ",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "ttrs:62cd15f966b04b724e9df3dd",
+    "expected": "ร้องไห้",
+    "predicted": "โกรธ",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "ttrs:62d4fc2966b04b724ea15636",
+    "expected": "อ่าน",
+    "predicted": "อ่าน",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "ttrs:62ddfb5466b04b724ea59c6c",
+    "expected": "ผอม",
+    "predicted": "เหงา",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "ttrs:62ddfb8b66b04b724ea59ca8",
+    "expected": "เหงา",
+    "predicted": "ภูมิใจ",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "ttrs:5d11a71666b04b724e39b275",
+    "expected": "ตา",
+    "predicted": "ไม่รู้",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "ttrs:5d2461fd66b04b724e3ee05a",
+    "expected": "ร้องไห้",
+    "predicted": "ร้องไห้",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "ttrs:5d31281b66b04b724e418d8f",
+    "expected": "นม",
+    "predicted": "นม",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "ttrs:5d11a71666b04b724e39b275",
+    "expected": "ตา",
+    "predicted": "ไม่รู้",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "ttrs:5d2461fd66b04b724e3ee05a",
+    "expected": "ร้องไห้",
+    "predicted": "ร้องไห้",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "ttrs:5d31281b66b04b724e418d8f",
+    "expected": "นม",
+    "predicted": "นม",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "ttrs:5d11e7f466b04b724e39f48e",
+    "expected": "ผอม",
+    "predicted": "เหงา",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "ttrs:5d11f14466b04b724e39f85b",
+    "expected": "สูง",
+    "predicted": "พี่",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "ttrs:5d11f2cb66b04b724e39fa0b",
+    "expected": "อ้วน",
+    "predicted": "อ้วน",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "ttrs:5e782c7266b04b724ec6c281",
+    "expected": "นม",
+    "predicted": "น้องสาว",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "ttrs:5e7847c066b04b724ec6d706",
+    "expected": "เหงา",
+    "predicted": "เหงา",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "ttrs:5e784b5666b04b724ec6da60",
+    "expected": "ลูก",
+    "predicted": "ลูก",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "ttrs:5d11e7f466b04b724e39f48e",
+    "expected": "ผอม",
+    "predicted": "เหงา",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "ttrs:5d11f14466b04b724e39f85b",
+    "expected": "สูง",
+    "predicted": "พี่",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "ttrs:5d11f2cb66b04b724e39fa0b",
+    "expected": "อ้วน",
+    "predicted": "อ้วน",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "ttrs:5e782c7266b04b724ec6c281",
+    "expected": "นม",
+    "predicted": "น้องสาว",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "ttrs:5e7847c066b04b724ec6d706",
+    "expected": "เหงา",
+    "predicted": "เหงา",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "ttrs:5e784b5666b04b724ec6da60",
+    "expected": "ลูก",
+    "predicted": "ลูก",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "agent:yt:FXKeOoVFApk",
+    "expected": "เก่ง",
+    "predicted": "เร็ว",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "agent:yt:FXKeOoVFApk",
+    "expected": "เก่ง",
+    "predicted": "เร็ว",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "agent:yt:sVtbh6zJ8xU",
+    "expected": "คอมพิวเตอร์",
+    "predicted": "ผัก",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "agent:yt:PCjsdTN2n2M",
+    "expected": "ตา",
+    "predicted": "คิด",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "agent:yt:cAaV2G368U8",
+    "expected": "ตำรวจ",
+    "predicted": "ตำรวจ",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "agent:yt:SOHeMBtAM10",
+    "expected": "นม",
+    "predicted": "ขนมปัง",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "agent:yt:5Fad3RM0wXw",
+    "expected": "ประตู",
+    "predicted": "ประตู",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "agent:yt:lCZKNgzy9Ro",
+    "expected": "ผัก",
+    "predicted": "ครอบครัว",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "agent:yt:iKCSVAIJZ-I",
+    "expected": "รถไฟ",
+    "predicted": "ขนมปัง",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "agent:yt:VfdF0r6_gkU",
+    "expected": "หนังสือ",
+    "predicted": "หนังสือ",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "agent:yt:7AqL4wGt6Es",
+    "expected": "หมู",
+    "predicted": "หมู",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "agent:yt:YqfdG_9F_js",
+    "expected": "อาบน้ำ",
+    "predicted": "ไม่เป็นไร",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "agent:yt:JrbKB1Errnw",
+    "expected": "เครื่องบิน",
+    "predicted": "ญาติ",
+    "correct": false
+  },
+  {
+    "phase": "before",
+    "clip_id": "agent:yt:wA2NkdVGJm4",
+    "expected": "แมว",
+    "predicted": "แมว",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "agent:yt:CpTc-NdacrM",
+    "expected": "โรงเรียน",
+    "predicted": "โรงเรียน",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "agent:yt:1D9E8zkm3bs",
+    "expected": "ไก่",
+    "predicted": "ไก่",
+    "correct": true
+  },
+  {
+    "phase": "before",
+    "clip_id": "agent:yt:Ifi8uFKGBn8",
+    "expected": "ไก่",
+    "predicted": "แม่",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "agent:yt:sVtbh6zJ8xU",
+    "expected": "คอมพิวเตอร์",
+    "predicted": "ผัก",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "agent:yt:PCjsdTN2n2M",
+    "expected": "ตา",
+    "predicted": "คิด",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "agent:yt:cAaV2G368U8",
+    "expected": "ตำรวจ",
+    "predicted": "ตำรวจ",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "agent:yt:SOHeMBtAM10",
+    "expected": "นม",
+    "predicted": "ขนมปัง",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "agent:yt:5Fad3RM0wXw",
+    "expected": "ประตู",
+    "predicted": "ประตู",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "agent:yt:lCZKNgzy9Ro",
+    "expected": "ผัก",
+    "predicted": "ครอบครัว",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "agent:yt:iKCSVAIJZ-I",
+    "expected": "รถไฟ",
+    "predicted": "ขนมปัง",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "agent:yt:VfdF0r6_gkU",
+    "expected": "หนังสือ",
+    "predicted": "หนังสือ",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "agent:yt:7AqL4wGt6Es",
+    "expected": "หมู",
+    "predicted": "หมู",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "agent:yt:YqfdG_9F_js",
+    "expected": "อาบน้ำ",
+    "predicted": "ไม่เป็นไร",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "agent:yt:JrbKB1Errnw",
+    "expected": "เครื่องบิน",
+    "predicted": "ญาติ",
+    "correct": false
+  },
+  {
+    "phase": "after",
+    "clip_id": "agent:yt:wA2NkdVGJm4",
+    "expected": "แมว",
+    "predicted": "แมว",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "agent:yt:CpTc-NdacrM",
+    "expected": "โรงเรียน",
+    "predicted": "โรงเรียน",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "agent:yt:1D9E8zkm3bs",
+    "expected": "ไก่",
+    "predicted": "ไก่",
+    "correct": true
+  },
+  {
+    "phase": "after",
+    "clip_id": "agent:yt:Ifi8uFKGBn8",
+    "expected": "ไก่",
+    "predicted": "แม่",
+    "correct": false
+  }
+]

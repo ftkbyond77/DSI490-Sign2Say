@@ -1,0 +1,268 @@
+{
+  "schema": 1,
+  "pipeline_version": "opencv-mediapipe-onnx-cpu-v1",
+  "evaluation": "training-only; no independent validation/test recordings",
+  "records": [
+    {
+      "id": "919",
+      "label": "สวัสดี  ท่ามือนี้ใช้กับผู้ใหญ่ ผู้มีอาวุโส ผู้มีตำแหน่งสูง",
+      "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/919_สวัสดี__ท่ามือนี้ใช้กับผู้ใหญ่_ผู้มีอาวุโส_ผู้มีตำแหน่งสูง.mp4",
+      "features": "/Users/thawaphorn/Documents/Codex/2026-09-17/good-id-word-category-video-url/outputs/signbert_demo/data/919.npz",
+      "sha256": "8d2ce42975dd32a5413c781b6a50c7430dc04e20c3c97aa935a25aaac0cc8d33",
+      "signer_id": null,
+      "split": "train",
+      "hand_coverage": [
+        0.05194805194805195,
+        0.33766233766233766
+      ]
+    },
+    {
+      "id": "1577",
+      "label": "มะม่วงหิมพานต์",
+      "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/1577_มะม่วงหิมพานต์.mp4",
+      "features": "/Users/thawaphorn/Documents/Codex/2026-09-17/good-id-word-category-video-url/outputs/signbert_demo/data/1577.npz",
+      "sha256": "e3cbbffd4011d6f252ba0b950751d49ed783e5f6e11ec626df16fc008d4743c8",
+      "signer_id": null,
+      "split": "train",
+      "hand_coverage": [
+        0.189873417721519,
+        0.13924050632911392
+      ]
+    },
+    {
+      "id": "36827",
+      "label": "ดินสอ",
+      "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/36827_ดินสอ.mp4",
+      "features": "/Users/thawaphorn/Documents/Codex/2026-09-17/good-id-word-category-video-url/outputs/signbert_demo/data/36827.npz",
+      "sha256": "fcd241b82fe83fdf0e44ffc4765103e9b759ec0cdddf7dd538181223fd7f8de2",
+      "signer_id": null,
+      "split": "train",
+      "hand_coverage": [
+        0.0,
+        0.6486486486486487
+      ]
+    },
+    {
+      "id": "1866",
+      "label": "ผลไม้",
+      "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/1866_ผลไม้.mp4",
+      "features": "/Users/thawaphorn/Documents/Codex/2026-09-17/good-id-word-category-video-url/outputs/signbert_demo/data/1866.npz",
+      "sha256": "d15a3348a7de847b3283b5ad762b4986a0dd0bb43266a21703515ab30fe65bd6",
+      "signer_id": null,
+      "split": "train",
+      "hand_coverage": [
+        0.031746031746031744,
+        0.2698412698412698
+      ]
+    },
+    {
+      "id": "1289",
+      "label": "ละมุด",
+      "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/1289_ละมุด.mp4",
+      "features": "/Users/thawaphorn/Documents/Codex/2026-09-17/good-id-word-category-video-url/outputs/signbert_demo/data/1289.npz",
+      "sha256": "10ac71ed67725aeb66444a36cb3ee166a46d5093f6393324d56e13c806fcc403",
+      "signer_id": null,
+      "split": "train",
+      "hand_coverage": [
+        0.0,
+        0.45348837209302323
+      ]
+    },
+    {
+      "id": "1246",
+      "label": "ลูกตาล",
+      "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/1246_ลูกตาล.mp4",
+      "features": "/Users/thawaphorn/Documents/Codex/2026-09-17/good-id-word-category-video-url/outputs/signbert_demo/data/1246.npz",
+      "sha256": "aa629048953dad8280ab9831db381443984ce22a2d3207bc3011f6a5c9a78cf4",
+      "signer_id": null,
+      "split": "train",
+      "hand_coverage": [
+        0.4625,
+        0.4625
+      ]
+    },
+    {
+      "id": "1565",
+      "label": "น้อยหน่า",
+      "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/1565_น้อยหน่า.mp4",
+      "features": "/Users/thawaphorn/Documents/Codex/2026-09-17/good-id-word-category-video-url/outputs/signbert_demo/data/1565.npz",
+      "sha256": "fdccd99acd2c4999f5776fea27ba91da2d11f96720cfb9ba78ee2f8cb0e27b8b",
+      "signer_id": null,
+      "split": "train",
+      "hand_coverage": [
+        0.3595505617977528,
+        0.3258426966292135
+      ]
+    },
+    {
+      "id": "26341",
+      "label": "มีด",
+      "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/26341_มีด.mp4",
+      "features": "/Users/thawaphorn/Documents/Codex/2026-09-17/good-id-word-category-video-url/outputs/signbert_demo/data/26341.npz",
+      "sha256": "5c5dd4a24b0882a3f5d189945e5fd1aaf3e74ab4cb013ef052ead6c6eb3b2d3d",
+      "signer_id": null,
+      "split": "train",
+      "hand_coverage": [
+        0.7307692307692307,
+        0.7307692307692307
+      ]
+    },
+    {
+      "id": "6877",
+      "label": "สนามบิน",
+      "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/6877_สนามบิน.mp4",
+      "features": "/Users/thawaphorn/Documents/Codex/2026-09-17/good-id-word-category-video-url/outputs/signbert_demo/data/6877.npz",
+      "sha256": "3453602ab1ef3c8f176237ea1ea18ad02bc0e1754293ba1fc096685266d0d056",
+      "signer_id": null,
+      "split": "train",
+      "hand_coverage": [
+        0.0,
+        0.3142857142857143
+      ]
+    },
+    {
+      "id": "7553",
+      "label": "ลำธาร",
+      "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/7553_ลำธาร.mp4",
+      "features": "/Users/thawaphorn/Documents/Codex/2026-09-17/good-id-word-category-video-url/outputs/signbert_demo/data/7553.npz",
+      "sha256": "00f061ab0844c4332991efe9f4d92c8b49b3fbf511c278687c873870e27c2380",
+      "signer_id": null,
+      "split": "train",
+      "hand_coverage": [
+        0.15476190476190477,
+        0.36904761904761907
+      ]
+    },
+    {
+      "id": "8245",
+      "label": "น้อยใจ",
+      "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/8245_น้อยใจ.mp4",
+      "features": "/Users/thawaphorn/Documents/Codex/2026-09-17/good-id-word-category-video-url/outputs/signbert_demo/data/8245.npz",
+      "sha256": "1cd338e5baa28fbb78f5192f8a2e5011f1faeae0e1bd41481485d26b352e0642",
+      "signer_id": null,
+      "split": "train",
+      "hand_coverage": [
+        0.06451612903225806,
+        0.25806451612903225
+      ]
+    },
+    {
+      "id": "55791",
+      "label": "ขอ",
+      "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/55791_ขอ.mp4",
+      "features": "/Users/thawaphorn/Documents/Codex/2026-09-17/good-id-word-category-video-url/outputs/signbert_demo/data/55791.npz",
+      "sha256": "d8af14e7d500a4fee410918557d1a8467eef25aa44286a7f8d86e6ce8f82dc2c",
+      "signer_id": null,
+      "split": "train",
+      "hand_coverage": [
+        0.0,
+        0.5714285714285714
+      ]
+    },
+    {
+      "id": "28860",
+      "label": "เขียน",
+      "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/28860_เขียน.mp4",
+      "features": "/Users/thawaphorn/Documents/Codex/2026-09-17/good-id-word-category-video-url/outputs/signbert_demo/data/28860.npz",
+      "sha256": "736a06c4380ee5f087dc55727a31fbc1937a16c192893062cbd61b7d8d65910c",
+      "signer_id": null,
+      "split": "train",
+      "hand_coverage": [
+        0.5135135135135135,
+        0.43243243243243246
+      ]
+    },
+    {
+      "id": "7219",
+      "label": "ธรรมชาติ",
+      "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/7219_ธรรมชาติ.mp4",
+      "features": "/Users/thawaphorn/Documents/Codex/2026-09-17/good-id-word-category-video-url/outputs/signbert_demo/data/7219.npz",
+      "sha256": "eb2907f7f6fc8ded22f7d2fce9195872f9203021c6ddd293a9e2d28c1dae9965",
+      "signer_id": null,
+      "split": "train",
+      "hand_coverage": [
+        0.1917808219178082,
+        0.3835616438356164
+      ]
+    },
+    {
+      "id": "56139",
+      "label": "ขนาด",
+      "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/56139_ขนาด.mp4",
+      "features": "/Users/thawaphorn/Documents/Codex/2026-09-17/good-id-word-category-video-url/outputs/signbert_demo/data/56139.npz",
+      "sha256": "3f7b1f7aeb2735196838328a719824ae3f90fe893e18c9fe84f9151a80a09f17",
+      "signer_id": null,
+      "split": "train",
+      "hand_coverage": [
+        0.43902439024390244,
+        0.5853658536585366
+      ]
+    },
+    {
+      "id": "32614",
+      "label": "เปล่า (น้ำเปล่า)",
+      "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/32614_เปล่า_(น้ำเปล่า).mp4",
+      "features": "/Users/thawaphorn/Documents/Codex/2026-09-17/good-id-word-category-video-url/outputs/signbert_demo/data/32614.npz",
+      "sha256": "c72ff62db05d9aba7344a547022a04d350586569528ade18d82865711d496e15",
+      "signer_id": null,
+      "split": "train",
+      "hand_coverage": [
+        0.0,
+        0.4722222222222222
+      ]
+    },
+    {
+      "id": "32636",
+      "label": "อาจารย์",
+      "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/32636_อาจารย์.mp4",
+      "features": "/Users/thawaphorn/Documents/Codex/2026-09-17/good-id-word-category-video-url/outputs/signbert_demo/data/32636.npz",
+      "sha256": "7243f758c487f1f8cb8f7e2d2c6e6cd82418de29df4615343c196f023bbcec1c",
+      "signer_id": null,
+      "split": "train",
+      "hand_coverage": [
+        0.5405405405405406,
+        0.4864864864864865
+      ]
+    },
+    {
+      "id": "51405",
+      "label": "ตื่น",
+      "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/51405_ตื่น.mp4",
+      "features": "/Users/thawaphorn/Documents/Codex/2026-09-17/good-id-word-category-video-url/outputs/signbert_demo/data/51405.npz",
+      "sha256": "81c3a02ac164a26615b17745a18714b82e5c5fba8c74bd5a848087927bf48c77",
+      "signer_id": null,
+      "split": "train",
+      "hand_coverage": [
+        0.6470588235294118,
+        0.6470588235294118
+      ]
+    },
+    {
+      "id": "36879",
+      "label": "สมุด",
+      "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/36879_สมุด.mp4",
+      "features": "/Users/thawaphorn/Documents/Codex/2026-09-17/good-id-word-category-video-url/outputs/signbert_demo/data/36879.npz",
+      "sha256": "efe92fc7bf6441f40dd18bf34edc864f7da44843b2457bedd7ce80f93474e8bc",
+      "signer_id": null,
+      "split": "train",
+      "hand_coverage": [
+        0.4146341463414634,
+        0.6097560975609756
+      ]
+    },
+    {
+      "id": "36952",
+      "label": "หมา",
+      "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/36952_หมา.mp4",
+      "features": "/Users/thawaphorn/Documents/Codex/2026-09-17/good-id-word-category-video-url/outputs/signbert_demo/data/36952.npz",
+      "sha256": "d8f418db54979418f59aa8811e7f907ec0f31c30ae0817a06ced391bd1577fe0",
+      "signer_id": null,
+      "split": "train",
+      "hand_coverage": [
+        0.03333333333333333,
+        0.6
+      ]
+    }
+  ],
+  "failures": []
+}

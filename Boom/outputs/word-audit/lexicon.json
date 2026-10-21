@@ -1,0 +1,366 @@
+[
+  {
+    "word": "กับ",
+    "mapped_concept": "กับ",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {}
+  },
+  {
+    "word": "จะ",
+    "mapped_concept": "จะ",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {}
+  },
+  {
+    "word": "ตาย",
+    "mapped_concept": "ตาย",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {}
+  },
+  {
+    "word": "ทั้งหมด",
+    "mapped_concept": "ทั้งหมด",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {}
+  },
+  {
+    "word": "ทำ",
+    "mapped_concept": "ทำ",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [
+      "ทำ"
+    ],
+    "roles": {
+      "train": 1
+    },
+    "excluded_reasons": {
+      "pose_missing": 1
+    }
+  },
+  {
+    "word": "ทีวี",
+    "mapped_concept": "ทีวี",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {}
+  },
+  {
+    "word": "ที่ทำงาน",
+    "mapped_concept": "ที่ทำงาน",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {}
+  },
+  {
+    "word": "นัด",
+    "mapped_concept": "นัด",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {}
+  },
+  {
+    "word": "พัน",
+    "mapped_concept": "พัน",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {}
+  },
+  {
+    "word": "ยินดีที่ได้รู้จัก",
+    "mapped_concept": "ยินดีที่ได้รู้จัก",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {}
+  },
+  {
+    "word": "รถ",
+    "mapped_concept": "รถ",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {}
+  },
+  {
+    "word": "ราตรีสวัสดิ์",
+    "mapped_concept": "ราตรีสวัสดิ์",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {}
+  },
+  {
+    "word": "ล่าม",
+    "mapped_concept": "ล่าม",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {}
+  },
+  {
+    "word": "หรือเปล่า",
+    "mapped_concept": "หรือเปล่า",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {}
+  },
+  {
+    "word": "อาจารย์",
+    "mapped_concept": "อาจารย์",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {}
+  },
+  {
+    "word": "เพราะ",
+    "mapped_concept": "เพราะ",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {}
+  },
+  {
+    "word": "แดด",
+    "mapped_concept": "แดด",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {}
+  },
+  {
+    "word": "แล้ว",
+    "mapped_concept": "แล้ว",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {}
+  },
+  {
+    "word": "ไหม",
+    "mapped_concept": "ไหม",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {}
+  },
+  {
+    "word": "สวัสดี",
+    "mapped_concept": "สวัสดี",
+    "in_model": true,
+    "in_conversation": true,
+    "bank_examples": 45,
+    "glosses": [
+      "สวัสดี",
+      "สวัสดี_อายุเท่ากันหรือน้อยกว่า"
+    ],
+    "roles": {
+      "train": 25,
+      "test": 20,
+      "deploy": 2
+    },
+    "excluded_reasons": {
+      "duplicate_of_th_sl": 1
+    }
+  },
+  {
+    "word": "ขอบคุณ",
+    "mapped_concept": "ขอบคุณ",
+    "in_model": true,
+    "in_conversation": true,
+    "bank_examples": 42,
+    "glosses": [
+      "ขอบคุณ",
+      "ขอบคุณ_เปิดมือสองข้าง"
+    ],
+    "roles": {
+      "train": 22,
+      "test": 21,
+      "deploy": 2
+    },
+    "excluded_reasons": {}
+  },
+  {
+    "word": "ชอบ",
+    "mapped_concept": "ชอบ",
+    "in_model": true,
+    "in_conversation": true,
+    "bank_examples": 117,
+    "glosses": [
+      "ชอบ",
+      "ชอบ (ท่าที่1)",
+      "ชอบ (ท่าที่2)",
+      "ชอบ_var_1"
+    ],
+    "roles": {
+      "train": 25,
+      "test": 20,
+      "deploy": 1
+    },
+    "excluded_reasons": {
+      "duplicate_of_th_sl": 1,
+      "hands_not_visible": 1
+    }
+  },
+  {
+    "word": "ฉัน",
+    "mapped_concept": "ฉัน",
+    "in_model": true,
+    "in_conversation": true,
+    "bank_examples": 161,
+    "glosses": [
+      "ฉัน",
+      "ฉัน_var_1",
+      "ฉัน_var_2"
+    ],
+    "roles": {
+      "train": 43,
+      "test": 40
+    },
+    "excluded_reasons": {}
+  },
+  {
+    "word": "แม่",
+    "mapped_concept": "แม่",
+    "in_model": true,
+    "in_conversation": true,
+    "bank_examples": 83,
+    "glosses": [
+      "Mom",
+      "แม่",
+      "แม่_var_1"
+    ],
+    "roles": {
+      "train": 44,
+      "test": 25,
+      "val": 3,
+      "deploy": 1
+    },
+    "excluded_reasons": {
+      "duplicate_of_th_sl": 1
+    }
+  },
+  {
+    "word": "กาแฟ",
+    "mapped_concept": "กาแฟ",
+    "in_model": true,
+    "in_conversation": true,
+    "bank_examples": 2,
+    "glosses": [
+      "กาแฟ"
+    ],
+    "roles": {
+      "train": 2
+    },
+    "excluded_reasons": {}
+  },
+  {
+    "word": "ชา",
+    "mapped_concept": "ชา",
+    "in_model": true,
+    "in_conversation": true,
+    "bank_examples": 2,
+    "glosses": [
+      "ชา"
+    ],
+    "roles": {
+      "train": 2
+    },
+    "excluded_reasons": {}
+  },
+  {
+    "word": "ธนาคาร",
+    "mapped_concept": "ธนาคาร",
+    "in_model": true,
+    "in_conversation": true,
+    "bank_examples": 2,
+    "glosses": [
+      "ธนาคาร"
+    ],
+    "roles": {
+      "train": 2
+    },
+    "excluded_reasons": {}
+  },
+  {
+    "word": "ซื้อ",
+    "mapped_concept": "ซื้อ",
+    "in_model": true,
+    "in_conversation": true,
+    "bank_examples": 2,
+    "glosses": [
+      "ซื้อ",
+      "ซื้อ (ท่าที่2)"
+    ],
+    "roles": {
+      "train": 2
+    },
+    "excluded_reasons": {}
+  },
+  {
+    "word": "จ่าย",
+    "mapped_concept": "จ่าย",
+    "in_model": true,
+    "in_conversation": true,
+    "bank_examples": 2,
+    "glosses": [
+      "จ่าย",
+      "จ่าย (ท่าที่2)"
+    ],
+    "roles": {
+      "train": 2
+    },
+    "excluded_reasons": {}
+  }
+]

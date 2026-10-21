@@ -1,0 +1,171 @@
+109
+
+East Region
+
+103
+
+Kalasint
+
+94
+
+elevated railway
+
+46
+
+Kamphaeng Phet
+
+88
+
+Electrical devices
+
+19
+
+Karnchana Buri
+
+electric typewriter
+
+26
+
+key
+
+109
+
+electric pot
+
+28
+
+Khon Kaen
+
+123
+
+electric cooking pot
+
+28
+
+Krabi
+
+100
+
+fan
+
+24
+
+Lamphun
+
+22
+
+98
+
+fax machine
+
+Lampang
+
+48
+
+local bus
+
+42
+
+ferry
+
+41
+
+Loei
+
+114
+
+fire engine
+
+fork
+
+14
+
+long-tail boat
+
+49
+
+Lop Buri
+
+82
+
+glass
+
+13
+
+101
+
+grocery
+
+64
+
+Mae Hong Sorn
+
+112
+
+Maha Sarakam
+
+64
+
+market
+
+microwave oven
+
+27
+
+helicopter
+
+50
+
+65
+
+mosque
+
+58
+
+hospital
+
+hotel
+
+63
+
+motorcycle
+
+38
+
+house
+
+60
+
+Mukdahan
+
+112
+
+house to rent
+
+61
+
+Household utensils
+
+110
+
+Nakhon Phanom
+
+111
+
+LT |
+
+Nakhon Ratchasima
+
+25
+
+Nakhon Sawan
+
+93
+
+iron
+
+๓บามือ Un
+
+/ลุ่ม 4
+
+รล้ ฐา ไน

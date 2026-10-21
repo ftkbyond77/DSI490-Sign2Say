@@ -13,6 +13,7 @@ Vocabulary: 'conversation' (default — the daily-conversation lexicon in models
 from __future__ import annotations
 
 import time
+import os
 from pathlib import Path
 
 import numpy as np
@@ -86,6 +87,13 @@ class SignPipeline:
         self.roles = read_json(md / "roles.json") if (md / "roles.json").exists() else {}
         self.lang_roles = read_json(md / "roles_language.json") if (md / "roles_language.json").exists() else self.roles
         self.use_llm, self.use_face = use_llm, use_face
+        # Hybrid experiment: opt-in only.  It scores only retrieval Top-K and never invents words.
+        self.symbolic_weight = float(os.environ.get("THAISLM_SYMBOLIC_WEIGHT", "0"))
+        self.symbolic_dict = {}
+        if self.symbolic_weight > 0:
+            from .symbolic import load_dictionary
+            p = Path(os.environ.get("THAISLM_SYMBOLIC_DICT", MODEL.parent / "Boom/book-catalog/reviewed_entries.json"))
+            if p.exists(): self.symbolic_dict = load_dictionary(p, self.concepts)
         # fingerspelling: letter recogniser + letter bank (second opinion through the sign encoder); settings in spotting.json "spell"
         self.speller = load_speller(md)
         lb = md / "letters_bank.npz"
@@ -291,6 +299,17 @@ class SignPipeline:
             segs, act, n_win = self._spot(kpi, sc, prob, present, H, bank)
         else:
             segs, act, n_win = [], np.zeros(T, bool), 0
+        if self.symbolic_weight > 0 and self.symbolic_dict:
+            from .symbolic import observe, score
+            for s in segs:
+                if s.get("status") == "transition": continue
+                obs = observe(kpi[s["f0"]:s["f1"]], sc[s["f0"]:s["f1"]])
+                cs = np.array([c["score"] for c in s["candidates"]], np.float32)
+                ai = np.exp(cs-cs.max()); ai /= ai.sum()
+                pose = np.array([score(obs, self.symbolic_dict.get(c["word"], [])) for c in s["candidates"]], np.float32)
+                fused = (1-self.symbolic_weight)*ai + self.symbolic_weight*pose
+                for c, a, q, z in zip(s["candidates"], ai, pose, fused): c.update(ai_prob=round(float(a),4), pose_score=round(float(q),4), fused_score=round(float(z),4))
+                s["candidates"].sort(key=lambda c: c["fused_score"], reverse=True); s["nearest"] = s["candidates"][0]["word"]; s["symbolic"] = obs
         P = self.lr.predict(seg_features(segs, getattr(self.lr, "feats", None))) if segs else np.zeros(0)
         for s, p in zip(segs, P):
             s["p_correct"] = float(p); s["status"] = status_of(p, self.cal)

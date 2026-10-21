@@ -1,0 +1,13 @@
+{
+  "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/models/roles_language.json": "0f40e1b982bc61907ff9bf5f9821087ead926e2df7ae8b8602608a2074ab6b27",
+  "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/models/roles.json": "7f8a7b1c04142fbedc0863d12586b64220a25a1a889c231aed9e0e9a72121324",
+  "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/models/mt5_config.json": "ab058004add9c316924e6f59465a2a00f89e36d4a1bbfd16d60f52b257ef1534",
+  "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/models/config.json": "7333c45674aba9af16ec5d139270c9c493e38ac2d0c6209c91c42e03affbeb34",
+  "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/models/segment_calibration.json": "0acb25c2705b6fbf4037d8e8b2f966cabcf82961eec72903504844db0423ba87",
+  "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/models/concepts.json": "c8aad472e3723558ce8e39307ec9ca9e3d915bb7d321e0ec93f3f1f27d525176",
+  "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/models/spotting.json": "812e7ea77a254ae7dc805fdf0cefbeb002bc3b6750d79be67c2a80eff598d053",
+  "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/models/vocab_conversation.json": "4a6e233d8a27707ea05be9733148d8d837f620085b438177e8a4458c8ca53a24",
+  "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/models/grammar.json": "b985b5ca86273c45f3a0e341f8ae7a7801f33bd64562f57217fe31c39fa57069",
+  "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/models/bank.npz": "a5ff3ce9ce7f63de3eef9ceb786124933a5ff982f496efddaec50680d2230047",
+  "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/models/encoder.pt": "f72844c5a9d5541b0688b1b5dcf930b87ff4f2e81916872b16111915c8d59ada"
+}

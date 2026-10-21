@@ -1,0 +1,47 @@
+การเคลื่อนที่จากจุดหนึ่งไปยังอีกจุดหนึ่ง
+
+a               ๕
+
+โดยก้าวสั้นๆ
+
+8. <<
+
+๑
+
+Movement is from point to point
+
+t
+
+@
+
+by small steps, with a slight bounce
+
+การเคลื่อนไหวที่ช้าๆ กัน
+
+Repeated movements
+
+การเคลื่อนที่ไปในทางเดียวหลายๆ ครั้ง
+
+Unidirectional movements
+
+การเคลื่อนไหวที่ไป-กลับหลายๆ ครั้ง
+
+Bidirectional movements
+
+การที่มือทั้งสองเคลื่อนสลับกันในทิศทาง
+
+i
+
+เดียวกัน (ข้ายครั้ง ขวาครั้ง)
+
+2
+
+Alternating movements by the two
+
+ayy
+
+1
+
+3
+
+hands, unidirectional movements

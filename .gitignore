@@ -107,3 +107,11 @@ reverse_text2sign/service/web/dist/
 reverse_text2sign/service/web/public/avatar.vrm
 reverse_text2sign/result_reporting/review/renders/
 reverse_text2sign/prompt/*
+
+# Local experiment environments and tool caches
+Boom/venv-sign2say/
+Boom/work/*venv/
+Boom/work/swift-cache/
+Boom/work/matplotlib/
+Boom/**/runtime_packages/
+Boom/**/runtime_wheels/
