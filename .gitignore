@@ -115,3 +115,12 @@ Boom/work/swift-cache/
 Boom/work/matplotlib/
 Boom/**/runtime_packages/
 Boom/**/runtime_wheels/
+Boom/data_sources/e_tsl/priority_videos/
+Boom/data_sources/e_tsl/thumbnails/
+Boom/data_sources/e_tsl/experiment_bank/*.npz
+Boom/data_sources/e_tsl/experiment_bank/poses/
+Boom/data_sources/e_tsl/*.php.json
+Boom/data_sources/e_tsl/browse.html
+Boom/git_boom/
+pitty/git_pitty/
+Jack/

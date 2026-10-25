@@ -1,0 +1,206 @@
+[
+  {
+    "clip_id": "etsl:1851",
+    "label": "ดู",
+    "concept_id": 1930,
+    "frames": 176,
+    "span": [
+      0,
+      176
+    ],
+    "span_policy": "whole isolated dictionary clip; no manually annotated boundaries",
+    "mirrored": false,
+    "sha256": "81d601bc138a0fdc320f976dff56511db196956a3be19b129b8375572f4ccab3",
+    "source_url": "http://e-tsl.eng.chula.ac.th/resources/Video/Video_3016_0.mp4",
+    "signer": "unknown:etsl",
+    "signer_note": "not a verified identity; do not count as new independent signer",
+    "bank_added": true
+  },
+  {
+    "clip_id": "etsl:3956",
+    "label": "ไป",
+    "concept_id": 9695,
+    "frames": 201,
+    "span": [
+      0,
+      201
+    ],
+    "span_policy": "whole isolated dictionary clip; no manually annotated boundaries",
+    "mirrored": false,
+    "sha256": "cd7b6c77c3a93ae5cac9441d2c7b6748c0822d03165a71d3535b3c8bd5c2763d",
+    "source_url": "http://e-tsl.eng.chula.ac.th/resources/Video/Video_5836_0.mp4",
+    "signer": "unknown:etsl",
+    "signer_note": "not a verified identity; do not count as new independent signer",
+    "bank_added": true
+  },
+  {
+    "clip_id": "etsl:3957",
+    "label": "ไป",
+    "concept_id": 9695,
+    "frames": 176,
+    "span": [
+      0,
+      176
+    ],
+    "span_policy": "whole isolated dictionary clip; no manually annotated boundaries",
+    "mirrored": false,
+    "sha256": "deb08c221e9ae71b90a1ea74487bd7431f6109b553ab747974791c853fdbaec9",
+    "source_url": "http://e-tsl.eng.chula.ac.th/resources/Video/Video_5837_0.mp4",
+    "signer": "unknown:etsl",
+    "signer_note": "not a verified identity; do not count as new independent signer",
+    "bank_added": true
+  },
+  {
+    "clip_id": "etsl:1644",
+    "label": "กิน",
+    "concept_id": 570,
+    "frames": 176,
+    "span": [
+      0,
+      176
+    ],
+    "span_policy": "whole isolated dictionary clip; no manually annotated boundaries",
+    "mirrored": false,
+    "sha256": "e0862a3459ad9fe85ced0ee455e212a8a43a0304bbae1ab4aba4202ed9e20dd4",
+    "source_url": "http://e-tsl.eng.chula.ac.th/resources/Video/Video_2800_0.mp4",
+    "signer": "unknown:etsl",
+    "signer_note": "not a verified identity; do not count as new independent signer",
+    "bank_added": true
+  },
+  {
+    "clip_id": "etsl:2327",
+    "label": "ยาย",
+    "concept_id": 4824,
+    "frames": 226,
+    "span": [
+      0,
+      226
+    ],
+    "span_policy": "whole isolated dictionary clip; no manually annotated boundaries",
+    "mirrored": false,
+    "sha256": "289f12d151cf653a0a9a3de14a4f0fcca4b18777fbfcbcc2af48fa661aa22f62",
+    "source_url": "http://e-tsl.eng.chula.ac.th/resources/Video/Video_4723_0.mp4",
+    "signer": "unknown:etsl",
+    "signer_note": "not a verified identity; do not count as new independent signer",
+    "bank_added": true
+  },
+  {
+    "clip_id": "etsl:2849",
+    "label": "คุณ",
+    "concept_id": 1185,
+    "frames": 151,
+    "span": [
+      0,
+      151
+    ],
+    "span_policy": "whole isolated dictionary clip; no manually annotated boundaries",
+    "mirrored": false,
+    "sha256": "b7a3a255da1f7d766fd8476a8f5acf53deb143b4947f69ac973c5131f453551a",
+    "source_url": "http://e-tsl.eng.chula.ac.th/resources/Video/Video_4710_0.mp4",
+    "signer": "unknown:etsl",
+    "signer_note": "not a verified identity; do not count as new independent signer",
+    "bank_added": true
+  },
+  {
+    "clip_id": "etsl:2113",
+    "label": "ป้า",
+    "concept_id": 3640,
+    "frames": 176,
+    "span": [
+      0,
+      176
+    ],
+    "span_policy": "whole isolated dictionary clip; no manually annotated boundaries",
+    "mirrored": false,
+    "sha256": "cc979902b00c1fc4c1c7b7289fa642231e121f2e944f33754e86d0c66c460c9c",
+    "source_url": "http://e-tsl.eng.chula.ac.th/resources/Video/Video_3320_0.mp4",
+    "signer": "unknown:etsl",
+    "signer_note": "not a verified identity; do not count as new independent signer",
+    "bank_added": true
+  },
+  {
+    "clip_id": "etsl:1685",
+    "label": "ข้าว",
+    "concept_id": 828,
+    "frames": 176,
+    "span": [
+      0,
+      176
+    ],
+    "span_policy": "whole isolated dictionary clip; no manually annotated boundaries",
+    "mirrored": false,
+    "sha256": "3561ca88d524d6398e70eab2f1e1a8a3b877d8592530ed949dc3f1ed855c8830",
+    "source_url": "http://e-tsl.eng.chula.ac.th/resources/Video/Video_4043_0.mp4",
+    "signer": "unknown:etsl",
+    "signer_note": "not a verified identity; do not count as new independent signer",
+    "bank_added": true
+  },
+  {
+    "clip_id": "etsl:1832",
+    "label": "ญาติ",
+    "concept_id": 1777,
+    "frames": 201,
+    "span": [
+      0,
+      201
+    ],
+    "span_policy": "whole isolated dictionary clip; no manually annotated boundaries",
+    "mirrored": false,
+    "sha256": "1587c4c4bf7fe281f6803b8c53b4dedc07aee940ddcffb9a7da30560c779460b",
+    "source_url": "http://e-tsl.eng.chula.ac.th/resources/Video/Video_4129_0.mp4",
+    "signer": "unknown:etsl",
+    "signer_note": "not a verified identity; do not count as new independent signer",
+    "bank_added": true
+  },
+  {
+    "clip_id": "etsl:2518",
+    "label": "วิ่ง",
+    "concept_id": 5962,
+    "frames": 151,
+    "span": [
+      0,
+      151
+    ],
+    "span_policy": "whole isolated dictionary clip; no manually annotated boundaries",
+    "mirrored": false,
+    "sha256": "b8786adf217f4c096917bb0574580165db1bf9a972331b49cd2e525cb70b083b",
+    "source_url": "http://e-tsl.eng.chula.ac.th/resources/Video/Video_4255_0.mp4",
+    "signer": "unknown:etsl",
+    "signer_note": "not a verified identity; do not count as new independent signer",
+    "bank_added": true
+  },
+  {
+    "clip_id": "etsl:2311",
+    "label": "ไม่มี",
+    "concept_id": 9763,
+    "frames": 101,
+    "span": [
+      0,
+      101
+    ],
+    "span_policy": "whole isolated dictionary clip; no manually annotated boundaries",
+    "mirrored": false,
+    "sha256": "6c795abc0c58af89e14d7b6d6cdddc4fc8f5f4bdc80dde28c464d4268e680d09",
+    "source_url": "http://e-tsl.eng.chula.ac.th/resources/Video/Video_3530_0.mp4",
+    "signer": "unknown:etsl",
+    "signer_note": "not a verified identity; do not count as new independent signer",
+    "bank_added": true
+  },
+  {
+    "clip_id": "etsl:2772",
+    "label": "ภาษามือ",
+    "concept_id": 4478,
+    "frames": 201,
+    "span": [
+      0,
+      201
+    ],
+    "span_policy": "whole isolated dictionary clip; no manually annotated boundaries",
+    "mirrored": false,
+    "sha256": "b0a8951c6c0ae5f1881bd664431fe8a670892043231362a64b41ad30b8cbe76c",
+    "source_url": "http://e-tsl.eng.chula.ac.th/resources/Video/Video_4625_0.mp4",
+    "signer": "unknown:etsl",
+    "signer_note": "not a verified identity; do not count as new independent signer",
+    "bank_added": true
+  }
+]
