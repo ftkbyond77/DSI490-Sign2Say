@@ -18,6 +18,7 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(ROOT))
 
 from capture_gap import compare_wer
+from live_hand_body_diag import diagnose_file, diagnose_record, run as run_hand_body_diag
 from live_manifest import SCRIPT, build_manifest
 from live_metrics import aggregate, score_row, selection_gates
 from live_replay import apply_case, completed_keys, hand_fill_metrics, replay_rows
@@ -27,6 +28,97 @@ from modules.schema import fill_hand_gaps, finish, resample
 
 
 class SyntheticFixtureTests(unittest.TestCase):
+    @staticmethod
+    def _diagnostic_frame(timestamp, left_visible=True, right_visible=True):
+        pose = [[0.1, 0.2, 0.0, 1.0] for _ in range(33)]
+        left = [[0.2, 0.3, 0.1] for _ in range(21)] if left_visible else [[0.0, 0.0, 0.0] for _ in range(21)]
+        right = [[0.3, 0.4, 0.1] for _ in range(21)] if right_visible else [[0.0, 0.0, 0.0] for _ in range(21)]
+        return {"t": timestamp, "pose": pose, "lh": left, "rh": right}
+
+    def test_read_only_hand_body_diagnostic_reports_gaps_body_and_handedness(self):
+        frames = []
+        for index in range(20):
+            left_visible = not (2 <= index < 5 or 8 <= index < 15)
+            right_visible = not (4 <= index < 10)
+            frame = self._diagnostic_frame(index * 100, left_visible, right_visible)
+            if index == 0:
+                frame["pose"][0][3] = 0.0
+                frame["pose"][11][3] = 0.0
+            if index == 1:
+                frame["pose"][11][3] = 0.0
+            frames.append(frame)
+        handedness = ["left"] * 9 + ["right"] * 3 + ["left"] * 8
+        record = {"frames": frames, "handedness": handedness}
+
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "synthetic.json.gz"
+            with gzip.open(path, "wt", encoding="utf-8") as fh:
+                json.dump(record, fh)
+            result = diagnose_file(path)
+
+        self.assertAlmostEqual(result["fps_actual"], 10.0)
+        self.assertAlmostEqual(result["left_hand_visible_rate"], 0.5)
+        self.assertAlmostEqual(result["right_hand_visible_rate"], 0.7)
+        self.assertAlmostEqual(result["nose_visible_rate"], 0.95)
+        self.assertAlmostEqual(result["left_shoulder_visible_rate"], 0.9)
+        self.assertAlmostEqual(result["right_shoulder_visible_rate"], 1.0)
+        self.assertAlmostEqual(result["cleared_by_present_rate"], 0.05)
+        self.assertEqual(result["left_hand_gap_count"], 2)
+        self.assertEqual(result["left_hand_gaps_longer_than_threshold"], 1)
+        self.assertEqual(result["left_hand_gaps_at_or_shorter_than_threshold"], 1)
+        self.assertAlmostEqual(result["left_hand_gap_fraction_longer_than_threshold"], 0.5)
+        self.assertAlmostEqual(result["left_hand_gap_fraction_at_or_shorter_than_threshold"], 0.5)
+        self.assertEqual(json.loads(result["left_hand_gap_frames_histogram_json"]), {"3": 1, "7": 1})
+        self.assertEqual(json.loads(result["left_hand_gap_duration_ms_histogram_json"]), {"300-400": 1, "700-800": 1})
+        self.assertEqual(result["right_hand_gaps_longer_than_threshold"], 1)
+        self.assertEqual(result["handedness_data_status"], "มีข้อมูล")
+        self.assertEqual(result["handedness_switch_count"], 2)
+        self.assertNotIn("pose", result)
+        self.assertNotIn("lh", result)
+
+    def test_read_only_hand_body_diagnostic_writes_metrics_only_csv_and_markdown(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            cache_dir = root / "cache"
+            output_dir = root / "output"
+            cache_dir.mkdir()
+            with gzip.open(cache_dir / "synthetic.json.gz", "wt", encoding="utf-8") as fh:
+                json.dump({"frames": [self._diagnostic_frame(0)]}, fh)
+            rows = run_hand_body_diag(cache_dir, output_dir)
+            self.assertEqual(len(rows), 1)
+            csv_text = (output_dir / "synthetic.csv").read_text(encoding="utf-8")
+            markdown = (output_dir / "summary.md").read_text(encoding="utf-8")
+            self.assertIn("fps_actual", csv_text)
+            self.assertIn("handedness_data_status", csv_text)
+            self.assertNotIn("pose", csv_text)
+            self.assertNotIn("face", csv_text)
+            self.assertIn("ไม่มีข้อมูล", csv_text)
+            self.assertIn("Live hand/body diagnostic summary", markdown)
+
+    def test_read_only_hand_body_diagnostic_reports_missing_handedness(self):
+        result = diagnose_record({"frames": [self._diagnostic_frame(0)]}, "synthetic")
+        self.assertEqual(result["handedness_data_status"], "ไม่มีข้อมูล")
+        self.assertEqual(result["handedness_switch_count"], "")
+
+    def test_body_clear_uses_mean_raw_visibility_scores(self):
+        frame = self._diagnostic_frame(0)
+        frame["pose"][0][3] = 0.6
+        frame["pose"][11][3] = 0.6
+        frame["pose"][12][3] = 0.0
+        result = diagnose_record({"frames": [frame]}, "synthetic")
+        self.assertEqual(result["nose_visible_rate"], 1.0)
+        self.assertEqual(result["left_shoulder_visible_rate"], 1.0)
+        self.assertEqual(result["right_shoulder_visible_rate"], 0.0)
+        self.assertEqual(result["cleared_by_present_rate"], 1.0)
+
+    def test_read_only_hand_body_diagnostic_rejects_unexpected_cache_structure(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "bad.json.gz"
+            with gzip.open(path, "wt", encoding="utf-8") as fh:
+                json.dump({"frames": [{"t": 0, "pose": [], "lh": []}]}, fh)
+            with self.assertRaisesRegex(ValueError, "missing required landmark fields: rh"):
+                diagnose_file(path)
+
     def test_timestamp_resampling_uses_irregular_time_axis(self):
         times = np.array([0.0, 0.1, 0.4])
         keypoints = np.array([[[0.0, 0.0]], [[1.0, 0.0]], [[4.0, 0.0]]], dtype=np.float32)

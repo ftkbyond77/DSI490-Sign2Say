@@ -67,6 +67,42 @@ configuration, but cannot exactly reconstruct a historical request that used
 the omitted options. Its latency includes browser-landmark conversion plus
 `run_landmarks`, not browser/network overhead or video extraction.
 
+## Read-only hand/body diagnostics
+
+Run `python Boom/phase2.2/live_hand_body_diag.py` to inspect gzip JSON captures
+without invoking the model or printing/writing landmark coordinates. It writes
+one metrics-only CSV per request and `summary.md` under
+`cache/phase2.2/hand_body_diag/`. It validates the root `frames` list, numeric
+strictly increasing `t` timestamps, `pose` (33 points with visibility at index
+3), and `lh`/`rh` (21 points with normalized x/y). Empty pose/hand lists mean
+that detector channel was absent for the frame. A nonempty array with another
+shape fails before metrics are produced.
+
+The browser frame schema has no separate per-hand confidence values. Hand
+point scores are therefore treated as binary, using the same nonzero x/y
+presence rule used when `from_browser` builds the production schema; the hand
+rate is `count(present points) / 21 > 0.3`, matching `fill_hand_gaps`. Body
+scores use the pose visibility field and the nose/shoulder clearing rule from
+the Phase 2.1 test engine: average nose/left-shoulder/right-shoulder visibility
+must be strictly greater than `0.5`; otherwise the frame is counted as cleared.
+
+Hand gaps are contiguous runs where that hand's 21-point mean presence score
+does not exceed `0.3`. Gap milliseconds use the interval from the first missing
+frame timestamp up to the next frame timestamp; leading/trailing gaps are
+extended by the median observed frame interval. This estimates capture-time
+duration for irregular frame timestamps. Millisecond histograms use 100 ms
+bins; frame histograms use exact run lengths. The long-gap fraction counts
+durations strictly greater than `hand_gap_s` (default `0.5` s); the companion
+fraction includes durations equal to or shorter than the threshold.
+
+The current cache writer schema does not include a handedness label. If labels
+are available, the diagnostic only accepts `handedness` as either a frame-level
+string or a top-level list aligned one-for-one with `frames`; accepted labels
+are `left`/`right` or `L`/`R`. It counts changes only between adjacent frames
+where both labels exist. Other fields, including `mirrored_to_right_hand`, are
+not treated as handedness; absent labels are reported as `ไม่มีข้อมูล`, never
+inferred.
+
 Synthetic tests:
 
 ```sh
