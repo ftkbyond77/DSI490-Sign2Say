@@ -1,8 +1,18 @@
 {
   "schema_version": 1,
   "description": "One-variable-at-a-time live comparisons. Baseline is the effective production configuration loaded by SignPipeline.",
+  "hand_gap_s_baseline": 0.5,
   "cases": {
     "baseline": {},
+    "hand_gap_s_0_3": {
+      "hand_gap_s": 0.3
+    },
+    "hand_gap_s_0_8": {
+      "hand_gap_s": 0.8
+    },
+    "hand_gap_s_1_0": {
+      "hand_gap_s": 1.0
+    },
     "tau_accept_0_75": {
       "tau_accept": 0.75
     },

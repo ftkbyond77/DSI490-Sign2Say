@@ -6,6 +6,8 @@ import json
 import sys
 import tempfile
 import unittest
+from types import SimpleNamespace
+from unittest.mock import patch
 from pathlib import Path
 
 import numpy as np
@@ -18,8 +20,10 @@ sys.path.insert(0, str(ROOT))
 from capture_gap import compare_wer
 from live_manifest import SCRIPT, build_manifest
 from live_metrics import aggregate, score_row, selection_gates
-from live_replay import replay_rows
-from modules.schema import fill_hand_gaps, resample
+from live_replay import apply_case, completed_keys, hand_fill_metrics, replay_rows
+from modules import pipeline as pipeline_module
+from modules import schema as schema_module
+from modules.schema import fill_hand_gaps, finish, resample
 
 
 class SyntheticFixtureTests(unittest.TestCase):
@@ -42,6 +46,70 @@ class SyntheticFixtureTests(unittest.TestCase):
         filled, filled_scores = fill_hand_gaps(keypoints, scores, max_gap=1)
         np.testing.assert_allclose(filled[1, 91:112], 1.0)
         np.testing.assert_allclose(filled_scores[1, 91:112], 1.0)
+
+    def test_hand_gap_cases_change_production_fill_max_gap_at_irregular_10fps(self):
+        times = np.arange(12, dtype=np.float64) / 10.0
+        keypoints = np.zeros((len(times), 133, 2), dtype=np.float32)
+        scores = np.zeros((len(times), 133), dtype=np.float32)
+        scores[:, 0] = scores[:, 5] = scores[:, 6] = 1.0
+        keypoints[:, 5, 0] = 0.25
+        keypoints[:, 6, 0] = 0.75
+        left_points = np.full((len(times), 21, 3), 0.2, dtype=np.float32)
+        left_points[3:9] = 0.0
+        right_points = np.full((len(times), 21, 3), 0.3, dtype=np.float32)
+        for frame in range(len(times)):
+            keypoints[frame, 112:133] = right_points[frame, :, :2]
+            scores[frame, 112:133] = 1.0
+            if frame not in range(3, 9):
+                keypoints[frame, 91:112] = left_points[frame, :, :2]
+                scores[frame, 91:112] = 1.0
+        raw = {
+            "t": times,
+            "kp": keypoints,
+            "sc": scores,
+            "hw": (480, 640),
+            "lh": left_points,
+            "rh": right_points,
+        }
+        observed_gaps = []
+        original_fill = schema_module.fill_hand_gaps
+
+        def record_fill(kp, sc, max_gap):
+            observed_gaps.append(max_gap)
+            return original_fill(kp, sc, max_gap)
+
+        def synthetic_to_standard(landmarks, gap_s):
+            return finish(
+                landmarks["kp"].copy(), landmarks["sc"].copy(), landmarks["t"],
+                landmarks["hw"], "synthetic", "mp", set(), gap_s=gap_s,
+            )
+
+        pipe = SimpleNamespace(
+            spot={},
+            spot_all={"hand_gap_s": 0.5},
+            cal={"tau_accept": 0.8},
+        )
+        output_metrics = []
+        with (
+            patch.object(pipeline_module, "to_standard", side_effect=synthetic_to_standard),
+            patch.object(schema_module, "fill_hand_gaps", side_effect=record_fill),
+        ):
+            for gap_s in (0.3, 0.8):
+                pipe.spot_all = {"hand_gap_s": 0.5}
+                effective = apply_case(pipe, {"hand_gap_s": gap_s})
+                self.assertEqual(effective["hand_gap_s"], gap_s)
+                standardized = pipeline_module.SignPipeline.standardise(pipe, raw)
+                output_metrics.append(hand_fill_metrics(raw, standardized[1], standardized[4]))
+
+        self.assertEqual(observed_gaps, [3, 8])
+        self.assertLess(
+            output_metrics[0]["left_hand_after_fill_rate"],
+            output_metrics[1]["left_hand_after_fill_rate"],
+        )
+        self.assertLess(
+            output_metrics[0]["left_hand_imputed_frame_fraction"],
+            output_metrics[1]["left_hand_imputed_frame_fraction"],
+        )
 
     def test_manifest_joins_filename_metadata_and_timestamp_metrics(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -96,6 +164,12 @@ class SyntheticFixtureTests(unittest.TestCase):
                 {"nearest": "Y", "status": "uncertain"},
             ],
             "left_hand_frame_fraction": 0.75, "right_hand_frame_fraction": 0.5,
+            "hand_fill_metrics": {
+                "left_hand_after_fill_rate": 0.8,
+                "right_hand_after_fill_rate": 0.9,
+                "left_hand_imputed_frame_fraction": 0.1,
+                "right_hand_imputed_frame_fraction": 0.0,
+            },
             "fps_actual": 24.0, "latency_ms": 120.0,
         }
         scored = score_row(row)
@@ -108,6 +182,8 @@ class SyntheticFixtureTests(unittest.TestCase):
         case_rows, session_rows = aggregate([row])
         self.assertEqual(case_rows[0]["macro_wer"], 1.0)
         self.assertEqual(case_rows[0]["corpus_wer"], 1.0)
+        self.assertEqual(case_rows[0]["mean_left_hand_after_fill_rate"], 0.8)
+        self.assertEqual(case_rows[0]["mean_left_hand_imputed_frame_fraction"], 0.1)
         self.assertEqual(session_rows[0]["D"], 0)
 
     def test_capture_gap_reports_offline_minus_live_wer(self):
@@ -146,14 +222,30 @@ class SyntheticFixtureTests(unittest.TestCase):
     def test_replay_resume_skips_completed_request_case_without_duplicate(self):
         class SyntheticPipeline:
             spot = {"act_thr": 0.5, "post": {"p_sign_min": 0.6}}
+            spot_all = {"hand_gap_s": 0.5}
             cal = {"tau_accept": 0.8}
 
             @staticmethod
             def landmarks_from_browser(frames, hw):
-                return {"frames": frames, "hw": hw}
+                count = len(frames)
+                return {
+                    "frames": frames,
+                    "hw": hw,
+                    "t": np.array([frame["t"] / 1000 for frame in frames], dtype=np.float64),
+                    "lh": np.zeros((count, 21, 3), dtype=np.float32),
+                    "rh": np.zeros((count, 21, 3), dtype=np.float32),
+                }
 
             @staticmethod
-            def run_landmarks(raw, **kwargs):
+            def standardise(raw):
+                return (
+                    None,
+                    np.zeros((len(raw["t"]), 133), dtype=np.float32),
+                    None, None, None,
+                )
+
+            def run_landmarks(self, raw, **kwargs):
+                self.standardise(raw)
                 return {
                     "sentence": "synthetic",
                     "segments": [{"nearest": "A", "status": "accepted"}],
@@ -179,16 +271,38 @@ class SyntheticFixtureTests(unittest.TestCase):
                 "request_id": filename, "session_id": "synth-session",
                 "signer_id": "synth-signer", "split": "tune", "reference": ["A"],
             }]
-            cases = {"baseline": {}, "lower_tau": {"tau_accept": 0.7}}
+            cases = {
+                "baseline": {},
+                "short_gap": {"hand_gap_s": 0.3},
+                "baseline_again": {},
+                "lower_tau": {"tau_accept": 0.7},
+            }
             factory = SyntheticPipeline
-            self.assertEqual(replay_rows(manifest, cache, output, cases, factory), 2)
+            self.assertEqual(replay_rows(manifest, cache, output, cases, factory), 4)
             self.assertEqual(replay_rows(manifest, cache, output, cases, factory), 0)
             records = [json.loads(line) for line in output.read_text(encoding="utf-8").splitlines()]
-            self.assertEqual(len(records), 2)
+            self.assertEqual(len(records), 4)
             lowered = next(row for row in records if row["case"] == "lower_tau")
             self.assertEqual(lowered["effective_config"]["tau_accept"], 0.7)
+            self.assertEqual(lowered["effective_config"]["hand_gap_s"], 0.5)
+            self.assertEqual(lowered["effective_hand_gap_s"], 0.5)
+            self.assertIn("left_hand_after_fill_rate", lowered["hand_fill_metrics"])
+            short_gap = next(row for row in records if row["case"] == "short_gap")
+            self.assertEqual(short_gap["effective_config"]["hand_gap_s"], 0.3)
+            baseline_again = next(row for row in records if row["case"] == "baseline_again")
+            self.assertEqual(baseline_again["effective_config"]["hand_gap_s"], 0.5)
             baseline = next(row for row in records if row["case"] == "baseline")
             self.assertEqual(baseline["effective_config"]["tau_accept"], 0.8)
+
+    def test_replay_refuses_to_resume_rows_without_hand_gap_metrics(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "old-replay.jsonl"
+            output.write_text(
+                json.dumps({"request_id": "synthetic", "case": "baseline"}) + "\n",
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(ValueError, "predates hand-gap metrics"):
+                completed_keys(output, require_hand_metrics=True)
 
 
 if __name__ == "__main__":

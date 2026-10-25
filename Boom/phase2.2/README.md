@@ -40,6 +40,15 @@ landmark conversion and standardisation path. This path performs production
 timestamp-aware resampling. A candidate `tau_accept` is assigned directly to
 `pipeline.cal["tau_accept"]` after construction, avoiding the production
 constructor's `max(calibration_tau, spotting.accept_min)` behavior.
+`hand_gap_s` is assigned to `pipeline.spot_all["hand_gap_s"]`, which is the
+exact setting read by `SignPipeline.standardise` before production calls
+`fill_hand_gaps`. The current `models/spotting.json` baseline is `0.5` seconds;
+the plan compares it to `0.3`, `0.8`, and `1.0`. Every replay row records its effective value and left/right
+post-fill frame coverage and estimated imputed-frame fraction. An output frame
+is classified as imputed when its nearest original timestamped frame lacked
+that hand but the standardized output contains it; reported sides are mapped
+back to the signer's physical left/right even when canonicalisation mirrored
+the frame.
 
 The cache writer does not save request ID, signer/session identity, device,
 browser, advertised camera fps or source video path. These values are therefore

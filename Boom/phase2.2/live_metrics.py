@@ -65,6 +65,7 @@ def score_row(row: dict[str, Any]) -> dict[str, Any]:
         raise ValueError(f"{row.get('request_id')}: reference must not be empty")
     latency = row.get("latency_ms")
     result_metrics = row.get("result_metrics") or {}
+    hand_fill = row.get("hand_fill_metrics") or {}
     return {
         "request_id": row["request_id"],
         "session_id": row["session_id"],
@@ -87,6 +88,10 @@ def score_row(row: dict[str, Any]) -> dict[str, Any]:
         "false_accept_rate": (accepted - accepted_correct) / n_ref,
         "left_hand_detection_rate": row.get("left_hand_frame_fraction"),
         "right_hand_detection_rate": row.get("right_hand_frame_fraction"),
+        "left_hand_after_fill_rate": hand_fill.get("left_hand_after_fill_rate"),
+        "right_hand_after_fill_rate": hand_fill.get("right_hand_after_fill_rate"),
+        "left_hand_imputed_frame_fraction": hand_fill.get("left_hand_imputed_frame_fraction"),
+        "right_hand_imputed_frame_fraction": hand_fill.get("right_hand_imputed_frame_fraction"),
         "fps_actual": row.get("fps_actual"),
         "end_to_end_latency_ms": latency if latency is not None else (result_metrics.get("timings_ms") or {}).get("total_ms"),
     }
@@ -122,6 +127,10 @@ def aggregate(rows: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[di
             "false_accept_count": sum(r["false_accept_count"] for r in group),
             "mean_left_hand_detection_rate": _mean([r["left_hand_detection_rate"] for r in group if r["left_hand_detection_rate"] is not None]),
             "mean_right_hand_detection_rate": _mean([r["right_hand_detection_rate"] for r in group if r["right_hand_detection_rate"] is not None]),
+            "mean_left_hand_after_fill_rate": _mean([r["left_hand_after_fill_rate"] for r in group if r["left_hand_after_fill_rate"] is not None]),
+            "mean_right_hand_after_fill_rate": _mean([r["right_hand_after_fill_rate"] for r in group if r["right_hand_after_fill_rate"] is not None]),
+            "mean_left_hand_imputed_frame_fraction": _mean([r["left_hand_imputed_frame_fraction"] for r in group if r["left_hand_imputed_frame_fraction"] is not None]),
+            "mean_right_hand_imputed_frame_fraction": _mean([r["right_hand_imputed_frame_fraction"] for r in group if r["right_hand_imputed_frame_fraction"] is not None]),
             "mean_fps_actual": _mean([r["fps_actual"] for r in group if r["fps_actual"] is not None]),
             "mean_end_to_end_latency_ms": _mean([r["end_to_end_latency_ms"] for r in group if r["end_to_end_latency_ms"] is not None]),
         })
@@ -153,6 +162,10 @@ def aggregate(rows: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[di
             "false_accept_rate": sum(r["false_accept_count"] for r in group) / n_ref if n_ref else None,
             "mean_left_hand_detection_rate": _mean([r["left_hand_detection_rate"] for r in group if r["left_hand_detection_rate"] is not None]),
             "mean_right_hand_detection_rate": _mean([r["right_hand_detection_rate"] for r in group if r["right_hand_detection_rate"] is not None]),
+            "mean_left_hand_after_fill_rate": _mean([r["left_hand_after_fill_rate"] for r in group if r["left_hand_after_fill_rate"] is not None]),
+            "mean_right_hand_after_fill_rate": _mean([r["right_hand_after_fill_rate"] for r in group if r["right_hand_after_fill_rate"] is not None]),
+            "mean_left_hand_imputed_frame_fraction": _mean([r["left_hand_imputed_frame_fraction"] for r in group if r["left_hand_imputed_frame_fraction"] is not None]),
+            "mean_right_hand_imputed_frame_fraction": _mean([r["right_hand_imputed_frame_fraction"] for r in group if r["right_hand_imputed_frame_fraction"] is not None]),
             "mean_fps_actual": _mean([r["fps_actual"] for r in group if r["fps_actual"] is not None]),
             "mean_end_to_end_latency_ms": _mean([r["end_to_end_latency_ms"] for r in group if r["end_to_end_latency_ms"] is not None]),
         })
