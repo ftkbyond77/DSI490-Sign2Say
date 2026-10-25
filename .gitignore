@@ -24,6 +24,8 @@ add-data/
 data_prep/
 data_test/
 cache/
+cache/live_requests/
+Boom/phase2.2/capture_metadata.csv
 metadata/
 state/
 logs/

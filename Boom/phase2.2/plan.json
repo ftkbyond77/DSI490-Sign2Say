@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "description": "One-variable-at-a-time live comparisons. Baseline is the effective production configuration loaded by SignPipeline.",
+  "cases": {
+    "baseline": {},
+    "tau_accept_0_75": {
+      "tau_accept": 0.75
+    },
+    "act_thr_0_60": {
+      "spot.act_thr": 0.6
+    },
+    "post_p_sign_min_0_55": {
+      "spot.post.p_sign_min": 0.55
+    },
+    "min_len_16": {
+      "spot.min_len": 16
+    }
+  },
+  "gate": {
+    "comparison": "paired per-session macro WER delta versus baseline",
+    "maximum_session_worsening": 0.003,
+    "minimum_mean_improvement": 0.002,
+    "minimum_accepted_precision": 0.9,
+    "pass": "max(session_delta) <= maximum_session_worsening AND mean(session_delta) < -minimum_mean_improvement AND accepted_precision >= minimum_accepted_precision"
+  },
+  "selection_policy": {
+    "select_on": "tune",
+    "evaluate_on": "eval",
+    "evaluation_requires_different_session_and_signer": true,
+    "never_use_eval_test_for_selection": true,
+    "tau_accept": "Set pipeline.cal['tau_accept'] directly; do not apply max() with spotting.accept_min."
+  }
+}
