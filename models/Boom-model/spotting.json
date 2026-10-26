@@ -16,7 +16,7 @@
   "stride": 4,
   "min_inside": 0.6,
   "delta": 0.0,
-  "act_thr": 0.5,
+  "act_thr": 0.6,
   "mu_null": 5.0,
   "csls_alpha": 0.0,
   "one_pass": true,
@@ -35,7 +35,7 @@
   "post": {
    "min_frames": 10,
    "null_gap_max": 0.1,
-   "p_sign_min": 0.65,
+   "p_sign_min": 0.55,
    "repeat_penalty": true
   },
   "grammar_rerank_weight": 0.5
@@ -80,6 +80,6 @@
   "w_bank": 0.5,
   "run_min": 0.7
  },
- "accept_min": 0.8,
+ "accept_min": 0.7,
  "hand_gap_s": 0.5
 }

@@ -1,0 +1,442 @@
+{
+  "bigram": {
+    "<s>>PLACE": 6,
+    "PLACE>SUBJ": 6,
+    "SUBJ>VERB": 39,
+    "VERB>VERB": 24,
+    "VERB></s>": 44,
+    "<s>>OBJ": 30,
+    "OBJ>SUBJ": 30,
+    "<s>>GREET": 4,
+    "GREET>SUBJ": 4,
+    "SUBJ>STATE": 11,
+    "STATE></s>": 3,
+    "SUBJ>OBJ": 10,
+    "OBJ>VERB": 10,
+    "SUBJ>ADJ": 1,
+    "ADJ></s>": 8,
+    "<s>>SUBJ": 20,
+    "SUBJ>SUBJ": 3,
+    "SUBJ></s>": 2,
+    "VERB>QUEST": 4,
+    "QUEST></s>": 5,
+    "STATE>QUEST": 1,
+    "STATE>ADJ": 7,
+    "VERB>SUBJ": 1,
+    "<s>>TIME": 2,
+    "TIME>SUBJ": 2
+  },
+  "unigram": {
+    "<s>": 62,
+    "PLACE": 6,
+    "SUBJ": 66,
+    "VERB": 73,
+    "OBJ": 40,
+    "GREET": 4,
+    "STATE": 11,
+    "ADJ": 8,
+    "QUEST": 5,
+    "TIME": 2
+  },
+  "roles": [
+    "</s>",
+    "<s>",
+    "ADJ",
+    "GREET",
+    "LETTER",
+    "NEG",
+    "NUM",
+    "OBJ",
+    "PLACE",
+    "QUEST",
+    "STATE",
+    "SUBJ",
+    "TIME",
+    "VERB"
+  ],
+  "templates": [
+    {
+      "template": "OBJ SUBJ VERB",
+      "count": 15,
+      "example": "ขนมปัง คุณ กิน"
+    },
+    {
+      "template": "OBJ SUBJ VERB VERB",
+      "count": 15,
+      "example": "ภาษามือ คุณ เรียน ชอบ"
+    },
+    {
+      "template": "SUBJ OBJ VERB",
+      "count": 7,
+      "example": "คุณ ข้าว กิน"
+    },
+    {
+      "template": "SUBJ STATE ADJ",
+      "count": 7,
+      "example": "คุณ เกิด หูหนวก"
+    },
+    {
+      "template": "PLACE SUBJ VERB VERB",
+      "count": 6,
+      "example": "กรุงเทพ ฉัน เที่ยว ชอบ"
+    },
+    {
+      "template": "GREET SUBJ STATE",
+      "count": 2,
+      "example": "ขอบคุณ ฉัน สบายดี"
+    },
+    {
+      "template": "SUBJ VERB QUEST",
+      "count": 2,
+      "example": "คุณ ชื่อ อะไร"
+    },
+    {
+      "template": "TIME SUBJ OBJ VERB VERB QUEST",
+      "count": 2,
+      "example": "พรุ่งนี้ คุณ ข้าว กิน ไป ที่ไหน"
+    },
+    {
+      "template": "GREET SUBJ OBJ VERB VERB",
+      "count": 1,
+      "example": "ขอโทษ ฉัน ข้าว กิน ไป"
+    },
+    {
+      "template": "GREET SUBJ ADJ",
+      "count": 1,
+      "example": "ขอโทษ ฉัน หูหนวก"
+    },
+    {
+      "template": "SUBJ SUBJ STATE",
+      "count": 1,
+      "example": "คุณ ฉัน แต่งงาน"
+    },
+    {
+      "template": "SUBJ SUBJ SUBJ",
+      "count": 1,
+      "example": "คุณ ฉัน แฟน"
+    },
+    {
+      "template": "SUBJ STATE QUEST",
+      "count": 1,
+      "example": "คุณ เกิด ที่ไหน"
+    },
+    {
+      "template": "SUBJ VERB SUBJ",
+      "count": 1,
+      "example": "ฉัน ชื่อ แมว"
+    }
+  ],
+  "n": 62,
+  "examples": [
+    {
+      "tsl_order": "กรุงเทพ ฉัน เที่ยว ชอบ",
+      "thai": "ฉันชอบเที่ยวกรุงเทพ",
+      "roles": "PLACE SUBJ VERB VERB"
+    },
+    {
+      "tsl_order": "กรุงเทพ น้อง เที่ยว ชอบ",
+      "thai": "น้องชอบเที่ยวกรุงเทพ",
+      "roles": "PLACE SUBJ VERB VERB"
+    },
+    {
+      "tsl_order": "กรุงเทพ พี่ เที่ยว ชอบ",
+      "thai": "พี่ชอบเที่ยวกรุงเทพ",
+      "roles": "PLACE SUBJ VERB VERB"
+    },
+    {
+      "tsl_order": "กรุงเทพ ยาย เที่ยว ชอบ",
+      "thai": "ยายชอบเที่ยวกรุงเทพ",
+      "roles": "PLACE SUBJ VERB VERB"
+    },
+    {
+      "tsl_order": "กรุงเทพ แฟน เที่ยว ชอบ",
+      "thai": "แฟนชอบเที่ยวกรุงเทพ",
+      "roles": "PLACE SUBJ VERB VERB"
+    },
+    {
+      "tsl_order": "กรุงเทพ แม่ เที่ยว ชอบ",
+      "thai": "แม่ชอบเที่ยวกรุงเทพ",
+      "roles": "PLACE SUBJ VERB VERB"
+    },
+    {
+      "tsl_order": "ขนมปัง คุณ กิน",
+      "thai": "คุณกินขนมปัง",
+      "roles": "OBJ SUBJ VERB"
+    },
+    {
+      "tsl_order": "ขนมปัง ฉัน กิน",
+      "thai": "ฉันกินขนมปัง",
+      "roles": "OBJ SUBJ VERB"
+    },
+    {
+      "tsl_order": "ขนมปัง น้อง กิน",
+      "thai": "น้องกินขนมปัง",
+      "roles": "OBJ SUBJ VERB"
+    },
+    {
+      "tsl_order": "ขนมปัง พี่ กิน",
+      "thai": "พี่กินขนมปัง",
+      "roles": "OBJ SUBJ VERB"
+    },
+    {
+      "tsl_order": "ขนมปัง ยาย กิน",
+      "thai": "ยายกินขนมปัง",
+      "roles": "OBJ SUBJ VERB"
+    },
+    {
+      "tsl_order": "ขนมปัง แฟน กิน",
+      "thai": "แฟนกินขนมปัง",
+      "roles": "OBJ SUBJ VERB"
+    },
+    {
+      "tsl_order": "ขนมปัง แมว กิน",
+      "thai": "แมวกินขนมปัง",
+      "roles": "OBJ SUBJ VERB"
+    },
+    {
+      "tsl_order": "ขนมปัง แม่ กิน",
+      "thai": "แม่กินขนมปัง",
+      "roles": "OBJ SUBJ VERB"
+    },
+    {
+      "tsl_order": "ขอบคุณ ฉัน สบายดี",
+      "thai": "ขอบคุณ ฉันสบายดี",
+      "roles": "GREET SUBJ STATE"
+    },
+    {
+      "tsl_order": "ขอโทษ ฉัน ข้าว กิน ไป",
+      "thai": "ขอโทษ ฉันกินข้าวไปแล้ว",
+      "roles": "GREET SUBJ OBJ VERB VERB"
+    },
+    {
+      "tsl_order": "ขอโทษ ฉัน หูหนวก",
+      "thai": "ขอโทษ ฉันหูหนวก",
+      "roles": "GREET SUBJ ADJ"
+    },
+    {
+      "tsl_order": "คุณ ข้าว กิน",
+      "thai": "คุณกินข้าว",
+      "roles": "SUBJ OBJ VERB"
+    },
+    {
+      "tsl_order": "คุณ ฉัน แต่งงาน",
+      "thai": "ฉันแต่งงานกับคุณ",
+      "roles": "SUBJ SUBJ STATE"
+    },
+    {
+      "tsl_order": "คุณ ฉัน แฟน",
+      "thai": "คุณเป็นแฟนฉัน",
+      "roles": "SUBJ SUBJ SUBJ"
+    },
+    {
+      "tsl_order": "คุณ ชื่อ อะไร",
+      "thai": "คุณชื่ออะไร",
+      "roles": "SUBJ VERB QUEST"
+    },
+    {
+      "tsl_order": "คุณ เกิด ที่ไหน",
+      "thai": "คุณเกิดที่ไหน",
+      "roles": "SUBJ STATE QUEST"
+    },
+    {
+      "tsl_order": "คุณ เกิด หูหนวก",
+      "thai": "คุณเกิดหูหนวก",
+      "roles": "SUBJ STATE ADJ"
+    },
+    {
+      "tsl_order": "คุณ ไป ที่ไหน",
+      "thai": "คุณไปที่ไหน",
+      "roles": "SUBJ VERB QUEST"
+    },
+    {
+      "tsl_order": "ฉัน ข้าว กิน",
+      "thai": "ฉันกินข้าว",
+      "roles": "SUBJ OBJ VERB"
+    },
+    {
+      "tsl_order": "ฉัน ชื่อ แมว",
+      "thai": "ฉันชื่อแมว",
+      "roles": "SUBJ VERB SUBJ"
+    },
+    {
+      "tsl_order": "ฉัน เกิด หูหนวก",
+      "thai": "ฉันเกิดหูหนวก",
+      "roles": "SUBJ STATE ADJ"
+    },
+    {
+      "tsl_order": "น้อง ข้าว กิน",
+      "thai": "น้องกินข้าว",
+      "roles": "SUBJ OBJ VERB"
+    },
+    {
+      "tsl_order": "น้อง เกิด หูหนวก",
+      "thai": "น้องเกิดหูหนวก",
+      "roles": "SUBJ STATE ADJ"
+    },
+    {
+      "tsl_order": "พรุ่งนี้ คุณ ข้าว กิน ไป ที่ไหน",
+      "thai": "พรุ่งนี้คุณจะไปกินข้าวที่ไหน",
+      "roles": "TIME SUBJ OBJ VERB VERB QUEST"
+    },
+    {
+      "tsl_order": "พี่ ข้าว กิน",
+      "thai": "พี่กินข้าว",
+      "roles": "SUBJ OBJ VERB"
+    },
+    {
+      "tsl_order": "พี่ เกิด หูหนวก",
+      "thai": "พี่เกิดหูหนวก",
+      "roles": "SUBJ STATE ADJ"
+    },
+    {
+      "tsl_order": "ภาษามือ คุณ เรียน",
+      "thai": "คุณเรียนภาษามือ",
+      "roles": "OBJ SUBJ VERB"
+    },
+    {
+      "tsl_order": "ภาษามือ คุณ เรียน ชอบ",
+      "thai": "คุณชอบเรียนภาษามือ",
+      "roles": "OBJ SUBJ VERB VERB"
+    },
+    {
+      "tsl_order": "ภาษามือ ฉัน เรียน",
+      "thai": "ฉันเรียนภาษามือ",
+      "roles": "OBJ SUBJ VERB"
+    },
+    {
+      "tsl_order": "ภาษามือ ฉัน เรียน ชอบ",
+      "thai": "ฉันชอบเรียนภาษามือ",
+      "roles": "OBJ SUBJ VERB VERB"
+    },
+    {
+      "tsl_order": "ภาษามือ น้อง เรียน",
+      "thai": "น้องเรียนภาษามือ",
+      "roles": "OBJ SUBJ VERB"
+    },
+    {
+      "tsl_order": "ภาษามือ น้อง เรียน ชอบ",
+      "thai": "น้องชอบเรียนภาษามือ",
+      "roles": "OBJ SUBJ VERB VERB"
+    },
+    {
+      "tsl_order": "ภาษามือ พี่ เรียน",
+      "thai": "พี่เรียนภาษามือ",
+      "roles": "OBJ SUBJ VERB"
+    },
+    {
+      "tsl_order": "ภาษามือ พี่ เรียน ชอบ",
+      "thai": "พี่ชอบเรียนภาษามือ",
+      "roles": "OBJ SUBJ VERB VERB"
+    },
+    {
+      "tsl_order": "ภาษามือ ยาย เรียน",
+      "thai": "ยายเรียนภาษามือ",
+      "roles": "OBJ SUBJ VERB"
+    },
+    {
+      "tsl_order": "ภาษามือ ยาย เรียน ชอบ",
+      "thai": "ยายชอบเรียนภาษามือ",
+      "roles": "OBJ SUBJ VERB VERB"
+    },
+    {
+      "tsl_order": "ภาษามือ แฟน เรียน",
+      "thai": "แฟนเรียนภาษามือ",
+      "roles": "OBJ SUBJ VERB"
+    },
+    {
+      "tsl_order": "ภาษามือ แฟน เรียน ชอบ",
+      "thai": "แฟนชอบเรียนภาษามือ",
+      "roles": "OBJ SUBJ VERB VERB"
+    },
+    {
+      "tsl_order": "ภาษามือ แม่ เรียน",
+      "thai": "แม่เรียนภาษามือ",
+      "roles": "OBJ SUBJ VERB"
+    },
+    {
+      "tsl_order": "ภาษามือ แม่ เรียน ชอบ",
+      "thai": "แม่ชอบเรียนภาษามือ",
+      "roles": "OBJ SUBJ VERB VERB"
+    },
+    {
+      "tsl_order": "ยาย ข้าว กิน",
+      "thai": "ยายกินข้าว",
+      "roles": "SUBJ OBJ VERB"
+    },
+    {
+      "tsl_order": "ยาย เกิด หูหนวก",
+      "thai": "ยายเกิดหูหนวก",
+      "roles": "SUBJ STATE ADJ"
+    },
+    {
+      "tsl_order": "วันนี้ คุณ ข้าว กิน ไป ที่ไหน",
+      "thai": "วันนี้คุณไปกินข้าวที่ไหน",
+      "roles": "TIME SUBJ OBJ VERB VERB QUEST"
+    },
+    {
+      "tsl_order": "สวัสดี ฉัน สบายดี",
+      "thai": "สวัสดี ฉันสบายดี",
+      "roles": "GREET SUBJ STATE"
+    },
+    {
+      "tsl_order": "แฟน ข้าว กิน",
+      "thai": "แฟนกินข้าว",
+      "roles": "SUBJ OBJ VERB"
+    },
+    {
+      "tsl_order": "แฟน เกิด หูหนวก",
+      "thai": "แฟนเกิดหูหนวก",
+      "roles": "SUBJ STATE ADJ"
+    },
+    {
+      "tsl_order": "แม่ ข้าว กิน",
+      "thai": "แม่กินข้าว",
+      "roles": "SUBJ OBJ VERB"
+    },
+    {
+      "tsl_order": "แม่ เกิด หูหนวก",
+      "thai": "แม่เกิดหูหนวก",
+      "roles": "SUBJ STATE ADJ"
+    },
+    {
+      "tsl_order": "ไข่ คุณ กิน ชอบ",
+      "thai": "คุณชอบกินไข่",
+      "roles": "OBJ SUBJ VERB VERB"
+    },
+    {
+      "tsl_order": "ไข่ ฉัน กิน ชอบ",
+      "thai": "ฉันชอบกินไข่",
+      "roles": "OBJ SUBJ VERB VERB"
+    },
+    {
+      "tsl_order": "ไข่ น้อง กิน ชอบ",
+      "thai": "น้องชอบกินไข่",
+      "roles": "OBJ SUBJ VERB VERB"
+    },
+    {
+      "tsl_order": "ไข่ พี่ กิน ชอบ",
+      "thai": "พี่ชอบกินไข่",
+      "roles": "OBJ SUBJ VERB VERB"
+    },
+    {
+      "tsl_order": "ไข่ ยาย กิน ชอบ",
+      "thai": "ยายชอบกินไข่",
+      "roles": "OBJ SUBJ VERB VERB"
+    },
+    {
+      "tsl_order": "ไข่ แฟน กิน ชอบ",
+      "thai": "แฟนชอบกินไข่",
+      "roles": "OBJ SUBJ VERB VERB"
+    },
+    {
+      "tsl_order": "ไข่ แมว กิน ชอบ",
+      "thai": "แมวชอบกินไข่",
+      "roles": "OBJ SUBJ VERB VERB"
+    },
+    {
+      "tsl_order": "ไข่ แม่ กิน ชอบ",
+      "thai": "แม่ชอบกินไข่",
+      "roles": "OBJ SUBJ VERB VERB"
+    }
+  ]
+}

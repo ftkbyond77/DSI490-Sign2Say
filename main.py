@@ -22,8 +22,9 @@ Train (encoder on one Vertex AI GPU job, everything else local):
 Build, tune, evaluate (local):
   python main.py eval <step> [args]            # build | grammar | spot | isolated | infer | selftest | vocab | bank_add  (scripts/eval.py)
   python main.py train-letters                 # fingerspelling recogniser + letter bank (CPU, minutes) → models/fingerspell.npz, letters_bank.npz
-  python main.py tune-spelling                 # letter settings on tune data (models/spotting.json "spell"), report on held-out data
   python main.py export-onnx                   # models/onnx/*.onnx for production (onnxruntime), with a parity check
+  python main.py decision <step>               # decision layer: cache | hands | tune | report | figures (hand-shape cue, merge / split,
+                                               #   calibration, Accept/Uncertain/Reject, fingerspelling settings — tune data only)
 """
 from __future__ import annotations
 
@@ -35,8 +36,8 @@ ROOT = Path(__file__).resolve().parent
 SCRIPTS = {"prep": "scripts/data_prep.py", "eval": "scripts/eval.py", "data": "scripts/s3_sync.py", "cloud": "GCP/script/vertex.py",
            "export-onnx": "scripts/export_onnx.py", "infer": "scripts/infer.py", "pretrained": "scripts/pretrained.py",
            "extract": "scripts/extract_mp.py", "harvest": "scripts/harvest_words.py", "train-seq": "GCP/script/job_entry.py",
-           "letters": "scripts/harvest_letters.py", "train-letters": "scripts/train_fingerspell.py", "tune-spelling": "scripts/tune_spelling.py",
-           "study-clips": "scripts/study_clips.py"}
+           "letters": "scripts/harvest_letters.py", "train-letters": "scripts/train_fingerspell.py",
+           "study-clips": "scripts/study_clips.py", "decision": "scripts/decision.py"}
 
 
 def main():

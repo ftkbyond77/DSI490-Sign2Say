@@ -6,6 +6,29 @@ layer write a Thai sentence from the evidence (never beyond it) — and speaks i
 Results: `result_reporting/result_v7.md` · file map: `result_reporting/file_structure.pdf` · lab: `lab.ipynb`.
 
 
+## v8.1 — recognition (prompt_12): hand-shape cue, automatic fingerspelling, จีน / ประเทศ
+
+Report: `result_reporting/result_v8-1.md` (+ pdf) · lab: `lab2.ipynb` → "2. After Tuning". Models unchanged; CPU only ($0); every setting chosen
+on tune data with `python main.py decision hands | tune --write | report | figures`; v8 settings kept in `artifacts/baselines/v8/` (rollback).
+* **Hand-shape cue** (`modules/handshape.py`, `models/hand_bank.npz`): finger angles, palm direction, hand place and motion of each segment
+  vs every bank clip (metric learned on training signers), fused with the encoder's reading of the whole segment — ฉัน/ชอบ, ชื่อ/เพื่อน now right.
+* **Fingerspelling always on** (English A–Z, `spotting.json` `"alphabet": "en"`; 0 inserted letters on 783 tune utterances); **จีน, ประเทศ**
+  added; 61 sign **variants** (school / politeness styles) read as their word; split test for fluent signing; grammar re-rank guarded.
+* Held-out TSL51 test WER 1× / 1.5× / 2×: 0.394 / 0.364 / 0.376 → **0.309 / 0.284 / 0.292** (Recall@1 1× 0.61 → 0.70); unseen-signer words
+  0.295 → **0.253**; fluent sentences 0.448 → **0.397**; iPhone sentences 0.283 → **0.126**. Trade-offs: ECE 0.04 → 0.06, fewer accepted words at 1.5×/2×.
+
+## v8 — decision layer (prompt_11): split signs, calibrated confidence, Accept / Uncertain / Reject
+
+Report: `result_reporting/result_v8.md` (+ pdf) · lab: `lab2.ipynb` → "Phase 2 — Optimized". Encoder / tagger / bank unchanged; tuned on tune
+data only with `python main.py decision cache | tune --write | report | figures` (CPU, $0).
+* **Split-sign merge** (`decode.merge_split`): a small model gives P(same sign) for neighbouring segments (tagger begin/rest at the cut,
+  hand-speed dip, lengths, the union read as one piece) — "แมว → กิน แมว" becomes one sign. Held-out word clips: count error 0.171 → 0.083.
+* **Calibrated confidence**: temperature-scaled top-1/top-2 probabilities + P(correct) with 13 features (incl. each word's reliability
+  in the bank, `models/class_prior.npz`); ECE on test 0.14 → 0.04, correct words get higher P.
+* **Three states** (`decode.decide`): Accept P ≥ 0.90 · Uncertain "อาจหมายถึง …" · Reject P < 0.25 "ไม่สามารถรู้จำได้", with a reason per segment.
+* Held-out TSL51 test WER 1× / 1.5× / 2×: 0.432 / 0.374 / 0.386 → **0.394 / 0.364 / 0.376**; accepted precision 0.82 → 0.97 (1×);
+  iPhone sentences 0.311 → 0.283; fluent synthetic sentences 0.435 → 0.448 (the trade-off).
+
 ## v7.2 — after the first live tests
 
 * **Fingerspelling** A–Z (the one-handed manual alphabet Thai deaf schools teach) and Thai ก–ฮ + 7 vowels: `models/fingerspell.npz`
@@ -20,7 +43,7 @@ Results: `result_reporting/result_v7.md` · file map: `result_reporting/file_str
 * **Data**: +40 YouTube word clips; 32 clips of a channel whose signer looks like a data_test person were removed from both banks.
 * Non-regression (TSL51 test sentences, same harness): recall 0.642 → 0.647, accepted errors 15 → 15, WER 0.446 → 0.450 with letters
   on (3 uncertain lone letters in 126 sentences) / 0.444 with letters off. data_test unchanged (R@1 0.41, R@5 0.73).
-* New steps: `python main.py letters …`, `train-letters`, `tune-spelling`, `study-clips`, `eval bank_add`, `harvest discover --words …`.
+* New steps: `python main.py letters …`, `train-letters`, `study-clips` (letter settings: since v8.1 chosen by `decision tune`), `eval bank_add`, `harvest discover --words …`.
 
 ## Reverse part — text / speech → Thai Sign Language avatar
 
@@ -36,7 +59,7 @@ docker compose up --build                            # web demo → http://local
 ```bash
 conda activate hugging                               # Python 3.10, see requirements.txt
 git lfs install && git lfs pull                      # model weights are in Git LFS
-python main.py infer --video path/to/video.mp4       # translate a video with models/ (ONNX Runtime; --backend torch for the GPU)
+python main.py infer --video path/to/video.mp4       # translate a video with models/Jack-model/ (ONNX Runtime; --backend torch for the GPU)
 python main.py test                                  # data_test/ end-to-end from the raw videos + scores
 jupyter lab lab.ipynb                                # data, latent space, tagger, segmentation, results, self-made sentence tests
 ```
@@ -48,7 +71,7 @@ jupyter lab lab.ipynb                                # data, latent space, tagge
 |---|---|---|
 | `main.py` | the only CLI entry point (infer · test · data · prep · extract · harvest · cloud · train-seq · eval · export-onnx) | ✓ |
 | `docker-compose.yml`, `webapp/` | web demo: `web` (Next.js) · `sign-api` (FastAPI + ONNX Runtime) · `tts` (MMS-TTS Thai) · `gateway` (nginx) — see `webapp/README.md` | ✓ |
-| `models/` | **the deployable model** — everything inference loads (+ `onnx/`, `mediapipe/`). See `models/README.md` | ✓ (LFS) |
+| `models/` | **the forward models**, one complete model folder each: `Boom-model/` · `Pitty-model/` · `Jack-model/` (main, default `MODEL`) — everything inference loads (+ `onnx/`, `mediapipe/`). Compared in `modeling_compare.ipynb` | ✓ (LFS) |
 | `modules/` | library (see below) | ✓ |
 | `scripts/` | pipeline steps: `data_prep.py` · `extract_mp.py` · `harvest_words.py` · `eval.py` · `export_onnx.py` · `infer.py` · `make_lab.py` · `s3_sync.py` · `md_to_pdf.py` · `pretrained.py` · `collect/` (v4 raw-data harvester) | ✓ |
 | `GCP/script/` | Vertex AI: `vertex.py` (upload · load-balanced launch · wait · **cleanup**) · `job_entry.py` (training stages) | ✓ |
