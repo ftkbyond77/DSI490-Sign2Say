@@ -31,7 +31,7 @@ sys.path.insert(0, str(ROOT))
 import numpy as np
 import pandas as pd
 
-from modules.utils import DATA, PREP, get_logger, write_json
+from modules.utils import DATA, MODEL, PREP, get_logger, write_json
 
 log = get_logger("harvest")
 OUT = DATA / "agent_data" / "youtube_words"
@@ -533,7 +533,7 @@ def cmd_label(a):
     person = dict(zip(sg.channel_id, sg.signer))
     lookalike = set(sg[sg.datatest_lookalike.astype(bool)].channel_id)
     vids = pd.read_csv(OUT / "videos.csv")
-    enc = load_encoder(ROOT / "models", ROOT / "models" / "encoder.pt", device="cuda" if torch.cuda.is_available() else "cpu")
+    enc = load_encoder(MODEL, MODEL / "encoder.pt", device="cuda" if torch.cuda.is_available() else "cpu")
     parts, keys = [], []
     v4_ids = {p.stem[3:] for p in (DATA / "raw_data" / "word_level" / "youtube_word").glob("yt_*.mp4")}
     seen_hash, fp_rows = {}, []

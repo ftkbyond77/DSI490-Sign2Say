@@ -23,7 +23,43 @@ from .mediapipe_pose import extract, from_browser, to_standard
 from .parts import prep, to_iso
 from .runtime import Bank, make_backend, variant_lut, rescore, rescore_windows, table_from_Z, window_table
 from .spanhead import SpanHeadNP
-from .schema import SH_L, SH_R, canonical_hands
+from .schema import LH, RH, SH_L, SH_R, WR_L, WR_R, canonical_hands
+
+
+def rest_trim_mask(kp, sc, hw, pre_s=0.5, post_s=0.4, fps=25.0, rule="live"):
+    """pitty: the web live mode's utterance window applied to any landmark sequence — frames from `pre_s` before the hands first
+    come up to `post_s` after they were last up (webapp/web: handsUp, LIVE_PREROLL_MS = 500, lastUp + 400 ms). "Up" = a hand's
+    21 points above shoulder-line + 1.5 shoulder widths, or a body wrist above + 1.3 (the same rule as the browser). No up frame →
+    everything is kept.
+    rule="hands": the window is where a hand's 21 points are detected at all — a seated signer's hands never drop below the
+    height line, and a hand that leaves / enters the bottom of the frame leaves the body wrist at a jumping, invalid position."""
+    T = len(kp)
+    if rule == "hands":
+        det = (sc[:, LH].mean(1) > .3) | (sc[:, RH].mean(1) > .3)
+        idx = np.flatnonzero(det)
+        if not len(idx):
+            return np.ones(T, bool)
+        a, b = max(0, idx[0] - int(round(pre_s * fps))), min(T, idx[-1] + 1 + int(round(post_s * fps)))
+        keep = np.zeros(T, bool); keep[a:b] = True
+        return keep
+    p = to_iso(kp, hw)
+    ok_s = (sc[:, SH_L] > .3) & (sc[:, SH_R] > .3)
+    if T == 0 or ok_s.sum() < 2:
+        return np.ones(T, bool)
+    sw = max(float(np.median(np.linalg.norm(p[ok_s, SH_L] - p[ok_s, SH_R], axis=1))), 1e-3)
+    mid = (p[:, SH_L, 1] + p[:, SH_R, 1]) / 2
+    mid = np.where(ok_s, mid, float(np.median(mid[ok_s])))
+    up = np.zeros(T, bool)
+    for hand in (LH, RH):
+        up |= (sc[:, hand].mean(1) > .3) & (p[:, hand, 1].mean(1) < mid + 1.5 * sw)
+    for wr in (WR_L, WR_R):
+        up |= (sc[:, wr] > .5) & (p[:, wr, 1] < mid + 1.3 * sw)
+    idx = np.flatnonzero(up)
+    if not len(idx):
+        return np.ones(T, bool)
+    a, b = max(0, idx[0] - int(round(pre_s * fps))), min(T, idx[-1] + 1 + int(round(post_s * fps)))
+    keep = np.zeros(T, bool); keep[a:b] = True
+    return keep
 from .segment import decode_tagger, kin_features, resample, window_list
 from .utils import MODEL, get_logger, read_json, write_json
 from .fingerspell import EN_LETTERS, NONE, TH_LETTERS, load_speller, spell_runs, window_features
@@ -150,18 +186,36 @@ class SignPipeline:
 
     def _spot(self, kpi, sc, prob, present, H, bank=None):
         """Windows inside signing → embeddings (span head on H: one pass; or the encoder per window when no head is shipped) →
-        decoder → exact re-scoring of the chosen segments."""
+        decoder → exact re-scoring of the chosen segments. With spotting.json "user_bank_rank_only", a personal bank (bank ≠ the
+        shared one) only picks the word: where the signs are is decided on the shared bank alone."""
         T = len(kpi)
         bank = bank or self.bank
+        seg_bank = self.bank if self.spot_all.get("user_bank_rank_only") else bank
         act, _ = active_from_prob(prob, self.spot["act_thr"], present, self.spot.get("act_off"))
         wins = window_list(T, self.spot["lens"], self.spot["stride"], act=act, min_active=self.spot.get("min_inside", 0.6))
         if self.span is not None:
-            table = table_from_Z(self.span(H, wins), wins, bank, self.null_proto)
+            Zw = self.span(H, wins)
+            table = table_from_Z(Zw, wins, seg_bank, self.null_proto)
+            rtable = table if seg_bank is bank else table_from_Z(Zw, wins, bank, self.null_proto)
         else:
-            table = window_table(self.be, kpi, sc, wins, bank, self.null_proto, prep_fn=prep)
+            table = window_table(self.be, kpi, sc, wins, seg_bank, self.null_proto, prep_fn=prep)
+            rtable = table if seg_bank is bank else window_table(self.be, kpi, sc, wins, bank, self.null_proto, prep_fn=prep)
         seg_t = apply_csls(table, self.hub, self.spot.get("csls_alpha", 0.0))
-        rank_t = apply_csls(table, self.hub, self.spot.get("csls_alpha", 0.0), self.word_prior, 1.0)
+        rank_t = apply_csls(rtable, self.hub, self.spot.get("csls_alpha", 0.0), self.word_prior, 1.0)
         segs = decode(seg_t, prob, self.concepts, self.spot, present, rank_table=rank_t)
+        if segs and rtable is not table and (self.spot_all.get("user_bank_neighbour_guard") or self.spot_all.get("user_bank_topk")):
+            # pitty: the personal bank may not turn a sign into its neighbour's word (live: "คุณ ฉัน" → "ฉัน ฉัน" → merged "ฉัน")
+            base = decode(seg_t, prob, self.concepts, self.spot, present,
+                          rank_table=apply_csls(table, self.hub, self.spot.get("csls_alpha", 0.0), self.word_prior, 1.0))
+            if [(s["f0"], s["f1"]) for s in base] == [(s["f0"], s["f1"]) for s in segs]:
+                words = [s["nearest"] for s in segs]
+                for i, (s, b) in enumerate(zip(segs, base)):
+                    near = set(words[max(0, i - 1):i] + words[i + 1:i + 2])
+                    k = self.spot_all.get("user_bank_topk")      # pitty: … and may only pick a word the shared bank already had in its top-k
+                    off = bool(k) and s["nearest"] not in [c["word"] for c in b["candidates"][:k]]
+                    nb = bool(self.spot_all.get("user_bank_neighbour_guard")) and s["nearest"] in near
+                    if s["nearest"] != b["nearest"] and (nb or off):
+                        s.update(nearest=b["nearest"], candidates=b["candidates"])
         if segs and self.spot.get("merge") and self.span is not None:      # v8: one sign cut in two → one segment (decode.merge_split)
             segs = merge_split(segs, lambda w: self.span(H, w), bank, self.null_proto, self.concepts, prob, rank_t, self.spot,
                                speed=kin_features(kpi, sc)[:, 12], collect=self.collect_pairs)
@@ -297,7 +351,15 @@ class SignPipeline:
         prob, present, T = st["prob"], st["present"], len(st["prob"])
         f = st["f"]
         if f > 1.0:
-            segs, _, n_win = self._spot(st["k2"], st["s2"], st["prob2"], st["p2"], st["H2"], bank)
+            spot0, tc = self.spot, self.spot.get("tempo") or {}
+            if tc.get("max_len"):   # pitty: fast signing — shorter windows only, so one segment does not swallow two signs
+                self.spot = dict(self.spot, lens=[l for l in spot0["lens"] if l <= tc["max_len"]])
+            if tc.get("split"):     # pitty: fast signing — split segments that hold two signs (split_long, cfg "split")
+                self.spot = dict(self.spot, split=tc["split"])
+            try:
+                segs, _, n_win = self._spot(st["k2"], st["s2"], st["prob2"], st["p2"], st["H2"], bank)
+            finally:
+                self.spot = spot0
             for s in segs:
                 s["f0"], s["f1"] = int(round(s["f0"] / f)), max(int(round(s["f1"] / f)), int(round(s["f0"] / f)) + 1)
             act, _ = active_from_prob(prob, self.spot["act_thr"], present, self.spot.get("act_off"))
@@ -310,7 +372,7 @@ class SignPipeline:
         segs = self.hand_rescore(segs, st, bank)
         if raw:
             return segs, act, n_win
-        return self.decide(segs), act, n_win
+        return self.decide(segs, st["sc"]), act, n_win
 
     def hand_rescore(self, segs, st, bank):
         """(v8.1) Word ranking of every segment = the encoder's reading of the whole segment (span head, every vocabulary word)
@@ -337,9 +399,9 @@ class SignPipeline:
                      support_ratio=float(f[o[0]] / max(f[o[1]], 1e-6)), hand_z=float(zh[o[0]]), hand_agree=float(int(np.argmax(h)) == int(o[0])))
         return segs
 
-    def decide(self, segs):
+    def decide(self, segs, sc=None):
         """Decoded segments → calibrated P(correct) → Accept / Uncertain / Reject (decode.decide) → transition / repeat filters →
-        grammar re-rank → repeat merge."""
+        grammar re-rank → repeat merge. sc (landmark scores) enables spotting.json post.min_hand_frac."""
         if self.cal.get("rerank"):              # v8 learned top-5 re-ranker (only shipped when it wins on tune, scripts/decision.py)
             rerank_candidates(segs, self.cal["rerank"]["w"], self.concepts, self.class_prior)
         if self.cal.get("temperature"):
@@ -348,6 +410,12 @@ class SignPipeline:
         P = self.lr.predict(seg_features(segs, getattr(self.lr, "feats", None))) if segs else np.zeros(0)
         decide(segs, P, self.cal)
         postprocess(segs, self.spot)
+        mh = self.spot.get("post", {}).get("min_hand_frac", 0.0)
+        if mh and segs and sc is not None:   # pitty: live webcams lose the hands (exposure, low fps) — a sign nobody saw the hands of is a transition
+            seen = (sc[:, LH].mean(1) > 0.3) | (sc[:, RH].mean(1) > 0.3)
+            for s in segs:
+                if s["status"] not in ("accepted", "transition") and seen[s["f0"]:max(s["f1"], s["f0"] + 1)].mean() < mh:
+                    s["status"] = "transition"
         w = self.spot.get("grammar_rerank_weight", 0.0)
         live = [s for s in segs if s["status"] != "transition"]
         g = self.spot.get("grammar", {})          # v8.1 guards: never a one-sign clip, the ranking's own quantity, a tuned visual gap
@@ -373,6 +441,10 @@ class SignPipeline:
         say("schema", 0.0)
         t = time.perf_counter()
         kp, sc, hw, present, mirrored = self.standardise(raw)
+        tr = self.spot_all.get("trim_rest")
+        if tr:      # pitty: uploaded videos get the live-mode utterance window (rest before / after signing would be read as signs)
+            keep = rest_trim_mask(kp, sc, hw, tr.get("pre_s", 0.5), tr.get("post_s", 0.4), rule=tr.get("rule", "live"))
+            present = present & keep; sc = sc.copy(); sc[~keep] = 0.0; kp = kp.copy(); kp[~keep] = 0.0
         T = len(kp)
         tm["schema_ms"] = (time.perf_counter() - t) * 1000
         say("tagger", 0.15)

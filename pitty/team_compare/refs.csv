@@ -1,0 +1,19 @@
+person,file,ref,drive_id,note
+Pitty,พรุ่งนี้ฉันไปโรงเรียน.mp4,พรุ่งนี้ ฉัน ไป โรงเรียน,1O1QjcljsW3WamZnGY20eMEJ40FCWITIx,จาก pitty/my_clips/refs.csv
+Pitty,สวัสดีฉันชื่อ P.mp4,สวัสดี ฉัน ชื่อ P,1n0MgAtdNykFdHECdAJqx_1maU3FafdFq,จาก pitty/my_clips/refs.csv
+Pitty,ฉันคิดถึงแม่.mp4,ฉัน คิดถึง แม่,15SNkZcTLXDgrfgj6lAt8dCczTj9AQTGT,จาก pitty/my_clips/refs.csv
+Pitty,ฉันชอบกินขนมปัง.mp4,ฉัน ชอบ กิน ขนมปัง,1kLzi0fIQZkPBWl9rWCz1d6Gq3FDk-rbh,จาก pitty/my_clips/refs.csv
+Pitty,พรุ่งนี้ฉันไปเที่ยว.mp4,พรุ่งนี้ ฉัน ไป เที่ยว,1liKmgjojYRZcyv7welfZzi0KVSL_MJHC,จาก pitty/my_clips/refs.csv
+Pitty,ฉันรักเพื่อน.mov,ฉัน รัก เพื่อน,1QeHjj78_Agi3QVWnttziOKwnLfmj1Hca,จาก pitty/my_clips/refs.csv
+Pitty,วันหยุดพ่อชอบไปตลาด.mov,วันหยุด พ่อ ชอบ ไป ตลาด,1lKJ123_Nk609-Cno2D42hCayPZghbIjC,จาก pitty/my_clips/refs.csv
+Boom,ฉันยังลืมคุณไม่ได้.MOV,ฉัน ยัง ลืม คุณ ไม่ได้,1bbT7WMKir48qTxcNuCnco-xTAQpZEOxG,ตัดคำจากชื่อไฟล์ (ลำดับตามประโยคไทย) — ควรให้ Boom ยืนยันลำดับท่า
+Boom,ฉันแอบชอบคุณ.MOV,ฉัน แอบ ชอบ คุณ,1UZZYzXa0mRqOAP1CVrMxQPO9nZYLqIcD,ตัดคำจากชื่อไฟล์ — แอบ ไม่อยู่ใน vocab
+Boom,ตอนนี้กำลังเรียนภาษา.MOV,ตอนนี้ กำลัง เรียน ภาษา,1zrtmfqk2sZduRE-VRqDUnS7ZRuo2M9L5,ตัดคำจากชื่อไฟล์
+Boom,มีอะไรให้ฉันช่วยไหม.MOV,มี อะไร ให้ ฉัน ช่วย ไหม,1YDf3HwRGdTcAgUPoJPSo8lR7DwD8qoqK,ตัดคำจากชื่อไฟล์ — ไหม ไม่อยู่ใน vocab
+Boom,เราจะเป็นเพื่อนกันตลอดไป.MOV,เรา จะ เป็น เพื่อน กัน ตลอดไป,1GY5Xsx6j59ei14GqJv6-HwQ7GJUqIkqX,ตัดคำจากชื่อไฟล์ — จะ/กัน/ตลอดไป ไม่อยู่ใน vocab
+Boom,เล่นเกมส์กันไหม.MOV,เล่น เกม กัน ไหม,1MQqH7wu8K61z0pkvs7cz7dHLsqnJqgZQ,ตัดคำจากชื่อไฟล์ — เกม/กัน/ไหม ไม่อยู่ใน vocab
+Jack,ฉันสบายดี คุณสบายดี_.MOV,ฉัน สบายดี คุณ สบายดี,18r5gNQTKkI8P-tvTdtzKSBibQBJ02gck,ชื่อไฟล์เดิมมี ? (คำถามดูจากสีหน้า ไม่นับเป็นคำ)
+Jack,พรุ่งนี้ผมจะไปเที่ยวประเทศจีน.MOV,พรุ่งนี้ ผม จะ ไป เที่ยว ประเทศจีน,1fXz_00rj6TuCDoKmas6_-BlQu4VZzhQo,ตัดคำจากชื่อไฟล์ — จะ/ประเทศจีน ไม่อยู่ใน vocab
+Jack,วันนี้ฉันนำเสนองานเรื่องภาษามือกับ AI.MOV,วันนี้ ฉัน นำเสนอ งาน เรื่อง ภาษามือ กับ A I,18r8iYftptGO9PbyrAf7TMwcW2IhW4Vso,ตัดคำจากชื่อไฟล์ — เรื่อง/กับ ไม่อยู่ใน vocab; AI สะกดนิ้ว
+Jack,วันนี้ผมอยากเรียนภาษามือ.MOV,วันนี้ ผม อยาก เรียน ภาษามือ,1er_TR3UWzSU8_Uc_wg2vWelwigX-d0KL,ตัดคำจากชื่อไฟล์
+Jack,สวัสดี ฉันชื่อ J ฉันชอบแมว.MOV,สวัสดี ฉัน ชื่อ J ฉัน ชอบ แมว,17zZYgHkTyHDJrBrIHTs9sX6cwt4scT70,ตัดคำจากชื่อไฟล์; J สะกดนิ้ว

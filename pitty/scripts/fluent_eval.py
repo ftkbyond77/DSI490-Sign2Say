@@ -54,10 +54,14 @@ def run(out_f, tagger=None, split=None):
     from modules.decode import wer
     from modules.pipeline import SignPipeline
     from modules.schema import canonical_hands
-    pipe = SignPipeline(backend="onnx", device="cpu", vocab="conversation", use_llm=False, use_face=False, bank_file=ROOT / "artifacts/eval/bank_eval.npz")
+    pipe = SignPipeline(backend="onnx", device="cpu", vocab="conversation", use_llm=False, use_face=False, bank_file=Path(os.environ.get("BANK_FILE", ROOT / "artifacts/eval/bank_eval.npz")))
+    if os.environ.get("SPOT_OVERRIDE"):    # pitty: decoder settings override (JSON, "post" merged) — models/spotting.json untouched
+        ov = json.loads(os.environ["SPOT_OVERRIDE"]); post = dict(pipe.spot.get("post", {}), **ov.pop("post", {})); pipe.spot = dict(pipe.spot, **ov, post=post)
+    if os.environ.get("SIGNER_NORM"):      # pitty: query-side signer normalisation (pitty/scripts/signer_norm.py)
+        import signer_norm; print(signer_norm.install(os.environ["SIGNER_NORM"]))
     if tagger:
         import onnxruntime as ort
-        pipe.be.tagger = ort.InferenceSession(str(tagger), providers=["CPUExecutionProvider"])
+        from tagger_ensemble import session; pipe.be.tagger = session(tagger)       # one .onnx, or an ensemble "a.onnx+b.onnx"
     cur = {}
 
     def standardise(raw):
@@ -75,6 +79,8 @@ def run(out_f, tagger=None, split=None):
                 continue
             cur.update(kp=it["kp"].astype(np.float32), sc=it["sc"].astype(np.float32))
             r = pipe.run_landmarks(None)
+            if os.environ.get("PAIR_CLF"):     # pitty: pair classifiers (pitty/scripts/pair_clf.py), "<clf.npz>:<gap>"
+                import pair_clf as _pc; _pf, _, _pg = os.environ["PAIR_CLF"].rpartition(":"); _pc.apply(r["segments"], _pc.load(_pf), float(_pg))
             top1 = [s["nearest"] for s in r["segments"] if s["status"] != "transition"]
             res.append(dict(id=it["id"], style=style, split=it["split"], ref=it["words"], top1=top1, WER=wer(it["words"], top1),
                             recall1=float(np.mean([w in top1 for w in it["words"]])), n_pred=len(top1), n_ref=len(it["words"])))

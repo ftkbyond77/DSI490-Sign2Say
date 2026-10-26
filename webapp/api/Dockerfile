@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends libgl1 libglib2
 WORKDIR /app
 COPY webapp/api/requirements.txt /app/requirements.txt
 RUN pip install -r /app/requirements.txt
-# MediaPipe Holistic model (same file as models/mediapipe/ and the browser) for server-side video extraction
+# MediaPipe Holistic model (same file as models/<name>-model/mediapipe/ and the browser) for server-side video extraction
 ENV MP_HOLISTIC_MODEL=/app/models/mediapipe/holistic_landmarker.task
 COPY modules /app/modules
 COPY webapp/api/app.py /app/app.py

@@ -48,7 +48,7 @@ know (nearest learned word).
 **v7.4 (camera & cards):** the camera opens in its full-sensor mode (native aspect, often 4:3 — the widest and tallest view it has, zoom at minimum) and the stage takes that shape; hands are drawn as their 21 tracked points (the model's input), no boxes; the face box shows the live expression from a trained model (face-api FaceExpressionNet on the MediaPipe face crop, ~7 ms, ≤ 7×/s; blendshape rules only if it cannot load), e.g. “😊 ยิ้ม → มีความสุข”. Result cards have a stable identity, so a word taught on one card stays on that card when new results arrive (before, the ✓ moved to the newest card).
 
 **v7.3 (after real webcam tests):** a word is shown, spoken and used in the sentence only when its calibrated P(correct) ≥ 0.8
-(`models/spotting.json` "accept_min"); others appear as **[?]** (no guessed word) — click one, pick or type the word you signed,
+(`models/spotting.json` "accept_min"; 0.7 on branch pitty — same precision, ~2× more confirmed words, see pitty/TUNING_REPORT.md); others appear as **[?]** (no guessed word) — click one, pick or type the word you signed,
 and it is remembered for you. Live mode ignores movements shorter than 1.2 s / with < 0.6 s of hands up (scratching, adjusting) and
 uses the body's wrist points too, so a hand that drops out for a moment no longer ends the sentence; hand drop-outs ≤ 0.5 s are
 interpolated (`hand_gap_s`). Saved settings were reset (an earlier "full vocabulary + both alphabets" setting made it slow and

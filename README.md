@@ -59,7 +59,7 @@ docker compose up --build                            # web demo → http://local
 ```bash
 conda activate hugging                               # Python 3.10, see requirements.txt
 git lfs install && git lfs pull                      # model weights are in Git LFS
-python main.py infer --video path/to/video.mp4       # translate a video with models/ (ONNX Runtime; --backend torch for the GPU)
+python main.py infer --video path/to/video.mp4       # translate a video with models/Jack-model/ (ONNX Runtime; --backend torch for the GPU)
 python main.py test                                  # data_test/ end-to-end from the raw videos + scores
 jupyter lab lab.ipynb                                # data, latent space, tagger, segmentation, results, self-made sentence tests
 ```
@@ -71,7 +71,7 @@ jupyter lab lab.ipynb                                # data, latent space, tagge
 |---|---|---|
 | `main.py` | the only CLI entry point (infer · test · data · prep · extract · harvest · cloud · train-seq · eval · export-onnx) | ✓ |
 | `docker-compose.yml`, `webapp/` | web demo: `web` (Next.js) · `sign-api` (FastAPI + ONNX Runtime) · `tts` (MMS-TTS Thai) · `gateway` (nginx) — see `webapp/README.md` | ✓ |
-| `models/` | **the deployable model** — everything inference loads (+ `onnx/`, `mediapipe/`). See `models/README.md` | ✓ (LFS) |
+| `models/` | **the forward models**, one complete model folder each: `Boom-model/` · `Pitty-model/` · `Jack-model/` (main, default `MODEL`) — everything inference loads (+ `onnx/`, `mediapipe/`). Compared in `modeling_compare.ipynb` | ✓ (LFS) |
 | `modules/` | library (see below) | ✓ |
 | `scripts/` | pipeline steps: `data_prep.py` · `extract_mp.py` · `harvest_words.py` · `eval.py` · `export_onnx.py` · `infer.py` · `make_lab.py` · `s3_sync.py` · `md_to_pdf.py` · `pretrained.py` · `collect/` (v4 raw-data harvester) | ✓ |
 | `GCP/script/` | Vertex AI: `vertex.py` (upload · load-balanced launch · wait · **cleanup**) · `job_entry.py` (training stages) | ✓ |
