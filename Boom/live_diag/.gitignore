@@ -1,0 +1,13 @@
+*.json.gz
+*.mp4
+*.mov
+*.MOV
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.npz
+*.pt
+*.onnx
+.mplconfig/
+__pycache__/
