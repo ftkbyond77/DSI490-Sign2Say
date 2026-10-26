@@ -209,6 +209,32 @@ class SyntheticFixtureTests(unittest.TestCase):
                 self.assertEqual(len(record["frames"]), 3)
                 self.assertNotIn("hand_canonicalization", output)
 
+    def test_cache_writer_accepts_missing_canonicalization_metadata(self):
+        from webapp.api.request_cache import save_request
+
+        class CachedFrame:
+            t = 0
+
+            @staticmethod
+            def model_dump():
+                return {"t": 0, "pose": [], "lh": [], "rh": [], "face": [], "bs": []}
+
+        request = SimpleNamespace(
+            frames=[CachedFrame()],
+            width=640,
+            height=480,
+            vocab="conversation",
+            alphabet="en",
+            user_bank=[],
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            save_request(directory, request, {"mirrored_to_right_hand": False}, None, 0.5)
+            cache_path = next(Path(directory).glob("*.json.gz"))
+            with gzip.open(cache_path, "rt", encoding="utf-8") as fh:
+                record = json.load(fh)
+        self.assertNotIn("hand_canonicalization", record["result"])
+        self.assertFalse(diagnose_record(record | {"frames": [self._diagnostic_frame(0)]}, cache_path.name)["request_flipped"])
+
     def test_canonical_hands_metadata_preserves_existing_decision(self):
         kp = np.zeros((2, 133, 2), dtype=np.float32)
         sc = np.ones((2, 133), dtype=np.float32)
@@ -353,6 +379,9 @@ class SyntheticFixtureTests(unittest.TestCase):
             spot_all={"hand_gap_s": 0.5},
             cal={"tau_accept": 0.8},
         )
+        pipe.standardise_with_metadata = lambda landmarks: pipeline_module.SignPipeline.standardise_with_metadata(
+            pipe, landmarks
+        )
         output_metrics = []
         with (
             patch.object(pipeline_module, "to_standard", side_effect=synthetic_to_standard),
@@ -363,6 +392,7 @@ class SyntheticFixtureTests(unittest.TestCase):
                 effective = apply_case(pipe, {"hand_gap_s": gap_s})
                 self.assertEqual(effective["hand_gap_s"], gap_s)
                 standardized = pipeline_module.SignPipeline.standardise(pipe, raw)
+                self.assertEqual(len(standardized), 5)
                 output_metrics.append(hand_fill_metrics(raw, standardized[1], standardized[4]))
 
         self.assertEqual(observed_gaps, [3, 8])
@@ -501,15 +531,20 @@ class SyntheticFixtureTests(unittest.TestCase):
                 }
 
             @staticmethod
-            def standardise(raw):
+            def standardise_with_metadata(raw):
                 return (
                     None,
                     np.zeros((len(raw["t"]), 133), dtype=np.float32),
                     None, None, None,
+                    {"flipped": False},
                 )
 
+            @staticmethod
+            def standardise(raw):
+                return SyntheticPipeline.standardise_with_metadata(raw)[:5]
+
             def run_landmarks(self, raw, **kwargs):
-                self.standardise(raw)
+                self.standardise_with_metadata(raw)
                 return {
                     "sentence": "synthetic",
                     "segments": [{"nearest": "A", "status": "accepted"}],

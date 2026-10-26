@@ -178,6 +178,9 @@ class SignPipeline:
         return f if f >= tc.get("min_factor", 1.2) else 1.0
 
     def standardise(self, raw):
+        return self.standardise_with_metadata(raw)[:5]
+
+    def standardise_with_metadata(self, raw):
         d = to_standard(raw, gap_s=float(self.spot_all.get("hand_gap_s", 0.2)))     # live webcams drop hands for longer
         kp, sc, hw = d["kp"], d["sc"], tuple(int(x) for x in d["hw"])
         present = sc[:, [0, SH_L, SH_R]].mean(1) > 0.5
@@ -272,7 +275,7 @@ class SignPipeline:
         say = progress or (lambda stage, frac: None)
         say("schema", 0.0)
         t = time.perf_counter()
-        kp, sc, hw, present, mirrored, hand_canonicalization = self.standardise(raw)
+        kp, sc, hw, present, mirrored, hand_canonicalization = self.standardise_with_metadata(raw)
         T = len(kp)
         kpi = to_iso(kp, hw)
         tm["schema_ms"] = (time.perf_counter() - t) * 1000

@@ -8,7 +8,13 @@ from pathlib import Path
 from typing import Any
 
 
-def save_request(save_dir: str, req: Any, out: dict, hand_canonicalization: dict, hand_gap_s: float) -> None:
+def save_request(
+    save_dir: str,
+    req: Any,
+    out: dict,
+    hand_canonicalization: dict | None,
+    hand_gap_s: float,
+) -> None:
     if not save_dir:
         return
     try:
@@ -33,7 +39,8 @@ def save_request(save_dir: str, req: Any, out: dict, hand_canonicalization: dict
                 for key in ("sentence", "language", "face", "timings_ms", "duration_s", "mirrored_to_right_hand")
             },
         )
-        record["result"]["hand_canonicalization"] = hand_canonicalization
+        if hand_canonicalization is not None:
+            record["result"]["hand_canonicalization"] = hand_canonicalization
         # Keep embeddings out of the cache; the response still carries them for user teaching.
         record["result"]["segments"] = [
             {key: value for key, value in segment.items() if key != "emb"}

@@ -178,7 +178,7 @@ def _check(req: TranslateRequest):
 SAVE_DIR = os.environ.get("THAISLM_SAVE_REQUESTS", "")      # diagnosis: keep each utterance's landmarks + result (landmarks only, no video)
 
 
-def _save_request(req: TranslateRequest, out: dict, hand_canonicalization: dict, hand_gap_s: float):
+def _save_request(req: TranslateRequest, out: dict, hand_canonicalization: dict | None, hand_gap_s: float):
     save_request(SAVE_DIR, req, out, hand_canonicalization, hand_gap_s)
 
 
@@ -197,7 +197,7 @@ def _frames_job(req: TranslateRequest, progress=None):
         out["audio_wav_b64"] = _speak(r, req.speak_tentative)
         out["spoken"] = "sentence" if r.get("sentence") else "tentative"
     out["timings_ms"]["total_ms"] = round((time.perf_counter() - t) * 1000, 1)
-    _save_request(req, out, r["hand_canonicalization"], float(p.spot_all.get("hand_gap_s", 0.2)))
+    _save_request(req, out, r.get("hand_canonicalization"), float(p.spot_all.get("hand_gap_s", 0.2)))
     return out
 
 
