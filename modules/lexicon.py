@@ -51,6 +51,18 @@ DATA_TEST_REFS = {
     "พ่อดื่มน้ำ": ["พ่อ", "ดื่ม", "น้ำ"],
     "ไปทานข้าวด้วยกันมั้ย": ["ไป", "กิน", "ข้าว", "ด้วยกัน", "ไหม"],
 }
+# data_test/iphone_test (the project owner's own iPhone recordings, 2026-10-16) — sign order given by the owner, word clips made from the
+# data_test/jack_test_2 reference folders. ผม is signed as ฉัน (pointing at oneself, jack_test_2 README); J = fingerspelled; จีน /
+# ประเทศ are outside the conversation vocabulary (the honest answer there is "Reject").
+IPHONE_TEST_REFS = {
+    "word": {"IMG_3293": ["สวัสดี"], "IMG_3295": ["สวัสดี"], "IMG_3296": ["ฉัน"], "IMG_3297": ["ชื่อ"], "IMG_3298": ["ชอบ"],
+             "IMG_3299": ["แมว"], "IMG_3308": ["พรุ่งนี้"], "IMG_3309": ["ไป"], "IMG_3311": ["จีน"]},
+    "sentence": {"IMG_3302": ["สวัสดี", "ฉัน", "ชื่อ", "J", "ฉัน", "ชอบ", "แมว"],            # สวัสดี ฉันชื่อ J ฉันชอบแมว
+                 "IMG_3303": ["ฉัน", "สบายดี", "คุณ", "สบายดี"],                            # ฉันสบายดี คุณสบายดี?
+                 "IMG_3304": ["วันนี้", "ฉัน", "นำเสนอ", "งาน", "ภาษามือ", "A", "I"],        # วันนี้ฉันนำเสนองานเรื่องภาษามือกับ AI
+                 "IMG_3305": ["วันนี้", "ฉัน", "อยาก", "เรียน", "ภาษามือ"],                  # วันนี้ผมอยากเรียนภาษามือ
+                 "IMG_3307": ["พรุ่งนี้", "ฉัน", "ไป", "เที่ยว", "ประเทศ", "จีน"]},           # พรุ่งนี้ผมไปเที่ยวประเทศจีน
+}
 TEST_SURFACE = {"ทาน": "กิน", "รับประทาน": "กิน", "มั้ย": "ไหม", "ปลอบ": "ปลอบใจ", "เป็นแฟน": "แฟน"}
 
 # manual review of the automatic table (vocab/v5/gloss_mapping.csv) — corrections a reader of Thai kinship / place names makes
