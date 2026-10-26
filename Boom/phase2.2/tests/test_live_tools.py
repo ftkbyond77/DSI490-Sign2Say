@@ -158,6 +158,77 @@ class SyntheticFixtureTests(unittest.TestCase):
         self.assertFalse(result["request_flipped"])
         self.assertEqual(result["request_flip_fraction"], 0.0)
 
+    def test_cache_saved_canonicalization_and_capture_metadata_are_diagnosed(self):
+        from webapp.api.request_cache import save_request
+
+        class CachedFrame:
+            def __init__(self, t):
+                self.t = t
+
+            def model_dump(self):
+                return {"t": self.t, "pose": [], "lh": [], "rh": [], "face": [], "bs": []}
+
+        metadata = {
+            "dominant_hand": "L",
+            "dominant_hand_share": 0.71,
+            "flip_margin": 0.62,
+            "decision_rule": "mirror when dominant_hand is L and dominant_hand_share >= flip_margin",
+            "flip_reason": "left_dominant_share_meets_margin",
+        }
+        frames = [self._diagnostic_frame(t) for t in (0, 100, 200)]
+
+        with tempfile.TemporaryDirectory() as directory:
+            for flipped in (True, False):
+                case_dir = Path(directory) / str(flipped)
+                case_dir.mkdir()
+                request = SimpleNamespace(
+                    frames=[CachedFrame(t) for t in (0, 100, 200)],
+                    width=640,
+                    height=480,
+                    vocab="conversation",
+                    alphabet="en",
+                    user_bank=[],
+                )
+                output = {"mirrored_to_right_hand": flipped, "n_frames": 3}
+                save_request(str(case_dir), request, output, metadata, 0.5)
+                cache_path = next(case_dir.glob("*.json.gz"))
+                with gzip.open(cache_path, "rt", encoding="utf-8") as fh:
+                    record = json.load(fh)
+                record["frames"] = frames
+                result = diagnose_record(record, cache_path.name)
+                self.assertEqual(result["result_flip_data_status"], "มีข้อมูล")
+                self.assertEqual(result["request_flipped"], flipped)
+                self.assertEqual(result["flip_dominant_hand"], "L")
+                self.assertAlmostEqual(result["flip_dominant_hand_share"], 0.71)
+                self.assertEqual(result["flip_reason"], metadata["flip_reason"])
+                self.assertEqual(result["hand_gap_s_recorded"], 0.5)
+                self.assertEqual(result["n_frames_recorded"], 3)
+                self.assertAlmostEqual(result["fps_actual_recorded"], 10.0)
+                self.assertEqual(record["result"]["mirrored_to_right_hand"], flipped)
+                self.assertNotIn("flipped", record["result"]["hand_canonicalization"])
+                self.assertEqual(len(record["frames"]), 3)
+                self.assertNotIn("hand_canonicalization", output)
+
+    def test_canonical_hands_metadata_preserves_existing_decision(self):
+        kp = np.zeros((2, 133, 2), dtype=np.float32)
+        sc = np.ones((2, 133), dtype=np.float32)
+        with patch.object(schema_module, "dominant_hand", return_value=("L", 0.73)):
+            canonical_kp, canonical_sc, flipped, metadata = schema_module.canonical_hands_with_metadata(
+                kp, sc, (480, 640)
+            )
+            legacy_kp, legacy_sc, legacy_flipped = schema_module.canonical_hands(kp, sc, (480, 640))
+        self.assertTrue(flipped)
+        self.assertTrue(legacy_flipped)
+        self.assertEqual(metadata["dominant_hand"], "L")
+        self.assertEqual(metadata["dominant_hand_share"], 0.73)
+        self.assertEqual(metadata["flip_margin"], 0.62)
+        self.assertEqual(metadata["flip_reason"], "left_dominant_share_meets_margin")
+        expected_kp, expected_sc = schema_module.mirror(kp, sc)
+        np.testing.assert_array_equal(canonical_kp, expected_kp)
+        np.testing.assert_array_equal(canonical_sc, expected_sc)
+        np.testing.assert_array_equal(legacy_kp, canonical_kp)
+        np.testing.assert_array_equal(legacy_sc, canonical_sc)
+
     def test_read_only_diagnostic_fails_when_cache_directory_missing_or_empty(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

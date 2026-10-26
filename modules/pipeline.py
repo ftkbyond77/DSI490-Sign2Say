@@ -23,7 +23,7 @@ from .mediapipe_pose import extract, from_browser, to_standard
 from .parts import prep, to_iso
 from .runtime import Bank, make_backend, rescore, rescore_windows, table_from_Z, window_table
 from .spanhead import SpanHeadNP
-from .schema import SH_L, SH_R, canonical_hands
+from .schema import SH_L, SH_R, canonical_hands_with_metadata
 from .segment import decode_tagger, kin_features, resample, window_list
 from .utils import MODEL, get_logger, read_json, write_json
 from .fingerspell import EN_LETTERS, NONE, TH_LETTERS, load_speller, spell_runs, window_features
@@ -182,8 +182,8 @@ class SignPipeline:
         kp, sc, hw = d["kp"], d["sc"], tuple(int(x) for x in d["hw"])
         present = sc[:, [0, SH_L, SH_R]].mean(1) > 0.5
         sc = sc.copy(); sc[~present] = 0.0; kp = kp.copy(); kp[~present] = 0.0
-        kp, sc, mirrored = canonical_hands(kp, sc, hw)
-        return kp, sc, hw, present, mirrored
+        kp, sc, mirrored, hand_canonicalization = canonical_hands_with_metadata(kp, sc, hw)
+        return kp, sc, hw, present, mirrored, hand_canonicalization
 
     def _spell(self, kpi, sc, H, segs, alphabet, user_letters=None, spell_only=False):
         """Letters → letter segments that replace the overlapping word segments a word was not confidently recognised for.
@@ -272,7 +272,7 @@ class SignPipeline:
         say = progress or (lambda stage, frac: None)
         say("schema", 0.0)
         t = time.perf_counter()
-        kp, sc, hw, present, mirrored = self.standardise(raw)
+        kp, sc, hw, present, mirrored, hand_canonicalization = self.standardise(raw)
         T = len(kp)
         kpi = to_iso(kp, hw)
         tm["schema_ms"] = (time.perf_counter() - t) * 1000
@@ -353,6 +353,7 @@ class SignPipeline:
         tm["language_ms"] = (time.perf_counter() - t) * 1000
         result = dict(title=str(title), fps=25.0, n_frames=T, duration_s=round(T / 25.0, 2), signer_visible_frac=float(present.mean()) if T else 0.0,
                       signing_frac=float(act.mean()) if T else 0.0, mirrored_to_right_hand=bool(mirrored),
+                      hand_canonicalization=hand_canonicalization,
                       segments=[{k: v for k, v in s.items()} for s in segs], face=face, fusion=fusion,
                       sentence=fusion.get("sentence_th") or "", timings_ms={k: round(v, 1) for k, v in tm.items()},
                       model=self.cfg.get("version", ""), vocab=self.vocab)

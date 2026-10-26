@@ -186,6 +186,7 @@ def _hand_gaps(
 def _flip_metrics(record: dict[str, Any]) -> dict[str, Any]:
     result = record.get("result")
     flags: list[bool] = []
+    canonicalization: dict[str, Any] = {}
 
     def visit(value: Any) -> None:
         if isinstance(value, dict):
@@ -202,23 +203,44 @@ def _flip_metrics(record: dict[str, Any]) -> dict[str, Any]:
     if result is not None:
         if not isinstance(result, dict):
             raise ValueError("result must be a JSON object when present")
-        visit(result)
+        nested = result.get("hand_canonicalization")
+        if nested is not None and not isinstance(nested, dict):
+            raise ValueError("result.hand_canonicalization must be a JSON object when present")
+        if isinstance(nested, dict):
+            canonicalization = nested
+        if isinstance(canonicalization.get("flipped"), bool):
+            flags.append(canonicalization["flipped"])
+        else:
+            visit(result)
     if not flags:
-        return {
+        metrics = {
             "result_flip_data_status": "ไม่มีข้อมูล",
             "result_flip_flag_count": 0,
             "result_flip_positive_flag_count": "",
             "request_flipped": "",
             "request_flip_fraction": "",
         }
-    flipped = any(flags)
-    return {
-        "result_flip_data_status": "มีข้อมูล",
-        "result_flip_flag_count": len(flags),
-        "result_flip_positive_flag_count": sum(flags),
-        "request_flipped": flipped,
-        "request_flip_fraction": 1.0 if flipped else 0.0,
-    }
+    else:
+        flipped = any(flags)
+        metrics = {
+            "result_flip_data_status": "มีข้อมูล",
+            "result_flip_flag_count": len(flags),
+            "result_flip_positive_flag_count": sum(flags),
+            "request_flipped": flipped,
+            "request_flip_fraction": 1.0 if flipped else 0.0,
+        }
+    for source, target in (
+        ("dominant_hand", "flip_dominant_hand"),
+        ("dominant_hand_share", "flip_dominant_hand_share"),
+        ("flip_margin", "flip_margin"),
+        ("decision_rule", "flip_decision_rule"),
+        ("flip_reason", "flip_reason"),
+    ):
+        metrics[target] = canonicalization.get(source, "")
+    metrics["hand_gap_s_recorded"] = record.get("hand_gap_s", "")
+    metrics["n_frames_recorded"] = record.get("n_frames", "")
+    metrics["fps_actual_recorded"] = record.get("fps_actual", "")
+    return metrics
 
 
 def _histograms(gaps: list[dict[str, float | int]]) -> tuple[dict[str, int], dict[str, int]]:
@@ -376,6 +398,17 @@ def _write_summary(path: Path, rows: list[dict[str, Any]], hand_gap_s: float) ->
             "| " + str(row["request_id"]) + " | " + " | ".join(values)
             + f" | {row['handedness_data_status']} | {row['handedness_switch_count']}"
             + f" | {row['result_flip_data_status']} | {row['request_flipped']} |"
+        )
+    lines.extend([
+        "",
+        "| Request | Flip reason | Dominant hand | Dominant hand share | Flip margin | Hand gap (s) | Frames | FPS actual |",
+        "|---|---|---|---:|---:|---:|---:|---:|",
+    ])
+    for row in rows:
+        lines.append(
+            f"| {row['request_id']} | {row['flip_reason']} | {row['flip_dominant_hand']} "
+            f"| {row['flip_dominant_hand_share']} | {row['flip_margin']} "
+            f"| {row['hand_gap_s_recorded']} | {row['n_frames_recorded']} | {row['fps_actual_recorded']} |"
         )
     lines.append("")
     path.write_text("\n".join(lines), encoding="utf-8")
