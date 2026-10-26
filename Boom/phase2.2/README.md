@@ -78,30 +78,74 @@ strictly increasing `t` timestamps, `pose` (33 points with visibility at index
 that detector channel was absent for the frame. A nonempty array with another
 shape fails before metrics are produced.
 
+The script locates the checkout root by searching its parent directories for
+`.git` and `modules/`, so the default input resolves to
+`<checkout>/cache/live_requests/`, not `Boom/cache/...`. A missing cache folder
+or a folder with no `*.json.gz` files is a fatal, explicit error rather than an
+empty successful report.
+
 The browser frame schema has no separate per-hand confidence values. Hand
 point scores are therefore treated as binary, using the same nonzero x/y
-presence rule used when `from_browser` builds the production schema; the hand
-rate is `count(present points) / 21 > 0.3`, matching `fill_hand_gaps`. Body
-scores use the pose visibility field and the nose/shoulder clearing rule from
-the Phase 2.1 test engine: average nose/left-shoulder/right-shoulder visibility
-must be strictly greater than `0.5`; otherwise the frame is counted as cleared.
+presence rule used when `from_browser` builds the production schema. The
+diagnostic reports two distinct rates:
 
-Hand gaps are contiguous runs where that hand's 21-point mean presence score
-does not exceed `0.3`. Gap milliseconds use the interval from the first missing
-frame timestamp up to the next frame timestamp; leading/trailing gaps are
-extended by the median observed frame interval. This estimates capture-time
-duration for irregular frame timestamps. Millisecond histograms use 100 ms
-bins; frame histograms use exact run lengths. The long-gap fraction counts
-durations strictly greater than `hand_gap_s` (default `0.5` s); the companion
-fraction includes durations equal to or shorter than the threshold.
+- `*_hand_visible_rate` counts a frame when more than 30% of the 21 points are
+  present (at least 7/21). This is a partial-detection diagnostic cue, not the
+  production `fill_hand_gaps` hand-presence mask.
+- `*_hand_full_rate` requires all 21 points. This matches the current
+  `from_mp75` confidence construction, which marks a hand's points present only
+  when all 21 source points are present; `fill_hand_gaps` then applies its
+  mean-score `> 0.3` test to that mask. Please confirm this interpretation
+  against `modules/schema.py` and `modules/mediapipe_pose.py` before relying on
+  the diagnostic as a pipeline metric.
 
-The current cache writer schema does not include a handedness label. If labels
-are available, the diagnostic only accepts `handedness` as either a frame-level
+Body scores use the visibility field at pose index 3. To mirror
+`modules/mediapipe_pose.py::from_browser`, a point with zero visibility but
+nonzero x/y is treated as visibility 1. The diagnostic's
+`cleared_by_present_rate` is the fraction where mean effective nose/left
+shoulder/right shoulder confidence is `<= 0.5`, matching the negation of
+`present = sc[:, [nose, left_shoulder, right_shoulder]].mean(1) > 0.5` in
+`Boom/phase2.1combined/test_engine.py`. This is a schema-level reproduction of
+that present gate; the tool does not claim to observe a later model/pipeline
+output mask. The scores are binary as they are after `to_mp75`/`from_mp75`:
+pose visibility must be `> 0.5` and x/y nonzero, except the browser adapter's
+zero-visibility/nonzero-coordinate fallback, which sets visibility to 1.
+
+Hand gaps use the all-21-points `hand_full_rate` mask, matching the current
+production conversion's all-points hand confidence mask before
+`fill_hand_gaps` applies mean-score `> 0.3`. The partial `hand_visible_rate`
+(at least 7/21) is not used to determine pipeline-like gap lengths. Gap
+duration is estimated as missing-frame timestamp span plus one median frame
+period; for a leading gap it is capped at one period, avoiding counting the
+interval before the first captured frame. A gap is `fillable` only when it has
+a full-hand frame on both sides and its estimated duration is at most
+`hand_gap_s`; edge gaps are always `not_fillable`, even when shorter than the
+threshold. The CSV provides fillable, edge and too-long counts separately.
+Millisecond histograms use 100 ms bins; frame histograms use exact run lengths.
+The long-gap fraction counts durations strictly greater than `hand_gap_s`
+(default `0.5` s); the companion fraction includes durations at or below the
+threshold, including unfillable edge gaps.
+
+The current cache writer does not save per-frame handedness. If labels are
+present, the diagnostic only accepts `handedness` as either a frame-level
 string or a top-level list aligned one-for-one with `frames`; accepted labels
 are `left`/`right` or `L`/`R`. It counts changes only between adjacent frames
-where both labels exist. Other fields, including `mirrored_to_right_hand`, are
-not treated as handedness; absent labels are reported as `ไม่มีข้อมูล`, never
-inferred.
+where both labels exist. Without labels it reports `ไม่มีข้อมูล` and does not
+infer handedness.
+
+Separately, the diagnostic checks the saved `result` object for explicit
+boolean fields whose names contain `mirror` or `flip`, and reports their
+availability, positive flag count and per-request flipped indicator/fraction.
+The summary reports flipped request count and fraction among requests with such
+metadata. Current `webapp/api/app.py::_save_request` persists only selected
+result keys and may omit `mirrored_to_right_hand`; no result flip is inferred
+from absent data.
+
+`scripts/replay_live.py` is not a faithful replay of saved request settings:
+its `--vocab` and `--alphabet` values come from command-line options (defaults
+`conversation` and `en`), while the diagnostic cache stores the original
+`vocab` and `alphabet`. Set replay options to match those saved values before
+comparing replay outputs with the original result.
 
 Synthetic tests:
 

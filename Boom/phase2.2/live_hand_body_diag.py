@@ -15,7 +15,15 @@ from pathlib import Path
 from statistics import median
 from typing import Any
 
-ROOT = Path(__file__).resolve().parents[1]
+
+def _find_repo_root(script_path: Path) -> Path:
+    for parent in script_path.resolve().parents:
+        if (parent / ".git").exists() and (parent / "modules").is_dir():
+            return parent
+    raise RuntimeError(f"cannot locate repository root from {script_path}; expected .git and modules/")
+
+
+ROOT = _find_repo_root(Path(__file__))
 HAND_GAP_S = 0.5
 HAND_POINTS = 21
 POSE_POINTS = 33
@@ -29,7 +37,7 @@ BODY_POINTS = {
     "left_wrist": 15,
     "right_wrist": 16,
 }
-HANDNESS_LABELS = {
+HANDEDNESS_LABELS = {
     "l": "left",
     "left": "left",
     "r": "right",
@@ -66,13 +74,16 @@ def _normalize_handedness(value: Any, context: str) -> str | None:
         return None
     if not isinstance(value, str):
         raise ValueError(f"{context} must be a left/right string or null")
-    normalized = HANDNESS_LABELS.get(value.strip().lower())
+    normalized = HANDEDNESS_LABELS.get(value.strip().lower())
     if normalized is None:
         raise ValueError(f"{context} must be one of left, right, L, R, or null")
     return normalized
 
 
-def _validate_record(record: Any, request_id: str) -> tuple[list[dict[str, Any]], list[float], list[str | None]]:
+def _validate_record(
+    record: Any,
+    request_id: str,
+) -> tuple[list[dict[str, Any]], list[float], list[str | None]]:
     if not isinstance(record, dict):
         raise ValueError(f"{request_id}: cache root must be a JSON object")
     frames = record.get("frames")
@@ -117,8 +128,20 @@ def _hand_score(points: list[list[float]]) -> float:
     return sum((abs(point[0]) + abs(point[1])) > 0 for point in points) / HAND_POINTS
 
 
+def _hand_full(points: list[list[float]]) -> bool:
+    return len(points) == HAND_POINTS and all(
+        abs(point[0]) + abs(point[1]) > 0 for point in points
+    )
+
+
 def _body_score(pose: list[list[float]], point_index: int) -> float:
-    return pose[point_index][POSE_SCORE_INDEX] if pose else 0.0
+    if not pose:
+        return 0.0
+    point = pose[point_index]
+    score = point[POSE_SCORE_INDEX]
+    if score == 0 and abs(point[0]) + abs(point[1]) > 0:
+        score = 1.0
+    return float(score > 0.5 and abs(point[0]) + abs(point[1]) > 0)
 
 
 def _gap_durations_ms(
@@ -127,13 +150,11 @@ def _gap_durations_ms(
     timestamps_ms: list[float],
     median_frame_ms: float,
 ) -> float:
-    """Estimate missing-frame span from timestamps, with median cadence at edges."""
-    if stop < len(timestamps_ms):
-        duration = timestamps_ms[stop] - timestamps_ms[start]
-        if start == 0:
-            duration += median_frame_ms
-        return max(0.0, duration)
-    return max(0.0, timestamps_ms[stop - 1] - timestamps_ms[start] + median_frame_ms)
+    """Estimate missing-frame span; leading gaps are capped at one frame period."""
+    duration = timestamps_ms[stop - 1] - timestamps_ms[start] + median_frame_ms
+    if start == 0:
+        duration = min(duration, median_frame_ms)
+    return max(0.0, duration)
 
 
 def _hand_gaps(
@@ -152,11 +173,52 @@ def _hand_gaps(
             index += 1
         stop = index
         length_frames = stop - start
+        duration_ms = _gap_durations_ms(start, stop, timestamps_ms, median_frame_ms)
+        at_clip_edge = start == 0 or stop == len(visible)
         gaps.append({
             "frames": length_frames,
-            "duration_ms": _gap_durations_ms(start, stop, timestamps_ms, median_frame_ms),
+            "duration_ms": duration_ms,
+            "at_clip_edge": at_clip_edge,
         })
     return gaps
+
+
+def _flip_metrics(record: dict[str, Any]) -> dict[str, Any]:
+    result = record.get("result")
+    flags: list[bool] = []
+
+    def visit(value: Any) -> None:
+        if isinstance(value, dict):
+            for key, nested in value.items():
+                label = key.casefold()
+                if ("mirror" in label or "flip" in label) and isinstance(nested, bool):
+                    flags.append(nested)
+                else:
+                    visit(nested)
+        elif isinstance(value, list):
+            for nested in value:
+                visit(nested)
+
+    if result is not None:
+        if not isinstance(result, dict):
+            raise ValueError("result must be a JSON object when present")
+        visit(result)
+    if not flags:
+        return {
+            "result_flip_data_status": "ไม่มีข้อมูล",
+            "result_flip_flag_count": 0,
+            "result_flip_positive_flag_count": "",
+            "request_flipped": "",
+            "request_flip_fraction": "",
+        }
+    flipped = any(flags)
+    return {
+        "result_flip_data_status": "มีข้อมูล",
+        "result_flip_flag_count": len(flags),
+        "result_flip_positive_flag_count": sum(flags),
+        "request_flipped": flipped,
+        "request_flip_fraction": 1.0 if flipped else 0.0,
+    }
 
 
 def _histograms(gaps: list[dict[str, float | int]]) -> tuple[dict[str, int], dict[str, int]]:
@@ -187,6 +249,10 @@ def diagnose_record(record: Any, request_id: str, hand_gap_s: float = HAND_GAP_S
         side: [_hand_score(frame[key]) > 0.3 for frame in frames]
         for side, key in (("left", "lh"), ("right", "rh"))
     }
+    hand_full = {
+        side: [_hand_full(frame[key]) for frame in frames]
+        for side, key in (("left", "lh"), ("right", "rh"))
+    }
     body_visible = {
         name: [
             _body_score(frame["pose"], point_index) > 0.5
@@ -194,8 +260,8 @@ def diagnose_record(record: Any, request_id: str, hand_gap_s: float = HAND_GAP_S
         ]
         for name, point_index in BODY_POINTS.items()
     }
-    cleared = [
-        sum(_body_score(frame["pose"], idx) for idx in (0, 11, 12)) / 3 <= 0.5
+    present = [
+        sum(_body_score(frame["pose"], idx) for idx in (0, 11, 12)) / 3 > 0.5
         for frame in frames
     ]
 
@@ -207,22 +273,38 @@ def diagnose_record(record: Any, request_id: str, hand_gap_s: float = HAND_GAP_S
         "hand_gap_s_threshold": hand_gap_s,
     }
     for side, visibility in hand_visible.items():
-        gaps = _hand_gaps(visibility, timestamps, median_frame_ms)
+        gaps = _hand_gaps(hand_full[side], timestamps, median_frame_ms)
         frame_hist, duration_hist = _histograms(gaps)
-        longer = sum(float(gap["duration_ms"]) > hand_gap_s * 1000 for gap in gaps)
-        shorter = sum(float(gap["duration_ms"]) <= hand_gap_s * 1000 for gap in gaps)
+        within_threshold = [
+            float(gap["duration_ms"]) <= hand_gap_s * 1000
+            for gap in gaps
+        ]
+        longer = sum(not is_short for is_short in within_threshold)
+        shorter = sum(within_threshold)
         gap_count = len(gaps)
         result[f"{side}_hand_visible_rate"] = sum(visibility) / n_frames
+        result[f"{side}_hand_full_rate"] = sum(hand_full[side]) / n_frames
         result[f"{side}_hand_gap_count"] = gap_count
         result[f"{side}_hand_gaps_longer_than_threshold"] = longer
         result[f"{side}_hand_gaps_at_or_shorter_than_threshold"] = shorter
         result[f"{side}_hand_gap_fraction_longer_than_threshold"] = longer / gap_count if gap_count else ""
         result[f"{side}_hand_gap_fraction_at_or_shorter_than_threshold"] = shorter / gap_count if gap_count else ""
+        fillable = [
+            not gap["at_clip_edge"] and is_short
+            for gap, is_short in zip(gaps, within_threshold)
+        ]
+        result[f"{side}_hand_gap_fillable_count"] = sum(fillable)
+        result[f"{side}_hand_gap_not_fillable_count"] = gap_count - sum(fillable)
+        result[f"{side}_hand_gap_edge_count"] = sum(gap["at_clip_edge"] for gap in gaps)
+        result[f"{side}_hand_gap_too_long_count"] = sum(
+            not gap["at_clip_edge"] and not is_short
+            for gap, is_short in zip(gaps, within_threshold)
+        )
         result[f"{side}_hand_gap_frames_histogram_json"] = json.dumps(frame_hist, sort_keys=True)
         result[f"{side}_hand_gap_duration_ms_histogram_json"] = json.dumps(duration_hist, sort_keys=True)
     for name, visibility in body_visible.items():
         result[f"{name}_visible_rate"] = sum(visibility) / n_frames
-    result["cleared_by_present_rate"] = sum(cleared) / n_frames
+    result["cleared_by_present_rate"] = sum(not is_present for is_present in present) / n_frames
 
     known = [label for label in handedness if label is not None]
     if not known:
@@ -235,6 +317,7 @@ def diagnose_record(record: Any, request_id: str, hand_gap_s: float = HAND_GAP_S
             for a, b in zip(handedness, handedness[1:])
             if a is not None and b is not None
         )
+    result.update(_flip_metrics(record))
     return result
 
 
@@ -252,6 +335,8 @@ def _write_summary(path: Path, rows: list[dict[str, Any]], hand_gap_s: float) ->
         "fps_actual",
         "left_hand_visible_rate",
         "right_hand_visible_rate",
+        "left_hand_full_rate",
+        "right_hand_full_rate",
         "nose_visible_rate",
         "left_shoulder_visible_rate",
         "right_shoulder_visible_rate",
@@ -263,17 +348,24 @@ def _write_summary(path: Path, rows: list[dict[str, Any]], hand_gap_s: float) ->
         "left_hand_gap_fraction_longer_than_threshold",
         "right_hand_gap_fraction_longer_than_threshold",
     ]
+    flip_data_rows = [row for row in rows if row["result_flip_data_status"] == "มีข้อมูล"]
+    flipped_rows = [row for row in flip_data_rows if row["request_flipped"]]
     lines = [
         "# Live hand/body diagnostic summary",
         "",
         f"- Requests analyzed: {len(rows)}",
         f"- Hand dropout threshold: {hand_gap_s:.3f} s",
+        f"- Requests with saved flip metadata: {len(flip_data_rows)} / {len(rows)}",
+        f"- Requests recorded as flipped: {len(flipped_rows)}",
+        f"- Flip fraction among requests with flip metadata: "
+        f"{len(flipped_rows) / len(flip_data_rows):.4f}" if flip_data_rows else
+        "- Flip fraction among requests with flip metadata: ไม่มีข้อมูล",
         "- No landmark coordinates, face fields, or face data are included.",
         "- Hand gap durations are estimated between bounding visible frames; edge gaps use median frame cadence.",
         f"- Millisecond histogram buckets are {HISTOGRAM_MS_WIDTH} ms wide.",
         "",
-        "| Request | " + " | ".join(metrics) + " | Handedness | Switches |",
-        "|---|" + "|".join("---:" for _ in metrics) + "|---|---:|",
+        "| Request | " + " | ".join(metrics) + " | Handedness | Switches | Flip data | Flipped |",
+        "|---|" + "|".join("---:" for _ in metrics) + "|---|---:|---|---|",
     ]
     for row in rows:
         values = [
@@ -282,14 +374,19 @@ def _write_summary(path: Path, rows: list[dict[str, Any]], hand_gap_s: float) ->
         ]
         lines.append(
             "| " + str(row["request_id"]) + " | " + " | ".join(values)
-            + f" | {row['handedness_data_status']} | {row['handedness_switch_count']} |"
+            + f" | {row['handedness_data_status']} | {row['handedness_switch_count']}"
+            + f" | {row['result_flip_data_status']} | {row['request_flipped']} |"
         )
     lines.append("")
     path.write_text("\n".join(lines), encoding="utf-8")
 
 
 def run(cache_dir: Path, output_dir: Path, hand_gap_s: float = HAND_GAP_S) -> list[dict[str, Any]]:
+    if not cache_dir.is_dir():
+        raise FileNotFoundError(f"live cache directory not found: {cache_dir}")
     cache_files = sorted(cache_dir.glob("*.json.gz"))
+    if not cache_files:
+        raise FileNotFoundError(f"no *.json.gz request files found in live cache directory: {cache_dir}")
     rows = [diagnose_file(path, hand_gap_s) for path in cache_files]
     output_dir.mkdir(parents=True, exist_ok=True)
     for row in rows:
@@ -314,7 +411,10 @@ def main() -> None:
     if args.output_dir.is_absolute() or ".." in args.output_dir.parts:
         parser.error("--output-dir must be relative to the checkout root and cannot contain '..'")
     cache_dir, output_dir = ROOT / args.cache_dir, ROOT / args.output_dir
-    rows = run(cache_dir, output_dir, args.hand_gap_s)
+    try:
+        rows = run(cache_dir, output_dir, args.hand_gap_s)
+    except FileNotFoundError as exc:
+        parser.error(str(exc))
     print(f"Analyzed {len(rows)} request(s); wrote per-request CSV and summary to {output_dir.relative_to(ROOT)}")
 
 
