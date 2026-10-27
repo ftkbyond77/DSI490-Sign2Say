@@ -35,6 +35,13 @@ face itself is not covered; the "ตรวจพบ" bar still checks that face,
 the MediaPipe mode and fps; a progress bar shows the real server stages while a sentence is processed. In live mode the utterance is
 sent after 0.5 s of hands-down, so the result is usually ready when the pause ends.
 
+**Live FPS A/B diagnostic (opt-in):** open `http://localhost:8091/?perf=nofx` to skip the separate CPU blendshape pass and browser
+expression-model update during live capture. Pose, hand and face-mesh landmark extraction are unchanged; blendshape scores are
+cleared in this mode, so face cues and the live expression display are disabled for the diagnostic utterance. The HUD adds `nofx`,
+and, when request caching is enabled, live API requests record `perf_mode` plus timestamp-derived `client_fps` in
+`cache/live_requests/`. Compare against the normal URL using the same camera, signer, lighting and signing pace. Without the query
+flag, behavior is unchanged. To revert, remove `?perf=nofx` (or reload the normal URL).
+
 **Speed / robustness, chosen automatically per machine:** MediaPipe runs fully on the GPU when the browser's WebGL can run the
 face-expression model; on GPUs where that model fails ("No support of const") it runs body / hands / face mesh on the GPU every frame
 and the expressions on the CPU every 5th frame (≈ 1.5–3× faster than CPU-only); otherwise CPU only. A frame that fails never stops

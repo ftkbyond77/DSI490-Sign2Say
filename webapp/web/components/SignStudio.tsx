@@ -61,6 +61,7 @@ export default function SignStudio() {
 
   const [status, setStatus] = useState<Status>("idle");
   const [mode, setMode] = useState<Mode>("manual");
+  const [perfNoFx, setPerfNoFx] = useState(false);
   const [opts, setOpts] = useState<Options>({ vocab: "conversation", llm: true, speak: "confident", faceQuestion: false, alphabet: "en" });
   const [nFrames, setNFrames] = useState(0);
   const [fps, setFps] = useState(0);
@@ -94,6 +95,7 @@ export default function SignStudio() {
   useEffect(() => {
     info().then(setModel).catch(() => setModel(null));
     vocabList().then(setVocab).catch(() => setVocab([]));
+    setPerfNoFx(new URLSearchParams(window.location.search).get("perf") === "nofx");
     setOpts((o) => ({ ...o, ...load<Partial<Options>>("thaislm.opts.v3", {}) }));     // v3: earlier saved settings (full vocabulary …) reset
     setEndMs(load("thaislm.endMs", 1500)); setAutoLight(load("thaislm.autoLight", false)); refreshSigns();
   }, []);
@@ -139,9 +141,10 @@ export default function SignStudio() {
     return "";
   };
 
-  const request = useCallback((frames: LmFrame[], w: number, h: number, onProgress: (x: Progress) => void, signal?: AbortSignal) => {
+  const request = useCallback((frames: LmFrame[], w: number, h: number, onProgress: (x: Progress) => void, signal?: AbortSignal,
+    capturePerf?: { mode: "default" | "nofx"; fps?: number }) => {
     const rest = restRef.current;
-    return translateFramesStream(frames, w, h, optsRef.current, onProgress, rest.length >= 10 ? median(rest) : null, signal);
+    return translateFramesStream(frames, w, h, optsRef.current, onProgress, rest.length >= 10 ? median(rest) : null, signal, capturePerf);
   }, []);
 
   /** frames → server (progress streamed back) → card + speech. */
@@ -151,13 +154,20 @@ export default function SignStudio() {
     setError(""); setLiveNote("");
     try {
       let r = ready ? await ready : null;                          // live mode: usually already computed during the pause
-      if (!r) r = await request(frames, w, h, setProgress);
+      if (!r) {
+        const duration = durMs(frames);
+        const capturePerf = source === "live" ? {
+          mode: perfNoFx ? "nofx" as const : "default" as const,
+          fps: duration > 0 ? (frames.length - 1) * 1000 / duration : undefined,
+        } : undefined;
+        r = await request(frames, w, h, setProgress, undefined, capturePerf);
+      }
       setProgress({ stage: "done", p: 1 });
       await handle(r);                         // unsure signs are shown as [?] (no guessed word) so the user can teach them
     } catch (e) { setError(`ประมวลผลไม่สำเร็จ: ${(e as Error).message}`); }
     finally { setTimeout(() => setProgress(null), 600); }
     return true;
-  }, [handle, request]);
+  }, [handle, perfNoFx, request]);
 
   const switchToCpu = useCallback(async () => {
     if (errRef.current.switching) return;
@@ -184,7 +194,9 @@ export default function SignStudio() {
         src = N.frame(v, t);
         f = detect(lm, src, t); errRef.current.n = 0;
         const fl = faceLmRef.current;
-        if (f && fl && f.face.length && nRef.current++ % 8 === 0) {        // expressions (blendshapes) every 8th frame on the CPU
+        const skipLiveFace = perfNoFx && modeRef.current === "live";
+        if (skipLiveFace && f) f.bs = [];
+        if (!skipLiveFace && f && fl && f.face.length && nRef.current++ % 8 === 0) {        // expressions (blendshapes) every 8th frame on the CPU
           const g = detect(fl, src, t);
           if (g) f.bs = g.bs;
         }
@@ -194,7 +206,10 @@ export default function SignStudio() {
       }
       const ctx = c.getContext("2d");
       // live expression: the trained expression model on the face crop; blendshape rules only if it could not load. Held between updates.
-      if (f && f.face.length) {
+      const skipLiveFace = perfNoFx && modeRef.current === "live";
+      if (skipLiveFace) {
+        lastEmoRef.current = undefined;
+      } else if (f && f.face.length) {
         const m = exprRef.current.failed ? null : exprRef.current.update(src, c.width, c.height, f.face, t);
         if (m) lastEmoRef.current = m;
         else if (f.bs.length >= 52) lastEmoRef.current = emoRef.current.update(f.bs);
@@ -235,7 +250,7 @@ export default function SignStudio() {
     } finally {
       rafRef.current = requestAnimationFrame(loop);
     }
-  }, [send, switchToCpu, request]);  // eslint-disable-line react-hooks/exhaustive-deps
+  }, [perfNoFx, send, switchToCpu, request]);  // eslint-disable-line react-hooks/exhaustive-deps
 
   const openCamera = async () => {
     unlockAudio();
@@ -317,7 +332,7 @@ export default function SignStudio() {
             style={autoLight && (tone.brightness !== 1 || tone.contrast !== 1) ? { filter: `brightness(${tone.brightness.toFixed(2)}) contrast(${tone.contrast.toFixed(2)})` } : undefined} />
           <canvas ref={canvasRef} className="mirror overlay" />
           {!camOn && <div className="placeholder">กด “เปิดกล้อง” เพื่อเริ่ม<br /><small>MediaPipe Holistic ทำงานในเบราว์เซอร์ของคุณ — ส่งเฉพาะจุด landmark ไปที่เซิร์ฟเวอร์</small></div>}
-          {camOn && <div className="hud">{delegate && `${delegate} · `}{fps} fps · {mode === "live" ? (liveState === "signing" ? "● กำลังทำท่า" : liveState === "processing" ? "… กำลังแปล" : "รอยกมือ") : status === "recording" ? `● REC ${nFrames} เฟรม` : status === "recorded" ? `${nFrames} เฟรม พร้อมประมวลผล` : "พร้อม"}</div>}
+          {camOn && <div className="hud">{delegate && `${delegate} · `}{perfNoFx && mode === "live" ? "nofx · " : ""}{fps} fps · {mode === "live" ? (liveState === "signing" ? "● กำลังทำท่า" : liveState === "processing" ? "… กำลังแปล" : "รอยกมือ") : status === "recording" ? `● REC ${nFrames} เฟรม` : status === "recorded" ? `${nFrames} เฟรม พร้อมประมวลผล` : "พร้อม"}</div>}
           {camOn && exposure && <div className="exposure">ปรับภาพอัตโนมัติ: {exposure}</div>}
           {camOn && <div className="parts">ตรวจพบ: {chip(seen.body, "ลำตัว")}{chip(seen.face, "หน้า")}{chip(seen.brows, "คิ้ว/สีหน้า")}{chip(seen.left, "มือซ้าย")}{chip(seen.right, "มือขวา")}</div>}
         </div>
