@@ -158,6 +158,103 @@ class SyntheticFixtureTests(unittest.TestCase):
         self.assertFalse(result["request_flipped"])
         self.assertEqual(result["request_flip_fraction"], 0.0)
 
+    def test_cache_saved_canonicalization_and_capture_metadata_are_diagnosed(self):
+        from webapp.api.request_cache import save_request
+
+        class CachedFrame:
+            def __init__(self, t):
+                self.t = t
+
+            def model_dump(self):
+                return {"t": self.t, "pose": [], "lh": [], "rh": [], "face": [], "bs": []}
+
+        metadata = {
+            "dominant_hand": "L",
+            "dominant_hand_share": 0.71,
+            "flip_margin": 0.62,
+            "decision_rule": "mirror when dominant_hand is L and dominant_hand_share >= flip_margin",
+            "flip_reason": "left_dominant_share_meets_margin",
+        }
+        frames = [self._diagnostic_frame(t) for t in (0, 100, 200)]
+
+        with tempfile.TemporaryDirectory() as directory:
+            for flipped in (True, False):
+                case_dir = Path(directory) / str(flipped)
+                case_dir.mkdir()
+                request = SimpleNamespace(
+                    frames=[CachedFrame(t) for t in (0, 100, 200)],
+                    width=640,
+                    height=480,
+                    vocab="conversation",
+                    alphabet="en",
+                    user_bank=[],
+                )
+                output = {"mirrored_to_right_hand": flipped, "n_frames": 3}
+                save_request(str(case_dir), request, output, metadata, 0.5)
+                cache_path = next(case_dir.glob("*.json.gz"))
+                with gzip.open(cache_path, "rt", encoding="utf-8") as fh:
+                    record = json.load(fh)
+                record["frames"] = frames
+                result = diagnose_record(record, cache_path.name)
+                self.assertEqual(result["result_flip_data_status"], "มีข้อมูล")
+                self.assertEqual(result["request_flipped"], flipped)
+                self.assertEqual(result["flip_dominant_hand"], "L")
+                self.assertAlmostEqual(result["flip_dominant_hand_share"], 0.71)
+                self.assertEqual(result["flip_reason"], metadata["flip_reason"])
+                self.assertEqual(result["hand_gap_s_recorded"], 0.5)
+                self.assertEqual(result["n_frames_recorded"], 3)
+                self.assertAlmostEqual(result["fps_actual_recorded"], 10.0)
+                self.assertEqual(record["result"]["mirrored_to_right_hand"], flipped)
+                self.assertNotIn("flipped", record["result"]["hand_canonicalization"])
+                self.assertEqual(len(record["frames"]), 3)
+                self.assertNotIn("hand_canonicalization", output)
+
+    def test_cache_writer_accepts_missing_canonicalization_metadata(self):
+        from webapp.api.request_cache import save_request
+
+        class CachedFrame:
+            t = 0
+
+            @staticmethod
+            def model_dump():
+                return {"t": 0, "pose": [], "lh": [], "rh": [], "face": [], "bs": []}
+
+        request = SimpleNamespace(
+            frames=[CachedFrame()],
+            width=640,
+            height=480,
+            vocab="conversation",
+            alphabet="en",
+            user_bank=[],
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            save_request(directory, request, {"mirrored_to_right_hand": False}, None, 0.5)
+            cache_path = next(Path(directory).glob("*.json.gz"))
+            with gzip.open(cache_path, "rt", encoding="utf-8") as fh:
+                record = json.load(fh)
+        self.assertNotIn("hand_canonicalization", record["result"])
+        self.assertFalse(diagnose_record(record | {"frames": [self._diagnostic_frame(0)]}, cache_path.name)["request_flipped"])
+
+    def test_canonical_hands_metadata_preserves_existing_decision(self):
+        kp = np.zeros((2, 133, 2), dtype=np.float32)
+        sc = np.ones((2, 133), dtype=np.float32)
+        with patch.object(schema_module, "dominant_hand", return_value=("L", 0.73)):
+            canonical_kp, canonical_sc, flipped, metadata = schema_module.canonical_hands_with_metadata(
+                kp, sc, (480, 640)
+            )
+            legacy_kp, legacy_sc, legacy_flipped = schema_module.canonical_hands(kp, sc, (480, 640))
+        self.assertTrue(flipped)
+        self.assertTrue(legacy_flipped)
+        self.assertEqual(metadata["dominant_hand"], "L")
+        self.assertEqual(metadata["dominant_hand_share"], 0.73)
+        self.assertEqual(metadata["flip_margin"], 0.62)
+        self.assertEqual(metadata["flip_reason"], "left_dominant_share_meets_margin")
+        expected_kp, expected_sc = schema_module.mirror(kp, sc)
+        np.testing.assert_array_equal(canonical_kp, expected_kp)
+        np.testing.assert_array_equal(canonical_sc, expected_sc)
+        np.testing.assert_array_equal(legacy_kp, canonical_kp)
+        np.testing.assert_array_equal(legacy_sc, canonical_sc)
+
     def test_read_only_diagnostic_fails_when_cache_directory_missing_or_empty(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -282,6 +379,9 @@ class SyntheticFixtureTests(unittest.TestCase):
             spot_all={"hand_gap_s": 0.5},
             cal={"tau_accept": 0.8},
         )
+        pipe.standardise_with_metadata = lambda landmarks: pipeline_module.SignPipeline.standardise_with_metadata(
+            pipe, landmarks
+        )
         output_metrics = []
         with (
             patch.object(pipeline_module, "to_standard", side_effect=synthetic_to_standard),
@@ -292,6 +392,7 @@ class SyntheticFixtureTests(unittest.TestCase):
                 effective = apply_case(pipe, {"hand_gap_s": gap_s})
                 self.assertEqual(effective["hand_gap_s"], gap_s)
                 standardized = pipeline_module.SignPipeline.standardise(pipe, raw)
+                self.assertEqual(len(standardized), 5)
                 output_metrics.append(hand_fill_metrics(raw, standardized[1], standardized[4]))
 
         self.assertEqual(observed_gaps, [3, 8])
@@ -430,15 +531,20 @@ class SyntheticFixtureTests(unittest.TestCase):
                 }
 
             @staticmethod
-            def standardise(raw):
+            def standardise_with_metadata(raw):
                 return (
                     None,
                     np.zeros((len(raw["t"]), 133), dtype=np.float32),
                     None, None, None,
+                    {"flipped": False},
                 )
 
+            @staticmethod
+            def standardise(raw):
+                return SyntheticPipeline.standardise_with_metadata(raw)[:5]
+
             def run_landmarks(self, raw, **kwargs):
-                self.standardise(raw)
+                self.standardise_with_metadata(raw)
                 return {
                     "sentence": "synthetic",
                     "segments": [{"nearest": "A", "status": "accepted"}],

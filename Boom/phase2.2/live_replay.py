@@ -178,18 +178,18 @@ def replay_rows(
             started = time.perf_counter()
             raw = pipe.landmarks_from_browser(frames, (capture["height"], capture["width"]))
             hand_metrics: dict[str, float] = {}
-            standardise = pipe.standardise
+            standardise_with_metadata = pipe.standardise_with_metadata
 
             def standardise_with_metrics(landmark_raw: dict[str, Any]):
-                standardized = standardise(landmark_raw)
+                standardized = standardise_with_metadata(landmark_raw)
                 hand_metrics.update(hand_fill_metrics(landmark_raw, standardized[1], standardized[4]))
                 return standardized
 
-            pipe.standardise = standardise_with_metrics
+            pipe.standardise_with_metadata = standardise_with_metrics
             try:
                 result = pipe.run_landmarks(raw, title=item["request_id"], alphabet=capture.get("alphabet", "off"))
             finally:
-                pipe.standardise = standardise
+                pipe.standardise_with_metadata = standardise_with_metadata
             if not hand_metrics:
                 raise RuntimeError(f"{item['request_id']}: pipeline did not report post-fill hand coverage")
             elapsed_ms = (time.perf_counter() - started) * 1000

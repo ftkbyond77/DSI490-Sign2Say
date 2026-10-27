@@ -36,6 +36,10 @@ from pydantic import BaseModel, Field
 
 from modules.pipeline import SignPipeline
 from modules.utils import read_json
+if __package__:
+    from .request_cache import save_request
+else:
+    from request_cache import save_request
 
 MODEL_DIR = Path(os.environ.get("THAISLM_MODELS", "/app/models"))
 TTS_URL = os.environ.get("TTS_URL", "http://tts:8001")
@@ -174,21 +178,8 @@ def _check(req: TranslateRequest):
 SAVE_DIR = os.environ.get("THAISLM_SAVE_REQUESTS", "")      # diagnosis: keep each utterance's landmarks + result (landmarks only, no video)
 
 
-def _save_request(req: TranslateRequest, out: dict):
-    if not SAVE_DIR:
-        return
-    try:
-        import gzip
-        d = Path(SAVE_DIR); d.mkdir(parents=True, exist_ok=True)
-        rec = dict(time=time.strftime("%Y-%m-%d %H:%M:%S"), width=req.width, height=req.height, vocab=req.vocab, alphabet=req.alphabet,
-                   n_user_signs=len(req.user_bank), frames=[f.model_dump() for f in req.frames],
-                   result={k: out.get(k) for k in ("sentence", "language", "face", "timings_ms", "duration_s")})
-        # copies without the embedding — the response itself must keep "emb" (the client saves it when the user teaches a word)
-        rec["result"]["segments"] = [{k: v for k, v in sgm.items() if k != "emb"} for sgm in out.get("segments") or []]
-        with gzip.open(d / f"{time.strftime('%Y%m%d_%H%M%S')}_{int(time.time() * 1000) % 1000:03d}.json.gz", "wt", encoding="utf-8") as fh:
-            json.dump(rec, fh, ensure_ascii=False)
-    except Exception:  # noqa: BLE001  (diagnosis must never break a request)
-        pass
+def _save_request(req: TranslateRequest, out: dict, hand_canonicalization: dict | None, hand_gap_s: float):
+    save_request(SAVE_DIR, req, out, hand_canonicalization, hand_gap_s)
 
 
 def _frames_job(req: TranslateRequest, progress=None):
@@ -206,7 +197,7 @@ def _frames_job(req: TranslateRequest, progress=None):
         out["audio_wav_b64"] = _speak(r, req.speak_tentative)
         out["spoken"] = "sentence" if r.get("sentence") else "tentative"
     out["timings_ms"]["total_ms"] = round((time.perf_counter() - t) * 1000, 1)
-    _save_request(req, out)
+    _save_request(req, out, r.get("hand_canonicalization"), float(p.spot_all.get("hand_gap_s", 0.2)))
     return out
 
 
