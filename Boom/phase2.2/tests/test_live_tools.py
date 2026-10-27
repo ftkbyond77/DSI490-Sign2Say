@@ -188,6 +188,8 @@ class SyntheticFixtureTests(unittest.TestCase):
                     vocab="conversation",
                     alphabet="en",
                     user_bank=[],
+                    perf_mode="nofx" if flipped else "default",
+                    client_fps=8.7,
                 )
                 output = {"mirrored_to_right_hand": flipped, "n_frames": 3}
                 save_request(str(case_dir), request, output, metadata, 0.5)
@@ -206,6 +208,8 @@ class SyntheticFixtureTests(unittest.TestCase):
                 self.assertAlmostEqual(result["fps_actual_recorded"], 10.0)
                 self.assertEqual(record["result"]["mirrored_to_right_hand"], flipped)
                 self.assertNotIn("flipped", record["result"]["hand_canonicalization"])
+                self.assertEqual(record["perf_mode"], "nofx" if flipped else "default")
+                self.assertAlmostEqual(record["client_fps"], 8.7)
                 self.assertEqual(len(record["frames"]), 3)
                 self.assertNotIn("hand_canonicalization", output)
 
@@ -233,6 +237,8 @@ class SyntheticFixtureTests(unittest.TestCase):
             with gzip.open(cache_path, "rt", encoding="utf-8") as fh:
                 record = json.load(fh)
         self.assertNotIn("hand_canonicalization", record["result"])
+        self.assertNotIn("perf_mode", record)
+        self.assertNotIn("client_fps", record)
         self.assertFalse(diagnose_record(record | {"frames": [self._diagnostic_frame(0)]}, cache_path.name)["request_flipped"])
 
     def test_canonical_hands_metadata_preserves_existing_decision(self):

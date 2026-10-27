@@ -39,6 +39,12 @@ def save_request(
                 for key in ("sentence", "language", "face", "timings_ms", "duration_s", "mirrored_to_right_hand")
             },
         )
+        perf_mode = getattr(req, "perf_mode", None)
+        client_fps = getattr(req, "client_fps", None)
+        if perf_mode is not None:
+            record["perf_mode"] = perf_mode
+        if client_fps is not None:
+            record["client_fps"] = client_fps
         if hand_canonicalization is not None:
             record["result"]["hand_canonicalization"] = hand_canonicalization
         # Keep embeddings out of the cache; the response still carries them for user teaching.

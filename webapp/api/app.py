@@ -109,6 +109,8 @@ class TranslateRequest(BaseModel):
     user_bank: list[MySign] = []                # this user's confirmed signs (personal sign memory, kept by the client)
     alphabet: str = "en"                        # fingerspelled letters: en (A–Z) | th (ก–ฮ, vowels) | both | off
     spell_only: bool = False                    # this utterance is fingerspelling only (the "สะกดอย่างเดียว" button)
+    perf_mode: str | None = None                 # optional client live-capture diagnostic mode
+    client_fps: float | None = None              # optional FPS measured from captured frame timestamps
 
 
 def _speak(result, tentative=False):
