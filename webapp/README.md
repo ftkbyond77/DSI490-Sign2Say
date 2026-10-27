@@ -42,6 +42,13 @@ and, when request caching is enabled, live API requests record `perf_mode` plus 
 `cache/live_requests/`. Compare against the normal URL using the same camera, signer, lighting and signing pace. Without the query
 flag, behavior is unchanged. To revert, remove `?perf=nofx` (or reload the normal URL).
 
+**Live framing guide (opt-out):** in live mode a transparent frame is shown while waiting to sign, with a reminder to keep both
+shoulders, elbows and hands in view. Debounced messages appear during a sign if shoulders are missing, arms leave the frame, or a
+previously detected hand disappears for more than 0.5 s. A per-utterance `guide_warning_count` is recorded in local request cache
+when saving is enabled and appears in the per-request CSV from `Boom/phase2.2/live_hand_body_diag.py`. Use the live-mode button to
+toggle the guide and warnings; `?guide=off` forces both off for an A/B comparison. Remove that query parameter to restore the
+default-on guide. These hints do not modify captured landmarks, MediaPipe settings or translation.
+
 **Speed / robustness, chosen automatically per machine:** MediaPipe runs fully on the GPU when the browser's WebGL can run the
 face-expression model; on GPUs where that model fails ("No support of const") it runs body / hands / face mesh on the GPU every frame
 and the expressions on the CPU every 5th frame (≈ 1.5–3× faster than CPU-only); otherwise CPU only. A frame that fails never stops

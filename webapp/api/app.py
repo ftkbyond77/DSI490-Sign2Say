@@ -111,6 +111,7 @@ class TranslateRequest(BaseModel):
     spell_only: bool = False                    # this utterance is fingerspelling only (the "สะกดอย่างเดียว" button)
     perf_mode: str | None = None                 # optional client live-capture diagnostic mode
     client_fps: float | None = None              # optional FPS measured from captured frame timestamps
+    guide_warning_count: int | None = None       # optional live framing guidance warning count
 
 
 def _speak(result, tentative=False):

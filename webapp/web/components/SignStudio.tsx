@@ -21,6 +21,10 @@ const MIN_SIGN_MS = 600;       // the model's shortest sign is 14 frames at 25 f
 const LIVE_MIN_MS = 1200;      // live mode: a scratch / adjusting the body is shorter than a signed word with its hold
 const LIVE_MIN_UP_MS = 600;    // … and the hands must have been up (signing height) this long in total
 const BASELINE_FRAMES = 75;    // resting face (hands down) kept for the experimental question cue
+const GUIDE_WARNING_DEBOUNCE_MS = 350;
+const GUIDE_WARNING_CLEAR_MS = 800;
+const GUIDE_HAND_MISSING_MS = 500;
+const GUIDE_MARGINS = { top: 0.13, right: 0.08, bottom: 0.08, left: 0.08 };
 
 const STAGE_TH: Record<string, string> = {
   browser: "MediaPipe ในเบราว์เซอร์ (แยกจุด landmark)", upload: "ส่งข้อมูลให้เซิร์ฟเวอร์", received: "เซิร์ฟเวอร์รับข้อมูลแล้ว",
@@ -50,6 +54,14 @@ export default function SignStudio() {
   const statusRef = useRef<Status>("idle");
   const modeRef = useRef<Mode>("manual");
   const live = useRef({ state: "waiting" as "waiting" | "signing", pre: [] as LmFrame[], utt: [] as LmFrame[], upSince: 0, lastUp: 0, start: 0 });
+  const guidance = useRef({
+    handSeenAt: { left: 0, right: 0 },
+    warningCount: 0,
+    candidate: "",
+    candidateSince: 0,
+    displayed: "",
+    clearSince: 0,
+  });
   const fpsRef = useRef({ n: 0, t: 0 });
   const errRef = useRef({ n: 0, switching: false });
   const restRef = useRef<number[][]>([]);
@@ -62,6 +74,9 @@ export default function SignStudio() {
   const [status, setStatus] = useState<Status>("idle");
   const [mode, setMode] = useState<Mode>("manual");
   const [perfNoFx, setPerfNoFx] = useState(false);
+  const [guideEnabled, setGuideEnabled] = useState(true);
+  const [guideForcedOff, setGuideForcedOff] = useState(false);
+  const guideEnabledRef = useRef(true);
   const [opts, setOpts] = useState<Options>({ vocab: "conversation", llm: true, speak: "confident", faceQuestion: false, alphabet: "en" });
   const [nFrames, setNFrames] = useState(0);
   const [fps, setFps] = useState(0);
@@ -89,6 +104,7 @@ export default function SignStudio() {
   const [model, setModel] = useState<{ version?: string; conversation_concepts?: number; concepts_full?: number; llm?: boolean } | null>(null);
   const optsRef = useRef(opts);
   optsRef.current = opts;
+  guideEnabledRef.current = guideEnabled;
 
   const set = (s: Status) => { statusRef.current = s; setStatus(s); };
 
@@ -96,6 +112,9 @@ export default function SignStudio() {
     info().then(setModel).catch(() => setModel(null));
     vocabList().then(setVocab).catch(() => setVocab([]));
     setPerfNoFx(new URLSearchParams(window.location.search).get("perf") === "nofx");
+    const guideOff = new URLSearchParams(window.location.search).get("guide") === "off";
+    setGuideForcedOff(guideOff);
+    setGuideEnabled(!guideOff);
     setOpts((o) => ({ ...o, ...load<Partial<Options>>("thaislm.opts.v3", {}) }));     // v3: earlier saved settings (full vocabulary …) reset
     setEndMs(load("thaislm.endMs", 1500)); setAutoLight(load("thaislm.autoLight", false)); refreshSigns();
   }, []);
@@ -142,13 +161,20 @@ export default function SignStudio() {
   };
 
   const request = useCallback((frames: LmFrame[], w: number, h: number, onProgress: (x: Progress) => void, signal?: AbortSignal,
-    capturePerf?: { mode: "default" | "nofx"; fps?: number }) => {
+    capturePerf?: { mode: "default" | "nofx"; fps?: number; guideWarningCount?: number }) => {
     const rest = restRef.current;
     return translateFramesStream(frames, w, h, optsRef.current, onProgress, rest.length >= 10 ? median(rest) : null, signal, capturePerf);
   }, []);
 
   /** frames → server (progress streamed back) → card + speech. */
-  const send = useCallback(async (frames: LmFrame[], w: number, h: number, source: "manual" | "live", ready?: Promise<TranslateResult | null>) => {
+  const send = useCallback(async (
+    frames: LmFrame[],
+    w: number,
+    h: number,
+    source: "manual" | "live",
+    ready?: Promise<TranslateResult | null>,
+    guideWarningCount?: number,
+  ) => {
     const why = check(frames, source);
     if (why) { if (source === "live") setLiveNote(why); else setError(why); return false; }
     setError(""); setLiveNote("");
@@ -159,6 +185,7 @@ export default function SignStudio() {
         const capturePerf = source === "live" ? {
           mode: perfNoFx ? "nofx" as const : "default" as const,
           fps: duration > 0 ? (frames.length - 1) * 1000 / duration : undefined,
+          guideWarningCount,
         } : undefined;
         r = await request(frames, w, h, setProgress, undefined, capturePerf);
       }
@@ -232,18 +259,60 @@ export default function SignStudio() {
       if (statusRef.current === "recording") { framesRef.current.push(f); if (framesRef.current.length % 5 === 0) setNFrames(framesRef.current.length); }
       if (modeRef.current === "live" && (statusRef.current === "camera" || statusRef.current === "processing")) {
         const L = live.current;
+        const guide = guidance.current;
+        if (f.lh.length === 21) guide.handSeenAt.left = t;
+        if (f.rh.length === 21) guide.handSeenAt.right = t;
         if (L.state === "waiting") {
           L.pre.push(f); while (L.pre.length && t - L.pre[0].t > LIVE_PREROLL_MS) L.pre.shift();
           if (up) { if (!L.upSince) L.upSince = t; } else L.upSince = 0;
-          if (L.upSince && t - L.upSince >= LIVE_UP_MS) { L.state = "signing"; L.utt = [...L.pre]; L.start = t; L.lastUp = t; setLiveState("signing"); setLiveNote(""); }
+          if (L.upSince && t - L.upSince >= LIVE_UP_MS) {
+            L.state = "signing"; L.utt = [...L.pre]; L.start = t; L.lastUp = t;
+            if (guide.handSeenAt.left > 0) guide.handSeenAt.left = t;
+            if (guide.handSeenAt.right > 0) guide.handSeenAt.right = t;
+            guide.warningCount = 0; guide.candidate = ""; guide.candidateSince = 0; guide.displayed = ""; guide.clearSince = 0;
+            setLiveState("signing"); setLiveNote("");
+          }
         } else {
           L.utt.push(f);
           if (up) L.lastUp = t;
+          if (guideEnabledRef.current) {
+            const pointInFrame = (index: number) => {
+              const point = f.pose[index];
+              return !!point && point[3] > 0.5 && point[0] >= 0 && point[0] <= 1 && point[1] >= 0 && point[1] <= 1;
+            };
+            const shouldersVisible = pointInFrame(11) && pointInFrame(12);
+            let warning = "";
+            if (!shouldersVisible) warning = "หันตัวเข้ากล้อง ให้เห็นไหล่ทั้งสองข้าง";
+            else if (![13, 14, 15, 16].every(pointInFrame)) warning = "ถอยหลังให้เห็นแขน";
+            else if (
+              (guide.handSeenAt.left > 0 && t - guide.handSeenAt.left > GUIDE_HAND_MISSING_MS && f.lh.length !== 21)
+              || (guide.handSeenAt.right > 0 && t - guide.handSeenAt.right > GUIDE_HAND_MISSING_MS && f.rh.length !== 21)
+            ) warning = "ยกมือเข้ากรอบ";
+
+            if (warning) {
+              guide.clearSince = 0;
+              if (guide.candidate !== warning) { guide.candidate = warning; guide.candidateSince = t; }
+              else if (t - guide.candidateSince >= GUIDE_WARNING_DEBOUNCE_MS && guide.displayed !== warning) {
+                guide.displayed = warning; guide.warningCount++; setLiveNote(warning);
+              }
+            } else {
+              guide.candidate = ""; guide.candidateSince = 0;
+              if (guide.displayed) {
+                if (!guide.clearSince) guide.clearSince = t;
+                if (t - guide.clearSince >= GUIDE_WARNING_CLEAR_MS) {
+                  guide.displayed = ""; guide.clearSince = 0; setLiveNote("");
+                }
+              }
+            }
+          }
           if (t - L.lastUp >= endRef.current || t - L.start >= LIVE_MAX_MS) {
             const frames = L.utt.filter((x) => x.t <= L.lastUp + 400);
+            const guideWarningCount = guide.warningCount;
+            guide.candidate = ""; guide.candidateSince = 0; guide.displayed = ""; guide.clearSince = 0;
+            setLiveNote("");
             L.state = "waiting"; L.pre = []; L.utt = []; L.upSince = 0;
             setLiveState("processing");
-            send(frames, v.videoWidth, v.videoHeight, "live").finally(() => setLiveState(live.current.state));
+            send(frames, v.videoWidth, v.videoHeight, "live", undefined, guideWarningCount).finally(() => setLiveState(live.current.state));
           }
         }
       }
@@ -331,6 +400,15 @@ export default function SignStudio() {
           <video ref={videoRef} playsInline muted className="mirror"
             style={autoLight && (tone.brightness !== 1 || tone.contrast !== 1) ? { filter: `brightness(${tone.brightness.toFixed(2)}) contrast(${tone.contrast.toFixed(2)})` } : undefined} />
           <canvas ref={canvasRef} className="mirror overlay" />
+          {camOn && mode === "live" && liveState !== "signing" && guideEnabled && <div
+            className="live-guide"
+            style={{
+              top: `${GUIDE_MARGINS.top * 100}%`,
+              right: `${GUIDE_MARGINS.right * 100}%`,
+              bottom: `${GUIDE_MARGINS.bottom * 100}%`,
+              left: `${GUIDE_MARGINS.left * 100}%`,
+            }}
+          ><span>ให้อยู่ในกรอบ: ไหล่ · ศอก · มือ</span></div>}
           {!camOn && <div className="placeholder">กด “เปิดกล้อง” เพื่อเริ่ม<br /><small>MediaPipe Holistic ทำงานในเบราว์เซอร์ของคุณ — ส่งเฉพาะจุด landmark ไปที่เซิร์ฟเวอร์</small></div>}
           {camOn && <div className="hud">{delegate && `${delegate} · `}{perfNoFx && mode === "live" ? "nofx · " : ""}{fps} fps · {mode === "live" ? (liveState === "signing" ? "● กำลังทำท่า" : liveState === "processing" ? "… กำลังแปล" : "รอยกมือ") : status === "recording" ? `● REC ${nFrames} เฟรม` : status === "recorded" ? `${nFrames} เฟรม พร้อมประมวลผล` : "พร้อม"}</div>}
           {camOn && exposure && <div className="exposure">ปรับภาพอัตโนมัติ: {exposure}</div>}
@@ -347,6 +425,17 @@ export default function SignStudio() {
           </div>
           {mode === "live" && <label className="small">จบประโยคเมื่อลดมือนาน <select value={endMs} onChange={(e) => setEndMs(Number(e.target.value))}>
             {LIVE_END_OPTIONS.map((ms) => <option key={ms} value={ms}>{(ms / 1000).toFixed(1)} วินาที</option>)}</select></label>}
+          {mode === "live" && <button onClick={() => {
+            const enabled = !guideEnabled;
+            guideEnabledRef.current = enabled;
+            setGuideEnabled(enabled);
+            if (!enabled) {
+              guidance.current.candidate = ""; guidance.current.candidateSince = 0;
+              guidance.current.displayed = ""; guidance.current.clearSince = 0;
+              setLiveNote("");
+            }
+          }} aria-pressed={guideEnabled} disabled={guideForcedOff}>
+            {guideForcedOff ? "ปิดคำแนะนำด้วย ?guide=off" : guideEnabled ? "ปิดกรอบ/คำแนะนำ" : "เปิดกรอบ/คำแนะนำ"}</button>}
           {mode === "manual" && camOn && <>
             <button className="rec" onClick={start} disabled={status === "recording" || status === "processing"}>เริ่ม</button>
             <button onClick={stop} disabled={status !== "recording"}>หยุด</button>

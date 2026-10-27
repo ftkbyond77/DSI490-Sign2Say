@@ -41,10 +41,13 @@ def save_request(
         )
         perf_mode = getattr(req, "perf_mode", None)
         client_fps = getattr(req, "client_fps", None)
+        guide_warning_count = getattr(req, "guide_warning_count", None)
         if perf_mode is not None:
             record["perf_mode"] = perf_mode
         if client_fps is not None:
             record["client_fps"] = client_fps
+        if guide_warning_count is not None:
+            record["guide_warning_count"] = guide_warning_count
         if hand_canonicalization is not None:
             record["result"]["hand_canonicalization"] = hand_canonicalization
         # Keep embeddings out of the cache; the response still carries them for user teaching.

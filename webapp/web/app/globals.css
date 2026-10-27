@@ -17,6 +17,8 @@ main { max-width: 1280px; margin: 0 auto; padding: 16px; }
 .viewport { position: relative; aspect-ratio: 16 / 9; max-height: 80vh; background: #000; border-radius: 10px; overflow: hidden; outline: 3px solid transparent; transition: outline-color .2s; }
 .viewport.rec { outline-color: #ef4444; }
 .viewport video, .viewport canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.live-guide { position: absolute; border: 2px dashed rgba(125, 211, 252, .9); border-radius: 12px; box-shadow: inset 0 0 0 9999px rgba(14, 116, 144, .08); pointer-events: none; }
+.live-guide span { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); white-space: nowrap; border-radius: 6px; padding: 3px 8px; background: rgba(0, 0, 0, .55); color: #e0f2fe; font-size: .8rem; }
 .mirror { transform: scaleX(-1); }
 .placeholder { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; color: #cbd5e1; padding: 16px; }
 .placeholder small { color: #94a3b8; }

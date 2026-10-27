@@ -240,6 +240,7 @@ def _flip_metrics(record: dict[str, Any]) -> dict[str, Any]:
     metrics["hand_gap_s_recorded"] = record.get("hand_gap_s", "")
     metrics["n_frames_recorded"] = record.get("n_frames", "")
     metrics["fps_actual_recorded"] = record.get("fps_actual", "")
+    metrics["guide_warning_count"] = record.get("guide_warning_count", "")
     return metrics
 
 
@@ -359,6 +360,7 @@ def _write_summary(path: Path, rows: list[dict[str, Any]], hand_gap_s: float) ->
         "right_hand_visible_rate",
         "left_hand_full_rate",
         "right_hand_full_rate",
+        "guide_warning_count",
         "nose_visible_rate",
         "left_shoulder_visible_rate",
         "right_shoulder_visible_rate",
