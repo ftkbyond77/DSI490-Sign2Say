@@ -133,13 +133,29 @@ are `left`/`right` or `L`/`R`. It counts changes only between adjacent frames
 where both labels exist. Without labels it reports `ไม่มีข้อมูล` and does not
 infer handedness.
 
-Separately, the diagnostic checks the saved `result` object for explicit
-boolean fields whose names contain `mirror` or `flip`, and reports their
-availability, positive flag count and per-request flipped indicator/fraction.
-The summary reports flipped request count and fraction among requests with such
-metadata. Current `webapp/api/app.py::_save_request` persists only selected
-result keys and may omit `mirrored_to_right_hand`; no result flip is inferred
-from absent data.
+The sign-api cache writer now stores the existing `result.mirrored_to_right_hand`
+flip boolean and a `result.hand_canonicalization` summary containing dominant
+hand, dominant-hand activity share, the `0.62` decision margin, decision rule
+and reason. The summary is returned internally by the same canonicalization
+calculation that determines the existing flip; it does not change predictions
+or the API response. Cache records also store top-level `hand_gap_s`, `n_frames`
+and timestamp-derived `fps_actual`. No additional landmark coordinates or face
+data are added. The diagnostic prefers `hand_canonicalization.flipped` and
+falls back to legacy explicit boolean result keys when absent. Old cache files
+remain readable and report flip metadata as `ไม่มีข้อมูล`; other old fields
+remain derived from their recorded frames.
+
+To check a newly recorded request locally, perform one sentence in the web app
+with request saving enabled, then run:
+
+```sh
+Boom/venv-sign2say/bin/python Boom/phase2.2/live_hand_body_diag.py
+```
+
+Open `cache/phase2.2/hand_body_diag/summary.md` and confirm the request's
+`Flip data` column says `มีข้อมูล` and its `Flipped` value is `True` or `False`.
+The per-request CSV additionally shows the decision reason/share and recorded
+`hand_gap_s`, frame count and estimated FPS.
 
 `scripts/replay_live.py` is not a faithful replay of saved request settings:
 its `--vocab` and `--alphabet` values come from command-line options (defaults

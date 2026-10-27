@@ -416,11 +416,29 @@ def dominant_hand(kp, sc, hw, thr=0.3):
     return ("L", e["L"] / tot) if e["L"] > e["R"] else ("R", e["R"] / tot)
 
 
+def _canonicalize_hands(kp, sc, hw, margin):
+    side, share = dominant_hand(kp, sc, hw)
+    mirrored = side == "L" and share >= margin
+    if mirrored:
+        kp, sc = mirror(kp, sc)
+    return kp, sc, mirrored, side, share
+
+
+def canonical_hands_with_metadata(kp, sc, hw, margin=0.62):
+    """Canonicalize hands and return the already-computed decision inputs for diagnostics."""
+    kp, sc, mirrored, side, share = _canonicalize_hands(kp, sc, hw, margin)
+    metadata = {
+        "dominant_hand": side,
+        "dominant_hand_share": float(share),
+        "flip_margin": float(margin),
+        "decision_rule": "mirror when dominant_hand is L and dominant_hand_share >= flip_margin",
+        "flip_reason": "left_dominant_share_meets_margin" if mirrored else "left_dominant_share_below_margin_or_right_dominant",
+    }
+    return kp, sc, mirrored, metadata
+
+
 def canonical_hands(kp, sc, hw, margin=0.62):
     """Mirror a left-dominant signer into a right-dominant one (training clips, bank and every query go through this), so the
     model never has to learn both handednesses of a sign. Returns kp, sc, mirrored."""
-    side, share = dominant_hand(kp, sc, hw)
-    if side == "L" and share >= margin:
-        k, s = mirror(kp, sc)
-        return k, s, True
-    return kp, sc, False
+    kp, sc, mirrored, _, _ = _canonicalize_hands(kp, sc, hw, margin)
+    return kp, sc, mirrored
