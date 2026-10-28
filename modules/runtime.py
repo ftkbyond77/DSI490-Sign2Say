@@ -147,6 +147,17 @@ class Bank:
         return out
 
 
+def variant_lut(concepts, variants):
+    """[C] concept index → the index it is read as. variants {"สวัสดี (อายุเท่ากันหรือน้อยกว่า)": "สวัสดี", …}: a style / school /
+    politeness variant of a word is that word (models/vocab_conversation.json "variants"; v8.1)."""
+    cidx = {c: i for i, c in enumerate(concepts)}
+    lut = np.arange(len(concepts))
+    for v, base in variants.items():
+        if v in cidx and base in cidx:
+            lut[cidx[v]] = cidx[base]
+    return lut
+
+
 def table_from_Z(Z, wins, bank: Bank, null_proto, topk=50):
     """Window embeddings → the decoder's table: top-k concepts, z-statistics over the vocabulary, similarity to the null prototype."""
     if not len(wins):

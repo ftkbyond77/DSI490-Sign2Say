@@ -21,6 +21,7 @@ if (_root / "modules").is_dir() and str(_root) not in sys.path:      # running f
 
 import base64
 import json
+import logging
 import os
 import queue
 import tempfile
@@ -56,6 +57,7 @@ def pipe(vocab="conversation", llm=True) -> SignPipeline:
     with _lock:
         if key not in _pipes:
             _pipes[key] = SignPipeline(MODEL_DIR, backend="onnx", device=os.environ.get("ORT_DEVICE", "cpu"), vocab=vocab, use_llm=llm)
+            logging.getLogger("sign-api").info("model_version=%s model_dir=%s backend=%s", _pipes[key].cfg.get("version", "unknown"), MODEL_DIR, _pipes[key].be.name)
         return _pipes[key]
 
 
@@ -132,8 +134,10 @@ def _speak(result, tentative=False):
 
 
 def _public(result):
-    keep = ("title", "duration_s", "n_frames", "signer_visible_frac", "signing_frac", "mirrored_to_right_hand", "sentence", "vocab", "model", "timings_ms")
+    keep = ("title", "duration_s", "n_frames", "signer_visible_frac", "signing_frac", "mirrored_to_right_hand", "sentence", "vocab", "model", "model_version", "timings_ms")
     out = {k: result.get(k) for k in keep}
+    if result.get("hand_canonicalization") is not None:
+        out["hand_canonicalization"] = result["hand_canonicalization"]
     out["segments"] = [dict(t0=s["t0"], t1=s["t1"], status=s["status"], word=s["nearest"], p=round(s.get("p_correct", 0), 3), kind=s.get("kind", "sign"),
                             candidates=[dict(word=c["word"], score=c.get("score"), ai_prob=c.get("ai_prob"), pose_score=c.get("pose_score"), fused_score=c.get("fused_score")) for c in s["candidates"][:5]],
                             **({"symbolic": s["symbolic"]} if "symbolic" in s else {}), **({"emb": _vec_to_b64(s["emb"])} if "emb" in s else {}))

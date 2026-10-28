@@ -1,0 +1,35 @@
+# Standalone forward-only project. Nothing here addresses the existing thaislm project.
+services:
+  gateway:
+    image: nginx:1.27-alpine
+    volumes:
+      - ../../webapp/gateway/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "${V81_PORT:-18080}:80"
+    depends_on:
+      web:
+        condition: service_started
+      sign-api:
+        condition: service_healthy
+  web:
+    build:
+      context: ../..
+      dockerfile: webapp/web/Dockerfile
+    environment:
+      NODE_ENV: production
+  sign-api:
+    build:
+      context: ../..
+      dockerfile: webapp/api/Dockerfile
+    volumes:
+      - ${THAISLM_MODELS:?Set an absolute Jack-model directory}:/app/models:ro
+      - ./outputs/isolated_requests:/app/requests
+    environment:
+      THAISLM_MODELS: /app/models
+      THAISLM_SAVE_REQUESTS: /app/requests
+      TTS_URL: http://tts:8001
+      ORT_THREADS: ${ORT_THREADS:-4}
+  tts:
+    build:
+      context: ../..
+      dockerfile: webapp/tts/Dockerfile

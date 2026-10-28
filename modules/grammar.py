@@ -92,21 +92,22 @@ def role_logprob(seq_roles, pat, k=0.5):
     return lp
 
 
-def rerank(segs, role, pat, weight=0.5, topn=3, min_gap=0.03):
+def rerank(segs, role, pat, weight=0.5, topn=3, min_gap=0.03, key="score"):
     """Greedy left-to-right: an uncertain/unknown segment may switch to a candidate within `min_gap` visual score of its top-1
-    when the role sequence log-probability gain × weight exceeds the visual loss. Returns new nearest list."""
+    when the role sequence log-probability gain × weight exceeds the visual loss. Returns new nearest list.
+    key: the candidate quantity the ranking was made with ("support" once the hand cue re-ranks: v8.1)."""
     chosen = [s["nearest"] for s in segs]
     for i, s in enumerate(segs):
         if s.get("status") == "accepted":
             continue
         base_roles = [role.get(w, "OBJ") for w in chosen]
         best_w, best_v = chosen[i], role_logprob(base_roles, pat) * weight
-        top = s["candidates"][0]["score"]
+        top = s["candidates"][0][key]
         for c in s["candidates"][1:topn]:
-            if top - c["score"] > min_gap:
+            if top - c[key] > min_gap:
                 continue
             rs = base_roles.copy(); rs[i] = role.get(c["word"], "OBJ")
-            v = role_logprob(rs, pat) * weight - (top - c["score"]) * 20
+            v = role_logprob(rs, pat) * weight - (top - c[key]) * 20
             if v > best_v + 1e-6:
                 best_w, best_v = c["word"], v
         chosen[i] = best_w

@@ -33,7 +33,7 @@ services:
       context: .
       dockerfile: webapp/api/Dockerfile
     volumes:
-      - ${THAISLM_MODELS_DIR:-./models}:/app/models:ro
+      - ${THAISLM_MODELS:-${THAISLM_MODELS_DIR:-./models}}:/app/models:ro
       - ./cache/live_requests:/app/requests          # diagnosis: each utterance's landmarks + result (no video); set THAISLM_SAVE_REQUESTS= to turn off
     environment:
       - THAISLM_MODELS=/app/models
