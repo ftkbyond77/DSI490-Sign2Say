@@ -1,0 +1,285 @@
+{
+  "v1": {
+    "CER": 0.0005952380952380953,
+    "CER_by_emotion": {
+      "angry": 0.0,
+      "disgust": 0.0,
+      "fear": 0.0,
+      "happy": 0.0,
+      "neutral": 0.0042,
+      "sad": 0.0,
+      "surprise": 0.0
+    },
+    "rtf_gpu": 1.5386558989953305,
+    "rtf_cpu": 293.4688649087994,
+    "n": 168
+  },
+  "old_mms": {
+    "CER": 0.08214799820062978,
+    "n": 12
+  },
+  "emotion_shift": [
+    {
+      "voice": "female",
+      "emotion": "angry",
+      "CER": 0.0,
+      "rtf": 1.547,
+      "d_f0_st": 3.071,
+      "ref_d_f0_st": 3.0,
+      "d_f0_range_st": 3.767,
+      "ref_d_f0_range_st": -0.89,
+      "d_loud_db": -0.059,
+      "ref_d_loud_db": 2.005,
+      "d_rate": 0.0
+    },
+    {
+      "voice": "female",
+      "emotion": "disgust",
+      "CER": 0.0,
+      "rtf": 1.528,
+      "d_f0_st": 2.413,
+      "ref_d_f0_st": 2.7,
+      "d_f0_range_st": 3.89,
+      "ref_d_f0_range_st": -0.76,
+      "d_loud_db": 0.218,
+      "ref_d_loud_db": 0.227,
+      "d_rate": 0.0
+    },
+    {
+      "voice": "female",
+      "emotion": "fear",
+      "CER": 0.0,
+      "rtf": 1.511,
+      "d_f0_st": 1.696,
+      "ref_d_f0_st": 1.1,
+      "d_f0_range_st": -0.653,
+      "ref_d_f0_range_st": -1.38,
+      "d_loud_db": -1.327,
+      "ref_d_loud_db": -0.453,
+      "d_rate": 0.0
+    },
+    {
+      "voice": "female",
+      "emotion": "happy",
+      "CER": 0.0,
+      "rtf": 1.558,
+      "d_f0_st": 0.692,
+      "ref_d_f0_st": 3.25,
+      "d_f0_range_st": 1.188,
+      "ref_d_f0_range_st": -2.46,
+      "d_loud_db": -0.704,
+      "ref_d_loud_db": -1.182,
+      "d_rate": 0.0
+    },
+    {
+      "voice": "female",
+      "emotion": "neutral",
+      "CER": 0.008,
+      "rtf": 1.626,
+      "d_f0_st": 0.0,
+      "ref_d_f0_st": 0.0,
+      "d_f0_range_st": 0.0,
+      "ref_d_f0_range_st": 0.0,
+      "d_loud_db": 0.0,
+      "ref_d_loud_db": 0.0,
+      "d_rate": 0.0
+    },
+    {
+      "voice": "female",
+      "emotion": "sad",
+      "CER": 0.0,
+      "rtf": 1.517,
+      "d_f0_st": -0.621,
+      "ref_d_f0_st": 0.2,
+      "d_f0_range_st": 4.469,
+      "ref_d_f0_range_st": -1.58,
+      "d_loud_db": -0.172,
+      "ref_d_loud_db": -0.769,
+      "d_rate": 0.0
+    },
+    {
+      "voice": "female",
+      "emotion": "surprise",
+      "CER": 0.0,
+      "rtf": 1.5,
+      "d_f0_st": 4.412,
+      "ref_d_f0_st": 4.8,
+      "d_f0_range_st": 1.055,
+      "ref_d_f0_range_st": -2.31,
+      "d_loud_db": -0.921,
+      "ref_d_loud_db": 0.882,
+      "d_rate": 0.0
+    },
+    {
+      "voice": "male",
+      "emotion": "angry",
+      "CER": 0.0,
+      "rtf": 1.532,
+      "d_f0_st": 3.629,
+      "ref_d_f0_st": 4.75,
+      "d_f0_range_st": 3.397,
+      "ref_d_f0_range_st": -2.99,
+      "d_loud_db": 1.111,
+      "ref_d_loud_db": 2.04,
+      "d_rate": 0.0
+    },
+    {
+      "voice": "male",
+      "emotion": "disgust",
+      "CER": 0.0,
+      "rtf": 1.58,
+      "d_f0_st": 1.742,
+      "ref_d_f0_st": 1.9,
+      "d_f0_range_st": 2.822,
+      "ref_d_f0_range_st": 1.19,
+      "d_loud_db": -0.374,
+      "ref_d_loud_db": -0.164,
+      "d_rate": 0.0
+    },
+    {
+      "voice": "male",
+      "emotion": "fear",
+      "CER": 0.0,
+      "rtf": 1.541,
+      "d_f0_st": 6.683,
+      "ref_d_f0_st": 5.25,
+      "d_f0_range_st": 4.614,
+      "ref_d_f0_range_st": -5.09,
+      "d_loud_db": -0.621,
+      "ref_d_loud_db": 1.119,
+      "d_rate": 0.0
+    },
+    {
+      "voice": "male",
+      "emotion": "happy",
+      "CER": 0.0,
+      "rtf": 1.535,
+      "d_f0_st": 0.179,
+      "ref_d_f0_st": 3.1,
+      "d_f0_range_st": 0.514,
+      "ref_d_f0_range_st": -0.56,
+      "d_loud_db": -0.356,
+      "ref_d_loud_db": 0.619,
+      "d_rate": 0.0
+    },
+    {
+      "voice": "male",
+      "emotion": "neutral",
+      "CER": 0.0,
+      "rtf": 1.558,
+      "d_f0_st": 0.0,
+      "ref_d_f0_st": 0.0,
+      "d_f0_range_st": 0.0,
+      "ref_d_f0_range_st": 0.0,
+      "d_loud_db": 0.0,
+      "ref_d_loud_db": 0.0,
+      "d_rate": 0.0
+    },
+    {
+      "voice": "male",
+      "emotion": "sad",
+      "CER": 0.0,
+      "rtf": 1.52,
+      "d_f0_st": -0.246,
+      "ref_d_f0_st": -0.5,
+      "d_f0_range_st": -1.444,
+      "ref_d_f0_range_st": -3.83,
+      "d_loud_db": 0.406,
+      "ref_d_loud_db": -1.691,
+      "d_rate": 0.0
+    },
+    {
+      "voice": "male",
+      "emotion": "surprise",
+      "CER": 0.0,
+      "rtf": 1.489,
+      "d_f0_st": 1.262,
+      "ref_d_f0_st": 3.7,
+      "d_f0_range_st": 1.589,
+      "ref_d_f0_range_st": 1.67,
+      "d_loud_db": -0.436,
+      "ref_d_loud_db": 1.308,
+      "d_rate": 0.0
+    }
+  ],
+  "shift_follows_reference_corr": {
+    "f0_st": 0.7766163524307323,
+    "f0_range_st": -0.0075057239531018905,
+    "loud_db": 0.22178169049012114
+  },
+  "nfe": 32,
+  "examples": [
+    {
+      "text": "สวัสดี ฉันชื่อแจ็ค ฉันชอบแมว",
+      "emotion": "neutral",
+      "voice": "female",
+      "hyp": "สวัสดีฉันชื่อแจ็คฉันชอบแมว"
+    },
+    {
+      "text": "วันนี้ฉันอยากเรียนภาษามือ",
+      "emotion": "happy",
+      "voice": "female",
+      "hyp": "วันนี้ฉันอยากเรียนภาษามือ"
+    },
+    {
+      "text": "ฉันคิดถึงแม่",
+      "emotion": "sad",
+      "voice": "female",
+      "hyp": "ฉันคิดถึงแม่"
+    },
+    {
+      "text": "วันหยุดพ่อชอบไปตลาด",
+      "emotion": "angry",
+      "voice": "female",
+      "hyp": "วันหยุดพ่อชอบไปตลาด"
+    },
+    {
+      "text": "ขอบคุณมากที่ช่วยฉัน",
+      "emotion": "fear",
+      "voice": "female",
+      "hyp": "ขอบคุณมากที่ช่วยฉัน"
+    },
+    {
+      "text": "ฉันเสียใจที่เพื่อนร้องไห้",
+      "emotion": "disgust",
+      "voice": "female",
+      "hyp": "ฉันเสียใจที่เพื่อนร้องไห้"
+    },
+    {
+      "text": "สวัสดี ฉันชื่อแจ็ค ฉันชอบแมว",
+      "emotion": "neutral",
+      "voice": "male",
+      "hyp": "สวัสดี ฉันชื่อแจ็ค ฉันชอบแมว"
+    },
+    {
+      "text": "วันนี้ฉันอยากเรียนภาษามือ",
+      "emotion": "happy",
+      "voice": "male",
+      "hyp": "วันนี้ฉันอยากเรียนภาษามือ"
+    },
+    {
+      "text": "ฉันคิดถึงแม่",
+      "emotion": "sad",
+      "voice": "male",
+      "hyp": "ฉันคิดถึงแม่"
+    },
+    {
+      "text": "วันหยุดพ่อชอบไปตลาด",
+      "emotion": "angry",
+      "voice": "male",
+      "hyp": "วันหยุดพ่อชอบไปตลาด"
+    },
+    {
+      "text": "ขอบคุณมากที่ช่วยฉัน",
+      "emotion": "fear",
+      "voice": "male",
+      "hyp": "ขอบคุณมากที่ช่วยฉัน"
+    },
+    {
+      "text": "ฉันเสียใจที่เพื่อนร้องไห้",
+      "emotion": "disgust",
+      "voice": "male",
+      "hyp": "ฉันเสียใจที่เพื่อนร้องไห้"
+    }
+  ]
+}

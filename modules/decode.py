@@ -369,6 +369,8 @@ FEATS_DEPTH = FEATS + ["log_depth", "z_x_log_depth"]      # per-bank-depth calib
 FEATS_V8 = FEATS + ["prob1", "prob_margin", "cls_rel", "log_depth", "merged"]
 # v8.1: + the hand-shape cue's opinion of the chosen word (z over the vocabulary, and whether the cue alone ranks it first)
 FEATS_V81 = FEATS_V8 + ["hand_z", "hand_agree"]
+# v9: + whether the second encoder (Thai landmark encoder) alone ranks the chosen word first
+FEATS_V9 = FEATS_V81 + ["lm_agree"]
 
 
 def seg_features(segs, feats=None):
@@ -379,7 +381,7 @@ def seg_features(segs, feats=None):
         v = dict(z=s["z"], score=s["score"], margin=s["margin"], null_gap=s["null_gap"], p_sign=s["p_sign"], agree=s["agree"],
                  support_ratio=min(s["support_ratio"], 5.0), len=(s["f1"] - s["f0"]) / 25.0, log_depth=ld, z_x_log_depth=s["z"] * ld,
                  prob1=s.get("prob1", 0.0), prob_margin=s.get("prob_margin", 0.0), cls_rel=s.get("cls_rel", 0.5), merged=float(s.get("merged", 1) > 1),
-                 hand_z=min(max(s.get("hand_z", 0.0), -3.0), 6.0), hand_agree=s.get("hand_agree", 0.0))
+                 hand_z=min(max(s.get("hand_z", 0.0), -3.0), 6.0), hand_agree=s.get("hand_agree", 0.0), lm_agree=s.get("lm_agree", 0.5))
         rows.append([v[f] for f in feats])
     return np.array(rows, np.float32).reshape(-1, len(feats))
 

@@ -17,7 +17,7 @@ DATA = Path(os.environ.get("THAISLM_DATA", ROOT / "cloud_s3"))           # local
 RAW = DATA / "raw_data"                                                  # raw videos / landmarks as published
 PREP = DATA / "data_prep"                                                # standard-schema outputs (this repo builds it; pushed to S3)
 CACHE = ROOT / "cache"                                                   # local scratch (not in git, not on S3)
-MODEL = Path(os.environ.get("THAISLM_MODELS", ROOT / "models" / "Jack-model"))   # the deployable model (main forward = Jack-model; models/<name>-model/, in git, LFS)
+MODEL = Path(os.environ.get("THAISLM_MODELS", ROOT / "models" / "model-v9"))   # the deployable model (main forward = model-v9; v8.1 = Jack-model; in git, LFS)
 PRETRAINED = ART / "pretrained"                                          # Uni-Sign base weights
 
 

@@ -66,6 +66,7 @@ from .fingerspell import EN_LETTERS, NONE, TH_LETTERS, load_speller, spell_runs,
 from .handshape import HandBank, descriptor, fuse
 
 log = get_logger("pipeline")
+NAME_SIGNS = {"ชื่อ", "ชื่อเล่น", "นามสกุล"}       # signs after which a spelled name is expected
 
 
 def merge_repeats(segs, max_gap=12):
@@ -89,6 +90,14 @@ def merge_repeats(segs, max_gap=12):
     return out
 
 
+def lm_bank(path, n_concepts, allowed=None, fold=None):
+    """lm_bank.npz (Z fp16, c, ok) → a runtime.Bank of landmark-encoder embeddings (clips the pose store lacked are skipped)."""
+    z = np.load(path)
+    ok = z["ok"].astype(bool)
+    c = z["c"] if fold is None else fold[z["c"]]
+    return Bank(z["Z"][ok].astype(np.float32), c[ok], n_concepts, allowed)
+
+
 class SignPipeline:
     def __init__(self, model_dir=MODEL, backend="onnx", device="cpu", vocab="conversation", use_llm=True, use_face=True, bank_file=None):
         """bank_file: another bank (e.g. artifacts/eval/bank_eval.npz = training signers only, for honest evaluation)."""
@@ -110,11 +119,21 @@ class SignPipeline:
         # v8.1 hand-shape cue: descriptors of the same bank's clips (models/hand_bank.npz, or hand_<bank_file name> next to it)
         hf = Path(bank_file).with_name("hand_" + Path(bank_file).name) if bank_file else md / "hand_bank.npz"
         self.bank.hand = HandBank.load(hf, len(self.concepts), allowed, self.fold) if hf.exists() else None
+        # v9 second opinion: the Thai-only landmark encoder (modules/lmenc.py) and its bank (lm_bank.npz, or lm_<bank_file name>)
+        lf = Path(bank_file).with_name("lm_" + Path(bank_file).name) if bank_file else md / "lm_bank.npz"
+        self.lm = None
+        if lf.exists() and (md / "onnx" / "lmenc.onnx").exists():
+            from .lmenc import OnnxLM
+            self.lm = OnnxLM(md / "onnx" / "lmenc.onnx")
+            self.bank.lm = lm_bank(lf, len(self.concepts), allowed, self.fold)
+        else:
+            self.bank.lm = None
         self.null_proto = np.load(md / "null_proto.npy").astype(np.float32)
         spot = read_json(md / "spotting.json")
         self.spot_all = spot
         self.spot = spot.get(vocab, spot) if isinstance(spot.get(vocab), dict) else spot
         cal = read_json(md / "segment_calibration.json")
+        self.cal_all = cal
         self.cal = cal.get(vocab, cal) if isinstance(cal.get(vocab), dict) else cal
         self.lr = LogReg.from_dict(self.cal["model"])
         # a word is shown / spoken / used in the sentence only when its calibrated P(correct) ≥ accept_min (users: "80+ or don't guess")
@@ -132,6 +151,13 @@ class SignPipeline:
         self.roles = read_json(md / "roles.json") if (md / "roles.json").exists() else {}
         self.lang_roles = read_json(md / "roles_language.json") if (md / "roles_language.json").exists() else self.roles
         self.use_llm, self.use_face = use_llm, use_face
+        # v9 face emotion model (a separate folder, models/face-model): THAISLM_FACE_MODEL, else <models>/face-model next to this one
+        import os
+        fdir = Path(os.environ.get("THAISLM_FACE_MODEL", md.parent / "face-model"))
+        self.face_model = None
+        if use_face and (fdir / "face_emotion.npz").exists():
+            from .face_model import FaceEmotion
+            self.face_model = FaceEmotion.load(fdir)
         self.collect_pairs = None             # tuning only: a list that receives the merge-pair features (scripts/decision.py)
         self.collect_splits = None            # tuning only: the same for the split test's candidate cuts
         # fingerspelling: letter recogniser + letter bank (second opinion through the sign encoder); settings in spotting.json "spell"
@@ -181,7 +207,7 @@ class SignPipeline:
             m = np.mean(zs[-3:], 0)
             Z.append(m / (np.linalg.norm(m) + 1e-8)); c.append(cidx[w])
         ub = Bank(np.r_[self.bank.Z, np.stack(Z)], np.r_[self.bank.c, np.array(c)], len(self.concepts))
-        ub.hand = self.bank.hand
+        ub.hand, ub.lm, ub.personal = self.bank.hand, getattr(self.bank, "lm", None), True
         return ub
 
     def _spot(self, kpi, sc, prob, present, H, bank=None):
@@ -309,7 +335,11 @@ class SignPipeline:
         for run in runs:
             ps = [e["p"] for e in run]
             if len(run) == 1 and ps[0] < cfg["single_min"]:
-                continue                                    # one weak handshape inside word signing is not spelling
+                # v9: a lone letter right after a name sign ("ชื่อ J") is how a name is spelled — lower bar there only
+                prev = [s for s in out if s["status"] != "transition" and s.get("kind") != "letter" and s["f1"] <= run[0]["f0"] + 4
+                        and run[0]["f0"] - s["f1"] <= cfg.get("name_gap", 50)]
+                if not (prev and prev[-1]["nearest"] in NAME_SIGNS and ps[0] >= cfg.get("single_after_name", 2.0)):
+                    continue                                # one weak handshape inside word signing is not spelling
             if float(np.mean(ps)) < cfg.get("run_min", 0.0):
                 continue
             a, b = run[0]["f0"], run[-1]["f1"]
@@ -346,8 +376,25 @@ class SignPipeline:
 
     def back(self, st, bank=None, raw=False):
         """front() state → sign segments with calibrated status (spotting · split-sign merge · calibration · decision · transition /
-        repeat filters · grammar re-rank · repeat merge). raw=True stops after spotting (tuning re-runs decide() many times)."""
+        repeat filters · grammar re-rank · repeat merge). raw=True stops after spotting (tuning re-runs decide() many times).
+        v9: a personal bank (the user's own confirmed signs) runs with the "enrolled" settings of spotting.json /
+        segment_calibration.json when the model ships them (v9: v8.1's — on tune sentences of an enrolled signer the v9 settings
+        did not beat them, and the landmark encoder has no personal examples to add)."""
         bank = bank or self.bank
+        enr = self.spot_all.get("enrolled") if getattr(bank, "personal", False) else None
+        if enr:
+            keep = (self.spot, self.cal, self.lr)
+            self.spot = enr[self.vocab] if self.vocab in enr else enr
+            cal = self.cal_all.get("enrolled") or self.cal
+            self.cal = dict(cal, tau_accept=max(float(cal.get("tau_accept", 0.0)), float(self.spot_all.get("accept_min", 0.8))))
+            self.lr = LogReg.from_dict(self.cal["model"])
+            try:
+                return self._back(st, bank, raw)
+            finally:
+                self.spot, self.cal, self.lr = keep
+        return self._back(st, bank, raw)
+
+    def _back(self, st, bank, raw=False):
         prob, present, T = st["prob"], st["present"], len(st["prob"])
         f = st["f"]
         if f > 1.0:
@@ -379,18 +426,37 @@ class SignPipeline:
         fused with the hand-shape cue (modules/handshape.py) at weight spot["hand_w"] (chosen on tune data). Segmentation is
         untouched; the decoder's reading stays in "window_top1"."""
         w = float(self.spot.get("hand_w", 0.0))
+        rd = self.spot.get("read", {})              # v9 reader: multi-crop span reading + the landmark encoder's opinion
         hb = getattr(bank, "hand", None)
         if not segs or not w or hb is None or self.span is None or st.get("H") is None:
             return segs
         spans = [(s["f0"], max(s["f1"], s["f0"] + 1)) for s in segs]
         f = st.get("f", 1.0)
         if f > 1.0 and st.get("H2") is not None:     # fast signing: read the span where the decoder read it (trained pace)
-            T2 = len(st["H2"])
-            enc = bank.scores(self.span(st["H2"], [(min(int(a * f), T2 - 1), min(max(int(round(b * f)), int(a * f) + 1), T2)) for a, b in spans]))
+            HH, T2 = st["H2"], len(st["H2"])
+            sp = [(min(int(a * f), T2 - 1), min(max(int(round(b * f)), int(a * f) + 1), T2)) for a, b in spans]
         else:
-            enc = bank.scores(self.span(st["H"], spans))
+            HH, sp = st["H"], spans
+        enc = bank.scores(self.span(HH, sp))
+        if rd.get("crops"):     # boundary-robust reading: the span ± a sixth of its length on either side (5 readings averaged)
+            T_ = len(HH)
+            crops = []
+            for a, b in sp:
+                d = max(2, (b - a) // 6)
+                crops += [(max(0, a - d), min(T_, b + d)), (a + d, max(a + d + 1, b - d)), (a, max(a + 1, b - d)), (min(a + d, b - 1), b)]
+            ce = bank.scores(self.span(HH, crops)).reshape(len(sp), 4, -1)
+            enc = np.where(enc > -1.5, (enc + ce.sum(1)) / 5, enc)
         hand = hb.scores(np.stack([descriptor(st["kpi"], st["sc"], a, b) for a, b in spans]))
-        for s, e, h, f in zip(segs, enc, hand, fuse(enc, hand, w)):
+        fused = fuse(enc, hand, w)
+        lw, lb = float(rd.get("lm_w", 0.0)), getattr(bank, "lm", None)
+        lm_top = None
+        if lw and lb is not None and self.lm is not None:
+            lm = lb.scores(self.lm.spans(st["kpi"], st["sc"], spans))
+            fused = fuse(fused, lm, lw)
+            lm_top = lm.argmax(1)
+        for k, (s, e, h, f) in enumerate(zip(segs, enc, hand, fused)):
+            if lm_top is not None:
+                s["lm_agree"] = float(int(lm_top[k]) == int(np.argmax(f)))
             o = np.argsort(-f)[:5]
             hv = h > -1.5
             zh = (h - h[hv].mean()) / (h[hv].std() + 1e-6) if hv.sum() > 2 else np.zeros_like(h)
@@ -408,6 +474,9 @@ class SignPipeline:
             candidate_probs(segs, self.cal["temperature"])
         class_features(segs, self.concepts, self.class_prior)
         P = self.lr.predict(seg_features(segs, getattr(self.lr, "feats", None))) if segs else np.zeros(0)
+        iso = self.cal.get("isotonic")           # v9: monotone re-mapping of P(correct) fitted out-of-fold on tune (flatter ECE)
+        if iso and len(P):
+            P = np.interp(P, iso["x"], iso["y"])
         decide(segs, P, self.cal)
         postprocess(segs, self.spot)
         mh = self.spot.get("post", {}).get("min_hand_frac", 0.0)
@@ -476,12 +545,20 @@ class SignPipeline:
             say("face", 0.7)
             t = time.perf_counter()
             face = analyse(raw, [(s["f0"], s["f1"]) for s in segs if s["status"] != "transition"], baseline_bs=face_baseline)
-            tm["face_ms"] = (time.perf_counter() - t) * 1000
             if face_question:               # experimental: the furrow cue (not validated on held-out signers) marks yes/no questions
                 face["question_yesno"] = bool(face.get("question_furrow"))
                 cues = cues + ("question_yesno",)
             else:
                 face["question_yesno"] = False
+            if self.face_model is not None:     # v9: learned face emotion + fusion with the signed words and the signing energy
+                from .face_model import fuse_affect, signing_energy
+                fr = self.face_model.analyse(raw, [(s["f0"], s["f1"]) for s in segs if s["status"] != "transition"])
+                en, en_th = signing_energy(kpi, sc, segs)
+                aff = fuse_affect(fr, segs, en, en_th, grammar=face)
+                face.update(rule_emotion=face.get("emotion"), emotion=aff["emotion"], emotion_th=aff["emotion_th"], intensity=aff["intensity"],
+                            affect=dict(aff, face_only={k: fr.get(k) for k in ("emotion", "probs", "confidence", "evidence", "explanation_th")},
+                                        per_segment=fr.get("per_segment", [])))
+            tm["face_ms"] = (time.perf_counter() - t) * 1000
         from .language import compose_sentence
         say("language", 0.8)
         t = time.perf_counter()

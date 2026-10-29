@@ -6,6 +6,24 @@ layer write a Thai sentence from the evidence (never beyond it) — and speaks i
 Results: `result_reporting/result_v7.md` · file map: `result_reporting/file_structure.pdf` · lab: `lab.ipynb`.
 
 
+## v9 — recognition · calibration · face emotion · speech (prompt_13)
+
+Report: `result_reporting/result_v9.md` (+ pdf) · lab: `lab3.ipynb` · models: `models/model-v9/` (forward, Docker default) ·
+`models/face-model/` · `models/speech-model-v1/`. All settings chosen on tune data (`python main.py decision tune --start v8.1`); $0 cloud.
+* **Diagnosis first** (`python main.py diagnose ledger`): TSL51 errors are recognition, not segmentation (perfect naming on the current
+  segments → WER 0.065; perfect segments with the current reader → 0.26).
+* **Second recogniser**: the Thai-only landmark encoder (`onnx/lmenc.onnx`, `lm_bank.npz`) fused with Uni-Sign + hand cue; grammar
+  re-rank off; isotonic calibration, τ_accept 0.92 → 0.88 (accepted precision ≥ 0.90 on every tune set); lone letters 0.95 / 0.7 after
+  "ชื่อ"; enrolled users (personal bank) run with the v8.1 settings (they win there).
+* Held-out WER v8.1 → v9: TSL51 1× / 1.5× / 2× 0.309 / 0.284 / 0.292 → **0.296 / 0.263 / 0.274** · unseen-signer words 0.257 → **0.243**
+  · fluent 0.411 → **0.378** · iPhone sentences 0.126 → **0.097** · team-drive per performance 0.550 → **0.508**; accepted words ×1.5–2.
+  Enrolled signer (own word clips in the bank): TSL51 **0.119 / 0.109 / 0.137**.
+* **Face emotion** (`modules/face_model.py`): 7 emotions from MediaPipe blendshapes, RAVDESS + neutral signing, explained in Thai,
+  fused with the signed words and signing energy → `result.face.affect`, API `face.affect`.
+* **Speech v1** (`modules/speech.py`, speech env `D:/SLM-labs/envs/speech`): F5-TTS-THAI cloned from emotion references (ElevenLabs
+  teacher) — CER 0.06 % vs 8.2 % (old voice), needs a GPU; Qwen3-ASR-0.6B (LoRA tried, not default: hurts real speech).
+* **Streaming** (`modules/stream.py`): partial → confirmed words while signing, compute counted.
+
 ## v8.1 — recognition (prompt_12): hand-shape cue, automatic fingerspelling, จีน / ประเทศ
 
 Report: `result_reporting/result_v8-1.md` (+ pdf) · lab: `lab2.ipynb` → "2. After Tuning". Models unchanged; CPU only ($0); every setting chosen
@@ -59,7 +77,7 @@ docker compose up --build                            # web demo → http://local
 ```bash
 conda activate hugging                               # Python 3.10, see requirements.txt
 git lfs install && git lfs pull                      # model weights are in Git LFS
-python main.py infer --video path/to/video.mp4       # translate a video with models/Jack-model/ (ONNX Runtime; --backend torch for the GPU)
+python main.py infer --video path/to/video.mp4       # translate a video with models/model-v9/ (ONNX Runtime; --backend torch for the GPU)
 python main.py test                                  # data_test/ end-to-end from the raw videos + scores
 jupyter lab lab.ipynb                                # data, latent space, tagger, segmentation, results, self-made sentence tests
 ```
@@ -71,7 +89,7 @@ jupyter lab lab.ipynb                                # data, latent space, tagge
 |---|---|---|
 | `main.py` | the only CLI entry point (infer · test · data · prep · extract · harvest · cloud · train-seq · eval · export-onnx) | ✓ |
 | `docker-compose.yml`, `webapp/` | web demo: `web` (Next.js) · `sign-api` (FastAPI + ONNX Runtime) · `tts` (MMS-TTS Thai) · `gateway` (nginx) — see `webapp/README.md` | ✓ |
-| `models/` | **the forward models**, one complete model folder each: `Boom-model/` · `Pitty-model/` · `Jack-model/` (main, default `MODEL`) — everything inference loads (+ `onnx/`, `mediapipe/`). Compared in `modeling_compare.ipynb` | ✓ (LFS) |
+| `models/` | **the forward models**, one complete model folder each: `model-v9/` (main, default `MODEL`, Docker) · `Jack-model/` (v8.1) · `Boom-model/` · `Pitty-model/`; + `face-model/` (face emotion) · `speech-model-v1/` (voice + ASR) | ✓ (LFS) |
 | `modules/` | library (see below) | ✓ |
 | `scripts/` | pipeline steps: `data_prep.py` · `extract_mp.py` · `harvest_words.py` · `eval.py` · `export_onnx.py` · `infer.py` · `make_lab.py` · `s3_sync.py` · `md_to_pdf.py` · `pretrained.py` · `collect/` (v4 raw-data harvester) | ✓ |
 | `GCP/script/` | Vertex AI: `vertex.py` (upload · load-balanced launch · wait · **cleanup**) · `job_entry.py` (training stages) | ✓ |
