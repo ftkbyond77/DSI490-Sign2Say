@@ -39,6 +39,10 @@ def save_request(
                 for key in ("sentence", "language", "face", "timings_ms", "duration_s", "mirrored_to_right_hand", "model_version")
             },
         )
+        # Optional: legacy requests/caches without camera metadata remain valid.
+        camera_capture = (req.model_dump() if hasattr(req, "model_dump") else vars(req)).get("camera_capture")
+        if camera_capture is not None:
+            record["camera_capture"] = camera_capture
         perf_mode = getattr(req, "perf_mode", None)
         client_fps = getattr(req, "client_fps", None)
         if perf_mode is not None:

@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { openWidestCamera } from "@/lib/camera";
+import { openWidestCamera, cameraDiagnostics, type CameraDiagnostics } from "@/lib/camera";
 import { ExpressionModel } from "@/lib/expression";
 import type { HolisticLandmarker } from "@mediapipe/tasks-vision";
 import { createHolistic, detect, draw, EmotionMeter, handsUp, Normalizer, parts, type Delegate, type Emotion, type LmFrame, type Tone } from "@/lib/holistic";
@@ -45,6 +45,15 @@ export default function SignStudio() {
   const nRef = useRef(0);
   const fileLmRef = useRef<{ lm: HolisticLandmarker; t: number } | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
+  const captureRef = useRef<CameraDiagnostics | undefined>(undefined);
+  const [cameraCapture, setCameraCapture] = useState<CameraDiagnostics | undefined>();
+  const captureHistory = useRef<CameraDiagnostics[]>([]);
+  const exportCameraCapture = () => {
+    const data = { schema: 1, camera_capture: captureRef.current, captures: captureHistory.current, results };
+    const url = URL.createObjectURL(new Blob([JSON.stringify(data)], { type: "application/json" }));
+    const a = document.createElement("a"); a.href = url; a.download = `live-camera-wide-${Date.now()}.json`; a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
   const rafRef = useRef<number>(0);
   const framesRef = useRef<LmFrame[]>([]);
   const statusRef = useRef<Status>("idle");
@@ -142,9 +151,9 @@ export default function SignStudio() {
   };
 
   const request = useCallback((frames: LmFrame[], w: number, h: number, onProgress: (x: Progress) => void, signal?: AbortSignal,
-    capturePerf?: { mode: "default" | "nofx"; fps?: number }) => {
+    capturePerf?: { mode: "default" | "nofx"; fps?: number }, cameraCapture?: CameraDiagnostics) => {
     const rest = restRef.current;
-    return translateFramesStream(frames, w, h, optsRef.current, onProgress, rest.length >= 10 ? median(rest) : null, signal, capturePerf);
+    return translateFramesStream(frames, w, h, optsRef.current, onProgress, rest.length >= 10 ? median(rest) : null, signal, capturePerf, cameraCapture);
   }, []);
 
   /** frames → server (progress streamed back) → card + speech. */
@@ -160,7 +169,8 @@ export default function SignStudio() {
           mode: perfNoFx ? "nofx" as const : "default" as const,
           fps: duration > 0 ? (frames.length - 1) * 1000 / duration : undefined,
         } : undefined;
-        r = await request(frames, w, h, setProgress, undefined, capturePerf);
+        const capture = streamRef.current ? cameraDiagnostics(streamRef.current) : captureRef.current;
+        r = await request(frames, w, h, setProgress, undefined, capturePerf, capture);
       }
       setProgress({ stage: "done", p: 1 });
       await handle(r);                         // unsure signs are shown as [?] (no guessed word) so the user can teach them
@@ -263,6 +273,9 @@ export default function SignStudio() {
       }
       const s = await openWidestCamera();
       streamRef.current = s;
+      const capture = cameraDiagnostics(s);
+      captureRef.current = capture; setCameraCapture(capture);
+      if (capture) captureHistory.current.push(capture);
       const v = videoRef.current!;
       v.srcObject = s; await v.play();
       const c = canvasRef.current!; c.width = v.videoWidth; c.height = v.videoHeight;
@@ -353,6 +366,12 @@ export default function SignStudio() {
             <button className="primary" onClick={process} disabled={status !== "recorded"}>ประมวลผล</button>
           </>}
         </div>
+        {cameraCapture && <div className="note">
+          <p>กล้อง wide: {cameraCapture.settings.width}×{cameraCapture.settings.height} · resizeMode none:
+            {cameraCapture.resizeModeNoneSupported === null ? " capabilities ไม่ระบุ" : cameraCapture.resizeModeNoneSupported ? " รองรับ" : " ไม่รองรับ"}
+            {cameraCapture.resizeModeNoneApplied === null ? " · settings ไม่ระบุผล" : cameraCapture.resizeModeNoneApplied ? " · ใช้งานจริง" : " · ไม่ได้ใช้งานจริง"}</p>
+          <button onClick={exportCameraCapture}>บันทึกกล้อง wide และผล (JSON)</button>
+        </div>}
         <div className="controls small">
           <label>เสียงพูด <select value={opts.speak} onChange={(e) => { unlockAudio(); setOpts({ ...opts, speak: e.target.value as Speak }); }}>
             {(Object.keys(SPEAK_TH) as Speak[]).map((s) => <option key={s} value={s}>{SPEAK_TH[s]}</option>)}</select></label>

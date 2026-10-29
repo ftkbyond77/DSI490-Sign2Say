@@ -1,3 +1,4 @@
+import type { CameraDiagnostics } from "./camera";
 import type { LmFrame } from "./holistic";
 import { userBank } from "./mysigns";
 
@@ -60,11 +61,12 @@ async function readStream(r: Response, onProgress: OnProgress): Promise<Translat
 }
 
 export async function translateFramesStream(frames: LmFrame[], width: number, height: number, o: Options, onProgress: OnProgress,
-  faceBaseline?: number[] | null, signal?: AbortSignal, capturePerf?: { mode: "default" | "nofx"; fps?: number }): Promise<TranslateResult> {
+  faceBaseline?: number[] | null, signal?: AbortSignal, capturePerf?: { mode: "default" | "nofx"; fps?: number }, cameraCapture?: CameraDiagnostics): Promise<TranslateResult> {
   const t0 = frames.length ? frames[0].t : 0;
   const body = { frames: frames.map((f) => ({ ...f, t: f.t - t0 })), width, height, vocab: o.vocab, llm: o.llm, speak: o.speak !== "off",
     speak_tentative: o.speak === "all", face_question: o.faceQuestion, face_baseline: faceBaseline ?? null, user_bank: userBank(), alphabet: o.alphabet,
-    ...(capturePerf ? { perf_mode: capturePerf.mode, client_fps: capturePerf.fps } : {}) };
+    ...(capturePerf ? { perf_mode: capturePerf.mode, client_fps: capturePerf.fps } : {}),
+    ...(cameraCapture ? { camera_capture: cameraCapture } : {}) };
   onProgress({ stage: "upload", p: 0.01 });
   return readStream(await fetch("/api/v1/translate/stream", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body), signal }), onProgress);
 }
