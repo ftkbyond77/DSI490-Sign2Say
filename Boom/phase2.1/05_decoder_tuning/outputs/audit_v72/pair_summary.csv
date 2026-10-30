@@ -1,0 +1,10 @@
+pair,tune_pipeline_confusions,n_queries,true_mean,wrong_mean,wrong_max_beats_true,cause,evidence
+ไป → กลับ,8,9,0.5275478826628791,0.6851854589250352,8,unresolved: variant/label/similar pose/automatic boundaries,pair_cosines + nearest_neighbours + visual_review_queue
+เที่ยว → หนึ่ง,3,3,0.2366598298152288,0.27036160230636597,2,unresolved: variant/label/similar pose/automatic boundaries,pair_cosines + nearest_neighbours + visual_review_queue
+ภาษามือ → วิ่ง,6,24,0.2872277417530616,0.14310669790332517,6,unresolved: variant/label/similar pose/automatic boundaries,pair_cosines + nearest_neighbours + visual_review_queue
+กิน → ดู,6,51,0.20215497682711073,0.16827632433862663,12,unresolved: variant/label/similar pose/automatic boundaries,pair_cosines + nearest_neighbours + visual_review_queue
+ข้าว → ไม่มี,3,24,0.21777808852493763,0.10872768816382934,6,unresolved: variant/label/similar pose/automatic boundaries,pair_cosines + nearest_neighbours + visual_review_queue
+ยาย → ที่ไหน,0,18,0.23364785230822033,0.07446158190982209,0,unresolved: variant/label/similar pose/automatic boundaries,pair_cosines + nearest_neighbours + visual_review_queue
+ยาย → ญาติ,14,18,0.23364785230822033,0.27209577626652187,12,unresolved: variant/label/similar pose/automatic boundaries,pair_cosines + nearest_neighbours + visual_review_queue
+คุณ → หนึ่ง,6,24,0.17397900313759843,0.1698781456798315,9,unresolved: variant/label/similar pose/automatic boundaries,pair_cosines + nearest_neighbours + visual_review_queue
+คุณ → ป้า,3,24,0.17397900313759843,0.13646183535456657,13,unresolved: variant/label/similar pose/automatic boundaries,pair_cosines + nearest_neighbours + visual_review_queue

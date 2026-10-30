@@ -35,3 +35,6 @@ export function signWords(): Record<string, number> {
 export function userBank() {
   return loadSigns().map(({ word, z }) => ({ word, z }));
 }
+
+/** Forget every example of one word. */
+export function removeWord(word: string) { store(loadSigns().filter((s) => s.word !== word)); }

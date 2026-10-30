@@ -1,0 +1,17 @@
+video,mode,segment,t0,t1,word,status,p_correct,ground_truth,correctness,top1_covered,top5_covered,left_observed,right_observed,observed_attributes
+ฉันแอบชอบคุณ.MOV,baseline,0,0.32,2.24,แฟน,uncertain,0.38863474422877703,,?,False,False,,,{}
+ฉันแอบชอบคุณ.MOV,baseline,1,2.24,3.68,แต่งงาน,uncertain,0.26044443978364895,,?,False,True,,,{}
+ฉันแอบชอบคุณ.MOV,baseline,2,3.68,4.8,เกิด,unknown,0.03644672360080124,,?,False,True,,,{}
+ฉันแอบชอบคุณ.MOV,baseline,3,5.28,5.92,เป็น,uncertain,0.2539819960347888,,?,False,False,,,{}
+ฉันแอบชอบคุณ.MOV,baseline,4,7.36,8.32,แฟน,unknown,0.20598195451147647,ฉัน,✗,False,False,,,{}
+ฉันแอบชอบคุณ.MOV,baseline,5,8.32,9.92,แต่งงาน,uncertain,0.14318524265725735,แอบ,✗,False,False,,,{}
+ฉันแอบชอบคุณ.MOV,baseline,6,10.08,11.2,ข้าว,unknown,0.07458469522366315,ชอบ,✗,False,False,,,{}
+ฉันแอบชอบคุณ.MOV,baseline,7,11.52,12.8,ถาม,uncertain,0.1190297965939784,คุณ,✗,False,False,,,{}
+ฉันแอบชอบคุณ.MOV,combined_without_csls,0,0.32,2.24,แฟน,uncertain,0.13926912041698783,ฉัน,✗,False,False,,,{}
+ฉันแอบชอบคุณ.MOV,combined_without_csls,1,2.24,3.68,แต่งงาน,uncertain,0.311344301316537,แอบ,✗,False,False,,,{}
+ฉันแอบชอบคุณ.MOV,combined_without_csls,2,3.68,4.8,เหงา,unknown,0.026070495510849723,ชอบ,✗,False,True,,,{}
+ฉันแอบชอบคุณ.MOV,combined_without_csls,3,5.28,5.92,คุณ,unknown,0.07155953058529793,คุณ,✔,False,False,,,{}
+ฉันแอบชอบคุณ.MOV,combined_without_csls,4,7.36,8.32,โสด,unknown,0.041410120951280466,,?,True,True,,,{}
+ฉันแอบชอบคุณ.MOV,combined_without_csls,5,8.32,9.92,แต่งงาน,uncertain,0.11855363638215666,,?,False,False,,,{}
+ฉันแอบชอบคุณ.MOV,combined_without_csls,6,10.08,11.2,หมา,unknown,0.08169353918730907,,?,False,False,,,{}
+ฉันแอบชอบคุณ.MOV,combined_without_csls,7,11.52,12.8,เป็น,uncertain,0.1685237932944836,,?,False,False,,,{}

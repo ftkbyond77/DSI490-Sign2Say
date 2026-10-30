@@ -21,6 +21,7 @@ if (_root / "modules").is_dir() and str(_root) not in sys.path:      # running f
 
 import base64
 import json
+import logging
 import os
 import queue
 import tempfile
@@ -36,6 +37,10 @@ from pydantic import BaseModel, Field
 
 from modules.pipeline import SignPipeline
 from modules.utils import read_json
+if __package__:
+    from .request_cache import save_request
+else:
+    from request_cache import save_request
 
 MODEL_DIR = Path(os.environ.get("THAISLM_MODELS", "/app/models"))
 TTS_URL = os.environ.get("TTS_URL", "http://tts:8001")
@@ -52,6 +57,7 @@ def pipe(vocab="conversation", llm=True) -> SignPipeline:
     with _lock:
         if key not in _pipes:
             _pipes[key] = SignPipeline(MODEL_DIR, backend="onnx", device=os.environ.get("ORT_DEVICE", "cpu"), vocab=vocab, use_llm=llm)
+            logging.getLogger("sign-api").info("model_version=%s model_dir=%s backend=%s", _pipes[key].cfg.get("version", "unknown"), MODEL_DIR, _pipes[key].be.name)
         return _pipes[key]
 
 
@@ -62,6 +68,15 @@ def warm():
     from modules.parts import prep
     rng = np.random.RandomState(0)
     p.be.embed([prep(rng.uniform(0.3, 0.7, (30, 133, 2)).astype(np.float32), np.ones((30, 133), np.float32))])   # first-call latency
+    # pitty: also one whole-utterance pass (encoder over 8 s → tagger → spotting): without it the FIRST real sentence paid ~10 s of
+    # tagger + ~5 s of spotting start-up (measured 2026-10-24: 16.9 s vs 4.3 s for the same 8.8 s utterance). Never blocks start-up.
+    try:
+        T = 200
+        kpi, sc, present = rng.uniform(0.3, 0.7, (T, 133, 2)).astype(np.float32), np.ones((T, 133), np.float32), np.ones(T, bool)
+        prob, H = p._tag(kpi, sc, present)
+        p._spot(kpi, sc, prob, present, H)
+    except Exception as e:  # noqa: BLE001
+        print("warm-up (utterance) skipped:", e)
 
 
 class Frame(BaseModel):
@@ -105,6 +120,9 @@ class TranslateRequest(BaseModel):
     user_bank: list[MySign] = []                # this user's confirmed signs (personal sign memory, kept by the client)
     alphabet: str = "en"                        # fingerspelled letters: en (A–Z) | th (ก–ฮ, vowels) | both | off
     spell_only: bool = False                    # this utterance is fingerspelling only (the "สะกดอย่างเดียว" button)
+    perf_mode: str | None = None                 # optional client live-capture diagnostic mode
+    face_every: int | None = Field(default=None, ge=1)  # optional requested expression cadence
+    client_fps: float | None = None              # optional FPS measured from captured frame timestamps
 
 
 def _speak(result, tentative=False):
@@ -126,10 +144,13 @@ def _speak(result, tentative=False):
 
 
 def _public(result):
-    keep = ("title", "duration_s", "n_frames", "signer_visible_frac", "signing_frac", "mirrored_to_right_hand", "sentence", "vocab", "model", "timings_ms")
+    keep = ("title", "duration_s", "n_frames", "signer_visible_frac", "signing_frac", "mirrored_to_right_hand", "sentence", "vocab", "model", "model_version", "timings_ms")
     out = {k: result.get(k) for k in keep}
+    if result.get("hand_canonicalization") is not None:
+        out["hand_canonicalization"] = result["hand_canonicalization"]
     out["segments"] = [dict(t0=s["t0"], t1=s["t1"], status=s["status"], word=s["nearest"], p=round(s.get("p_correct", 0), 3), kind=s.get("kind", "sign"),
-                            candidates=[c["word"] for c in s["candidates"][:5]], **({"emb": _vec_to_b64(s["emb"])} if "emb" in s else {}))
+                            candidates=[dict(word=c["word"], score=c.get("score"), ai_prob=c.get("ai_prob"), pose_score=c.get("pose_score"), fused_score=c.get("fused_score")) for c in s["candidates"][:5]],
+                            **({"symbolic": s["symbolic"]} if "symbolic" in s else {}), **({"emb": _vec_to_b64(s["emb"])} if "emb" in s else {}))
                        for s in result.get("segments", [])]
     f = result.get("fusion") or {}
     out["language"] = {k: f.get(k) for k in ("sentence_th", "tentative_sentence_th", "meaning_th", "evidence_gloss", "evidence_guard", "provider", "chosen")}
@@ -177,21 +198,8 @@ def _check(req: TranslateRequest):
 SAVE_DIR = os.environ.get("THAISLM_SAVE_REQUESTS", "")      # diagnosis: keep each utterance's landmarks + result (landmarks only, no video)
 
 
-def _save_request(req: TranslateRequest, out: dict):
-    if not SAVE_DIR:
-        return
-    try:
-        import gzip
-        d = Path(SAVE_DIR); d.mkdir(parents=True, exist_ok=True)
-        rec = dict(time=time.strftime("%Y-%m-%d %H:%M:%S"), width=req.width, height=req.height, vocab=req.vocab, alphabet=req.alphabet,
-                   n_user_signs=len(req.user_bank), frames=[f.model_dump() for f in req.frames],
-                   result={k: out.get(k) for k in ("sentence", "language", "face", "timings_ms", "duration_s")})
-        # copies without the embedding — the response itself must keep "emb" (the client saves it when the user teaches a word)
-        rec["result"]["segments"] = [{k: v for k, v in sgm.items() if k != "emb"} for sgm in out.get("segments") or []]
-        with gzip.open(d / f"{time.strftime('%Y%m%d_%H%M%S')}_{int(time.time() * 1000) % 1000:03d}.json.gz", "wt", encoding="utf-8") as fh:
-            json.dump(rec, fh, ensure_ascii=False)
-    except Exception:  # noqa: BLE001  (diagnosis must never break a request)
-        pass
+def _save_request(req: TranslateRequest, out: dict, hand_canonicalization: dict | None, hand_gap_s: float):
+    save_request(SAVE_DIR, req, out, hand_canonicalization, hand_gap_s)
 
 
 def _frames_job(req: TranslateRequest, progress=None):
@@ -209,7 +217,7 @@ def _frames_job(req: TranslateRequest, progress=None):
         out["audio_wav_b64"] = _speak(r, req.speak_tentative)
         out["spoken"] = "sentence" if r.get("sentence") else "tentative"
     out["timings_ms"]["total_ms"] = round((time.perf_counter() - t) * 1000, 1)
-    _save_request(req, out)
+    _save_request(req, out, r.get("hand_canonicalization"), float(p.spot_all.get("hand_gap_s", 0.2)))
     return out
 
 

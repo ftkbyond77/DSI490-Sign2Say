@@ -15,3 +15,11 @@ reverse_text2sign/vrm/*.vrm filter=lfs diff=lfs merge=lfs -text
 # per-person forward models (models/<name>/, scripts/modeling_compare.py setup)
 models/**/*.pt filter=lfs diff=lfs merge=lfs -text
 models/**/*.npz filter=lfs diff=lfs merge=lfs -text
+
+# Experiment model weights and binary arrays
+Boom/**/*.pt filter=lfs diff=lfs merge=lfs -text
+Boom/**/*.pth filter=lfs diff=lfs merge=lfs -text
+Boom/**/*.onnx filter=lfs diff=lfs merge=lfs -text
+Boom/**/*.npz filter=lfs diff=lfs merge=lfs -text
+Boom/**/*.npy filter=lfs diff=lfs merge=lfs -text
+Boom/**/*.task filter=lfs diff=lfs merge=lfs -text

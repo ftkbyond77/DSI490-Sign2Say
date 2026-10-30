@@ -1,0 +1,21 @@
+{
+  "video": "Boom/boom datatest/ฉันแอบชอบคุณ.MOV",
+  "sha256": "4d76c8e3cf06cb0ce8d1a5f60ab5d4409be59cf9f9dac8ae2497921e254863ea",
+  "mediapipe": "1.1.0",
+  "code_sha256": "4d2dff82be397cb93a710abbb497e177e384a5d9d1d9ef7edba3f16241b9f749",
+  "frames": 388,
+  "fps": 29.844599439933017,
+  "elapsed_s": 27.7482117919717,
+  "method": "unvalidated joint-angle rules + causal consensus; not trained handshape classifier",
+  "side": "anatomical MediaPipe L/R; no canonical_hands or auto-flip",
+  "min_palm_px": 14,
+  "extended_angles": [
+    155,
+    150
+  ],
+  "folded_angles": [
+    110,
+    105
+  ],
+  "history_frames": 5
+}

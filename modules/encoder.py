@@ -24,6 +24,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+from .utils import device as resolve_device, inference_precision
 from .schema import USED
 from .parts import MAX_LEN, MODES, prepare_parts, resample_len as _resample_len, to_iso  # noqa: F401
 from .unisign import UniSignPose
@@ -84,7 +85,8 @@ class SignEncoder(nn.Module):
         return F.normalize(z.float(), dim=-1)
 
 
-def collate(parts_list, device="cuda"):
+def collate(parts_list, device=None):
+    device = resolve_device(device)
     L = max(len(p["body"]) for p in parts_list)
     B = len(parts_list)
     out = {m: np.zeros((B, L, parts_list[0][m].shape[1], 3), np.float32) for m in MODES}
@@ -402,8 +404,9 @@ def supcon(z, y, temp=0.07):
 
 # ----------------------------------------------------------------------------- inference helpers
 @torch.no_grad()
-def embed_parts(model, parts_list, bs=256, zero_shot=False, device="cuda"):
+def embed_parts(model, parts_list, bs=256, zero_shot=False, device=None):
     """Embeddings of many clips, longest-similar batches. GPU OOM-safe: a batch that does not fit is halved and retried."""
+    device = str(next(model.parameters()).device) if device is None else resolve_device(device)
     model.eval()
     order = np.argsort([len(p["body"]) for p in parts_list])
     out = np.zeros((len(parts_list), 768), np.float32)
@@ -412,12 +415,12 @@ def embed_parts(model, parts_list, bs=256, zero_shot=False, device="cuda"):
         idx = order[i:i + bs]
         try:
             P, M = collate([parts_list[j] for j in idx], device)
-            with torch.autocast("cuda" if device == "cuda" else "cpu", dtype=torch.bfloat16, enabled=device == "cuda"):
+            with inference_precision(device):
                 z = model(P, M, zero_shot=zero_shot)
             out[idx] = z.float().cpu().numpy()
             i += len(idx)
         except torch.cuda.OutOfMemoryError:
-            del P, M
+            P = M = None
             torch.cuda.empty_cache()
             if bs == 1:
                 raise
@@ -426,8 +429,9 @@ def embed_parts(model, parts_list, bs=256, zero_shot=False, device="cuda"):
 
 
 @torch.no_grad()
-def frame_features(model, kp_iso, sc, device="cuda", chunk=400):
+def frame_features(model, kp_iso, sc, device=None, chunk=400):
     """Contextual frame states [T,768] for a long sequence (chunks of `chunk` frames with 50-frame overlap)."""
+    device = str(next(model.parameters()).device) if device is None else resolve_device(device)
     model.eval()
     T = len(kp_iso)
     out = np.zeros((T, 768), np.float32); wsum = np.zeros(T, np.float32)
@@ -435,7 +439,7 @@ def frame_features(model, kp_iso, sc, device="cuda", chunk=400):
     for a in range(0, max(1, T - 50), step):
         b = min(T, a + chunk)
         P, M = collate([prepare_parts(kp_iso[a:b], sc[a:b])], device)
-        with torch.autocast("cuda", dtype=torch.bfloat16, enabled=device == "cuda"):
+        with inference_precision(device):
             h = model.frames(P, M)[0].float().cpu().numpy()
         w = np.minimum(np.arange(1, b - a + 1), np.arange(b - a, 0, -1)).clip(max=25).astype(np.float32)
         out[a:b] += h * w[:, None]; wsum[a:b] += w
@@ -494,11 +498,12 @@ def retrieval_metrics(S, target, allowed=None):
                 MRR=float((1 / (rank + 1)).mean()), median_rank=float(np.median(rank) + 1))
 
 
-def load_encoder(models_dir, weights=None, device="cuda"):
+def load_encoder(models_dir, weights=None, device=None):
     """Fine-tuned encoder (weights = models/encoder.pt: full state dict, needs only mt5_config.json next to it) or the zero-shot
     Uni-Sign encoder (weights None: artifacts/pretrained/unisign_wlasl_enc.pt)."""
     import json
     from pathlib import Path
+    device = resolve_device(device)
     models_dir = Path(models_dir)
     cfg = json.loads((models_dir / "mt5_config.json").read_text())
     if weights is not None:

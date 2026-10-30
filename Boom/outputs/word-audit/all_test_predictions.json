@@ -1,0 +1,6860 @@
+[
+  {
+    "clip_id": "t51u:กรุงเทพ_var_1_10",
+    "expected": "กรุงเทพ",
+    "predicted": "กรุงเทพ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:กรุงเทพ_var_1_11",
+    "expected": "กรุงเทพ",
+    "predicted": "หนังสือ",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 7
+  },
+  {
+    "clip_id": "t51u:กรุงเทพ_var_1_12",
+    "expected": "กรุงเทพ",
+    "predicted": "คืน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 9
+  },
+  {
+    "clip_id": "t51u:กรุงเทพ_var_1_3",
+    "expected": "กรุงเทพ",
+    "predicted": "อาบน้ำ",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 8
+  },
+  {
+    "clip_id": "t51u:กรุงเทพ_var_1_4",
+    "expected": "กรุงเทพ",
+    "predicted": "อาบน้ำ",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:กรุงเทพ_var_1_5",
+    "expected": "กรุงเทพ",
+    "predicted": "รอ",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:กรุงเทพ_var_1_6",
+    "expected": "กรุงเทพ",
+    "predicted": "กรุงเทพ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:กลัว_var_1_0",
+    "expected": "กลัว",
+    "predicted": "กลัว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:กลัว_var_1_1",
+    "expected": "กลัว",
+    "predicted": "เหนื่อย",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:กลัว_var_1_2",
+    "expected": "กลัว",
+    "predicted": "เหนื่อย",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 3
+  },
+  {
+    "clip_id": "t51u:กลัว_var_1_3",
+    "expected": "กลัว",
+    "predicted": "เหนื่อย",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:กลัว_var_1_4",
+    "expected": "กลัว",
+    "predicted": "นม",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 4
+  },
+  {
+    "clip_id": "t51u:กลัว_var_1_5",
+    "expected": "กลัว",
+    "predicted": "เหนื่อย",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:กลัว_var_1_6",
+    "expected": "กลัว",
+    "predicted": "กลัว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:กิน_var_1_0",
+    "expected": "กิน",
+    "predicted": "กิน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:กิน_var_1_1",
+    "expected": "กิน",
+    "predicted": "อาหาร",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:กิน_var_1_2",
+    "expected": "กิน",
+    "predicted": "กิน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:กิน_var_1_3",
+    "expected": "กิน",
+    "predicted": "กิน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:กิน_var_1_4",
+    "expected": "กิน",
+    "predicted": "ฉัน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 3
+  },
+  {
+    "clip_id": "t51u:กิน_var_1_5",
+    "expected": "กิน",
+    "predicted": "กิน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:กิน_var_1_6",
+    "expected": "กิน",
+    "predicted": "ฉัน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ขนมปัง_var_1_0",
+    "expected": "ขนมปัง",
+    "predicted": "ขนมปัง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขนมปัง_var_1_1",
+    "expected": "ขนมปัง",
+    "predicted": "ขนมปัง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขนมปัง_var_1_2",
+    "expected": "ขนมปัง",
+    "predicted": "ขนมปัง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขนมปัง_var_1_3",
+    "expected": "ขนมปัง",
+    "predicted": "ขนมปัง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขนมปัง_var_1_4",
+    "expected": "ขนมปัง",
+    "predicted": "ขนมปัง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขนมปัง_var_1_5",
+    "expected": "ขนมปัง",
+    "predicted": "รถไฟ",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ขนมปัง_var_1_6",
+    "expected": "ขนมปัง",
+    "predicted": "รถไฟ",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ขอบคุณ_เปิดมือสองข้าง_0",
+    "expected": "ขอบคุณ",
+    "predicted": "ขอบคุณ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขอบคุณ_เปิดมือสองข้าง_1",
+    "expected": "ขอบคุณ",
+    "predicted": "ขอบคุณ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขอบคุณ_เปิดมือสองข้าง_2",
+    "expected": "ขอบคุณ",
+    "predicted": "ขอบคุณ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขอบคุณ_เปิดมือสองข้าง_3",
+    "expected": "ขอบคุณ",
+    "predicted": "ขอบคุณ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขอบคุณ_เปิดมือสองข้าง_4",
+    "expected": "ขอบคุณ",
+    "predicted": "ขอบคุณ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขอบคุณ_เปิดมือสองข้าง_5",
+    "expected": "ขอบคุณ",
+    "predicted": "ขอบคุณ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขอบคุณ_เปิดมือสองข้าง_6",
+    "expected": "ขอบคุณ",
+    "predicted": "ขอบคุณ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขอโทษ_อายุเท่ากันหรือน้อยกว่า_0",
+    "expected": "ขอโทษ",
+    "predicted": "ล้าง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ขอโทษ_อายุเท่ากันหรือน้อยกว่า_1",
+    "expected": "ขอโทษ",
+    "predicted": "ขอโทษ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขอโทษ_อายุเท่ากันหรือน้อยกว่า_2",
+    "expected": "ขอโทษ",
+    "predicted": "ขอโทษ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขอโทษ_อายุเท่ากันหรือน้อยกว่า_3",
+    "expected": "ขอโทษ",
+    "predicted": "ล้าง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ขอโทษ_อายุเท่ากันหรือน้อยกว่า_4",
+    "expected": "ขอโทษ",
+    "predicted": "ล้าง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ขอโทษ_อายุเท่ากันหรือน้อยกว่า_5",
+    "expected": "ขอโทษ",
+    "predicted": "ขอโทษ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขอโทษ_อายุเท่ากันหรือน้อยกว่า_6",
+    "expected": "ขอโทษ",
+    "predicted": "ขอโทษ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ข้าว_var_1_0",
+    "expected": "ข้าว",
+    "predicted": "ข้าว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ข้าว_var_1_1",
+    "expected": "ข้าว",
+    "predicted": "ข้าว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ข้าว_var_1_2",
+    "expected": "ข้าว",
+    "predicted": "ข้าว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ข้าว_var_1_3",
+    "expected": "ข้าว",
+    "predicted": "ผอม",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ข้าว_var_1_4",
+    "expected": "ข้าว",
+    "predicted": "ผอม",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ข้าว_var_1_5",
+    "expected": "ข้าว",
+    "predicted": "น้อย",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ข้าว_var_1_6",
+    "expected": "ข้าว",
+    "predicted": "ผอม",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:คุณ_var_1_0",
+    "expected": "คุณ",
+    "predicted": "ต้อง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 6
+  },
+  {
+    "clip_id": "t51u:คุณ_var_1_1",
+    "expected": "คุณ",
+    "predicted": "ต้อง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:คุณ_var_1_2",
+    "expected": "คุณ",
+    "predicted": "ต้อง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:คุณ_var_1_3",
+    "expected": "คุณ",
+    "predicted": "ต้อง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 8
+  },
+  {
+    "clip_id": "t51u:คุณ_var_1_4",
+    "expected": "คุณ",
+    "predicted": "ต้อง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 17
+  },
+  {
+    "clip_id": "t51u:คุณ_var_1_5",
+    "expected": "คุณ",
+    "predicted": "คุณ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:คุณ_var_1_6",
+    "expected": "คุณ",
+    "predicted": "ต้อง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 3
+  },
+  {
+    "clip_id": "t51u:ง่วง_var_1_0",
+    "expected": "ง่วง",
+    "predicted": "พูด",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 7
+  },
+  {
+    "clip_id": "t51u:ง่วง_var_1_1",
+    "expected": "ง่วง",
+    "predicted": "พูด",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 8
+  },
+  {
+    "clip_id": "t51u:ง่วง_var_1_2",
+    "expected": "ง่วง",
+    "predicted": "พูด",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 10
+  },
+  {
+    "clip_id": "t51u:ง่วง_var_1_3",
+    "expected": "ง่วง",
+    "predicted": "พูด",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 4
+  },
+  {
+    "clip_id": "t51u:ง่วง_var_1_4",
+    "expected": "ง่วง",
+    "predicted": "พูด",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 4
+  },
+  {
+    "clip_id": "t51u:ง่วง_var_1_5",
+    "expected": "ง่วง",
+    "predicted": "พูด",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 4
+  },
+  {
+    "clip_id": "t51u:ง่วง_var_1_6",
+    "expected": "ง่วง",
+    "predicted": "พูด",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 4
+  },
+  {
+    "clip_id": "t51u:ฉัน_var_1_0",
+    "expected": "ฉัน",
+    "predicted": "ฉัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ฉัน_var_1_1",
+    "expected": "ฉัน",
+    "predicted": "เรา",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ฉัน_var_1_2",
+    "expected": "ฉัน",
+    "predicted": "ฉัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ฉัน_var_1_3",
+    "expected": "ฉัน",
+    "predicted": "ฉัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ฉัน_var_1_4",
+    "expected": "ฉัน",
+    "predicted": "ฉัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ฉัน_var_1_5",
+    "expected": "ฉัน",
+    "predicted": "ฉัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ฉัน_var_1_6",
+    "expected": "ฉัน",
+    "predicted": "ฉัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ฉัน_var_2_0",
+    "expected": "ฉัน",
+    "predicted": "ฉัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ฉัน_var_2_1",
+    "expected": "ฉัน",
+    "predicted": "ฉัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ฉัน_var_2_2",
+    "expected": "ฉัน",
+    "predicted": "ฉัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ฉัน_var_2_3",
+    "expected": "ฉัน",
+    "predicted": "ฉัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ฉัน_var_2_4",
+    "expected": "ฉัน",
+    "predicted": "ฉัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ฉัน_var_2_5",
+    "expected": "ฉัน",
+    "predicted": "ฉัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ฉัน_var_2_6",
+    "expected": "ฉัน",
+    "predicted": "ฉัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ชอบ_var_1_0",
+    "expected": "ชอบ",
+    "predicted": "ชอบ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ชอบ_var_1_1",
+    "expected": "ชอบ",
+    "predicted": "ชอบ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ชอบ_var_1_2",
+    "expected": "ชอบ",
+    "predicted": "ชอบ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ชอบ_var_1_3",
+    "expected": "ชอบ",
+    "predicted": "ชอบ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ชอบ_var_1_4",
+    "expected": "ชอบ",
+    "predicted": "ชอบ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ชอบ_var_1_5",
+    "expected": "ชอบ",
+    "predicted": "ชอบ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ชอบ_var_1_6",
+    "expected": "ชอบ",
+    "predicted": "ชอบ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ชื่อ_var_1_0",
+    "expected": "ชื่อ",
+    "predicted": "ชื่อ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ชื่อ_var_1_1",
+    "expected": "ชื่อ",
+    "predicted": "ชื่อ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ชื่อ_var_1_2",
+    "expected": "ชื่อ",
+    "predicted": "ชื่อ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ชื่อ_var_1_3",
+    "expected": "ชื่อ",
+    "predicted": "ชื่อ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ชื่อ_var_1_4",
+    "expected": "ชื่อ",
+    "predicted": "ชื่อ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ชื่อ_var_1_5",
+    "expected": "ชื่อ",
+    "predicted": "ชื่อ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ชื่อ_var_1_6",
+    "expected": "ชื่อ",
+    "predicted": "ชื่อ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ดี_var_1_0",
+    "expected": "ดี",
+    "predicted": "ได้",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ดี_var_1_1",
+    "expected": "ดี",
+    "predicted": "ได้",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ดี_var_1_2",
+    "expected": "ดี",
+    "predicted": "ได้",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ดี_var_1_3",
+    "expected": "ดี",
+    "predicted": "ได้",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ดี_var_1_4",
+    "expected": "ดี",
+    "predicted": "ได้",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ดี_var_1_5",
+    "expected": "ดี",
+    "predicted": "ได้",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ดี_var_1_6",
+    "expected": "ดี",
+    "predicted": "ได้",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ด้วยกัน_var_1_0",
+    "expected": "ด้วยกัน",
+    "predicted": "ด้วยกัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ด้วยกัน_var_1_1",
+    "expected": "ด้วยกัน",
+    "predicted": "ด้วยกัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ด้วยกัน_var_1_10",
+    "expected": "ด้วยกัน",
+    "predicted": "ด้วยกัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ด้วยกัน_var_1_11",
+    "expected": "ด้วยกัน",
+    "predicted": "ด้วยกัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ด้วยกัน_var_1_2",
+    "expected": "ด้วยกัน",
+    "predicted": "ด้วยกัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ด้วยกัน_var_1_3",
+    "expected": "ด้วยกัน",
+    "predicted": "ด้วยกัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ด้วยกัน_var_1_4",
+    "expected": "ด้วยกัน",
+    "predicted": "ด้วยกัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ด้วยกัน_var_1_5",
+    "expected": "ด้วยกัน",
+    "predicted": "ด้วยกัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ด้วยกัน_var_1_6",
+    "expected": "ด้วยกัน",
+    "predicted": "ด้วยกัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ตลาด_var_4_15",
+    "expected": "ตลาด",
+    "predicted": "ตลาด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ตลาด_var_4_16",
+    "expected": "ตลาด",
+    "predicted": "ตลาด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ตลาด_var_4_17",
+    "expected": "ตลาด",
+    "predicted": "ตลาด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ตลาด_var_4_18",
+    "expected": "ตลาด",
+    "predicted": "ตลาด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ตลาด_var_4_19",
+    "expected": "ตลาด",
+    "predicted": "ตลาด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ตลาด_var_4_20",
+    "expected": "ตลาด",
+    "predicted": "ตลาด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ตลาด_var_4_23",
+    "expected": "ตลาด",
+    "predicted": "ตลาด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ตลาด_var_4_24",
+    "expected": "ตลาด",
+    "predicted": "ตลาด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ตลาด_var_4_25",
+    "expected": "ตลาด",
+    "predicted": "ตลาด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ถาม_ทำท่ามือถามไปยังผู้นั้น_0",
+    "expected": "ถาม",
+    "predicted": "หนึ่ง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 3
+  },
+  {
+    "clip_id": "t51u:ถาม_ทำท่ามือถามไปยังผู้นั้น_1",
+    "expected": "ถาม",
+    "predicted": "อะไร",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 9
+  },
+  {
+    "clip_id": "t51u:ถาม_ทำท่ามือถามไปยังผู้นั้น_2",
+    "expected": "ถาม",
+    "predicted": "หนึ่ง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 11
+  },
+  {
+    "clip_id": "t51u:ถาม_ทำท่ามือถามไปยังผู้นั้น_3",
+    "expected": "ถาม",
+    "predicted": "หนึ่ง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 13
+  },
+  {
+    "clip_id": "t51u:ถาม_ทำท่ามือถามไปยังผู้นั้น_4",
+    "expected": "ถาม",
+    "predicted": "หนึ่ง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 12
+  },
+  {
+    "clip_id": "t51u:ถาม_ทำท่ามือถามไปยังผู้นั้น_5",
+    "expected": "ถาม",
+    "predicted": "หนึ่ง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ถาม_ทำท่ามือถามไปยังผู้นั้น_6",
+    "expected": "ถาม",
+    "predicted": "หนึ่ง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 4
+  },
+  {
+    "clip_id": "t51u:ทำงาน_var_2_0",
+    "expected": "ทำงาน",
+    "predicted": "งาน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ทำงาน_var_2_1",
+    "expected": "ทำงาน",
+    "predicted": "งาน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ทำงาน_var_2_2",
+    "expected": "ทำงาน",
+    "predicted": "งาน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ทำงาน_var_2_3",
+    "expected": "ทำงาน",
+    "predicted": "งาน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ทำงาน_var_2_4",
+    "expected": "ทำงาน",
+    "predicted": "งาน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ทำงาน_var_2_5",
+    "expected": "ทำงาน",
+    "predicted": "งาน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ทำงาน_var_2_6",
+    "expected": "ทำงาน",
+    "predicted": "ทำงาน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ทำไม_var_1_0",
+    "expected": "ทำไม",
+    "predicted": "ทำไม",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ทำไม_var_1_1",
+    "expected": "ทำไม",
+    "predicted": "ทำไม",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ทำไม_var_1_2",
+    "expected": "ทำไม",
+    "predicted": "ทำไม",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ทำไม_var_1_3",
+    "expected": "ทำไม",
+    "predicted": "ทำไม",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ทำไม_var_1_4",
+    "expected": "ทำไม",
+    "predicted": "ทำไม",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ทำไม_var_1_5",
+    "expected": "ทำไม",
+    "predicted": "ทำไม",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ทำไม_var_1_6",
+    "expected": "ทำไม",
+    "predicted": "ทำไม",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ที่ไหน_var_1_0",
+    "expected": "ที่ไหน",
+    "predicted": "ที่ไหน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ที่ไหน_var_1_1",
+    "expected": "ที่ไหน",
+    "predicted": "ที่ไหน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ที่ไหน_var_1_2",
+    "expected": "ที่ไหน",
+    "predicted": "ที่ไหน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ที่ไหน_var_1_3",
+    "expected": "ที่ไหน",
+    "predicted": "ที่ไหน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ที่ไหน_var_1_4",
+    "expected": "ที่ไหน",
+    "predicted": "ที่ไหน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ที่ไหน_var_1_5",
+    "expected": "ที่ไหน",
+    "predicted": "ที่ไหน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ที่ไหน_var_1_6",
+    "expected": "ที่ไหน",
+    "predicted": "ที่ไหน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:น้อง_var_1_0",
+    "expected": "น้อง",
+    "predicted": "ไป",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 6
+  },
+  {
+    "clip_id": "t51u:น้อง_var_1_1",
+    "expected": "น้อง",
+    "predicted": "น้อง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:น้อง_var_1_2",
+    "expected": "น้อง",
+    "predicted": "ข้าว",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 14
+  },
+  {
+    "clip_id": "t51u:น้อง_var_1_3",
+    "expected": "น้อง",
+    "predicted": "ข้าว",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 6
+  },
+  {
+    "clip_id": "t51u:น้อง_var_1_4",
+    "expected": "น้อง",
+    "predicted": "ข้าว",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 3
+  },
+  {
+    "clip_id": "t51u:น้อง_var_1_5",
+    "expected": "น้อง",
+    "predicted": "ข้าว",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 3
+  },
+  {
+    "clip_id": "t51u:น้อง_var_1_6",
+    "expected": "น้อง",
+    "predicted": "ข้าว",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 3
+  },
+  {
+    "clip_id": "t51u:บ้าน_var_1_0",
+    "expected": "บ้าน",
+    "predicted": "ศูนย์",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:บ้าน_var_1_1",
+    "expected": "บ้าน",
+    "predicted": "ศูนย์",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:บ้าน_var_1_2",
+    "expected": "บ้าน",
+    "predicted": "บ้าน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:บ้าน_var_1_3",
+    "expected": "บ้าน",
+    "predicted": "บ้าน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:บ้าน_var_1_4",
+    "expected": "บ้าน",
+    "predicted": "บ้าน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:บ้าน_var_1_5",
+    "expected": "บ้าน",
+    "predicted": "บ้าน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:บ้าน_var_1_6",
+    "expected": "บ้าน",
+    "predicted": "ศูนย์",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:พรุ่งนี้_var_1_1",
+    "expected": "พรุ่งนี้",
+    "predicted": "พรุ่งนี้",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:พรุ่งนี้_var_1_10",
+    "expected": "พรุ่งนี้",
+    "predicted": "พรุ่งนี้",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:พรุ่งนี้_var_1_2",
+    "expected": "พรุ่งนี้",
+    "predicted": "พรุ่งนี้",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:พรุ่งนี้_var_1_3",
+    "expected": "พรุ่งนี้",
+    "predicted": "พรุ่งนี้",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:พรุ่งนี้_var_1_4",
+    "expected": "พรุ่งนี้",
+    "predicted": "พรุ่งนี้",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:พรุ่งนี้_var_1_5",
+    "expected": "พรุ่งนี้",
+    "predicted": "พรุ่งนี้",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:พรุ่งนี้_var_1_6",
+    "expected": "พรุ่งนี้",
+    "predicted": "พรุ่งนี้",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:พี่_var_1_0",
+    "expected": "พี่",
+    "predicted": "สูง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:พี่_var_1_1",
+    "expected": "พี่",
+    "predicted": "สูง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 3
+  },
+  {
+    "clip_id": "t51u:พี่_var_1_2",
+    "expected": "พี่",
+    "predicted": "สูง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:พี่_var_1_3",
+    "expected": "พี่",
+    "predicted": "สูง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:พี่_var_1_4",
+    "expected": "พี่",
+    "predicted": "พี่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:พี่_var_1_5",
+    "expected": "พี่",
+    "predicted": "สูง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:พี่_var_1_6",
+    "expected": "พี่",
+    "predicted": "พี่ชาย",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 4
+  },
+  {
+    "clip_id": "t51u:ภาษามือ_var_1_0",
+    "expected": "ภาษามือ",
+    "predicted": "ภาษามือ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ภาษามือ_var_1_1",
+    "expected": "ภาษามือ",
+    "predicted": "ภาษามือ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ภาษามือ_var_1_10",
+    "expected": "ภาษามือ",
+    "predicted": "ภาษามือ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ภาษามือ_var_1_11",
+    "expected": "ภาษามือ",
+    "predicted": "ภาษามือ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ภาษามือ_var_1_2",
+    "expected": "ภาษามือ",
+    "predicted": "ภาษามือ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ภาษามือ_var_1_3",
+    "expected": "ภาษามือ",
+    "predicted": "ภาษามือ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ภาษามือ_var_1_4",
+    "expected": "ภาษามือ",
+    "predicted": "ภาษามือ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ภาษามือ_var_1_5",
+    "expected": "ภาษามือ",
+    "predicted": "ภาษามือ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ภาษามือ_var_1_6",
+    "expected": "ภาษามือ",
+    "predicted": "ภาษามือ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ยาย_var_1_0",
+    "expected": "ยาย",
+    "predicted": "ย่า",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ยาย_var_1_1",
+    "expected": "ยาย",
+    "predicted": "ย่า",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ยาย_var_1_2",
+    "expected": "ยาย",
+    "predicted": "ย่า",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ยาย_var_1_3",
+    "expected": "ยาย",
+    "predicted": "ย่า",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ยาย_var_1_4",
+    "expected": "ยาย",
+    "predicted": "ย่า",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ยาย_var_1_5",
+    "expected": "ยาย",
+    "predicted": "ย่า",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ยาย_var_1_6",
+    "expected": "ยาย",
+    "predicted": "ย่า",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ร้อน_สองมือ_1",
+    "expected": "ร้อน",
+    "predicted": "ร้อน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ร้อน_สองมือ_10",
+    "expected": "ร้อน",
+    "predicted": "ทะเลาะ",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ร้อน_สองมือ_2",
+    "expected": "ร้อน",
+    "predicted": "ร้อน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ร้อน_สองมือ_3",
+    "expected": "ร้อน",
+    "predicted": "ร้อน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ร้อน_สองมือ_4",
+    "expected": "ร้อน",
+    "predicted": "ร้อน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ร้อน_สองมือ_5",
+    "expected": "ร้อน",
+    "predicted": "ร้อน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ร้อน_สองมือ_6",
+    "expected": "ร้อน",
+    "predicted": "ร้อน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:วันนี้_var_1_0",
+    "expected": "วันนี้",
+    "predicted": "ตอนนี้",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:วันนี้_var_1_1",
+    "expected": "วันนี้",
+    "predicted": "ตอนนี้",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:วันนี้_var_1_10",
+    "expected": "วันนี้",
+    "predicted": "ตอนนี้",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:วันนี้_var_1_2",
+    "expected": "วันนี้",
+    "predicted": "ตอนนี้",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:วันนี้_var_1_3",
+    "expected": "วันนี้",
+    "predicted": "ตอนนี้",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:วันนี้_var_1_4",
+    "expected": "วันนี้",
+    "predicted": "ตอนนี้",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:วันนี้_var_1_5",
+    "expected": "วันนี้",
+    "predicted": "วันนี้",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:วันหยุด_var_1_0",
+    "expected": "วันหยุด",
+    "predicted": "วันหยุด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:วันหยุด_var_1_1",
+    "expected": "วันหยุด",
+    "predicted": "วันหยุด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:วันหยุด_var_1_10",
+    "expected": "วันหยุด",
+    "predicted": "วันหยุด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:วันหยุด_var_1_11",
+    "expected": "วันหยุด",
+    "predicted": "วันหยุด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:วันหยุด_var_1_12",
+    "expected": "วันหยุด",
+    "predicted": "วันหยุด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:วันหยุด_var_1_13",
+    "expected": "วันหยุด",
+    "predicted": "วันหยุด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:วันหยุด_var_1_14",
+    "expected": "วันหยุด",
+    "predicted": "วัน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:วันหยุด_var_1_2",
+    "expected": "วันหยุด",
+    "predicted": "วันหยุด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:วันหยุด_var_1_3",
+    "expected": "วันหยุด",
+    "predicted": "วันหยุด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:วันหยุด_var_1_4",
+    "expected": "วันหยุด",
+    "predicted": "วันหยุด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:สบายดี_var_1_0",
+    "expected": "สบายดี",
+    "predicted": "สบายดี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:สบายดี_var_1_1",
+    "expected": "สบายดี",
+    "predicted": "สบายดี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:สบายดี_var_1_2",
+    "expected": "สบายดี",
+    "predicted": "สบายดี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:สบายดี_var_1_3",
+    "expected": "สบายดี",
+    "predicted": "มีความสุข",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:สบายดี_var_1_4",
+    "expected": "สบายดี",
+    "predicted": "สบายดี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:สบายดี_var_1_5",
+    "expected": "สบายดี",
+    "predicted": "สบายดี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:สบายดี_var_1_6",
+    "expected": "สบายดี",
+    "predicted": "มีความสุข",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:สวัสดี_อายุเท่ากันหรือน้อยกว่า_0",
+    "expected": "สวัสดี",
+    "predicted": "สวัสดี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:สวัสดี_อายุเท่ากันหรือน้อยกว่า_1",
+    "expected": "สวัสดี",
+    "predicted": "สวัสดี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:สวัสดี_อายุเท่ากันหรือน้อยกว่า_2",
+    "expected": "สวัสดี",
+    "predicted": "สวัสดี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:สวัสดี_อายุเท่ากันหรือน้อยกว่า_3",
+    "expected": "สวัสดี",
+    "predicted": "สวัสดี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:สวัสดี_อายุเท่ากันหรือน้อยกว่า_4",
+    "expected": "สวัสดี",
+    "predicted": "สวัสดี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:สวัสดี_อายุเท่ากันหรือน้อยกว่า_5",
+    "expected": "สวัสดี",
+    "predicted": "สวัสดี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:สวัสดี_อายุเท่ากันหรือน้อยกว่า_6",
+    "expected": "สวัสดี",
+    "predicted": "สวัสดี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:หูหนวก_var_2_0",
+    "expected": "หูหนวก",
+    "predicted": "หูหนวก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:หูหนวก_var_2_1",
+    "expected": "หูหนวก",
+    "predicted": "หูหนวก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:หูหนวก_var_2_2",
+    "expected": "หูหนวก",
+    "predicted": "เปรี้ยว",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 3
+  },
+  {
+    "clip_id": "t51u:หูหนวก_var_2_3",
+    "expected": "หูหนวก",
+    "predicted": "หูหนวก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:หูหนวก_var_2_4",
+    "expected": "หูหนวก",
+    "predicted": "หูหนวก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:หูหนวก_var_2_5",
+    "expected": "หูหนวก",
+    "predicted": "หลาน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 4
+  },
+  {
+    "clip_id": "t51u:หูหนวก_var_2_6",
+    "expected": "หูหนวก",
+    "predicted": "หูหนวก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:อยู่บ้าน_var_1_10",
+    "expected": "อยู่บ้าน",
+    "predicted": "อยู่บ้าน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:อยู่บ้าน_var_1_11",
+    "expected": "อยู่บ้าน",
+    "predicted": "บ้าน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 7
+  },
+  {
+    "clip_id": "t51u:อยู่บ้าน_var_1_2",
+    "expected": "อยู่บ้าน",
+    "predicted": "อยู่บ้าน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:อยู่บ้าน_var_1_3",
+    "expected": "อยู่บ้าน",
+    "predicted": "บ้าน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:อยู่บ้าน_var_1_4",
+    "expected": "อยู่บ้าน",
+    "predicted": "อยู่บ้าน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:อยู่บ้าน_var_1_5",
+    "expected": "อยู่บ้าน",
+    "predicted": "อยู่บ้าน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:อยู่บ้าน_var_1_6",
+    "expected": "อยู่บ้าน",
+    "predicted": "อยู่บ้าน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:อย่า_var_1_0",
+    "expected": "อย่า",
+    "predicted": "อย่า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:อย่า_var_1_1",
+    "expected": "อย่า",
+    "predicted": "อย่า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:อย่า_var_1_2",
+    "expected": "อย่า",
+    "predicted": "ไม่ใช่",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 3
+  },
+  {
+    "clip_id": "t51u:อย่า_var_1_3",
+    "expected": "อย่า",
+    "predicted": "อย่า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:อย่า_var_1_4",
+    "expected": "อย่า",
+    "predicted": "ไม่ใช่",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:อย่า_var_1_5",
+    "expected": "อย่า",
+    "predicted": "อย่า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:อย่า_var_1_6",
+    "expected": "อย่า",
+    "predicted": "อย่า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:อะไร_var_1_0",
+    "expected": "อะไร",
+    "predicted": "ที่ไหน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:อะไร_var_1_1",
+    "expected": "อะไร",
+    "predicted": "ที่ไหน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:อะไร_var_1_2",
+    "expected": "อะไร",
+    "predicted": "ที่ไหน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:อะไร_var_1_3",
+    "expected": "อะไร",
+    "predicted": "ที่ไหน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:อะไร_var_1_4",
+    "expected": "อะไร",
+    "predicted": "ที่ไหน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:อะไร_var_1_5",
+    "expected": "อะไร",
+    "predicted": "ที่ไหน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:อะไร_var_1_6",
+    "expected": "อะไร",
+    "predicted": "ที่ไหน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:เกิด_var_2_0",
+    "expected": "เกิด",
+    "predicted": "อยู่",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 31
+  },
+  {
+    "clip_id": "t51u:เกิด_var_2_1",
+    "expected": "เกิด",
+    "predicted": "อยู่",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 36
+  },
+  {
+    "clip_id": "t51u:เกิด_var_2_10",
+    "expected": "เกิด",
+    "predicted": "พัก",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 83
+  },
+  {
+    "clip_id": "t51u:เกิด_var_2_11",
+    "expected": "เกิด",
+    "predicted": "เสร็จแล้ว",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 70
+  },
+  {
+    "clip_id": "t51u:เกิด_var_2_2",
+    "expected": "เกิด",
+    "predicted": "เสร็จแล้ว",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:เกิด_var_2_3",
+    "expected": "เกิด",
+    "predicted": "อยู่",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 55
+  },
+  {
+    "clip_id": "t51u:เกิด_var_2_4",
+    "expected": "เกิด",
+    "predicted": "วิ่ง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:เช้า_var_1_0",
+    "expected": "เช้า",
+    "predicted": "เช้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เช้า_var_1_1",
+    "expected": "เช้า",
+    "predicted": "เช้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เช้า_var_1_2",
+    "expected": "เช้า",
+    "predicted": "เช้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เช้า_var_1_3",
+    "expected": "เช้า",
+    "predicted": "เช้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เช้า_var_1_4",
+    "expected": "เช้า",
+    "predicted": "เช้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เช้า_var_1_5",
+    "expected": "เช้า",
+    "predicted": "เช้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เช้า_var_1_6",
+    "expected": "เช้า",
+    "predicted": "เช้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เที่ยว_var_1_10",
+    "expected": "เที่ยว",
+    "predicted": "เที่ยว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เที่ยว_var_1_11",
+    "expected": "เที่ยว",
+    "predicted": "เที่ยว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เที่ยว_var_1_2",
+    "expected": "เที่ยว",
+    "predicted": "ที่ไหน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 4
+  },
+  {
+    "clip_id": "t51u:เที่ยว_var_1_3",
+    "expected": "เที่ยว",
+    "predicted": "ที่ไหน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 7
+  },
+  {
+    "clip_id": "t51u:เที่ยว_var_1_4",
+    "expected": "เที่ยว",
+    "predicted": "ที่ไหน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:เที่ยว_var_1_5",
+    "expected": "เที่ยว",
+    "predicted": "ที่ไหน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:เที่ยว_var_1_6",
+    "expected": "เที่ยว",
+    "predicted": "เที่ยว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เรียก_var_1_0",
+    "expected": "เรียก",
+    "predicted": "เรียก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เรียก_var_1_1",
+    "expected": "เรียก",
+    "predicted": "พ่อ",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:เรียก_var_1_2",
+    "expected": "เรียก",
+    "predicted": "เรียก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เรียก_var_1_3",
+    "expected": "เรียก",
+    "predicted": "เรียก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เรียก_var_1_4",
+    "expected": "เรียก",
+    "predicted": "เรียก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เรียก_var_1_5",
+    "expected": "เรียก",
+    "predicted": "พ่อ",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:เรียก_var_1_6",
+    "expected": "เรียก",
+    "predicted": "เรียก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เรียน_var_1_0",
+    "expected": "เรียน",
+    "predicted": "เรียน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เรียน_var_1_1",
+    "expected": "เรียน",
+    "predicted": "เรียน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เรียน_var_1_10",
+    "expected": "เรียน",
+    "predicted": "เรียน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เรียน_var_1_12",
+    "expected": "เรียน",
+    "predicted": "เรียน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เรียน_var_1_13",
+    "expected": "เรียน",
+    "predicted": "เรียน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เรียน_var_1_15",
+    "expected": "เรียน",
+    "predicted": "เรียน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เรียน_var_1_2",
+    "expected": "เรียน",
+    "predicted": "เรียน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เรียน_var_1_3",
+    "expected": "เรียน",
+    "predicted": "เรียน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เรียน_var_1_4",
+    "expected": "เรียน",
+    "predicted": "เรียน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เรียน_var_1_6",
+    "expected": "เรียน",
+    "predicted": "เรียน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เหงา_var_1_10",
+    "expected": "เหงา",
+    "predicted": "เหงา",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เหงา_var_1_11",
+    "expected": "เหงา",
+    "predicted": "ภูมิใจ",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 14
+  },
+  {
+    "clip_id": "t51u:เหงา_var_1_2",
+    "expected": "เหงา",
+    "predicted": "เหงา",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เหงา_var_1_3",
+    "expected": "เหงา",
+    "predicted": "เหงา",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เหงา_var_1_4",
+    "expected": "เหงา",
+    "predicted": "เหงา",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เหงา_var_1_5",
+    "expected": "เหงา",
+    "predicted": "เหงา",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เหงา_var_1_6",
+    "expected": "เหงา",
+    "predicted": "เหงา",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เหนื่อย_var_1_10",
+    "expected": "เหนื่อย",
+    "predicted": "เหนื่อย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เหนื่อย_var_1_11",
+    "expected": "เหนื่อย",
+    "predicted": "เหนื่อย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เหนื่อย_var_1_12",
+    "expected": "เหนื่อย",
+    "predicted": "เหนื่อย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เหนื่อย_var_1_13",
+    "expected": "เหนื่อย",
+    "predicted": "เหนื่อย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เหนื่อย_var_1_3",
+    "expected": "เหนื่อย",
+    "predicted": "เหนื่อย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เหนื่อย_var_1_4",
+    "expected": "เหนื่อย",
+    "predicted": "เหนื่อย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เหนื่อย_var_1_6",
+    "expected": "เหนื่อย",
+    "predicted": "เหนื่อย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แต่งงาน_var_1_0",
+    "expected": "แต่งงาน",
+    "predicted": "แต่งงาน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แต่งงาน_var_1_1",
+    "expected": "แต่งงาน",
+    "predicted": "สามี",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 3
+  },
+  {
+    "clip_id": "t51u:แต่งงาน_var_1_2",
+    "expected": "แต่งงาน",
+    "predicted": "แต่งงาน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แต่งงาน_var_1_3",
+    "expected": "แต่งงาน",
+    "predicted": "แต่งงาน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แต่งงาน_var_1_4",
+    "expected": "แต่งงาน",
+    "predicted": "แต่งงาน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แต่งงาน_var_1_5",
+    "expected": "แต่งงาน",
+    "predicted": "แต่งงาน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แต่งงาน_var_1_6",
+    "expected": "แต่งงาน",
+    "predicted": "แต่งงาน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แฟน_var_1_0",
+    "expected": "แฟน",
+    "predicted": "แฟน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แฟน_var_1_1",
+    "expected": "แฟน",
+    "predicted": "แฟน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แฟน_var_1_2",
+    "expected": "แฟน",
+    "predicted": "แฟน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แฟน_var_1_3",
+    "expected": "แฟน",
+    "predicted": "แฟน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แฟน_var_1_4",
+    "expected": "แฟน",
+    "predicted": "สิบ",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:แฟน_var_1_5",
+    "expected": "แฟน",
+    "predicted": "แฟน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แฟน_var_1_6",
+    "expected": "แฟน",
+    "predicted": "สิบ",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 5
+  },
+  {
+    "clip_id": "t51u:แมว_var_1_0",
+    "expected": "แมว",
+    "predicted": "แมว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แมว_var_1_1",
+    "expected": "แมว",
+    "predicted": "แมว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แมว_var_1_2",
+    "expected": "แมว",
+    "predicted": "แมว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แมว_var_1_3",
+    "expected": "แมว",
+    "predicted": "แมว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แมว_var_1_4",
+    "expected": "แมว",
+    "predicted": "แมว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แมว_var_1_5",
+    "expected": "แมว",
+    "predicted": "แมว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แมว_var_1_6",
+    "expected": "แมว",
+    "predicted": "แมว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แม่_var_1_10",
+    "expected": "แม่",
+    "predicted": "แม่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แม่_var_1_11",
+    "expected": "แม่",
+    "predicted": "ลุง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:แม่_var_1_12",
+    "expected": "แม่",
+    "predicted": "แม่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แม่_var_1_13",
+    "expected": "แม่",
+    "predicted": "แม่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แม่_var_1_4",
+    "expected": "แม่",
+    "predicted": "แม่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แม่_var_1_5",
+    "expected": "แม่",
+    "predicted": "แม่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แม่_var_1_6",
+    "expected": "แม่",
+    "predicted": "แม่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โกรธ_var_1_0",
+    "expected": "โกรธ",
+    "predicted": "โกรธ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โกรธ_var_1_1",
+    "expected": "โกรธ",
+    "predicted": "โกรธ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โกรธ_var_1_10",
+    "expected": "โกรธ",
+    "predicted": "โกรธ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โกรธ_var_1_2",
+    "expected": "โกรธ",
+    "predicted": "โกรธ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โกรธ_var_1_3",
+    "expected": "โกรธ",
+    "predicted": "โกรธ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โกรธ_var_1_5",
+    "expected": "โกรธ",
+    "predicted": "โกรธ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โกรธ_var_1_6",
+    "expected": "โกรธ",
+    "predicted": "โกรธ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โรงเรียน_var_1_0",
+    "expected": "โรงเรียน",
+    "predicted": "สะอาด",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:โรงเรียน_var_1_1",
+    "expected": "โรงเรียน",
+    "predicted": "สะอาด",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 4
+  },
+  {
+    "clip_id": "t51u:โรงเรียน_var_1_10",
+    "expected": "โรงเรียน",
+    "predicted": "โรงเรียน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โรงเรียน_var_1_2",
+    "expected": "โรงเรียน",
+    "predicted": "สะอาด",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 3
+  },
+  {
+    "clip_id": "t51u:โรงเรียน_var_1_4",
+    "expected": "โรงเรียน",
+    "predicted": "น้องสาว",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 5
+  },
+  {
+    "clip_id": "t51u:โรงเรียน_var_1_5",
+    "expected": "โรงเรียน",
+    "predicted": "โรงเรียน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โรงเรียน_var_1_6",
+    "expected": "โรงเรียน",
+    "predicted": "โรงเรียน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โสด_var_1_0",
+    "expected": "โสด",
+    "predicted": "โสด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โสด_var_1_1",
+    "expected": "โสด",
+    "predicted": "โสด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โสด_var_1_2",
+    "expected": "โสด",
+    "predicted": "โสด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โสด_var_1_3",
+    "expected": "โสด",
+    "predicted": "โสด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โสด_var_1_4",
+    "expected": "โสด",
+    "predicted": "โสด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โสด_var_1_5",
+    "expected": "โสด",
+    "predicted": "โสด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โสด_var_1_6",
+    "expected": "โสด",
+    "predicted": "โสด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ไข่_var_2_0",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ไข่_var_2_1",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ไข่_var_2_10",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ไข่_var_2_11",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ไข่_var_2_2",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ไข่_var_2_3",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ไข่_var_2_4",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ไข่_var_2_5",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ไข่_var_2_6",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ไป_var_2_0",
+    "expected": "ไป",
+    "predicted": "ไป",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ไป_var_2_1",
+    "expected": "ไป",
+    "predicted": "ไป",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ไป_var_2_2",
+    "expected": "ไป",
+    "predicted": "กลับ",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ไป_var_2_3",
+    "expected": "ไป",
+    "predicted": "ไป",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ไป_var_2_4",
+    "expected": "ไป",
+    "predicted": "กลับ",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ไป_var_2_5",
+    "expected": "ไป",
+    "predicted": "ไป",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ไป_var_2_6",
+    "expected": "ไป",
+    "predicted": "ไป",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:กรุงเทพ_var_1_7",
+    "expected": "กรุงเทพ",
+    "predicted": "กรุงเทพ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:กรุงเทพ_var_1_8",
+    "expected": "กรุงเทพ",
+    "predicted": "กรุงเทพ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:กรุงเทพ_var_1_9",
+    "expected": "กรุงเทพ",
+    "predicted": "กรุงเทพ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:กลัว_var_1_7",
+    "expected": "กลัว",
+    "predicted": "กลัว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:กลัว_var_1_8",
+    "expected": "กลัว",
+    "predicted": "หนาว",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:กลัว_var_1_9",
+    "expected": "กลัว",
+    "predicted": "กลัว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:กิน_var_1_7",
+    "expected": "กิน",
+    "predicted": "กิน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:กิน_var_1_8",
+    "expected": "กิน",
+    "predicted": "อาหาร",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:กิน_var_1_9",
+    "expected": "กิน",
+    "predicted": "กิน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขนมปัง_var_1_7",
+    "expected": "ขนมปัง",
+    "predicted": "ขนมปัง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขนมปัง_var_1_8",
+    "expected": "ขนมปัง",
+    "predicted": "ลูก",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 4
+  },
+  {
+    "clip_id": "t51u:ขนมปัง_var_1_9",
+    "expected": "ขนมปัง",
+    "predicted": "ขนมปัง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขอบคุณ_เปิดมือสองข้าง_7",
+    "expected": "ขอบคุณ",
+    "predicted": "ขอบคุณ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขอบคุณ_เปิดมือสองข้าง_8",
+    "expected": "ขอบคุณ",
+    "predicted": "ขอบคุณ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขอบคุณ_เปิดมือสองข้าง_9",
+    "expected": "ขอบคุณ",
+    "predicted": "ขอบคุณ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขอโทษ_อายุเท่ากันหรือน้อยกว่า_7",
+    "expected": "ขอโทษ",
+    "predicted": "ขอโทษ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขอโทษ_อายุเท่ากันหรือน้อยกว่า_8",
+    "expected": "ขอโทษ",
+    "predicted": "ขอโทษ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ขอโทษ_อายุเท่ากันหรือน้อยกว่า_9",
+    "expected": "ขอโทษ",
+    "predicted": "ขอโทษ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ข้าว_var_1_7",
+    "expected": "ข้าว",
+    "predicted": "ทำอาหาร",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 4
+  },
+  {
+    "clip_id": "t51u:ข้าว_var_1_8",
+    "expected": "ข้าว",
+    "predicted": "ข้าว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ข้าว_var_1_9",
+    "expected": "ข้าว",
+    "predicted": "ลูก",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 6
+  },
+  {
+    "clip_id": "t51u:คุณ_var_1_7",
+    "expected": "คุณ",
+    "predicted": "ต้อง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 4
+  },
+  {
+    "clip_id": "t51u:คุณ_var_1_8",
+    "expected": "คุณ",
+    "predicted": "คุณ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:คุณ_var_1_9",
+    "expected": "คุณ",
+    "predicted": "เธอ",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 4
+  },
+  {
+    "clip_id": "t51u:ง่วง_var_1_7",
+    "expected": "ง่วง",
+    "predicted": "พูด",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 4
+  },
+  {
+    "clip_id": "t51u:ง่วง_var_1_8",
+    "expected": "ง่วง",
+    "predicted": "พูด",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 4
+  },
+  {
+    "clip_id": "t51u:ง่วง_var_1_9",
+    "expected": "ง่วง",
+    "predicted": "พูด",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 4
+  },
+  {
+    "clip_id": "t51u:ฉัน_var_1_7",
+    "expected": "ฉัน",
+    "predicted": "ฉัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ฉัน_var_1_8",
+    "expected": "ฉัน",
+    "predicted": "ฉัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ฉัน_var_1_9",
+    "expected": "ฉัน",
+    "predicted": "ฉัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ฉัน_var_2_7",
+    "expected": "ฉัน",
+    "predicted": "ฉัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ฉัน_var_2_8",
+    "expected": "ฉัน",
+    "predicted": "ฉัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ฉัน_var_2_9",
+    "expected": "ฉัน",
+    "predicted": "ฉัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ชอบ_var_1_7",
+    "expected": "ชอบ",
+    "predicted": "ชอบ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ชอบ_var_1_8",
+    "expected": "ชอบ",
+    "predicted": "ชอบ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ชอบ_var_1_9",
+    "expected": "ชอบ",
+    "predicted": "ชอบ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ชื่อ_var_1_7",
+    "expected": "ชื่อ",
+    "predicted": "ชื่อ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ชื่อ_var_1_8",
+    "expected": "ชื่อ",
+    "predicted": "ชื่อ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ชื่อ_var_1_9",
+    "expected": "ชื่อ",
+    "predicted": "ชื่อ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ดี_var_1_7",
+    "expected": "ดี",
+    "predicted": "ได้",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 3
+  },
+  {
+    "clip_id": "t51u:ดี_var_1_8",
+    "expected": "ดี",
+    "predicted": "ได้",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 3
+  },
+  {
+    "clip_id": "t51u:ดี_var_1_9",
+    "expected": "ดี",
+    "predicted": "ได้",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ด้วยกัน_var_1_7",
+    "expected": "ด้วยกัน",
+    "predicted": "ด้วยกัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ด้วยกัน_var_1_8",
+    "expected": "ด้วยกัน",
+    "predicted": "ด้วยกัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ด้วยกัน_var_1_9",
+    "expected": "ด้วยกัน",
+    "predicted": "ด้วยกัน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ตลาด_var_4_26",
+    "expected": "ตลาด",
+    "predicted": "ตลาด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ตลาด_var_4_27",
+    "expected": "ตลาด",
+    "predicted": "ตลาด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ตลาด_var_4_28",
+    "expected": "ตลาด",
+    "predicted": "ตลาด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ถาม_ทำท่ามือถามไปยังผู้นั้น_7",
+    "expected": "ถาม",
+    "predicted": "หนึ่ง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 3
+  },
+  {
+    "clip_id": "t51u:ถาม_ทำท่ามือถามไปยังผู้นั้น_8",
+    "expected": "ถาม",
+    "predicted": "หนึ่ง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 8
+  },
+  {
+    "clip_id": "t51u:ถาม_ทำท่ามือถามไปยังผู้นั้น_9",
+    "expected": "ถาม",
+    "predicted": "หนึ่ง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 12
+  },
+  {
+    "clip_id": "t51u:ทำงาน_var_2_7",
+    "expected": "ทำงาน",
+    "predicted": "งาน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ทำงาน_var_2_8",
+    "expected": "ทำงาน",
+    "predicted": "งาน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ทำงาน_var_2_9",
+    "expected": "ทำงาน",
+    "predicted": "งาน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ทำไม_var_1_7",
+    "expected": "ทำไม",
+    "predicted": "ทำไม",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ทำไม_var_1_8",
+    "expected": "ทำไม",
+    "predicted": "ทำไม",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ทำไม_var_1_9",
+    "expected": "ทำไม",
+    "predicted": "ทำไม",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ที่ไหน_var_1_7",
+    "expected": "ที่ไหน",
+    "predicted": "ที่ไหน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ที่ไหน_var_1_8",
+    "expected": "ที่ไหน",
+    "predicted": "ที่ไหน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ที่ไหน_var_1_9",
+    "expected": "ที่ไหน",
+    "predicted": "ที่ไหน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:น้อง_var_1_7",
+    "expected": "น้อง",
+    "predicted": "ข้าว",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 3
+  },
+  {
+    "clip_id": "t51u:น้อง_var_1_8",
+    "expected": "น้อง",
+    "predicted": "น้อง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:น้อง_var_1_9",
+    "expected": "น้อง",
+    "predicted": "ข้าว",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 19
+  },
+  {
+    "clip_id": "t51u:บ้าน_var_1_7",
+    "expected": "บ้าน",
+    "predicted": "บ้าน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:บ้าน_var_1_8",
+    "expected": "บ้าน",
+    "predicted": "ศูนย์",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:บ้าน_var_1_9",
+    "expected": "บ้าน",
+    "predicted": "บ้าน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:พรุ่งนี้_var_1_7",
+    "expected": "พรุ่งนี้",
+    "predicted": "พรุ่งนี้",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:พรุ่งนี้_var_1_8",
+    "expected": "พรุ่งนี้",
+    "predicted": "พรุ่งนี้",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:พรุ่งนี้_var_1_9",
+    "expected": "พรุ่งนี้",
+    "predicted": "พรุ่งนี้",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:พี่_var_1_7",
+    "expected": "พี่",
+    "predicted": "พี่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:พี่_var_1_8",
+    "expected": "พี่",
+    "predicted": "พี่ชาย",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 3
+  },
+  {
+    "clip_id": "t51u:พี่_var_1_9",
+    "expected": "พี่",
+    "predicted": "สูง",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ภาษามือ_var_1_7",
+    "expected": "ภาษามือ",
+    "predicted": "ภาษามือ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ภาษามือ_var_1_8",
+    "expected": "ภาษามือ",
+    "predicted": "ภาษามือ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ภาษามือ_var_1_9",
+    "expected": "ภาษามือ",
+    "predicted": "ภาษามือ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ยาย_var_1_7",
+    "expected": "ยาย",
+    "predicted": "ย่า",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ยาย_var_1_8",
+    "expected": "ยาย",
+    "predicted": "ย่า",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ยาย_var_1_9",
+    "expected": "ยาย",
+    "predicted": "ย่า",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ร้อน_สองมือ_7",
+    "expected": "ร้อน",
+    "predicted": "ทะเลาะ",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:ร้อน_สองมือ_8",
+    "expected": "ร้อน",
+    "predicted": "ร้อน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ร้อน_สองมือ_9",
+    "expected": "ร้อน",
+    "predicted": "ร้อน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:วันนี้_var_1_6",
+    "expected": "วันนี้",
+    "predicted": "วันนี้",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:วันนี้_var_1_7",
+    "expected": "วันนี้",
+    "predicted": "วันนี้",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:วันนี้_var_1_9",
+    "expected": "วันนี้",
+    "predicted": "ตอนนี้",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:วันหยุด_var_1_5",
+    "expected": "วันหยุด",
+    "predicted": "วันหยุด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:วันหยุด_var_1_8",
+    "expected": "วันหยุด",
+    "predicted": "วันหยุด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:วันหยุด_var_1_9",
+    "expected": "วันหยุด",
+    "predicted": "วันหยุด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:สบายดี_var_1_7",
+    "expected": "สบายดี",
+    "predicted": "สบายดี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:สบายดี_var_1_8",
+    "expected": "สบายดี",
+    "predicted": "มีความสุข",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:สบายดี_var_1_9",
+    "expected": "สบายดี",
+    "predicted": "สบายดี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:สวัสดี_อายุเท่ากันหรือน้อยกว่า_7",
+    "expected": "สวัสดี",
+    "predicted": "สวัสดี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:สวัสดี_อายุเท่ากันหรือน้อยกว่า_8",
+    "expected": "สวัสดี",
+    "predicted": "สวัสดี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:สวัสดี_อายุเท่ากันหรือน้อยกว่า_9",
+    "expected": "สวัสดี",
+    "predicted": "สวัสดี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:หูหนวก_var_2_7",
+    "expected": "หูหนวก",
+    "predicted": "หูหนวก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:หูหนวก_var_2_8",
+    "expected": "หูหนวก",
+    "predicted": "ไม่รู้",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:หูหนวก_var_2_9",
+    "expected": "หูหนวก",
+    "predicted": "หูหนวก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:อยู่บ้าน_var_1_7",
+    "expected": "อยู่บ้าน",
+    "predicted": "อยู่บ้าน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:อยู่บ้าน_var_1_8",
+    "expected": "อยู่บ้าน",
+    "predicted": "ทุกคน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:อยู่บ้าน_var_1_9",
+    "expected": "อยู่บ้าน",
+    "predicted": "อยู่บ้าน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:อย่า_var_1_7",
+    "expected": "อย่า",
+    "predicted": "อย่า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:อย่า_var_1_8",
+    "expected": "อย่า",
+    "predicted": "อย่า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:อย่า_var_1_9",
+    "expected": "อย่า",
+    "predicted": "อย่า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:อะไร_var_1_7",
+    "expected": "อะไร",
+    "predicted": "ที่ไหน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:อะไร_var_1_8",
+    "expected": "อะไร",
+    "predicted": "ที่ไหน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:อะไร_var_1_9",
+    "expected": "อะไร",
+    "predicted": "ที่ไหน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:เกิด_var_2_5",
+    "expected": "เกิด",
+    "predicted": "อยู่",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 53
+  },
+  {
+    "clip_id": "t51u:เกิด_var_2_6",
+    "expected": "เกิด",
+    "predicted": "เสร็จแล้ว",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 97
+  },
+  {
+    "clip_id": "t51u:เกิด_var_2_8",
+    "expected": "เกิด",
+    "predicted": "เสร็จแล้ว",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 23
+  },
+  {
+    "clip_id": "t51u:เช้า_var_1_7",
+    "expected": "เช้า",
+    "predicted": "เช้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เช้า_var_1_8",
+    "expected": "เช้า",
+    "predicted": "เช้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เช้า_var_1_9",
+    "expected": "เช้า",
+    "predicted": "เช้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เที่ยว_var_1_7",
+    "expected": "เที่ยว",
+    "predicted": "เที่ยว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เที่ยว_var_1_8",
+    "expected": "เที่ยว",
+    "predicted": "เที่ยว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เที่ยว_var_1_9",
+    "expected": "เที่ยว",
+    "predicted": "เที่ยว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เรียก_var_1_7",
+    "expected": "เรียก",
+    "predicted": "เรียก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เรียก_var_1_8",
+    "expected": "เรียก",
+    "predicted": "เรียก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เรียก_var_1_9",
+    "expected": "เรียก",
+    "predicted": "เรียก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เรียน_var_1_7",
+    "expected": "เรียน",
+    "predicted": "เรียน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เรียน_var_1_8",
+    "expected": "เรียน",
+    "predicted": "เรียน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เรียน_var_1_9",
+    "expected": "เรียน",
+    "predicted": "เรียน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เหงา_var_1_7",
+    "expected": "เหงา",
+    "predicted": "เหงา",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เหงา_var_1_8",
+    "expected": "เหงา",
+    "predicted": "เหงา",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เหงา_var_1_9",
+    "expected": "เหงา",
+    "predicted": "เหงา",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เหนื่อย_var_1_7",
+    "expected": "เหนื่อย",
+    "predicted": "เหนื่อย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เหนื่อย_var_1_8",
+    "expected": "เหนื่อย",
+    "predicted": "เหนื่อย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:เหนื่อย_var_1_9",
+    "expected": "เหนื่อย",
+    "predicted": "เหนื่อย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แต่งงาน_var_1_7",
+    "expected": "แต่งงาน",
+    "predicted": "แต่งงาน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แต่งงาน_var_1_8",
+    "expected": "แต่งงาน",
+    "predicted": "แต่งงาน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แต่งงาน_var_1_9",
+    "expected": "แต่งงาน",
+    "predicted": "แต่งงาน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แฟน_var_1_7",
+    "expected": "แฟน",
+    "predicted": "สิบ",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "t51u:แฟน_var_1_8",
+    "expected": "แฟน",
+    "predicted": "แฟน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แฟน_var_1_9",
+    "expected": "แฟน",
+    "predicted": "สิบ",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 3
+  },
+  {
+    "clip_id": "t51u:แมว_var_1_7",
+    "expected": "แมว",
+    "predicted": "แมว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แมว_var_1_8",
+    "expected": "แมว",
+    "predicted": "แมว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แมว_var_1_9",
+    "expected": "แมว",
+    "predicted": "แมว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แม่_var_1_7",
+    "expected": "แม่",
+    "predicted": "แม่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แม่_var_1_8",
+    "expected": "แม่",
+    "predicted": "แม่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:แม่_var_1_9",
+    "expected": "แม่",
+    "predicted": "แม่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โกรธ_var_1_7",
+    "expected": "โกรธ",
+    "predicted": "โกรธ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โกรธ_var_1_8",
+    "expected": "โกรธ",
+    "predicted": "โกรธ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โกรธ_var_1_9",
+    "expected": "โกรธ",
+    "predicted": "โกรธ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โรงเรียน_var_1_7",
+    "expected": "โรงเรียน",
+    "predicted": "โรงเรียน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โรงเรียน_var_1_8",
+    "expected": "โรงเรียน",
+    "predicted": "โรงเรียน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โรงเรียน_var_1_9",
+    "expected": "โรงเรียน",
+    "predicted": "โรงเรียน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โสด_var_1_7",
+    "expected": "โสด",
+    "predicted": "โสด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โสด_var_1_8",
+    "expected": "โสด",
+    "predicted": "โสด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:โสด_var_1_9",
+    "expected": "โสด",
+    "predicted": "โสด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ไข่_var_2_7",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ไข่_var_2_8",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ไข่_var_2_9",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ไป_var_2_7",
+    "expected": "ไป",
+    "predicted": "ไป",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ไป_var_2_8",
+    "expected": "ไป",
+    "predicted": "ไป",
+    "correct": true,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 1
+  },
+  {
+    "clip_id": "t51u:ไป_var_2_9",
+    "expected": "ไป",
+    "predicted": "เสร็จแล้ว",
+    "correct": false,
+    "covered": true,
+    "signer": "S_51_user",
+    "rank": 2
+  },
+  {
+    "clip_id": "tslone:02_08_0260",
+    "expected": "แม่",
+    "predicted": "แม่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_08_0273",
+    "expected": "อา",
+    "predicted": "น้า",
+    "correct": false,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 2
+  },
+  {
+    "clip_id": "tslone:02_08_0271",
+    "expected": "ป้า",
+    "predicted": "ปู่",
+    "correct": false,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 2
+  },
+  {
+    "clip_id": "tslone:02_08_0279",
+    "expected": "พี่สาว",
+    "predicted": "พี่สาว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_08_0261",
+    "expected": "ลูก",
+    "predicted": "ลูก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_08_0259",
+    "expected": "พ่อ",
+    "predicted": "พ่อ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_08_0283",
+    "expected": "ครอบครัว",
+    "predicted": "ครอบครัว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_08_0263",
+    "expected": "ย่า",
+    "predicted": "ยาย",
+    "correct": false,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 2
+  },
+  {
+    "clip_id": "tslone:02_08_0264",
+    "expected": "ตา",
+    "predicted": "ตา",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_08_0274",
+    "expected": "เพื่อน",
+    "predicted": "เพื่อน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_06_0204",
+    "expected": "เจ็ด",
+    "predicted": "เจ็ด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_06_0205",
+    "expected": "แปด",
+    "predicted": "แปด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_08_0281",
+    "expected": "ญาติ",
+    "predicted": "ญาติ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_08_0280",
+    "expected": "น้องสาว",
+    "predicted": "น้องสาว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_06_0199",
+    "expected": "สอง",
+    "predicted": "สอง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_08_0258",
+    "expected": "ภรรยา",
+    "predicted": "ภรรยา",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_25_0923",
+    "expected": "วิ่ง",
+    "predicted": "วิ่ง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_08_0257",
+    "expected": "สามี",
+    "predicted": "สามี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_01_0002",
+    "expected": "ประเทศไทย",
+    "predicted": "ประเทศไทย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_06_0197",
+    "expected": "ศูนย์",
+    "predicted": "ศูนย์",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_06_0206",
+    "expected": "เก้า",
+    "predicted": "เก้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_08_0277",
+    "expected": "พี่ชาย",
+    "predicted": "พี่ชาย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_08_0278",
+    "expected": "น้องชาย",
+    "predicted": "น้องชาย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_28_0978",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_06_0201",
+    "expected": "สี่",
+    "predicted": "สี่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_06_0203",
+    "expected": "หก",
+    "predicted": "หก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_06_0202",
+    "expected": "ห้า",
+    "predicted": "ห้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_08_0270",
+    "expected": "ลุง",
+    "predicted": "ลุง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_06_0207",
+    "expected": "สิบ",
+    "predicted": "สิบ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_08_0262",
+    "expected": "ปู่",
+    "predicted": "ปู่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_08_0272",
+    "expected": "น้า",
+    "predicted": "อา",
+    "correct": false,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 2
+  },
+  {
+    "clip_id": "tslone:02_08_0265",
+    "expected": "ยาย",
+    "predicted": "ยาย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_06_0200",
+    "expected": "สาม",
+    "predicted": "สาม",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_08_0268",
+    "expected": "หลาน",
+    "predicted": "หลาน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_06_0198",
+    "expected": "หนึ่ง",
+    "predicted": "หนึ่ง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:02_28_0983",
+    "expected": "หมู",
+    "predicted": "หมู",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_08_0260",
+    "expected": "แม่",
+    "predicted": "แม่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_08_0273",
+    "expected": "อา",
+    "predicted": "อา",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_08_0271",
+    "expected": "ป้า",
+    "predicted": "ป้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_08_0279",
+    "expected": "พี่สาว",
+    "predicted": "พี่สาว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_08_0261",
+    "expected": "ลูก",
+    "predicted": "ลูก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_08_0259",
+    "expected": "พ่อ",
+    "predicted": "พ่อ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_08_0283",
+    "expected": "ครอบครัว",
+    "predicted": "ครอบครัว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_08_0263",
+    "expected": "ย่า",
+    "predicted": "นม",
+    "correct": false,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 2
+  },
+  {
+    "clip_id": "tslone:08_08_0264",
+    "expected": "ตา",
+    "predicted": "ตา",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_08_0274",
+    "expected": "เพื่อน",
+    "predicted": "เพื่อน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_06_0204",
+    "expected": "เจ็ด",
+    "predicted": "เจ็ด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_06_0205",
+    "expected": "แปด",
+    "predicted": "แปด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_08_0281",
+    "expected": "ญาติ",
+    "predicted": "ญาติ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_08_0280",
+    "expected": "น้องสาว",
+    "predicted": "น้องสาว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_06_0199",
+    "expected": "สอง",
+    "predicted": "สอง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_08_0258",
+    "expected": "ภรรยา",
+    "predicted": "ภรรยา",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_25_0923",
+    "expected": "วิ่ง",
+    "predicted": "วิ่ง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_08_0257",
+    "expected": "สามี",
+    "predicted": "สามี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_01_0002",
+    "expected": "ประเทศไทย",
+    "predicted": "ประเทศไทย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_06_0197",
+    "expected": "ศูนย์",
+    "predicted": "ศูนย์",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_06_0206",
+    "expected": "เก้า",
+    "predicted": "เก้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_08_0277",
+    "expected": "พี่ชาย",
+    "predicted": "ปู่",
+    "correct": false,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 4
+  },
+  {
+    "clip_id": "tslone:08_08_0278",
+    "expected": "น้องชาย",
+    "predicted": "น้องชาย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_28_0978",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_06_0201",
+    "expected": "สี่",
+    "predicted": "สี่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_06_0203",
+    "expected": "หก",
+    "predicted": "หก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_06_0202",
+    "expected": "ห้า",
+    "predicted": "ห้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_08_0270",
+    "expected": "ลุง",
+    "predicted": "ลุง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_06_0207",
+    "expected": "สิบ",
+    "predicted": "สิบ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_08_0262",
+    "expected": "ปู่",
+    "predicted": "ป้า",
+    "correct": false,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 2
+  },
+  {
+    "clip_id": "tslone:08_08_0272",
+    "expected": "น้า",
+    "predicted": "น้ำ",
+    "correct": false,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 2
+  },
+  {
+    "clip_id": "tslone:08_08_0265",
+    "expected": "ยาย",
+    "predicted": "ยาย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_06_0200",
+    "expected": "สาม",
+    "predicted": "สาม",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_08_0268",
+    "expected": "หลาน",
+    "predicted": "หลาน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_06_0198",
+    "expected": "หนึ่ง",
+    "predicted": "หนึ่ง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:08_28_0983",
+    "expected": "หมู",
+    "predicted": "หมู",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_08",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_08_0260",
+    "expected": "แม่",
+    "predicted": "แม่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_08_0273",
+    "expected": "อา",
+    "predicted": "อา",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_08_0271",
+    "expected": "ป้า",
+    "predicted": "ป้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_08_0279",
+    "expected": "พี่สาว",
+    "predicted": "พี่สาว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_08_0261",
+    "expected": "ลูก",
+    "predicted": "ลูก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_08_0259",
+    "expected": "พ่อ",
+    "predicted": "พ่อ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_08_0283",
+    "expected": "ครอบครัว",
+    "predicted": "ครอบครัว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_08_0263",
+    "expected": "ย่า",
+    "predicted": "ย่า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_08_0264",
+    "expected": "ตา",
+    "predicted": "ตา",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_08_0274",
+    "expected": "เพื่อน",
+    "predicted": "เพื่อน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_06_0204",
+    "expected": "เจ็ด",
+    "predicted": "เจ็ด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_06_0205",
+    "expected": "แปด",
+    "predicted": "แปด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_08_0281",
+    "expected": "ญาติ",
+    "predicted": "ญาติ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_08_0280",
+    "expected": "น้องสาว",
+    "predicted": "น้องสาว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_06_0199",
+    "expected": "สอง",
+    "predicted": "สอง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_08_0258",
+    "expected": "ภรรยา",
+    "predicted": "ภรรยา",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_25_0923",
+    "expected": "วิ่ง",
+    "predicted": "วิ่ง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_08_0257",
+    "expected": "สามี",
+    "predicted": "สามี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_01_0002",
+    "expected": "ประเทศไทย",
+    "predicted": "ไก่",
+    "correct": false,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 2
+  },
+  {
+    "clip_id": "tslone:13_06_0197",
+    "expected": "ศูนย์",
+    "predicted": "ศูนย์",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_06_0206",
+    "expected": "เก้า",
+    "predicted": "เก้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_08_0277",
+    "expected": "พี่ชาย",
+    "predicted": "พี่ชาย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_08_0278",
+    "expected": "น้องชาย",
+    "predicted": "น้องชาย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_28_0978",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_06_0201",
+    "expected": "สี่",
+    "predicted": "สี่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_06_0203",
+    "expected": "หก",
+    "predicted": "หก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_06_0202",
+    "expected": "ห้า",
+    "predicted": "ห้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_08_0270",
+    "expected": "ลุง",
+    "predicted": "ลุง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_06_0207",
+    "expected": "สิบ",
+    "predicted": "สิบ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_08_0262",
+    "expected": "ปู่",
+    "predicted": "ปู่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_08_0272",
+    "expected": "น้า",
+    "predicted": "อา",
+    "correct": false,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 2
+  },
+  {
+    "clip_id": "tslone:13_08_0265",
+    "expected": "ยาย",
+    "predicted": "ยาย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_06_0200",
+    "expected": "สาม",
+    "predicted": "สาม",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_08_0268",
+    "expected": "หลาน",
+    "predicted": "หลาน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_06_0198",
+    "expected": "หนึ่ง",
+    "predicted": "หนึ่ง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:13_28_0983",
+    "expected": "หมู",
+    "predicted": "หมู",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_13",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_08_0260",
+    "expected": "แม่",
+    "predicted": "แม่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_08_0273",
+    "expected": "อา",
+    "predicted": "อา",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_08_0271",
+    "expected": "ป้า",
+    "predicted": "ป้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_08_0279",
+    "expected": "พี่สาว",
+    "predicted": "พี่สาว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_08_0261",
+    "expected": "ลูก",
+    "predicted": "ลูก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_08_0259",
+    "expected": "พ่อ",
+    "predicted": "พ่อ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_08_0283",
+    "expected": "ครอบครัว",
+    "predicted": "ครอบครัว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_08_0263",
+    "expected": "ย่า",
+    "predicted": "ย่า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_08_0264",
+    "expected": "ตา",
+    "predicted": "ตา",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_08_0274",
+    "expected": "เพื่อน",
+    "predicted": "ยาย",
+    "correct": false,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 34
+  },
+  {
+    "clip_id": "tslone:17_06_0204",
+    "expected": "เจ็ด",
+    "predicted": "เจ็ด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_06_0205",
+    "expected": "แปด",
+    "predicted": "แปด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_08_0281",
+    "expected": "ญาติ",
+    "predicted": "ญาติ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_08_0280",
+    "expected": "น้องสาว",
+    "predicted": "น้องสาว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_06_0199",
+    "expected": "สอง",
+    "predicted": "สอง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_08_0258",
+    "expected": "ภรรยา",
+    "predicted": "ภรรยา",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_25_0923",
+    "expected": "วิ่ง",
+    "predicted": "วิ่ง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_08_0257",
+    "expected": "สามี",
+    "predicted": "สามี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_01_0002",
+    "expected": "ประเทศไทย",
+    "predicted": "ประเทศไทย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_06_0197",
+    "expected": "ศูนย์",
+    "predicted": "ศูนย์",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_06_0206",
+    "expected": "เก้า",
+    "predicted": "เก้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_08_0277",
+    "expected": "พี่ชาย",
+    "predicted": "พี่ชาย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_08_0278",
+    "expected": "น้องชาย",
+    "predicted": "น้องชาย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_28_0978",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_06_0201",
+    "expected": "สี่",
+    "predicted": "สี่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_06_0203",
+    "expected": "หก",
+    "predicted": "หก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_06_0202",
+    "expected": "ห้า",
+    "predicted": "ห้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_08_0270",
+    "expected": "ลุง",
+    "predicted": "ลุง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_06_0207",
+    "expected": "สิบ",
+    "predicted": "สิบ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_08_0262",
+    "expected": "ปู่",
+    "predicted": "ปู่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_08_0272",
+    "expected": "น้า",
+    "predicted": "อา",
+    "correct": false,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 2
+  },
+  {
+    "clip_id": "tslone:17_08_0265",
+    "expected": "ยาย",
+    "predicted": "ย่า",
+    "correct": false,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 2
+  },
+  {
+    "clip_id": "tslone:17_06_0200",
+    "expected": "สาม",
+    "predicted": "สาม",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_08_0268",
+    "expected": "หลาน",
+    "predicted": "หลาน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_06_0198",
+    "expected": "หนึ่ง",
+    "predicted": "หนึ่ง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:17_28_0983",
+    "expected": "หมู",
+    "predicted": "หมู",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_17",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_08_0260",
+    "expected": "แม่",
+    "predicted": "แม่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_08_0273",
+    "expected": "อา",
+    "predicted": "น้า",
+    "correct": false,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 2
+  },
+  {
+    "clip_id": "tslone:23_08_0271",
+    "expected": "ป้า",
+    "predicted": "ป้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_08_0279",
+    "expected": "พี่สาว",
+    "predicted": "พี่สาว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_08_0261",
+    "expected": "ลูก",
+    "predicted": "ลูก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_08_0259",
+    "expected": "พ่อ",
+    "predicted": "พ่อ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_08_0283",
+    "expected": "ครอบครัว",
+    "predicted": "ครอบครัว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_08_0263",
+    "expected": "ย่า",
+    "predicted": "ย่า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_08_0264",
+    "expected": "ตา",
+    "predicted": "แม่",
+    "correct": false,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 2
+  },
+  {
+    "clip_id": "tslone:23_08_0274",
+    "expected": "เพื่อน",
+    "predicted": "เพื่อน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_06_0204",
+    "expected": "เจ็ด",
+    "predicted": "เจ็ด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_06_0205",
+    "expected": "แปด",
+    "predicted": "แปด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_08_0281",
+    "expected": "ญาติ",
+    "predicted": "ญาติ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_08_0280",
+    "expected": "น้องสาว",
+    "predicted": "น้องสาว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_06_0199",
+    "expected": "สอง",
+    "predicted": "สอง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_08_0258",
+    "expected": "ภรรยา",
+    "predicted": "ภรรยา",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_25_0923",
+    "expected": "วิ่ง",
+    "predicted": "วิ่ง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_08_0257",
+    "expected": "สามี",
+    "predicted": "สามี",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_01_0002",
+    "expected": "ประเทศไทย",
+    "predicted": "ประเทศไทย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_06_0197",
+    "expected": "ศูนย์",
+    "predicted": "ศูนย์",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_06_0206",
+    "expected": "เก้า",
+    "predicted": "เก้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_08_0277",
+    "expected": "พี่ชาย",
+    "predicted": "พี่ชาย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_08_0278",
+    "expected": "น้องชาย",
+    "predicted": "น้องชาย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_28_0978",
+    "expected": "ไข่",
+    "predicted": "ไข่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_06_0201",
+    "expected": "สี่",
+    "predicted": "สี่",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_06_0203",
+    "expected": "หก",
+    "predicted": "หก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_06_0202",
+    "expected": "ห้า",
+    "predicted": "ห้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_08_0270",
+    "expected": "ลุง",
+    "predicted": "ลุง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_06_0207",
+    "expected": "สิบ",
+    "predicted": "สิบ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_08_0262",
+    "expected": "ปู่",
+    "predicted": "ป้า",
+    "correct": false,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 2
+  },
+  {
+    "clip_id": "tslone:23_08_0272",
+    "expected": "น้า",
+    "predicted": "น้า",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_08_0265",
+    "expected": "ยาย",
+    "predicted": "ยาย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_06_0200",
+    "expected": "สาม",
+    "predicted": "สาม",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_08_0268",
+    "expected": "หลาน",
+    "predicted": "หลาน",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_06_0198",
+    "expected": "หนึ่ง",
+    "predicted": "หนึ่ง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "tslone:23_28_0983",
+    "expected": "หมู",
+    "predicted": "หมู",
+    "correct": true,
+    "covered": true,
+    "signer": "S_one_23",
+    "rank": 1
+  },
+  {
+    "clip_id": "thsl:th_sl_05211",
+    "expected": "จูบ",
+    "predicted": "จูบ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_thsl_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "thsl:th_sl_05273",
+    "expected": "ปรบมือ",
+    "predicted": "แต่งงาน",
+    "correct": false,
+    "covered": false,
+    "signer": "S_thsl_02",
+    "rank": null
+  },
+  {
+    "clip_id": "thsl:th_sl_05274",
+    "expected": "ปรบมือ",
+    "predicted": "ร้อน",
+    "correct": false,
+    "covered": false,
+    "signer": "S_thsl_02",
+    "rank": null
+  },
+  {
+    "clip_id": "thsl:th_sl_05632",
+    "expected": "ปลอบใจ",
+    "predicted": "โรงเรียน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_thsl_02",
+    "rank": 196
+  },
+  {
+    "clip_id": "thsl:th_sl_05970",
+    "expected": "โชคดี",
+    "predicted": "ได้",
+    "correct": false,
+    "covered": true,
+    "signer": "S_thsl_02",
+    "rank": 9
+  },
+  {
+    "clip_id": "thsl:th_sl_06103",
+    "expected": "ไม่ได้",
+    "predicted": "แม่",
+    "correct": false,
+    "covered": false,
+    "signer": "S_thsl_02",
+    "rank": null
+  },
+  {
+    "clip_id": "thsl:th_sl_06126",
+    "expected": "โชคดี",
+    "predicted": "ดี",
+    "correct": false,
+    "covered": true,
+    "signer": "S_thsl_02",
+    "rank": 221
+  },
+  {
+    "clip_id": "thsl:th_sl_06132",
+    "expected": "น้องสาว",
+    "predicted": "น้องสาว",
+    "correct": true,
+    "covered": true,
+    "signer": "S_thsl_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "thsl:th_sl_06134",
+    "expected": "น้องชาย",
+    "predicted": "น้องชาย",
+    "correct": true,
+    "covered": true,
+    "signer": "S_thsl_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "thsl:th_sl_06295",
+    "expected": "กิน",
+    "predicted": "อาหาร",
+    "correct": false,
+    "covered": true,
+    "signer": "S_thsl_02",
+    "rank": 2
+  },
+  {
+    "clip_id": "thsl:th_sl_06342",
+    "expected": "ถูกต้อง",
+    "predicted": "ถูกต้อง",
+    "correct": true,
+    "covered": true,
+    "signer": "S_thsl_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "thsl:th_sl_06363",
+    "expected": "เจ็บ",
+    "predicted": "อ้วน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_thsl_02",
+    "rank": 152
+  },
+  {
+    "clip_id": "ttrs:62d680ff66b04b724ea229ae",
+    "expected": "หัวเราะ",
+    "predicted": "หัวเราะ",
+    "correct": true,
+    "covered": true,
+    "signer": "S_ttrs_00",
+    "rank": 1
+  },
+  {
+    "clip_id": "ttrs:62d787b766b04b724ea2b2ee",
+    "expected": "เด็ก",
+    "predicted": "เด็ก",
+    "correct": true,
+    "covered": true,
+    "signer": "S_ttrs_00",
+    "rank": 1
+  },
+  {
+    "clip_id": "ttrs:5d24644d66b04b724e3ee1c9",
+    "expected": "หยุด",
+    "predicted": "หยุด",
+    "correct": true,
+    "covered": true,
+    "signer": "S_ttrs_01",
+    "rank": 1
+  },
+  {
+    "clip_id": "ttrs:5d258dbc66b04b724e3f21fb",
+    "expected": "โทรศัพท์",
+    "predicted": "ยาย",
+    "correct": false,
+    "covered": true,
+    "signer": "S_ttrs_01",
+    "rank": 2
+  },
+  {
+    "clip_id": "ttrs:5d8c807066b04b724e665f64",
+    "expected": "โทรศัพท์",
+    "predicted": "บ้าน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_ttrs_01",
+    "rank": 156
+  },
+  {
+    "clip_id": "ttrs:5e78394766b04b724ec6ce1c",
+    "expected": "เด็ก",
+    "predicted": "น้องสาว",
+    "correct": false,
+    "covered": true,
+    "signer": "S_ttrs_02",
+    "rank": 7
+  },
+  {
+    "clip_id": "ttrs:5e784fb266b04b724ec6de01",
+    "expected": "คน",
+    "predicted": "นักเรียน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_ttrs_02",
+    "rank": 117
+  },
+  {
+    "clip_id": "ttrs:61b6c8c166b04b724e1cc506",
+    "expected": "โทรศัพท์",
+    "predicted": "โทรศัพท์",
+    "correct": true,
+    "covered": true,
+    "signer": "S_ttrs_02",
+    "rank": 1
+  },
+  {
+    "clip_id": "ttrs:62eb3c4e66b04b724eab8dd5",
+    "expected": "คน",
+    "predicted": "นักเรียน",
+    "correct": false,
+    "covered": true,
+    "signer": "S_ttrs_02",
+    "rank": 234
+  },
+  {
+    "clip_id": "agent:yt:Uowd70zu_2Y",
+    "expected": "ชื่อ",
+    "predicted": "หลาน",
+    "correct": false,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 6
+  },
+  {
+    "clip_id": "agent:yt:pxUay55xXwY",
+    "expected": "ตลาด",
+    "predicted": "ตลาด",
+    "correct": true,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 1
+  },
+  {
+    "clip_id": "agent:yt:P4FyhtrHmqY",
+    "expected": "ปี",
+    "predicted": "อายุ",
+    "correct": false,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 2
+  },
+  {
+    "clip_id": "agent:yt:7xiNFBS-WeE",
+    "expected": "พบกันใหม่",
+    "predicted": "เจอ",
+    "correct": false,
+    "covered": false,
+    "signer": "yt_person_004",
+    "rank": null
+  },
+  {
+    "clip_id": "agent:yt:3prAX6Q5XAA",
+    "expected": "ยิ้ม",
+    "predicted": "ยิ้ม",
+    "correct": true,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 1
+  },
+  {
+    "clip_id": "agent:yt:j2kQpHcJDVI",
+    "expected": "รถเมล์",
+    "predicted": "รถเมล์",
+    "correct": true,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 1
+  },
+  {
+    "clip_id": "agent:yt:vp-wgVaNp8A",
+    "expected": "ร้อน",
+    "predicted": "ร้อน",
+    "correct": true,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 1
+  },
+  {
+    "clip_id": "agent:yt:vBzQK427VME",
+    "expected": "ร้านอาหาร",
+    "predicted": "บอก",
+    "correct": false,
+    "covered": false,
+    "signer": "yt_person_004",
+    "rank": null
+  },
+  {
+    "clip_id": "agent:yt:d7duq_rlhVU",
+    "expected": "วัด",
+    "predicted": "วัด",
+    "correct": true,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 1
+  },
+  {
+    "clip_id": "agent:yt:75aY1Ft6d0o",
+    "expected": "วัน",
+    "predicted": "วัน",
+    "correct": true,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 1
+  },
+  {
+    "clip_id": "agent:yt:toVo2SBpgRA",
+    "expected": "วันนี้",
+    "predicted": "วัน",
+    "correct": false,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 3
+  },
+  {
+    "clip_id": "agent:yt:CCRhq-vgh_k",
+    "expected": "ว่าง",
+    "predicted": "ว่าง",
+    "correct": true,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 1
+  },
+  {
+    "clip_id": "agent:yt:_7eKegqRLBM",
+    "expected": "สนามบิน",
+    "predicted": "สนามบิน",
+    "correct": true,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 1
+  },
+  {
+    "clip_id": "agent:yt:taSn3BJksMo",
+    "expected": "สนุก",
+    "predicted": "ร้อน",
+    "correct": false,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 18
+  },
+  {
+    "clip_id": "agent:yt:WXpu-p9Pq_E",
+    "expected": "สบายดี",
+    "predicted": "มีความสุข",
+    "correct": false,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 2
+  },
+  {
+    "clip_id": "agent:yt:TdmZPjXiKI8",
+    "expected": "สัปดาห์",
+    "predicted": "สัปดาห์",
+    "correct": true,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 1
+  },
+  {
+    "clip_id": "agent:yt:8eqTnsoH3LY",
+    "expected": "สาย",
+    "predicted": "น้อง",
+    "correct": false,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 3
+  },
+  {
+    "clip_id": "agent:yt:IgM-ZQXxBRc",
+    "expected": "สำคัญ",
+    "predicted": "สำคัญ",
+    "correct": true,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 1
+  },
+  {
+    "clip_id": "agent:yt:DoO5EIOhU48",
+    "expected": "ห้องน้ำ",
+    "predicted": "ห้องน้ำ",
+    "correct": true,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 1
+  },
+  {
+    "clip_id": "agent:yt:-JN0yBHG7Ps",
+    "expected": "เดือน",
+    "predicted": "เดือน",
+    "correct": true,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 1
+  },
+  {
+    "clip_id": "agent:yt:oC9HKJR3pEE",
+    "expected": "เที่ยว",
+    "predicted": "ที่ไหน",
+    "correct": false,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 2
+  },
+  {
+    "clip_id": "agent:yt:D-l4RjB_lFk",
+    "expected": "เย็น",
+    "predicted": "กลัว",
+    "correct": false,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 55
+  },
+  {
+    "clip_id": "agent:yt:q9NRuq8V0mU",
+    "expected": "เริ่ม",
+    "predicted": "เริ่ม",
+    "correct": true,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 1
+  },
+  {
+    "clip_id": "agent:yt:UgQVR3h2Li0",
+    "expected": "เวลา",
+    "predicted": "เวลา",
+    "correct": true,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 1
+  },
+  {
+    "clip_id": "agent:yt:rD_QkINPKFk",
+    "expected": "เห็น",
+    "predicted": "เห็น",
+    "correct": true,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 1
+  },
+  {
+    "clip_id": "agent:yt:uAlJGaqPXYU",
+    "expected": "โชคดี",
+    "predicted": "โชคดี",
+    "correct": true,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 1
+  },
+  {
+    "clip_id": "agent:yt:PjxCu_xCUZI",
+    "expected": "โรงพยาบาล",
+    "predicted": "โรงพยาบาล",
+    "correct": true,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 1
+  },
+  {
+    "clip_id": "agent:yt:SKXoHIEehwI",
+    "expected": "โรงเรียน",
+    "predicted": "โรงเรียน",
+    "correct": true,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 1
+  },
+  {
+    "clip_id": "agent:yt:RnDOvvjenHk",
+    "expected": "ไม่มี",
+    "predicted": "ไม่มี",
+    "correct": true,
+    "covered": true,
+    "signer": "yt_person_004",
+    "rank": 1
+  },
+  {
+    "clip_id": "agent:yt:hqos9m9D4GI",
+    "expected": "เสียใจ",
+    "predicted": "ชอบ",
+    "correct": false,
+    "covered": true,
+    "signer": "yt_person_009",
+    "rank": 3
+  },
+  {
+    "clip_id": "agent:yt:1GCjzBhtJm8",
+    "expected": "คิดถึง",
+    "predicted": "ไม่รู้",
+    "correct": false,
+    "covered": true,
+    "signer": "yt_person_034",
+    "rank": 2
+  },
+  {
+    "clip_id": "agent:yt:o8z9KO_oHBM",
+    "expected": "ชอบ",
+    "predicted": "ชอบ",
+    "correct": true,
+    "covered": true,
+    "signer": "yt_person_034",
+    "rank": 1
+  },
+  {
+    "clip_id": "agent:yt:N2XRAla_peY",
+    "expected": "น่ารัก",
+    "predicted": "มีความสุข",
+    "correct": false,
+    "covered": true,
+    "signer": "yt_person_034",
+    "rank": 182
+  },
+  {
+    "clip_id": "agent:yt:qprTnvwdxXg",
+    "expected": "สวย",
+    "predicted": "ลาก่อน",
+    "correct": false,
+    "covered": true,
+    "signer": "yt_person_034",
+    "rank": 78
+  },
+  {
+    "clip_id": "agent:yt:I1xqxcMFez0",
+    "expected": "โชคดี",
+    "predicted": "คิดถึง",
+    "correct": false,
+    "covered": true,
+    "signer": "yt_person_034",
+    "rank": 136
+  },
+  {
+    "clip_id": "agent:yt:NCDWlFhFlJ0",
+    "expected": "ไม่เป็นไร",
+    "predicted": "กอด",
+    "correct": false,
+    "covered": true,
+    "signer": "yt_person_034",
+    "rank": 191
+  },
+  {
+    "clip_id": "agent:yt:Kte9TesoJbE",
+    "expected": "ชื่อ",
+    "predicted": "ชื่อ",
+    "correct": true,
+    "covered": true,
+    "signer": "yt_person_040",
+    "rank": 1
+  }
+]

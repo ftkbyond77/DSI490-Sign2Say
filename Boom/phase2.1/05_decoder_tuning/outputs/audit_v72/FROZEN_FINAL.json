@@ -1,0 +1,36 @@
+{
+  "selection": {
+    "config": "w1.0_n2_g0.12",
+    "params": {
+      "weight": 1.0,
+      "topn": 2,
+      "min_gap": 0.12
+    },
+    "criterion": "lowest out-of-fold tune macro WER; tie fewer D, S, config name",
+    "cv_is_selection_estimate": true,
+    "test_previously_reported_by_user": true,
+    "production_enable": false
+  },
+  "cases": [
+    "grammar_off",
+    "grammar_original",
+    "grammar_clean_selected",
+    "filters_all"
+  ],
+  "speeds": [
+    1,
+    2
+  ],
+  "filters": {
+    "p_sign_min": 0.55,
+    "accept_min": 0.7,
+    "min_hand_frac": 0.3
+  },
+  "decision": "prespecified reporting only; no production promotion; hand filter not recommended on tune",
+  "baseline_reproduction": "126/126 WER exactly matched prior run",
+  "tune_hashes": {
+    "1": "d45d86a9ddda0c149dd2da002b6ac058eda8dd12a2630501a6c8613ddd9c884a",
+    "2": "cf1bddeef410e6b38f4f364a5335ec407899b512ed484112a58a1de6eba92e72"
+  },
+  "test_caveat": "user already reported test; frozen reproduction, not untouched holdout"
+}

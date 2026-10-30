@@ -1129,7 +1129,7 @@ def a_ref():
 
 
 VERSIONS = ("v7.2", "v8", "v8.1", "v9")
-V9 = ROOT / "models" / "model-v9"          # v9 model folder (prompt_13); v8.1 = models/Jack-model, frozen in artifacts/baselines/v8.1
+V9 = ROOT / "models" / "model-v9"          # v9 model folder (prompt_13); v8.1 = models/archive/Jack-model, frozen in artifacts/baselines/v8.1
 
 
 def baseline(tag):

@@ -1,0 +1,10 @@
+speed,case,ECE,n_segments,definition
+1.0,A,0.2532030714174371,12,10 equal bins; top-1 edit-aligned correctness; includes uncertain/rejected non-transition segments
+1.0,B,0.2532030714174371,12,10 equal bins; top-1 edit-aligned correctness; includes uncertain/rejected non-transition segments
+1.0,B2,0.2532030714174371,12,10 equal bins; top-1 edit-aligned correctness; includes uncertain/rejected non-transition segments
+1.0,C,0.237956182283029,8,10 equal bins; top-1 edit-aligned correctness; includes uncertain/rejected non-transition segments
+1.0,D,0.237956182283029,8,10 equal bins; top-1 edit-aligned correctness; includes uncertain/rejected non-transition segments
+1.0,E,0.237956182283029,8,10 equal bins; top-1 edit-aligned correctness; includes uncertain/rejected non-transition segments
+1.0,E2,0.237956182283029,8,10 equal bins; top-1 edit-aligned correctness; includes uncertain/rejected non-transition segments
+1.0,F,0.38762194665532235,8,10 equal bins; top-1 edit-aligned correctness; includes uncertain/rejected non-transition segments
+1.0,baseline,0.2532030714174371,12,10 equal bins; top-1 edit-aligned correctness; includes uncertain/rejected non-transition segments

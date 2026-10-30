@@ -1,0 +1,94 @@
+{
+  "instructions": "Filename sentences confirmed by user. glosses are proposed sign-unit tokenization, editable after viewing. segments require human t0/t1/word annotation. sentence_text remains exact filename.",
+  "videos": {
+    "ฉันยังลืมคุณไม่ได้.MOV": {
+      "verified": true,
+      "sentence_text": "ฉันยังลืมคุณไม่ได้",
+      "source": "filename confirmed by user",
+      "glosses": [
+        "ฉัน",
+        "ยัง",
+        "ลืม",
+        "คุณ",
+        "ไม่",
+        "ได้"
+      ],
+      "gloss_order_verified": false,
+      "segments": null,
+      "annotator": "user (sentence); newmm (tokens)"
+    },
+    "ฉันแอบชอบคุณ.MOV": {
+      "verified": true,
+      "sentence_text": "ฉันแอบชอบคุณ",
+      "source": "filename confirmed by user",
+      "glosses": [
+        "ฉัน",
+        "แอบ",
+        "ชอบ",
+        "คุณ"
+      ],
+      "gloss_order_verified": false,
+      "segments": null,
+      "annotator": "user (sentence); newmm (tokens)"
+    },
+    "ตอนนี้กำลังเรียนภาษา.MOV": {
+      "verified": true,
+      "sentence_text": "ตอนนี้กำลังเรียนภาษา",
+      "source": "filename confirmed by user",
+      "glosses": [
+        "ตอนนี้",
+        "กำลัง",
+        "เรียน",
+        "ภาษา"
+      ],
+      "gloss_order_verified": false,
+      "segments": null,
+      "annotator": "user (sentence); newmm (tokens)"
+    },
+    "มีอะไรให้ฉันช่วยไหม.MOV": {
+      "verified": true,
+      "sentence_text": "มีอะไรให้ฉันช่วยไหม",
+      "source": "filename confirmed by user",
+      "glosses": [
+        "มี",
+        "อะไร",
+        "ให้",
+        "ฉัน",
+        "ช่วย",
+        "ไหม"
+      ],
+      "gloss_order_verified": false,
+      "segments": null,
+      "annotator": "user (sentence); newmm (tokens)"
+    },
+    "เราจะเป็นเพื่อนกันตลอดไป.MOV": {
+      "verified": true,
+      "sentence_text": "เราจะเป็นเพื่อนกันตลอดไป",
+      "source": "filename confirmed by user",
+      "glosses": [
+        "เรา",
+        "จะ",
+        "เป็นเพื่อน",
+        "กัน",
+        "ตลอดไป"
+      ],
+      "gloss_order_verified": false,
+      "segments": null,
+      "annotator": "user (sentence); newmm (tokens)"
+    },
+    "เล่นเกมส์กันไหม.MOV": {
+      "verified": true,
+      "sentence_text": "เล่นเกมส์กันไหม",
+      "source": "filename confirmed by user",
+      "glosses": [
+        "เล่น",
+        "เกมส์",
+        "กัน",
+        "ไหม"
+      ],
+      "gloss_order_verified": false,
+      "segments": null,
+      "annotator": "user (sentence); newmm (tokens)"
+    }
+  }
+}

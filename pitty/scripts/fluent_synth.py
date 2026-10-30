@@ -200,7 +200,7 @@ def heldout_pool():
     store = PoseStore(ROOT / "cloud_s3/data_prep/shards/pose_store.npz")
     C = pd.read_parquet(ROOT / "cloud_s3/data_prep/shards/clips.parquet")
     # pinned to the v8.1 vocabulary (Jack-model) so the tune / test sets stay identical across versions
-    V = set(json.loads((ROOT / "models/Jack-model/vocab_conversation.json").read_text(encoding="utf-8"))["concepts"])
+    V = set(json.loads((ROOT / "models/archive/Jack-model/vocab_conversation.json").read_text(encoding="utf-8"))["concepts"])
     q = C[(C.kind == "isolated") & (C.view != "rtmw") & C.role.isin(["val", "test"]) & C.concept.isin(V) & C.has_span & C.clip_id.isin(store.row)]
     return store, q
 

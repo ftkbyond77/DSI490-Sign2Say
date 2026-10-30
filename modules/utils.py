@@ -6,7 +6,7 @@ import logging
 import os
 import random
 import time
-from contextlib import contextmanager
+from contextlib import contextmanager, nullcontext
 from pathlib import Path
 
 import numpy as np
@@ -17,7 +17,7 @@ DATA = Path(os.environ.get("THAISLM_DATA", ROOT / "cloud_s3"))           # local
 RAW = DATA / "raw_data"                                                  # raw videos / landmarks as published
 PREP = DATA / "data_prep"                                                # standard-schema outputs (this repo builds it; pushed to S3)
 CACHE = ROOT / "cache"                                                   # local scratch (not in git, not on S3)
-MODEL = Path(os.environ.get("THAISLM_MODELS", ROOT / "models" / "model-v9"))   # the deployable model (main forward = model-v9; v8.1 = Jack-model; in git, LFS)
+MODEL = Path(os.environ.get("THAISLM_MODELS", ROOT / "models" / "model-v9"))   # the deployable model (main forward = model-v9; v8.1 = archive/Jack-model; in git, LFS)
 PRETRAINED = ART / "pretrained"                                          # Uni-Sign base weights
 
 
@@ -43,11 +43,34 @@ def seed_all(seed: int = 42) -> None:
 
 
 def device(pref: str | None = None) -> str:
-    pref = pref or os.environ.get("DEVICE", "auto")
-    if pref != "auto":
-        return pref
+    """Choose local hardware only; explicit unavailable devices fail clearly."""
     import torch
-    return "cuda" if torch.cuda.is_available() else "cpu"
+    pref = str(pref or os.environ.get("DEVICE", "auto")).lower()
+    mps = getattr(torch.backends, "mps", None)
+    if pref == "auto":
+        if torch.cuda.is_available():
+            return "cuda"
+        return "mps" if mps is not None and mps.is_available() else "cpu"
+    target = torch.device(pref)
+    if target.type == "cuda":
+        if not torch.cuda.is_available() or (target.index is not None and target.index >= torch.cuda.device_count()):
+            raise ValueError(f"Device {pref} is unavailable; use --device auto or cpu")
+    elif target.type == "mps":
+        if mps is None or not mps.is_available():
+            raise ValueError("MPS is unavailable; use --device cpu")
+    elif target.type != "cpu":
+        raise ValueError(f"Unsupported device: {pref}; choose auto, cpu, mps or cuda")
+    return str(target)
+
+
+def inference_precision(target):
+    """Use BF16 only on CUDA hardware that supports it; Mac/CPU stay FP32."""
+    import torch
+    if torch.device(target).type == "cuda":
+        with torch.cuda.device(target):
+            if torch.cuda.is_bf16_supported():
+                return torch.autocast("cuda", dtype=torch.bfloat16)
+    return nullcontext()
 
 
 @contextmanager

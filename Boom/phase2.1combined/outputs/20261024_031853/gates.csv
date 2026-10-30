@@ -1,0 +1,4 @@
+case,complete,mean_delta,worst_delta,minimum_precision,pass_gate
+A,True,-0.00639329805996471,0.0,0.922077922077922,True
+Combined,True,-0.007936507936507945,-0.0019841269841270326,0.9322033898305084,True
+baseline,True,0.0,0.0,0.922077922077922,False

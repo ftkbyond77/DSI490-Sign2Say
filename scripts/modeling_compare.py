@@ -1,10 +1,10 @@
 """Boom-model vs Pitty-model vs Jack-model on the same data (notebook: modeling_compare.ipynb at the repo root).
 
-    python scripts/modeling_compare.py setup                               # models/<name>/ (if missing) + code of pitty, boom
+    python scripts/modeling_compare.py setup                               # models/archive/<name>/ (if missing) + code of pitty, boom
     python scripts/modeling_compare.py extract                             # MediaPipe once per data_test/team-drive video
     python scripts/modeling_compare.py eval --model Jack-model --set tsl51 # one model × one test set → cache/modeling_compare/results/
 
-Each model = models/<name>/ (a complete model_dir: SignPipeline(model_dir=...)) + the code of its branch. Each runs in its own
+Each model = models/archive/<name>/ (a complete model_dir: SignPipeline(model_dir=...)) + the code of its branch. Each runs in its own
 process (all three codes are a package called `modules`) and reads the same landmark files → differences come from the model only.
   Jack-model  = jack_master (v8.1)            code: this checkout
   Pitty-model = origin/pitty                  code: cache/modeling_compare/code/pitty (git archive of the branch)
@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 E = ROOT / "cache" / "modeling_compare"
 TEAM = ROOT / "data_test" / "team-drive" / "Eval-Test"
 REFS = ROOT / "pitty" / "team_compare" / "refs.csv"
-MODELS = {          # commit = the version that was compared (models/<name>/ is built from that commit's models/)
+MODELS = {          # commit = the version that was compared (models/archive/<name>/ is built from that commit's models/)
     "Boom-model": dict(branch="boom", commit="04cc177899dda09e0d04260bd2eda7c67113c543", code=E / "code" / "boom",
                        setting={"conversation.post.p_sign_min": 0.55, "conversation.act_thr": 0.6, "accept_min": 0.7}),
     "Pitty-model": dict(branch="pitty", commit="4aeb7b9ab0ae9a2f1c0b9aab9e0c8664322852cf", code=E / "code" / "pitty", setting={}),
@@ -50,10 +50,10 @@ def lfs_file(oid):
 
 
 def setup(a):
-    """models/<name>/ (in git) is built only when missing: the models/ of its commit (read only, no checkout; Boom's frozen setting
+    """models/archive/<name>/ (in git) is built only when missing: the models/ of its commit (read only, no checkout; Boom's frozen setting
     written into its spotting.json). Pitty / Boom code (modules/, main.py of their commit) → cache/modeling_compare/code/<name>."""
     for name, m in MODELS.items():
-        md, ref = ROOT / "models" / name, m["commit"]
+        md, ref = ROOT / "models" / "archive" / name, m["commit"]
         if not (md / "model_card.json").exists():
             tmp = E / "export" / name
             shutil.rmtree(tmp, ignore_errors=True); tmp.mkdir(parents=True)
@@ -133,7 +133,7 @@ def evaluate(a):
     import modules.pipeline as mp_
     assert Path(mp_.__file__).resolve().is_relative_to(code), f"wrong code loaded: {mp_.__file__}"
     kw = dict(bank_file=ROOT / "artifacts/eval/bank_eval.npz") if a.set == "tsl51" else {}
-    pipe = SignPipeline(model_dir=ROOT / "models" / a.model, backend="onnx", device="cpu", vocab="conversation", use_llm=False, use_face=False, **kw)
+    pipe = SignPipeline(model_dir=ROOT / "models" / "archive" / a.model, backend="onnx", device="cpu", vocab="conversation", use_llm=False, use_face=False, **kw)
     if a.set == "tsl51":            # poses are already in the standard schema → bypass the MediaPipe → schema step (pitty sentence_eval.py)
         items, alphabet, cur = tsl51_items(), "off", {}
         def standardise(_):
@@ -164,7 +164,7 @@ def evaluate(a):
     vocab = sorted(pipe.concepts[c] for c in pipe.bank.concepts_present)
     od = E / "results"; od.mkdir(parents=True, exist_ok=True)
     (od / f"{a.model}__{a.set}.json").write_text(json.dumps(dict(model=a.model, set=a.set, alphabet=alphabet,
-        card=json.loads((ROOT / "models" / a.model / "model_card.json").read_text(encoding="utf-8")),
+        card=json.loads((ROOT / "models" / "archive" / a.model / "model_card.json").read_text(encoding="utf-8")),
         vocab=vocab, items=out), ensure_ascii=False), encoding="utf-8")
 
 

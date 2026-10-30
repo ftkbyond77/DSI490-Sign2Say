@@ -1,0 +1,64 @@
+{
+  "enabled": false,
+  "status": "blocked_missing_v8.1",
+  "baseline": "actual v8.1; never reconstructed from reported metrics",
+  "trials": {
+    "A": {
+      "post.p_sign_min": 0.55
+    },
+    "B": {
+      "post.p_sign_min": 0.6
+    },
+    "B2": {
+      "post.p_sign_min": 0.7
+    },
+    "C": {
+      "accept_min": 0.7,
+      "check_effective_tau_first": true,
+      "conditional_tau_trials": [
+        0.85,
+        0.88
+      ]
+    },
+    "D": {
+      "act_thr": 0.6
+    },
+    "E": {
+      "min_len": 16
+    },
+    "E2": {
+      "post.min_frames": 12
+    },
+    "F": {
+      "exact_rescore": true,
+      "measure_uncached_latency": true
+    },
+    "G": {
+      "post.min_hand_frac": 0.3,
+      "vocab": "conversation",
+      "inspect_mouth_level_deletions": true
+    },
+    "H": {
+      "combine_only_passing_trials": true,
+      "must_retest_combination_on_all_tune_sets": true
+    }
+  },
+  "not_included": [
+    "grammar_rerank_weight=0.7 pending audit of actual v8.1 grammar provenance"
+  ],
+  "metrics_pending_actual_v81_api": [
+    "ordered WER",
+    "ordered Recall@1/5",
+    "Segment F1 IoU>=0.3 on TSL51 automatic spans",
+    "count error",
+    "accepted correct/precision",
+    "ECE"
+  ],
+  "eval_test": "observation only; not used for selection",
+  "production_enable": false,
+  "conditional_grammar_trial": {
+    "grammar_rerank_weight": 0.7,
+    "enabled": false,
+    "prerequisite": "Audit actual v8.1 grammar sources; template-grouped tune CV; never train grammar from test references"
+  }
+}

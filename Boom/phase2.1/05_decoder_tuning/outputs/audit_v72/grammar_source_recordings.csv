@@ -1,0 +1,253 @@
+clip_id,source,signer,role,text,template
+t51s:กรุงเทพ_var_1__ฉัน_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,กรุงเทพ ฉัน เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__ฉัน_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,กรุงเทพ ฉัน เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__ฉัน_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,กรุงเทพ ฉัน เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__ฉัน_var_2__เที่ยว_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,กรุงเทพ ฉัน เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__ฉัน_var_2__เที่ยว_var_1__ชอบ_var_1_no_space_3,tsl51_user_sentence,S_51_user,sentence_test,กรุงเทพ ฉัน เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__ฉัน_var_2__เที่ยว_var_1__ชอบ_var_1_no_space_4,tsl51_user_sentence,S_51_user,sentence_test,กรุงเทพ ฉัน เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__น้อง_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,กรุงเทพ น้อง เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__น้อง_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,กรุงเทพ น้อง เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__น้อง_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,กรุงเทพ น้อง เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__พี่_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,กรุงเทพ พี่ เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__พี่_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,กรุงเทพ พี่ เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__พี่_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,กรุงเทพ พี่ เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__ยาย_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_7,tsl51_user_sentence,S_51_user,sentence_test,กรุงเทพ ยาย เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__ยาย_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_8,tsl51_user_sentence,S_51_user,sentence_test,กรุงเทพ ยาย เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__ยาย_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_9,tsl51_user_sentence,S_51_user,sentence_test,กรุงเทพ ยาย เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__ยาย_var_1__เที่ยว_var_1__ชอบ_var_1_with_space_5,tsl51_user_sentence,S_51_user,sentence_test,กรุงเทพ ยาย เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__ยาย_var_1__เที่ยว_var_1__ชอบ_var_1_with_space_6,tsl51_user_sentence,S_51_user,sentence_test,กรุงเทพ ยาย เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__ยาย_var_1__เที่ยว_var_1__ชอบ_var_1_with_space_7,tsl51_user_sentence,S_51_user,sentence_test,กรุงเทพ ยาย เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__แฟน_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,กรุงเทพ แฟน เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__แฟน_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_3,tsl51_user_sentence,S_51_user,sentence_test,กรุงเทพ แฟน เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__แฟน_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_4,tsl51_user_sentence,S_51_user,sentence_test,กรุงเทพ แฟน เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__แม่_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,กรุงเทพ แม่ เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__แม่_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,กรุงเทพ แม่ เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:กรุงเทพ_var_1__แม่_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_3,tsl51_user_sentence,S_51_user,sentence_test,กรุงเทพ แม่ เที่ยว ชอบ,PLACE SUBJ VERB VERB
+t51s:ขนมปัง_var_1__คุณ_var_1__กิน_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,ขนมปัง คุณ กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__คุณ_var_1__กิน_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,ขนมปัง คุณ กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__คุณ_var_1__กิน_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ขนมปัง คุณ กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__ฉัน_var_1__กิน_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,ขนมปัง ฉัน กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__ฉัน_var_1__กิน_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,ขนมปัง ฉัน กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__ฉัน_var_1__กิน_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ขนมปัง ฉัน กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__ฉัน_var_2__กิน_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,ขนมปัง ฉัน กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__ฉัน_var_2__กิน_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,ขนมปัง ฉัน กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__ฉัน_var_2__กิน_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ขนมปัง ฉัน กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__น้อง_var_1__กิน_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ขนมปัง น้อง กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__น้อง_var_1__กิน_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ขนมปัง น้อง กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__น้อง_var_1__กิน_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ขนมปัง น้อง กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__พี่_var_1__กิน_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,ขนมปัง พี่ กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__พี่_var_1__กิน_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,ขนมปัง พี่ กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__พี่_var_1__กิน_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ขนมปัง พี่ กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__ยาย_var_1__กิน_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ขนมปัง ยาย กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__ยาย_var_1__กิน_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ขนมปัง ยาย กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__ยาย_var_1__กิน_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ขนมปัง ยาย กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__แฟน_var_1__กิน_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ขนมปัง แฟน กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__แฟน_var_1__กิน_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ขนมปัง แฟน กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__แฟน_var_1__กิน_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ขนมปัง แฟน กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__แมว_var_1__กิน_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ขนมปัง แมว กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__แมว_var_1__กิน_var_1_no_space_3,tsl51_user_sentence,S_51_user,sentence_test,ขนมปัง แมว กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__แมว_var_1__กิน_var_1_no_space_4,tsl51_user_sentence,S_51_user,sentence_test,ขนมปัง แมว กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__แมว_var_1__กิน_var_1_with_space_2,tsl51_user_sentence,S_51_user,sentence_test,ขนมปัง แมว กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__แมว_var_1__กิน_var_1_with_space_3,tsl51_user_sentence,S_51_user,sentence_test,ขนมปัง แมว กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__แมว_var_1__กิน_var_1_with_space_4,tsl51_user_sentence,S_51_user,sentence_test,ขนมปัง แมว กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__แม่_var_1__กิน_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ขนมปัง แม่ กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__แม่_var_1__กิน_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ขนมปัง แม่ กิน,OBJ SUBJ VERB
+t51s:ขนมปัง_var_1__แม่_var_1__กิน_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ขนมปัง แม่ กิน,OBJ SUBJ VERB
+t51s:ขอบคุณ_เปิดมือสองข้าง__ฉัน_var_1__สบายดี_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ขอบคุณ ฉัน สบายดี,GREET SUBJ STATE
+t51s:ขอบคุณ_เปิดมือสองข้าง__ฉัน_var_1__สบายดี_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ขอบคุณ ฉัน สบายดี,GREET SUBJ STATE
+t51s:ขอบคุณ_เปิดมือสองข้าง__ฉัน_var_1__สบายดี_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ขอบคุณ ฉัน สบายดี,GREET SUBJ STATE
+t51s:ขอบคุณ_เปิดมือสองข้าง__ฉัน_var_2__สบายดี_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ขอบคุณ ฉัน สบายดี,GREET SUBJ STATE
+t51s:ขอบคุณ_เปิดมือสองข้าง__ฉัน_var_2__สบายดี_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ขอบคุณ ฉัน สบายดี,GREET SUBJ STATE
+t51s:ขอบคุณ_เปิดมือสองข้าง__ฉัน_var_2__สบายดี_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ขอบคุณ ฉัน สบายดี,GREET SUBJ STATE
+t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ขอโทษ ฉัน ข้าว กิน ไป,GREET SUBJ OBJ VERB VERB
+t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ขอโทษ ฉัน ข้าว กิน ไป,GREET SUBJ OBJ VERB VERB
+t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ขอโทษ ฉัน ข้าว กิน ไป,GREET SUBJ OBJ VERB VERB
+t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__หูหนวก_var_2_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,ขอโทษ ฉัน หูหนวก,GREET SUBJ ADJ
+t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__หูหนวก_var_2_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,ขอโทษ ฉัน หูหนวก,GREET SUBJ ADJ
+t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__หูหนวก_var_2_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ขอโทษ ฉัน หูหนวก,GREET SUBJ ADJ
+t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__ข้าว_var_1__กิน_var_1__ไป_var_2_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ขอโทษ ฉัน ข้าว กิน ไป,GREET SUBJ OBJ VERB VERB
+t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__ข้าว_var_1__กิน_var_1__ไป_var_2_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ขอโทษ ฉัน ข้าว กิน ไป,GREET SUBJ OBJ VERB VERB
+t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__ข้าว_var_1__กิน_var_1__ไป_var_2_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ขอโทษ ฉัน ข้าว กิน ไป,GREET SUBJ OBJ VERB VERB
+t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__หูหนวก_var_2_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ขอโทษ ฉัน หูหนวก,GREET SUBJ ADJ
+t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__หูหนวก_var_2_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ขอโทษ ฉัน หูหนวก,GREET SUBJ ADJ
+t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__หูหนวก_var_2_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ขอโทษ ฉัน หูหนวก,GREET SUBJ ADJ
+t51s:คุณ_var_1__ข้าว_var_1__กิน_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,คุณ ข้าว กิน,SUBJ OBJ VERB
+t51s:คุณ_var_1__ข้าว_var_1__กิน_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,คุณ ข้าว กิน,SUBJ OBJ VERB
+t51s:คุณ_var_1__ข้าว_var_1__กิน_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,คุณ ข้าว กิน,SUBJ OBJ VERB
+t51s:คุณ_var_1__ฉัน_var_1__แต่งงาน_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,คุณ ฉัน แต่งงาน,SUBJ SUBJ STATE
+t51s:คุณ_var_1__ฉัน_var_1__แต่งงาน_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,คุณ ฉัน แต่งงาน,SUBJ SUBJ STATE
+t51s:คุณ_var_1__ฉัน_var_1__แต่งงาน_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,คุณ ฉัน แต่งงาน,SUBJ SUBJ STATE
+t51s:คุณ_var_1__ฉัน_var_1__แฟน_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,คุณ ฉัน แฟน,SUBJ SUBJ SUBJ
+t51s:คุณ_var_1__ฉัน_var_1__แฟน_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,คุณ ฉัน แฟน,SUBJ SUBJ SUBJ
+t51s:คุณ_var_1__ฉัน_var_1__แฟน_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,คุณ ฉัน แฟน,SUBJ SUBJ SUBJ
+t51s:คุณ_var_1__ฉัน_var_2__แต่งงาน_var_1_no_space_7,tsl51_user_sentence,S_51_user,sentence_test,คุณ ฉัน แต่งงาน,SUBJ SUBJ STATE
+t51s:คุณ_var_1__ฉัน_var_2__แต่งงาน_var_1_no_space_8,tsl51_user_sentence,S_51_user,sentence_test,คุณ ฉัน แต่งงาน,SUBJ SUBJ STATE
+t51s:คุณ_var_1__ฉัน_var_2__แต่งงาน_var_1_no_space_9,tsl51_user_sentence,S_51_user,sentence_test,คุณ ฉัน แต่งงาน,SUBJ SUBJ STATE
+t51s:คุณ_var_1__ฉัน_var_2__แต่งงาน_var_1_with_space_3,tsl51_user_sentence,S_51_user,sentence_test,คุณ ฉัน แต่งงาน,SUBJ SUBJ STATE
+t51s:คุณ_var_1__ฉัน_var_2__แต่งงาน_var_1_with_space_4,tsl51_user_sentence,S_51_user,sentence_test,คุณ ฉัน แต่งงาน,SUBJ SUBJ STATE
+t51s:คุณ_var_1__ฉัน_var_2__แต่งงาน_var_1_with_space_5,tsl51_user_sentence,S_51_user,sentence_test,คุณ ฉัน แต่งงาน,SUBJ SUBJ STATE
+t51s:คุณ_var_1__ฉัน_var_2__แฟน_var_1_no_space_6,tsl51_user_sentence,S_51_user,tagger_train,คุณ ฉัน แฟน,SUBJ SUBJ SUBJ
+t51s:คุณ_var_1__ฉัน_var_2__แฟน_var_1_no_space_7,tsl51_user_sentence,S_51_user,tagger_train,คุณ ฉัน แฟน,SUBJ SUBJ SUBJ
+t51s:คุณ_var_1__ฉัน_var_2__แฟน_var_1_no_space_8,tsl51_user_sentence,S_51_user,tagger_train,คุณ ฉัน แฟน,SUBJ SUBJ SUBJ
+t51s:คุณ_var_1__ฉัน_var_2__แฟน_var_1_with_space_2,tsl51_user_sentence,S_51_user,tagger_train,คุณ ฉัน แฟน,SUBJ SUBJ SUBJ
+t51s:คุณ_var_1__ฉัน_var_2__แฟน_var_1_with_space_3,tsl51_user_sentence,S_51_user,tagger_train,คุณ ฉัน แฟน,SUBJ SUBJ SUBJ
+t51s:คุณ_var_1__ฉัน_var_2__แฟน_var_1_with_space_4,tsl51_user_sentence,S_51_user,tagger_train,คุณ ฉัน แฟน,SUBJ SUBJ SUBJ
+t51s:คุณ_var_1__ชื่อ_var_1__อะไร_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,คุณ ชื่อ อะไร,SUBJ VERB QUEST
+t51s:คุณ_var_1__ชื่อ_var_1__อะไร_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,คุณ ชื่อ อะไร,SUBJ VERB QUEST
+t51s:คุณ_var_1__ชื่อ_var_1__อะไร_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,คุณ ชื่อ อะไร,SUBJ VERB QUEST
+t51s:คุณ_var_1__เกิด_var_2__ที่ไหน_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,คุณ เกิด ที่ไหน,SUBJ STATE QUEST
+t51s:คุณ_var_1__เกิด_var_2__ที่ไหน_var_1_no_space_3,tsl51_user_sentence,S_51_user,tagger_train,คุณ เกิด ที่ไหน,SUBJ STATE QUEST
+t51s:คุณ_var_1__เกิด_var_2__ที่ไหน_var_1_no_space_4,tsl51_user_sentence,S_51_user,tagger_train,คุณ เกิด ที่ไหน,SUBJ STATE QUEST
+t51s:คุณ_var_1__เกิด_var_2__หูหนวก_var_2_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,คุณ เกิด หูหนวก,SUBJ STATE ADJ
+t51s:คุณ_var_1__เกิด_var_2__หูหนวก_var_2_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,คุณ เกิด หูหนวก,SUBJ STATE ADJ
+t51s:คุณ_var_1__เกิด_var_2__หูหนวก_var_2_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,คุณ เกิด หูหนวก,SUBJ STATE ADJ
+t51s:คุณ_var_1__ไป_var_2__ที่ไหน_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,คุณ ไป ที่ไหน,SUBJ VERB QUEST
+t51s:คุณ_var_1__ไป_var_2__ที่ไหน_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,คุณ ไป ที่ไหน,SUBJ VERB QUEST
+t51s:คุณ_var_1__ไป_var_2__ที่ไหน_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,คุณ ไป ที่ไหน,SUBJ VERB QUEST
+t51s:ฉัน_var_1__ข้าว_var_1__กิน_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ฉัน ข้าว กิน,SUBJ OBJ VERB
+t51s:ฉัน_var_1__ข้าว_var_1__กิน_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ฉัน ข้าว กิน,SUBJ OBJ VERB
+t51s:ฉัน_var_1__ข้าว_var_1__กิน_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ฉัน ข้าว กิน,SUBJ OBJ VERB
+t51s:ฉัน_var_1__ชื่อ_var_1__แมว_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ฉัน ชื่อ แมว,SUBJ VERB SUBJ
+t51s:ฉัน_var_1__ชื่อ_var_1__แมว_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ฉัน ชื่อ แมว,SUBJ VERB SUBJ
+t51s:ฉัน_var_1__ชื่อ_var_1__แมว_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ฉัน ชื่อ แมว,SUBJ VERB SUBJ
+t51s:ฉัน_var_1__เกิด_var_2__หูหนวก_var_2_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ฉัน เกิด หูหนวก,SUBJ STATE ADJ
+t51s:ฉัน_var_1__เกิด_var_2__หูหนวก_var_2_no_space_3,tsl51_user_sentence,S_51_user,tagger_train,ฉัน เกิด หูหนวก,SUBJ STATE ADJ
+t51s:ฉัน_var_1__เกิด_var_2__หูหนวก_var_2_no_space_4,tsl51_user_sentence,S_51_user,tagger_train,ฉัน เกิด หูหนวก,SUBJ STATE ADJ
+t51s:ฉัน_var_2__ข้าว_var_1__กิน_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,ฉัน ข้าว กิน,SUBJ OBJ VERB
+t51s:ฉัน_var_2__ข้าว_var_1__กิน_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,ฉัน ข้าว กิน,SUBJ OBJ VERB
+t51s:ฉัน_var_2__ข้าว_var_1__กิน_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ฉัน ข้าว กิน,SUBJ OBJ VERB
+t51s:ฉัน_var_2__ชื่อ_var_1__แมว_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,ฉัน ชื่อ แมว,SUBJ VERB SUBJ
+t51s:ฉัน_var_2__ชื่อ_var_1__แมว_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,ฉัน ชื่อ แมว,SUBJ VERB SUBJ
+t51s:ฉัน_var_2__ชื่อ_var_1__แมว_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ฉัน ชื่อ แมว,SUBJ VERB SUBJ
+t51s:ฉัน_var_2__เกิด_var_2__หูหนวก_var_2_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ฉัน เกิด หูหนวก,SUBJ STATE ADJ
+t51s:ฉัน_var_2__เกิด_var_2__หูหนวก_var_2_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ฉัน เกิด หูหนวก,SUBJ STATE ADJ
+t51s:ฉัน_var_2__เกิด_var_2__หูหนวก_var_2_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ฉัน เกิด หูหนวก,SUBJ STATE ADJ
+t51s:น้อง_var_1__ข้าว_var_1__กิน_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,น้อง ข้าว กิน,SUBJ OBJ VERB
+t51s:น้อง_var_1__ข้าว_var_1__กิน_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,น้อง ข้าว กิน,SUBJ OBJ VERB
+t51s:น้อง_var_1__ข้าว_var_1__กิน_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,น้อง ข้าว กิน,SUBJ OBJ VERB
+t51s:น้อง_var_1__เกิด_var_2__หูหนวก_var_2_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,น้อง เกิด หูหนวก,SUBJ STATE ADJ
+t51s:น้อง_var_1__เกิด_var_2__หูหนวก_var_2_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,น้อง เกิด หูหนวก,SUBJ STATE ADJ
+t51s:น้อง_var_1__เกิด_var_2__หูหนวก_var_2_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,น้อง เกิด หูหนวก,SUBJ STATE ADJ
+t51s:พรุ่งนี้_var_1__คุณ_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2__ที่ไหน_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,พรุ่งนี้ คุณ ข้าว กิน ไป ที่ไหน,TIME SUBJ OBJ VERB VERB QUEST
+t51s:พรุ่งนี้_var_1__คุณ_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2__ที่ไหน_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,พรุ่งนี้ คุณ ข้าว กิน ไป ที่ไหน,TIME SUBJ OBJ VERB VERB QUEST
+t51s:พรุ่งนี้_var_1__คุณ_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2__ที่ไหน_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,พรุ่งนี้ คุณ ข้าว กิน ไป ที่ไหน,TIME SUBJ OBJ VERB VERB QUEST
+t51s:พี่_var_1__ข้าว_var_1__กิน_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,พี่ ข้าว กิน,SUBJ OBJ VERB
+t51s:พี่_var_1__ข้าว_var_1__กิน_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,พี่ ข้าว กิน,SUBJ OBJ VERB
+t51s:พี่_var_1__ข้าว_var_1__กิน_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,พี่ ข้าว กิน,SUBJ OBJ VERB
+t51s:พี่_var_1__เกิด_var_2__หูหนวก_var_2_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,พี่ เกิด หูหนวก,SUBJ STATE ADJ
+t51s:พี่_var_1__เกิด_var_2__หูหนวก_var_2_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,พี่ เกิด หูหนวก,SUBJ STATE ADJ
+t51s:พี่_var_1__เกิด_var_2__หูหนวก_var_2_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,พี่ เกิด หูหนวก,SUBJ STATE ADJ
+t51s:ภาษามือ_var_1__คุณ_var_1__เรียน_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ คุณ เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__คุณ_var_1__เรียน_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ คุณ เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__คุณ_var_1__เรียน_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ คุณ เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__คุณ_var_1__เรียน_var_1__ชอบ_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ คุณ เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__คุณ_var_1__เรียน_var_1__ชอบ_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ คุณ เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__คุณ_var_1__เรียน_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ คุณ เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__ฉัน_var_1__เรียน_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ ฉัน เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__ฉัน_var_1__เรียน_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ ฉัน เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__ฉัน_var_1__เรียน_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ ฉัน เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__ฉัน_var_1__เรียน_var_1__ชอบ_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ ฉัน เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__ฉัน_var_1__เรียน_var_1__ชอบ_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ ฉัน เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__ฉัน_var_1__เรียน_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ ฉัน เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1_no_space_4,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ ฉัน เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1_no_space_5,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ ฉัน เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1_no_space_6,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ ฉัน เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1_with_space_5,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ ฉัน เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1_with_space_6,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ ฉัน เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1_with_space_7,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ ฉัน เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ ฉัน เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1__ชอบ_var_1_no_space_3,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ ฉัน เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1__ชอบ_var_1_no_space_4,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ ฉัน เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1__ชอบ_var_1_with_space_2,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ ฉัน เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1__ชอบ_var_1_with_space_3,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ ฉัน เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__ฉัน_var_2__เรียน_var_1__ชอบ_var_1_with_space_4,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ ฉัน เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__น้อง_var_1__เรียน_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ น้อง เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__น้อง_var_1__เรียน_var_1_no_space_3,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ น้อง เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__น้อง_var_1__เรียน_var_1_no_space_4,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ น้อง เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__น้อง_var_1__เรียน_var_1__ชอบ_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ น้อง เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__น้อง_var_1__เรียน_var_1__ชอบ_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ น้อง เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__น้อง_var_1__เรียน_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ น้อง เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__พี่_var_1__เรียน_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ พี่ เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__พี่_var_1__เรียน_var_1_no_space_3,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ พี่ เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__พี่_var_1__เรียน_var_1_no_space_4,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ พี่ เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__พี่_var_1__เรียน_var_1__ชอบ_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ พี่ เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__พี่_var_1__เรียน_var_1__ชอบ_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ พี่ เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__พี่_var_1__เรียน_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ พี่ เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__ยาย_var_1__เรียน_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ ยาย เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__ยาย_var_1__เรียน_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ ยาย เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__ยาย_var_1__เรียน_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ ยาย เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__ยาย_var_1__เรียน_var_1__ชอบ_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ ยาย เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__ยาย_var_1__เรียน_var_1__ชอบ_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ ยาย เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__ยาย_var_1__เรียน_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ ยาย เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__แฟน_var_1__เรียน_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ แฟน เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__แฟน_var_1__เรียน_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ แฟน เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__แฟน_var_1__เรียน_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ภาษามือ แฟน เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__แฟน_var_1__เรียน_var_1__ชอบ_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ แฟน เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__แฟน_var_1__เรียน_var_1__ชอบ_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ แฟน เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__แฟน_var_1__เรียน_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ แฟน เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__แม่_var_1__เรียน_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ แม่ เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__แม่_var_1__เรียน_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ แม่ เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__แม่_var_1__เรียน_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ แม่ เรียน,OBJ SUBJ VERB
+t51s:ภาษามือ_var_1__แม่_var_1__เรียน_var_1__ชอบ_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ แม่ เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__แม่_var_1__เรียน_var_1__ชอบ_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ แม่ เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ภาษามือ_var_1__แม่_var_1__เรียน_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ภาษามือ แม่ เรียน ชอบ,OBJ SUBJ VERB VERB
+t51s:ยาย_var_1__ข้าว_var_1__กิน_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ยาย ข้าว กิน,SUBJ OBJ VERB
+t51s:ยาย_var_1__ข้าว_var_1__กิน_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ยาย ข้าว กิน,SUBJ OBJ VERB
+t51s:ยาย_var_1__ข้าว_var_1__กิน_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ยาย ข้าว กิน,SUBJ OBJ VERB
+t51s:ยาย_var_1__เกิด_var_2__หูหนวก_var_2_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ยาย เกิด หูหนวก,SUBJ STATE ADJ
+t51s:ยาย_var_1__เกิด_var_2__หูหนวก_var_2_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ยาย เกิด หูหนวก,SUBJ STATE ADJ
+t51s:ยาย_var_1__เกิด_var_2__หูหนวก_var_2_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ยาย เกิด หูหนวก,SUBJ STATE ADJ
+t51s:วันนี้_var_1__คุณ_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2__ที่ไหน_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,วันนี้ คุณ ข้าว กิน ไป ที่ไหน,TIME SUBJ OBJ VERB VERB QUEST
+t51s:วันนี้_var_1__คุณ_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2__ที่ไหน_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,วันนี้ คุณ ข้าว กิน ไป ที่ไหน,TIME SUBJ OBJ VERB VERB QUEST
+t51s:วันนี้_var_1__คุณ_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2__ที่ไหน_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,วันนี้ คุณ ข้าว กิน ไป ที่ไหน,TIME SUBJ OBJ VERB VERB QUEST
+t51s:สวัสดี_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__สบายดี_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,สวัสดี ฉัน สบายดี,GREET SUBJ STATE
+t51s:สวัสดี_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__สบายดี_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,สวัสดี ฉัน สบายดี,GREET SUBJ STATE
+t51s:สวัสดี_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__สบายดี_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,สวัสดี ฉัน สบายดี,GREET SUBJ STATE
+t51s:สวัสดี_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__สบายดี_var_1_no_space_4,tsl51_user_sentence,S_51_user,tagger_train,สวัสดี ฉัน สบายดี,GREET SUBJ STATE
+t51s:สวัสดี_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__สบายดี_var_1_no_space_5,tsl51_user_sentence,S_51_user,tagger_train,สวัสดี ฉัน สบายดี,GREET SUBJ STATE
+t51s:สวัสดี_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__สบายดี_var_1_no_space_6,tsl51_user_sentence,S_51_user,tagger_train,สวัสดี ฉัน สบายดี,GREET SUBJ STATE
+t51s:สวัสดี_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__สบายดี_var_1_with_space_5,tsl51_user_sentence,S_51_user,tagger_train,สวัสดี ฉัน สบายดี,GREET SUBJ STATE
+t51s:สวัสดี_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__สบายดี_var_1_with_space_6,tsl51_user_sentence,S_51_user,tagger_train,สวัสดี ฉัน สบายดี,GREET SUBJ STATE
+t51s:สวัสดี_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_2__สบายดี_var_1_with_space_7,tsl51_user_sentence,S_51_user,tagger_train,สวัสดี ฉัน สบายดี,GREET SUBJ STATE
+t51s:แฟน_var_1__ข้าว_var_1__กิน_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,แฟน ข้าว กิน,SUBJ OBJ VERB
+t51s:แฟน_var_1__ข้าว_var_1__กิน_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,แฟน ข้าว กิน,SUBJ OBJ VERB
+t51s:แฟน_var_1__ข้าว_var_1__กิน_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,แฟน ข้าว กิน,SUBJ OBJ VERB
+t51s:แฟน_var_1__เกิด_var_2__หูหนวก_var_2_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,แฟน เกิด หูหนวก,SUBJ STATE ADJ
+t51s:แฟน_var_1__เกิด_var_2__หูหนวก_var_2_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,แฟน เกิด หูหนวก,SUBJ STATE ADJ
+t51s:แฟน_var_1__เกิด_var_2__หูหนวก_var_2_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,แฟน เกิด หูหนวก,SUBJ STATE ADJ
+t51s:แม่_var_1__ข้าว_var_1__กิน_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,แม่ ข้าว กิน,SUBJ OBJ VERB
+t51s:แม่_var_1__ข้าว_var_1__กิน_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,แม่ ข้าว กิน,SUBJ OBJ VERB
+t51s:แม่_var_1__ข้าว_var_1__กิน_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,แม่ ข้าว กิน,SUBJ OBJ VERB
+t51s:แม่_var_1__เกิด_var_2__หูหนวก_var_2_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,แม่ เกิด หูหนวก,SUBJ STATE ADJ
+t51s:แม่_var_1__เกิด_var_2__หูหนวก_var_2_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,แม่ เกิด หูหนวก,SUBJ STATE ADJ
+t51s:แม่_var_1__เกิด_var_2__หูหนวก_var_2_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,แม่ เกิด หูหนวก,SUBJ STATE ADJ
+t51s:ไข่_var_2__คุณ_var_1__กิน_var_1__ชอบ_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,ไข่ คุณ กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__คุณ_var_1__กิน_var_1__ชอบ_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,ไข่ คุณ กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__คุณ_var_1__กิน_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ไข่ คุณ กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__ฉัน_var_1__กิน_var_1__ชอบ_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,ไข่ ฉัน กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__ฉัน_var_1__กิน_var_1__ชอบ_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,ไข่ ฉัน กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__ฉัน_var_1__กิน_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ไข่ ฉัน กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__ฉัน_var_2__กิน_var_1__ชอบ_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,ไข่ ฉัน กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__ฉัน_var_2__กิน_var_1__ชอบ_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,ไข่ ฉัน กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__ฉัน_var_2__กิน_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ไข่ ฉัน กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__น้อง_var_1__กิน_var_1__ชอบ_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ไข่ น้อง กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__น้อง_var_1__กิน_var_1__ชอบ_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ไข่ น้อง กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__น้อง_var_1__กิน_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ไข่ น้อง กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__พี่_var_1__กิน_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ไข่ พี่ กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__พี่_var_1__กิน_var_1__ชอบ_var_1_no_space_3,tsl51_user_sentence,S_51_user,sentence_test,ไข่ พี่ กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__พี่_var_1__กิน_var_1__ชอบ_var_1_no_space_4,tsl51_user_sentence,S_51_user,sentence_test,ไข่ พี่ กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__ยาย_var_1__กิน_var_1__ชอบ_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ไข่ ยาย กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__ยาย_var_1__กิน_var_1__ชอบ_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ไข่ ยาย กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__ยาย_var_1__กิน_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ไข่ ยาย กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__แฟน_var_1__กิน_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ไข่ แฟน กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__แฟน_var_1__กิน_var_1__ชอบ_var_1_no_space_3,tsl51_user_sentence,S_51_user,tagger_train,ไข่ แฟน กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__แฟน_var_1__กิน_var_1__ชอบ_var_1_no_space_4,tsl51_user_sentence,S_51_user,tagger_train,ไข่ แฟน กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__แฟน_var_1__กิน_var_1__ชอบ_var_1_with_space_2,tsl51_user_sentence,S_51_user,tagger_train,ไข่ แฟน กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__แฟน_var_1__กิน_var_1__ชอบ_var_1_with_space_3,tsl51_user_sentence,S_51_user,tagger_train,ไข่ แฟน กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__แฟน_var_1__กิน_var_1__ชอบ_var_1_with_space_4,tsl51_user_sentence,S_51_user,tagger_train,ไข่ แฟน กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__แมว_var_1__กิน_var_1__ชอบ_var_1_no_space_0,tsl51_user_sentence,S_51_user,sentence_test,ไข่ แมว กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__แมว_var_1__กิน_var_1__ชอบ_var_1_no_space_1,tsl51_user_sentence,S_51_user,sentence_test,ไข่ แมว กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__แมว_var_1__กิน_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,sentence_test,ไข่ แมว กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__แม่_var_1__กิน_var_1__ชอบ_var_1_no_space_0,tsl51_user_sentence,S_51_user,tagger_train,ไข่ แม่ กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__แม่_var_1__กิน_var_1__ชอบ_var_1_no_space_1,tsl51_user_sentence,S_51_user,tagger_train,ไข่ แม่ กิน ชอบ,OBJ SUBJ VERB VERB
+t51s:ไข่_var_2__แม่_var_1__กิน_var_1__ชอบ_var_1_no_space_2,tsl51_user_sentence,S_51_user,tagger_train,ไข่ แม่ กิน ชอบ,OBJ SUBJ VERB VERB

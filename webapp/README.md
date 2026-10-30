@@ -3,6 +3,32 @@
 ```bash
 docker compose up --build        # from the repository root; then open http://localhost:8080
 ```
+
+## v8: one site for both directions (Figma “ThaiSLM v2”)
+
+The sign → text app and the reverse part's text → sign page (before: a separate site on :8081) are one Next.js app now, on
+http://localhost:8080:
+
+| path | screen (Figma) | what it does |
+|---|---|---|
+| `/` | v2-D หน้าแรก | choose the direction (3 steps each) or the two-person room; วิธีใช้ |
+| `/sign` | v2-C แอปเมนูข้าง | camera: โหมดสด / บันทึกเอง / อัปโหลดวิดีโอ · latest + previous result · tap a [?] word to teach it · ตั้งค่า (all the options below) |
+| `/sign/live` | v2-B กล้องเต็มจอ | live mode full screen, big caption, history, reply box → the avatar answers in a picture-in-picture |
+| `/text` | v2-E ข้อความ → ภาษามือ | type or speak (Thai / English) → sign order (TSL grammar / Thai order) → 3D avatar with timeline, speed, characters; details: confidence, provenance, editor, .vrma |
+| `/chat` | v2-A ห้องสนทนา | signer on the camera (teal bubbles, spoken) ⇄ the other person types / speaks (coral bubbles, signed by the avatar) |
+| `/my-signs`, `/vocab` | side menu | personal sign memory · the readable vocabulary (tap a word → the avatar signs it) |
+| `/classic` | — | the original v7 studio, every control on one page (debugging) |
+
+The gateway routes `/t2s/*` → reverse-api `/api/*` and serves `/avatars/*`; `npm run dev` does the same through `next.config.mjs`
+(`T2S_API`, default `http://localhost:8091`). The avatar code (`lib/t2s/avatar.ts`, `player.ts`) is the reverse part's, unchanged;
+`lib/useSignEngine.ts` is the original studio's camera / live-mode logic as a hook, shared by `/sign`, `/sign/live` and `/chat`.
+UI motion respects `prefers-reduced-motion`.
+
+**Models behind the site (main, v9):** `sign-api` reads the forward model `models/model-v9` (Uni-Sign encoder + the Thai landmark
+encoder as a second opinion, isotonic calibration, "enrolled" settings for personal signs) and the face emotion model
+`models/face-model` (fused with the signed words → `face.emotion` / `face.affect`, which also sets the voice's emotion). Speech =
+the `tts` service (MMS-TTS Thai, emotion → rate / pitch). `models/speech-model-v1` (F5-TTS-THAI voice, Qwen3-ASR) is not served
+in Docker yet: F5 needs a GPU (see its README). Another forward model: `THAISLM_MODELS_DIR=./models/archive/Jack-model` (v8.1).
 (optional) put `OPENAI_API_KEY=...` in the root `.env` to let an LLM write the Thai sentence (otherwise a rules composer does it).
 
 ## What you can do
@@ -34,6 +60,13 @@ On the camera view: body and hands (boxed, labelled มือซ้าย / ม�
 face itself is not covered; the "ตรวจพบ" bar still checks that face, brows / expression and both hands are extracted. The HUD shows
 the MediaPipe mode and fps; a progress bar shows the real server stages while a sentence is processed. In live mode the utterance is
 sent after 0.5 s of hands-down, so the result is usually ready when the pause ends.
+
+**Live FPS A/B diagnostic (opt-in):** open `http://localhost:8091/?perf=nofx` to skip the separate CPU blendshape pass and browser
+expression-model update during live capture. Pose, hand and face-mesh landmark extraction are unchanged; blendshape scores are
+cleared in this mode, so face cues and the live expression display are disabled for the diagnostic utterance. The HUD adds `nofx`,
+and, when request caching is enabled, live API requests record `perf_mode` plus timestamp-derived `client_fps` in
+`cache/live_requests/`. Compare against the normal URL using the same camera, signer, lighting and signing pace. Without the query
+flag, behavior is unchanged. To revert, remove `?perf=nofx` (or reload the normal URL).
 
 **Speed / robustness, chosen automatically per machine:** MediaPipe runs fully on the GPU when the browser's WebGL can run the
 face-expression model; on GPUs where that model fails ("No support of const") it runs body / hands / face mesh on the GPU every frame

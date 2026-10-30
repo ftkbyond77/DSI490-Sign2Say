@@ -1,0 +1,332 @@
+[
+  {
+    "clip": "clip1",
+    "segment": 1,
+    "start_frame_25fps": 24,
+    "end_frame_exclusive_25fps": 44,
+    "start_seconds": 0.96,
+    "end_seconds": 1.76,
+    "segment_p": 0.3777352025742742,
+    "status": "uncertain",
+    "observed_before_interpolation_reflection": {
+      "lh": {
+        "detected": 14,
+        "total": 20,
+        "rate": 0.7
+      },
+      "rh": {
+        "detected": 1,
+        "total": 20,
+        "rate": 0.05
+      }
+    },
+    "mirrored": true,
+    "tempo_factor": 1.0,
+    "top5": [
+      {
+        "rank": 1,
+        "word": "ข้าว",
+        "production_score": 0.5588,
+        "temporal_support": 0.5209,
+        "whole_segment_cosine_top2_mean": 0.5587550401687622,
+        "candidate_p": null
+      },
+      {
+        "rank": 2,
+        "word": "เกิด",
+        "production_score": 0.5482,
+        "temporal_support": 0.5097,
+        "whole_segment_cosine_top2_mean": 0.5481701493263245,
+        "candidate_p": null
+      },
+      {
+        "rank": 3,
+        "word": "ฉัน",
+        "production_score": 0.4552,
+        "temporal_support": 0.4535,
+        "whole_segment_cosine_top2_mean": 0.45516306161880493,
+        "candidate_p": null
+      },
+      {
+        "rank": 4,
+        "word": "ไป",
+        "production_score": 0.4664,
+        "temporal_support": 0.4487,
+        "whole_segment_cosine_top2_mean": 0.46640533208847046,
+        "candidate_p": null
+      },
+      {
+        "rank": 5,
+        "word": "ภาษามือ",
+        "production_score": 0.4689,
+        "temporal_support": 0.2345,
+        "whole_segment_cosine_top2_mean": 0.46892857551574707,
+        "candidate_p": null
+      }
+    ]
+  },
+  {
+    "clip": "clip1",
+    "segment": 2,
+    "start_frame_25fps": 44,
+    "end_frame_exclusive_25fps": 92,
+    "start_seconds": 1.76,
+    "end_seconds": 3.68,
+    "segment_p": 0.4876534996930793,
+    "status": "uncertain",
+    "observed_before_interpolation_reflection": {
+      "lh": {
+        "detected": 44,
+        "total": 48,
+        "rate": 0.9166666666666666
+      },
+      "rh": {
+        "detected": 43,
+        "total": 48,
+        "rate": 0.8958333333333334
+      }
+    },
+    "mirrored": true,
+    "tempo_factor": 1.0,
+    "top5": [
+      {
+        "rank": 1,
+        "word": "ภาษามือ",
+        "production_score": 0.6425,
+        "temporal_support": 0.5014,
+        "whole_segment_cosine_top2_mean": 0.5668895244598389,
+        "candidate_p": null
+      },
+      {
+        "rank": 2,
+        "word": "เพื่อน",
+        "production_score": 0.424,
+        "temporal_support": 0.3096,
+        "whole_segment_cosine_top2_mean": 0.3527805209159851,
+        "candidate_p": null
+      },
+      {
+        "rank": 3,
+        "word": "เที่ยว",
+        "production_score": 0.4045,
+        "temporal_support": 0.2102,
+        "whole_segment_cosine_top2_mean": 0.15363605320453644,
+        "candidate_p": null
+      },
+      {
+        "rank": 4,
+        "word": "ที่ไหน",
+        "production_score": 0.323,
+        "temporal_support": 0.1178,
+        "whole_segment_cosine_top2_mean": 0.15902811288833618,
+        "candidate_p": null
+      },
+      {
+        "rank": 5,
+        "word": "ข้าว",
+        "production_score": 0.3559,
+        "temporal_support": 0.1172,
+        "whole_segment_cosine_top2_mean": 0.1578759104013443,
+        "candidate_p": null
+      }
+    ]
+  },
+  {
+    "clip": "clip2",
+    "segment": 1,
+    "start_frame_25fps": 4,
+    "end_frame_exclusive_25fps": 32,
+    "start_seconds": 0.16,
+    "end_seconds": 1.28,
+    "segment_p": 0.20817753082216367,
+    "status": "uncertain",
+    "observed_before_interpolation_reflection": {
+      "lh": {
+        "detected": 28,
+        "total": 28,
+        "rate": 1.0
+      },
+      "rh": {
+        "detected": 25,
+        "total": 28,
+        "rate": 0.8928571428571429
+      }
+    },
+    "mirrored": false,
+    "tempo_factor": 1.0,
+    "top5": [
+      {
+        "rank": 1,
+        "word": "สวัสดี",
+        "production_score": 0.5443,
+        "temporal_support": 0.4907,
+        "whole_segment_cosine_top2_mean": 0.47481152415275574,
+        "candidate_p": null
+      },
+      {
+        "rank": 2,
+        "word": "ไป",
+        "production_score": 0.4314,
+        "temporal_support": 0.3378,
+        "whole_segment_cosine_top2_mean": 0.35477977991104126,
+        "candidate_p": null
+      },
+      {
+        "rank": 3,
+        "word": "ทำไม",
+        "production_score": 0.4337,
+        "temporal_support": 0.3084,
+        "whole_segment_cosine_top2_mean": 0.39565086364746094,
+        "candidate_p": null
+      },
+      {
+        "rank": 4,
+        "word": "น้อง",
+        "production_score": 0.4282,
+        "temporal_support": 0.2808,
+        "whole_segment_cosine_top2_mean": 0.33454006910324097,
+        "candidate_p": null
+      },
+      {
+        "rank": 5,
+        "word": "ลาก่อน",
+        "production_score": 0.3795,
+        "temporal_support": 0.2401,
+        "whole_segment_cosine_top2_mean": 0.3126847445964813,
+        "candidate_p": null
+      }
+    ]
+  },
+  {
+    "clip": "clip2",
+    "segment": 2,
+    "start_frame_25fps": 36,
+    "end_frame_exclusive_25fps": 68,
+    "start_seconds": 1.44,
+    "end_seconds": 2.72,
+    "segment_p": 0.10009980858676437,
+    "status": "uncertain",
+    "observed_before_interpolation_reflection": {
+      "lh": {
+        "detected": 32,
+        "total": 32,
+        "rate": 1.0
+      },
+      "rh": {
+        "detected": 31,
+        "total": 32,
+        "rate": 0.96875
+      }
+    },
+    "mirrored": false,
+    "tempo_factor": 1.0,
+    "top5": [
+      {
+        "rank": 1,
+        "word": "เพื่อน",
+        "production_score": 0.5444,
+        "temporal_support": 0.3965,
+        "whole_segment_cosine_top2_mean": 0.4692090153694153,
+        "candidate_p": null
+      },
+      {
+        "rank": 2,
+        "word": "ข้าว",
+        "production_score": 0.5311,
+        "temporal_support": 0.3574,
+        "whole_segment_cosine_top2_mean": 0.4580066502094269,
+        "candidate_p": null
+      },
+      {
+        "rank": 3,
+        "word": "ภาษามือ",
+        "production_score": 0.4941,
+        "temporal_support": 0.3188,
+        "whole_segment_cosine_top2_mean": 0.47998881340026855,
+        "candidate_p": null
+      },
+      {
+        "rank": 4,
+        "word": "กิน",
+        "production_score": 0.504,
+        "temporal_support": 0.268,
+        "whole_segment_cosine_top2_mean": 0.4514669179916382,
+        "candidate_p": null
+      },
+      {
+        "rank": 5,
+        "word": "ขอโทษ",
+        "production_score": 0.4848,
+        "temporal_support": 0.2309,
+        "whole_segment_cosine_top2_mean": 0.4696308970451355,
+        "candidate_p": null
+      }
+    ]
+  },
+  {
+    "clip": "clip2",
+    "segment": 3,
+    "start_frame_25fps": 68,
+    "end_frame_exclusive_25fps": 112,
+    "start_seconds": 2.72,
+    "end_seconds": 4.48,
+    "segment_p": 0.1643562077219021,
+    "status": "uncertain",
+    "observed_before_interpolation_reflection": {
+      "lh": {
+        "detected": 39,
+        "total": 44,
+        "rate": 0.8863636363636364
+      },
+      "rh": {
+        "detected": 30,
+        "total": 44,
+        "rate": 0.6818181818181818
+      }
+    },
+    "mirrored": false,
+    "tempo_factor": 1.0,
+    "top5": [
+      {
+        "rank": 1,
+        "word": "กรุงเทพ",
+        "production_score": 0.4673,
+        "temporal_support": 0.403,
+        "whole_segment_cosine_top2_mean": 0.42583537101745605,
+        "candidate_p": null
+      },
+      {
+        "rank": 2,
+        "word": "ภาษามือ",
+        "production_score": 0.4289,
+        "temporal_support": 0.3749,
+        "whole_segment_cosine_top2_mean": 0.34409767389297485,
+        "candidate_p": null
+      },
+      {
+        "rank": 3,
+        "word": "พี่ชาย",
+        "production_score": 0.3505,
+        "temporal_support": 0.2041,
+        "whole_segment_cosine_top2_mean": 0.22622448205947876,
+        "candidate_p": null
+      },
+      {
+        "rank": 4,
+        "word": "ขอโทษ",
+        "production_score": 0.3339,
+        "temporal_support": 0.1551,
+        "whole_segment_cosine_top2_mean": 0.22740685939788818,
+        "candidate_p": null
+      },
+      {
+        "rank": 5,
+        "word": "อยู่บ้าน",
+        "production_score": 0.3421,
+        "temporal_support": 0.1221,
+        "whole_segment_cosine_top2_mean": 0.2677481770515442,
+        "candidate_p": null
+      }
+    ]
+  }
+]

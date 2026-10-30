@@ -1,0 +1,4662 @@
+{
+  "video": "เล่นเกมส์กันไหม.MOV",
+  "modes": {
+    "baseline": {
+      "weight": 0,
+      "inference_s": 3.2532534169999963,
+      "result": {
+        "title": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/boom datatest/เล่นเกมส์กันไหม.MOV",
+        "fps": 25.0,
+        "n_frames": 376,
+        "duration_s": 15.04,
+        "signer_visible_frac": 1.0,
+        "signing_frac": 0.7712765957446809,
+        "mirrored_to_right_hand": false,
+        "segments": [
+          {
+            "f0": 12,
+            "f1": 40,
+            "z": 4.4941086769104,
+            "wins": [
+              [
+                12,
+                40
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.5628,
+                "support": 0.5091
+              },
+              {
+                "word": "ย่า",
+                "score": 0.5184,
+                "support": 0.4805
+              },
+              {
+                "word": "ยาย",
+                "score": 0.4885,
+                "support": 0.4584
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4122,
+                "support": 0.4008
+              },
+              {
+                "word": "วันนี้",
+                "score": 0.3913,
+                "support": 0.1816
+              }
+            ],
+            "score": 0.5103622078895569,
+            "margin": 0.03781750798225403,
+            "null_gap": -0.5397421717643738,
+            "p_sign": 0.9627992124083384,
+            "agree": 1.0,
+            "support_ratio": 1.0595213319458898,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.15274809042159962,
+            "status": "uncertain",
+            "t0": 0.48,
+            "t1": 1.6,
+            "repeat_of": "ญาติ",
+            "visual_top1": "ย่า",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 40,
+            "f1": 76,
+            "z": 3.72926926612854,
+            "wins": [
+              [
+                40,
+                76
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.482,
+                "support": 0.4486
+              },
+              {
+                "word": "ฉัน",
+                "score": 0.5104,
+                "support": 0.3353
+              },
+              {
+                "word": "คุณ",
+                "score": 0.4725,
+                "support": 0.3159
+              },
+              {
+                "word": "แต่งตัว",
+                "score": 0.4031,
+                "support": 0.2425
+              },
+              {
+                "word": "ข้าว",
+                "score": 0.4937,
+                "support": 0.2168
+              }
+            ],
+            "score": 0.3968270719051361,
+            "margin": 0.0008179545402526855,
+            "null_gap": -0.38216808438301086,
+            "p_sign": 0.966845776968532,
+            "agree": 0.0,
+            "support_ratio": 1.3379063525201313,
+            "window_top1": "ได้",
+            "depth": 0.0,
+            "p_correct": 0.038851366638563194,
+            "status": "unknown",
+            "t0": 1.6,
+            "t1": 3.04,
+            "repeat_of": "เกิด"
+          },
+          {
+            "f0": 76,
+            "f1": 112,
+            "z": 5.5570902824401855,
+            "wins": [
+              [
+                76,
+                112
+              ]
+            ],
+            "nearest": "ถูก",
+            "candidates": [
+              {
+                "word": "ถูก",
+                "score": 0.6833,
+                "support": 0.5766
+              },
+              {
+                "word": "ไม่ดี",
+                "score": 0.6135,
+                "support": 0.5121
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.4892,
+                "support": 0.43
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4541,
+                "support": 0.3456
+              },
+              {
+                "word": "ญาติ",
+                "score": 0.4889,
+                "support": 0.2814
+              }
+            ],
+            "score": 0.5511804819107056,
+            "margin": 0.023671388626098633,
+            "null_gap": -0.6037229299545288,
+            "p_sign": 0.9780657491866604,
+            "agree": 1.0,
+            "support_ratio": 1.1259519625073229,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "p_correct": 0.2160498635584744,
+            "status": "uncertain",
+            "t0": 3.04,
+            "t1": 4.48,
+            "repeat_of": "ถูก",
+            "visual_top1": "ไม่ดี",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 140,
+            "f1": 184,
+            "z": 4.229272365570068,
+            "wins": [
+              [
+                140,
+                184
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.5514,
+                "support": 0.443
+              },
+              {
+                "word": "ยาย",
+                "score": 0.5168,
+                "support": 0.4487
+              },
+              {
+                "word": "ย่า",
+                "score": 0.5219,
+                "support": 0.4205
+              },
+              {
+                "word": "เล่น",
+                "score": 0.5598,
+                "support": 0.2123
+              },
+              {
+                "word": "แต่งงาน",
+                "score": 0.3807,
+                "support": 0.1558
+              }
+            ],
+            "score": 0.46428126096725464,
+            "margin": 0.013609617948532104,
+            "null_gap": -0.3973338007926941,
+            "p_sign": 0.9785357145329242,
+            "agree": 0.0,
+            "support_ratio": 1.0128668171557562,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.06316799036178623,
+            "status": "unknown",
+            "t0": 5.6,
+            "t1": 7.36,
+            "visual_top1": "ยาย",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 184,
+            "f1": 212,
+            "z": 3.9513936042785645,
+            "wins": [
+              [
+                184,
+                212
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.5665,
+                "support": 0.4718
+              },
+              {
+                "word": "ข้าว",
+                "score": 0.5699,
+                "support": 0.4559
+              },
+              {
+                "word": "กิน",
+                "score": 0.5216,
+                "support": 0.4101
+              },
+              {
+                "word": "ฉัน",
+                "score": 0.5978,
+                "support": 0.3872
+              },
+              {
+                "word": "คุณ",
+                "score": 0.4943,
+                "support": 0.312
+              }
+            ],
+            "score": 0.5774486064910889,
+            "margin": 0.03081071376800537,
+            "null_gap": -0.1363358497619629,
+            "p_sign": 0.9836187716041292,
+            "agree": 0.0,
+            "support_ratio": 1.0348760693134458,
+            "window_top1": "ฉัน",
+            "depth": 0.0,
+            "p_correct": 0.15617806063429102,
+            "status": "uncertain",
+            "t0": 7.36,
+            "t1": 8.48
+          },
+          {
+            "f0": 212,
+            "f1": 252,
+            "z": 6.7331695556640625,
+            "wins": [
+              [
+                212,
+                252
+              ]
+            ],
+            "nearest": "ถูก",
+            "candidates": [
+              {
+                "word": "ถูก",
+                "score": 0.7257,
+                "support": 0.6686
+              },
+              {
+                "word": "ไม่ดี",
+                "score": 0.5892,
+                "support": 0.5349
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.4751,
+                "support": 0.3702
+              },
+              {
+                "word": "ยาย",
+                "score": 0.461,
+                "support": 0.3232
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4319,
+                "support": 0.2537
+              }
+            ],
+            "score": 0.7074141502380371,
+            "margin": 0.1282440423965454,
+            "null_gap": -0.5515193939208984,
+            "p_sign": 0.8130772956008514,
+            "agree": 1.0,
+            "support_ratio": 1.249953262292017,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "p_correct": 0.6788546682543779,
+            "status": "uncertain",
+            "t0": 8.48,
+            "t1": 10.08
+          },
+          {
+            "f0": 288,
+            "f1": 308,
+            "z": 5.282961845397949,
+            "wins": [
+              [
+                288,
+                308
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.6244,
+                "support": 0.6044
+              },
+              {
+                "word": "ย่า",
+                "score": 0.6064,
+                "support": 0.5843
+              },
+              {
+                "word": "ยาย",
+                "score": 0.5605,
+                "support": 0.5438
+              },
+              {
+                "word": "ผิด",
+                "score": 0.3725,
+                "support": 0.3649
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.3602,
+                "support": 0.1201
+              }
+            ],
+            "score": 0.6244296431541443,
+            "margin": 0.018055737018585205,
+            "null_gap": -0.6474059820175171,
+            "p_sign": 0.9346303805895149,
+            "agree": 1.0,
+            "support_ratio": 1.0344001369159679,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.24169019448943677,
+            "status": "uncertain",
+            "t0": 11.52,
+            "t1": 12.32
+          },
+          {
+            "f0": 308,
+            "f1": 332,
+            "z": 4.109670162200928,
+            "wins": [
+              [
+                308,
+                332
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.4309,
+                "support": 0.3982
+              },
+              {
+                "word": "ยินดีด้วย",
+                "score": 0.417,
+                "support": 0.336
+              },
+              {
+                "word": "แต่งตัว",
+                "score": 0.4127,
+                "support": 0.3053
+              },
+              {
+                "word": "ขับรถ",
+                "score": 0.3574,
+                "support": 0.2807
+              },
+              {
+                "word": "สบายดี",
+                "score": 0.3272,
+                "support": 0.2138
+              }
+            ],
+            "score": 0.41697531938552856,
+            "margin": 0.057405292987823486,
+            "null_gap": -0.43022486567497253,
+            "p_sign": 0.9241565143379074,
+            "agree": 0.0,
+            "support_ratio": 1.1851190476190476,
+            "window_top1": "ยินดีด้วย",
+            "depth": 0.0,
+            "p_correct": 0.050641955921984096,
+            "status": "unknown",
+            "t0": 12.32,
+            "t1": 13.28,
+            "repeat_of": "เกิด",
+            "visual_top1": "ยินดีด้วย",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 332,
+            "f1": 376,
+            "z": 6.059041976928711,
+            "wins": [
+              [
+                332,
+                376
+              ]
+            ],
+            "nearest": "ไม่ดี",
+            "candidates": [
+              {
+                "word": "ไม่ดี",
+                "score": 0.5903,
+                "support": 0.3787
+              },
+              {
+                "word": "ถูก",
+                "score": 0.7012,
+                "support": 0.4564
+              },
+              {
+                "word": "ยาย",
+                "score": 0.6003,
+                "support": 0.4239
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.457,
+                "support": 0.2528
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4418,
+                "support": 0.2005
+              }
+            ],
+            "score": 0.6435842514038086,
+            "margin": 0.11471480131149292,
+            "null_gap": -0.4587748050689697,
+            "p_sign": 0.9858846975998445,
+            "agree": 1.0,
+            "support_ratio": 1.0766690257136116,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "p_correct": 0.5090350175606072,
+            "status": "uncertain",
+            "t0": 13.28,
+            "t1": 15.04,
+            "repeat_of": "ถูก"
+          }
+        ],
+        "face": {},
+        "fusion": {
+          "chosen": [
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]"
+          ],
+          "sentence_th": "",
+          "meaning_th": "ยังไม่มั่นใจพอจะแปล — ลองทำท่าช้าลง ให้มืออยู่ในกรอบ หรือกดยืนยันคำที่ถูก",
+          "confidence": 0.0,
+          "provider": "none",
+          "evidence_gloss": "ญาติ? | [?]≈เกิด | ถูก? | [?]≈ญาติ | เกิด? | ถูก? | ญาติ? | [?]≈เกิด | ไม่ดี?",
+          "evidence_guard": "withheld: no confident sign"
+        },
+        "sentence": "",
+        "timings_ms": {
+          "schema_ms": 49.4,
+          "tagger_ms": 2497.9,
+          "spotting_ms": 705.5,
+          "n_windows": 732,
+          "tempo_factor": 1.0,
+          "language_ms": 0.1,
+          "mediapipe_ms": 0.0
+        },
+        "model": "v7.2",
+        "vocab": "conversation"
+      }
+    },
+    "activity060": {
+      "weight": 0,
+      "inference_s": 3.9323653750000176,
+      "result": {
+        "title": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/boom datatest/เล่นเกมส์กันไหม.MOV",
+        "fps": 25.0,
+        "n_frames": 376,
+        "duration_s": 15.04,
+        "signer_visible_frac": 1.0,
+        "signing_frac": 0.7606382978723404,
+        "mirrored_to_right_hand": false,
+        "segments": [
+          {
+            "f0": 12,
+            "f1": 40,
+            "z": 4.4941086769104,
+            "wins": [
+              [
+                12,
+                40
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.5628,
+                "support": 0.5091
+              },
+              {
+                "word": "ย่า",
+                "score": 0.5184,
+                "support": 0.4805
+              },
+              {
+                "word": "ยาย",
+                "score": 0.4885,
+                "support": 0.4584
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4122,
+                "support": 0.4008
+              },
+              {
+                "word": "วันนี้",
+                "score": 0.3913,
+                "support": 0.1816
+              }
+            ],
+            "score": 0.5103622078895569,
+            "margin": 0.03781750798225403,
+            "null_gap": -0.5397421717643738,
+            "p_sign": 0.9627992124083384,
+            "agree": 1.0,
+            "support_ratio": 1.0595213319458898,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.15274809042159962,
+            "status": "uncertain",
+            "t0": 0.48,
+            "t1": 1.6,
+            "repeat_of": "ญาติ",
+            "visual_top1": "ย่า",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 40,
+            "f1": 76,
+            "z": 3.72926926612854,
+            "wins": [
+              [
+                40,
+                76
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.482,
+                "support": 0.4486
+              },
+              {
+                "word": "ฉัน",
+                "score": 0.5104,
+                "support": 0.3353
+              },
+              {
+                "word": "คุณ",
+                "score": 0.4725,
+                "support": 0.3159
+              },
+              {
+                "word": "แต่งตัว",
+                "score": 0.4031,
+                "support": 0.2425
+              },
+              {
+                "word": "ข้าว",
+                "score": 0.4937,
+                "support": 0.2168
+              }
+            ],
+            "score": 0.3968270719051361,
+            "margin": 0.0008179545402526855,
+            "null_gap": -0.38216808438301086,
+            "p_sign": 0.966845776968532,
+            "agree": 0.0,
+            "support_ratio": 1.3379063525201313,
+            "window_top1": "ได้",
+            "depth": 0.0,
+            "p_correct": 0.038851366638563194,
+            "status": "unknown",
+            "t0": 1.6,
+            "t1": 3.04,
+            "repeat_of": "เกิด"
+          },
+          {
+            "f0": 76,
+            "f1": 112,
+            "z": 5.5570902824401855,
+            "wins": [
+              [
+                76,
+                112
+              ]
+            ],
+            "nearest": "ถูก",
+            "candidates": [
+              {
+                "word": "ถูก",
+                "score": 0.6833,
+                "support": 0.5766
+              },
+              {
+                "word": "ไม่ดี",
+                "score": 0.6135,
+                "support": 0.5121
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.4892,
+                "support": 0.43
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4541,
+                "support": 0.3456
+              },
+              {
+                "word": "ญาติ",
+                "score": 0.4889,
+                "support": 0.2814
+              }
+            ],
+            "score": 0.5511804819107056,
+            "margin": 0.023671388626098633,
+            "null_gap": -0.6037229299545288,
+            "p_sign": 0.9780657491866604,
+            "agree": 1.0,
+            "support_ratio": 1.1259519625073229,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "p_correct": 0.2160498635584744,
+            "status": "uncertain",
+            "t0": 3.04,
+            "t1": 4.48,
+            "repeat_of": "ถูก",
+            "visual_top1": "ไม่ดี",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 140,
+            "f1": 184,
+            "z": 4.229272365570068,
+            "wins": [
+              [
+                140,
+                184
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.5514,
+                "support": 0.443
+              },
+              {
+                "word": "ยาย",
+                "score": 0.5168,
+                "support": 0.4487
+              },
+              {
+                "word": "ย่า",
+                "score": 0.5219,
+                "support": 0.4205
+              },
+              {
+                "word": "เล่น",
+                "score": 0.5598,
+                "support": 0.2123
+              },
+              {
+                "word": "แต่งงาน",
+                "score": 0.3807,
+                "support": 0.1558
+              }
+            ],
+            "score": 0.46428126096725464,
+            "margin": 0.013609617948532104,
+            "null_gap": -0.3973338007926941,
+            "p_sign": 0.9785357145329242,
+            "agree": 0.0,
+            "support_ratio": 1.0128668171557562,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.06316799036178623,
+            "status": "unknown",
+            "t0": 5.6,
+            "t1": 7.36,
+            "visual_top1": "ยาย",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 184,
+            "f1": 212,
+            "z": 3.9513936042785645,
+            "wins": [
+              [
+                184,
+                212
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.5665,
+                "support": 0.4718
+              },
+              {
+                "word": "ข้าว",
+                "score": 0.5699,
+                "support": 0.4559
+              },
+              {
+                "word": "กิน",
+                "score": 0.5216,
+                "support": 0.4101
+              },
+              {
+                "word": "ฉัน",
+                "score": 0.5978,
+                "support": 0.3872
+              },
+              {
+                "word": "คุณ",
+                "score": 0.4943,
+                "support": 0.312
+              }
+            ],
+            "score": 0.5774486064910889,
+            "margin": 0.03081071376800537,
+            "null_gap": -0.1363358497619629,
+            "p_sign": 0.9836187716041292,
+            "agree": 0.0,
+            "support_ratio": 1.0348760693134458,
+            "window_top1": "ฉัน",
+            "depth": 0.0,
+            "p_correct": 0.15617806063429102,
+            "status": "uncertain",
+            "t0": 7.36,
+            "t1": 8.48
+          },
+          {
+            "f0": 212,
+            "f1": 244,
+            "z": 6.740067481994629,
+            "wins": [
+              [
+                212,
+                244
+              ]
+            ],
+            "nearest": "ถูก",
+            "candidates": [
+              {
+                "word": "ถูก",
+                "score": 0.7257,
+                "support": 0.6892
+              },
+              {
+                "word": "ไม่ดี",
+                "score": 0.5892,
+                "support": 0.5482
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.4751,
+                "support": 0.4404
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4273,
+                "support": 0.2958
+              },
+              {
+                "word": "ยาย",
+                "score": 0.4465,
+                "support": 0.2582
+              }
+            ],
+            "score": 0.7141657471656799,
+            "margin": 0.1390281319618225,
+            "null_gap": -0.5889583230018616,
+            "p_sign": 0.9839242493733764,
+            "agree": 1.0,
+            "support_ratio": 1.2572053994892376,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "p_correct": 0.6030754057132116,
+            "status": "uncertain",
+            "t0": 8.48,
+            "t1": 9.76
+          },
+          {
+            "f0": 288,
+            "f1": 308,
+            "z": 5.282961845397949,
+            "wins": [
+              [
+                288,
+                308
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.6244,
+                "support": 0.6044
+              },
+              {
+                "word": "ย่า",
+                "score": 0.6064,
+                "support": 0.5843
+              },
+              {
+                "word": "ยาย",
+                "score": 0.5605,
+                "support": 0.5438
+              },
+              {
+                "word": "ผิด",
+                "score": 0.3725,
+                "support": 0.3649
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.3602,
+                "support": 0.1201
+              }
+            ],
+            "score": 0.6244296431541443,
+            "margin": 0.018055737018585205,
+            "null_gap": -0.6474059820175171,
+            "p_sign": 0.9346303805895149,
+            "agree": 1.0,
+            "support_ratio": 1.0344001369159679,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.24169019448943677,
+            "status": "uncertain",
+            "t0": 11.52,
+            "t1": 12.32
+          },
+          {
+            "f0": 308,
+            "f1": 332,
+            "z": 4.109670162200928,
+            "wins": [
+              [
+                308,
+                332
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.4309,
+                "support": 0.3982
+              },
+              {
+                "word": "ยินดีด้วย",
+                "score": 0.417,
+                "support": 0.336
+              },
+              {
+                "word": "แต่งตัว",
+                "score": 0.4127,
+                "support": 0.3053
+              },
+              {
+                "word": "ขับรถ",
+                "score": 0.3574,
+                "support": 0.2807
+              },
+              {
+                "word": "สบายดี",
+                "score": 0.3272,
+                "support": 0.2138
+              }
+            ],
+            "score": 0.41697531938552856,
+            "margin": 0.057405292987823486,
+            "null_gap": -0.43022486567497253,
+            "p_sign": 0.9241565143379074,
+            "agree": 0.0,
+            "support_ratio": 1.1851190476190476,
+            "window_top1": "ยินดีด้วย",
+            "depth": 0.0,
+            "p_correct": 0.050641955921984096,
+            "status": "unknown",
+            "t0": 12.32,
+            "t1": 13.28,
+            "repeat_of": "เกิด",
+            "visual_top1": "ยินดีด้วย",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 332,
+            "f1": 376,
+            "z": 6.059041976928711,
+            "wins": [
+              [
+                332,
+                376
+              ]
+            ],
+            "nearest": "ไม่ดี",
+            "candidates": [
+              {
+                "word": "ไม่ดี",
+                "score": 0.5903,
+                "support": 0.3787
+              },
+              {
+                "word": "ถูก",
+                "score": 0.7012,
+                "support": 0.4564
+              },
+              {
+                "word": "ยาย",
+                "score": 0.6003,
+                "support": 0.4239
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.457,
+                "support": 0.2528
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4418,
+                "support": 0.2005
+              }
+            ],
+            "score": 0.6435842514038086,
+            "margin": 0.11471480131149292,
+            "null_gap": -0.4587748050689697,
+            "p_sign": 0.9858846975998445,
+            "agree": 1.0,
+            "support_ratio": 1.0766690257136116,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "p_correct": 0.5090350175606072,
+            "status": "uncertain",
+            "t0": 13.28,
+            "t1": 15.04,
+            "repeat_of": "ถูก"
+          }
+        ],
+        "face": {},
+        "fusion": {
+          "chosen": [
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]"
+          ],
+          "sentence_th": "",
+          "meaning_th": "ยังไม่มั่นใจพอจะแปล — ลองทำท่าช้าลง ให้มืออยู่ในกรอบ หรือกดยืนยันคำที่ถูก",
+          "confidence": 0.0,
+          "provider": "none",
+          "evidence_gloss": "ญาติ? | [?]≈เกิด | ถูก? | [?]≈ญาติ | เกิด? | ถูก? | ญาติ? | [?]≈เกิด | ไม่ดี?",
+          "evidence_guard": "withheld: no confident sign"
+        },
+        "sentence": "",
+        "timings_ms": {
+          "schema_ms": 50.3,
+          "tagger_ms": 2829.9,
+          "spotting_ms": 1051.9,
+          "n_windows": 723,
+          "tempo_factor": 1.0,
+          "language_ms": 0.2,
+          "mediapipe_ms": 0.0
+        },
+        "model": "v7.2",
+        "vocab": "conversation"
+      }
+    },
+    "min_len16": {
+      "weight": 0,
+      "inference_s": 3.767878959000086,
+      "result": {
+        "title": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/boom datatest/เล่นเกมส์กันไหม.MOV",
+        "fps": 25.0,
+        "n_frames": 376,
+        "duration_s": 15.04,
+        "signer_visible_frac": 1.0,
+        "signing_frac": 0.7712765957446809,
+        "mirrored_to_right_hand": false,
+        "segments": [
+          {
+            "f0": 12,
+            "f1": 40,
+            "z": 4.4941086769104,
+            "wins": [
+              [
+                12,
+                40
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.5628,
+                "support": 0.5091
+              },
+              {
+                "word": "ย่า",
+                "score": 0.5184,
+                "support": 0.4805
+              },
+              {
+                "word": "ยาย",
+                "score": 0.4885,
+                "support": 0.4584
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4122,
+                "support": 0.4008
+              },
+              {
+                "word": "วันนี้",
+                "score": 0.3913,
+                "support": 0.1816
+              }
+            ],
+            "score": 0.5103622078895569,
+            "margin": 0.03781750798225403,
+            "null_gap": -0.5397421717643738,
+            "p_sign": 0.9627992124083384,
+            "agree": 1.0,
+            "support_ratio": 1.0595213319458898,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.15274809042159962,
+            "status": "uncertain",
+            "t0": 0.48,
+            "t1": 1.6,
+            "repeat_of": "ญาติ",
+            "visual_top1": "ย่า",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 40,
+            "f1": 76,
+            "z": 3.72926926612854,
+            "wins": [
+              [
+                40,
+                76
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.482,
+                "support": 0.4486
+              },
+              {
+                "word": "ฉัน",
+                "score": 0.5104,
+                "support": 0.3353
+              },
+              {
+                "word": "คุณ",
+                "score": 0.4725,
+                "support": 0.3159
+              },
+              {
+                "word": "แต่งตัว",
+                "score": 0.4031,
+                "support": 0.2425
+              },
+              {
+                "word": "ข้าว",
+                "score": 0.4937,
+                "support": 0.2168
+              }
+            ],
+            "score": 0.3968270719051361,
+            "margin": 0.0008179545402526855,
+            "null_gap": -0.38216808438301086,
+            "p_sign": 0.966845776968532,
+            "agree": 0.0,
+            "support_ratio": 1.3379063525201313,
+            "window_top1": "ได้",
+            "depth": 0.0,
+            "p_correct": 0.038851366638563194,
+            "status": "unknown",
+            "t0": 1.6,
+            "t1": 3.04,
+            "repeat_of": "เกิด"
+          },
+          {
+            "f0": 76,
+            "f1": 112,
+            "z": 5.5570902824401855,
+            "wins": [
+              [
+                76,
+                112
+              ]
+            ],
+            "nearest": "ถูก",
+            "candidates": [
+              {
+                "word": "ถูก",
+                "score": 0.6833,
+                "support": 0.5766
+              },
+              {
+                "word": "ไม่ดี",
+                "score": 0.6135,
+                "support": 0.5121
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.4892,
+                "support": 0.43
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4541,
+                "support": 0.3456
+              },
+              {
+                "word": "ญาติ",
+                "score": 0.4889,
+                "support": 0.2814
+              }
+            ],
+            "score": 0.5511804819107056,
+            "margin": 0.023671388626098633,
+            "null_gap": -0.6037229299545288,
+            "p_sign": 0.9780657491866604,
+            "agree": 1.0,
+            "support_ratio": 1.1259519625073229,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "p_correct": 0.2160498635584744,
+            "status": "uncertain",
+            "t0": 3.04,
+            "t1": 4.48,
+            "repeat_of": "ถูก",
+            "visual_top1": "ไม่ดี",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 140,
+            "f1": 184,
+            "z": 4.229272365570068,
+            "wins": [
+              [
+                140,
+                184
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.5514,
+                "support": 0.443
+              },
+              {
+                "word": "ยาย",
+                "score": 0.5168,
+                "support": 0.4487
+              },
+              {
+                "word": "ย่า",
+                "score": 0.5219,
+                "support": 0.4205
+              },
+              {
+                "word": "เล่น",
+                "score": 0.5598,
+                "support": 0.2123
+              },
+              {
+                "word": "แต่งงาน",
+                "score": 0.3807,
+                "support": 0.1558
+              }
+            ],
+            "score": 0.46428126096725464,
+            "margin": 0.013609617948532104,
+            "null_gap": -0.3973338007926941,
+            "p_sign": 0.9785357145329242,
+            "agree": 0.0,
+            "support_ratio": 1.0128668171557562,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.06316799036178623,
+            "status": "unknown",
+            "t0": 5.6,
+            "t1": 7.36,
+            "visual_top1": "ยาย",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 184,
+            "f1": 212,
+            "z": 3.9513936042785645,
+            "wins": [
+              [
+                184,
+                212
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.5665,
+                "support": 0.4718
+              },
+              {
+                "word": "ข้าว",
+                "score": 0.5699,
+                "support": 0.4559
+              },
+              {
+                "word": "กิน",
+                "score": 0.5216,
+                "support": 0.4101
+              },
+              {
+                "word": "ฉัน",
+                "score": 0.5978,
+                "support": 0.3872
+              },
+              {
+                "word": "คุณ",
+                "score": 0.4943,
+                "support": 0.312
+              }
+            ],
+            "score": 0.5774486064910889,
+            "margin": 0.03081071376800537,
+            "null_gap": -0.1363358497619629,
+            "p_sign": 0.9836187716041292,
+            "agree": 0.0,
+            "support_ratio": 1.0348760693134458,
+            "window_top1": "ฉัน",
+            "depth": 0.0,
+            "p_correct": 0.15617806063429102,
+            "status": "uncertain",
+            "t0": 7.36,
+            "t1": 8.48
+          },
+          {
+            "f0": 212,
+            "f1": 252,
+            "z": 6.7331695556640625,
+            "wins": [
+              [
+                212,
+                252
+              ]
+            ],
+            "nearest": "ถูก",
+            "candidates": [
+              {
+                "word": "ถูก",
+                "score": 0.7257,
+                "support": 0.6686
+              },
+              {
+                "word": "ไม่ดี",
+                "score": 0.5892,
+                "support": 0.5349
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.4751,
+                "support": 0.3702
+              },
+              {
+                "word": "ยาย",
+                "score": 0.461,
+                "support": 0.3232
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4319,
+                "support": 0.2537
+              }
+            ],
+            "score": 0.7074141502380371,
+            "margin": 0.1282440423965454,
+            "null_gap": -0.5515193939208984,
+            "p_sign": 0.8130772956008514,
+            "agree": 1.0,
+            "support_ratio": 1.249953262292017,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "p_correct": 0.6788546682543779,
+            "status": "uncertain",
+            "t0": 8.48,
+            "t1": 10.08
+          },
+          {
+            "f0": 288,
+            "f1": 308,
+            "z": 5.282961845397949,
+            "wins": [
+              [
+                288,
+                308
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.6244,
+                "support": 0.6044
+              },
+              {
+                "word": "ย่า",
+                "score": 0.6064,
+                "support": 0.5843
+              },
+              {
+                "word": "ยาย",
+                "score": 0.5605,
+                "support": 0.5438
+              },
+              {
+                "word": "ผิด",
+                "score": 0.3725,
+                "support": 0.3649
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.3602,
+                "support": 0.1201
+              }
+            ],
+            "score": 0.6244296431541443,
+            "margin": 0.018055737018585205,
+            "null_gap": -0.6474059820175171,
+            "p_sign": 0.9346303805895149,
+            "agree": 1.0,
+            "support_ratio": 1.0344001369159679,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.24169019448943677,
+            "status": "uncertain",
+            "t0": 11.52,
+            "t1": 12.32
+          },
+          {
+            "f0": 308,
+            "f1": 332,
+            "z": 4.109670162200928,
+            "wins": [
+              [
+                308,
+                332
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.4309,
+                "support": 0.3982
+              },
+              {
+                "word": "ยินดีด้วย",
+                "score": 0.417,
+                "support": 0.336
+              },
+              {
+                "word": "แต่งตัว",
+                "score": 0.4127,
+                "support": 0.3053
+              },
+              {
+                "word": "ขับรถ",
+                "score": 0.3574,
+                "support": 0.2807
+              },
+              {
+                "word": "สบายดี",
+                "score": 0.3272,
+                "support": 0.2138
+              }
+            ],
+            "score": 0.41697531938552856,
+            "margin": 0.057405292987823486,
+            "null_gap": -0.43022486567497253,
+            "p_sign": 0.9241565143379074,
+            "agree": 0.0,
+            "support_ratio": 1.1851190476190476,
+            "window_top1": "ยินดีด้วย",
+            "depth": 0.0,
+            "p_correct": 0.050641955921984096,
+            "status": "unknown",
+            "t0": 12.32,
+            "t1": 13.28,
+            "repeat_of": "เกิด",
+            "visual_top1": "ยินดีด้วย",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 332,
+            "f1": 376,
+            "z": 6.059041976928711,
+            "wins": [
+              [
+                332,
+                376
+              ]
+            ],
+            "nearest": "ไม่ดี",
+            "candidates": [
+              {
+                "word": "ไม่ดี",
+                "score": 0.5903,
+                "support": 0.3787
+              },
+              {
+                "word": "ถูก",
+                "score": 0.7012,
+                "support": 0.4564
+              },
+              {
+                "word": "ยาย",
+                "score": 0.6003,
+                "support": 0.4239
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.457,
+                "support": 0.2528
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4418,
+                "support": 0.2005
+              }
+            ],
+            "score": 0.6435842514038086,
+            "margin": 0.11471480131149292,
+            "null_gap": -0.4587748050689697,
+            "p_sign": 0.9858846975998445,
+            "agree": 1.0,
+            "support_ratio": 1.0766690257136116,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "p_correct": 0.5090350175606072,
+            "status": "uncertain",
+            "t0": 13.28,
+            "t1": 15.04,
+            "repeat_of": "ถูก"
+          }
+        ],
+        "face": {},
+        "fusion": {
+          "chosen": [
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]"
+          ],
+          "sentence_th": "",
+          "meaning_th": "ยังไม่มั่นใจพอจะแปล — ลองทำท่าช้าลง ให้มืออยู่ในกรอบ หรือกดยืนยันคำที่ถูก",
+          "confidence": 0.0,
+          "provider": "none",
+          "evidence_gloss": "ญาติ? | [?]≈เกิด | ถูก? | [?]≈ญาติ | เกิด? | ถูก? | ญาติ? | [?]≈เกิด | ไม่ดี?",
+          "evidence_guard": "withheld: no confident sign"
+        },
+        "sentence": "",
+        "timings_ms": {
+          "schema_ms": 82.3,
+          "tagger_ms": 2932.4,
+          "spotting_ms": 752.9,
+          "n_windows": 732,
+          "tempo_factor": 1.0,
+          "language_ms": 0.2,
+          "mediapipe_ms": 0.0
+        },
+        "model": "v7.2",
+        "vocab": "conversation"
+      }
+    },
+    "exact_rescore": {
+      "weight": 0,
+      "inference_s": 6.710166375000085,
+      "result": {
+        "title": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/boom datatest/เล่นเกมส์กันไหม.MOV",
+        "fps": 25.0,
+        "n_frames": 376,
+        "duration_s": 15.04,
+        "signer_visible_frac": 1.0,
+        "signing_frac": 0.7712765957446809,
+        "mirrored_to_right_hand": false,
+        "segments": [
+          {
+            "f0": 12,
+            "f1": 40,
+            "z": 2.956863496507868,
+            "wins": [
+              [
+                12,
+                40
+              ]
+            ],
+            "nearest": "ยาย",
+            "candidates": [
+              {
+                "word": "ยาย",
+                "score": 0.3457,
+                "support": 0.3457
+              },
+              {
+                "word": "ญาติ",
+                "score": 0.3382,
+                "support": 0.3382
+              },
+              {
+                "word": "เล่น",
+                "score": 0.3276,
+                "support": 0.3276
+              },
+              {
+                "word": "ย่า",
+                "score": 0.3236,
+                "support": 0.3236
+              },
+              {
+                "word": "วันนี้",
+                "score": 0.323,
+                "support": 0.323
+              }
+            ],
+            "score": 0.3457220196723938,
+            "margin": 0.007489204406738281,
+            "null_gap": -0.3016357421875,
+            "p_sign": 0.9627992124083384,
+            "agree": 0.0,
+            "support_ratio": 1.0595213319458898,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.02501877879493375,
+            "status": "unknown",
+            "t0": 0.48,
+            "t1": 1.6
+          },
+          {
+            "f0": 40,
+            "f1": 76,
+            "z": 4.155235478301261,
+            "wins": [
+              [
+                40,
+                76
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.457,
+                "support": 0.457
+              },
+              {
+                "word": "ได้",
+                "score": 0.4519,
+                "support": 0.4519
+              },
+              {
+                "word": "สบายดี",
+                "score": 0.4174,
+                "support": 0.4174
+              },
+              {
+                "word": "เหนื่อย",
+                "score": 0.4022,
+                "support": 0.4022
+              },
+              {
+                "word": "ดี",
+                "score": 0.3418,
+                "support": 0.3418
+              }
+            ],
+            "score": 0.45696118474006653,
+            "margin": 0.005055457353591919,
+            "null_gap": -0.47600066661834717,
+            "p_sign": 0.966845776968532,
+            "agree": 1.0,
+            "support_ratio": 1.3379063525201313,
+            "window_top1": "ได้",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.12068325884027736,
+            "status": "uncertain",
+            "t0": 1.6,
+            "t1": 3.04
+          },
+          {
+            "f0": 76,
+            "f1": 112,
+            "z": 6.333628082423464,
+            "wins": [
+              [
+                76,
+                112
+              ]
+            ],
+            "nearest": "ถูก",
+            "candidates": [
+              {
+                "word": "ถูก",
+                "score": 0.5829,
+                "support": 0.5829
+              },
+              {
+                "word": "ไม่ดี",
+                "score": 0.5403,
+                "support": 0.5403
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.406,
+                "support": 0.406
+              },
+              {
+                "word": "ผิด",
+                "score": 0.371,
+                "support": 0.371
+              },
+              {
+                "word": "ญาติ",
+                "score": 0.3377,
+                "support": 0.3377
+              }
+            ],
+            "score": 0.582948625087738,
+            "margin": 0.04266256093978882,
+            "null_gap": -0.5304954051971436,
+            "p_sign": 0.9780657491866604,
+            "agree": 1.0,
+            "support_ratio": 1.1259519625073229,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.3408731698614469,
+            "status": "unknown",
+            "t0": 3.04,
+            "t1": 4.48,
+            "repeat_of": "ถูก"
+          },
+          {
+            "f0": 140,
+            "f1": 184,
+            "z": 3.79318742001832,
+            "wins": [
+              [
+                140,
+                184
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.3857,
+                "support": 0.3857
+              },
+              {
+                "word": "ย่า",
+                "score": 0.37,
+                "support": 0.37
+              },
+              {
+                "word": "ยาย",
+                "score": 0.3824,
+                "support": 0.3824
+              },
+              {
+                "word": "เล่น",
+                "score": 0.3395,
+                "support": 0.3395
+              },
+              {
+                "word": "สนุก",
+                "score": 0.3197,
+                "support": 0.3197
+              }
+            ],
+            "score": 0.3857406973838806,
+            "margin": 0.003291904926300049,
+            "null_gap": -0.4658230245113373,
+            "p_sign": 0.9785357145329242,
+            "agree": 0.0,
+            "support_ratio": 1.0128668171557562,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.03096302510826777,
+            "status": "unknown",
+            "t0": 5.6,
+            "t1": 7.36,
+            "repeat_of": "ญาติ",
+            "visual_top1": "ย่า",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 184,
+            "f1": 212,
+            "z": 3.4562563989000252,
+            "wins": [
+              [
+                184,
+                212
+              ]
+            ],
+            "nearest": "ได้",
+            "candidates": [
+              {
+                "word": "ได้",
+                "score": 0.3846,
+                "support": 0.3846
+              },
+              {
+                "word": "สบายดี",
+                "score": 0.3537,
+                "support": 0.3537
+              },
+              {
+                "word": "ดี",
+                "score": 0.3361,
+                "support": 0.3361
+              },
+              {
+                "word": "เกิด",
+                "score": 0.3328,
+                "support": 0.3328
+              },
+              {
+                "word": "ความรัก",
+                "score": 0.2983,
+                "support": 0.2983
+              }
+            ],
+            "score": 0.384604811668396,
+            "margin": 0.030885964632034302,
+            "null_gap": -0.20888544619083405,
+            "p_sign": 0.9836187716041292,
+            "agree": 0.0,
+            "support_ratio": 1.0348760693134458,
+            "window_top1": "ฉัน",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.044699400906381824,
+            "status": "unknown",
+            "t0": 7.36,
+            "t1": 8.48
+          },
+          {
+            "f0": 212,
+            "f1": 252,
+            "z": 6.40941588561667,
+            "wins": [
+              [
+                212,
+                252
+              ]
+            ],
+            "nearest": "ถูก",
+            "candidates": [
+              {
+                "word": "ถูก",
+                "score": 0.7375,
+                "support": 0.7375
+              },
+              {
+                "word": "ยาย",
+                "score": 0.4988,
+                "support": 0.4988
+              },
+              {
+                "word": "ญาติ",
+                "score": 0.45,
+                "support": 0.45
+              },
+              {
+                "word": "ไม่ดี",
+                "score": 0.4444,
+                "support": 0.4444
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.4384,
+                "support": 0.4384
+              }
+            ],
+            "score": 0.7375109195709229,
+            "margin": 0.23870748281478882,
+            "null_gap": -0.40955087542533875,
+            "p_sign": 0.8130772956008514,
+            "agree": 1.0,
+            "support_ratio": 1.249953262292017,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.8176581121023949,
+            "status": "accepted",
+            "t0": 8.48,
+            "t1": 10.08
+          },
+          {
+            "f0": 288,
+            "f1": 308,
+            "z": 4.391810839712228,
+            "wins": [
+              [
+                288,
+                308
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.4617,
+                "support": 0.4617
+              },
+              {
+                "word": "ยาย",
+                "score": 0.4598,
+                "support": 0.4598
+              },
+              {
+                "word": "ย่า",
+                "score": 0.4217,
+                "support": 0.4217
+              },
+              {
+                "word": "ผิด",
+                "score": 0.364,
+                "support": 0.364
+              },
+              {
+                "word": "คอมพิวเตอร์",
+                "score": 0.2872,
+                "support": 0.2872
+              }
+            ],
+            "score": 0.4616840183734894,
+            "margin": 0.0019164979457855225,
+            "null_gap": -0.5772472620010376,
+            "p_sign": 0.9346303805895149,
+            "agree": 1.0,
+            "support_ratio": 1.0344001369159679,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.09599963652142368,
+            "status": "uncertain",
+            "t0": 11.52,
+            "t1": 12.32
+          },
+          {
+            "f0": 308,
+            "f1": 332,
+            "z": 3.4526037831882177,
+            "wins": [
+              [
+                308,
+                332
+              ]
+            ],
+            "nearest": "สบายดี",
+            "candidates": [
+              {
+                "word": "สบายดี",
+                "score": 0.3714,
+                "support": 0.3714
+              },
+              {
+                "word": "เกิด",
+                "score": 0.3568,
+                "support": 0.3568
+              },
+              {
+                "word": "ยินดีด้วย",
+                "score": 0.3531,
+                "support": 0.3531
+              },
+              {
+                "word": "ขับรถ",
+                "score": 0.3327,
+                "support": 0.3327
+              },
+              {
+                "word": "เหนื่อย",
+                "score": 0.321,
+                "support": 0.321
+              }
+            ],
+            "score": 0.3713630437850952,
+            "margin": 0.014594495296478271,
+            "null_gap": -0.39277535676956177,
+            "p_sign": 0.9241565143379074,
+            "agree": 0.0,
+            "support_ratio": 1.1851190476190476,
+            "window_top1": "ยินดีด้วย",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.03032546536263693,
+            "status": "unknown",
+            "t0": 12.32,
+            "t1": 13.28
+          },
+          {
+            "f0": 332,
+            "f1": 376,
+            "z": 5.099282864080092,
+            "wins": [
+              [
+                332,
+                376
+              ]
+            ],
+            "nearest": "ไม่ดี",
+            "candidates": [
+              {
+                "word": "ไม่ดี",
+                "score": 0.5092,
+                "support": 0.5092
+              },
+              {
+                "word": "ถูก",
+                "score": 0.4679,
+                "support": 0.4679
+              },
+              {
+                "word": "ยาย",
+                "score": 0.3464,
+                "support": 0.3464
+              },
+              {
+                "word": "ย่า",
+                "score": 0.3315,
+                "support": 0.3315
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.3096,
+                "support": 0.3096
+              }
+            ],
+            "score": 0.5092049837112427,
+            "margin": 0.04132109880447388,
+            "null_gap": -0.3770982623100281,
+            "p_sign": 0.9858846975998445,
+            "agree": 0.0,
+            "support_ratio": 1.0766690257136116,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.1153486421812588,
+            "status": "uncertain",
+            "t0": 13.28,
+            "t1": 15.04
+          }
+        ],
+        "face": {},
+        "fusion": {
+          "chosen": [
+            "ถูก"
+          ],
+          "sentence_th": "ถูก",
+          "meaning_th": "",
+          "confidence": 1.0,
+          "provider": "rules",
+          "guard_violations": [],
+          "evidence_gloss": "[?]≈ยาย | เกิด? | [?]≈ถูก | [?]≈ญาติ | [?]≈ได้ | ถูก | ญาติ? | [?]≈สบายดี | ไม่ดี?"
+        },
+        "sentence": "ถูก",
+        "timings_ms": {
+          "schema_ms": 73.1,
+          "tagger_ms": 2697.4,
+          "spotting_ms": 3939.2,
+          "n_windows": 732,
+          "tempo_factor": 1.0,
+          "language_ms": 0.2,
+          "mediapipe_ms": 0.0
+        },
+        "model": "v7.2",
+        "vocab": "conversation"
+      }
+    },
+    "post_frames12": {
+      "weight": 0,
+      "inference_s": 3.4883359159999827,
+      "result": {
+        "title": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/boom datatest/เล่นเกมส์กันไหม.MOV",
+        "fps": 25.0,
+        "n_frames": 376,
+        "duration_s": 15.04,
+        "signer_visible_frac": 1.0,
+        "signing_frac": 0.7712765957446809,
+        "mirrored_to_right_hand": false,
+        "segments": [
+          {
+            "f0": 12,
+            "f1": 40,
+            "z": 4.4941086769104,
+            "wins": [
+              [
+                12,
+                40
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.5628,
+                "support": 0.5091
+              },
+              {
+                "word": "ย่า",
+                "score": 0.5184,
+                "support": 0.4805
+              },
+              {
+                "word": "ยาย",
+                "score": 0.4885,
+                "support": 0.4584
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4122,
+                "support": 0.4008
+              },
+              {
+                "word": "วันนี้",
+                "score": 0.3913,
+                "support": 0.1816
+              }
+            ],
+            "score": 0.5103622078895569,
+            "margin": 0.03781750798225403,
+            "null_gap": -0.5397421717643738,
+            "p_sign": 0.9627992124083384,
+            "agree": 1.0,
+            "support_ratio": 1.0595213319458898,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.15274809042159962,
+            "status": "uncertain",
+            "t0": 0.48,
+            "t1": 1.6,
+            "repeat_of": "ญาติ",
+            "visual_top1": "ย่า",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 40,
+            "f1": 76,
+            "z": 3.72926926612854,
+            "wins": [
+              [
+                40,
+                76
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.482,
+                "support": 0.4486
+              },
+              {
+                "word": "ฉัน",
+                "score": 0.5104,
+                "support": 0.3353
+              },
+              {
+                "word": "คุณ",
+                "score": 0.4725,
+                "support": 0.3159
+              },
+              {
+                "word": "แต่งตัว",
+                "score": 0.4031,
+                "support": 0.2425
+              },
+              {
+                "word": "ข้าว",
+                "score": 0.4937,
+                "support": 0.2168
+              }
+            ],
+            "score": 0.3968270719051361,
+            "margin": 0.0008179545402526855,
+            "null_gap": -0.38216808438301086,
+            "p_sign": 0.966845776968532,
+            "agree": 0.0,
+            "support_ratio": 1.3379063525201313,
+            "window_top1": "ได้",
+            "depth": 0.0,
+            "p_correct": 0.038851366638563194,
+            "status": "unknown",
+            "t0": 1.6,
+            "t1": 3.04,
+            "repeat_of": "เกิด"
+          },
+          {
+            "f0": 76,
+            "f1": 112,
+            "z": 5.5570902824401855,
+            "wins": [
+              [
+                76,
+                112
+              ]
+            ],
+            "nearest": "ถูก",
+            "candidates": [
+              {
+                "word": "ถูก",
+                "score": 0.6833,
+                "support": 0.5766
+              },
+              {
+                "word": "ไม่ดี",
+                "score": 0.6135,
+                "support": 0.5121
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.4892,
+                "support": 0.43
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4541,
+                "support": 0.3456
+              },
+              {
+                "word": "ญาติ",
+                "score": 0.4889,
+                "support": 0.2814
+              }
+            ],
+            "score": 0.5511804819107056,
+            "margin": 0.023671388626098633,
+            "null_gap": -0.6037229299545288,
+            "p_sign": 0.9780657491866604,
+            "agree": 1.0,
+            "support_ratio": 1.1259519625073229,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "p_correct": 0.2160498635584744,
+            "status": "uncertain",
+            "t0": 3.04,
+            "t1": 4.48,
+            "repeat_of": "ถูก",
+            "visual_top1": "ไม่ดี",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 140,
+            "f1": 184,
+            "z": 4.229272365570068,
+            "wins": [
+              [
+                140,
+                184
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.5514,
+                "support": 0.443
+              },
+              {
+                "word": "ยาย",
+                "score": 0.5168,
+                "support": 0.4487
+              },
+              {
+                "word": "ย่า",
+                "score": 0.5219,
+                "support": 0.4205
+              },
+              {
+                "word": "เล่น",
+                "score": 0.5598,
+                "support": 0.2123
+              },
+              {
+                "word": "แต่งงาน",
+                "score": 0.3807,
+                "support": 0.1558
+              }
+            ],
+            "score": 0.46428126096725464,
+            "margin": 0.013609617948532104,
+            "null_gap": -0.3973338007926941,
+            "p_sign": 0.9785357145329242,
+            "agree": 0.0,
+            "support_ratio": 1.0128668171557562,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.06316799036178623,
+            "status": "unknown",
+            "t0": 5.6,
+            "t1": 7.36,
+            "visual_top1": "ยาย",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 184,
+            "f1": 212,
+            "z": 3.9513936042785645,
+            "wins": [
+              [
+                184,
+                212
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.5665,
+                "support": 0.4718
+              },
+              {
+                "word": "ข้าว",
+                "score": 0.5699,
+                "support": 0.4559
+              },
+              {
+                "word": "กิน",
+                "score": 0.5216,
+                "support": 0.4101
+              },
+              {
+                "word": "ฉัน",
+                "score": 0.5978,
+                "support": 0.3872
+              },
+              {
+                "word": "คุณ",
+                "score": 0.4943,
+                "support": 0.312
+              }
+            ],
+            "score": 0.5774486064910889,
+            "margin": 0.03081071376800537,
+            "null_gap": -0.1363358497619629,
+            "p_sign": 0.9836187716041292,
+            "agree": 0.0,
+            "support_ratio": 1.0348760693134458,
+            "window_top1": "ฉัน",
+            "depth": 0.0,
+            "p_correct": 0.15617806063429102,
+            "status": "uncertain",
+            "t0": 7.36,
+            "t1": 8.48
+          },
+          {
+            "f0": 212,
+            "f1": 252,
+            "z": 6.7331695556640625,
+            "wins": [
+              [
+                212,
+                252
+              ]
+            ],
+            "nearest": "ถูก",
+            "candidates": [
+              {
+                "word": "ถูก",
+                "score": 0.7257,
+                "support": 0.6686
+              },
+              {
+                "word": "ไม่ดี",
+                "score": 0.5892,
+                "support": 0.5349
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.4751,
+                "support": 0.3702
+              },
+              {
+                "word": "ยาย",
+                "score": 0.461,
+                "support": 0.3232
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4319,
+                "support": 0.2537
+              }
+            ],
+            "score": 0.7074141502380371,
+            "margin": 0.1282440423965454,
+            "null_gap": -0.5515193939208984,
+            "p_sign": 0.8130772956008514,
+            "agree": 1.0,
+            "support_ratio": 1.249953262292017,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "p_correct": 0.6788546682543779,
+            "status": "uncertain",
+            "t0": 8.48,
+            "t1": 10.08
+          },
+          {
+            "f0": 288,
+            "f1": 308,
+            "z": 5.282961845397949,
+            "wins": [
+              [
+                288,
+                308
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.6244,
+                "support": 0.6044
+              },
+              {
+                "word": "ย่า",
+                "score": 0.6064,
+                "support": 0.5843
+              },
+              {
+                "word": "ยาย",
+                "score": 0.5605,
+                "support": 0.5438
+              },
+              {
+                "word": "ผิด",
+                "score": 0.3725,
+                "support": 0.3649
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.3602,
+                "support": 0.1201
+              }
+            ],
+            "score": 0.6244296431541443,
+            "margin": 0.018055737018585205,
+            "null_gap": -0.6474059820175171,
+            "p_sign": 0.9346303805895149,
+            "agree": 1.0,
+            "support_ratio": 1.0344001369159679,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.24169019448943677,
+            "status": "uncertain",
+            "t0": 11.52,
+            "t1": 12.32
+          },
+          {
+            "f0": 308,
+            "f1": 332,
+            "z": 4.109670162200928,
+            "wins": [
+              [
+                308,
+                332
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.4309,
+                "support": 0.3982
+              },
+              {
+                "word": "ยินดีด้วย",
+                "score": 0.417,
+                "support": 0.336
+              },
+              {
+                "word": "แต่งตัว",
+                "score": 0.4127,
+                "support": 0.3053
+              },
+              {
+                "word": "ขับรถ",
+                "score": 0.3574,
+                "support": 0.2807
+              },
+              {
+                "word": "สบายดี",
+                "score": 0.3272,
+                "support": 0.2138
+              }
+            ],
+            "score": 0.41697531938552856,
+            "margin": 0.057405292987823486,
+            "null_gap": -0.43022486567497253,
+            "p_sign": 0.9241565143379074,
+            "agree": 0.0,
+            "support_ratio": 1.1851190476190476,
+            "window_top1": "ยินดีด้วย",
+            "depth": 0.0,
+            "p_correct": 0.050641955921984096,
+            "status": "unknown",
+            "t0": 12.32,
+            "t1": 13.28,
+            "repeat_of": "เกิด",
+            "visual_top1": "ยินดีด้วย",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 332,
+            "f1": 376,
+            "z": 6.059041976928711,
+            "wins": [
+              [
+                332,
+                376
+              ]
+            ],
+            "nearest": "ไม่ดี",
+            "candidates": [
+              {
+                "word": "ไม่ดี",
+                "score": 0.5903,
+                "support": 0.3787
+              },
+              {
+                "word": "ถูก",
+                "score": 0.7012,
+                "support": 0.4564
+              },
+              {
+                "word": "ยาย",
+                "score": 0.6003,
+                "support": 0.4239
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.457,
+                "support": 0.2528
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4418,
+                "support": 0.2005
+              }
+            ],
+            "score": 0.6435842514038086,
+            "margin": 0.11471480131149292,
+            "null_gap": -0.4587748050689697,
+            "p_sign": 0.9858846975998445,
+            "agree": 1.0,
+            "support_ratio": 1.0766690257136116,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "p_correct": 0.5090350175606072,
+            "status": "uncertain",
+            "t0": 13.28,
+            "t1": 15.04,
+            "repeat_of": "ถูก"
+          }
+        ],
+        "face": {},
+        "fusion": {
+          "chosen": [
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]"
+          ],
+          "sentence_th": "",
+          "meaning_th": "ยังไม่มั่นใจพอจะแปล — ลองทำท่าช้าลง ให้มืออยู่ในกรอบ หรือกดยืนยันคำที่ถูก",
+          "confidence": 0.0,
+          "provider": "none",
+          "evidence_gloss": "ญาติ? | [?]≈เกิด | ถูก? | [?]≈ญาติ | เกิด? | ถูก? | ญาติ? | [?]≈เกิด | ไม่ดี?",
+          "evidence_guard": "withheld: no confident sign"
+        },
+        "sentence": "",
+        "timings_ms": {
+          "schema_ms": 61.9,
+          "tagger_ms": 2661.9,
+          "spotting_ms": 763.7,
+          "n_windows": 732,
+          "tempo_factor": 1.0,
+          "language_ms": 0.4,
+          "mediapipe_ms": 0.0
+        },
+        "model": "v7.2",
+        "vocab": "conversation"
+      }
+    },
+    "post_psign070": {
+      "weight": 0,
+      "inference_s": 3.5640703340000073,
+      "result": {
+        "title": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/boom datatest/เล่นเกมส์กันไหม.MOV",
+        "fps": 25.0,
+        "n_frames": 376,
+        "duration_s": 15.04,
+        "signer_visible_frac": 1.0,
+        "signing_frac": 0.7712765957446809,
+        "mirrored_to_right_hand": false,
+        "segments": [
+          {
+            "f0": 12,
+            "f1": 40,
+            "z": 4.4941086769104,
+            "wins": [
+              [
+                12,
+                40
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.5628,
+                "support": 0.5091
+              },
+              {
+                "word": "ย่า",
+                "score": 0.5184,
+                "support": 0.4805
+              },
+              {
+                "word": "ยาย",
+                "score": 0.4885,
+                "support": 0.4584
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4122,
+                "support": 0.4008
+              },
+              {
+                "word": "วันนี้",
+                "score": 0.3913,
+                "support": 0.1816
+              }
+            ],
+            "score": 0.5103622078895569,
+            "margin": 0.03781750798225403,
+            "null_gap": -0.5397421717643738,
+            "p_sign": 0.9627992124083384,
+            "agree": 1.0,
+            "support_ratio": 1.0595213319458898,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.15274809042159962,
+            "status": "uncertain",
+            "t0": 0.48,
+            "t1": 1.6,
+            "repeat_of": "ญาติ",
+            "visual_top1": "ย่า",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 40,
+            "f1": 76,
+            "z": 3.72926926612854,
+            "wins": [
+              [
+                40,
+                76
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.482,
+                "support": 0.4486
+              },
+              {
+                "word": "ฉัน",
+                "score": 0.5104,
+                "support": 0.3353
+              },
+              {
+                "word": "คุณ",
+                "score": 0.4725,
+                "support": 0.3159
+              },
+              {
+                "word": "แต่งตัว",
+                "score": 0.4031,
+                "support": 0.2425
+              },
+              {
+                "word": "ข้าว",
+                "score": 0.4937,
+                "support": 0.2168
+              }
+            ],
+            "score": 0.3968270719051361,
+            "margin": 0.0008179545402526855,
+            "null_gap": -0.38216808438301086,
+            "p_sign": 0.966845776968532,
+            "agree": 0.0,
+            "support_ratio": 1.3379063525201313,
+            "window_top1": "ได้",
+            "depth": 0.0,
+            "p_correct": 0.038851366638563194,
+            "status": "unknown",
+            "t0": 1.6,
+            "t1": 3.04,
+            "repeat_of": "เกิด"
+          },
+          {
+            "f0": 76,
+            "f1": 112,
+            "z": 5.5570902824401855,
+            "wins": [
+              [
+                76,
+                112
+              ]
+            ],
+            "nearest": "ถูก",
+            "candidates": [
+              {
+                "word": "ถูก",
+                "score": 0.6833,
+                "support": 0.5766
+              },
+              {
+                "word": "ไม่ดี",
+                "score": 0.6135,
+                "support": 0.5121
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.4892,
+                "support": 0.43
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4541,
+                "support": 0.3456
+              },
+              {
+                "word": "ญาติ",
+                "score": 0.4889,
+                "support": 0.2814
+              }
+            ],
+            "score": 0.5511804819107056,
+            "margin": 0.023671388626098633,
+            "null_gap": -0.6037229299545288,
+            "p_sign": 0.9780657491866604,
+            "agree": 1.0,
+            "support_ratio": 1.1259519625073229,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "p_correct": 0.2160498635584744,
+            "status": "uncertain",
+            "t0": 3.04,
+            "t1": 4.48,
+            "repeat_of": "ถูก",
+            "visual_top1": "ไม่ดี",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 140,
+            "f1": 184,
+            "z": 4.229272365570068,
+            "wins": [
+              [
+                140,
+                184
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.5514,
+                "support": 0.443
+              },
+              {
+                "word": "ยาย",
+                "score": 0.5168,
+                "support": 0.4487
+              },
+              {
+                "word": "ย่า",
+                "score": 0.5219,
+                "support": 0.4205
+              },
+              {
+                "word": "เล่น",
+                "score": 0.5598,
+                "support": 0.2123
+              },
+              {
+                "word": "แต่งงาน",
+                "score": 0.3807,
+                "support": 0.1558
+              }
+            ],
+            "score": 0.46428126096725464,
+            "margin": 0.013609617948532104,
+            "null_gap": -0.3973338007926941,
+            "p_sign": 0.9785357145329242,
+            "agree": 0.0,
+            "support_ratio": 1.0128668171557562,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.06316799036178623,
+            "status": "unknown",
+            "t0": 5.6,
+            "t1": 7.36,
+            "visual_top1": "ยาย",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 184,
+            "f1": 212,
+            "z": 3.9513936042785645,
+            "wins": [
+              [
+                184,
+                212
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.5665,
+                "support": 0.4718
+              },
+              {
+                "word": "ข้าว",
+                "score": 0.5699,
+                "support": 0.4559
+              },
+              {
+                "word": "กิน",
+                "score": 0.5216,
+                "support": 0.4101
+              },
+              {
+                "word": "ฉัน",
+                "score": 0.5978,
+                "support": 0.3872
+              },
+              {
+                "word": "คุณ",
+                "score": 0.4943,
+                "support": 0.312
+              }
+            ],
+            "score": 0.5774486064910889,
+            "margin": 0.03081071376800537,
+            "null_gap": -0.1363358497619629,
+            "p_sign": 0.9836187716041292,
+            "agree": 0.0,
+            "support_ratio": 1.0348760693134458,
+            "window_top1": "ฉัน",
+            "depth": 0.0,
+            "p_correct": 0.15617806063429102,
+            "status": "uncertain",
+            "t0": 7.36,
+            "t1": 8.48
+          },
+          {
+            "f0": 212,
+            "f1": 252,
+            "z": 6.7331695556640625,
+            "wins": [
+              [
+                212,
+                252
+              ]
+            ],
+            "nearest": "ถูก",
+            "candidates": [
+              {
+                "word": "ถูก",
+                "score": 0.7257,
+                "support": 0.6686
+              },
+              {
+                "word": "ไม่ดี",
+                "score": 0.5892,
+                "support": 0.5349
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.4751,
+                "support": 0.3702
+              },
+              {
+                "word": "ยาย",
+                "score": 0.461,
+                "support": 0.3232
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4319,
+                "support": 0.2537
+              }
+            ],
+            "score": 0.7074141502380371,
+            "margin": 0.1282440423965454,
+            "null_gap": -0.5515193939208984,
+            "p_sign": 0.8130772956008514,
+            "agree": 1.0,
+            "support_ratio": 1.249953262292017,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "p_correct": 0.6788546682543779,
+            "status": "uncertain",
+            "t0": 8.48,
+            "t1": 10.08
+          },
+          {
+            "f0": 288,
+            "f1": 308,
+            "z": 5.282961845397949,
+            "wins": [
+              [
+                288,
+                308
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.6244,
+                "support": 0.6044
+              },
+              {
+                "word": "ย่า",
+                "score": 0.6064,
+                "support": 0.5843
+              },
+              {
+                "word": "ยาย",
+                "score": 0.5605,
+                "support": 0.5438
+              },
+              {
+                "word": "ผิด",
+                "score": 0.3725,
+                "support": 0.3649
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.3602,
+                "support": 0.1201
+              }
+            ],
+            "score": 0.6244296431541443,
+            "margin": 0.018055737018585205,
+            "null_gap": -0.6474059820175171,
+            "p_sign": 0.9346303805895149,
+            "agree": 1.0,
+            "support_ratio": 1.0344001369159679,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.24169019448943677,
+            "status": "uncertain",
+            "t0": 11.52,
+            "t1": 12.32
+          },
+          {
+            "f0": 308,
+            "f1": 332,
+            "z": 4.109670162200928,
+            "wins": [
+              [
+                308,
+                332
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.4309,
+                "support": 0.3982
+              },
+              {
+                "word": "ยินดีด้วย",
+                "score": 0.417,
+                "support": 0.336
+              },
+              {
+                "word": "แต่งตัว",
+                "score": 0.4127,
+                "support": 0.3053
+              },
+              {
+                "word": "ขับรถ",
+                "score": 0.3574,
+                "support": 0.2807
+              },
+              {
+                "word": "สบายดี",
+                "score": 0.3272,
+                "support": 0.2138
+              }
+            ],
+            "score": 0.41697531938552856,
+            "margin": 0.057405292987823486,
+            "null_gap": -0.43022486567497253,
+            "p_sign": 0.9241565143379074,
+            "agree": 0.0,
+            "support_ratio": 1.1851190476190476,
+            "window_top1": "ยินดีด้วย",
+            "depth": 0.0,
+            "p_correct": 0.050641955921984096,
+            "status": "unknown",
+            "t0": 12.32,
+            "t1": 13.28,
+            "repeat_of": "เกิด",
+            "visual_top1": "ยินดีด้วย",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 332,
+            "f1": 376,
+            "z": 6.059041976928711,
+            "wins": [
+              [
+                332,
+                376
+              ]
+            ],
+            "nearest": "ไม่ดี",
+            "candidates": [
+              {
+                "word": "ไม่ดี",
+                "score": 0.5903,
+                "support": 0.3787
+              },
+              {
+                "word": "ถูก",
+                "score": 0.7012,
+                "support": 0.4564
+              },
+              {
+                "word": "ยาย",
+                "score": 0.6003,
+                "support": 0.4239
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.457,
+                "support": 0.2528
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4418,
+                "support": 0.2005
+              }
+            ],
+            "score": 0.6435842514038086,
+            "margin": 0.11471480131149292,
+            "null_gap": -0.4587748050689697,
+            "p_sign": 0.9858846975998445,
+            "agree": 1.0,
+            "support_ratio": 1.0766690257136116,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "p_correct": 0.5090350175606072,
+            "status": "uncertain",
+            "t0": 13.28,
+            "t1": 15.04,
+            "repeat_of": "ถูก"
+          }
+        ],
+        "face": {},
+        "fusion": {
+          "chosen": [
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]"
+          ],
+          "sentence_th": "",
+          "meaning_th": "ยังไม่มั่นใจพอจะแปล — ลองทำท่าช้าลง ให้มืออยู่ในกรอบ หรือกดยืนยันคำที่ถูก",
+          "confidence": 0.0,
+          "provider": "none",
+          "evidence_gloss": "ญาติ? | [?]≈เกิด | ถูก? | [?]≈ญาติ | เกิด? | ถูก? | ญาติ? | [?]≈เกิด | ไม่ดี?",
+          "evidence_guard": "withheld: no confident sign"
+        },
+        "sentence": "",
+        "timings_ms": {
+          "schema_ms": 206.8,
+          "tagger_ms": 2620.1,
+          "spotting_ms": 736.6,
+          "n_windows": 732,
+          "tempo_factor": 1.0,
+          "language_ms": 0.2,
+          "mediapipe_ms": 0.0
+        },
+        "model": "v7.2",
+        "vocab": "conversation"
+      }
+    },
+    "grammar070": {
+      "weight": 0,
+      "inference_s": 3.6944696250000106,
+      "result": {
+        "title": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/boom datatest/เล่นเกมส์กันไหม.MOV",
+        "fps": 25.0,
+        "n_frames": 376,
+        "duration_s": 15.04,
+        "signer_visible_frac": 1.0,
+        "signing_frac": 0.7712765957446809,
+        "mirrored_to_right_hand": false,
+        "segments": [
+          {
+            "f0": 12,
+            "f1": 40,
+            "z": 4.4941086769104,
+            "wins": [
+              [
+                12,
+                40
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.5628,
+                "support": 0.5091
+              },
+              {
+                "word": "ย่า",
+                "score": 0.5184,
+                "support": 0.4805
+              },
+              {
+                "word": "ยาย",
+                "score": 0.4885,
+                "support": 0.4584
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4122,
+                "support": 0.4008
+              },
+              {
+                "word": "วันนี้",
+                "score": 0.3913,
+                "support": 0.1816
+              }
+            ],
+            "score": 0.5103622078895569,
+            "margin": 0.03781750798225403,
+            "null_gap": -0.5397421717643738,
+            "p_sign": 0.9627992124083384,
+            "agree": 1.0,
+            "support_ratio": 1.0595213319458898,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.15274809042159962,
+            "status": "uncertain",
+            "t0": 0.48,
+            "t1": 1.6,
+            "repeat_of": "ญาติ",
+            "visual_top1": "ย่า",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 40,
+            "f1": 76,
+            "z": 3.72926926612854,
+            "wins": [
+              [
+                40,
+                76
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.482,
+                "support": 0.4486
+              },
+              {
+                "word": "ฉัน",
+                "score": 0.5104,
+                "support": 0.3353
+              },
+              {
+                "word": "คุณ",
+                "score": 0.4725,
+                "support": 0.3159
+              },
+              {
+                "word": "แต่งตัว",
+                "score": 0.4031,
+                "support": 0.2425
+              },
+              {
+                "word": "ข้าว",
+                "score": 0.4937,
+                "support": 0.2168
+              }
+            ],
+            "score": 0.3968270719051361,
+            "margin": 0.0008179545402526855,
+            "null_gap": -0.38216808438301086,
+            "p_sign": 0.966845776968532,
+            "agree": 0.0,
+            "support_ratio": 1.3379063525201313,
+            "window_top1": "ได้",
+            "depth": 0.0,
+            "p_correct": 0.038851366638563194,
+            "status": "unknown",
+            "t0": 1.6,
+            "t1": 3.04,
+            "repeat_of": "เกิด"
+          },
+          {
+            "f0": 76,
+            "f1": 112,
+            "z": 5.5570902824401855,
+            "wins": [
+              [
+                76,
+                112
+              ]
+            ],
+            "nearest": "ถูก",
+            "candidates": [
+              {
+                "word": "ถูก",
+                "score": 0.6833,
+                "support": 0.5766
+              },
+              {
+                "word": "ไม่ดี",
+                "score": 0.6135,
+                "support": 0.5121
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.4892,
+                "support": 0.43
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4541,
+                "support": 0.3456
+              },
+              {
+                "word": "ญาติ",
+                "score": 0.4889,
+                "support": 0.2814
+              }
+            ],
+            "score": 0.5511804819107056,
+            "margin": 0.023671388626098633,
+            "null_gap": -0.6037229299545288,
+            "p_sign": 0.9780657491866604,
+            "agree": 1.0,
+            "support_ratio": 1.1259519625073229,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "p_correct": 0.2160498635584744,
+            "status": "uncertain",
+            "t0": 3.04,
+            "t1": 4.48,
+            "repeat_of": "ถูก",
+            "visual_top1": "ไม่ดี",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 140,
+            "f1": 184,
+            "z": 4.229272365570068,
+            "wins": [
+              [
+                140,
+                184
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.5514,
+                "support": 0.443
+              },
+              {
+                "word": "ยาย",
+                "score": 0.5168,
+                "support": 0.4487
+              },
+              {
+                "word": "ย่า",
+                "score": 0.5219,
+                "support": 0.4205
+              },
+              {
+                "word": "เล่น",
+                "score": 0.5598,
+                "support": 0.2123
+              },
+              {
+                "word": "แต่งงาน",
+                "score": 0.3807,
+                "support": 0.1558
+              }
+            ],
+            "score": 0.46428126096725464,
+            "margin": 0.013609617948532104,
+            "null_gap": -0.3973338007926941,
+            "p_sign": 0.9785357145329242,
+            "agree": 0.0,
+            "support_ratio": 1.0128668171557562,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.06316799036178623,
+            "status": "unknown",
+            "t0": 5.6,
+            "t1": 7.36,
+            "visual_top1": "ยาย",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 184,
+            "f1": 212,
+            "z": 3.9513936042785645,
+            "wins": [
+              [
+                184,
+                212
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.5665,
+                "support": 0.4718
+              },
+              {
+                "word": "ข้าว",
+                "score": 0.5699,
+                "support": 0.4559
+              },
+              {
+                "word": "กิน",
+                "score": 0.5216,
+                "support": 0.4101
+              },
+              {
+                "word": "ฉัน",
+                "score": 0.5978,
+                "support": 0.3872
+              },
+              {
+                "word": "คุณ",
+                "score": 0.4943,
+                "support": 0.312
+              }
+            ],
+            "score": 0.5774486064910889,
+            "margin": 0.03081071376800537,
+            "null_gap": -0.1363358497619629,
+            "p_sign": 0.9836187716041292,
+            "agree": 0.0,
+            "support_ratio": 1.0348760693134458,
+            "window_top1": "ฉัน",
+            "depth": 0.0,
+            "p_correct": 0.15617806063429102,
+            "status": "uncertain",
+            "t0": 7.36,
+            "t1": 8.48
+          },
+          {
+            "f0": 212,
+            "f1": 252,
+            "z": 6.7331695556640625,
+            "wins": [
+              [
+                212,
+                252
+              ]
+            ],
+            "nearest": "ถูก",
+            "candidates": [
+              {
+                "word": "ถูก",
+                "score": 0.7257,
+                "support": 0.6686
+              },
+              {
+                "word": "ไม่ดี",
+                "score": 0.5892,
+                "support": 0.5349
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.4751,
+                "support": 0.3702
+              },
+              {
+                "word": "ยาย",
+                "score": 0.461,
+                "support": 0.3232
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4319,
+                "support": 0.2537
+              }
+            ],
+            "score": 0.7074141502380371,
+            "margin": 0.1282440423965454,
+            "null_gap": -0.5515193939208984,
+            "p_sign": 0.8130772956008514,
+            "agree": 1.0,
+            "support_ratio": 1.249953262292017,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "p_correct": 0.6788546682543779,
+            "status": "uncertain",
+            "t0": 8.48,
+            "t1": 10.08
+          },
+          {
+            "f0": 288,
+            "f1": 308,
+            "z": 5.282961845397949,
+            "wins": [
+              [
+                288,
+                308
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.6244,
+                "support": 0.6044
+              },
+              {
+                "word": "ย่า",
+                "score": 0.6064,
+                "support": 0.5843
+              },
+              {
+                "word": "ยาย",
+                "score": 0.5605,
+                "support": 0.5438
+              },
+              {
+                "word": "ผิด",
+                "score": 0.3725,
+                "support": 0.3649
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.3602,
+                "support": 0.1201
+              }
+            ],
+            "score": 0.6244296431541443,
+            "margin": 0.018055737018585205,
+            "null_gap": -0.6474059820175171,
+            "p_sign": 0.9346303805895149,
+            "agree": 1.0,
+            "support_ratio": 1.0344001369159679,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.24169019448943677,
+            "status": "uncertain",
+            "t0": 11.52,
+            "t1": 12.32
+          },
+          {
+            "f0": 308,
+            "f1": 332,
+            "z": 4.109670162200928,
+            "wins": [
+              [
+                308,
+                332
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.4309,
+                "support": 0.3982
+              },
+              {
+                "word": "ยินดีด้วย",
+                "score": 0.417,
+                "support": 0.336
+              },
+              {
+                "word": "แต่งตัว",
+                "score": 0.4127,
+                "support": 0.3053
+              },
+              {
+                "word": "ขับรถ",
+                "score": 0.3574,
+                "support": 0.2807
+              },
+              {
+                "word": "สบายดี",
+                "score": 0.3272,
+                "support": 0.2138
+              }
+            ],
+            "score": 0.41697531938552856,
+            "margin": 0.057405292987823486,
+            "null_gap": -0.43022486567497253,
+            "p_sign": 0.9241565143379074,
+            "agree": 0.0,
+            "support_ratio": 1.1851190476190476,
+            "window_top1": "ยินดีด้วย",
+            "depth": 0.0,
+            "p_correct": 0.050641955921984096,
+            "status": "unknown",
+            "t0": 12.32,
+            "t1": 13.28,
+            "repeat_of": "เกิด",
+            "visual_top1": "ยินดีด้วย",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 332,
+            "f1": 376,
+            "z": 6.059041976928711,
+            "wins": [
+              [
+                332,
+                376
+              ]
+            ],
+            "nearest": "ไม่ดี",
+            "candidates": [
+              {
+                "word": "ไม่ดี",
+                "score": 0.5903,
+                "support": 0.3787
+              },
+              {
+                "word": "ถูก",
+                "score": 0.7012,
+                "support": 0.4564
+              },
+              {
+                "word": "ยาย",
+                "score": 0.6003,
+                "support": 0.4239
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.457,
+                "support": 0.2528
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4418,
+                "support": 0.2005
+              }
+            ],
+            "score": 0.6435842514038086,
+            "margin": 0.11471480131149292,
+            "null_gap": -0.4587748050689697,
+            "p_sign": 0.9858846975998445,
+            "agree": 1.0,
+            "support_ratio": 1.0766690257136116,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "p_correct": 0.5090350175606072,
+            "status": "uncertain",
+            "t0": 13.28,
+            "t1": 15.04,
+            "repeat_of": "ถูก"
+          }
+        ],
+        "face": {},
+        "fusion": {
+          "chosen": [
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]"
+          ],
+          "sentence_th": "",
+          "meaning_th": "ยังไม่มั่นใจพอจะแปล — ลองทำท่าช้าลง ให้มืออยู่ในกรอบ หรือกดยืนยันคำที่ถูก",
+          "confidence": 0.0,
+          "provider": "none",
+          "evidence_gloss": "ญาติ? | [?]≈เกิด | ถูก? | [?]≈ญาติ | เกิด? | ถูก? | ญาติ? | [?]≈เกิด | ไม่ดี?",
+          "evidence_guard": "withheld: no confident sign"
+        },
+        "sentence": "",
+        "timings_ms": {
+          "schema_ms": 90.2,
+          "tagger_ms": 2629.1,
+          "spotting_ms": 974.9,
+          "n_windows": 732,
+          "tempo_factor": 1.0,
+          "language_ms": 0.1,
+          "mediapipe_ms": 0.0
+        },
+        "model": "v7.2",
+        "vocab": "conversation"
+      }
+    },
+    "stride2": {
+      "weight": 0,
+      "inference_s": 3.977346916999977,
+      "result": {
+        "title": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/boom datatest/เล่นเกมส์กันไหม.MOV",
+        "fps": 25.0,
+        "n_frames": 376,
+        "duration_s": 15.04,
+        "signer_visible_frac": 1.0,
+        "signing_frac": 0.7712765957446809,
+        "mirrored_to_right_hand": false,
+        "segments": [
+          {
+            "f0": 12,
+            "f1": 40,
+            "z": 4.4941086769104,
+            "wins": [
+              [
+                12,
+                40
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.5628,
+                "support": 0.4975
+              },
+              {
+                "word": "ย่า",
+                "score": 0.5184,
+                "support": 0.4544
+              },
+              {
+                "word": "ยาย",
+                "score": 0.4917,
+                "support": 0.4579
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4212,
+                "support": 0.397
+              },
+              {
+                "word": "วันนี้",
+                "score": 0.4108,
+                "support": 0.1891
+              }
+            ],
+            "score": 0.5103622078895569,
+            "margin": 0.03781750798225403,
+            "null_gap": -0.5397421717643738,
+            "p_sign": 0.9627992124083384,
+            "agree": 1.0,
+            "support_ratio": 1.0864817645774187,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.153560601977833,
+            "status": "uncertain",
+            "t0": 0.48,
+            "t1": 1.6,
+            "repeat_of": "ญาติ",
+            "visual_top1": "ย่า",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 40,
+            "f1": 76,
+            "z": 3.72926926612854,
+            "wins": [
+              [
+                40,
+                76
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.482,
+                "support": 0.4413
+              },
+              {
+                "word": "ฉัน",
+                "score": 0.5104,
+                "support": 0.2921
+              },
+              {
+                "word": "คุณ",
+                "score": 0.4778,
+                "support": 0.288
+              },
+              {
+                "word": "แต่งตัว",
+                "score": 0.4178,
+                "support": 0.2168
+              },
+              {
+                "word": "ข้าว",
+                "score": 0.4937,
+                "support": 0.211
+              }
+            ],
+            "score": 0.3968270719051361,
+            "margin": 0.0008179545402526855,
+            "null_gap": -0.38216808438301086,
+            "p_sign": 0.966845776968532,
+            "agree": 0.0,
+            "support_ratio": 1.5107839780896952,
+            "window_top1": "ได้",
+            "depth": 0.0,
+            "p_correct": 0.04037951614590238,
+            "status": "unknown",
+            "t0": 1.6,
+            "t1": 3.04,
+            "repeat_of": "เกิด"
+          },
+          {
+            "f0": 76,
+            "f1": 112,
+            "z": 5.5570902824401855,
+            "wins": [
+              [
+                76,
+                112
+              ]
+            ],
+            "nearest": "ถูก",
+            "candidates": [
+              {
+                "word": "ถูก",
+                "score": 0.6917,
+                "support": 0.5713
+              },
+              {
+                "word": "ไม่ดี",
+                "score": 0.6135,
+                "support": 0.5108
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.4935,
+                "support": 0.4197
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4596,
+                "support": 0.3341
+              },
+              {
+                "word": "ญาติ",
+                "score": 0.4889,
+                "support": 0.2661
+              }
+            ],
+            "score": 0.5511804819107056,
+            "margin": 0.023671388626098633,
+            "null_gap": -0.6037229299545288,
+            "p_sign": 0.9780657491866604,
+            "agree": 1.0,
+            "support_ratio": 1.1184416601409553,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "p_correct": 0.21575443414851211,
+            "status": "uncertain",
+            "t0": 3.04,
+            "t1": 4.48,
+            "repeat_of": "ถูก",
+            "visual_top1": "ไม่ดี",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 140,
+            "f1": 184,
+            "z": 4.229272365570068,
+            "wins": [
+              [
+                140,
+                184
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.5514,
+                "support": 0.4363
+              },
+              {
+                "word": "ยาย",
+                "score": 0.5168,
+                "support": 0.4409
+              },
+              {
+                "word": "ย่า",
+                "score": 0.5219,
+                "support": 0.4197
+              },
+              {
+                "word": "เล่น",
+                "score": 0.5598,
+                "support": 0.214
+              },
+              {
+                "word": "แต่งงาน",
+                "score": 0.3807,
+                "support": 0.1299
+              }
+            ],
+            "score": 0.46428126096725464,
+            "margin": 0.013609617948532104,
+            "null_gap": -0.3973338007926941,
+            "p_sign": 0.9785357145329242,
+            "agree": 0.0,
+            "support_ratio": 1.0105432042172817,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.06313604617297983,
+            "status": "unknown",
+            "t0": 5.6,
+            "t1": 7.36,
+            "visual_top1": "ยาย",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 184,
+            "f1": 212,
+            "z": 3.9513936042785645,
+            "wins": [
+              [
+                184,
+                212
+              ]
+            ],
+            "nearest": "ข้าว",
+            "candidates": [
+              {
+                "word": "ข้าว",
+                "score": 0.6272,
+                "support": 0.4462
+              },
+              {
+                "word": "เกิด",
+                "score": 0.5901,
+                "support": 0.4762
+              },
+              {
+                "word": "กิน",
+                "score": 0.598,
+                "support": 0.4316
+              },
+              {
+                "word": "ฉัน",
+                "score": 0.6683,
+                "support": 0.3941
+              },
+              {
+                "word": "คุณ",
+                "score": 0.4943,
+                "support": 0.2832
+              }
+            ],
+            "score": 0.5774486064910889,
+            "margin": 0.03081071376800537,
+            "null_gap": -0.1363358497619629,
+            "p_sign": 0.9836187716041292,
+            "agree": 0.0,
+            "support_ratio": 1.0672344240251008,
+            "window_top1": "ฉัน",
+            "depth": 0.0,
+            "p_correct": 0.1571715140787713,
+            "status": "uncertain",
+            "t0": 7.36,
+            "t1": 8.48,
+            "visual_top1": "เกิด",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 212,
+            "f1": 252,
+            "z": 6.7331695556640625,
+            "wins": [
+              [
+                212,
+                252
+              ]
+            ],
+            "nearest": "ถูก",
+            "candidates": [
+              {
+                "word": "ถูก",
+                "score": 0.7257,
+                "support": 0.6656
+              },
+              {
+                "word": "ไม่ดี",
+                "score": 0.5926,
+                "support": 0.5335
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.4778,
+                "support": 0.3651
+              },
+              {
+                "word": "ยาย",
+                "score": 0.4808,
+                "support": 0.3165
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4333,
+                "support": 0.2459
+              }
+            ],
+            "score": 0.7074141502380371,
+            "margin": 0.1282440423965454,
+            "null_gap": -0.5515193939208984,
+            "p_sign": 0.8130772956008514,
+            "agree": 1.0,
+            "support_ratio": 1.247610121836926,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "p_correct": 0.6787359561622253,
+            "status": "uncertain",
+            "t0": 8.48,
+            "t1": 10.08
+          },
+          {
+            "f0": 288,
+            "f1": 308,
+            "z": 5.282961845397949,
+            "wins": [
+              [
+                288,
+                308
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.6244,
+                "support": 0.5885
+              },
+              {
+                "word": "ย่า",
+                "score": 0.6064,
+                "support": 0.57
+              },
+              {
+                "word": "ยาย",
+                "score": 0.5721,
+                "support": 0.533
+              },
+              {
+                "word": "ผิด",
+                "score": 0.3826,
+                "support": 0.2831
+              },
+              {
+                "word": "แต่งงาน",
+                "score": 0.3899,
+                "support": 0.2027
+              }
+            ],
+            "score": 0.6244296431541443,
+            "margin": 0.018055737018585205,
+            "null_gap": -0.6474059820175171,
+            "p_sign": 0.9346303805895149,
+            "agree": 1.0,
+            "support_ratio": 1.0324561403508774,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.24160741777081546,
+            "status": "uncertain",
+            "t0": 11.52,
+            "t1": 12.32
+          },
+          {
+            "f0": 308,
+            "f1": 332,
+            "z": 4.109670162200928,
+            "wins": [
+              [
+                308,
+                332
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.4721,
+                "support": 0.3894
+              },
+              {
+                "word": "ยินดีด้วย",
+                "score": 0.4393,
+                "support": 0.3526
+              },
+              {
+                "word": "แต่งตัว",
+                "score": 0.4127,
+                "support": 0.2703
+              },
+              {
+                "word": "ขับรถ",
+                "score": 0.3574,
+                "support": 0.2546
+              },
+              {
+                "word": "สบายดี",
+                "score": 0.3279,
+                "support": 0.2005
+              }
+            ],
+            "score": 0.41697531938552856,
+            "margin": 0.057405292987823486,
+            "null_gap": -0.43022486567497253,
+            "p_sign": 0.9241565143379074,
+            "agree": 0.0,
+            "support_ratio": 1.10436755530346,
+            "window_top1": "ยินดีด้วย",
+            "depth": 0.0,
+            "p_correct": 0.04974741423738201,
+            "status": "unknown",
+            "t0": 12.32,
+            "t1": 13.28,
+            "repeat_of": "เกิด",
+            "visual_top1": "ยินดีด้วย",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 332,
+            "f1": 376,
+            "z": 6.059041976928711,
+            "wins": [
+              [
+                332,
+                376
+              ]
+            ],
+            "nearest": "ไม่ดี",
+            "candidates": [
+              {
+                "word": "ไม่ดี",
+                "score": 0.5903,
+                "support": 0.3649
+              },
+              {
+                "word": "ถูก",
+                "score": 0.7012,
+                "support": 0.4409
+              },
+              {
+                "word": "ยาย",
+                "score": 0.6175,
+                "support": 0.419
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.457,
+                "support": 0.2328
+              },
+              {
+                "word": "ฉัน",
+                "score": 0.6654,
+                "support": 0.2025
+              }
+            ],
+            "score": 0.6435842514038086,
+            "margin": 0.11471480131149292,
+            "null_gap": -0.4587748050689697,
+            "p_sign": 0.9858846975998445,
+            "agree": 1.0,
+            "support_ratio": 1.0522673031026253,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "p_correct": 0.5076178939673822,
+            "status": "uncertain",
+            "t0": 13.28,
+            "t1": 15.04,
+            "repeat_of": "ถูก"
+          }
+        ],
+        "face": {},
+        "fusion": {
+          "chosen": [
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]"
+          ],
+          "sentence_th": "",
+          "meaning_th": "ยังไม่มั่นใจพอจะแปล — ลองทำท่าช้าลง ให้มืออยู่ในกรอบ หรือกดยืนยันคำที่ถูก",
+          "confidence": 0.0,
+          "provider": "none",
+          "evidence_gloss": "ญาติ? | [?]≈เกิด | ถูก? | [?]≈ญาติ | ข้าว? | ถูก? | ญาติ? | [?]≈เกิด | ไม่ดี?",
+          "evidence_guard": "withheld: no confident sign"
+        },
+        "sentence": "",
+        "timings_ms": {
+          "schema_ms": 56.4,
+          "tagger_ms": 2811.0,
+          "spotting_ms": 1109.3,
+          "n_windows": 1454,
+          "tempo_factor": 1.0,
+          "language_ms": 0.4,
+          "mediapipe_ms": 0.0
+        },
+        "model": "v7.2",
+        "vocab": "conversation"
+      }
+    },
+    "combined_without_csls": {
+      "weight": 0,
+      "inference_s": 6.739628875000108,
+      "result": {
+        "title": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/boom datatest/เล่นเกมส์กันไหม.MOV",
+        "fps": 25.0,
+        "n_frames": 376,
+        "duration_s": 15.04,
+        "signer_visible_frac": 1.0,
+        "signing_frac": 0.7606382978723404,
+        "mirrored_to_right_hand": false,
+        "segments": [
+          {
+            "f0": 12,
+            "f1": 40,
+            "z": 2.956863496507868,
+            "wins": [
+              [
+                12,
+                40
+              ]
+            ],
+            "nearest": "ยาย",
+            "candidates": [
+              {
+                "word": "ยาย",
+                "score": 0.3457,
+                "support": 0.3457
+              },
+              {
+                "word": "ญาติ",
+                "score": 0.3382,
+                "support": 0.3382
+              },
+              {
+                "word": "เล่น",
+                "score": 0.3276,
+                "support": 0.3276
+              },
+              {
+                "word": "ย่า",
+                "score": 0.3236,
+                "support": 0.3236
+              },
+              {
+                "word": "วันนี้",
+                "score": 0.323,
+                "support": 0.323
+              }
+            ],
+            "score": 0.3457220196723938,
+            "margin": 0.007489204406738281,
+            "null_gap": -0.3016357421875,
+            "p_sign": 0.9627992124083384,
+            "agree": 0.0,
+            "support_ratio": 1.0595213319458898,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.02501877879493375,
+            "status": "unknown",
+            "t0": 0.48,
+            "t1": 1.6
+          },
+          {
+            "f0": 40,
+            "f1": 76,
+            "z": 4.155235478301261,
+            "wins": [
+              [
+                40,
+                76
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.457,
+                "support": 0.457
+              },
+              {
+                "word": "ได้",
+                "score": 0.4519,
+                "support": 0.4519
+              },
+              {
+                "word": "สบายดี",
+                "score": 0.4174,
+                "support": 0.4174
+              },
+              {
+                "word": "เหนื่อย",
+                "score": 0.4022,
+                "support": 0.4022
+              },
+              {
+                "word": "ดี",
+                "score": 0.3418,
+                "support": 0.3418
+              }
+            ],
+            "score": 0.45696118474006653,
+            "margin": 0.005055457353591919,
+            "null_gap": -0.47600066661834717,
+            "p_sign": 0.966845776968532,
+            "agree": 1.0,
+            "support_ratio": 1.3379063525201313,
+            "window_top1": "ได้",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.12068325884027736,
+            "status": "uncertain",
+            "t0": 1.6,
+            "t1": 3.04
+          },
+          {
+            "f0": 76,
+            "f1": 112,
+            "z": 6.333628082423464,
+            "wins": [
+              [
+                76,
+                112
+              ]
+            ],
+            "nearest": "ถูก",
+            "candidates": [
+              {
+                "word": "ถูก",
+                "score": 0.5829,
+                "support": 0.5829
+              },
+              {
+                "word": "ไม่ดี",
+                "score": 0.5403,
+                "support": 0.5403
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.406,
+                "support": 0.406
+              },
+              {
+                "word": "ผิด",
+                "score": 0.371,
+                "support": 0.371
+              },
+              {
+                "word": "ญาติ",
+                "score": 0.3377,
+                "support": 0.3377
+              }
+            ],
+            "score": 0.582948625087738,
+            "margin": 0.04266256093978882,
+            "null_gap": -0.5304954051971436,
+            "p_sign": 0.9780657491866604,
+            "agree": 1.0,
+            "support_ratio": 1.1259519625073229,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.3408731698614469,
+            "status": "unknown",
+            "t0": 3.04,
+            "t1": 4.48,
+            "repeat_of": "ถูก"
+          },
+          {
+            "f0": 140,
+            "f1": 184,
+            "z": 3.79318742001832,
+            "wins": [
+              [
+                140,
+                184
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.3857,
+                "support": 0.3857
+              },
+              {
+                "word": "ย่า",
+                "score": 0.37,
+                "support": 0.37
+              },
+              {
+                "word": "ยาย",
+                "score": 0.3824,
+                "support": 0.3824
+              },
+              {
+                "word": "เล่น",
+                "score": 0.3395,
+                "support": 0.3395
+              },
+              {
+                "word": "สนุก",
+                "score": 0.3197,
+                "support": 0.3197
+              }
+            ],
+            "score": 0.3857406973838806,
+            "margin": 0.003291904926300049,
+            "null_gap": -0.4658230245113373,
+            "p_sign": 0.9785357145329242,
+            "agree": 0.0,
+            "support_ratio": 1.0128668171557562,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.03096302510826777,
+            "status": "unknown",
+            "t0": 5.6,
+            "t1": 7.36,
+            "repeat_of": "ญาติ",
+            "visual_top1": "ย่า",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 184,
+            "f1": 212,
+            "z": 3.4562563989000252,
+            "wins": [
+              [
+                184,
+                212
+              ]
+            ],
+            "nearest": "ได้",
+            "candidates": [
+              {
+                "word": "ได้",
+                "score": 0.3846,
+                "support": 0.3846
+              },
+              {
+                "word": "สบายดี",
+                "score": 0.3537,
+                "support": 0.3537
+              },
+              {
+                "word": "ดี",
+                "score": 0.3361,
+                "support": 0.3361
+              },
+              {
+                "word": "เกิด",
+                "score": 0.3328,
+                "support": 0.3328
+              },
+              {
+                "word": "ความรัก",
+                "score": 0.2983,
+                "support": 0.2983
+              }
+            ],
+            "score": 0.384604811668396,
+            "margin": 0.030885964632034302,
+            "null_gap": -0.20888544619083405,
+            "p_sign": 0.9836187716041292,
+            "agree": 0.0,
+            "support_ratio": 1.0348760693134458,
+            "window_top1": "ฉัน",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.044699400906381824,
+            "status": "unknown",
+            "t0": 7.36,
+            "t1": 8.48
+          },
+          {
+            "f0": 212,
+            "f1": 244,
+            "z": 7.4636165677155235,
+            "wins": [
+              [
+                212,
+                244
+              ]
+            ],
+            "nearest": "ถูก",
+            "candidates": [
+              {
+                "word": "ถูก",
+                "score": 0.7656,
+                "support": 0.7656
+              },
+              {
+                "word": "ญาติ",
+                "score": 0.4787,
+                "support": 0.4787
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.4751,
+                "support": 0.4751
+              },
+              {
+                "word": "ไม่ดี",
+                "score": 0.453,
+                "support": 0.453
+              },
+              {
+                "word": "ผิด",
+                "score": 0.4064,
+                "support": 0.4064
+              }
+            ],
+            "score": 0.7656422853469849,
+            "margin": 0.28693148493766785,
+            "null_gap": -0.6086403131484985,
+            "p_sign": 0.9839242493733764,
+            "agree": 1.0,
+            "support_ratio": 1.2572053994892376,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.8051575257915108,
+            "status": "accepted",
+            "t0": 8.48,
+            "t1": 9.76
+          },
+          {
+            "f0": 288,
+            "f1": 308,
+            "z": 4.391810839712228,
+            "wins": [
+              [
+                288,
+                308
+              ]
+            ],
+            "nearest": "ญาติ",
+            "candidates": [
+              {
+                "word": "ญาติ",
+                "score": 0.4617,
+                "support": 0.4617
+              },
+              {
+                "word": "ยาย",
+                "score": 0.4598,
+                "support": 0.4598
+              },
+              {
+                "word": "ย่า",
+                "score": 0.4217,
+                "support": 0.4217
+              },
+              {
+                "word": "ผิด",
+                "score": 0.364,
+                "support": 0.364
+              },
+              {
+                "word": "คอมพิวเตอร์",
+                "score": 0.2872,
+                "support": 0.2872
+              }
+            ],
+            "score": 0.4616840183734894,
+            "margin": 0.0019164979457855225,
+            "null_gap": -0.5772472620010376,
+            "p_sign": 0.9346303805895149,
+            "agree": 1.0,
+            "support_ratio": 1.0344001369159679,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.09599963652142368,
+            "status": "uncertain",
+            "t0": 11.52,
+            "t1": 12.32
+          },
+          {
+            "f0": 308,
+            "f1": 332,
+            "z": 3.4526037831882177,
+            "wins": [
+              [
+                308,
+                332
+              ]
+            ],
+            "nearest": "สบายดี",
+            "candidates": [
+              {
+                "word": "สบายดี",
+                "score": 0.3714,
+                "support": 0.3714
+              },
+              {
+                "word": "เกิด",
+                "score": 0.3568,
+                "support": 0.3568
+              },
+              {
+                "word": "ยินดีด้วย",
+                "score": 0.3531,
+                "support": 0.3531
+              },
+              {
+                "word": "ขับรถ",
+                "score": 0.3327,
+                "support": 0.3327
+              },
+              {
+                "word": "เหนื่อย",
+                "score": 0.321,
+                "support": 0.321
+              }
+            ],
+            "score": 0.3713630437850952,
+            "margin": 0.014594495296478271,
+            "null_gap": -0.39277535676956177,
+            "p_sign": 0.9241565143379074,
+            "agree": 0.0,
+            "support_ratio": 1.1851190476190476,
+            "window_top1": "ยินดีด้วย",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.03032546536263693,
+            "status": "unknown",
+            "t0": 12.32,
+            "t1": 13.28
+          },
+          {
+            "f0": 332,
+            "f1": 376,
+            "z": 5.099282864080092,
+            "wins": [
+              [
+                332,
+                376
+              ]
+            ],
+            "nearest": "ไม่ดี",
+            "candidates": [
+              {
+                "word": "ไม่ดี",
+                "score": 0.5092,
+                "support": 0.5092
+              },
+              {
+                "word": "ถูก",
+                "score": 0.4679,
+                "support": 0.4679
+              },
+              {
+                "word": "ยาย",
+                "score": 0.3464,
+                "support": 0.3464
+              },
+              {
+                "word": "ย่า",
+                "score": 0.3315,
+                "support": 0.3315
+              },
+              {
+                "word": "ถูกต้อง",
+                "score": 0.3096,
+                "support": 0.3096
+              }
+            ],
+            "score": 0.5092049837112427,
+            "margin": 0.04132109880447388,
+            "null_gap": -0.3770982623100281,
+            "p_sign": 0.9858846975998445,
+            "agree": 0.0,
+            "support_ratio": 1.0766690257136116,
+            "window_top1": "ถูก",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.1153486421812588,
+            "status": "uncertain",
+            "t0": 13.28,
+            "t1": 15.04
+          }
+        ],
+        "face": {},
+        "fusion": {
+          "chosen": [
+            "ถูก"
+          ],
+          "sentence_th": "ถูก",
+          "meaning_th": "",
+          "confidence": 1.0,
+          "provider": "rules",
+          "guard_violations": [],
+          "evidence_gloss": "[?]≈ยาย | เกิด? | [?]≈ถูก | [?]≈ญาติ | [?]≈ได้ | ถูก | ญาติ? | [?]≈สบายดี | ไม่ดี?"
+        },
+        "sentence": "ถูก",
+        "timings_ms": {
+          "schema_ms": 86.0,
+          "tagger_ms": 2893.0,
+          "spotting_ms": 3760.3,
+          "n_windows": 723,
+          "tempo_factor": 1.0,
+          "language_ms": 0.2,
+          "mediapipe_ms": 0.0
+        },
+        "model": "v7.2",
+        "vocab": "conversation"
+      }
+    }
+  }
+}
