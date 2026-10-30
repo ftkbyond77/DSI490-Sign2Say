@@ -4,7 +4,8 @@
 #   sign-api FastAPI + ONNX Runtime: landmarks or video → words / Thai sentence (stateless; scale with --scale sign-api=N)
 #   (+ the reverse part: reverse-web / reverse-api / reverse-speech on :8081 — see the block at the end)
 #   tts      FastAPI + MMS-TTS Thai (VITS): sentence → speech
-# The model is read from ./models/Jack-model (mounted read-only; THAISLM_MODELS_DIR=./models/<name>-model for another); OPENAI_API_KEY in .env enables the LLM sentence layer (rules otherwise).
+# The model is read from ./models/model-v9 (mounted read-only; THAISLM_MODELS_DIR=./models/<name>-model for another, e.g. ./models/Jack-model = v8.1)
+# and the face emotion model from ./models/face-model; OPENAI_API_KEY in .env enables the LLM sentence layer (rules otherwise).
 name: thaislm
 services:
   gateway:
@@ -33,10 +34,12 @@ services:
       context: .
       dockerfile: webapp/api/Dockerfile
     volumes:
-      - ${THAISLM_MODELS_DIR:-./models/Jack-model}:/app/models:ro
+      - ${THAISLM_MODELS_DIR:-./models/model-v9}:/app/models:ro
+      - ./models/face-model:/app/face-model:ro          # v9 face emotion model (separate folder)
       - ./cache/live_requests:/app/requests          # diagnosis: each utterance's landmarks + result (no video); set THAISLM_SAVE_REQUESTS= to turn off
     environment:
       - THAISLM_MODELS=/app/models
+      - THAISLM_FACE_MODEL=/app/face-model
       - THAISLM_SAVE_REQUESTS=${THAISLM_SAVE_REQUESTS-/app/requests}
       - TTS_URL=http://tts:8001
       - OPENAI_API_KEY=${OPENAI_API_KEY:-}

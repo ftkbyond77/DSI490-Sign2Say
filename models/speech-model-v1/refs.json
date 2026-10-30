@@ -1,0 +1,90 @@
+{
+  "female": {
+    "neutral": {
+      "wav": "refs/female_neutral.wav",
+      "text": "วันนี้ฉันไปทำงานตามปกติ แล้วก็กลับบ้านตอนเย็น",
+      "sec": 3.68,
+      "source": "ElevenLabs eleven_v3 EXAVITQu4vr4xnSDxMaL"
+    },
+    "happy": {
+      "wav": "refs/female_happy.wav",
+      "text": "ดีใจจังเลย วันนี้ได้เจอเพื่อนเก่าที่ไม่ได้เจอมานาน",
+      "sec": 3.76,
+      "source": "ElevenLabs eleven_v3 EXAVITQu4vr4xnSDxMaL"
+    },
+    "sad": {
+      "wav": "refs/female_sad.wav",
+      "text": "ฉันเสียใจมาก ที่ไม่ได้ไปลาเขาเป็นครั้งสุดท้าย",
+      "sec": 3.2,
+      "source": "ElevenLabs eleven_v3 EXAVITQu4vr4xnSDxMaL"
+    },
+    "angry": {
+      "wav": "refs/female_angry.wav",
+      "text": "ทำไมถึงทำแบบนี้ ฉันบอกแล้วว่าอย่าทำอีก",
+      "sec": 3.52,
+      "source": "ElevenLabs eleven_v3 EXAVITQu4vr4xnSDxMaL"
+    },
+    "fear": {
+      "wav": "refs/female_fear.wav",
+      "text": "เดี๋ยวก่อน ได้ยินเสียงอะไรไหม ฉันกลัวจังเลย",
+      "sec": 3.12,
+      "source": "ElevenLabs eleven_v3 EXAVITQu4vr4xnSDxMaL"
+    },
+    "disgust": {
+      "wav": "refs/female_disgust.wav",
+      "text": "อี๋ กลิ่นอะไรเนี่ย เหม็นมากจนทนไม่ไหว",
+      "sec": 3.28,
+      "source": "ElevenLabs eleven_v3 EXAVITQu4vr4xnSDxMaL"
+    },
+    "surprise": {
+      "wav": "refs/female_surprise.wav",
+      "text": "จริงเหรอ ไม่น่าเชื่อเลยว่าเขาจะมาด้วย",
+      "sec": 3.28,
+      "source": "ElevenLabs eleven_v3 EXAVITQu4vr4xnSDxMaL"
+    }
+  },
+  "male": {
+    "neutral": {
+      "wav": "refs/male_neutral.wav",
+      "text": "วันนี้ฉันไปทำงานตามปกติ แล้วก็กลับบ้านตอนเย็น",
+      "sec": 3.52,
+      "source": "ElevenLabs eleven_v3 nPczCjzI2devNBz1zQrb"
+    },
+    "happy": {
+      "wav": "refs/male_happy.wav",
+      "text": "ดีใจจังเลย วันนี้ได้เจอเพื่อนเก่าที่ไม่ได้เจอมานาน",
+      "sec": 3.52,
+      "source": "ElevenLabs eleven_v3 nPczCjzI2devNBz1zQrb"
+    },
+    "sad": {
+      "wav": "refs/male_sad.wav",
+      "text": "ฉันเสียใจมาก ที่ไม่ได้ไปลาเขาเป็นครั้งสุดท้าย",
+      "sec": 3.2,
+      "source": "ElevenLabs eleven_v3 nPczCjzI2devNBz1zQrb"
+    },
+    "angry": {
+      "wav": "refs/male_angry.wav",
+      "text": "ทำไมถึงทำแบบนี้ ฉันบอกแล้วว่าอย่าทำอีก",
+      "sec": 3.28,
+      "source": "ElevenLabs eleven_v3 nPczCjzI2devNBz1zQrb"
+    },
+    "fear": {
+      "wav": "refs/male_fear.wav",
+      "text": "เดี๋ยวก่อน ได้ยินเสียงอะไรไหม ฉันกลัวจังเลย",
+      "sec": 3.44,
+      "source": "ElevenLabs eleven_v3 nPczCjzI2devNBz1zQrb"
+    },
+    "disgust": {
+      "wav": "refs/male_disgust.wav",
+      "text": "อี๋ กลิ่นอะไรเนี่ย เหม็นมากจนทนไม่ไหว",
+      "sec": 4.72,
+      "source": "ElevenLabs eleven_v3 nPczCjzI2devNBz1zQrb"
+    },
+    "surprise": {
+      "wav": "refs/male_surprise.wav",
+      "text": "จริงเหรอ ไม่น่าเชื่อเลยว่าเขาจะมาด้วย",
+      "sec": 3.04,
+      "source": "ElevenLabs eleven_v3 nPczCjzI2devNBz1zQrb"
+    }
+  }
+}

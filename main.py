@@ -23,8 +23,14 @@ Build, tune, evaluate (local):
   python main.py eval <step> [args]            # build | grammar | spot | isolated | infer | selftest | vocab | bank_add  (scripts/eval.py)
   python main.py train-letters                 # fingerspelling recogniser + letter bank (CPU, minutes) → models/fingerspell.npz, letters_bank.npz
   python main.py export-onnx                   # models/onnx/*.onnx for production (onnxruntime), with a parity check
-  python main.py decision <step>               # decision layer: cache | hands | tune | report | figures (hand-shape cue, merge / split,
-                                               #   calibration, Accept/Uncertain/Reject, fingerspelling settings — tune data only)
+  python main.py decision <step>               # decision layer: cache | hands | lmbank | tune | report | figures (hand-shape cue, second
+                                               #   recogniser, merge / split, calibration, Accept/Uncertain/Reject, fingerspelling — tune data only)
+  python main.py diagnose ledger               # error ledger + oracle bounds: segmentation vs recognition (v9 stage 1)
+
+Face emotion (models/face-model) and speech (models/speech-model-v1, speech env D:/SLM-labs/envs/speech):
+  python main.py face-data ravdess             # RAVDESS → MediaPipe face features (cloud_s3/face-data/, no video kept)
+  python main.py face-model train | signs      # train (leave-actors-out CV) · check on sign videos of unseen signers
+  python main.py speech refs | asr-data | asr-train | asr-eval [--lora] | tts-eval | demo
 """
 from __future__ import annotations
 
@@ -37,7 +43,9 @@ SCRIPTS = {"prep": "scripts/data_prep.py", "eval": "scripts/eval.py", "data": "s
            "export-onnx": "scripts/export_onnx.py", "infer": "scripts/infer.py", "pretrained": "scripts/pretrained.py",
            "extract": "scripts/extract_mp.py", "harvest": "scripts/harvest_words.py", "train-seq": "GCP/script/job_entry.py",
            "letters": "scripts/harvest_letters.py", "train-letters": "scripts/train_fingerspell.py",
-           "study-clips": "scripts/study_clips.py", "decision": "scripts/decision.py"}
+           "study-clips": "scripts/study_clips.py", "decision": "scripts/decision.py", "diagnose": "scripts/diagnose.py",
+           "face-data": "scripts/face_data.py",
+           "face-model": "scripts/face_model.py", "speech": "scripts/speech.py"}
 
 
 def main():

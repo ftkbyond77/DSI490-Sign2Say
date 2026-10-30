@@ -137,6 +137,10 @@ def _public(result):
     out["face"] = {k: face.get(k) for k in ("question_yesno", "question_furrow", "question_wh", "negation", "affirmation", "emotion", "emotion_th", "intensity",
                                             "face_frames")}
     out["face"]["brow_furrow_rel"] = (face.get("cues") or {}).get("brow_furrow_rel")
+    aff = face.get("affect")                   # v9 face model (models/face-model): fused affect + Thai explanation
+    if aff:
+        out["face"]["affect"] = {k: aff.get(k) for k in ("emotion", "emotion_th", "probs", "valence", "arousal", "intensity", "confidence",
+                                                          "explanation_th", "sources")}
     return out
 
 
