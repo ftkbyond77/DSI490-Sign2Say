@@ -36,7 +36,7 @@ def save_request(
             frames=[frame.model_dump() for frame in req.frames],
             result={
                 key: out.get(key)
-                for key in ("sentence", "language", "face", "timings_ms", "duration_s", "mirrored_to_right_hand")
+                for key in ("sentence", "language", "face", "timings_ms", "duration_s", "mirrored_to_right_hand", "model_version")
             },
         )
         perf_mode = getattr(req, "perf_mode", None)
