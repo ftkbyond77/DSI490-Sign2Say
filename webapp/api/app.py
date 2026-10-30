@@ -56,8 +56,8 @@ def pipe(vocab="conversation", llm=True) -> SignPipeline:
     key = (vocab, bool(llm))
     with _lock:
         if key not in _pipes:
-            _pipes[key] = SignPipeline(MODEL_DIR, backend="onnx", device=os.environ.get("ORT_DEVICE", "cpu"), vocab=vocab, use_llm=llm)
-            logging.getLogger("sign-api").info("model_version=%s model_dir=%s backend=%s", _pipes[key].cfg.get("version", "unknown"), MODEL_DIR, _pipes[key].be.name)
+            _pipes[key] = SignPipeline(MODEL_DIR, backend="onnx", device=os.environ.get("ORT_DEVICE", "auto"), vocab=vocab, use_llm=llm)
+            logging.getLogger("sign-api").info("model_version=%s model_dir=%s backend=%s providers=%s", _pipes[key].cfg.get("version", "unknown"), MODEL_DIR, _pipes[key].be.name, getattr(_pipes[key].be, "providers", None))
         return _pipes[key]
 
 
@@ -149,7 +149,8 @@ def _public(result):
     if result.get("hand_canonicalization") is not None:
         out["hand_canonicalization"] = result["hand_canonicalization"]
     out["segments"] = [dict(t0=s["t0"], t1=s["t1"], status=s["status"], word=s["nearest"], p=round(s.get("p_correct", 0), 3), kind=s.get("kind", "sign"),
-                            candidates=[dict(word=c["word"], score=c.get("score"), ai_prob=c.get("ai_prob"), pose_score=c.get("pose_score"), fused_score=c.get("fused_score")) for c in s["candidates"][:5]],
+                            candidates=[c["word"] for c in s["candidates"][:5]],     # words only: the web shows them in the [?] menu
+                            candidate_scores=[dict(word=c["word"], score=c.get("score"), ai_prob=c.get("ai_prob"), pose_score=c.get("pose_score"), fused_score=c.get("fused_score")) for c in s["candidates"][:5]],
                             **({"symbolic": s["symbolic"]} if "symbolic" in s else {}), **({"emb": _vec_to_b64(s["emb"])} if "emb" in s else {}))
                        for s in result.get("segments", [])]
     f = result.get("fusion") or {}

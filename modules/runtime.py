@@ -1,7 +1,7 @@
 """Inference back-ends with one NumPy interface — ONNX Runtime (production / web API, no PyTorch) or PyTorch (development, GPU).
 
-    be = OnnxBackend(models_dir, device="cpu")      # models/onnx/encoder.onnx + tagger.onnx
-    be = TorchBackend(models_dir, device="cuda")    # models/encoder.pt + tagger.pt
+    be = OnnxBackend(models_dir, device="cpu")      # models/onnx/encoder.onnx + tagger.onnx (device: cpu | auto | cuda | dml | coreml)
+    be = TorchBackend(models_dir, device=None)      # models/encoder.pt + tagger.pt (None / auto: cuda → mps → cpu)
     Z    = be.embed(parts_list)                      # [N,768] L2-normalised sign embeddings of N windows / clips
     H    = be.frames(kp_iso, sc)                     # [T,768] contextual frame states (tagger input)
     prob = be.tag(x)                                 # [T,3]   non-sign / sign-begin / sign-inside
@@ -21,6 +21,51 @@ from .parts import MODES, collate_np, prepare_parts
 def _softmax(x):
     e = np.exp(x - x.max(-1, keepdims=True))
     return e / e.sum(-1, keepdims=True)
+
+
+ORT_GPU = {"cuda": "CUDAExecutionProvider", "dml": "DmlExecutionProvider", "coreml": "CoreMLExecutionProvider"}
+ORT_OPTS = {"CUDAExecutionProvider": {"arena_extend_strategy": "kSameAsRequested"},
+            "CoreMLExecutionProvider": {"ModelFormat": "MLProgram", "MLComputeUnits": "CPUAndGPU"}}   # fp32 tensors, no Neural Engine
+
+
+def ort_providers(device="cpu"):
+    """ONNX Runtime providers for `device`, limited to what this onnxruntime build has:
+    cpu · cuda (NVIDIA, onnxruntime-gpu) · dml (any DirectX 12 GPU on Windows, onnxruntime-directml) · coreml (Apple, macOS
+    onnxruntime; "mps" means the same) · auto = cuda → dml, else CPU. CoreML stays opt-in: its parity with the CPU results has not
+    been measured on a Mac yet. An unavailable GPU falls back to CPU (with a message) so the same command runs on every machine."""
+    import onnxruntime as ort
+    d = str(device or "cpu").lower().split(":")[0]
+    d = {"mps": "coreml", "directml": "dml", "gpu": "auto"}.get(d, d)
+    have = ort.get_available_providers()
+    if d == "auto":
+        d = next((k for k in ("cuda", "dml") if ORT_GPU[k] in have), "cpu")
+    p = ORT_GPU.get(d)
+    if p == "CUDAExecutionProvider" and p in have and hasattr(ort, "preload_dlls"):
+        try:        # Windows / pip CUDA: without this the CUDA + cuDNN DLLs (torch's / nvidia-* wheels) are not found and ORT
+            ort.preload_dlls()      # silently runs on the CPU
+        except Exception:  # noqa: BLE001
+            pass
+    if p is None or p not in have:
+        if p is not None:
+            print(f"onnxruntime: {p} is not in this build ({', '.join(have)}) → CPU")
+        return ["CPUExecutionProvider"]
+    return [(p, ORT_OPTS[p]) if p in ORT_OPTS else p, "CPUExecutionProvider"]
+
+
+def ort_session(path, so, prov):
+    """InferenceSession on `prov`; a GPU provider that fails to start (driver, unsupported op) → CPU instead of an error."""
+    import onnxruntime as ort
+    try:
+        s = ort.InferenceSession(str(path), so, providers=prov)
+    except Exception as e:  # noqa: BLE001
+        if prov == ["CPUExecutionProvider"]:
+            raise
+        print(f"onnxruntime: {prov[0]} failed for {Path(path).name} ({e}) → CPU")
+        return ort.InferenceSession(str(path), so, providers=["CPUExecutionProvider"])
+    want = prov[0][0] if isinstance(prov[0], tuple) else prov[0]
+    if s.get_providers()[0] != want:
+        print(f"onnxruntime: {want} did not load for {Path(path).name} (drivers / CUDA libraries?) → CPU")
+    return s
 
 
 def _frames_chunked(run_frames, kp_iso, sc, chunk=400, overlap=50):
@@ -48,16 +93,15 @@ class OnnxBackend:
         so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
         if threads or os.environ.get("ORT_THREADS"):
             so.intra_op_num_threads = int(threads or os.environ["ORT_THREADS"])
-        prov = ["CPUExecutionProvider"]
-        if device == "cuda" and "CUDAExecutionProvider" in ort.get_available_providers():
-            prov = [("CUDAExecutionProvider", {"arena_extend_strategy": "kSameAsRequested"}), "CPUExecutionProvider"]
+        prov = ort_providers(device)
         # CPU: the int8 encoder when the export's parity check kept it (models/onnx/parity.json); THAISLM_INT8=0 forces fp32
         int8 = md / "encoder.int8.onnx"
         use_int8 = prov[0] == "CPUExecutionProvider" and int8.exists() and os.environ.get("THAISLM_INT8", "1") != "0"
-        self.enc = ort.InferenceSession(str(int8 if use_int8 else md / "encoder.onnx"), so, providers=prov)
+        self.enc = ort_session(int8 if use_int8 else md / "encoder.onnx", so, prov)
         self.precision = "int8" if use_int8 else "fp32"
-        self.tagger = ort.InferenceSession(str(md / "tagger.onnx"), so, providers=prov)
-        self.device = "cuda" if prov[0] != "CPUExecutionProvider" else "cpu"
+        self.tagger = ort_session(md / "tagger.onnx", so, prov)
+        self.providers = self.enc.get_providers()
+        self.device = {v: k for k, v in ORT_GPU.items()}.get(self.providers[0], "cpu")
 
     def _run(self, parts_list):
         P, M = collate_np(parts_list)

@@ -78,6 +78,14 @@ def thai_text_norm(text):
     return re.sub(r"\s+", " ", text).strip()
 
 
+def torch_dtype(device):
+    """Weights / activations dtype for a device: bf16 on CUDA that supports it (fp16 on older NVIDIA), fp32 on Apple MPS and CPU."""
+    import torch
+    if str(device).startswith("cuda"):
+        return torch.bfloat16 if torch.cuda.is_bf16_supported() else torch.float16
+    return torch.float32
+
+
 class ExpressiveTTS:
     """F5-TTS-THAI + the emotion reference bank of models/speech-model-v1/ (refs.json: voice → emotion → {wav, text})."""
 
@@ -91,7 +99,8 @@ class ExpressiveTTS:
         cfg = json.loads((self.md / "speech_config.json").read_text(encoding="utf-8"))
         self.cfg = cfg
         self.refs = json.loads((self.md / "refs.json").read_text(encoding="utf-8"))
-        self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
+        from .utils import device as resolve_device
+        self.device = resolve_device(device)            # cuda → mps → cpu (F5 is only interactive on a GPU)
         ckpt = hf_hub_download(HF_TTS, cfg["tts_ckpt"]); vocab = hf_hub_download(HF_TTS, "vocab.txt")
         self.model = load_model(cfg["tts_arch"], ckpt, mel_spec_type="vocos", vocab_file=vocab, device=self.device)
         self.vocoder = load_vocoder("vocos", device=self.device)
@@ -125,10 +134,11 @@ class ThaiASR:
     """Qwen3-ASR-0.6B (+ the LoRA adapter models/speech-model-v1/asr_lora when use_lora — opt-in: it helps short synthetic phrases
     but costs real read speech (FLEURS CER 6.7 → 8.4 %), so the base model is the default)."""
 
-    def __init__(self, model_dir=None, device="cuda", use_lora=False):
-        import torch
+    def __init__(self, model_dir=None, device=None, use_lora=False):
         from qwen_asr import Qwen3ASRModel
-        self.m = Qwen3ASRModel.from_pretrained(HF_ASR, dtype=torch.bfloat16 if device == "cuda" else torch.float32, device_map=device,
+        from .utils import device as resolve_device
+        device = resolve_device(device)                 # cuda → mps → cpu
+        self.m = Qwen3ASRModel.from_pretrained(HF_ASR, dtype=torch_dtype(device), device_map=device,
                                                max_inference_batch_size=8, max_new_tokens=128)
         lora = Path(model_dir) / "asr_lora" if model_dir else None
         self.lora = bool(use_lora and lora and lora.exists())

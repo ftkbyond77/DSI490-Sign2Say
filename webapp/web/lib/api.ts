@@ -2,7 +2,7 @@ import type { LmFrame } from "./holistic";
 import { userBank } from "./mysigns";
 
 export type Segment = { t0: number; t1: number; status: "accepted" | "uncertain" | "unknown" | "transition"; word: string; p: number; candidates: string[];
-  emb?: string; kind?: "sign" | "letter" };
+  candidate_scores?: { word: string; score?: number | null }[]; emb?: string; kind?: "sign" | "letter" };
 export type TranslateResult = {
   uid?: number;                 // client-side identity of one result card (never from the server)
   title?: string;

@@ -259,9 +259,10 @@ def load_model(path, device="cpu"):
     return m.to(device).eval()
 
 
-def embed(model, feats_list, device="cuda", bs=256):
-    """Embeddings of many windows (longest-similar batches)."""
+def embed(model, feats_list, device=None, bs=256):
+    """Embeddings of many windows (longest-similar batches). device None: where the model is."""
     import torch
+    device = str(next(model.parameters()).device) if device is None else device
     model.eval()
     order = np.argsort([len(f) for f in feats_list])
     out = np.zeros((len(feats_list), model.emb_dim), np.float32)
@@ -312,13 +313,14 @@ def export_onnx(ckpt, out_path):
 class OnnxLM:
     """Production runtime of the landmark encoder (v9 second opinion): ONNX Runtime + NumPy features, no PyTorch."""
 
-    def __init__(self, path, threads=None):
+    def __init__(self, path, threads=None, device="cpu"):
         import os
         import onnxruntime as ort
+        from .runtime import ort_providers, ort_session
         so = ort.SessionOptions()
         if threads or os.environ.get("ORT_THREADS"):
             so.intra_op_num_threads = int(threads or os.environ["ORT_THREADS"])
-        self.sess = ort.InferenceSession(str(path), so, providers=["CPUExecutionProvider"])
+        self.sess = ort_session(path, so, ort_providers(device))
 
     def embed(self, feats_list, bs=64):
         out = None
@@ -339,10 +341,11 @@ class OnnxLM:
 class EncoderAPI:
     """One interface for the continuous-signing stage over either encoder: v8 landmark encoder (this module) or v7 Uni-Sign."""
 
-    def __init__(self, ckpt, models_dir, device="cuda"):
+    def __init__(self, ckpt, models_dir, device=None):
         import torch
+        from .utils import device as resolve_device
         sd = torch.load(ckpt, map_location="cpu")
-        self.device = device
+        self.device = device = resolve_device(device)
         if isinstance(sd, dict) and "cfg" in sd:
             self.kind = "lmenc"
             self.model = load_model(ckpt, device)

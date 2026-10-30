@@ -124,7 +124,7 @@ class SignPipeline:
         self.lm = None
         if lf.exists() and (md / "onnx" / "lmenc.onnx").exists():
             from .lmenc import OnnxLM
-            self.lm = OnnxLM(md / "onnx" / "lmenc.onnx")
+            self.lm = OnnxLM(md / "onnx" / "lmenc.onnx", device=device if backend == "onnx" else "cpu")
             self.bank.lm = lm_bank(lf, len(self.concepts), allowed, self.fold)
         else:
             self.bank.lm = None

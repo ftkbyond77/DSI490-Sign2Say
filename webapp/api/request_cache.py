@@ -52,7 +52,8 @@ def save_request(
             record["result"]["hand_canonicalization"] = hand_canonicalization
         # Keep embeddings out of the cache; the response still carries them for user teaching.
         record["result"]["segments"] = [
-            {key: value for key, value in segment.items() if key != "emb"}
+            {key: value for key, value in segment.items() if key not in ("emb", "candidate_scores")}
+            | ({"candidates": segment["candidate_scores"]} if segment.get("candidate_scores") else {})   # replay tools read scored candidates
             for segment in out.get("segments") or []
         ]
         filename = f"{time.strftime('%Y%m%d_%H%M%S')}_{int(time.time() * 1000) % 1000:03d}.json.gz"

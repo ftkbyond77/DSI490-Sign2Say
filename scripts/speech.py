@@ -171,7 +171,7 @@ def cmd_asr_data(a):
     print(f"ElevenLabs: {len(rows_tr)} train + {len(rows_te)} test utterances, {chars} new characters", flush=True)
     # local F5-TTS-THAI clones: every train phrase × 3 references (teacher emotional refs + the train utterances of the teacher voices)
     from modules.speech import ExpressiveTTS
-    tts = ExpressiveTTS(MD)
+    tts = ExpressiveTTS(MD, device=a.device)
     refs = [(str(MD / r["wav"]), r["text"]) for v in tts.refs.values() for r in v.values()]
     refs += [(r["audio"], r["ref"]) for r in rows_tr if len(r["ref"]) >= 8][:40]
     from f5_tts_th.utils_infer import infer_process, preprocess_ref_audio_text
@@ -230,7 +230,7 @@ def eval_sets():
 
 def cmd_asr_eval(a):
     from modules.speech import ThaiASR
-    asr = ThaiASR(MD, use_lora=a.lora)
+    asr = ThaiASR(MD, device=a.device, use_lora=a.lora)
     out = {}
     for name, rows in eval_sets().items():
         t = time.time()
@@ -255,7 +255,10 @@ def cmd_asr_train(a):
     from qwen_asr import Qwen3ASRModel
     rows = [json.loads(l) for l in open(DATA / "asr" / "train.jsonl", encoding="utf-8")]
     test = [json.loads(l) for l in open(DATA / "asr" / "test.jsonl", encoding="utf-8")]
-    m = Qwen3ASRModel.from_pretrained("Qwen/Qwen3-ASR-0.6B", dtype=torch.bfloat16, device_map="cuda", max_inference_batch_size=8, max_new_tokens=128)
+    from modules.speech import torch_dtype
+    from modules.utils import device as resolve_device
+    dev = resolve_device(getattr(a, "device", None)); dt = torch_dtype(dev)      # cuda → mps → cpu
+    m = Qwen3ASRModel.from_pretrained("Qwen/Qwen3-ASR-0.6B", dtype=dt, device_map=dev, max_inference_batch_size=8, max_new_tokens=128)
     proc, tok = m.processor, m.processor.tokenizer
     tok.padding_side = "right"
     prompt = m._build_text_prompt(context="", force_language="Thai")
@@ -272,8 +275,8 @@ def cmd_asr_train(a):
 
     def batch_loss(b):
         texts = [prompt + r["ref"] + "<|im_end|>" for r in b]
-        inp = proc(text=texts, audio=[load(r["audio"]) for r in b], return_tensors="pt", padding=True).to("cuda")
-        inp = {k: (v.to(torch.bfloat16) if v.dtype.is_floating_point else v) for k, v in inp.items()}
+        inp = proc(text=texts, audio=[load(r["audio"]) for r in b], return_tensors="pt", padding=True).to(dev)
+        inp = {k: (v.to(dt) if v.dtype.is_floating_point else v) for k, v in inp.items()}
         labels = torch.full_like(inp["input_ids"], -100)
         for i, r in enumerate(b):
             n = len(tok(r["ref"] + "<|im_end|>", add_special_tokens=False)["input_ids"])
@@ -337,7 +340,7 @@ def cmd_tts_eval(a):
     from modules.speech import ExpressiveTTS, SpeechPlan, ThaiASR
     sdir = ROOT / "result_reporting" / "speech_samples_v1"; sdir.mkdir(parents=True, exist_ok=True)
     tmp = ROOT / "cache" / "v9" / "tts_eval"; tmp.mkdir(parents=True, exist_ok=True)
-    tts = ExpressiveTTS(MD, nfe_step=a.nfe)
+    tts = ExpressiveTTS(MD, device=a.device, nfe_step=a.nfe)
     gen = []
     for voice in ("female", "male"):
         for emo in EMOTIONS:
@@ -367,7 +370,7 @@ def cmd_tts_eval(a):
         f = tmp / f"mms_{i:02d}.wav"; sf.write(str(f), y, mm.config.sampling_rate)
         old.append(dict(text=t, wav=str(f), **prosody(y, mm.config.sampling_rate)))
     sf.write(str(sdir / "old_mms_neutral.wav"), *sf.read(old[0]["wav"]))
-    asr = ThaiASR(None, use_lora=False)
+    asr = ThaiASR(None, device=a.device, use_lora=False)
     for g in gen + old:
         g["hyp"] = asr(g["wav"]); g["cer"] = cer(g["text"], g["hyp"])
     import pandas as pd
@@ -406,7 +409,7 @@ def cmd_demo(a):
     from modules.speech import ExpressiveTTS, plan_speech
     logging.disable(logging.WARNING)
     pipe = SignPipeline(model_dir=ROOT / "models" / "model-v9", use_llm=False, use_face=True)
-    tts = ExpressiveTTS(MD)
+    tts = ExpressiveTTS(MD, device=a.device)
     sdir = ROOT / "result_reporting" / "speech_samples_v1"; sdir.mkdir(parents=True, exist_ok=True)
     clips = {"iphone_3307": ROOT / "cache/iphone_test_mp/sentence_IMG_3307.npz", "iphone_3302": ROOT / "cache/iphone_test_mp/sentence_IMG_3302.npz",
              "data_test_รักเพื่อน": ROOT / "cache/data_test_mp/ฉันรักเพื่อน.npz",
@@ -433,6 +436,7 @@ def main():
     ap.add_argument("--nfe", type=int, default=32); ap.add_argument("--n", type=int, default=12)
     ap.add_argument("--epochs", type=int, default=3); ap.add_argument("--bs", type=int, default=4); ap.add_argument("--lr", type=float, default=2e-4)
     ap.add_argument("--lora", action="store_true")
+    ap.add_argument("--device", default=None, help="auto (default: cuda → mps → cpu) | cuda | cuda:1 | mps | cpu")
     ap.add_argument("--n_eleven", type=int, default=160)
     ap.add_argument("--f5_per_phrase", type=int, default=3)
     a = ap.parse_args()
