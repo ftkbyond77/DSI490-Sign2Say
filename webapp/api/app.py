@@ -62,6 +62,15 @@ def warm():
     from modules.parts import prep
     rng = np.random.RandomState(0)
     p.be.embed([prep(rng.uniform(0.3, 0.7, (30, 133, 2)).astype(np.float32), np.ones((30, 133), np.float32))])   # first-call latency
+    # pitty: also one whole-utterance pass (encoder over 8 s → tagger → spotting): without it the FIRST real sentence paid ~10 s of
+    # tagger + ~5 s of spotting start-up (measured 2026-10-24: 16.9 s vs 4.3 s for the same 8.8 s utterance). Never blocks start-up.
+    try:
+        T = 200
+        kpi, sc, present = rng.uniform(0.3, 0.7, (T, 133, 2)).astype(np.float32), np.ones((T, 133), np.float32), np.ones(T, bool)
+        prob, H = p._tag(kpi, sc, present)
+        p._spot(kpi, sc, prob, present, H)
+    except Exception as e:  # noqa: BLE001
+        print("warm-up (utterance) skipped:", e)
 
 
 class Frame(BaseModel):

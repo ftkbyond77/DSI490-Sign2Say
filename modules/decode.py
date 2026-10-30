@@ -129,6 +129,26 @@ def decode(table, prob, concepts, cfg, present=None, depth=None, rank_table=None
                 s.update(z=float(z[w]), _w=w)
             continue
         segs.append(dict(f0=int(a), f1=int(b), _wi=wi, _w=w, z=float(z[w]), wins=[(int(a), int(b))]))
+    sp = cfg.get("split")
+    if sp:              # pitty: a long segment that holds two different signs → two segments (two windows inside it, different
+        kept, cut_segs = idx, []    # top words, each nearly as similar as the segment's best window)
+        for s in segs:
+            if s["f1"] - s["f0"] < sp["min_len"]:
+                cut_segs.append(s); continue
+            inn = kept[(W[kept, 0] >= s["f0"]) & (W[kept, 1] <= s["f1"])]
+            best = None
+            for i in inn:
+                for j in inn:
+                    if W[j, 0] < W[i, 1] - 2 or table["top_idx"][i, 0] == table["top_idx"][j, 0]:
+                        continue
+                    if min(z[i], z[j]) >= s["z"] - sp["eps"] and (best is None or z[i] + z[j] > best[0]):
+                        best = (z[i] + z[j], i, j)
+            if best is None:
+                cut_segs.append(s); continue
+            _, i, j = best; cut = int(round((W[i, 1] + W[j, 0]) / 2))
+            cut_segs.append(dict(f0=s["f0"], f1=cut, _wi=int(table["top_idx"][i, 0]), _w=int(i), z=float(z[i]), wins=[(int(W[i, 0]), int(W[i, 1]))], split=True))
+            cut_segs.append(dict(f0=cut, f1=s["f1"], _wi=int(table["top_idx"][j, 0]), _w=int(j), z=float(z[j]), wins=[(int(W[j, 0]), int(W[j, 1]))], split=True))
+        segs = cut_segs
     out = []
     ti, ts = rt["top_idx"][:, :5], rt["top_sc"][:, :5]
     for s in segs:

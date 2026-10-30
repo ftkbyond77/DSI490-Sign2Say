@@ -2,7 +2,7 @@
   "name": "thaislm-web",
   "version": "7.0.0",
   "private": true,
-  "description": "ThaiSLM web demo: camera → MediaPipe Holistic in the browser → sign-api → Thai sentence → speech",
+  "description": "ThaiSLM web: sign → text/speech (camera + MediaPipe) and text/speech → sign (3D avatar), one app",
   "scripts": {
     "postinstall": "node scripts/copy-mediapipe.mjs",
     "dev": "next dev -p 3000",
@@ -14,12 +14,15 @@
     "@vladmandic/face-api": "1.7.15",
     "next": "16.3.8",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "@pixiv/three-vrm": "3.5.5",
+    "three": "0.185.1"
   },
   "devDependencies": {
     "@types/node": "22.20.5",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "@types/three": "0.185.0"
   }
 }

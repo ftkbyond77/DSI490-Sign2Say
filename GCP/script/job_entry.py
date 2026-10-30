@@ -346,6 +346,9 @@ def main():
     ap.add_argument("--epochs", type=int, default=18)
     ap.add_argument("--fluent", type=float, default=0.0)   # pitty: share of fluent synthetic sentences in the sequence stage (0 = v7)
     ap.add_argument("--fluent_trim", default="0.15,0.3"); ap.add_argument("--fluent_overlap", default="0,4")   # pitty: fluent sign-core trim / cross-fade frames
+    ap.add_argument("--edge", type=float, default=0.0)     # pitty: share of synthetic sentence ends where the hands leave / enter the frame
+    ap.add_argument("--fluent_speed", default="")          # pitty: per-sign speed range of fluent sentences, e.g. "0.6,1.6" ("" = same as the rest)
+    ap.add_argument("--stop_after_tagger", action="store_true")   # pitty: stop once tagger.pt is saved (skips span-head tables / eval items)
     A = ap.parse_args()
     if A.stage == "train_encoder":
         stage_train_encoder(A)

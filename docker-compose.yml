@@ -1,8 +1,9 @@
-# ThaiSLM web demo — `docker compose up --build`, then open http://localhost:8080
-#   gateway  nginx, the only published port (8080) — routes / → web, /api → sign-api, /tts → tts
-#   web      Next.js front end: camera + MediaPipe Holistic in the browser (WASM), record / process / live mode, plays the speech
+# ThaiSLM web demo — `docker compose up --build`, then open http://localhost:8080 (ONE site for both directions)
+#   gateway  nginx, the only published port (8080) — / → web, /api → sign-api, /tts → tts, /t2s → reverse-api, /avatars → character files
+#   web      Next.js front end, both directions: camera + MediaPipe Holistic in the browser (sign → text / speech) and the
+#            three-vrm signing avatar (text / speech → sign); screens /, /sign, /sign/live, /text, /chat (Figma “ThaiSLM v2”)
 #   sign-api FastAPI + ONNX Runtime: landmarks or video → words / Thai sentence (stateless; scale with --scale sign-api=N)
-#   (+ the reverse part: reverse-web / reverse-api / reverse-speech on :8081 — see the block at the end)
+#   (+ the reverse part's back end: reverse-api / reverse-speech — see the block at the end)
 #   tts      FastAPI + MMS-TTS Thai (VITS): sentence → speech
 # The model is read from ./models (mounted read-only); OPENAI_API_KEY in .env enables the LLM sentence layer (rules otherwise).
 name: thaislm
@@ -11,12 +12,17 @@ services:
     image: nginx:1.27-alpine
     volumes:
       - ./webapp/gateway/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./reverse_text2sign/models/avatar.vrm:/srv/avatar.vrm:ro   # the library avatar (fallback when the API lists no characters)
+      - ./reverse_text2sign/vrm:/srv/vrm:ro                       # character picker: original files (until optimised)
+      - reverse-avatars:/srv/avatars:ro                           # optimised copies + thumbnails written by reverse-api
     ports:
       - "8080:80"
     depends_on:
       web:
         condition: service_started
       sign-api:
+        condition: service_healthy
+      reverse-api:
         condition: service_healthy
     restart: unless-stopped
 
@@ -51,25 +57,11 @@ services:
       dockerfile: webapp/tts/Dockerfile
     restart: unless-stopped
 
-# ---- reverse part: Thai / English text or speech → Thai Sign Language avatar → http://localhost:8081 (reverse_text2sign/)
-  #   reverse-web     nginx: the built three-vrm front end + /api proxy (the only published port of this part)
+# ---- reverse part's back end: Thai / English text or speech → Thai Sign Language avatar (reverse_text2sign/)
+  # Its front end is now part of `web` (/text, /chat); the old stand-alone page (reverse-web, :8081) is no longer started —
+  # its source stays in reverse_text2sign/service/web/ for reference.
   #   reverse-api     FastAPI: text → TSL structure (IR) → motion timeline from the recorded-sign library (models mounted read-only)
   #   reverse-speech  Thai / English speech recognition (Whisper, CTranslate2 int8) + English → Thai translation (NLLB-200 600M)
-  reverse-web:
-    build:
-      context: .
-      dockerfile: reverse_text2sign/service/web/Dockerfile
-    ports:
-      - "8081:80"
-    volumes:
-      - ./reverse_text2sign/models/avatar.vrm:/usr/share/nginx/html/avatar.vrm:ro
-      - ./reverse_text2sign/vrm:/srv/vrm:ro                       # character picker: original files (until optimised)
-      - reverse-avatars:/srv/avatars:ro                           # optimised copies + thumbnails written by reverse-api
-    depends_on:
-      reverse-api:
-        condition: service_healthy
-    restart: unless-stopped
-
   reverse-api:
     build:
       context: .
