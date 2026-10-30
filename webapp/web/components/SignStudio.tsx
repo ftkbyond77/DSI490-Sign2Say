@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { openWidestCamera } from "@/lib/camera";
+import { parseFaceEvery } from "@/lib/faceCadence";
 import { ExpressionModel } from "@/lib/expression";
 import type { HolisticLandmarker } from "@mediapipe/tasks-vision";
 import { createHolistic, detect, draw, EmotionMeter, handsUp, Normalizer, parts, type Delegate, type Emotion, type LmFrame, type Tone } from "@/lib/holistic";
@@ -43,6 +44,8 @@ export default function SignStudio() {
   const delegateRef = useRef<Delegate>("GPU");
   const faceLmRef = useRef<HolisticLandmarker | null>(null);      // GPU+CPU mode: expressions on the CPU every few frames
   const nRef = useRef(0);
+  const expressionFrameRef = useRef(0);
+  const faceEveryRef = useRef(3);
   const fileLmRef = useRef<{ lm: HolisticLandmarker; t: number } | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const rafRef = useRef<number>(0);
@@ -96,6 +99,7 @@ export default function SignStudio() {
     info().then(setModel).catch(() => setModel(null));
     vocabList().then(setVocab).catch(() => setVocab([]));
     setPerfNoFx(new URLSearchParams(window.location.search).get("perf") === "nofx");
+    faceEveryRef.current = parseFaceEvery(new URLSearchParams(window.location.search).get("faceEvery"));
     setOpts((o) => ({ ...o, ...load<Partial<Options>>("thaislm.opts.v3", {}) }));     // v3: earlier saved settings (full vocabulary …) reset
     setEndMs(load("thaislm.endMs", 1500)); setAutoLight(load("thaislm.autoLight", false)); refreshSigns();
   }, []);
@@ -142,7 +146,7 @@ export default function SignStudio() {
   };
 
   const request = useCallback((frames: LmFrame[], w: number, h: number, onProgress: (x: Progress) => void, signal?: AbortSignal,
-    capturePerf?: { mode: "default" | "nofx"; fps?: number }) => {
+    capturePerf?: { mode: "default" | "nofx"; fps?: number; face_every?: number }) => {
     const rest = restRef.current;
     return translateFramesStream(frames, w, h, optsRef.current, onProgress, rest.length >= 10 ? median(rest) : null, signal, capturePerf);
   }, []);
@@ -158,6 +162,7 @@ export default function SignStudio() {
         const duration = durMs(frames);
         const capturePerf = source === "live" ? {
           mode: perfNoFx ? "nofx" as const : "default" as const,
+          face_every: faceEveryRef.current,
           fps: duration > 0 ? (frames.length - 1) * 1000 / duration : undefined,
         } : undefined;
         r = await request(frames, w, h, setProgress, undefined, capturePerf);
@@ -210,9 +215,11 @@ export default function SignStudio() {
       if (skipLiveFace) {
         lastEmoRef.current = undefined;
       } else if (f && f.face.length) {
-        const m = exprRef.current.failed ? null : exprRef.current.update(src, c.width, c.height, f.face, t);
-        if (m) lastEmoRef.current = m;
-        else if (f.bs.length >= 52) lastEmoRef.current = emoRef.current.update(f.bs);
+        if (expressionFrameRef.current++ % faceEveryRef.current === 0) {
+          const m = exprRef.current.failed ? null : exprRef.current.update(src, c.width, c.height, f.face, t);
+          if (m) lastEmoRef.current = m;
+          else if (f.bs.length >= 52) lastEmoRef.current = emoRef.current.update(f.bs);
+        }
       } else if (f) { lastEmoRef.current = undefined; exprRef.current.reset(); }
       const emo = lastEmoRef.current;
       if (ctx) draw(ctx, f, c.width, c.height, statusRef.current === "recording" || live.current.state === "signing", emo);
@@ -254,6 +261,7 @@ export default function SignStudio() {
 
   const openCamera = async () => {
     unlockAudio();
+    expressionFrameRef.current = 0;
     setError(""); set("loading");
     try {
       if (!lmRef.current) {
