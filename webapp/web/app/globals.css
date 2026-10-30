@@ -77,3 +77,26 @@ button.chip { cursor: pointer; font-family: inherit; background: transparent; }
 .mysigns { font-size: .8rem; color: var(--muted); }
 .menu .teach { display: flex; gap: 4px; }
 .menu .teach input { font: inherit; padding: 4px 6px; border: 1px solid var(--line); border-radius: 6px; width: 120px; background: var(--panel); color: var(--ink); }
+
+/* Experiment export panel must sit above the absolutely positioned camera/canvas.
+   CSS-only fix preserves the current capture component and its in-memory results. */
+.viewport > div:has(> strong) {
+  position: absolute;
+  z-index: 3;
+  top: 44px;
+  right: 8px;
+  max-width: min(400px, calc(100% - 16px));
+  padding: 8px 10px;
+  border-radius: 9px;
+  background: rgba(11, 16, 32, .94);
+  border: 1px solid var(--line);
+  font-size: .8rem;
+}
+.viewport > div:has(> strong) strong { display: block; margin-bottom: 6px; }
+.viewport > div:has(> strong) button { background: #4f46e5; color: white; }
+.viewport > div:has(> strong) p { margin: 6px 0 0; }
+.framing-controls, .experiment-export { margin-top: 10px; padding: 10px; border: 1px solid var(--line); border-radius: 9px; }
+.framing-controls p { margin: 6px 0; color: #fde68a; }
+.framing-controls small { color: var(--muted); }
+.experiment-export { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.experiment-export button { background: #4f46e5; color: white; }

@@ -1,0 +1,20 @@
+// Algorithm invariants only, not a mocked recognition/accuracy evaluation.
+const fs = require('node:fs');
+const vm = require('node:vm');
+const assert = require('node:assert/strict');
+const ts = require('../../../webapp/web/node_modules/typescript');
+const source = fs.readFileSync('webapp/web/lib/liveExperiment.ts', 'utf8');
+const code = ts.transpileModule(source, {compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText;
+const context = {exports:{}, URLSearchParams}; vm.runInNewContext(code, context);
+const {HandConsensus, experimentOptions} = context.exports;
+const frame = (t, x, missing=false) => ({t, lh:missing?[]:Array.from({length:21},()=>[x,x,0]),rh:[],pose:[],face:[],bs:[]});
+let f = frame(0,1); assert.equal(new HandConsensus().apply(f),f);
+const filter = new HandConsensus(3);
+filter.apply(frame(0,1)); filter.apply(frame(60,99));
+const out = filter.apply(frame(120,1)); assert.equal(out.lh[0][0],1); assert.equal(out.t,120);
+assert.equal(filter.apply(frame(180,0,true)).lh.length,0);
+assert.equal(filter.apply(frame(240,7)).lh[0][0],7);
+assert.equal(filter.apply(frame(600,9)).lh[0][0],9);
+assert.equal(experimentOptions('?consensus=4').window,0);
+assert.equal(experimentOptions('?liveExp=1&consensus=5&faceEvery=3').faceEvery,3);
+console.log('PASS: disabled identity, median, timestamp, missing-hand reset, long-gap reset, flags');

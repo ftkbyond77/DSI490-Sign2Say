@@ -23,6 +23,9 @@ export type Landmarkers = { lm: HolisticLandmarker; delegate: Delegate; face?: H
  *    GPU+CPU  — body / hands / face mesh on the GPU every frame, face expressions (blendshapes) on the CPU every few frames
  *    CPU      — everything on the CPU (~6–7 fps on a laptop) */
 export async function createHolistic(prefer: "GPU" | "CPU" = "GPU"): Promise<Landmarkers> {
+  // Explicit compatibility mode: bypass GPU probing entirely on unsupported drivers.
+  // Default selection stays unchanged; callers can also request CPU directly.
+  if (typeof window !== "undefined" && new URLSearchParams(window.location.search).get("delegate") === "cpu") prefer = "CPU";
   const fileset = await FilesetResolver.forVisionTasks("/mediapipe/wasm");
   const make = (delegate: "GPU" | "CPU", blendshapes = true) => HolisticLandmarker.createFromOptions(fileset, {
     baseOptions: { modelAssetPath: "/models/holistic_landmarker.task", delegate },
@@ -38,12 +41,27 @@ export async function createHolistic(prefer: "GPU" | "CPU" = "GPU"): Promise<Lan
     try { lm.detectForVideo(c, 1, () => {}); return true; } catch { return false; }
   };
   if (prefer === "GPU") {
-    try { const lm = await make("GPU"); if (works(lm)) return { lm, delegate: "GPU" }; lm.close(); } catch { /* next option */ }
-    try {
-      const lm = await make("GPU", false);
-      if (works(lm)) return { lm, delegate: "GPU+CPU", face: await make("CPU") };
-      lm.close();
-    } catch { /* next option */ }
+    const attempt = async (blendshapes: boolean): Promise<Landmarkers | null> => {
+      let lm: HolisticLandmarker | null = null;
+      let face: HolisticLandmarker | undefined;
+      try {
+        lm = await make("GPU", blendshapes);
+        if (!works(lm)) return null;
+        if (!blendshapes) face = await make("CPU");
+        const result: Landmarkers = { lm, delegate: blendshapes ? "GPU" : "GPU+CPU", face };
+        lm = null; face = undefined; // ownership transferred to caller
+        return result;
+      } catch { return null; }
+      finally {
+        // A failed CPU companion must not leak the already-created GPU graph.
+        try { lm?.close(); } catch { /* graph may already have failed */ }
+        try { face?.close(); } catch { /* graph may already have failed */ }
+      }
+    };
+    const full = await attempt(true);
+    if (full) return full;
+    const mixed = await attempt(false);
+    if (mixed) return mixed;
   }
   return { lm: await make("CPU"), delegate: "CPU" };
 }

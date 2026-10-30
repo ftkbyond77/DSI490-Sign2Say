@@ -20,7 +20,9 @@ export class ExpressionModel {
       try {
         const fa = await import("@vladmandic/face-api");
         const tf = fa.tf as unknown as { setBackend: (b: string) => Promise<boolean>; ready: () => Promise<void> };
-        await tf.setBackend("webgl"); await tf.ready();
+        const backend = new URLSearchParams(window.location.search).get("delegate") === "cpu" ? "cpu" : "webgl";
+        if (!await tf.setBackend(backend)) throw new Error(`Expression backend unavailable: ${backend}`);
+        await tf.ready();
         await fa.nets.faceExpressionNet.loadFromUri("/models/face-api");
         const net = fa.nets.faceExpressionNet as unknown as Net;
         if (this.crop) { this.crop.width = this.crop.height = 112; await net.predictExpressions(this.crop); }  // compile the shaders now (~0.2 s), not mid-sign
@@ -31,8 +33,8 @@ export class ExpressionModel {
   }
 
   /** Feed the current video frame + the 68 face points (0..1); returns the smoothed expression, or null before the first prediction. */
-  update(src: CanvasImageSource, vw: number, vh: number, face: number[][], t: number): Emotion | null {
-    if (this.net && this.crop && face.length === 68 && !this.busy && t - this.last > 140) {
+  update(src: CanvasImageSource, vw: number, vh: number, face: number[][], t: number, minIntervalMs = 140): Emotion | null {
+    if (this.net && this.crop && face.length === 68 && !this.busy && t - this.last > minIntervalMs) {
       let x0 = 1, y0 = 1, x1 = 0, y1 = 0;
       for (const p of face) { x0 = Math.min(x0, p[0]); y0 = Math.min(y0, p[1]); x1 = Math.max(x1, p[0]); y1 = Math.max(y1, p[1]); }
       const cx = (x0 + x1) / 2 * vw, cy = ((y0 + y1) / 2 - (y1 - y0) * 0.08) * vh;   // the 68 points stop at the brows: shift up a little

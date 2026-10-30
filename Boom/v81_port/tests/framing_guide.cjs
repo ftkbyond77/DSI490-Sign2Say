@@ -1,0 +1,12 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const ts=require('../../../webapp/web/node_modules/typescript');
+const scope={exports:{}};
+vm.runInNewContext(ts.transpileModule(fs.readFileSync('webapp/web/lib/framingGuide.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText,scope);
+const {framing}=scope.exports;
+const f={t:0,pose:Array.from({length:33},()=>[.5,.5,0,1]),lh:[],rh:[],face:[],bs:[]};
+f.pose[0]=[.5,.24,0,1]; f.pose[11]=[.35,.43,0,1];f.pose[12]=[.65,.43,0,1];
+const before=JSON.stringify(f);assert.equal(framing(f).ready,true);assert.equal(JSON.stringify(f),before);
+assert.equal(framing(null).ready,false);
+f.pose[11][3]=.1;assert.equal(framing(f).ready,false);f.pose[11][3]=1;
+f.rh=[[.98,.5,0]];assert.equal(framing(f).handsNearEdge,true);assert.equal(framing(f).ready,false);
+console.log('PASS: advisory state, no landmark mutation, missing pose, edge warning; not a recognition evaluation');

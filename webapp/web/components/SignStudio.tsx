@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { openWidestCamera } from "@/lib/camera";
+import { framing, drawFraming, type Framing } from "@/lib/framingGuide";
+import { HandConsensus, experimentOptions } from "@/lib/liveExperiment";
 import { ExpressionModel } from "@/lib/expression";
 import type { HolisticLandmarker } from "@mediapipe/tasks-vision";
 import { createHolistic, detect, draw, EmotionMeter, handsUp, Normalizer, parts, type Delegate, type Emotion, type LmFrame, type Tone } from "@/lib/holistic";
@@ -43,6 +45,32 @@ export default function SignStudio() {
   const delegateRef = useRef<Delegate>("GPU");
   const faceLmRef = useRef<HolisticLandmarker | null>(null);      // GPU+CPU mode: expressions on the CPU every few frames
   const nRef = useRef(0);
+  const expRef = useRef({ enabled: false, window: 0, faceEvery: 1 });
+  const filterRef = useRef(new HandConsensus());
+  const expFrameRef = useRef(0);
+  const guideRef = useRef(false);
+  const [guideEnabled, setGuideEnabled] = useState(false);
+  const [framingState, setFramingState] = useState<Framing>(framing(null));
+  const lastVideoTime = useRef(-1);
+  const diagnosticRef = useRef<{ raw: LmFrame; sent: LmFrame; trackingMs: number; faceDispatchMs: number; framing?: Framing }[]>([]);
+  const [experimentLabel, setExperimentLabel] = useState("");
+  const downloadDiagnostics = () => {
+    const rows = diagnosticRef.current;
+    const intervals = rows.slice(1).map((r, i) => r.raw.t - rows[i].raw.t).sort((a,b) => a-b);
+    const duration = rows.length > 1 ? rows[rows.length-1].raw.t - rows[0].raw.t : 0;
+    const metrics = { frames: rows.length, fps: duration > 0 ? (rows.length-1)*1000/duration : null,
+      frameGapP95Ms: intervals.length ? intervals[Math.floor((intervals.length-1)*0.95)] : null,
+      leftVisibleFraction: rows.length ? rows.filter(r => r.raw.lh.length === 21).length / rows.length : null,
+      rightVisibleFraction: rows.length ? rows.filter(r => r.raw.rh.length === 21).length / rows.length : null };
+
+    const blob = new Blob([JSON.stringify({ schema: 1, settings: { ...expRef.current, framingGuide: guideRef.current }, metrics,
+      note: "Real camera landmarks; no ground truth. Last 3000 observations. Face dispatch time excludes asynchronous GPU completion.",
+      delegate: delegateRef.current, camera: streamRef.current?.getVideoTracks()[0]?.getSettings(),
+      results, frames: rows })], { type: "application/json" });
+    const url = URL.createObjectURL(blob), a = document.createElement("a");
+    a.href = url; a.download = `live-experiment-${Date.now()}.json`; a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
   const fileLmRef = useRef<{ lm: HolisticLandmarker; t: number } | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const rafRef = useRef<number>(0);
@@ -93,10 +121,20 @@ export default function SignStudio() {
   const set = (s: Status) => { statusRef.current = s; setStatus(s); };
 
   useEffect(() => {
+    const experiment = experimentOptions(window.location.search);
+    guideRef.current = new URLSearchParams(window.location.search).get("guide") === "1";
+    setGuideEnabled(guideRef.current);
+    expRef.current = experiment.enabled ? experiment : { enabled: false, window: 0, faceEvery: 1 };
+    filterRef.current = new HandConsensus(expRef.current.window);
+    if (experiment.enabled) setExperimentLabel(`ทดลอง: median ${experiment.window || "ปิด"} · สีหน้าทุก ${experiment.faceEvery} เฟรม`);
     info().then(setModel).catch(() => setModel(null));
     vocabList().then(setVocab).catch(() => setVocab([]));
     setPerfNoFx(new URLSearchParams(window.location.search).get("perf") === "nofx");
     setOpts((o) => ({ ...o, ...load<Partial<Options>>("thaislm.opts.v3", {}) }));     // v3: earlier saved settings (full vocabulary …) reset
+    if (experiment.enabled) {
+      setMode("live");
+      setOpts(o => ({ ...o, llm: false, speak: "off", vocab: "conversation" }));
+    }
     setEndMs(load("thaislm.endMs", 1500)); setAutoLight(load("thaislm.autoLight", false)); refreshSigns();
   }, []);
   useEffect(() => { save("thaislm.opts.v3", opts); }, [opts]);
@@ -185,14 +223,23 @@ export default function SignStudio() {
     try {
       const v = videoRef.current, c = canvasRef.current, lm = lmRef.current;
       if (!(v && c && lm && v.readyState >= 2)) return;
+      if (expRef.current.enabled && v.currentTime === lastVideoTime.current) return;
+      lastVideoTime.current = v.currentTime;
       const t = performance.now();
+      const faceDue = expFrameRef.current++ % expRef.current.faceEvery === 0;
+      let trackingMs = 0;
+      let raw: LmFrame | null = null;
       let f: LmFrame | null = null;
       if (!normRef.current) { normRef.current = new Normalizer(); normRef.current.enabled = autoLightRef.current; }
       const N = normRef.current;
       let src: HTMLVideoElement | HTMLCanvasElement = v;
       try {
         src = N.frame(v, t);
+        const trackingStart = performance.now();
         f = detect(lm, src, t); errRef.current.n = 0;
+        trackingMs = performance.now() - trackingStart;
+        raw = f;
+        if (f) f = filterRef.current.apply(f);
         const fl = faceLmRef.current;
         const skipLiveFace = perfNoFx && modeRef.current === "live";
         if (skipLiveFace && f) f.bs = [];
@@ -204,19 +251,27 @@ export default function SignStudio() {
         if (++errRef.current.n >= 3 && delegateRef.current !== "CPU") switchToCpu();
         return;
       }
+      const faceStart = performance.now();
       const ctx = c.getContext("2d");
       // live expression: the trained expression model on the face crop; blendshape rules only if it could not load. Held between updates.
       const skipLiveFace = perfNoFx && modeRef.current === "live";
       if (skipLiveFace) {
         lastEmoRef.current = undefined;
-      } else if (f && f.face.length) {
-        const m = exprRef.current.failed ? null : exprRef.current.update(src, c.width, c.height, f.face, t);
+      } else if (f && f.face.length && faceDue) {
+        const m = exprRef.current.failed ? null : exprRef.current.update(src, c.width, c.height, f.face, t, expRef.current.faceEvery > 1 ? 300 : 140);
         if (m) lastEmoRef.current = m;
         else if (f.bs.length >= 52) lastEmoRef.current = emoRef.current.update(f.bs);
-      } else if (f) { lastEmoRef.current = undefined; exprRef.current.reset(); }
+      } else if (f && !f.face.length) { lastEmoRef.current = undefined; exprRef.current.reset(); }
+      if (expRef.current.enabled && raw && f) {
+        diagnosticRef.current.push({ raw, sent: f, trackingMs, faceDispatchMs: performance.now() - faceStart, framing: guideRef.current ? framing(raw) : undefined });
+        if (diagnosticRef.current.length > 3000) diagnosticRef.current.shift();
+      }
       const emo = lastEmoRef.current;
       if (ctx) draw(ctx, f, c.width, c.height, statusRef.current === "recording" || live.current.state === "signing", emo);
+      const guide = guideRef.current ? framing(raw ?? f) : null;
+      if (ctx && guide) drawFraming(ctx, c.width, c.height, guide);
       if (t - partsRef.current.t > 250) {
+        if (guide) setFramingState(guide);
         partsRef.current.t = t; setSeen(parts(f));
         const e = N.exp;
         setExposure(N.enabled && e.active ? `${e.label} (ความสว่างเดิม ${Math.round(e.mean * 100)}%)` : "");
@@ -254,7 +309,11 @@ export default function SignStudio() {
 
   const openCamera = async () => {
     unlockAudio();
+    filterRef.current.reset(); diagnosticRef.current = []; expFrameRef.current = 0; lastVideoTime.current = -1;
     setError(""); set("loading");
+    if (new URLSearchParams(window.location.search).get("delegate") === "cpu") {
+      setLiveNote("โหมด CPU: ข้าม GPU ที่ไม่รองรับ · FPS อาจต่ำลง");
+    }
     try {
       if (!lmRef.current) {
         const { lm, delegate: d, face } = await createHolistic("GPU");
@@ -336,6 +395,12 @@ export default function SignStudio() {
           {camOn && exposure && <div className="exposure">ปรับภาพอัตโนมัติ: {exposure}</div>}
           {camOn && <div className="parts">ตรวจพบ: {chip(seen.body, "ลำตัว")}{chip(seen.face, "หน้า")}{chip(seen.brows, "คิ้ว/สีหน้า")}{chip(seen.left, "มือซ้าย")}{chip(seen.right, "มือขวา")}</div>}
         </div>
+        <div className="framing-controls">
+          <label><input type="checkbox" checked={guideEnabled} onChange={e => { guideRef.current = e.target.checked; setGuideEnabled(e.target.checked); }} /> กรอบช่วยจัดตำแหน่ง</label>
+          {guideEnabled && <p role="status">{camOn ? framingState.message : "เปิดกล้อง แล้วจัดศีรษะ ไหล่ และพื้นที่มือให้พอดีกรอบ"}</p>}
+          {guideEnabled && <small>กรอบแนะนำเบื้องต้น ไม่ต้องทำท่าให้ตรงเส้น · สีเขียวไม่ได้แปลว่าทายถูก</small>}
+        </div>
+        {experimentLabel && <div className="experiment-export"><strong>{experimentLabel}</strong> <button onClick={downloadDiagnostics}>บันทึกผล A/B (JSON)</button></div>}
         {camOn && fps > 0 && fps < 8 && <p className="note">เครื่องประมวลผลได้ {fps} fps (ช้า) — ทำท่าช้าลงเล็กน้อย และให้มืออยู่ในกรอบชัด ๆ</p>}
         {liveNote && mode === "live" && <p className="note">{liveNote}</p>}
         <div className="controls">
