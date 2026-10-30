@@ -65,7 +65,7 @@ export default function SignStudio() {
   const [status, setStatus] = useState<Status>("idle");
   const [mode, setMode] = useState<Mode>("manual");
   const [perfNoFx, setPerfNoFx] = useState(false);
-  const [opts, setOpts] = useState<Options>({ vocab: "conversation", llm: true, speak: "confident", faceQuestion: false, alphabet: "en" });
+  const [opts, setOpts] = useState<Options>({ vocab: "conversation", llm: true, speak: "confident", faceQuestion: false, alphabet: "en", minP: 0.8 });
   const [nFrames, setNFrames] = useState(0);
   const [fps, setFps] = useState(0);
   const [delegate, setDelegate] = useState<Delegate | "">("");

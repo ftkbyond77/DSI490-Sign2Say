@@ -191,6 +191,7 @@ class Harness:
         self.banks["prod"].lm = lm_bank(V9 / "lm_bank.npz", len(self.pipe.concepts), allowed, self.fold) if (V9 / "lm_bank.npz").exists() else None
         self.vocab = {self.pipe.concepts[c] for c in self.pipe.bank.concepts_present}
         self.vocab_words = sorted(self.vocab)
+        self.bank_files = (ART / "eval" / "bank_eval.npz", V9 / "bank.npz")
 
     def set_vocab(self, words, variants=None):
         """Both banks (+ hand-cue banks) restricted to another vocabulary, sign variants folded into their word (each version is
@@ -205,8 +206,10 @@ class Harness:
         allowed = {cidx[w] for w in words if w in cidx}
         C = len(self.pipe.concepts)
         self.fold = variant_lut(self.pipe.concepts, variants or {})
-        for name, bf, hf, lf in (("eval", ART / "eval" / "bank_eval.npz", ART / "eval" / "hand_bank_eval.npz", ART / "eval" / "lm_bank_eval.npz"),
-                                 ("prod", V9 / "bank.npz", V9 / "hand_bank.npz", V9 / "lm_bank.npz")):
+        lm_eval, lm_prod = getattr(self, "lm_files", (ART / "eval" / "lm_bank_eval.npz", V9 / "lm_bank.npz"))
+        bank_eval, bank_prod = getattr(self, "bank_files", (ART / "eval" / "bank_eval.npz", V9 / "bank.npz"))
+        for name, bf, hf, lf in (("eval", bank_eval, ART / "eval" / "hand_bank_eval.npz", lm_eval),
+                                 ("prod", bank_prod, V9 / "hand_bank.npz", lm_prod)):
             z = np.load(bf)
             self.banks[name] = Bank(z["Z"], self.fold[z["c"]], C, allowed)
             self.banks[name].hand = HandBank.load(hf, C, allowed, self.fold) if hf.exists() else None
@@ -241,16 +244,40 @@ class Harness:
     alphabet = "off"
 
     def use(self, version):
-        """Everything a version ships with: vocabulary, decoder settings, calibration, class prior, spelling."""
+        """Everything a version ships with: vocabulary, decoder settings, calibration, class prior, spelling — and (v10) its own
+        landmark encoder (onnx/lmenc.onnx + lm banks) when the version folder ships a different one."""
+        self._use_lm(version)
+        self._use_bank(version)
         b = baseline(version)
         self.set_vocab(b["vocab"], b["variants"])
         allowed = {self.pipe.concepts.index(c) for c in self.vocab}
-        prior = class_prior(ART / "eval" / "bank_eval.npz", self.pipe.concepts, allowed, self.fold) if b["prior"] else None
+        prior = class_prior(self.bank_files[0], self.pipe.concepts, allowed, self.fold) if b["prior"] else None
         self.configure(spot=b["spot"], cal=b["cal"], prior=prior)
         self.prod_prior = dict(np.load(b["prior"])) if b["prior"] else None
         self.pipe.spell_cfg = dict(self.pipe.spell_cfg, **(b["spell"] or {}))
         self.alphabet = b["alphabet"]
         return b
+
+    def _use_bank(self, version):
+        """v10x (opt-in) ships its own sign banks (artifacts/v10_experimental/bank.npz + eval/bank_eval.npz: extractor-averaged
+        exemplars); every other version uses v9's."""
+        ev, pr = V10X / "eval" / "bank_eval.npz", V10X / "bank.npz"
+        files = (ev, pr) if version == "v10x" and ev.exists() and pr.exists() else (ART / "eval" / "bank_eval.npz", V9 / "bank.npz")
+        if files != getattr(self, "bank_files", None):
+            self.bank_files, self._vkey = files, None
+
+    def _use_lm(self, version):
+        md = V10 if version == "v10" else V9
+        ev = ART / "eval" / "v10" / "lm_bank_eval.npz" if version == "v10" else ART / "eval" / "lm_bank_eval.npz"
+        if version == "v10" and not (ev.exists() and (md / "lm_bank.npz").exists() and (md / "onnx" / "lmenc.onnx").exists()):
+            md, ev = V9, ART / "eval" / "lm_bank_eval.npz"            # v10 without its own landmark encoder = v9's
+        files = (ev, md / "lm_bank.npz")
+        if files == getattr(self, "lm_files", (ART / "eval" / "lm_bank_eval.npz", V9 / "lm_bank.npz")) and getattr(self, "_lm_md", V9) == md:
+            return
+        from modules.lmenc import OnnxLM
+        self.pipe.lm = OnnxLM(md / "onnx" / "lmenc.onnx", device="cpu")
+        self.lm_files, self._lm_md = files, md
+        self._vkey = None                                              # banks are rebuilt by the next set_vocab
 
     def configure(self, spot=None, cal=None, prior="keep"):
         """Swap decoder settings / calibration / class prior (models/ files are only written by `tune --write`)."""
@@ -305,8 +332,13 @@ def score(segs, row, vocab):
     hyp = [s["nearest"] for s in live]
     correct, hit1, hit5 = [False] * len(live), set(), set()
     true = [None] * len(live)
-    seg_tp = 0
+    seg_tp = bnd_tp = 0
     if gold:
+        used_b = set()
+        for s in live:                                   # v10: boundary F1 (both ends within ±3 frames = 0.12 s, segment.boundary_f1)
+            for j, (c0, c1) in enumerate(gold):
+                if j not in used_b and abs(s["f0"] - c0) <= 3 and abs(s["f1"] - c1) <= 3:
+                    used_b.add(j); bnd_tp += 1; break
         pairs = sorted(((_iou((s["f0"], s["f1"]), g), i, j) for i, s in enumerate(live) for j, g in enumerate(gold)), reverse=True)
         used_i, used_j, match = set(), set(), {}
         for v, i, j in pairs:
@@ -334,7 +366,7 @@ def score(segs, row, vocab):
                 hit5.add(j)
     inv = [j for j, w in enumerate(ref) if vocab is None or w in vocab]
     st = [s["status"] for s in live]
-    return dict(n_pred=len(live), n_ref=len(ref), seg_tp=seg_tp, wer=wer(ref, hyp), n_inv=len(inv),
+    return dict(n_pred=len(live), n_ref=len(ref), seg_tp=seg_tp, bnd_tp=bnd_tp, wer=wer(ref, hyp), n_inv=len(inv),
                 hit1=sum(j in hit1 for j in inv), hit5=sum(j in hit5 for j in inv), correct=correct, status=st,
                 n_acc=st.count("accepted"), n_acc_ok=sum(c for c, x in zip(correct, st) if x == "accepted"),
                 n_unc=st.count("uncertain"), n_unc_ok=sum(c for c, x in zip(correct, st) if x == "uncertain"), n_rej=st.count("unknown"),
@@ -353,6 +385,7 @@ def aggregate(scores):
         tp = sum(s["seg_tp"] for s in S)
         p, r = tp / max(n_pred, 1), tp / max(n_ref, 1)
         out["seg_F1"] = 2 * p * r / max(p + r, 1e-9)
+        out["boundary_F1"] = 2 * sum(s.get("bnd_tp", 0) for s in S) / max(n_pred + n_ref, 1)
         pairs = [(t, h_) for x in S for t, h_ in zip(x["true"], x["hyp"]) if t is not None]
         f1 = []
         for w in {t for t, _ in pairs}:
@@ -525,11 +558,13 @@ def cmd_lmbank(a):
     out = Path(a.out)
     (out / "onnx").mkdir(parents=True, exist_ok=True)
     onnx = out / "onnx" / "lmenc.onnx"
-    err = lmenc.export_onnx(ART / "runs" / "enc-v8" / "encoder_best.pt", onnx)
+    err = lmenc.export_onnx(ART / "runs" / a.run / "encoder_best.pt", onnx)
     _p("lmenc.onnx parity max|Δ| = %.2e", err)
     lm = lmenc.OnnxLM(onnx)
     load = bank_clip_loader()
-    for name, path, dst in (("eval", ART / "eval" / "bank_eval.npz", ART / "eval" / "lm_bank_eval.npz"), ("prod", Path(a.bank), out / "lm_bank.npz")):
+    ev_dst = Path(a.eval_out) if a.eval_out else ART / "eval" / "lm_bank_eval.npz"
+    ev_dst.parent.mkdir(parents=True, exist_ok=True)
+    for name, path, dst in (("eval", ART / "eval" / "bank_eval.npz", ev_dst), ("prod", Path(a.bank), out / "lm_bank.npz")):
         z = np.load(path)
         t = time.time()
         F, ok = [], np.zeros(len(z["clip"]), bool)
@@ -548,14 +583,94 @@ def cmd_lmbank(a):
         _p("%s: %d / %d clips embedded (%.0f s) → %s", name, ok.sum(), len(ok), time.time() - t, dst)
 
 
+def cmd_views(a):
+    """(v10) Extractor-averaged exemplars (--lm: the same for the landmark encoder's banks — tested on tune: worse, 0.3404 vs 0.3379,
+    not used): every bank clip whose video the pose store also holds as RTMW-X (`<clip>#rtmw`, same frames)
+    is embedded in BOTH views by the Uni-Sign encoder and its bank entry becomes the normalised mean — one entry per clip as before,
+    less noise from either extractor (tune: TSL51 1× / 1.5× / 2× 0.264 / 0.274 / 0.304 → 0.258 / 0.264 / 0.292, word clips and fluent
+    sentences unchanged; adding the RTMW view as a SEPARATE entry instead hurt fluent sentences). Queries stay MediaPipe (tier B).
+    → artifacts/v10_experimental/eval/bank_eval.npz + <out>/bank.npz (+ the same for the landmark encoder's lm banks with --lm)."""
+    from modules.parts import prep
+    out = Path(a.out)
+    load = bank_clip_loader()
+    h = Harness()
+    cache_f = ROOT / "cache" / "v10" / "views_unisign.npz"
+    cache = dict(np.load(cache_f)) if cache_f.exists() else {}
+    cache = {str(k): v for k, v in zip(cache.get("clip", []), cache.get("Z", []))}
+    lm = None
+    if a.lm:
+        from modules.lmenc import OnnxLM, prep as lm_prep
+        lm = OnnxLM(out / "onnx" / "lmenc.onnx")
+    for name, src, dst, lsrc, ldst in (("eval", ART / "eval" / "bank_eval.npz", V10X / "eval" / "bank_eval.npz",
+                                        ART / "eval" / "lm_bank_eval.npz", V10X / "eval" / "lm_bank_eval.npz"),
+                                       ("prod", V9 / "bank.npz", out / "bank.npz", out / "lm_bank.npz", out / "lm_bank.npz")):
+        z = dict(np.load(src))
+        Z = z["Z"].astype(np.float32).copy()
+        todo, views = [], {}
+        t = time.time()
+        for k, clip in enumerate(z["clip"]):
+            clip = str(clip)
+            if "@" in clip:                                     # TSL51 sentence-aligned words: no RTMW twin of the span
+                continue
+            if clip in cache:
+                views[k] = cache[clip]; continue
+            x = load(clip + "#rtmw")
+            if x is None:
+                continue
+            kp, sc, f0, f1 = x
+            f0 = 0 if f0 is None else int(f0); f1 = len(kp) if f1 is None else int(f1)
+            todo.append((k, clip, prep(kp[f0:f1], sc[f0:f1])))
+        for i in range(0, len(todo), 64):
+            E = h.pipe.be.embed([p_ for _, _, p_ in todo[i:i + 64]])
+            for (k, clip, _), e in zip(todo[i:i + 64], E):
+                views[k] = e.astype(np.float16); cache[clip] = views[k]
+        idx = np.array(sorted(views))
+        m = Z[idx] / (np.linalg.norm(Z[idx], axis=1, keepdims=True) + 1e-8) + np.stack([views[k] for k in idx]).astype(np.float32)
+        Z[idx] = m / (np.linalg.norm(m, axis=1, keepdims=True) + 1e-8)
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        np.savez(dst, **dict(z, Z=Z.astype(np.float16), view_averaged=np.isin(np.arange(len(Z)), idx)))
+        _p("%s bank: %d / %d entries view-averaged (%d newly embedded, %.0f s) → %s", name, len(idx), len(Z), len(todo), time.time() - t, dst)
+        np.savez(cache_f, clip=np.array(list(cache)), Z=np.stack(list(cache.values())).astype(np.float16))
+        if lm is not None and lsrc.exists():                    # the landmark encoder's bank: the same averaging in its own space
+            lz = dict(np.load(lsrc)); LZ = lz["Z"].astype(np.float32).copy(); ok = lz["ok"].astype(bool)
+            items = [(k, str(c)) for k, c in enumerate(z["clip"]) if ok[k] and "@" not in str(c)]
+            F, ks = [], []
+            for k, clip in items:
+                x = load(clip + "#rtmw")
+                if x is None:
+                    continue
+                kp, sc, f0, f1 = x
+                f0 = 0 if f0 is None else int(f0); f1 = len(kp) if f1 is None else int(f1)
+                if f1 - f0 < 4:
+                    f0, f1 = 0, len(kp)
+                F.append(lm_prep(kp[f0:f1], sc[f0:f1])); ks.append(k)
+            E = lm.embed(F)
+            ks = np.array(ks)
+            mm = LZ[ks] / (np.linalg.norm(LZ[ks], axis=1, keepdims=True) + 1e-8) + E / (np.linalg.norm(E, axis=1, keepdims=True) + 1e-8)
+            LZ[ks] = mm / (np.linalg.norm(mm, axis=1, keepdims=True) + 1e-8)
+            np.savez(ldst, **dict(lz, Z=LZ.astype(np.float16)))
+            _p("%s lm bank: %d entries view-averaged → %s", name, len(ks), ldst)
+
+
 # ----------------------------------------------------------------------------- tuning
 def _decide_all(h, raw_by_set):
     """raw (decoded) segments → decide() with the current calibration → scores per set."""
     import copy
     res = {}
     for name, (rows, raws) in raw_by_set.items():
-        res[name] = aggregate([score(h.pipe.decide(copy.deepcopy(r)), row, h.vocab) for row, r in zip(rows, raws)])
+        sc = [score(h.pipe.decide(copy.deepcopy(r)), row, h.vocab) for row, r in zip(rows, raws)]
+        res[name] = dict(aggregate(sc), _wer=[x["wer"] for x in sc])
     return res
+
+
+def sig_better(new, old, sets=TUNE_SETS, n=2000, seed=0):
+    """v10 selection rule: the tune gain of `new` over `old` must be real — the 97.5th percentile of the bootstrap distribution of
+    the mean (over tune sets, equal weight) per-utterance ΔWER is below 0. A change that only wins by noise is not taken: the first
+    v10 run picked such changes on 2–8 tune signers and they did not carry to the test signers (result_v10.md §3)."""
+    rng = np.random.RandomState(seed)
+    d = [np.asarray(new[k]["_wer"]) - np.asarray(old[k]["_wer"]) for k in sets]
+    bs = np.mean([x[rng.randint(0, len(x), (n, len(x)))].mean(1) for x in d], 0)
+    return float(np.percentile(bs, 97.5)) < 0.0
 
 
 def _raw(h, names, rows_by_set):
@@ -613,6 +728,15 @@ def reliability(p, y, bins=10):
         m = (p >= a / bins) & (p < (a + 1) / bins + (a == bins - 1))
         out.append(dict(lo=a / bins, n=int(m.sum()), conf=float(p[m].mean()) if m.any() else None, acc=float(y[m].mean()) if m.any() else None))
     return out
+
+
+def cov_at_precision(p, y, n_ref, target=0.9):
+    """Largest share of the reference words that a single threshold on P(correct) can accept with precision ≥ target (v10: how
+    useful the confidence is, independent of where τ_accept was put)."""
+    o = np.argsort(-np.asarray(p, float)); y = np.asarray(y, float)[o]
+    prec = np.cumsum(y) / np.arange(1, len(y) + 1)
+    ok = np.flatnonzero(prec >= target)
+    return float(np.cumsum(y)[ok[-1]] / max(n_ref, 1)) if len(ok) else 0.0
 
 
 def fit_lr(X, y, w_set):
@@ -783,12 +907,14 @@ def cmd_tune(a):
     import copy
     from modules.decode import FEATS, FEATS_V8, FEATS_V81, FEATS_V9, class_features, seg_features
     h = Harness()
+    h._use_lm(a.version)                      # v10: tune with the version's own landmark encoder (when it ships one)
+    h._use_bank(a.version)                    # … and its own sign banks
     out_dir = Path(a.out)
     vc = read_json(out_dir / "vocab_conversation.json")
     h.set_vocab(vc["concepts"], vc.get("variants", {}))
     rows = {n: load_set(n) for n in TUNE_SETS}
     allowed = {h.pipe.concepts.index(c) for c in h.vocab}
-    prior_eval = class_prior(ART / "eval" / "bank_eval.npz", h.pipe.concepts, allowed, h.fold)
+    prior_eval = class_prior(h.bank_files[0], h.pipe.concepts, allowed, h.fold)
     v8 = baseline(a.start)                    # always start from a frozen version's settings (re-runs are idempotent): v8.1 for v9
     spot0 = v8["spot"]
     h.configure(spot=spot0, cal=v8["cal"], prior=prior_eval)
@@ -806,28 +932,45 @@ def cmd_tune(a):
            " ".join(f"{n.replace('_tune', '')}:{res[n]['WER']:.3f}/{res[n]['R1']:.3f}" for n in TUNE_SETS), time.time() - t)
         return obj, res
 
-    base_obj, base_res = seg_eval(spot0, f"baseline ({a.start})")
+    ref_res = None
+    if a.version in ("v10", "v10x"):          # the guard's reference = v9 exactly as shipped (its banks, its landmark encoder)
+        h._use_lm("v9"); h._use_bank("v9"); h.set_vocab(vc["concepts"], vc.get("variants", {}))
+        prior_v9 = class_prior(h.bank_files[0], h.pipe.concepts, allowed, h.fold)
+        h.configure(spot=spot0, cal=v8["cal"], prior=prior_v9)
+        _, ref_res = seg_eval(spot0, "v9 as shipped")
+        rep["v9_as_shipped"] = ref_res
+        h._use_lm(a.version); h._use_bank(a.version); h.set_vocab(vc["concepts"], vc.get("variants", {}))
+        h.configure(spot=spot0, cal=v8["cal"], prior=prior_eval)
+    base_obj, base_res = seg_eval(spot0, f"baseline ({a.start} settings)")
     rep["baseline"] = base_res
+    if ref_res is None:
+        ref_res = base_res
     if a.spot_from:        # re-run of the decision stages only: the segmentation chosen by an earlier run (its spotting.json)
         spot = dict(read_json(Path(a.spot_from))["conversation"])
 
     def ok(res):          # no tune set may get worse than the baseline (0.003 WER = noise); a mean gain bought on one set is not enough
-        return all(res[n]["WER"] <= base_res[n]["WER"] + 0.003 for n in TUNE_SETS)
+        return all(res[n]["WER"] <= ref_res[n]["WER"] + 0.003 for n in TUNE_SETS)
 
     # hand-shape cue weight (0 = v8: the decoder's window-ensemble reading); a stronger weight must win by > 0.002
-    best = (base_obj, spot0)
+    def better(o, r, cur):                # > 0.002 mean tune WER AND significant (sig_better) AND no tune set worse than the reference
+        return ok(r) and o > cur[0] + 0.002 and (not a.significant or sig_better(r, cur[2]))
+
+    best = (base_obj, spot0, base_res)
     if a.spot_from:
-        best = (seg_eval(spot, "segmentation from " + Path(a.spot_from).parent.name)[0], spot)
+        o_, r_ = seg_eval(spot, "segmentation from " + Path(a.spot_from).parent.name)
+        best = (o_, spot, r_)
     elif a.start == "v8":
         grid = [dict(hand_w=w) for w in (0.4, 0.6, 0.8, 1.0, 1.2, 1.5, 2.0)]
     else:                 # v9 reader: boundary-robust span reading (crops) + the landmark encoder's opinion (lm_w), hand weight re-checked
-        grid = [dict(read=dict(crops=c, lm_w=lw), hand_w=hw) for c in (0, 1) for lw in (0.0, 0.2, 0.3, 0.4) for hw in (1.0, 1.2)
+        lws = (0.0, 0.2, 0.3, 0.4, 0.5, 0.6) if a.start == "v9" else (0.0, 0.2, 0.3, 0.4)     # v10: a stronger 2nd opinion may earn more weight
+        crops = (0,) if a.start == "v9" else (0, 1)          # v9 found multi-crop reading ±0 and slower — not re-scanned in v10
+        grid = [dict(read=dict(crops=c, lm_w=lw), hand_w=hw) for c in crops for lw in lws for hw in (1.0, 1.2)
                 if (c, lw, hw) != (0, 0.0, spot0.get("hand_w"))]
     for g in ([] if a.spot_from else grid):
         sp = dict(spot0, **g)
         o, r = seg_eval(sp, ("reader " if "read" in g else "") + " ".join(f"{k}={v}" for k, v in g.items()))
-        if ok(r) and o > best[0] + 0.002:
-            best = (o, sp)
+        if better(o, r, best):
+            best = (o, sp, r)
     base_spot = spot if a.spot_from else best[1]
     # merge model: features of every neighbouring pair on the tune sets, label = both parts lie on the same gold sign
     Xp, yp, gp = merge_pairs(h, base_spot, rows) if not a.spot_from else (np.zeros((2, 13)), np.array([0, 1]), np.array(["a", "b"]))
@@ -841,8 +984,8 @@ def cmd_tune(a):
     for thr in () if a.spot_from else (0.7, 0.6, 0.5, 0.4, 0.3):              # conservative first: a more aggressive merge must win by > 0.002
         sp = dict(base_spot, merge=dict(on=True, max_gap=6, max_len=72, thr=thr, model=mlr.to_dict(MERGE_FEATS)))
         o, r = seg_eval(sp, f"merge model thr={thr}")
-        if ok(r) and o > mbest[0] + 0.002:
-            mbest = (o, sp)
+        if better(o, r, mbest):
+            mbest = (o, sp, r)
     spot = mbest[1]
     # v8.1 split test (two fluent signs read as one): same procedure as the merge model, on the merged segmentation
     from modules.decode import SPLIT_FEATS
@@ -854,8 +997,8 @@ def cmd_tune(a):
     for thr in () if a.spot_from else (0.8, 0.7, 0.6, 0.5):                    # conservative first; only inside utterances of ≥ 2 signs
         sp = dict(spot, split=dict(on=True, min_part=8, min_len=24, min_segments=2, thr=thr, model=slr.to_dict(SPLIT_FEATS)))
         o, r = seg_eval(sp, f"split model thr={thr} (≥ 2 signs)")
-        if ok(r) and o > mbest[0] + 0.002:
-            mbest = (o, sp)
+        if better(o, r, mbest):
+            mbest = (o, sp, r)
     spot = mbest[1]
     # TSL word-order re-rank (on since v7). v8.1: it may only act on utterances of ≥ 2 signs, measured on the ranking's own
     # quantity, within a visual gap chosen here. Grammar (any variant) is kept only if it lowers tune WER by > 0.005 vs off (v7's
@@ -888,15 +1031,24 @@ def cmd_tune(a):
     # learned top-5 re-ranker: kept only when its cross-validated top-1 beats the visual order by ≥ 1 point on tune
     w_rr, cv_rr, base_rr, n_rr = fit_rerank(S, GR, G, prior_eval, h.pipe.concepts)
     use_rr = cv_rr >= base_rr + 0.01
-    if use_rr:              # v9: a pooled top-1 gain is not enough — tune WER with the re-ranker may not get worse on any set
-        c0 = h.pipe.cal
-        h.configure(cal={k: v for k, v in c0.items() if k != "rerank"}); r_off = _decide_all(h, raw)
-        h.configure(cal=dict(c0, rerank=dict(w=w_rr.tolist()))); r_on = _decide_all(h, raw)
+    c0 = h.pipe.cal
+    if use_rr or c0.get("rerank"):   # v10: off · the start version's re-ranker · the refit one — the best tune objective that keeps
+        cands = {"off": {k: v for k, v in c0.items() if k != "rerank"}}      # every set within 0.003 of the guard's reference
+        if c0.get("rerank"):
+            cands["start"] = c0
+        if use_rr:
+            cands["refit"] = dict(c0, rerank=dict(w=w_rr.tolist()))
+        rr_res = {}
+        for k, c in cands.items():
+            h.configure(cal=c); rr_res[k] = _decide_all(h, raw)
         h.configure(cal=c0)
-        guard = all(r_on[n]["WER"] <= r_off[n]["WER"] + 0.003 for n in TUNE_SETS) and _objective(r_on, TUNE_SETS) > _objective(r_off, TUNE_SETS)
-        _p("[rerank] tune WER without / with: %s → %s", " ".join(f"{n.replace('_tune', '')}:{r_off[n]['WER']:.3f}/{r_on[n]['WER']:.3f}" for n in TUNE_SETS),
-           "kept" if guard else "dropped (a tune set gets worse)")
-        use_rr = guard
+        okk = [k for k in cands if ok(rr_res[k])] or ["off"]
+        pick = max(okk, key=lambda k: _objective(rr_res[k], TUNE_SETS))
+        _p("[rerank] tune WER %s → %s", " | ".join(f"{k}: " + " ".join(f"{n.replace('_tune', '')}:{rr_res[k][n]['WER']:.3f}" for n in TUNE_SETS)
+                                                   for k in cands), pick)
+        use_rr = pick != "off"
+        if pick == "start":
+            w_rr = np.asarray(c0["rerank"]["w"], float)
     rep["rerank"] = dict(segments=n_rr, cv_top1=cv_rr, visual_top1=base_rr, used=bool(use_rr), w=w_rr.tolist())
     _p("[rerank] segments with the true word in the top-5: %d · top-1 visual %.3f -> re-ranked (CV) %.3f · %s", n_rr, base_rr, cv_rr,
        "USED" if use_rr else "not used")
@@ -929,7 +1081,8 @@ def cmd_tune(a):
     _, e_lr, P_oof = cv_logloss(seg_features(S, feats_sets[best_fs]), Y, W, G)
     iso_c = _isotonic_cv(P_oof, Y, G)
     cal_rep["isotonic"] = dict(cv_ECE_lr=e_lr, **iso_c["report"])
-    if iso_c["report"]["cv_ECE"] < e_lr - 0.005 and iso_c["report"]["cv_logloss"] <= cal_rep[best_fs]["cv_logloss"] + 0.002:
+    iso_gain, iso_ll = (0.0, 0.005) if a.significant else (0.005, 0.002)      # v10: ECE is a release metric — any CV ECE gain counts
+    if iso_c["report"]["cv_ECE"] < e_lr - iso_gain and iso_c["report"]["cv_logloss"] <= cal_rep[best_fs]["cv_logloss"] + iso_ll:
         iso = iso_c["table"]
     _p("[cal] isotonic: CV ECE %.4f -> %.4f, logloss %.4f -> %.4f · %s", e_lr, iso_c["report"]["cv_ECE"], cal_rep[best_fs]["cv_logloss"],
        iso_c["report"]["cv_logloss"], "USED" if iso else "not used")
@@ -971,6 +1124,27 @@ def cmd_tune(a):
             _p("[policy] %-38s tau=%.2f short<%d margin<%.2f -> accepted %d/%d (min set precision %.3f)", label, b["tau"], b["short"],
                b["margin"], b["acc_ok"], b["acc"], b["min_prec"])
     chosen = max(feas, key=lambda c: (c["acc_ok"], -c["short"], -c["margin"], -c["tau"])) if feas else dict(tau=0.95, short=0, margin=0.0)
+    if a.significant and a.version in ("v10", "v10x"):
+        # v10 (release gate): the accepted words may not become less precise nor wrong words more often accepted than in the start
+        # version on ANY tune set — the lowest global τ that keeps false-accept ≤ ref + 0.005 and accepted precision ≥ ref − 0.005
+        base_cal = dict(model=lr.to_dict(feats_sets[best_fs]), temperature=T, **({"rerank": dict(w=w_rr.tolist())} if use_rr else {}),
+                        tau_uncertain=0.1, decision=dict(short_frames=0, margin_min=0.0), **({"isotonic": iso} if iso else {}))
+        rep["policy_release"] = []
+        for tau in np.round(np.arange(max(chosen["tau"], floor), 0.97, 0.02), 2):
+            h.configure(cal=dict(base_cal, tau_accept=float(tau)))
+            rr = _decide_all(h, raw)
+            fine = all(rr[n]["false_accept_rate"] <= ref_res[n]["false_accept_rate"] + 0.005 and rr[n]["acc_prec"] >= ref_res[n]["acc_prec"] - 0.005
+                       for n in TUNE_SETS)
+            rep["policy_release"].append(dict(tau=float(tau), ok=fine, **{n: dict(fa=rr[n]["false_accept_rate"], prec=rr[n]["acc_prec"],
+                                                                                cover=rr[n]["acc_cover"]) for n in TUNE_SETS}))
+            _p("[policy] release check tau=%.2f %s | %s", tau, "OK" if fine else "—", " ".join(
+                f"{n.replace('_tune', '')}:fa {rr[n]['false_accept_rate']:.3f}/{ref_res[n]['false_accept_rate']:.3f} prec {rr[n]['acc_prec']:.3f}/{ref_res[n]['acc_prec']:.3f}"
+                for n in TUNE_SETS))
+            if fine:
+                chosen = dict(tau=float(tau), short=0, margin=0.0)
+                break
+        else:
+            chosen = dict(tau=0.95, short=0, margin=0.0)
     # reject: the largest τ_reject whose rejected segments are ≥ 85 % wrong over the tune sets and ≥ 80 % wrong in each set with ≥ 10
     # of them ("no word is reliable here" must really mean that); everything between τ_reject and τ_accept is Uncertain
     tau_rej = 0.05
@@ -1128,18 +1302,21 @@ def a_ref():
     return "f08a56d"            # the last forward model before v8 (pitty's tagger + min_frames 10, merged into main)
 
 
-VERSIONS = ("v7.2", "v8", "v8.1", "v9")
+VERSIONS = ("v7.2", "v8", "v8.1", "v9", "v10", "v10x")
 V9 = ROOT / "models" / "model-v9"          # v9 model folder (prompt_13); v8.1 = models/archive/Jack-model, frozen in artifacts/baselines/v8.1
+V10 = ROOT / "models" / "model-v10"        # v10 (prompt_14); v9 is frozen in artifacts/baselines/v9 (release baseline + rollback)
+V10X = ART / "v10_experimental"            # v10x: the v10 re-tune that failed the release gate on test — opt-in only, not shipped
 
 
 def baseline(tag):
-    """What a forward version ships: v7.2 = git f08a56d (pitty's tagger, before the decision layer), v8 = artifacts/baselines/v8/
-    (prompt_11 decision layer; also the rollback copy), v8.1 = models/ now. Models (encoder, tagger, span head, bank) are shared."""
+    """What a forward version ships: v7.2 = git f08a56d (pitty's tagger, before the decision layer), v8 / v8.1 / v9 =
+    artifacts/baselines/<tag>/ (frozen settings = rollback copies), v10 = models/model-v10, v10x = artifacts/v10_experimental (opt-in).
+    Encoder, tagger and span head are shared; v10x ships its own sign banks (Harness.use swaps them)."""
     if tag == "v7.2":
         sp = _git_json("models/spotting.json")
         return dict(spot=sp["conversation"], cal=_git_json("models/segment_calibration.json")["conversation"], prior=None,
                     vocab=_git_json("models/vocab_conversation.json")["concepts"], variants={}, spell=sp.get("spell"), alphabet="off")
-    d = V9 if tag == "v9" else ART / "baselines" / tag
+    d = {"v10": V10, "v10x": V10X}.get(tag, ART / "baselines" / tag)
     sp, vc = read_json(d / "spotting.json"), read_json(d / "vocab_conversation.json")
     return dict(spot=sp["conversation"], cal=read_json(d / "segment_calibration.json")["conversation"], prior=d / "class_prior.npz",
                 vocab=vc["concepts"], variants=vc.get("variants", {}), spell=sp.get("spell"), alphabet=sp.get("alphabet", "off"))
@@ -1176,14 +1353,16 @@ def enrolled_bank(h):
     sentences) added to the training-signer bank — what the web's personal sign memory does for a regular user."""
     from modules.handshape import HandBank
     from modules.runtime import Bank
-    z = np.load(V9 / "bank.npz"); clip = np.asarray(z["clip"]).astype(str)
+    ev_f, pr_f = getattr(h, "bank_files", (ART / "eval" / "bank_eval.npz", V9 / "bank.npz"))
+    z = np.load(pr_f); clip = np.asarray(z["clip"]).astype(str)
     m = np.array([c.startswith("t51u:") for c in clip])
-    ev = np.load(ART / "eval" / "bank_eval.npz")
+    ev = np.load(ev_f)
     C = len(h.pipe.concepts); allowed = set(h.banks["eval"].concepts_present.tolist())
     eb = Bank(np.r_[ev["Z"], z["Z"][m]], h.fold[np.r_[ev["c"], z["c"][m]]], C, allowed)
     hp, he = np.load(V9 / "hand_bank.npz"), np.load(ART / "eval" / "hand_bank_eval.npz")
     eb.hand = HandBank(np.r_[he["P"], hp["P"][m]], h.fold[np.r_[he["c"], hp["c"][m]]], C, dict(mu=he["mu"], sd=he["sd"], A=he["A"]), allowed)
-    lp, le = np.load(V9 / "lm_bank.npz"), np.load(ART / "eval" / "lm_bank_eval.npz")
+    le_f, lp_f = getattr(h, "lm_files", (ART / "eval" / "lm_bank_eval.npz", V9 / "lm_bank.npz"))
+    lp, le = np.load(lp_f), np.load(le_f)
     okp, oke = lp["ok"].astype(bool), le["ok"].astype(bool)
     eb.lm = Bank(np.r_[le["Z"][oke], lp["Z"][m & okp]].astype(np.float32), h.fold[np.r_[le["c"][oke], lp["c"][m & okp]]], C, allowed)
     eb.personal = True
@@ -1216,7 +1395,8 @@ def cmd_report(a):
             Yc = np.array([c_ for x in sc for c_ in x["correct"]], float)
             if len(P):
                 Pc = np.clip(P, 1e-4, 1 - 1e-4)
-                m.update(brier=float(np.mean((P - Yc) ** 2)), logloss=float(-np.mean(Yc * np.log(Pc) + (1 - Yc) * np.log(1 - Pc))))
+                m.update(brier=float(np.mean((P - Yc) ** 2)), logloss=float(-np.mean(Yc * np.log(Pc) + (1 - Yc) * np.log(1 - Pc))),
+                         cov_at_p90=cov_at_precision(P, Yc, m["words_ref"]), ECE=ece(P, Yc))
             out["sets"][name][tag] = m
             out["calibration"].setdefault(name, {})[tag] = dict(ECE=ece(P, Yc) if len(P) else None, reliability=reliability(P, Yc) if len(P) else [],
                                                               mean_p_correct_when_right=float(P[Yc == 1].mean()) if (Yc == 1).any() else None,
@@ -1240,7 +1420,7 @@ def cmd_report(a):
                                                                    ref_words=int(sum(len(r["ref"]) for r in rows)))
                 per_utt.setdefault(name + "|perf", {})[tag] = np.array(perf)
             _p("%-16s %-5s %s", name, tag, fmt(m))
-            if name.startswith("t51_test") and tag in ("v8.1", "v9"):        # the enrolled-signer scenario (separate, clearly labelled)
+            if name.startswith("t51_test") and tag in ("v8.1", "v9", "v10", "v10x"):        # the enrolled-signer scenario (separate, clearly labelled)
                 keep, h.banks["eval"] = h.banks["eval"], enrolled_bank(h)
                 sce = evaluate(h, rows)
                 h.banks["eval"] = keep
@@ -1251,7 +1431,7 @@ def cmd_report(a):
     # paired bootstrap (10,000 resamples of utterances) of the WER difference on identical samples
     rng = np.random.RandomState(0)
     out["bootstrap"] = {}
-    pairs = [(n_, o_) for n_, o_ in (("v9", "v8.1"), ("v8.1", "v8"), ("v8.1", "v7.2"), ("v8", "v7.2")) if n_ in versions and o_ in versions]
+    pairs = [(n_, o_) for n_, o_ in (("v10", "v9"), ("v10x", "v9"), ("v9", "v8.1"), ("v8.1", "v8"), ("v8.1", "v7.2"), ("v8", "v7.2")) if n_ in versions and o_ in versions]
     for name, W in per_utt.items():
         for new, old in pairs:
             if new not in W or old not in W:
@@ -1260,7 +1440,7 @@ def cmd_report(a):
             bs = d[rng.randint(0, len(d), (10000, len(d)))].mean(1)
             out["bootstrap"].setdefault(name, {})[f"{new}-{old}"] = dict(diff=float(d.mean()), lo=float(np.percentile(bs, 2.5)), hi=float(np.percentile(bs, 97.5)),
                                                                          n=len(d), better=int((d < 0).sum()), worse=int((d > 0).sum()))
-        k = f"{pairs[0][0]}-{pairs[0][1]}"
+        k = f"{pairs[0][0]}-{pairs[0][1]}" if pairs else None
         if k in out["bootstrap"].get(name, {}):
             x = out["bootstrap"][name][k]
             _p("%-22s %s dWER %+.3f [%+.3f, %+.3f] better %d worse %d", name, k, x["diff"], x["lo"], x["hi"], x["better"], x["worse"])
@@ -1289,6 +1469,172 @@ def cmd_report(a):
     out["latency"]["mediapipe_ms_per_frame"] = (time.perf_counter() - t) * 1000 / max(n, 1)
     _p("latency %s", out["latency"])
     write_json(REP / f"decision_{a.tag}.json", out)
+
+
+# ----------------------------------------------------------------------------- v10 release gate (prompt_14 §9)
+# metric → (direction: +1 higher is better / −1 lower is better, floor of the tolerance). Tolerance per set = max(floor, 0.25 × the
+# bootstrap SD of v9's own value on that set), frozen BEFORE any v10 change (`gate --freeze` → artifacts/baselines/v9/gate_tolerance.json).
+GATE = {"WER": (-1, 0.003), "R1": (1, 0.003), "R5": (1, 0.003), "macro_F1": (1, 0.003), "seg_F1": (1, 0.003), "boundary_F1": (1, 0.003),
+        "count_err": (-1, 0.01), "acc_prec": (1, 0.005), "acc_cover": (1, 0.003), "false_accept_rate": (-1, 0.005), "ECE": (-1, 0.003),
+        "cov_at_p90": (1, 0.003)}
+REAL_GATE = {"WER_per_performance": (-1, 0.003), "WER_in_vocab": (-1, 0.003)}
+TOL_FILE = ART / "baselines" / "v9" / "gate_tolerance.json"
+
+
+def _boot_metrics(sc, segs, n=1000, seed=0):
+    """Bootstrap (utterances) SD of every gated metric of one evaluated set."""
+    rng = np.random.RandomState(seed)
+    vals = {k: [] for k in GATE}
+    P = [np.array([s.get("p_correct", 0) for s in ss if s["status"] != "transition"], float) for ss in segs]
+    Y = [np.array(x["correct"], float) for x in sc]
+    for _ in range(n):
+        idx = rng.randint(0, len(sc), len(sc))
+        m = aggregate([sc[i] for i in idx])
+        p_, y_ = np.concatenate([P[i] for i in idx]), np.concatenate([Y[i] for i in idx])
+        m["ECE"] = ece(p_, y_) if len(p_) else 0.0
+        m["cov_at_p90"] = cov_at_precision(p_, y_, m["words_ref"])
+        for k in GATE:
+            if m.get(k) is not None:
+                vals[k].append(m[k])
+    return {k: float(np.std(v)) for k, v in vals.items() if v}
+
+
+def gate_check(rep, old, new, tol):
+    """Pure check of a report with both versions → {set: {metric: row}}, failures. A metric fails when the new version is worse
+    than the old one by more than the frozen tolerance (direction-aware); accepted precision must also stay ≥ 0.90 on sets with
+    gold boundaries; model latency may grow ≤ 10 %, memory ≤ 20 %."""
+    rows, fails = {}, []
+
+    def one(set_name, metric, o, n_, direction, t):
+        if o is None or n_ is None:
+            return
+        d = n_ - o
+        status = "better" if direction * d > 1e-9 else "same" if direction * d >= -t else "worse"
+        rows.setdefault(set_name, {})[metric] = dict(old=o, new=n_, delta=d, tol=t, status=status)
+        if status == "worse":
+            fails.append(f"{set_name}:{metric} {o:.4f} → {n_:.4f} (tol {t:.4f})")
+    for name, by in rep.get("sets", {}).items():
+        if old not in by or new not in by:
+            continue
+        for k, (dirn, floor) in GATE.items():
+            o, n_ = by[old].get(k), by[new].get(k)
+            if k == "ECE" and o is None:
+                o, n_ = rep.get("calibration", {}).get(name, {}).get(old, {}).get("ECE"), rep.get("calibration", {}).get(name, {}).get(new, {}).get("ECE")
+            one(name, k, o, n_, dirn, max(floor, tol.get(name, {}).get(k, floor)))
+        if "seg_F1" in by[new] and by[new].get("acc_prec", 1.0) < 0.90:
+            fails.append(f"{name}:acc_prec {by[new]['acc_prec']:.3f} < 0.90")
+    for name, by in rep.get("enrolled", {}).items():
+        if old in by and new in by:
+            one(name + "|enrolled", "WER", by[old]["WER"], by[new]["WER"], -1, max(0.003, tol.get(name, {}).get("WER", 0.003)))
+    for name, by in rep.get("real_extra", {}).items():
+        if old in by and new in by:
+            for k, (dirn, floor) in REAL_GATE.items():
+                one(name, k, by[old].get(k), by[new].get(k), dirn, max(floor, tol.get(name, {}).get("WER", floor)))
+    lat = rep.get("latency", {})
+    if old in lat and new in lat:
+        lo, ln = lat[old]["model_ms_per_video_second"], lat[new]["model_ms_per_video_second"]
+        one("latency", "model_ms_per_video_second", lo, ln, -1, 0.10 * lo)
+        one("latency", "rss_mb", lat[old]["rss_mb"], lat[new]["rss_mb"], -1, 0.20 * lat[old]["rss_mb"])
+    return rows, fails
+
+
+def cmd_gate(a):
+    """--freeze: v9's bootstrap noise per test / real set (once, before v10 changes anything) → gate_tolerance.json.
+    Otherwise: decision_<report>.json (both versions) → pass / fail per metric per set → artifacts/reports/gate_<new>.json."""
+    if a.freeze:
+        h = Harness(); out = {}
+        for name in TEST_SETS + REAL_SETS:
+            rows = load_set(name)
+            h.use(a.old)
+            if rows[0]["bank"] == "prod":
+                h.configure(prior=h.prod_prior)
+            sc, segs = evaluate(h, rows, keep_segs=True)
+            sd = _boot_metrics(sc, segs)
+            out[name] = {k: float(max(GATE[k][1], 0.25 * v)) for k, v in sd.items()}
+            out[name]["_sd"] = sd
+            _p("%-16s tol %s", name, {k: round(v, 4) for k, v in out[name].items() if k != "_sd"})
+        write_json(TOL_FILE, out)
+        return
+    rep = read_json(REP / f"decision_{a.report}.json")
+    tol = read_json(TOL_FILE) if TOL_FILE.exists() else {}
+    rows, fails = gate_check(rep, a.old, a.new, tol)
+    for name, by in rows.items():
+        _p("%-22s %s", name, "  ".join(f"{k}:{v['old']:.3f}→{v['new']:.3f}{'' if v['status'] != 'worse' else '✗'}" for k, v in by.items()))
+    _p("GATE %s — %d failing metric(s)%s", "PASS" if not fails else "FAIL", len(fails), "".join("\n  " + f for f in fails))
+    write_json(REP / f"gate_{a.new}.json", dict(old=a.old, new=a.new, passed=not fails, failures=fails, rows=rows))
+    return not fails
+
+
+# ----------------------------------------------------------------------------- v10 streaming settings (W6 / R8)
+STREAM_V9 = dict(step_s=0.5, lookahead_s=0.8, stable_n=1)
+
+
+def _stream_eval(pipe, items, cfg):
+    from modules.stream import replay
+    lat, proc, out = [], [], []
+    for it, raw in items:
+        words, st = replay(pipe, raw, **cfg)
+        lat += st["latency"]; proc += st["proc_ms"]
+        out.append(dict(id=it["id"], wer=wer(it["ref"], words), flicker=st["flicker"], dup=st["duplicates"], words=words))
+    return dict(WER=float(np.mean([o["wer"] for o in out])), lat_p50=float(np.percentile(lat, 50)) if lat else None,
+                lat_p95=float(np.percentile(lat, 95)) if lat else None, flicker=float(np.mean([o["flicker"] for o in out])),
+                duplicates=int(sum(o["dup"] for o in out)), proc_p50=float(np.percentile(proc, 50)) if proc else None, per_clip=out)
+
+
+def cmd_stream(a):
+    """Streaming settings (modules/stream.py: step, look-ahead, stability) chosen on TUNE replays — TSL51 tagger_train sentences (1×)
+    and fluent tune sentences, prepared landmarks fed frame by frame in stream time, the real compute counted — then reported on
+    the 28 real videos (iPhone sentences · data_test · team-drive) against v9's settings → artifacts/reports/stream_v10.json
+    (--write: the chosen settings → models/model-v10/spotting.json "stream", read by the API's /v1/live and real-time-lab).
+    Rule: the lowest median word latency whose stream WER stays within 0.01 of the batch WER on every tune set and whose flicker is
+    not above v9's settings."""
+    import logging
+    logging.disable(logging.WARNING)
+    from modules.pipeline import SignPipeline
+    md = V10 if V10.exists() else V9
+    pe = SignPipeline(model_dir=md, backend="onnx", device="cpu", vocab="conversation", use_llm=False, use_face=False,
+                      bank_file=ART / "eval" / "bank_eval.npz")
+    rng = np.random.RandomState(0)
+    tune = {}
+    for name in ("t51_tune_x1.0", "flu_tune"):
+        its = build_items(name)
+        its = [its[i] for i in sorted(rng.choice(len(its), min(a.n, len(its)), replace=False))]
+        tune[name] = [(it, dict(t=np.arange(len(it["kp"])) / 25.0, hw=np.array(it["hw"]), kp=it["kp"], sc=it["sc"])) for it in its]
+    batch = {n: float(np.mean([wer(it["ref"], [s["nearest"] for s in pe.run_landmarks(raw)["segments"] if s["status"] != "transition"])
+                               for it, raw in items])) for n, items in tune.items()}
+    _p("batch WER on the stream tune subsets: %s", batch)
+    grid = [dict(step_s=s, lookahead_s=l, stable_n=k) for s in (0.5, 0.33) for l in (0.8, 0.6, 0.45) for k in (1, 2)]
+    res = []
+    for cfg in grid:
+        t = time.time()
+        r = {n: _stream_eval(pe, items, cfg) for n, items in tune.items()}
+        res.append(dict(cfg=cfg, **{n: {k: v for k, v in x.items() if k != "per_clip"} for n, x in r.items()}))
+        _p("%-50s %s (%.0f s)", cfg, " | ".join(f"{n}: WER {x['WER']:.3f} lat {x['lat_p50']:.2f}/{x['lat_p95']:.2f} flick {x['flicker']:.1f}"
+                                                 for n, x in r.items()), time.time() - t)
+    base = next(x for x in res if x["cfg"] == STREAM_V9)
+    ok = [x for x in res if all(x[n]["WER"] <= batch[n] + 0.01 and x[n]["flicker"] <= base[n]["flicker"] + 1e-9 for n in tune)]
+    chosen = min(ok, key=lambda x: (np.mean([x[n]["lat_p50"] for n in tune]), x["cfg"]["step_s"] == 0.33)) if ok else base
+    _p("chosen %s", chosen["cfg"])
+    # real videos: v9 settings vs the chosen ones (report only)
+    pp = SignPipeline(model_dir=md, backend="onnx", device="cpu", vocab="conversation", use_llm=False, use_face=False)
+    real = []
+    for name in ("iphone_sentence", "data_test", "team"):
+        for r in load_set(name):
+            real.append((dict(id=r["id"], ref=r["ref"]), _reload_raw(r)))
+    rep = dict(model=md.name, batch_tune=batch, grid=res, chosen=chosen["cfg"], real={})
+    for tag, cfg in (("v9", STREAM_V9), ("v10", chosen["cfg"])):
+        x = _stream_eval(pp, real, cfg)
+        x["batch_WER"] = float(np.mean([wer(it["ref"], [s["nearest"] for s in pp.run_landmarks(raw)["segments"] if s["status"] != "transition"])
+                                        for it, raw in real]))
+        rep["real"][tag] = x
+        _p("real %-4s %s: WER stream %.3f batch %.3f | latency p50 %.2f p95 %.2f | flicker %.1f dup %d | step %.0f ms", tag, cfg, x["WER"],
+           x["batch_WER"], x["lat_p50"], x["lat_p95"], x["flicker"], x["duplicates"], x["proc_p50"])
+    write_json(REP / "stream_v10.json", rep)
+    if a.write:
+        sp = read_json(V10 / "spotting.json")
+        sp["stream"] = chosen["cfg"]
+        write_json(V10 / "spotting.json", sp)
+        _p("stream settings → %s", V10 / "spotting.json")
 
 
 def _reload_raw(row):
@@ -1359,16 +1705,23 @@ def main():
     c = sub.add_parser("cache"); c.add_argument("--sets", default=""); c.add_argument("--force", action="store_true")
     b = sub.add_parser("baseline"); b.add_argument("--sets", default=""); b.add_argument("--out", default="")
     t = sub.add_parser("tune"); t.add_argument("--accept_precision", type=float, default=0.9); t.add_argument("--write", action="store_true")
-    t.add_argument("--start", default="v8.1", choices=["v8", "v8.1"]); t.add_argument("--out", default=str(V9)); t.add_argument("--version", default="v9")
+    t.add_argument("--start", default="v9", choices=["v8", "v8.1", "v9"]); t.add_argument("--out", default=str(V10X)); t.add_argument("--version", default="v10x")
     t.add_argument("--grammar", default="off", choices=["off", "tune"])
     t.add_argument("--spot_from", default="", help="reuse the segmentation of this spotting.json (decision stages only)")
-    r = sub.add_parser("report"); r.add_argument("--tag", default="v9"); r.add_argument("--versions", default="v8.1,v9")
+    t.add_argument("--significant", action="store_true", help="v10 release-aligned rules: significant tune gains only, isotonic on any CV "
+                   "ECE gain, accept threshold that keeps false-accept / precision at least as good as the start version on every tune set")
+    r = sub.add_parser("report"); r.add_argument("--tag", default="v10"); r.add_argument("--versions", default="v9,v10")
     f = sub.add_parser("figures"); f.add_argument("--tag", default="v8.1")
     hs = sub.add_parser("hands"); hs.add_argument("--shrink", type=float, default=0.1); hs.add_argument("--dim", type=int, default=64)
     lb = sub.add_parser("lmbank"); lb.add_argument("--out", default=str(ROOT / "cache" / "v9" / "model")); lb.add_argument("--bank", default=str(MODEL / "bank.npz"))
+    lb.add_argument("--run", default="enc-v8"); lb.add_argument("--eval_out", default="", help="v10: artifacts/eval/v10/lm_bank_eval.npz")
+    sm = sub.add_parser("stream"); sm.add_argument("--n", type=int, default=30); sm.add_argument("--write", action="store_true")
+    vw = sub.add_parser("views"); vw.add_argument("--out", default=str(V10X)); vw.add_argument("--lm", action="store_true")
+    g = sub.add_parser("gate"); g.add_argument("--freeze", action="store_true"); g.add_argument("--report", default="v10")
+    g.add_argument("--old", default="v9"); g.add_argument("--new", default="v10")
     a = p.parse_args()
     {"cache": cmd_cache, "baseline": cmd_baseline, "tune": cmd_tune, "report": cmd_report, "figures": cmd_figures, "hands": cmd_hands,
-     "lmbank": cmd_lmbank}[a.cmd](a)
+     "lmbank": cmd_lmbank, "gate": cmd_gate, "stream": cmd_stream, "views": cmd_views}[a.cmd](a)
 
 
 if __name__ == "__main__":

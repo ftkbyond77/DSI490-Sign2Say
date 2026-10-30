@@ -222,7 +222,9 @@ def finish(kp_iso, sc, t, hw, src, extractor, imputed, gap_s=0.2):
 
 
 # ----------------------------------------------------------------------------- converters
-def from_rtmw(kp, sc, hw, fps=12.5, t0=0.0, src="", real_face=False):
+def from_rtmw(kp, sc, hw, fps=12.5, t0=0.0, src="", real_face=False, t=None, gap_s=0.2):
+    """RTMW 133 points (x/W, y/H) + scores → Standard Schema. t = the frames' own timestamps (a live camera, v10 tier A) instead of
+    a fixed fps; gap_s = longest hand drop-out that is interpolated."""
     kp_iso = iso(kp.astype(np.float32), hw).copy(); sc = sc.astype(np.float32).copy()
     T = len(kp_iso)
     A, ok = _rtmw_anchors(kp_iso, sc)
@@ -230,7 +232,8 @@ def from_rtmw(kp, sc, hw, fps=12.5, t0=0.0, src="", real_face=False):
     imputed = set()
     if not real_face:
         harmonise_face(kp_iso, sc, A, ok, FIT_ANCHORS["rtmw"]); imputed.add("face_template")
-    return finish(kp_iso, sc, t0 + np.arange(T) / fps, hw, src, "rtmw", imputed)
+    times = np.asarray(t, np.float64) if t is not None else t0 + np.arange(T) / fps
+    return finish(kp_iso, sc, times, hw, src, "rtmw", imputed, gap_s=gap_s)
 
 
 MP_REF_RATIO = 2.40   # median shoulder-width / (shoulder-mid → mouth-mid drop) of MediaPipe clips with a known frame size

@@ -5,6 +5,7 @@ import json
 import logging
 import os
 import random
+import re
 import time
 from contextlib import contextmanager, nullcontext
 from pathlib import Path
@@ -12,12 +13,31 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-ART = Path(os.environ.get("THAISLM_ARTIFACTS", ROOT / "artifacts"))   # model, pretrained weights, run outputs, reports (in git)
+
+
+def _strip_env_comments() -> None:
+    """VS Code (Jupyter kernels, terminals) loads .env into the process as written: `DEVICE=auto   # auto | cuda | cpu` arrives as
+    "auto   # auto | cuda | cpu". For every key .env / .env.example define, a trailing ` # …` is cut from the value (never printed)."""
+    for name in (".env", ".env.example"):
+        p = ROOT / name
+        if not p.exists():
+            continue
+        for line in p.read_text(encoding="utf-8").splitlines():
+            if "=" not in line or line.lstrip().startswith("#"):
+                continue
+            k = line.split("=", 1)[0].strip()
+            v = os.environ.get(k)
+            if v and re.search(r"\s#", v):
+                os.environ[k] = re.split(r"\s+#", v, maxsplit=1)[0].strip()
+
+
+_strip_env_comments()
+ART =Path(os.environ.get("THAISLM_ARTIFACTS", ROOT / "artifacts"))   # model, pretrained weights, run outputs, reports (in git)
 DATA = Path(os.environ.get("THAISLM_DATA", ROOT / "cloud_s3"))           # local mirror of s3://dsi490-lake-signdata (not in git)
 RAW = DATA / "raw_data"                                                  # raw videos / landmarks as published
 PREP = DATA / "data_prep"                                                # standard-schema outputs (this repo builds it; pushed to S3)
 CACHE = ROOT / "cache"                                                   # local scratch (not in git, not on S3)
-MODEL = Path(os.environ.get("THAISLM_MODELS", ROOT / "models" / "model-v9"))   # the deployable model (main forward = model-v9; v8.1 = archive/Jack-model; in git, LFS)
+MODEL = Path(os.environ.get("THAISLM_MODELS", ROOT / "models" / "model-v10"))  # the deployable model (main forward = model-v10; v9 = model-v9 rollback; in git, LFS)
 PRETRAINED = ART / "pretrained"                                          # Uni-Sign base weights
 
 

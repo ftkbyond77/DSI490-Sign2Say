@@ -18,6 +18,7 @@ Data (S3 = source of truth, cloud_s3/ = local mirror, see cloud_s3/data_prep/SCH
 Train (encoder on one Vertex AI GPU job, everything else local):
   python main.py cloud <vertex.py args>        # upload-code / upload-data / upload-models / launch / wait / status / cleanup
   python main.py train-seq --encoder_run <dir> # tagger + span head + decoder tables on the local GPU
+  python main.py train-encoder --run <name>    # Thai-only landmark encoder (modules/lmenc.py) on the local GPU (v8; v10 extractor-mixed)
 
 Build, tune, evaluate (local):
   python main.py eval <step> [args]            # build | grammar | spot | isolated | infer | selftest | vocab | bank_add  (scripts/eval.py)
@@ -26,6 +27,9 @@ Build, tune, evaluate (local):
   python main.py decision <step>               # decision layer: cache | hands | lmbank | tune | report | figures (hand-shape cue, second
                                                #   recogniser, merge / split, calibration, Accept/Uncertain/Reject, fingerspelling — tune data only)
   python main.py diagnose ledger               # error ledger + oracle bounds: segmentation vs recognition (v9 stage 1)
+  python main.py diagnose deep                 # v10 stage 1: per-source ledger, landmark quality vs error, confusion phonology, geometry
+  python main.py decision gate [--freeze]      # v10 release gate: v10 vs v9 on every test metric, tolerance = v9's own bootstrap noise
+  python main.py extractor <step>              # v10 extractor study: parity | latency | proxies | sheets | chain (MediaPipe vs RTMW)
 
 Face emotion (models/face-model) and speech (models/speech-model-v1, speech env D:/SLM-labs/envs/speech):
   python main.py face-data ravdess             # RAVDESS → MediaPipe face features (cloud_s3/face-data/, no video kept)
@@ -45,7 +49,8 @@ SCRIPTS = {"prep": "scripts/data_prep.py", "eval": "scripts/eval.py", "data": "s
            "letters": "scripts/harvest_letters.py", "train-letters": "scripts/train_fingerspell.py",
            "study-clips": "scripts/study_clips.py", "decision": "scripts/decision.py", "diagnose": "scripts/diagnose.py",
            "face-data": "scripts/face_data.py",
-           "face-model": "scripts/face_model.py", "speech": "scripts/speech.py"}
+           "face-model": "scripts/face_model.py", "speech": "scripts/speech.py", "extractor": "scripts/extractor.py",
+           "train-encoder": "scripts/train_encoder.py"}
 
 
 def main():

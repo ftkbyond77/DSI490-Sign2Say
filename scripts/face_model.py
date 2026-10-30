@@ -8,6 +8,11 @@
                                          #   (b) dictionary signs of emotion words (โกรธ, ดีใจ, เสียใจ …) → valence agreement with the word
                                          #   both vs the v7 rule-based face channel (modules/face.py) → artifacts/reports/face_model.json
 
+    python main.py face-model v2 [--write]   # v10 face v2 — variants chosen on VAL signers (tune), reported on TEST signers, v9 on the
+                                         #   same clips: more in-domain neutral signing, weakly labelled emotion-word signing of
+                                         #   training signers, mouth articulation (mouthing words) kept out of the affect evidence
+                                         #   → artifacts/reports/face_model_v2.json (+ models/face-model/ with --write)
+
 Samples: every clip as a whole + 2 s windows (hop 1 s) of it (what a sign segment sees). Folds never share an actor.
 """
 from __future__ import annotations
@@ -46,22 +51,33 @@ def load_ravdess(win_s=2.0, hop_s=1.0):
     return np.array(X), np.array(y), np.array(actor), np.array(whole), np.array(inten)
 
 
-def fit_lr(X, y, l2, w=None, iters=400):
+def fit_lr(X, y, l2, w=None, iters=400, mask=None):
+    """Class-balanced multinomial LR (+ per-sample weights w; mask = features kept out of the model: zero weight, so they can never
+    be part of an explanation either)."""
     import torch
     mu, sd = X.mean(0), X.std(0) + 1e-4
-    Xt = torch.tensor((X - mu) / sd, dtype=torch.float32); yt = torch.tensor(y, dtype=torch.long)
+    Z = (X - mu) / sd
+    if mask is not None:
+        mask = np.r_[mask, np.zeros(X.shape[1] - len(mask), bool)]
+        Z[:, mask] = 0.0
+    Xt = torch.tensor(Z, dtype=torch.float32); yt = torch.tensor(y, dtype=torch.long)
     cnt = np.bincount(y, minlength=len(EMOTIONS)).astype(np.float32)
     cw = torch.tensor(cnt.sum() / np.maximum(cnt, 1) / len(EMOTIONS))
+    sw = torch.tensor(np.ones(len(y), np.float32) if w is None else np.asarray(w, np.float32))
     W = torch.zeros(X.shape[1], len(EMOTIONS), requires_grad=True); b = torch.zeros(len(EMOTIONS), requires_grad=True)
     opt = torch.optim.LBFGS([W, b], lr=0.5, max_iter=iters, line_search_fn="strong_wolfe")
 
     def closure():
         opt.zero_grad()
-        loss = torch.nn.functional.cross_entropy(Xt @ W + b, yt, weight=cw) + l2 * (W ** 2).sum()
+        ce = torch.nn.functional.cross_entropy(Xt @ W + b, yt, weight=cw, reduction="none")
+        loss = (ce * sw).sum() / (cw[yt] * sw).sum() + l2 * (W ** 2).sum()
         loss.backward()
         return loss
     opt.step(closure)
-    return FaceEmotion(mu.astype(np.float32), sd.astype(np.float32), W.detach().numpy(), b.detach().numpy())
+    Wn = W.detach().numpy()
+    if mask is not None:
+        Wn[mask] = 0.0
+    return FaceEmotion(mu.astype(np.float32), sd.astype(np.float32), Wn, b.detach().numpy())
 
 
 def macro_f1(y, p):
@@ -204,14 +220,243 @@ def cmd_signs(a):
     write_json(ART / "reports" / "face_model_signs.json", out)
 
 
+# ----------------------------------------------------------------------------- v10: face v2
+MOUTHING = ["jawOpen", "jawForward", "jawLeft", "jawRight", "mouthClose", "mouthFunnel", "mouthPucker", "mouthLeft", "mouthRight",
+            "mouthRollLower", "mouthRollUpper", "mouthShrugLower", "mouthShrugUpper", "mouthLowerDownLeft", "mouthLowerDownRight",
+            "mouthPressLeft", "mouthPressRight"]          # lip / jaw articulation: signers mouth the Thai word — grammar, not affect
+
+
+def _clip_feats(rows, windows=True):
+    X, keep = [], []
+    for row in rows.itertuples():
+        try:
+            z = np.load(ROOT / "cloud_s3/data_prep" / row.mp)
+        except Exception:                                 # noqa: BLE001 — a missing raw file
+            continue
+        bs, face = z["bs"].astype(np.float32), z["face"].astype(np.float32).copy()
+        H, W = (int(z["hw"][0]), int(z["hw"][1])) if len(z["hw"]) == 2 else (1, 1)
+        face[..., 0] *= W / max(H, 1)
+        X.append(features(bs, face)); keep.append(row.Index)
+        if windows:
+            for s0 in range(0, max(1, len(bs) - 50) + 1, 50):
+                X.append(features(bs[s0:s0 + 50], face[s0:s0 + 50])); keep.append(row.Index)
+    return np.array(X).reshape(-1, len(FEATURES)), keep
+
+
+def _sign_pool():
+    """Dictionary / YouTube sign clips with raw MediaPipe face arrays (th_sl, TTRS, agent YouTube words), role from the manifest."""
+    import pandas as pd
+    c = pd.read_parquet(ROOT / "cloud_s3/data_prep/manifest/clips.parquet")
+    c = c[c.dataset.isin(["ttrs", "th_sl"]) & c.pose_raw_file.notna()].copy()
+    c["mp"] = c.pose_raw_file.str.replace("pose_raw/", "pose_mp_raw/", regex=False)
+    ag = pd.read_csv(ROOT / "cloud_s3/agent_data/youtube_words/items.csv")
+    ag = ag[ag.status == "accepted"].copy()
+    ag["mp"] = ["pose_mp_raw/agent/" + Path(str(v)).stem + ".npz" for v in ag.video]
+    ag["dataset"] = "agent"
+    c = pd.concat([c[["clip_id", "dataset", "signer", "concept", "role", "mp"]], ag[["clip_id", "dataset", "signer", "concept", "role", "mp"]]])
+    return c[[(ROOT / "cloud_s3/data_prep" / p).exists() for p in c.mp]].reset_index(drop=True)
+
+
+def _eval_signs(fm, pool, split, n_neutral=300, seed=0):
+    """split = role of the signers (val = tune, test = report). Neutral signing: non-emotion-word clips → share read as an emotion
+    (false alarm). Emotion words (EMO_LEX): sign of the predicted valence = the word's (neutral counts as a miss, v9's metric),
+    plus the mean valence of positive / negative words (does the face lean the right way at all)."""
+    from modules.face_model import EMO_LEX
+    m = pool.role == split
+    neu = pool[m & ~pool.concept.isin(list(EMO_LEX))]
+    neu = neu.sample(min(n_neutral, len(neu)), random_state=seed)
+    emo = pool[m & pool.concept.isin(list(EMO_LEX))]
+    Xn, _ = _clip_feats(neu, windows=False); Xe, ke = _clip_feats(emo, windows=False)
+    pn = fm.proba(Xn).argmax(1) if len(Xn) else np.zeros(0, int)
+    Pe = fm.proba(Xe) if len(Xe) else np.zeros((0, len(EMOTIONS)))
+    exp = np.array([np.sign(VA[EMO_LEX[c]][0]) for c in emo.loc[ke].concept]) if len(ke) else np.zeros(0)
+    pred_v = np.array([np.sign(VA[EMOTIONS[k]][0]) for k in Pe.argmax(1)]) if len(Pe) else np.zeros(0)
+    val = Pe @ np.array([VA[e][0] for e in EMOTIONS]) if len(Pe) else np.zeros(0)
+    return dict(neutral_n=int(len(Xn)), false_alarm=float(np.mean(pn != 0)) if len(pn) else None, emotion_n=int(len(Xe)),
+                valence_agree=float(np.mean(pred_v == exp)) if len(exp) else None,
+                mean_valence_pos=float(val[exp > 0].mean()) if (exp > 0).any() else None,
+                mean_valence_neg=float(val[exp < 0].mean()) if (exp < 0).any() else None,
+                valence_gap=float(val[exp > 0].mean() - val[exp < 0].mean()) if (exp > 0).any() and (exp < 0).any() else None)
+
+
+def cmd_v2(a):
+    """Face v2 variants (all multinomial LR, explainable). Tune = RAVDESS leave-actors-out CV (acc, neutral-vs-emotion) + sign clips of
+    TRAINING-role signers in leave-signers-out CV (5 folds by signer: a fold's signers are never in that fold's training data) —
+    neutral false alarms and emotion-word valence over ~20 signers instead of the 2–4 val signers. A variant is eligible only if
+    no tune metric is worse than the v9 recipe under the same CV; among those, the best sum. Report: TEST-role signers (never used)
+    with the shipped v9 model on the same clips, + the TSL51 researcher's emotion words (a test signer)."""
+    import time
+    from modules.face_model import EMO_LEX
+    t0 = time.time()
+    X, y, actor, whole, inten = load_ravdess()
+    actors = np.unique(actor)
+    afolds = [actors[i::6] for i in range(6)]
+    pool = _sign_pool()
+    tr = pool[pool.role == "train"].reset_index(drop=True)
+    neu = tr[~tr.concept.isin(list(EMO_LEX))]
+    neu = neu.groupby("signer", group_keys=False).apply(lambda g: g.sample(min(len(g), 250), random_state=0))
+    emo = tr[tr.concept.isin(list(EMO_LEX))]
+    Xn, kn = _clip_feats(neu)                     # clip + 2 s windows
+    Xe, ke = _clip_feats(emo)
+    sn = neu.loc[kn].signer.values; se = emo.loc[ke].signer.values
+    whole_n = np.r_[True, np.array(kn[1:]) != np.array(kn[:-1])]; whole_e = np.r_[True, np.array(ke[1:]) != np.array(ke[:-1])]
+    ye = np.array([EMOTIONS.index(EMO_LEX[c]) for c in emo.loc[ke].concept])
+    ve = np.array([np.sign(VA[EMO_LEX[c]][0]) for c in emo.loc[ke].concept])
+    signers = np.array(sorted(set(sn) | set(se)))
+    rng = np.random.RandomState(0); rng.shuffle(signers)
+    sfolds = [signers[i::5] for i in range(5)]
+    print(f"in-domain: {len(set(sn))} neutral signers / {len(Xn)} samples, {len(set(se))} emotion-word signers / {len(Xe)} samples"
+          f" ({time.time() - t0:.0f}s)", flush=True)
+    Xn_v9 = sign_neutral(300)
+    mouth = np.array([f.split(":")[0] in MOUTHING for f in FEATURES])
+    variants = {
+        "v9 recipe": dict(neutral="v9", emo=False, mask=None),
+        "neutral signing (all training signers)": dict(neutral="all", emo=False, mask=None),
+        "+ emotion-word signing (weak labels)": dict(neutral="all", emo=True, mask=None),
+        "+ emotion words, mouthing masked": dict(neutral="all", emo=True, mask=mouth),
+        "neutral (all), mouthing masked": dict(neutral="all", emo=False, mask=mouth),
+        "domain input (acted / signing) + neutral (all)": dict(neutral="all", emo=False, mask=None, domain=True),
+        "domain input + neutral (all) + emotion words": dict(neutral="all", emo=True, mask=None, domain=True),
+    }
+
+    def data(v, drop=()):
+        mn = ~np.isin(sn, list(drop)); me = ~np.isin(se, list(drop))
+        Xs = [X, Xn_v9 if v["neutral"] == "v9" else Xn[mn]]
+        ys = [y, np.zeros(len(Xs[1]), int)]
+        ws = [np.ones(len(X)), np.ones(len(Xs[1]))]
+        if v["emo"]:
+            Xs.append(Xe[me]); ys.append(ye[me]); ws.append(np.full(me.sum(), a.w_emo))
+        if v.get("domain"):                                    # 0 = acted corpus (RAVDESS), 1 = signing
+            Xs = [np.c_[x_, np.full(len(x_), 0.0 if i == 0 else 1.0)] for i, x_ in enumerate(Xs)]
+        return np.concatenate(Xs), np.concatenate(ys), np.concatenate(ws)
+
+    def ravdess_x(v, Xr):
+        return np.c_[Xr, np.zeros(len(Xr))] if v.get("domain") else Xr
+
+    def tune_metrics(v, l2):
+        P = np.zeros((len(X), len(EMOTIONS)))                      # RAVDESS: leave actors out (in-domain data from everyone)
+        Xd, yd, wd = data(v)
+        nR = len(X)
+        for te in afolds:
+            mm = np.isin(actor, te)
+            keep = np.r_[~mm, np.ones(len(Xd) - nR, bool)]
+            P[mm] = fit_lr(Xd[keep], yd[keep], l2, w=wd[keep], mask=v["mask"]).logits(ravdess_x(v, X[mm]))
+        pw = P[whole].argmax(1)
+        fa, vag, vgap = [], [], []
+        for te in sfolds:                                          # signs: leave signers out (v9 recipe: its neutral sample excludes nobody
+            Xf, yf, wf = data(v, drop=te)                          #   by signer, so it is refit without the fold's signers here too)
+            if v["neutral"] == "v9":
+                keep = np.ones(len(Xf), bool)
+            fm = fit_lr(Xf, yf, l2, w=wf, mask=v["mask"])
+            fm.meta["temperature"] = 1.0
+            m = np.isin(sn, te) & whole_n
+            if m.any():
+                fa.append(np.mean(fm.proba(Xn[m]).argmax(1) != 0))
+            m = np.isin(se, te) & whole_e
+            if m.any():
+                Pe = fm.proba(Xe[m])
+                vag += list(np.array([np.sign(VA[EMOTIONS[k]][0]) for k in Pe.argmax(1)]) == ve[m])
+                vgap += list(zip(Pe @ np.array([VA[e][0] for e in EMOTIONS]), ve[m]))
+        vg = np.array(vgap)
+        return dict(clips_acc=float(np.mean(pw == y[whole])), neutral_vs_emotion=float(np.mean((pw == 0) == (y[whole] == 0))),
+                    false_alarm_cv=float(np.mean(fa)), valence_agree_cv=float(np.mean(vag)) if vag else None,
+                    valence_gap_cv=float(vg[vg[:, 1] > 0, 0].mean() - vg[vg[:, 1] < 0, 0].mean()) if len(vg) and (vg[:, 1] > 0).any() and (vg[:, 1] < 0).any() else None,
+                    n_emotion=len(vag))
+
+    res = {}
+    for name, v in variants.items():
+        best = None
+        for l2 in a.l2:
+            m = tune_metrics(v, l2)
+            sc = m["clips_acc"] + m["neutral_vs_emotion"] - m["false_alarm_cv"] + (m["valence_agree_cv"] or 0)
+            if best is None or sc > best[0]:
+                best = (sc, dict(l2=l2, tune=m))
+        res[name] = best[1]
+        t_ = best[1]["tune"]
+        print(f"{name:42s} l2={best[1]['l2']:g} RAVDESS acc {t_['clips_acc']:.3f} n-vs-e {t_['neutral_vs_emotion']:.3f} | signer-CV FA "
+              f"{t_['false_alarm_cv']:.3f} valence {t_['valence_agree_cv']:.3f} gap {t_['valence_gap_cv']:+.3f} (n={t_['n_emotion']})", flush=True)
+    base = res["v9 recipe"]["tune"]
+
+    def not_worse(m):
+        return (m["clips_acc"] >= base["clips_acc"] - 1e-9 and m["neutral_vs_emotion"] >= base["neutral_vs_emotion"] - 1e-9
+                and m["false_alarm_cv"] <= base["false_alarm_cv"] + 1e-9 and (m["valence_agree_cv"] or 0) >= (base["valence_agree_cv"] or 0) - 1e-9)
+    ok = {k: r for k, r in res.items() if k != "v9 recipe" and not_worse(r["tune"])}
+    score = lambda r: r["tune"]["clips_acc"] + r["tune"]["neutral_vs_emotion"] - r["tune"]["false_alarm_cv"] + (r["tune"]["valence_agree_cv"] or 0)  # noqa: E731
+    chosen = max(ok, key=lambda k: score(ok[k])) if ok else None
+    print("eligible (no tune metric worse than the v9 recipe):", list(ok), "→ chosen:", chosen, flush=True)
+    out = dict(variants=res, chosen=chosen)
+    v9 = FaceEmotion.load(ART / "baselines" / "v9" / "face-model")
+    if chosen:
+        v = variants[chosen]
+        Xd, yd, wd = data(v)
+        fm = fit_lr(Xd, yd, res[chosen]["l2"], w=wd, mask=v["mask"])
+        # temperature on RAVDESS leave-actors-out logits (as v9)
+        P = np.zeros((len(X), len(EMOTIONS)))
+        for te in afolds:
+            mm = np.isin(actor, te); keep = np.r_[~mm, np.ones(len(Xd) - len(X), bool)]
+            P[mm] = fit_lr(Xd[keep], yd[keep], res[chosen]["l2"], w=wd[keep], mask=v["mask"]).logits(ravdess_x(v, X[mm]))
+        Ts = np.linspace(0.3, 8, 78)
+        nll = [-np.mean(np.log(np.exp(P / T - (P / T).max(1, keepdims=True))[np.arange(len(y)), y] / np.exp(P / T - (P / T).max(1, keepdims=True)).sum(1) + 1e-9)) for T in Ts]
+        fm.meta["temperature"] = float(Ts[int(np.argmin(nll))])
+    else:
+        fm = v9
+    out["test"] = dict(v10=_eval_signs(fm, pool, "test"), v9=_eval_signs(v9, pool, "test"))
+    t51 = _t51_emotion()
+    if t51 is not None:
+        out["test"]["tsl51_researcher_emotion_words"] = dict(v10=_valence(fm, *t51), v9=_valence(v9, *t51))
+    xx = np.stack([features(np.random.rand(75, 52).astype(np.float32), np.random.rand(75, 68, 2).astype(np.float32)) for _ in range(20)])
+    t1 = time.perf_counter(); [fm.proba(x) for x in xx]; out["latency_ms_per_stretch"] = (time.perf_counter() - t1) * 1000 / 20
+    print(json.dumps({k: v for k, v in out.items() if k != "variants"}, indent=1, ensure_ascii=False, default=float), flush=True)
+    write_json(ART / "reports" / "face_model_v2.json", out)
+    if a.write and chosen:
+        fm.save(OUT / "face_emotion.npz", temperature=np.float32(fm.meta["temperature"]))
+        card = read_json_safe(OUT / "model_card.json")
+        card.update(version="v2 (ThaiSLM v10)", recipe=chosen,
+                    model=f"standardise → multinomial logistic regression (L2 {res[chosen]['l2']:g}), temperature {fm.meta['temperature']:.2f}, "
+                          f"{len(FEATURES)} features" + ("; mouth articulation features masked (mouthing = grammar, not affect)" if variants[chosen]["mask"] is not None else ""),
+                    v2=dict(tune=res[chosen]["tune"], test=out["test"]))
+        write_json(OUT / "model_card.json", card)
+        print("written", OUT, flush=True)
+
+
+def _t51_emotion():
+    """The TSL51 researcher's isolated emotion words (a test signer, never in any training set) → (X, expected valence sign)."""
+    import pandas as pd
+    from modules.face_model import EMO_LEX
+    c = pd.read_parquet(ROOT / "cloud_s3/data_prep/manifest/clips.parquet")
+    c = c[(c.dataset == "tsl51_user_sign") & c.concept.isin(list(EMO_LEX)) & c.pose_raw_file.notna()].copy()
+    if not len(c):
+        return None
+    c["mp"] = c.pose_raw_file.str.replace("pose_raw/", "pose_mp_raw/", regex=False)
+    c = c[[(ROOT / "cloud_s3/data_prep" / p).exists() for p in c.mp]]
+    X, k = _clip_feats(c, windows=False)
+    return X, np.array([np.sign(VA[EMO_LEX[w]][0]) for w in c.loc[k].concept])
+
+
+def _valence(fm, X, exp):
+    P = fm.proba(X)
+    pv = np.array([np.sign(VA[EMOTIONS[i]][0]) for i in P.argmax(1)])
+    v = P @ np.array([VA[e][0] for e in EMOTIONS])
+    return dict(n=len(exp), valence_agree=float(np.mean(pv == exp)), valence_gap=float(v[exp > 0].mean() - v[exp < 0].mean())
+                if (exp > 0).any() and (exp < 0).any() else None)
+
+
+def read_json_safe(p):
+    try:
+        return json.loads(Path(p).read_text(encoding="utf-8"))
+    except Exception:                                     # noqa: BLE001
+        return {}
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("step", choices=["train", "signs"])
+    ap.add_argument("step", choices=["train", "signs", "v2"])
+    ap.add_argument("--write", action="store_true"); ap.add_argument("--w_emo", type=float, default=3.0)
     ap.add_argument("--l2", type=float, nargs="+", default=[1e-4, 1e-3, 3e-3, 1e-2])
     ap.add_argument("--n", type=int, default=300)
     ap.add_argument("--domain", type=int, default=300, help="in-domain neutral signing clips (0 = RAVDESS only)")
     a = ap.parse_args()
-    dict(train=cmd_train, signs=cmd_signs)[a.step](a)
+    dict(train=cmd_train, signs=cmd_signs, v2=cmd_v2)[a.step](a)
 
 
 if __name__ == "__main__":

@@ -201,7 +201,12 @@ def to_mp75(raw, vis_thr=0.5):
 
 def to_standard(raw, src="", gap_s=0.2):
     """raw → Standard Schema dict (kp, sc, fps 25, hw, extractor 'mp'); same harmonisation as the other MediaPipe sources.
-    gap_s: hand drop-outs up to this long are interpolated (0.2 s for training data; live inference uses spotting.json "hand_gap_s")."""
+    gap_s: hand drop-outs up to this long are interpolated (0.2 s for training data; live inference uses spotting.json "hand_gap_s").
+    A raw dict from the tier-A extractor (modules/wholebody.py: kp133 / sc133) is harmonised like the RTMW corpus instead."""
+    if "kp133" in raw:
+        from .schema import from_rtmw
+        return from_rtmw(np.asarray(raw["kp133"], np.float32), np.asarray(raw["sc133"], np.float32), tuple(int(x) for x in raw["hw"]),
+                         t=raw["t"], src=src, gap_s=gap_s)
     from .schema import from_mp75
     a = to_mp75(raw)
     a[np.abs(a).sum(-1) == 0] = 0.0
@@ -228,5 +233,8 @@ def save_raw(path, raw):
 
 def load_raw(path):
     z = np.load(path)
-    return dict(t=z["t"].astype(np.float64), hw=z["hw"], pose=z["pose"].astype(np.float32), lh=z["lh"].astype(np.float32),
-                rh=z["rh"].astype(np.float32), face=z["face"].astype(np.float32), bs=z["bs"].astype(np.float32), src_fps=z["src_fps"])
+    out = dict(t=z["t"].astype(np.float64), hw=z["hw"], pose=z["pose"].astype(np.float32), lh=z["lh"].astype(np.float32),
+               rh=z["rh"].astype(np.float32), face=z["face"].astype(np.float32), bs=z["bs"].astype(np.float32), src_fps=z["src_fps"])
+    if "kp133" in z.files:                     # tier-A (RTMW) raw file, modules/wholebody.save_raw
+        out.update(kp133=z["kp133"].astype(np.float32), sc133=z["sc133"].astype(np.float32), extractor="rtmw")
+    return out

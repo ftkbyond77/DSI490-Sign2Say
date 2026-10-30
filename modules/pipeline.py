@@ -273,7 +273,10 @@ class SignPipeline:
         return self.standardise_with_metadata(raw)[:5]
 
     def standardise_with_metadata(self, raw):
-        d = to_standard(raw, gap_s=float(self.spot_all.get("hand_gap_s", 0.2)))     # live webcams drop hands for longer
+        if "kp" in raw and "sc" in raw and "pose" not in raw:      # already Standard Schema (prepared landmarks: tune replays, v10)
+            d = dict(kp=np.asarray(raw["kp"], np.float32), sc=np.asarray(raw["sc"], np.float32), hw=raw["hw"])
+        else:
+            d = to_standard(raw, gap_s=float(self.spot_all.get("hand_gap_s", 0.2)))     # live webcams drop hands for longer
         kp, sc, hw = d["kp"], d["sc"], tuple(int(x) for x in d["hw"])
         present = sc[:, [0, SH_L, SH_R]].mean(1) > 0.5
         sc = sc.copy(); sc[~present] = 0.0; kp = kp.copy(); kp[~present] = 0.0

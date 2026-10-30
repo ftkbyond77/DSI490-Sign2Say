@@ -1,0 +1,9 @@
+{
+ "name": "model-v10",
+ "base": "model-v9 (recognition byte-identical)",
+ "code": "this checkout",
+ "setting": "v9's spotting.json + segment_calibration.json + class_prior.npz; spotting.json \"stream\" chosen by `python main.py decision stream --write` (tune replays only)",
+ "release_gate": "artifacts/reports/gate_v10.json (v9 → v10)",
+ "opt_in": "artifacts/v10_experimental (v10x: extractor-averaged bank + re-tuned decision layer; failed the release gate on test — artifacts/reports/gate_v10x.json)",
+ "report": "result_reporting/result_v10.md"
+}

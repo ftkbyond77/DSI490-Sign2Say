@@ -130,3 +130,6 @@ Boom/data_sources/e_tsl/browse.html
 Boom/git_boom/
 pitty/git_pitty/
 Jack/
+
+# HF download cache (large, re-downloadable)
+hub/

@@ -1,5 +1,13 @@
-"""Speech v1 (models/speech-model-v1/, modules/speech.py) — build, data, train, evaluate. Run with the speech env
+"""Speech v1 → v2 (models/speech-model-v2/, modules/speech.py) — build, data, train, evaluate. Run with the speech env
 (D:/SLM-labs/envs/speech: the hugging env + transformers 4.57 / qwen-asr / f5-tts, kept apart so the sign pipeline is untouched).
+
+    python main.py speech build         # v2 model folder: emotion references (from v1) + speech_config.json + fillers (below)
+    python main.py speech fillers       # hesitation fillers per voice (อืม / เอ่อ / เอ่อ… / แบบว่า…) — ElevenLabs teacher voices (the same
+                                        #   voices the emotion references clone) → models/speech-model-v2/fillers/ + fillers.json
+    python main.py speech disfluency    # v2 natural disfluency: test sentences with unread signs, skip vs pause vs filler → ASR content
+                                        #   preservation, no guessed word, filler not read as a word → artifacts/reports/speech_v2.json
+    python main.py speech asr-compare   # ASR candidates on real speech (FLEURS-th, short daily phrases): Qwen3-ASR base vs Thonburian
+                                        #   Whisper (biodatlab/whisper-th-medium-combined) → artifacts/reports/speech_v2.json
 
     python main.py speech refs          # emotion reference prompts: ElevenLabs v3 (audio tags) → models/speech-model-v1/refs/*.wav + refs.json
     python main.py speech asr-data      # ASR fine-tuning data (labels known by construction): short daily-conversation lines spoken by
@@ -28,9 +36,10 @@ sys.path.insert(0, str(ROOT))
 os.environ.setdefault("HF_HUB_CACHE", "D:/SLM-labs/hf_cache")
 
 from modules.speech import EMOTIONS, cer  # noqa: E402
-from modules.utils import ART, write_json  # noqa: E402
+from modules.utils import ART, read_json, write_json  # noqa: E402
 
-MD = ROOT / "models" / "speech-model-v1"
+MD = ROOT / "models" / "speech-model-v2"
+V1 = ROOT / "models" / "speech-model-v1"
 DATA = ROOT / "cloud_s3" / "speech-data"
 EVAL = ROOT / "reverse_text2sign" / "data" / "eval"
 VOICES = {"female": "EXAVITQu4vr4xnSDxMaL", "male": "nPczCjzI2devNBz1zQrb"}       # ElevenLabs default voices (free tier)
@@ -226,6 +235,198 @@ def eval_sets():
     if ho.exists():
         sets["held-out synthetic conversation"] = [json.loads(l) for l in open(ho, encoding="utf-8")]
     return sets
+
+
+# ----------------------------------------------------------------------------- v2: model folder, fillers, disfluency, ASR choice
+FILLER_TEXT = {"um": "อืมม", "uh": "เอ่อ", "uh_long": "เอ่ออ", "like": "แบบว่า"}
+FILLER_DUR = {"um": 0.75, "uh": 0.55, "uh_long": 0.95, "like": 0.85}      # seconds of the filler itself (hesitant = drawn out)
+
+
+def cmd_build(a):
+    """models/speech-model-v2/: v1's emotion references (unchanged — the voice's identity), a v2 speech_config.json (+ disfluency
+    defaults, ASR choice), README written by hand. Fillers come from `speech fillers`."""
+    import shutil
+    MD.mkdir(parents=True, exist_ok=True)
+    (MD / "refs").mkdir(exist_ok=True)
+    for w in (V1 / "refs").glob("*.wav"):
+        shutil.copy2(w, MD / "refs" / w.name)
+    shutil.copy2(V1 / "refs.json", MD / "refs.json")
+    cfg = json.loads((V1 / "speech_config.json").read_text(encoding="utf-8"))
+    cfg.update(name="speech-model-v2", disfluency=dict(mode="filler", modes=["filler", "pause", "skip"], pause_min_s=0.35, pause_max_s=1.4,
+                                                      fillers=sorted(FILLER_TEXT)), cpu_voice="facebook/mms-tts-tha")
+    cfg.setdefault("asr", dict(default=cfg.get("asr_repo")))
+    write_json(MD / "speech_config.json", cfg)
+    print("built", MD)
+
+
+def cmd_fillers(a):
+    """Hesitation fillers per voice, made by the voice's own F5 clone (the neutral reference → same timbre as its speech; the
+    ElevenLabs teacher quota was used up): each filler with a FIXED duration (F5 would otherwise give a 3-letter text ~0.3 s), slowed,
+    4 takes (seeds) → silence trimmed (35 dB), loudness 0.8 × the voice's reference, 30 ms fade-out. A take is kept only if an
+    independent ear (Qwen3-ASR base) hears a filler sound or nothing — never a content word — and it lasts 0.3–1.4 s; the two
+    best-scored takes per filler are shipped (fillers.json)."""
+    import librosa
+    import soundfile as sf
+    import torch
+    from f5_tts_th.utils_infer import infer_process, preprocess_ref_audio_text
+    from modules.speech import ExpressiveTTS, ThaiASR
+    tts = ExpressiveTTS(MD, device=a.device)
+    raw_dir = ROOT / "cache" / "v10" / "fillers_raw"; raw_dir.mkdir(parents=True, exist_ok=True)
+    cands = []
+    for voice in ("female", "male"):
+        ref_wav, ref_text, _ = tts.reference(voice, "neutral", 0.0)
+        ref, _ = sf.read(str(ref_wav), dtype="float32")
+        ref_rms = float(np.sqrt(np.mean(ref ** 2)))
+        ra, rt = preprocess_ref_audio_text(str(ref_wav), ref_text)
+        ref_sec = len(librosa.load(ra, sr=24000)[0]) / 24000
+        for name, text in FILLER_TEXT.items():
+            for k in range(4):
+                torch.manual_seed(100 + k)
+                y, sr, _ = infer_process(ra, rt, text, tts.model, tts.vocoder, mel_spec_type="vocos", nfe_step=32, cfg_strength=2.0,
+                                         fix_duration=ref_sec + FILLER_DUR[name] + 0.15, use_ipa=False, device=tts.device)
+                y = np.asarray(y, np.float32)
+                y, _ = librosa.effects.trim(y, top_db=35)
+                y = y[: int(1.4 * sr)]
+                if len(y) < int(0.2 * sr):
+                    continue
+                y = y * (0.8 * ref_rms / (float(np.sqrt(np.mean(y ** 2))) or 1.0))
+                n = int(0.03 * sr); y[-n:] *= np.linspace(1, 0, n)
+                f = raw_dir / f"{voice}_{name}_{k}.wav"
+                sf.write(str(f), y, sr)
+                cands.append(dict(voice=voice, name=name, k=k, wav=str(f), dur=len(y) / sr))
+        print(voice, "synthesised", flush=True)
+    del tts; torch.cuda.empty_cache()
+    asr = ThaiASR(None, device=a.device, use_lora=False)
+    for c in cands:
+        c["hyp"] = asr(c["wav"])
+        clean = c["hyp"]
+        for tok in sorted(FILLER_TOKENS, key=len, reverse=True):
+            clean = clean.replace(tok, "")
+        c["content_chars"] = len(re_strip(clean))
+        c["ok"] = c["content_chars"] == 0 and 0.3 <= c["dur"] <= 1.4
+    table = {}
+    import shutil
+    for voice in ("female", "male"):
+        for name in FILLER_TEXT:
+            good = sorted([c for c in cands if c["voice"] == voice and c["name"] == name and c["ok"]], key=lambda c: abs(c["dur"] - FILLER_DUR[name]))[:2]
+            for j, c in enumerate(good):
+                dst = MD / "fillers" / f"{voice}_{name}_{j}.wav"; dst.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(c["wav"], dst)
+                table.setdefault(voice, {}).setdefault(name, []).append(f"fillers/{dst.name}")
+    write_json(MD / "fillers.json", table)
+    rep = read_json(ART / "reports" / "speech_v2.json") if (ART / "reports" / "speech_v2.json").exists() else {}
+    rep["fillers"] = dict(candidates=[{k: v for k, v in c.items() if k != "wav"} for c in cands],
+                          kept={v: {n: len(x) for n, x in d.items()} for v, d in table.items()})
+    write_json(ART / "reports" / "speech_v2.json", rep)
+    for c in cands:
+        print(f"{c['voice']:6s} {c['name']:8s} take {c['k']} {c['dur']:.2f}s ASR '{c['hyp']}' {'OK' if c['ok'] else '—'}", flush=True)
+    print("kept:", rep["fillers"]["kept"])
+
+
+DISFLUENCY_CASES = [   # (signed sequence, gold content) — "?" = a sign the model could not read
+    (["ฉัน", "?", "พ่อ"], "ฉันพ่อ"), (["?", "ฉัน"], "ฉัน"), (["ฉัน", "?", "?", "กิน"], "ฉันกิน"),
+    (["พรุ่งนี้", "ฉัน", "?", "ไป", "โรงเรียน"], "พรุ่งนี้ฉันไปโรงเรียน"), (["แม่", "?", "ชอบ", "?", "ขนมปัง"], "แม่ชอบขนมปัง"),
+    (["สวัสดี", "ฉัน", "ชื่อ", "?"], "สวัสดีฉันชื่อ"), (["วันนี้", "?", "เพื่อน", "?", "?", "ร้องไห้"], "วันนี้เพื่อนร้องไห้"),
+    (["ฉัน", "รัก", "?", "เพื่อน"], "ฉันรักเพื่อน")]
+FILLER_TOKENS = ["เอออ๋อ", "เอออือ", "แบบว่า", "เอิ่ม", "อืม", "อึม", "เอ่อ", "เออ", "อือ", "อ่า", "ม", "อ"]     # how an ear spells hesitation sounds
+
+
+def _fake_result(seq):
+    segs, t = [], 0.0
+    for w in seq:
+        segs.append(dict(nearest="รถไฟ" if w == "?" else w, status="unknown" if w == "?" else "accepted", p_correct=0.1 if w == "?" else 0.95,
+                         t0=t, t1=t + 0.7, f0=int(t * 25), f1=int((t + 0.7) * 25)))
+        t += 0.8
+    return dict(segments=segs, fusion=dict(provider="rules"), sentence="")
+
+
+def cmd_disfluency(a):
+    """Each case spoken three ways (skip = v1, pause, filler = v2) by the GPU voice (and the CPU voice) → an independent ear (Qwen3-ASR
+    base) transcribes it. Measured: content CER after removing filler sounds from the transcript (the words that WERE read must
+    survive), guessed words (the [?] segments' nearest word "รถไฟ" must never be heard), filler read as a meaningful word (a transcript
+    word outside the content + filler sounds), duration. Listening A/B protocol: result_reporting/result_v10.md §speech."""
+    import soundfile as sf
+    import torch
+    from modules.speech import ThaiASR, load_voice, plan_speech
+    out_dir = ROOT / "result_reporting" / "speech_samples_v2"; out_dir.mkdir(parents=True, exist_ok=True)
+    rows = []
+    for vname, dev in (("gpu", a.device), ("cpu", "cpu")):
+        voice = load_voice(MD, device=dev)
+        kind = type(voice).__name__
+        for i, (seq, gold) in enumerate(DISFLUENCY_CASES):
+            for mode in ("skip", "pause", "filler", "filler-inline", "pause-inline"):
+                plan = plan_speech(_fake_result(seq), disfluency=mode.split("-")[0])
+                t0 = time.time(); y, sr = voice.speak(plan, inline=mode.endswith("inline")); dt = time.time() - t0
+                f = out_dir / f"{vname}_{i:02d}_{mode}.wav"
+                sf.write(str(f), y, sr)
+                rows.append(dict(voice=kind, case=i, seq=" ".join(seq), gold=gold, mode=mode, wav=str(f), dur_s=len(y) / sr, synth_s=dt,
+                                 units=[(u["kind"], u.get("filler"), round(u.get("pause_s", 0), 2)) for u in plan.units]))
+        print(kind, "synthesised", flush=True)
+        del voice
+        torch.cuda.empty_cache()
+    asr = ThaiASR(None, device=a.device, use_lora=False)
+    for r in rows:
+        hyp = asr(r["wav"])
+        clean = hyp
+        for tok in sorted(FILLER_TOKENS, key=len, reverse=True):
+            clean = clean.replace(tok, "")
+        r.update(hyp=hyp, content_cer=cer(r["gold"], clean), guessed="รถไฟ" in hyp.replace(" ", ""),
+                 extra_chars=max(0, len(re_strip(clean)) - len(r["gold"])))
+    import pandas as pd
+    D = pd.DataFrame(rows)
+    summ = D.groupby(["voice", "mode"]).agg(content_cer=("content_cer", "mean"), guessed=("guessed", "sum"), extra_chars=("extra_chars", "mean"),
+                                             dur_s=("dur_s", "mean"), synth_s=("synth_s", "mean")).round(4)
+    print(summ.to_string())
+    rep = read_json(ART / "reports" / "speech_v2.json") if (ART / "reports" / "speech_v2.json").exists() else {}
+    rep["disfluency"] = dict(summary=summ.reset_index().to_dict("records"), cases=rows)
+    write_json(ART / "reports" / "speech_v2.json", rep)
+
+
+def re_strip(t):
+    import re
+    return re.sub(r"[\s\.,!?…\-]", "", t or "")
+
+
+def cmd_asr_compare(a):
+    """Real speech only (the v9 lesson: synthetic speech misleads): FLEURS-th (read sentences) + asr_th (short daily phrases, real
+    people) + test-A for reference. Candidates: Qwen3-ASR-0.6B base (v1 default) · Thonburian Whisper medium (biodatlab, Thai
+    fine-tuned Whisper, Apache-2.0). Chosen = lowest mean CER over the two real-speech sets; latency on this GPU reported."""
+    import torch
+    from transformers import pipeline as hf_pipeline
+    from modules.speech import ThaiASR
+    sets = {k: v for k, v in eval_sets().items() if not k.startswith("held-out synthetic")}
+    res = {}
+
+    def run(name, fn, bs=8):
+        res[name] = {}
+        for sname, rows in sets.items():
+            t = time.time(); hyp = []
+            for i in range(0, len(rows), bs):
+                hyp += fn([r["audio"] for r in rows[i:i + bs]])
+            c = [cer(r["ref"], h) for r, h in zip(rows, hyp)]
+            res[name][sname] = dict(n=len(rows), CER=float(np.mean(c)), sec_per_utt=(time.time() - t) / len(rows),
+                                    examples=[dict(ref=r["ref"], hyp=h) for r, h in list(zip(rows, hyp))[:6]])
+            print(f"{name:28s} {sname:42s} CER {np.mean(c):.4f} ({(time.time() - t) / len(rows):.2f} s/utt)", flush=True)
+    prev = (read_json(ART / "reports" / "speech_v2.json").get("asr") or {}).get("results", {}) if (ART / "reports" / "speech_v2.json").exists() else {}
+    if "qwen3-asr-0.6b (v1)" in prev and a.reuse:
+        res["qwen3-asr-0.6b (v1)"] = prev["qwen3-asr-0.6b (v1)"]
+    else:
+        q = ThaiASR(None, device=a.device, use_lora=False)
+        run("qwen3-asr-0.6b (v1)", lambda b: q(b))
+        del q; torch.cuda.empty_cache()
+    dev = 0 if torch.cuda.is_available() else -1
+    w = hf_pipeline("automatic-speech-recognition", model="biodatlab/whisper-th-medium-combined", device=dev,
+                    torch_dtype=torch.float16 if dev == 0 else torch.float32)
+    # Whisper on short clips repeats itself without limits (seen in the reverse part too): cap the tokens, block long n-gram repeats
+    gk = dict(language="th", task="transcribe", max_new_tokens=96, no_repeat_ngram_size=6, num_beams=1)
+    run("thonburian-whisper-medium", lambda b: [x["text"] for x in w(b, batch_size=4, generate_kwargs=gk)])
+    real = [k for k in sets if "FLEURS" in k or "asr_th" in k]
+    score = {m: float(np.mean([r[k]["CER"] for k in real])) for m, r in res.items()}
+    chosen = min(score, key=score.get)
+    rep = read_json(ART / "reports" / "speech_v2.json") if (ART / "reports" / "speech_v2.json").exists() else {}
+    rep["asr"] = dict(results=res, mean_real_CER=score, chosen=chosen)
+    write_json(ART / "reports" / "speech_v2.json", rep)
+    print("chosen:", chosen, score)
 
 
 def cmd_asr_eval(a):
@@ -432,15 +633,17 @@ def cmd_demo(a):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("step", choices=["refs", "asr-data", "asr-eval", "asr-train", "tts-eval", "demo"])
+    ap.add_argument("step", choices=["refs", "asr-data", "asr-eval", "asr-train", "tts-eval", "demo", "build", "fillers", "disfluency", "asr-compare"])
     ap.add_argument("--nfe", type=int, default=32); ap.add_argument("--n", type=int, default=12)
     ap.add_argument("--epochs", type=int, default=3); ap.add_argument("--bs", type=int, default=4); ap.add_argument("--lr", type=float, default=2e-4)
     ap.add_argument("--lora", action="store_true")
     ap.add_argument("--device", default=None, help="auto (default: cuda → mps → cpu) | cuda | cuda:1 | mps | cpu")
     ap.add_argument("--n_eleven", type=int, default=160)
     ap.add_argument("--f5_per_phrase", type=int, default=3)
+    ap.add_argument("--reuse", action="store_true", help="asr-compare: keep the Qwen3-ASR numbers already in speech_v2.json")
     a = ap.parse_args()
-    {"refs": cmd_refs, "asr-data": cmd_asr_data, "asr-eval": cmd_asr_eval, "asr-train": cmd_asr_train, "tts-eval": cmd_tts_eval, "demo": cmd_demo}[a.step](a)
+    {"refs": cmd_refs, "asr-data": cmd_asr_data, "asr-eval": cmd_asr_eval, "asr-train": cmd_asr_train, "tts-eval": cmd_tts_eval, "demo": cmd_demo,
+     "build": cmd_build, "fillers": cmd_fillers, "disfluency": cmd_disfluency, "asr-compare": cmd_asr_compare}[a.step](a)
 
 
 if __name__ == "__main__":

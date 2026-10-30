@@ -23,7 +23,10 @@ export type TranslateResult = {
 /** speak: "off" | "confident" (only a sentence the evidence supports) | "all" (also an uncertain reading, marked as such). */
 export type Speak = "off" | "confident" | "all";
 export type Alphabet = "en" | "th" | "both" | "off";
-export type Options = { vocab: "conversation" | "full"; llm: boolean; speak: Speak; faceQuestion: boolean; alphabet: Alphabet };
+/** Display filter for words the server did not accept: 0 = no threshold (every word shown), else shown when P(correct) ≥ it,
+ *  otherwise [?]. Accepted words are always shown. Client-only (never sent to the server). */
+export type MinP = 0 | 0.5 | 0.8;
+export type Options = { vocab: "conversation" | "full"; llm: boolean; speak: Speak; faceQuestion: boolean; alphabet: Alphabet; minP: MinP };
 export type Progress = { stage: string; p: number };
 type OnProgress = (x: Progress) => void;
 
@@ -84,6 +87,38 @@ export async function translateVideoOnServer(file: File, o: Options): Promise<Tr
   const q = new URLSearchParams({ vocab: o.vocab, llm: String(o.llm), speak: String(o.speak !== "off"), speak_tentative: String(o.speak === "all") });
   return check(await fetch(`/api/v1/translate/video?${q}`, { method: "POST", body: fd }));
 }
+
+/** v10 streaming recognition: a word read while the person is still signing — confirmed (final) or partial (may change). */
+export type LiveWord = { word: string; status: Segment["status"]; p?: number; latency?: number };
+export type LiveWords = { confirmed: LiveWord[]; partial: LiveWord[]; final: boolean };
+
+/** One WebSocket per live utterance (/api/v1/live): frames go up as the camera sees them, words come back while signing.
+ *  Frames added before the socket is open are queued; `end()` asks for the rest (hands down); `close()` drops the stream. */
+export function openLive(width: number, height: number, o: Options, onWords: (w: LiveWords) => void) {
+  const ws = new WebSocket(`${location.protocol === "https:" ? "wss" : "ws"}://${location.host}/api/v1/live`);
+  const queue: string[] = [];
+  const words: LiveWords = { confirmed: [], partial: [], final: false };
+  let t0: number | null = null, done = false;
+  const post = (m: string) => {
+    if (ws.readyState === WebSocket.OPEN) ws.send(m);
+    else if (ws.readyState === WebSocket.CONNECTING) queue.push(m);
+  };
+  ws.onopen = () => {
+    ws.send(JSON.stringify({ hw: [height, width], vocab: o.vocab, alphabet: o.alphabet }));
+    queue.forEach((m) => ws.send(m)); queue.length = 0;
+  };
+  ws.onmessage = (ev) => {
+    const m = JSON.parse(ev.data);
+    words.confirmed = [...words.confirmed, ...(m.confirmed ?? [])]; words.partial = m.partial ?? []; words.final = !!m.final;
+    onWords({ ...words });
+  };
+  return {
+    add(f: LmFrame) { if (done) return; if (t0 === null) t0 = f.t; post(JSON.stringify({ ...f, t: f.t - t0 })); },
+    end() { if (!done) { done = true; post(JSON.stringify({ end: true })); } },
+    close() { done = true; try { ws.close(); } catch { /* already closed */ } },
+  };
+}
+export type LiveSocket = ReturnType<typeof openLive>;
 
 export async function info() {
   return check(await fetch("/api/v1/info"));

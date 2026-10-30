@@ -10,7 +10,11 @@ export function useSigns(r: TranslateResult) {
   return r.segments.filter((s) => s.status !== "transition");
 }
 
-export default function Words({ r, onTeal = false, hint = false, vocab = [] }: { r: TranslateResult; onTeal?: boolean; hint?: boolean; vocab?: string[] }) {
+/** The word filter (settings → filter): a sign's word is shown when the server accepted it, or when its P(correct) reaches the chosen
+ *  threshold (0 = no threshold: every reading shown); otherwise it is [?]. The same rule for live and video results. */
+export const shows = (s: { status: string; p?: number }, minP: number) => s.status === "accepted" || (s.p ?? 0) >= minP;
+
+export default function Words({ r, onTeal = false, hint = false, vocab = [], minP = 0.8 }: { r: TranslateResult; onTeal?: boolean; hint?: boolean; vocab?: string[]; minP?: number }) {
   const signs = useSigns(r);
   const [open, setOpen] = useState(-1);
   const [typed, setTyped] = useState("");
@@ -25,9 +29,9 @@ export default function Words({ r, onTeal = false, hint = false, vocab = [] }: {
   return (
     <div className="chips">
       {signs.map((s, i) => {
-        const ok = s.status === "accepted";
-        const label = saved[i] ? `✓ ${saved[i]}` : ok ? (s.kind === "letter" ? s.word : `✓ ${s.word}`) : `[?]${hint ? " แตะเพื่อแก้" : ""}`;   // unsure: no guessed word (v7.3) — the candidates are in the menu
-        const cls = saved[i] ? `chip ${onTeal ? "teal" : ""} saved` : ok ? `chip ${onTeal ? "teal" : ""}` : "chip unsure";
+        const ok = s.status === "accepted", shown = shows(s, minP);       // shown but not accepted: let through by the filter (dashed)
+        const label = saved[i] ? `✓ ${saved[i]}` : ok ? (s.kind === "letter" ? s.word : `✓ ${s.word}`) : shown ? s.word : `[?]${hint ? " แตะเพื่อแก้" : ""}`;   // below the filter: no guessed word — the candidates are in the menu
+        const cls = saved[i] ? `chip ${onTeal ? "teal" : ""} saved` : ok ? `chip ${onTeal ? "teal" : ""}` : shown ? `chip ${onTeal ? "teal" : ""} low` : "chip unsure";
         return (
           <span key={i} className="chipwrap">
             <button className={cls} onClick={() => { setOpen(open === i ? -1 : i); setTyped(""); }} aria-expanded={open === i}
@@ -59,8 +63,13 @@ export function cues(r: TranslateResult) {
     r.face?.affirmation && "ยืนยัน (พยักหน้า)", r.face?.emotion && r.face.emotion !== "neutral" && `อารมณ์: ${r.face.emotion_th}`].filter(Boolean) as string[];
 }
 
-/** The sentence to show for a result: the confident sentence, else the tentative reading (marked), else nothing. */
-export function shownText(r: TranslateResult) {
+/** The sentence to show for a result: the confident sentence, else the tentative reading (marked), else nothing. When the filter
+ *  lets through words the server did not accept, the server's sentence would not hold them: the words themselves are shown
+ *  (marked tentative), [?] for the ones still below the threshold. */
+export function shownText(r: TranslateResult, minP = 0.8) {
+  const signs = r.segments.filter((s) => s.status !== "transition");
+  if (signs.some((s) => s.status !== "accepted" && shows(s, minP)))
+    return { text: signs.map((s) => (shows(s, minP) ? s.word : "[?]")).join(" "), tentative: true };
   const s = r.sentence || "";
   return { text: s || r.language?.tentative_sentence_th || "", tentative: !s };
 }

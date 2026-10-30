@@ -6,9 +6,29 @@ layer write a Thai sentence from the evidence (never beyond it) — and speaks i
 Results: `result_reporting/result_v7.md` · file map: `result_reporting/file_structure.pdf` · lab: `lab.ipynb`.
 
 
+## v10 — diagnosis · extractor study · real-time · natural speech (prompt_14)
+
+Report: `result_reporting/result_v10.md` (+ pdf) · labs: `lab4.ipynb` (results computed live), `real-time-lab.ipynb` (camera → sign /
+face / speech, tier A/B) · models: `models/model-v10/` (forward, Docker default) · `models/face-model/` · `models/speech-model-v2/`.
+Every setting chosen on tune data; automatic release gate `python main.py decision gate` (tolerance from v9's bootstrap); $0 cloud.
+* **Recognition = v9, on purpose.** The v10 candidate (extractor-averaged bank + re-tuned decision layer) won on tune but failed the
+  release gate on the held-out test sets twice (coverage, calibration, TSL51 2×, fluent sentences) → not shipped, kept opt-in
+  as `v10x` in `artifacts/v10_experimental/`. `models/model-v10` recognises byte-for-byte like v9 and passes the gate.
+* **Diagnosis** (`python main.py diagnose deep`): low hand visibility explains ≤ 3 % of errors (AUC 0.52); the driver is bank depth
+  (words with ≤ 2 example clips: 74 % wrong) and the signer gap, not the extractor.
+* **Extractor study** (`python main.py extractor …`, `modules/wholebody.py`): RTMW-X fails both the Pose Quality Gate (fingers more
+  distorted, blinded visual check MediaPipe 50 % vs RTMW 41 %) and the Recognition Quality Gate (encoders trained per extractor: MediaPipe
+  wins 4/5 sets) → MediaPipe stays tier B default; RTMW-X fp16 + tracking (35 fps on an RTX 2050) is the optional tier A.
+* **Real-time**: `/v1/live` WebSocket in the sign API, used by the web's live mode (`/sign/live`, `/sign`): words appear while signing
+  (confirmed white, unsure `[?]`, still-changing faded; `?stream=0` turns it off), streaming settings chosen on tune
+  (`spotting.json` `"stream"`), `real-time-lab.ipynb`.
+* **Speech v2** (`models/speech-model-v2`): an unread sign becomes a human hesitation ("ฉัน… อืม… พ่อ"), never a guessed word
+  (0 guessed words in 48 cases); `/tts/v1/speak_plan`; CPU voice fallback. Face: v1 kept (no v2 candidate better on every metric).
+* Rollback: `THAISLM_MODELS_DIR=./models/model-v9 docker compose up`.
+
 ## v9 — recognition · calibration · face emotion · speech (prompt_13)
 
-Report: `result_reporting/result_v9.md` (+ pdf) · lab: `lab3.ipynb` · models: `models/model-v9/` (forward, Docker default) ·
+Report: `result_reporting/result_v9.md` (+ pdf) · lab: `lab3.ipynb` · models: `models/model-v9/` (forward; rollback since v10) ·
 `models/face-model/` · `models/speech-model-v1/`. All settings chosen on tune data (`python main.py decision tune --start v8.1`); $0 cloud.
 * **Diagnosis first** (`python main.py diagnose ledger`): TSL51 errors are recognition, not segmentation (perfect naming on the current
   segments → WER 0.065; perfect segments with the current reader → 0.26).
@@ -77,9 +97,9 @@ docker compose up --build                            # web demo → http://local
 ```bash
 conda activate hugging                               # Python 3.10, see requirements.txt
 git lfs install && git lfs pull                      # model weights are in Git LFS
-python main.py infer --video path/to/video.mp4       # translate a video with models/model-v9/ (ONNX Runtime; --backend torch for the GPU)
+python main.py infer --video path/to/video.mp4       # translate a video with models/model-v10/ (ONNX Runtime; --backend torch for the GPU)
 python main.py test                                  # data_test/ end-to-end from the raw videos + scores
-jupyter lab lab.ipynb                                # data, latent space, tagger, segmentation, results, self-made sentence tests
+jupyter lab lab4.ipynb                               # v10 results (computed live) · real-time-lab.ipynb = camera → sign / face / speech
 ```
 `python main.py` with no arguments lists every command.
 
@@ -88,8 +108,8 @@ jupyter lab lab.ipynb                                # data, latent space, tagge
 | path | what | in git |
 |---|---|---|
 | `main.py` | the only CLI entry point (infer · test · data · prep · extract · harvest · cloud · train-seq · eval · export-onnx) | ✓ |
-| `docker-compose.yml`, `webapp/` | web demo: `web` (Next.js) · `sign-api` (FastAPI + ONNX Runtime) · `tts` (MMS-TTS Thai) · `gateway` (nginx) — see `webapp/README.md` | ✓ |
-| `models/` | **the forward models**, one complete model folder each: `model-v9/` (main, default `MODEL`, Docker) · `Jack-model/` (v8.1) · `Boom-model/` · `Pitty-model/`; + `face-model/` (face emotion) · `speech-model-v1/` (voice + ASR) | ✓ (LFS) |
+| `docker-compose.yml`, `webapp/` | web demo: `web` (Next.js) · `sign-api` (FastAPI + ONNX Runtime, WebSocket `/v1/live` streaming) · `tts` (speech v2: plan + hesitation fillers, MMS-TTS on CPU; `tts-gpu` F5 with `--profile gpu`) · `gateway` (nginx) — see `webapp/README.md` | ✓ |
+| `models/` | **the forward models**, one complete model folder each: `model-v10/` (main, default `MODEL`, Docker) · `model-v9/` (rollback) · `archive/` (Jack = v8.1, Boom, Pitty); + `face-model/` (face emotion) · `speech-model-v2/` (voice + hesitation fillers) · `speech-model-v1/` | ✓ (LFS) |
 | `modules/` | library (see below) | ✓ |
 | `scripts/` | pipeline steps: `data_prep.py` · `extract_mp.py` · `harvest_words.py` · `eval.py` · `export_onnx.py` · `infer.py` · `make_lab.py` · `s3_sync.py` · `md_to_pdf.py` · `pretrained.py` · `collect/` (v4 raw-data harvester) | ✓ |
 | `GCP/script/` | Vertex AI: `vertex.py` (upload · load-balanced launch · wait · **cleanup**) · `job_entry.py` (training stages) | ✓ |

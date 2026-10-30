@@ -1,4 +1,6 @@
-# face-model — signer facial emotion (ThaiSLM v9)
+# face-model — signer facial emotion (ThaiSLM v9, shipped unchanged in v10)
+
+> v10: the face v2 candidates (more neutral signing, emotion-word signing, mouthing mask, a domain input) were evaluated with signer-level cross-validation and none was better on every metric, so this model (v1) stays — `artifacts/reports/face_model_v2.json`, `result_reporting/result_v10.md` §5.
 
 What the signer **feels** while signing, from the face — separate from the sign model (`models/model-v9`) and loaded by
 `SignPipeline` from `models/face-model` (or `THAISLM_FACE_MODEL`). Code: `modules/face_model.py`, training: `scripts/face_model.py`.

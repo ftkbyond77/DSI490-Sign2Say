@@ -8,7 +8,7 @@ import type { HolisticLandmarker } from "@mediapipe/tasks-vision";
 import { openWidestCamera } from "@/lib/camera";
 import { ExpressionModel } from "@/lib/expression";
 import { createHolistic, detect, drawV2 as draw, EmotionMeter, getHolistic, preloadHolistic, replaceHolistic, handsUp, Normalizer, parts, type Delegate, type Emotion, type LmFrame, type Tone } from "@/lib/holistic";
-import { info, speak, translateFramesStream, translateVideoOnServerStream, vocabList, type Options, type Progress, type TranslateResult } from "@/lib/api";
+import { info, openLive, speak, translateFramesStream, translateVideoOnServerStream, vocabList, type LiveSocket, type LiveWords, type Options, type Progress, type TranslateResult } from "@/lib/api";
 import { b64ToBytes, playWav, unlockAudio } from "@/lib/audio";
 import { signWords } from "@/lib/mysigns";
 import { parseFaceEvery } from "@/lib/faceCadence";
@@ -40,7 +40,7 @@ const median = (rows: number[][]) => rows[0].map((_, j) => { const v = rows.map(
 export const load = <T,>(k: string, d: T): T => { try { const v = localStorage.getItem(k); return v ? (JSON.parse(v) as T) : d; } catch { return d; } };
 export const save = (k: string, v: unknown) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* private mode */ } };
 
-export const DEFAULT_OPTS: Options = { vocab: "conversation", llm: true, speak: "confident", faceQuestion: false, alphabet: "en" };
+export const DEFAULT_OPTS: Options = { vocab: "conversation", llm: true, speak: "confident", faceQuestion: false, alphabet: "en", minP: 0.8 };
 
 /** Settings shared by every screen (and remembered in this browser) — the same keys the original studio used. */
 export function useSignSettings() {
@@ -103,6 +103,10 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
   const perfNoFxRef = useRef(false);
   const faceEveryRef = useRef(3);
   const expressionFrameRef = useRef(0);
+  // v10: live mode also streams each utterance to /api/v1/live, so its words appear while signing (?stream=0 turns it off);
+  // the full result (sentence, face, speech) still comes from the request sent when the hands go down.
+  const streamOnRef = useRef(true);
+  const liveWsRef = useRef<LiveSocket | null>(null);
   const onResultRef = useRef(onResult);
   onResultRef.current = onResult;
 
@@ -116,6 +120,7 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
   const [tone, setTone] = useState<Tone>({ brightness: 1, contrast: 1 });
   const [liveState, setLiveState] = useState<LiveState>("waiting");
   const [liveNote, setLiveNote] = useState("");
+  const [liveWords, setLiveWords] = useState<LiveWords | null>(null);
   const [speaking, setSpeaking] = useState("");
   const [vocab, setVocab] = useState<string[]>([]);
   const [camSize, setCamSize] = useState<[number, number]>([4, 3]);
@@ -139,6 +144,7 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
     const q = new URLSearchParams(window.location.search);
     perfNoFxRef.current = q.get("perf") === "nofx";
     faceEveryRef.current = parseFaceEvery(q.get("faceEvery"));
+    streamOnRef.current = q.get("stream") !== "0";
     const ex = exprRef.current;
     const t = window.setTimeout(() => ex.load(), 2500);     // the expression model after it (small; not competing with MediaPipe)
     info().then((m) => { setModel(m); setApiDown(false); }).catch(() => { setModel(null); setApiDown(true); });
@@ -163,12 +169,20 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
     finally { setSpeaking(""); }
   }, []);
 
+  /** The streamed words of the last utterance are no longer shown (its full result arrived, it was skipped, or live mode ended) —
+   *  unless the next utterance is already being signed: then its own stream stays. */
+  const dropLive = useCallback(() => {
+    if (live.current.state === "signing") return;
+    liveWsRef.current?.close(); liveWsRef.current = null; setLiveWords(null);
+  }, []);
+
   const handle = useCallback(async (r: TranslateResult) => {
+    dropLive();
     r = { ...r, uid: ++resultSeq.current };        // a stable key: each card keeps its own taught words when a new result is prepended
     setResults((prev) => [r, ...prev].slice(0, 12));
     onResultRef.current?.(r);
     await say(r);
-  }, [say]);
+  }, [say, dropLive]);
 
   /** Input checks shared by manual / live; returns an error text, or "" when the frames can hold a sign. */
   const check = (frames: LmFrame[], source: "manual" | "live") => {
@@ -194,7 +208,7 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
   /** frames → server (progress streamed back) → result + speech. */
   const send = useCallback(async (frames: LmFrame[], w: number, h: number, source: "manual" | "live") => {
     const why = check(frames, source);
-    if (why) { if (source === "live") setLiveNote(why); else setError(why); return false; }
+    if (why) { if (source === "live") { setLiveNote(why); dropLive(); } else setError(why); return false; }
     setError(""); setLiveNote("");
     try {
       const duration = durMs(frames);
@@ -209,7 +223,7 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
     } catch (e) { setError(`ประมวลผลไม่สำเร็จ: ${(e as Error).message}`); }
     finally { setTimeout(() => setProgress(null), 600); }
     return true;
-  }, [handle, request]);
+  }, [handle, request, dropLive]);
 
   const switchToCpu = useCallback(async () => {
     if (errRef.current.switching) return;
@@ -278,14 +292,24 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
         if (L.state === "waiting") {
           L.pre.push(f); while (L.pre.length && t - L.pre[0].t > LIVE_PREROLL_MS) L.pre.shift();
           if (up) { if (!L.upSince) L.upSince = t; } else L.upSince = 0;
-          if (L.upSince && t - L.upSince >= LIVE_UP_MS) { L.state = "signing"; L.utt = [...L.pre]; L.start = t; L.lastUp = t; setLiveState("signing"); setLiveNote(""); }
+          if (L.upSince && t - L.upSince >= LIVE_UP_MS) {
+            L.state = "signing"; L.utt = [...L.pre]; L.start = t; L.lastUp = t; setLiveState("signing"); setLiveNote("");
+            if (streamOnRef.current) {
+              liveWsRef.current?.close();
+              const ws: LiveSocket = openLive(v.videoWidth, v.videoHeight, optsRef.current, (w) => { if (liveWsRef.current === ws) setLiveWords(w); });
+              liveWsRef.current = ws; setLiveWords({ confirmed: [], partial: [], final: false });
+              L.utt.forEach((x) => ws.add(x));
+            }
+          }
         } else {
           L.utt.push(f);
+          liveWsRef.current?.add(f);
           if (up) L.lastUp = t;
           if (t - L.lastUp >= endRef.current || t - L.start >= LIVE_MAX_MS) {
             const frames = L.utt.filter((x) => x.t <= L.lastUp + 400);
             L.state = "waiting"; L.pre = []; L.utt = []; L.upSince = 0;
             setLiveState("processing");
+            liveWsRef.current?.end();
             send(frames, v.videoWidth, v.videoHeight, "live").finally(() => setLiveState(live.current.state));
           }
         }
@@ -329,16 +353,17 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
     cancelAnimationFrame(rafRef.current);
     streamRef.current?.getTracks().forEach((t) => t.stop()); streamRef.current = null;
     const L = live.current; L.state = "waiting"; L.pre = []; L.utt = []; L.upSince = 0;
+    dropLive();
     setLiveState("waiting"); setSeen(parts(null)); set("idle");
-  }, []);
+  }, [dropLive]);
   useEffect(() => () => closeCamera(), [closeCamera]);
 
   const setMode = useCallback((m: Mode) => {
     unlockAudio();
     modeRef.current = m; setModeState(m);
     if (m === "live" && statusRef.current === "recording") set("camera");
-    if (m === "manual") { const L = live.current; L.state = "waiting"; L.pre = []; L.utt = []; L.upSince = 0; setLiveState("waiting"); }
-  }, []);
+    if (m === "manual") { const L = live.current; L.state = "waiting"; L.pre = []; L.utt = []; L.upSince = 0; setLiveState("waiting"); dropLive(); }
+  }, [dropLive]);
 
   /** Live mode on: the camera opens (if needed) and every hands-up … hands-down becomes a sentence. */
   const startLive = useCallback(async () => { setMode("live"); return openCamera(); }, [openCamera, setMode]);
@@ -389,8 +414,8 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
   const camOn = status === "camera" || status === "recording" || status === "recorded" || (status === "processing" && !!streamRef.current);
 
   return {
-    videoRef, canvasRef, status, mode, setMode, liveState, liveNote, nFrames, fps, delegate, seen, exposure, tone, camSize,
-    speaking, vocab, results, error, setError, progress, model, apiDown, camOn, autoLight,
+    videoRef, canvasRef, status, mode, setMode, liveState, liveNote, liveWords, nFrames, fps, delegate, seen, exposure, tone, camSize,
+    speaking, vocab, results, error, setError, progress, model, apiDown, camOn, autoLight, minP: opts.minP ?? DEFAULT_OPTS.minP,
     openCamera, closeCamera, startLive, stopLive, startRec, stopRec, process, onFile, say,
   };
 }

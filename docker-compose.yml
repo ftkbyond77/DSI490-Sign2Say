@@ -4,9 +4,13 @@
 #            three-vrm signing avatar (text / speech → sign); screens /, /sign, /sign/live, /text, /chat (Figma “ThaiSLM v2”)
 #   sign-api FastAPI + ONNX Runtime: landmarks or video → words / Thai sentence (stateless; scale with --scale sign-api=N)
 #   (+ the reverse part's back end: reverse-api / reverse-speech — see the block at the end)
-#   tts      FastAPI + MMS-TTS Thai (VITS): sentence → speech
-# The model is read from ./models/model-v9 (mounted read-only; THAISLM_MODELS_DIR=./models/archive/<name>-model for another, e.g. ./models/archive/Jack-model = v8.1)
-# and the face emotion model from ./models/face-model; OPENAI_API_KEY in .env enables the LLM sentence layer (rules otherwise).
+#   tts      FastAPI speech v2 (models/speech-model-v2): forward result → what to say (natural hesitation for unread signs, never a
+#            guessed word) → MMS-TTS Thai (VITS, CPU) with the voice's fillers
+#   tts-gpu  (profile `gpu`, opt-in: `docker compose --profile gpu up`) the same service with the F5-TTS-THAI voice on an NVIDIA GPU;
+#            sign-api tries it first and falls back to `tts` automatically (TTS_URL list)
+# The forward model is read from ./models/model-v10 (mounted read-only; rollback to v9 with ONE variable:
+# THAISLM_MODELS_DIR=./models/model-v9 docker compose up), the face emotion model from ./models/face-model;
+# OPENAI_API_KEY in .env enables the LLM sentence layer (rules otherwise).
 name: thaislm
 services:
   gateway:
@@ -40,14 +44,14 @@ services:
       context: .
       dockerfile: webapp/api/Dockerfile
     volumes:
-      - ${THAISLM_MODELS_DIR:-./models/model-v9}:/app/models:ro
+      - ${THAISLM_MODELS_DIR:-./models/model-v10}:/app/models:ro
       - ./models/face-model:/app/face-model:ro          # v9 face emotion model (separate folder)
       - ./cache/live_requests:/app/requests          # diagnosis: each utterance's landmarks + result (no video); set THAISLM_SAVE_REQUESTS= to turn off
     environment:
       - THAISLM_MODELS=/app/models
       - THAISLM_FACE_MODEL=/app/face-model
       - THAISLM_SAVE_REQUESTS=${THAISLM_SAVE_REQUESTS-/app/requests}
-      - TTS_URL=http://tts:8001
+      - TTS_URL=http://tts-gpu:8001,http://tts:8001      # GPU voice first (profile gpu), CPU voice otherwise
       - OPENAI_API_KEY=${OPENAI_API_KEY:-}
       - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4.1-mini}
       - OPENAI_TIMEOUT_S=8
@@ -58,6 +62,25 @@ services:
     build:
       context: .
       dockerfile: webapp/tts/Dockerfile
+    volumes:
+      - ./models/speech-model-v2:/app/speech-model:ro   # emotion references + hesitation fillers (speech v2)
+    restart: unless-stopped
+
+  tts-gpu:
+    profiles: ["gpu"]
+    build:
+      context: .
+      dockerfile: webapp/tts/Dockerfile.gpu
+    volumes:
+      - ./models/speech-model-v2:/app/speech-model:ro
+      - tts-hf:/app/hf                                  # F5-TTS-THAI + vocoder weights (downloaded once)
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
     restart: unless-stopped
 
 # ---- reverse part's back end: Thai / English text or speech → Thai Sign Language avatar (reverse_text2sign/)
@@ -89,4 +112,5 @@ services:
     restart: unless-stopped
 
 volumes:
+  tts-hf:                   # tts-gpu: Hugging Face weights cache
   reverse-avatars:          # reverse part: content-addressed optimised characters (rebuilt automatically if deleted)

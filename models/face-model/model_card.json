@@ -1,6 +1,6 @@
 {
   "name": "face-model",
-  "version": "v1 (ThaiSLM v9)",
+  "version": "v1 (ThaiSLM v9; shipped unchanged in v10)",
   "task": "signer facial emotion (7 classes) + valence / arousal + Thai explanation",
   "input": "MediaPipe Holistic face blendshapes (52) + 68 face points — same extractor as the sign pipeline (browser and server)",
   "model": "standardise → multinomial logistic regression (L2 0.01), temperature 1.60; 208 features",
@@ -104,5 +104,6 @@
     "chance": 0.2
   },
   "code": "modules/face_model.py · scripts/face_model.py",
-  "features_kept": "cloud_s3/face-data/ravdess (features only, no video)"
+  "features_kept": "cloud_s3/face-data/ravdess (features only, no video)",
+  "v10": "face v2 candidates (more neutral signing, emotion-word signing, mouthing mask, a domain input) evaluated with signer-level cross-validation: none better than v1 on every metric (emotion accuracy, neutral-vs-emotion, false emotion on neutral signing, valence agreement) → v1 kept; artifacts/reports/face_model_v2.json, result_reporting/result_v10.md §5"
 }

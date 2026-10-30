@@ -101,8 +101,13 @@ class FaceEmotion:
     def save(self, path, **extra):
         np.savez(path, mu=self.mu, sd=self.sd, W=self.W, b=self.b, features=np.array(FEATURES), emotions=np.array(EMOTIONS), **extra)
 
-    def logits(self, X):
-        return ((np.atleast_2d(X) - self.mu) / self.sd) @ self.W + self.b
+    def logits(self, X, domain=1.0):
+        """v2 models carry one extra input after the 208 face features: the domain (0 = acted faces of the training corpus, 1 =
+        signing — every real use), so in-domain data sets a signing-specific prior instead of bending the expression weights."""
+        X = np.atleast_2d(X)
+        if X.shape[1] == len(self.mu) - 1:
+            X = np.c_[X, np.full(len(X), float(domain), X.dtype)]
+        return ((X - self.mu) / self.sd) @ self.W + self.b
 
     def proba(self, X):
         L = self.logits(X) / self.meta.get("temperature", 1.0)
@@ -111,8 +116,8 @@ class FaceEmotion:
 
     def explain(self, x, k, top=4):
         """Strongest features pushing emotion k up relative to neutral → [(feature, contribution)]: w_k·x − w_neutral·x."""
-        z = (x - self.mu) / self.sd
-        c = z * (self.W[:, k] - self.W[:, 0])
+        z = (x - self.mu[:len(x)]) / self.sd[:len(x)]
+        c = z * (self.W[:len(x), k] - self.W[:len(x), 0])            # face features only (never the domain input)
         o = np.argsort(-c)[:top]
         return [(FEATURES[i], float(c[i])) for i in o if c[i] > 0.15]
 
