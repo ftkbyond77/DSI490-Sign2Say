@@ -39,6 +39,9 @@ def save_request(
                 for key in ("sentence", "language", "face", "timings_ms", "duration_s", "mirrored_to_right_hand", "model_version")
             },
         )
+        face_every = getattr(req, "face_every", None)
+        if face_every is not None:
+            record["face_every"] = face_every
         perf_mode = getattr(req, "perf_mode", None)
         client_fps = getattr(req, "client_fps", None)
         if perf_mode is not None:

@@ -112,6 +112,7 @@ class TranslateRequest(BaseModel):
     alphabet: str = "en"                        # fingerspelled letters: en (A–Z) | th (ก–ฮ, vowels) | both | off
     spell_only: bool = False                    # this utterance is fingerspelling only (the "สะกดอย่างเดียว" button)
     perf_mode: str | None = None                 # optional client live-capture diagnostic mode
+    face_every: int | None = Field(default=None, ge=1)  # optional requested expression cadence
     client_fps: float | None = None              # optional FPS measured from captured frame timestamps
 
 
