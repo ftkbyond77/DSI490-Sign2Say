@@ -1,0 +1,6 @@
+pair_id,video,mode,segment,t0,t1,word,status,p_correct,ground_truth,correctness,top1_covered,top5_covered,left_observed,right_observed,observed_attributes
+pair01,ฉันแอบชอบคุณ.MOV,ai_only,6,10.08,11.2,ข้าว,unknown,0.0745846952236631,ชอบ,✗,False,False,,,{}
+pair02,ฉันยังลืมคุณไม่ได้.MOV,ai_only,2,3.84,5.28,คุณ,unknown,0.0575642258962318,ฉัน,✗,False,False,,,{}
+pair03,ฉันแอบชอบคุณ.MOV,ai_only,4,7.36,8.32,แฟน,unknown,0.2059819545114764,ฉัน,✗,False,False,,,{}
+pair04,ฉันยังลืมคุณไม่ได้.MOV,ai_only,4,6.56,8.48,ญาติ,uncertain,0.2723530406727719,ลืม,✗,False,False,,,{}
+pair05,มีอะไรให้ฉันช่วยไหม.MOV,ai_only,7,11.84,12.64,ขนมปัง,unknown,0.0854011042664254,ช่วย,✗,False,False,,,{}

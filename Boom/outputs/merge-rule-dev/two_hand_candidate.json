@@ -1,0 +1,53 @@
+{
+  "note": "Post-dev refinement; not independently validated; may reject valid one-handed signs",
+  "results": [
+    {
+      "clip": "clip1",
+      "pair": [
+        1,
+        2
+      ],
+      "merge": false,
+      "checks": {
+        "gap": true,
+        "candidate_overlap": true,
+        "motion": false,
+        "duration": true
+      },
+      "continuous_hands": 1,
+      "candidate_only": true
+    },
+    {
+      "clip": "clip2",
+      "pair": [
+        1,
+        2
+      ],
+      "merge": false,
+      "checks": {
+        "gap": true,
+        "candidate_overlap": false,
+        "motion": true,
+        "duration": true
+      },
+      "continuous_hands": 2,
+      "candidate_only": true
+    },
+    {
+      "clip": "clip2",
+      "pair": [
+        2,
+        3
+      ],
+      "merge": true,
+      "checks": {
+        "gap": true,
+        "candidate_overlap": true,
+        "motion": true,
+        "duration": true
+      },
+      "continuous_hands": 2,
+      "candidate_only": true
+    }
+  ]
+}

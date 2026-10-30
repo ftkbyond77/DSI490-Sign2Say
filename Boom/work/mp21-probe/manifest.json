@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "evaluation": "training-only; no independent validation/test recordings",
+  "records": [],
+  "failures": [
+    {
+      "id": "919",
+      "error": "Service \"kGpuService\", required by node poselandmarkcpu__posedetectioncpu__ImageToTensorCalculator, was not provided and cannot be created: Could not create an NSOpenGLPixelFormat"
+    },
+    {
+      "id": "1577",
+      "error": "Service \"kGpuService\", required by node poselandmarkcpu__posedetectioncpu__ImageToTensorCalculator, was not provided and cannot be created: Could not create an NSOpenGLPixelFormat"
+    }
+  ]
+}

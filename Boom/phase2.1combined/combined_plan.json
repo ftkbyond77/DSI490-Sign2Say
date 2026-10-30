@@ -1,0 +1,50 @@
+{
+  "name": "Boom Phase 2.2 Combined",
+  "baseline": "current checkout; record actual revision, never assume v8.1",
+  "enabled": false,
+  "production_enable": false,
+  "trials": {
+    "baseline": {},
+    "A": {
+      "post.p_sign_min": 0.55
+    },
+    "Combined": {
+      "post.p_sign_min": 0.55,
+      "act_thr": 0.6,
+      "accept_min": 0.7
+    }
+  },
+  "conditional_trials": {
+    "C_tau": {
+      "values": [
+        0.85,
+        0.88
+      ],
+      "condition": "check effective tau_accept=max(calibration tau, root accept_min) before trial"
+    },
+    "G": {
+      "post.min_hand_frac": 0.3,
+      "status": "requires implementation and raw observed-hand definition"
+    },
+    "handshape": {
+      "enabled": false,
+      "status": "requires separate descriptor bank and tune validation; no fixed 70:30"
+    },
+    "grammar": {
+      "grammar_rerank_weight": 0.7,
+      "enabled": false,
+      "condition": "audit provenance and template-grouped tune CV first"
+    },
+    "H": {
+      "condition": "combine only passing trials and retest all tune sets"
+    }
+  },
+  "gate": {
+    "max_per_set_wer_regression": 0.003,
+    "minimum_mean_improvement_exclusive": 0.002,
+    "minimum_accepted_precision": 0.9
+  },
+  "test_policy": "freeze selection before one final test batch; prior test exposure must be disclosed",
+  "eval_policy": "observation only; filenames are reference text, tokenization must be reviewed",
+  "bootstrap_samples": 10000
+}

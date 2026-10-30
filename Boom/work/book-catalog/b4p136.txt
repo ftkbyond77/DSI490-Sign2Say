@@ -1,0 +1,187 @@
+Songkhla
+
+125
+
+truck (smaller)
+
+South Region
+
+119
+
+truck (pick-up)
+
+39
+
+spoon
+
+14
+
+Tuk-Tuk
+
+39
+
+Sra Kaew
+
+89
+
+stadium
+
+69
+
+sub-district
+
+71
+
+Ubon Ratchathani
+
+118
+
+subway
+
+Udon Thani
+
+117
+
+Sukhothai
+
+95
+
+university
+
+59
+
+93
+
+Suphan Buri
+
+87
+
+Uthai Thani
+
+Suraj Thani
+
+127
+
+Uttaradit
+
+97
+
+Surin
+
+115
+
+van
+
+40
+
+table
+
+video cassette
+
+23
+
+Tak
+
+94
+
+video tape machine
+
+23
+
+taxi
+
+38
+
+village
+
+60
+
+telephone
+
+22
+
+television
+
+21
+
+temple
+
+57
+
+toilette paper
+
+washing bowl
+
+11
+
+toothbrush
+
+water
+
+heater
+
+29
+
+toothpaste
+
+10
+
+washing machine
+
+29
+
+town hall
+
+70
+
+window
+
+townhouse
+
+61
+
+tractor
+
+47
+
+trailer
+
+45
+
+Yala
+
+126
+
+train
+
+45
+
+Yasothon
+
+113
+
+124
+
+Trang
+
+Transportation
+
+35
+
+Trat
+
+106
+
+ZOO
+
+68
+
+44
+
+truck (10 wheels)
+
+sete,
+
+“au 4
+
+ee

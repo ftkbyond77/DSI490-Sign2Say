@@ -1,0 +1,238 @@
+diff --git a/modules/encoder.py b/modules/encoder.py
+index 54ed88f..12132a2 100644
+--- a/modules/encoder.py
++++ b/modules/encoder.py
+@@ -24,6 +24,7 @@ import torch
+ import torch.nn as nn
+ import torch.nn.functional as F
+ 
++from .utils import device as resolve_device, inference_precision
+ from .schema import USED
+ from .parts import MAX_LEN, MODES, prepare_parts, resample_len as _resample_len, to_iso  # noqa: F401
+ from .unisign import UniSignPose
+@@ -84,7 +85,8 @@ class SignEncoder(nn.Module):
+         return F.normalize(z.float(), dim=-1)
+ 
+ 
+-def collate(parts_list, device="cuda"):
++def collate(parts_list, device=None):
++    device = resolve_device(device)
+     L = max(len(p["body"]) for p in parts_list)
+     B = len(parts_list)
+     out = {m: np.zeros((B, L, parts_list[0][m].shape[1], 3), np.float32) for m in MODES}
+@@ -402,8 +404,9 @@ def supcon(z, y, temp=0.07):
+ 
+ # ----------------------------------------------------------------------------- inference helpers
+ @torch.no_grad()
+-def embed_parts(model, parts_list, bs=256, zero_shot=False, device="cuda"):
++def embed_parts(model, parts_list, bs=256, zero_shot=False, device=None):
+     """Embeddings of many clips, longest-similar batches. GPU OOM-safe: a batch that does not fit is halved and retried."""
++    device = str(next(model.parameters()).device) if device is None else resolve_device(device)
+     model.eval()
+     order = np.argsort([len(p["body"]) for p in parts_list])
+     out = np.zeros((len(parts_list), 768), np.float32)
+@@ -412,12 +415,12 @@ def embed_parts(model, parts_list, bs=256, zero_shot=False, device="cuda"):
+         idx = order[i:i + bs]
+         try:
+             P, M = collate([parts_list[j] for j in idx], device)
+-            with torch.autocast("cuda" if device == "cuda" else "cpu", dtype=torch.bfloat16, enabled=device == "cuda"):
++            with inference_precision(device):
+                 z = model(P, M, zero_shot=zero_shot)
+             out[idx] = z.float().cpu().numpy()
+             i += len(idx)
+         except torch.cuda.OutOfMemoryError:
+-            del P, M
++            P = M = None
+             torch.cuda.empty_cache()
+             if bs == 1:
+                 raise
+@@ -426,8 +429,9 @@ def embed_parts(model, parts_list, bs=256, zero_shot=False, device="cuda"):
+ 
+ 
+ @torch.no_grad()
+-def frame_features(model, kp_iso, sc, device="cuda", chunk=400):
++def frame_features(model, kp_iso, sc, device=None, chunk=400):
+     """Contextual frame states [T,768] for a long sequence (chunks of `chunk` frames with 50-frame overlap)."""
++    device = str(next(model.parameters()).device) if device is None else resolve_device(device)
+     model.eval()
+     T = len(kp_iso)
+     out = np.zeros((T, 768), np.float32); wsum = np.zeros(T, np.float32)
+@@ -435,7 +439,7 @@ def frame_features(model, kp_iso, sc, device="cuda", chunk=400):
+     for a in range(0, max(1, T - 50), step):
+         b = min(T, a + chunk)
+         P, M = collate([prepare_parts(kp_iso[a:b], sc[a:b])], device)
+-        with torch.autocast("cuda", dtype=torch.bfloat16, enabled=device == "cuda"):
++        with inference_precision(device):
+             h = model.frames(P, M)[0].float().cpu().numpy()
+         w = np.minimum(np.arange(1, b - a + 1), np.arange(b - a, 0, -1)).clip(max=25).astype(np.float32)
+         out[a:b] += h * w[:, None]; wsum[a:b] += w
+@@ -494,11 +498,12 @@ def retrieval_metrics(S, target, allowed=None):
+                 MRR=float((1 / (rank + 1)).mean()), median_rank=float(np.median(rank) + 1))
+ 
+ 
+-def load_encoder(models_dir, weights=None, device="cuda"):
++def load_encoder(models_dir, weights=None, device=None):
+     """Fine-tuned encoder (weights = models/encoder.pt: full state dict, needs only mt5_config.json next to it) or the zero-shot
+     Uni-Sign encoder (weights None: artifacts/pretrained/unisign_wlasl_enc.pt)."""
+     import json
+     from pathlib import Path
++    device = resolve_device(device)
+     models_dir = Path(models_dir)
+     cfg = json.loads((models_dir / "mt5_config.json").read_text())
+     if weights is not None:
+diff --git a/modules/pipeline.py b/modules/pipeline.py
+index 4e1e10b..4d5f83f 100644
+--- a/modules/pipeline.py
++++ b/modules/pipeline.py
+@@ -13,6 +13,7 @@ Vocabulary: 'conversation' (default — the daily-conversation lexicon in models
+ from __future__ import annotations
+ 
+ import time
++import os
+ from pathlib import Path
+ 
+ import numpy as np
+@@ -86,6 +87,13 @@ class SignPipeline:
+         self.roles = read_json(md / "roles.json") if (md / "roles.json").exists() else {}
+         self.lang_roles = read_json(md / "roles_language.json") if (md / "roles_language.json").exists() else self.roles
+         self.use_llm, self.use_face = use_llm, use_face
++        # Hybrid experiment: opt-in only.  It scores only retrieval Top-K and never invents words.
++        self.symbolic_weight = float(os.environ.get("THAISLM_SYMBOLIC_WEIGHT", "0"))
++        self.symbolic_dict = {}
++        if self.symbolic_weight > 0:
++            from .symbolic import load_dictionary
++            p = Path(os.environ.get("THAISLM_SYMBOLIC_DICT", MODEL.parent / "Boom/book-catalog/reviewed_entries.json"))
++            if p.exists(): self.symbolic_dict = load_dictionary(p, self.concepts)
+         # fingerspelling: letter recogniser + letter bank (second opinion through the sign encoder); settings in spotting.json "spell"
+         self.speller = load_speller(md)
+         lb = md / "letters_bank.npz"
+@@ -291,6 +299,17 @@ class SignPipeline:
+             segs, act, n_win = self._spot(kpi, sc, prob, present, H, bank)
+         else:
+             segs, act, n_win = [], np.zeros(T, bool), 0
++        if self.symbolic_weight > 0 and self.symbolic_dict:
++            from .symbolic import observe, score
++            for s in segs:
++                if s.get("status") == "transition": continue
++                obs = observe(kpi[s["f0"]:s["f1"]], sc[s["f0"]:s["f1"]])
++                cs = np.array([c["score"] for c in s["candidates"]], np.float32)
++                ai = np.exp(cs-cs.max()); ai /= ai.sum()
++                pose = np.array([score(obs, self.symbolic_dict.get(c["word"], [])) for c in s["candidates"]], np.float32)
++                fused = (1-self.symbolic_weight)*ai + self.symbolic_weight*pose
++                for c, a, q, z in zip(s["candidates"], ai, pose, fused): c.update(ai_prob=round(float(a),4), pose_score=round(float(q),4), fused_score=round(float(z),4))
++                s["candidates"].sort(key=lambda c: c["fused_score"], reverse=True); s["nearest"] = s["candidates"][0]["word"]; s["symbolic"] = obs
+         P = self.lr.predict(seg_features(segs, getattr(self.lr, "feats", None))) if segs else np.zeros(0)
+         for s, p in zip(segs, P):
+             s["p_correct"] = float(p); s["status"] = status_of(p, self.cal)
+diff --git a/modules/runtime.py b/modules/runtime.py
+index b25bf15..a867a03 100644
+--- a/modules/runtime.py
++++ b/modules/runtime.py
+@@ -85,13 +85,14 @@ class OnnxBackend:
+ class TorchBackend:
+     name = "torch"
+ 
+-    def __init__(self, model_dir, device="cuda", encoder=None, tagger=None, tagger_arch="gru"):
++    def __init__(self, model_dir, device=None, encoder=None, tagger=None, tagger_arch="gru"):
+         import torch
+         from .encoder import load_encoder
+         from .sequence import Tagger
+         md = Path(model_dir)
+         self.torch = torch
+-        self.device = device if (device != "cuda" or torch.cuda.is_available()) else "cpu"
++        from .utils import device as resolve_device
++        self.device = resolve_device(device)
+         self.model = encoder if encoder is not None else load_encoder(md, md / "encoder.pt", device=self.device)
+         if tagger is None:
+             tagger = Tagger(arch=tagger_arch).to(self.device)
+diff --git a/modules/symbolic.py b/modules/symbolic.py
+new file mode 100644
+index 0000000..29ee67a
+--- /dev/null
++++ b/modules/symbolic.py
+@@ -0,0 +1,71 @@
++"""Evidence-limited symbolic pose scorer for the Hybrid retrieval experiment.
++
++Only four attributes with support in the reviewed Thai Sign Language book are used:
++number of hands, coarse location, two-hand relation, and main motion verbs.
++Unknown dictionary fields never count as a mismatch.
++"""
++from __future__ import annotations
++import json, re
++from pathlib import Path
++import numpy as np
++from .schema import NOSE, SH_L, SH_R, WR_L, WR_R
++
++_MOTION = {"วน":"circle", "หมุน":"circle", "ยก":"up", "ขึ้น":"up", "ลด":"down", "ลง":"down", "แตะ":"touch", "แยก":"apart", "เข้าหา":"together", "ประกบ":"together", "สลับ":"alternate", "เลื่อน":"side"}
++def _norm(s: str) -> str: return re.sub(r"[\s—–-].*", "", str(s)).strip()
++def _verbs(s: str) -> set[str]: return {v for k,v in _MOTION.items() if k in str(s)}
++
++def build_dictionary(reviewed: Path, concepts: list[str]) -> dict[str, list[dict]]:
++    """Map reviewed book rows to production concepts, retaining all valid variants."""
++    rows = json.loads(reviewed.read_text(encoding="utf-8")); out = {c: [] for c in concepts}
++    by_norm = {_norm(c): c for c in concepts}
++    for r in rows:
++        raw = str(r.get("concept", "")); c = by_norm.get(_norm(raw))
++        if not c or len(raw.split()) > 8: continue
++        loc = str(r.get("location", "")); mov = str(r.get("movement", ""))
++        hands = r.get("num_hands") if r.get("num_hands") in (1,2) else None
++        relation = next((x for x in ("together","apart","alternate") if x in _verbs(mov)), None)
++        out[c].append(dict(hands=hands, location_zone=_zone(loc), motion=sorted(_verbs(mov)), relation=relation, source=f"book{r.get('book')}:{r.get('printed_page')}"))
++    return {k:v for k,v in out.items() if v}
++
++def load_dictionary(path: Path, concepts: list[str]) -> dict[str, list[dict]]:
++    """Load normalized attributes or build them from raw reviewed book rows."""
++    raw = json.loads(path.read_text(encoding="utf-8"))
++    if isinstance(raw, dict):
++        return {str(k): v for k, v in raw.items() if isinstance(v, list)}
++    return build_dictionary(path, concepts)
++
++def _zone(text: str) -> str | None:
++    t=str(text)
++    if any(x in t for x in ("ปาก","คาง")): return "mouth"
++    if any(x in t for x in ("หน้าอก","ลำตัว")): return "chest"
++    if any(x in t for x in ("หน้าผาก","ศีรษะ","หน้า")): return "face"
++    if any(x in t for x in ("เอว","ต่ำ")): return "low"
++    if "แขน" in t or "ข้อศอก" in t: return "arm"
++    return None
++
++def observe(kp: np.ndarray, sc: np.ndarray) -> dict:
++    """Extract robust coarse attributes from canonical, isotropic landmarks for one segment."""
++    L,R=kp[:,WR_L],kp[:,WR_R]; okL=sc[:,WR_L]>.5; okR=sc[:,WR_R]>.5
++    shoulder=np.linalg.norm(kp[:,SH_L]-kp[:,SH_R],axis=1); scale=float(np.nanmedian(shoulder[shoulder>1e-4]) or 1)
++    active=[float(okL.mean())>.5,float(okR.mean())>.5]; hands=sum(active)
++    w=np.nanmean(np.where((okL|okR)[:,None], (L+R)/2, np.nan),0); nose=np.nanmedian(kp[:,NOSE],0); sh=np.nanmedian((kp[:,SH_L]+kp[:,SH_R])/2,0)
++    y=(w[1]-sh[1])/scale
++    zone="face" if w[1] < nose[1]+.18*scale else ("chest" if y < .65 else "low")
++    d=np.linalg.norm(L-R,axis=1); relation="together" if hands==2 and np.nanmedian(d)/scale<.45 else None
++    v=np.diff((L+R)/2,axis=0); motion=set()
++    if len(v)>3:
++        if abs(np.nanmean(v[:,1]))>.006: motion.add("up" if np.nanmean(v[:,1])<0 else "down")
++        if np.nanstd(np.arctan2(v[:,1],v[:,0]))>1.4: motion.add("circle")
++    return dict(hands=hands, location_zone=zone, relation=relation, motion=sorted(motion), hand_observed=dict(left=round(float(okL.mean()),3),right=round(float(okR.mean()),3)))
++
++def score(obs: dict, specs: list[dict]) -> float:
++    """Best supported attribute agreement across a word's variants, in [0,1]."""
++    best=0.0
++    for x in specs:
++        terms=[]
++        if x.get("hands") is not None: terms.append((.35, obs["hands"]==x["hands"]))
++        if x.get("location_zone"): terms.append((.30, obs["location_zone"]==x["location_zone"]))
++        if x.get("relation"): terms.append((.20, obs.get("relation")==x["relation"]))
++        if x.get("motion"): terms.append((.15, bool(set(obs["motion"]) & set(x["motion"]))))
++        if terms: best=max(best,sum(w*float(ok) for w,ok in terms)/sum(w for w,_ in terms))
++    return float(best)
+diff --git a/webapp/api/app.py b/webapp/api/app.py
+index 7647dcc..e86c6d7 100644
+--- a/webapp/api/app.py
++++ b/webapp/api/app.py
+@@ -129,7 +129,8 @@ def _public(result):
+     keep = ("title", "duration_s", "n_frames", "signer_visible_frac", "signing_frac", "mirrored_to_right_hand", "sentence", "vocab", "model", "timings_ms")
+     out = {k: result.get(k) for k in keep}
+     out["segments"] = [dict(t0=s["t0"], t1=s["t1"], status=s["status"], word=s["nearest"], p=round(s.get("p_correct", 0), 3), kind=s.get("kind", "sign"),
+-                            candidates=[c["word"] for c in s["candidates"][:5]], **({"emb": _vec_to_b64(s["emb"])} if "emb" in s else {}))
++                            candidates=[dict(word=c["word"], score=c.get("score"), ai_prob=c.get("ai_prob"), pose_score=c.get("pose_score"), fused_score=c.get("fused_score")) for c in s["candidates"][:5]],
++                            **({"symbolic": s["symbolic"]} if "symbolic" in s else {}), **({"emb": _vec_to_b64(s["emb"])} if "emb" in s else {}))
+                        for s in result.get("segments", [])]
+     f = result.get("fusion") or {}
+     out["language"] = {k: f.get(k) for k in ("sentence_th", "tentative_sentence_th", "meaning_th", "evidence_gloss", "evidence_guard", "provider", "chosen")}

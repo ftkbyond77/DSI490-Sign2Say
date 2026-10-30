@@ -97,7 +97,7 @@ def cmd_build(a):
     scores = [s["score"] for v in align.values() for s in v["segments"]]
     cut = float(np.quantile(scores, 0.25)) if scores else 1.0
     store = PoseStore(SHARDS / "pose_store.npz")
-    enc = load_encoder(MODEL, MODEL / "encoder.pt", device="cuda")
+    enc = load_encoder(MODEL, MODEL / "encoder.pt", device=None)
     parts, meta, cs = [], [], []
     for cid, v in align.items():
         if cid not in store.row:
@@ -161,7 +161,7 @@ class Exact:
     """Exact (teacher) embeddings of individual windows, computed on demand on the GPU and cached — exactly what the production
     pipeline computes for the segments the decoder chose (modules.runtime.rescore)."""
 
-    def __init__(self, model_dir=MODEL, device="cuda"):
+    def __init__(self, model_dir=MODEL, device=None):
         from modules.runtime import TorchBackend
         self.be = TorchBackend(model_dir, device)
         self.cache = {}
@@ -736,7 +736,7 @@ def cmd_qparticle(a):
     from modules.pipeline import SignPipeline
     H = PREP.parent / "agent_data" / "youtube_words"
     ph = pd.read_csv(H / "phrases.csv")
-    pipe = SignPipeline(backend="torch", device="cuda", vocab="full", use_llm=False, use_face=False)
+    pipe = SignPipeline(backend="torch", device=None, vocab="full", use_llm=False, use_face=False)
     cuts = []
     for r in ph.itertuples():
         f = PREP / "pose_mp_raw" / "agent" / f"agent_yt_{r.id}.npz"
@@ -834,7 +834,7 @@ def cmd_tune_natural(a):
     cal_all = read_json(MODEL / "segment_calibration.json")
     report = {}
     for vocab in ("conversation", "full"):
-        pipe = SignPipeline(backend="torch", device="cuda", vocab=vocab, use_llm=False, use_face=False, bank_file=EVAL / "bank_eval.npz")
+        pipe = SignPipeline(backend="torch", device=None, vocab=vocab, use_llm=False, use_face=False, bank_file=EVAL / "bank_eval.npz")
         bank_vocab = {pipe.concepts[c] for c in pipe.bank.concepts_present}
         _tag, _cache = pipe._tag, {}
 

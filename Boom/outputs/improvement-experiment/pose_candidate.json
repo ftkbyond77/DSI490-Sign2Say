@@ -1,0 +1,9 @@
+{
+  "path": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/14265_ทำ.mp4",
+  "bytes": 6626104,
+  "sha256": "4592d1797b320225cfe023e457efc053a6b1f46736cc7ecff214688f001d23f1",
+  "expected_manifest_source": "th_sl_00936.mp4",
+  "expected_inventory_bytes": 286460,
+  "identity_verified": false,
+  "action": "do not overwrite or silently mark recovered"
+}

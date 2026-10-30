@@ -1,0 +1,28 @@
+{
+  "entries": 2049,
+  "unique_word_strings": 2049,
+  "sign_variants": 2196,
+  "variants_with_video": 2192,
+  "unique_video_urls": 2192,
+  "exact_project_concept_matches": 1394,
+  "exact_target_matches": [
+    "ไป",
+    "ภาษามือ",
+    "วิ่ง",
+    "กิน",
+    "ดู",
+    "ข้าว",
+    "ไม่มี",
+    "คุณ",
+    "ยาย",
+    "ญาติ",
+    "ป้า"
+  ],
+  "notes": [
+    "word overlap is not proof of duplicate videos",
+    "No video downloaded or bank modified",
+    "Root IDs are source symbols, not validated 53-dimensional attributes",
+    "Alphabet/number entries and lexical variants require review",
+    "No license inferred from public access"
+  ]
+}

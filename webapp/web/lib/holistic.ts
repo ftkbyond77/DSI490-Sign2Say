@@ -22,10 +22,21 @@ export type Landmarkers = { lm: HolisticLandmarker; delegate: Delegate; face?: H
  *    GPU      — everything on the GPU (~20+ fps)
  *    GPU+CPU  — body / hands / face mesh on the GPU every frame, face expressions (blendshapes) on the CPU every few frames
  *    CPU      — everything on the CPU (~6–7 fps on a laptop) */
+// The WASM runtime and the 13.7 MB model are fetched once per page load and reused by every attempt below (before: each attempt
+// fetched the model again). The set-up that worked is remembered, so the next visit skips the attempts that fail on this machine.
+let filesetP: ReturnType<typeof FilesetResolver.forVisionTasks> | null = null;
+let modelP: Promise<Uint8Array> | null = null;
+const SETUP_KEY = "thaislm.mp.setup";
+const remembered = (): Delegate | null => { try { return localStorage.getItem(SETUP_KEY) as Delegate | null; } catch { return null; } };
+const remember = (d: Delegate) => { try { localStorage.setItem(SETUP_KEY, d); } catch { /* storage blocked */ } };
+
 export async function createHolistic(prefer: "GPU" | "CPU" = "GPU"): Promise<Landmarkers> {
-  const fileset = await FilesetResolver.forVisionTasks("/mediapipe/wasm");
+  filesetP ??= FilesetResolver.forVisionTasks("/mediapipe/wasm");
+  modelP ??= fetch("/models/holistic_landmarker.task").then((r) => { if (!r.ok) throw new Error(`model ${r.status}`); return r.arrayBuffer(); })
+    .then((b) => new Uint8Array(b)).catch((e) => { modelP = null; throw e; });
+  const [fileset, model] = await Promise.all([filesetP, modelP]);
   const make = (delegate: "GPU" | "CPU", blendshapes = true) => HolisticLandmarker.createFromOptions(fileset, {
-    baseOptions: { modelAssetPath: "/models/holistic_landmarker.task", delegate },
+    baseOptions: { modelAssetBuffer: model.slice(), delegate },
     runningMode: "VIDEO" as const,
     outputFaceBlendshapes: blendshapes,
     minPoseDetectionConfidence: 0.5,
@@ -38,14 +49,35 @@ export async function createHolistic(prefer: "GPU" | "CPU" = "GPU"): Promise<Lan
     try { lm.detectForVideo(c, 1, () => {}); return true; } catch { return false; }
   };
   if (prefer === "GPU") {
-    try { const lm = await make("GPU"); if (works(lm)) return { lm, delegate: "GPU" }; lm.close(); } catch { /* next option */ }
-    try {
-      const lm = await make("GPU", false);
-      if (works(lm)) return { lm, delegate: "GPU+CPU", face: await make("CPU") };
-      lm.close();
-    } catch { /* next option */ }
+    const last = remembered();
+    if (last !== "GPU+CPU" && last !== "CPU") {      // full GPU: skipped when it failed here before
+      try { const lm = await make("GPU"); if (works(lm)) { remember("GPU"); return { lm, delegate: "GPU" }; } lm.close(); } catch { /* next option */ }
+    }
+    if (last !== "CPU") {
+      try {
+        const lm = await make("GPU", false);
+        if (works(lm)) { remember("GPU+CPU"); return { lm, delegate: "GPU+CPU", face: await make("CPU") }; }
+        lm.close();
+      } catch { /* next option */ }
+    }
+    if (last) { try { localStorage.removeItem(SETUP_KEY); } catch { /* storage blocked */ } }   // the remembered set-up failed too: retry all next time
+    remember("CPU");
   }
   return { lm: await make("CPU"), delegate: "CPU" };
+}
+
+// One landmarker for the whole app, started in the background as soon as a camera screen opens (preloadHolistic), so pressing
+// “เปิดกล้อง” only has to start the webcam. Shared by /sign, /sign/live and /chat (timestamps are performance.now(): always increasing).
+let shared: Promise<Landmarkers> | null = null;
+export function getHolistic(): Promise<Landmarkers> {
+  shared ??= createHolistic("GPU").then((l) => { performance.mark("thaislm:mediapipe-ready"); return l; }).catch((e) => { shared = null; throw e; });
+  return shared;
+}
+export function replaceHolistic(l: Landmarkers) { shared = Promise.resolve(l); }
+export function preloadHolistic() {
+  const go = () => { getHolistic().catch(() => { /* reported when the camera is opened */ }); };
+  if ("requestIdleCallback" in window) (window as Window & { requestIdleCallback: (f: () => void, o?: { timeout: number }) => number }).requestIdleCallback(go, { timeout: 1200 });
+  else setTimeout(go, 300);
 }
 
 /** Which parts MediaPipe found in a frame (for the on-screen check). */
@@ -276,5 +308,57 @@ export function draw(ctx: CanvasRenderingContext2D, f: LmFrame | null, w: number
     ctx.strokeStyle = col; ctx.lineWidth = 2; ctx.setLineDash([8, 5]); ctx.strokeRect(b.x, b.y, b.w, b.h); ctx.setLineDash([]);
     if (emo) { const [look, mean] = EMO_FACE[emo.emotion] ?? ["", EMO_TH[emo.emotion]];
       tag(ctx, `${EMO_ICON[emo.emotion]} ${look} → ${mean}${emo.level > 0 ? ` ${Math.round(emo.level * 100)}%` : ""}`, b.x + b.w, b.y, col, fontPx); }
+  }
+}
+
+// ----------------------------------------------------------------------------------------------------------------------------
+// v2 overlay (the app's teal / coral theme): body as soft lines, each hand in its colour with white joints (left = mint, right = coral),
+// the face framed by rounded corner marks with a small label pill in the app's font. Same landmarks as draw(); /classic keeps draw().
+const V2 = { body: "rgba(204, 251, 241, .45)", left: "#5eead4", right: "#fb7185", face: "rgba(153, 246, 228, .9)", faceOn: "#2dd4bf", ink: "#042f2e" };
+let v2Font = "";
+function rounded(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
+  ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+}
+function pill(ctx: CanvasRenderingContext2D, text: string, x: number, y: number, bg: string, fg: string, px: number) {
+  ctx.save();
+  if (!v2Font) v2Font = getComputedStyle(document.body).fontFamily || "sans-serif";
+  ctx.font = `600 ${px}px ${v2Font}`;
+  const tw = ctx.measureText(text).width, ph = px + 12, pw = tw + 22;
+  ctx.translate(x, Math.max(y, ph + 4)); ctx.scale(-1, 1);       // undo the CSS mirror for the text only
+  rounded(ctx, 0, -ph - 4, pw, ph, ph / 2); ctx.fillStyle = bg; ctx.fill();
+  ctx.fillStyle = fg; ctx.textBaseline = "middle"; ctx.fillText(text, 11, -4 - ph / 2 + 1);
+  ctx.restore();
+}
+export function drawV2(ctx: CanvasRenderingContext2D, f: LmFrame | null, w: number, h: number, active: boolean, emo?: Emotion) {
+  ctx.clearRect(0, 0, w, h);
+  if (!f) return;
+  const s = Math.max(1, h / 480);                                   // line widths follow the video size
+  const line = (a: number[], b: number[]) => { ctx.beginPath(); ctx.moveTo(a[0] * w, a[1] * h); ctx.lineTo(b[0] * w, b[1] * h); ctx.stroke(); };
+  ctx.lineCap = "round"; ctx.lineJoin = "round";
+  ctx.lineWidth = 2.5 * s; ctx.strokeStyle = V2.body;
+  if (f.pose.length === 33) for (const [a, b] of POSE_EDGES) if (f.pose[a][3] > 0.5 && f.pose[b][3] > 0.5) line(f.pose[a], f.pose[b]);
+  for (const [hand, col] of [[f.lh, V2.left], [f.rh, V2.right]] as const) {
+    if (hand.length !== 21) continue;
+    ctx.strokeStyle = col; ctx.lineWidth = 3 * s; ctx.globalAlpha = 0.9;
+    for (const [a, b] of HAND_EDGES) line(hand[a], hand[b]);
+    ctx.globalAlpha = 1;
+    for (const [k, p] of hand.entries()) {
+      const r = ([4, 8, 12, 16, 20].includes(k) ? 4.2 : 2.8) * s;
+      ctx.beginPath(); ctx.arc(p[0] * w, p[1] * h, r, 0, 2 * Math.PI);
+      ctx.fillStyle = "#fff"; ctx.fill(); ctx.lineWidth = 1.6 * s; ctx.strokeStyle = col; ctx.stroke();
+    }
+  }
+  if (f.face.length === 68) {
+    const b = box(f.face, w, h, 0.15);
+    b.y -= b.h * 0.12; b.h *= 1.12;
+    const col = active ? V2.faceOn : V2.face, c = Math.min(b.w, b.h) * 0.22;
+    ctx.strokeStyle = col; ctx.lineWidth = 3 * s;
+    for (const [x, y, dx, dy] of [[b.x, b.y, 1, 1], [b.x + b.w, b.y, -1, 1], [b.x, b.y + b.h, 1, -1], [b.x + b.w, b.y + b.h, -1, -1]]) {
+      ctx.beginPath(); ctx.moveTo(x, y + dy * c); ctx.lineTo(x, y); ctx.lineTo(x + dx * c, y); ctx.stroke();     // corner marks only
+    }
+    if (emo) {
+      const [look] = EMO_FACE[emo.emotion] ?? [EMO_TH[emo.emotion]];
+      pill(ctx, `สีหน้า · ${look}${emo.level > 0.15 ? ` ${Math.round(emo.level * 100)}%` : ""}`, b.x + b.w, b.y - 6 * s, active ? V2.faceOn : "rgba(13, 148, 136, .92)", "#fff", Math.round(13 * s));
+    }
   }
 }

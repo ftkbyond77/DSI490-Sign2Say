@@ -44,10 +44,12 @@ def face_crops(video, raw, fracs=(0.3, 0.5, 0.7), size=(112, 140)):
     return crops
 
 
-def embed_faces(crops, bs=64, device="cuda"):
+def embed_faces(crops, bs=64, device=None):
     """[N,768] L2-normalised DINOv2-base CLS embeddings."""
     import torch
     from transformers import AutoImageProcessor, AutoModel
+    from .utils import device as resolve_device
+    device = resolve_device(device)
     proc = AutoImageProcessor.from_pretrained("facebook/dinov2-base")
     net = AutoModel.from_pretrained("facebook/dinov2-base").to(device).eval()
     if device == "cuda":

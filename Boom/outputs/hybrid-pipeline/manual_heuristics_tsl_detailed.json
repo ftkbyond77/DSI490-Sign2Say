@@ -1,0 +1,252 @@
+{
+  "schema_version": 1,
+  "scope": "six requested core concepts; not exhaustive across all six books",
+  "status": "experimental_image_interpretation_not_expert_validated",
+  "coordinate_system": "isotropic 2D / shoulder width; origin mid-shoulder; y positive downward",
+  "numeric_threshold_source": "engineering hypotheses fixed before this dev rerun; NOT measurements or standards from the books",
+  "manual_weight": 0.5,
+  "bonus_range": [
+    -0.2,
+    0.15
+  ],
+  "missing_hand_policy": "if either observed rate < .50, disable all bimanual constraints; no number-of-hands inference from detector presence",
+  "trajectory_limitations": "2D wrist proxies do not capture finger articulation, contact, palm orientation or depth; repetition metadata is not scored",
+  "sources": [
+    {
+      "file": "ThaiSignLanguageBook_1.pdf",
+      "sha256": "252363c7943f0c4d8cfabd5cf96d768a23027fc7495ebc406de798e4c95e7adf"
+    },
+    {
+      "file": "ThaiSignLanguageBook_3.pdf",
+      "sha256": "1e12497392116fc646713f705250df8f0ed1e18cce7f598894c8b1499d984cfb"
+    }
+  ],
+  "concepts": [
+    {
+      "concept": "สวัสดี",
+      "variants": [
+        {
+          "id": "wai",
+          "ref_book_page": "เล่ม 1 หน้า 1",
+          "source": {
+            "file": "ThaiSignLanguageBook_1.pdf",
+            "printed_page": 1,
+            "pdf_page": 11,
+            "region": "upper"
+          },
+          "num_hands": 2,
+          "bimanual_type": "symmetric",
+          "primary_location": "chest_torso",
+          "movement_trajectory": "static",
+          "repetition": false,
+          "active_hand": "both",
+          "wrist_y_min": -0.5,
+          "wrist_y_max": 0.65,
+          "target_distance_lr_wrist_max": 0.5,
+          "checks": {},
+          "interpretation_note": "ภาพประนมมือ; ไม่มีลูกศรการเคลื่อนในภาพนี้ ไม่แปลว่าข้อมือต้องนิ่งตลอดคลิป"
+        },
+        {
+          "id": "salute",
+          "ref_book_page": "เล่ม 1 หน้า 1",
+          "source": {
+            "file": "ThaiSignLanguageBook_1.pdf",
+            "printed_page": 1,
+            "pdf_page": 11,
+            "region": "lower"
+          },
+          "num_hands": 1,
+          "bimanual_type": "single",
+          "primary_location": "head_face",
+          "movement_trajectory": "linear",
+          "repetition": false,
+          "active_hand": "either",
+          "wrist_y_min": -0.9,
+          "wrist_y_max": 0.3,
+          "target_distance_lr_wrist_max": null,
+          "checks": {},
+          "interpretation_note": "มือเดียวเคลื่อนจากใกล้หน้าผากออกไป; ไม่บังคับข้างตามรูป"
+        }
+      ]
+    },
+    {
+      "concept": "ขอบคุณ",
+      "variants": [
+        {
+          "id": "wai",
+          "ref_book_page": "เล่ม 1 หน้า 2",
+          "source": {
+            "file": "ThaiSignLanguageBook_1.pdf",
+            "printed_page": 2,
+            "pdf_page": 12,
+            "region": "upper"
+          },
+          "num_hands": 2,
+          "bimanual_type": "symmetric",
+          "primary_location": "chest_torso",
+          "movement_trajectory": "static",
+          "repetition": false,
+          "active_hand": "both",
+          "wrist_y_min": -0.5,
+          "wrist_y_max": 0.65,
+          "target_distance_lr_wrist_max": 0.5,
+          "checks": {},
+          "interpretation_note": "ภาพประนมมือ; ไม่มีลูกศรการเคลื่อนในภาพนี้ ไม่แปลว่าข้อมือต้องนิ่งตลอดคลิป"
+        },
+        {
+          "id": "outward",
+          "ref_book_page": "เล่ม 1 หน้า 2",
+          "source": {
+            "file": "ThaiSignLanguageBook_1.pdf",
+            "printed_page": 2,
+            "pdf_page": 12,
+            "region": "lower"
+          },
+          "num_hands": 1,
+          "bimanual_type": "single",
+          "primary_location": "chest_torso",
+          "movement_trajectory": "linear",
+          "repetition": false,
+          "active_hand": "either",
+          "wrist_y_min": -0.3,
+          "wrist_y_max": 0.9,
+          "target_distance_lr_wrist_max": null,
+          "checks": {},
+          "interpretation_note": "ภาพมือสองตำแหน่งแสดงลำดับการเคลื่อนของมือเดียว ไม่ใช่สองมือพร้อมกัน"
+        }
+      ]
+    },
+    {
+      "concept": "ขอโทษ",
+      "variants": [
+        {
+          "id": "wai",
+          "ref_book_page": "เล่ม 1 หน้า 3",
+          "source": {
+            "file": "ThaiSignLanguageBook_1.pdf",
+            "printed_page": 3,
+            "pdf_page": 13,
+            "region": "upper"
+          },
+          "num_hands": 2,
+          "bimanual_type": "symmetric",
+          "primary_location": "chest_torso",
+          "movement_trajectory": "static",
+          "repetition": false,
+          "active_hand": "both",
+          "wrist_y_min": -0.5,
+          "wrist_y_max": 0.65,
+          "target_distance_lr_wrist_max": 0.5,
+          "checks": {},
+          "interpretation_note": "ภาพประนมมือ; ไม่มีลูกศรการเคลื่อนในภาพนี้ ไม่แปลว่าข้อมือต้องนิ่งตลอดคลิป"
+        },
+        {
+          "id": "rub_circle",
+          "ref_book_page": "เล่ม 1 หน้า 3",
+          "source": {
+            "file": "ThaiSignLanguageBook_1.pdf",
+            "printed_page": 3,
+            "pdf_page": 13,
+            "region": "lower"
+          },
+          "num_hands": 2,
+          "bimanual_type": "asymmetric",
+          "primary_location": "chest_torso",
+          "movement_trajectory": "circling",
+          "repetition": true,
+          "active_hand": "dominant",
+          "wrist_y_min": -0.2,
+          "wrist_y_max": 1.1,
+          "target_distance_lr_wrist_max": 0.9,
+          "checks": {
+            "circling_min": 0.35,
+            "speed_balance_max": 0.65
+          },
+          "interpretation_note": "มือหนึ่งวนเหนือ/บนอีกมือ; ค่าพิกัดเป็น proxy ของภาพ ไม่ตรวจสัมผัสจริง"
+        }
+      ]
+    },
+    {
+      "concept": "ภาษามือ",
+      "variants": [
+        {
+          "id": "two_circles",
+          "ref_book_page": "เล่ม 1 หน้า 7",
+          "source": {
+            "file": "ThaiSignLanguageBook_1.pdf",
+            "printed_page": 7,
+            "pdf_page": 17,
+            "region": "upper"
+          },
+          "num_hands": 2,
+          "bimanual_type": "symmetric",
+          "primary_location": "chest_torso",
+          "movement_trajectory": "circling",
+          "repetition": true,
+          "active_hand": "both",
+          "wrist_y_min": -0.5,
+          "wrist_y_max": 1.1,
+          "target_distance_lr_wrist_max": null,
+          "checks": {
+            "circling_min": 0.35
+          },
+          "interpretation_note": "สองมือวนในพื้นที่หน้าลำตัวและมีลำดับ 1–3; ไม่บังคับว่ามือต้องชิดกันหรือมีความเร็วเท่ากันทุกเฟรม"
+        }
+      ]
+    },
+    {
+      "concept": "เพื่อน",
+      "variants": [
+        {
+          "id": "swap_contact",
+          "ref_book_page": "เล่ม 1 หน้า 84",
+          "source": {
+            "file": "ThaiSignLanguageBook_1.pdf",
+            "printed_page": 84,
+            "pdf_page": 95,
+            "region": "lower"
+          },
+          "num_hands": 2,
+          "bimanual_type": "asymmetric",
+          "primary_location": "chest_torso",
+          "movement_trajectory": "alternating",
+          "repetition": null,
+          "active_hand": "both",
+          "wrist_y_min": 0,
+          "wrist_y_max": 1.2,
+          "target_distance_lr_wrist_max": 0.95,
+          "checks": {
+            "alternating_min": 0.4
+          },
+          "interpretation_note": "ภาพ 1–2 สลับบทบาทนิ้วและมือ; ไม่ยืนยันว่าต้องทำซ้ำหลายรอบ การสลับ Y ข้อมือเป็นเพียง proxy ซึ่งอาจไม่เกิดชัด"
+        }
+      ]
+    },
+    {
+      "concept": "ข้าว",
+      "variants": [
+        {
+          "id": "finger_motion",
+          "ref_book_page": "เล่ม 3 หน้า 46",
+          "source": {
+            "file": "ThaiSignLanguageBook_3.pdf",
+            "printed_page": 46,
+            "pdf_page": 59,
+            "region": "upper"
+          },
+          "num_hands": 1,
+          "bimanual_type": "single",
+          "primary_location": "chest_torso",
+          "movement_trajectory": "linear",
+          "repetition": true,
+          "active_hand": "either",
+          "wrist_y_min": -0.1,
+          "wrist_y_max": 1.1,
+          "target_distance_lr_wrist_max": null,
+          "checks": {},
+          "interpretation_note": "ภาพเน้นนิ้วขยับพร้อมลูกศรซ้ำ ไม่ใช่ท่ากินที่ปาก; ไม่ใช้วิถีข้อมือตัดสินการเคลื่อนนิ้ว"
+        }
+      ]
+    }
+  ]
+}

@@ -85,13 +85,14 @@ class OnnxBackend:
 class TorchBackend:
     name = "torch"
 
-    def __init__(self, model_dir, device="cuda", encoder=None, tagger=None, tagger_arch="gru"):
+    def __init__(self, model_dir, device=None, encoder=None, tagger=None, tagger_arch="gru"):
         import torch
         from .encoder import load_encoder
         from .sequence import Tagger
         md = Path(model_dir)
         self.torch = torch
-        self.device = device if (device != "cuda" or torch.cuda.is_available()) else "cpu"
+        from .utils import device as resolve_device
+        self.device = resolve_device(device)
         self.model = encoder if encoder is not None else load_encoder(md, md / "encoder.pt", device=self.device)
         if tagger is None:
             tagger = Tagger(arch=tagger_arch).to(self.device)
@@ -144,6 +145,17 @@ class Bank:
         out = np.full((len(S), self.n_concepts), -2.0, np.float32)
         out[:, self.concepts_present] = top
         return out
+
+
+def variant_lut(concepts, variants):
+    """[C] concept index → the index it is read as. variants {"สวัสดี (อายุเท่ากันหรือน้อยกว่า)": "สวัสดี", …}: a style / school /
+    politeness variant of a word is that word (models/vocab_conversation.json "variants"; v8.1)."""
+    cidx = {c: i for i, c in enumerate(concepts)}
+    lut = np.arange(len(concepts))
+    for v, base in variants.items():
+        if v in cidx and base in cidx:
+            lut[cidx[v]] = cidx[base]
+    return lut
 
 
 def table_from_Z(Z, wins, bank: Bank, null_proto, topk=50):

@@ -1,0 +1,18 @@
+test 1 1 / 126
+test 1 11 / 126
+test 1 21 / 126
+test 1 31 / 126
+test 1 41 / 126
+test 1 51 / 126
+test 1 61 / 126
+test 1 71 / 126
+test 1 81 / 126
+test 1 91 / 126
+test 1 101 / 126
+test 1 111 / 126
+test 1 121 / 126
+                  mode  macro_WER   S  D  I  accepted  accepted_correct  count_error  accepted_precision_ordered
+           filters_all     0.4325 151  8 43       139               122       0.4048                      0.8777
+grammar_clean_selected     0.4193 142 14 41        78                65       0.4206                      0.8333
+           grammar_off     0.4630 156 13 46        78                65       0.4524                      0.8333
+      grammar_original     0.4319 149 14 39        78                65       0.4048                      0.8333

@@ -1,0 +1,117 @@
+{
+  "split": "tune",
+  "configs": {
+    "off": null,
+    "g0.03_n3_w0.5": {
+      "min_gap": 0.03,
+      "topn": 3,
+      "weight": 0.5
+    },
+    "g0.03_n3_w1.0": {
+      "min_gap": 0.03,
+      "topn": 3,
+      "weight": 1.0
+    },
+    "g0.03_n5_w0.5": {
+      "min_gap": 0.03,
+      "topn": 5,
+      "weight": 0.5
+    },
+    "g0.03_n5_w1.0": {
+      "min_gap": 0.03,
+      "topn": 5,
+      "weight": 1.0
+    },
+    "g0.06_n3_w0.5": {
+      "min_gap": 0.06,
+      "topn": 3,
+      "weight": 0.5
+    },
+    "g0.06_n3_w1.0": {
+      "min_gap": 0.06,
+      "topn": 3,
+      "weight": 1.0
+    },
+    "g0.06_n5_w0.5": {
+      "min_gap": 0.06,
+      "topn": 5,
+      "weight": 0.5
+    },
+    "g0.06_n5_w1.0": {
+      "min_gap": 0.06,
+      "topn": 5,
+      "weight": 1.0
+    },
+    "g0.10_n3_w0.5": {
+      "min_gap": 0.1,
+      "topn": 3,
+      "weight": 0.5
+    },
+    "g0.10_n3_w1.0": {
+      "min_gap": 0.1,
+      "topn": 3,
+      "weight": 1.0
+    },
+    "g0.10_n5_w0.5": {
+      "min_gap": 0.1,
+      "topn": 5,
+      "weight": 0.5
+    },
+    "g0.10_n5_w1.0": {
+      "min_gap": 0.1,
+      "topn": 5,
+      "weight": 1.0
+    }
+  },
+  "baseline": "g0.03_n3_w0.5",
+  "spot": {
+    "lens": [
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32,
+      36,
+      40,
+      44,
+      48
+    ],
+    "stride": 4,
+    "min_inside": 0.6,
+    "delta": 0.0,
+    "act_thr": 0.5,
+    "mu_null": 5.0,
+    "csls_alpha": 0.0,
+    "one_pass": true,
+    "exact_rescore": false,
+    "lam": 6.0,
+    "gap_cost": 0.5,
+    "min_len": 14,
+    "beta": 5.0,
+    "freq_gamma": 0.0,
+    "tempo": {
+      "ref_len": 16,
+      "min_factor": 1.2,
+      "max_factor": 2.5,
+      "min_segments": 2
+    },
+    "post": {
+      "min_frames": 10,
+      "null_gap_max": 0.1,
+      "p_sign_min": 0.65,
+      "repeat_penalty": true
+    },
+    "grammar_rerank_weight": 0.5
+  },
+  "grammar_source": "existing models/grammar.json; TSL51-derived; no claim of unseen-template generalisation",
+  "hashes": {
+    "models/grammar.json": "b985b5ca86273c45f3a0e341f8ae7a7801f33bd64562f57217fe31c39fa57069",
+    "models/roles.json": "7f8a7b1c04142fbedc0863d12586b64220a25a1a889c231aed9e0e9a72121324",
+    "modules/grammar.py": "1ed2a70339a6f10fa367a468581d2107fac12098d5a41e760d90921c7c0eabd1",
+    "models/spotting.json": "1f550529879a5be136f9da1448d8f1b7a6945aba8f2a02eaf115205cbc9a2bcf"
+  },
+  "test_opened": false,
+  "selection": "candidate requires lower mean WER than baseline, no increase in total S or D; manual motion review before test"
+}

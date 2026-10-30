@@ -1,0 +1,431 @@
+{
+  "created": "20261019_153342",
+  "scope": "development diagnostics; not held-out test",
+  "configs": {
+    "baseline": {
+      "lens": [
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48
+      ],
+      "stride": 4,
+      "min_inside": 0.6,
+      "delta": 0.0,
+      "act_thr": 0.5,
+      "mu_null": 5.0,
+      "csls_alpha": 0.0,
+      "one_pass": true,
+      "exact_rescore": false,
+      "lam": 6.0,
+      "gap_cost": 0.5,
+      "min_len": 14,
+      "beta": 5.0,
+      "freq_gamma": 0.0,
+      "tempo": {
+        "ref_len": 16,
+        "min_factor": 1.2,
+        "max_factor": 2.5,
+        "min_segments": 2
+      },
+      "post": {
+        "min_frames": 10,
+        "null_gap_max": 0.1,
+        "p_sign_min": 0.65,
+        "repeat_penalty": true
+      },
+      "grammar_rerank_weight": 0.5
+    },
+    "activity060": {
+      "lens": [
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48
+      ],
+      "stride": 4,
+      "min_inside": 0.6,
+      "delta": 0.0,
+      "act_thr": 0.6,
+      "mu_null": 5.0,
+      "csls_alpha": 0.0,
+      "one_pass": true,
+      "exact_rescore": false,
+      "lam": 6.0,
+      "gap_cost": 0.5,
+      "min_len": 14,
+      "beta": 5.0,
+      "freq_gamma": 0.0,
+      "tempo": {
+        "ref_len": 16,
+        "min_factor": 1.2,
+        "max_factor": 2.5,
+        "min_segments": 2
+      },
+      "post": {
+        "min_frames": 10,
+        "null_gap_max": 0.1,
+        "p_sign_min": 0.65,
+        "repeat_penalty": true
+      },
+      "grammar_rerank_weight": 0.5
+    },
+    "min_len16": {
+      "lens": [
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48
+      ],
+      "stride": 4,
+      "min_inside": 0.6,
+      "delta": 0.0,
+      "act_thr": 0.5,
+      "mu_null": 5.0,
+      "csls_alpha": 0.0,
+      "one_pass": true,
+      "exact_rescore": false,
+      "lam": 6.0,
+      "gap_cost": 0.5,
+      "min_len": 16,
+      "beta": 5.0,
+      "freq_gamma": 0.0,
+      "tempo": {
+        "ref_len": 16,
+        "min_factor": 1.2,
+        "max_factor": 2.5,
+        "min_segments": 2
+      },
+      "post": {
+        "min_frames": 10,
+        "null_gap_max": 0.1,
+        "p_sign_min": 0.65,
+        "repeat_penalty": true
+      },
+      "grammar_rerank_weight": 0.5
+    },
+    "exact_rescore": {
+      "lens": [
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48
+      ],
+      "stride": 4,
+      "min_inside": 0.6,
+      "delta": 0.0,
+      "act_thr": 0.5,
+      "mu_null": 5.0,
+      "csls_alpha": 0.0,
+      "one_pass": true,
+      "exact_rescore": true,
+      "lam": 6.0,
+      "gap_cost": 0.5,
+      "min_len": 14,
+      "beta": 5.0,
+      "freq_gamma": 0.0,
+      "tempo": {
+        "ref_len": 16,
+        "min_factor": 1.2,
+        "max_factor": 2.5,
+        "min_segments": 2
+      },
+      "post": {
+        "min_frames": 10,
+        "null_gap_max": 0.1,
+        "p_sign_min": 0.65,
+        "repeat_penalty": true
+      },
+      "grammar_rerank_weight": 0.5
+    },
+    "post_frames12": {
+      "lens": [
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48
+      ],
+      "stride": 4,
+      "min_inside": 0.6,
+      "delta": 0.0,
+      "act_thr": 0.5,
+      "mu_null": 5.0,
+      "csls_alpha": 0.0,
+      "one_pass": true,
+      "exact_rescore": false,
+      "lam": 6.0,
+      "gap_cost": 0.5,
+      "min_len": 14,
+      "beta": 5.0,
+      "freq_gamma": 0.0,
+      "tempo": {
+        "ref_len": 16,
+        "min_factor": 1.2,
+        "max_factor": 2.5,
+        "min_segments": 2
+      },
+      "post": {
+        "min_frames": 12,
+        "null_gap_max": 0.1,
+        "p_sign_min": 0.65,
+        "repeat_penalty": true
+      },
+      "grammar_rerank_weight": 0.5
+    },
+    "post_psign070": {
+      "lens": [
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48
+      ],
+      "stride": 4,
+      "min_inside": 0.6,
+      "delta": 0.0,
+      "act_thr": 0.5,
+      "mu_null": 5.0,
+      "csls_alpha": 0.0,
+      "one_pass": true,
+      "exact_rescore": false,
+      "lam": 6.0,
+      "gap_cost": 0.5,
+      "min_len": 14,
+      "beta": 5.0,
+      "freq_gamma": 0.0,
+      "tempo": {
+        "ref_len": 16,
+        "min_factor": 1.2,
+        "max_factor": 2.5,
+        "min_segments": 2
+      },
+      "post": {
+        "min_frames": 10,
+        "null_gap_max": 0.1,
+        "p_sign_min": 0.7,
+        "repeat_penalty": true
+      },
+      "grammar_rerank_weight": 0.5
+    },
+    "grammar070": {
+      "lens": [
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48
+      ],
+      "stride": 4,
+      "min_inside": 0.6,
+      "delta": 0.0,
+      "act_thr": 0.5,
+      "mu_null": 5.0,
+      "csls_alpha": 0.0,
+      "one_pass": true,
+      "exact_rescore": false,
+      "lam": 6.0,
+      "gap_cost": 0.5,
+      "min_len": 14,
+      "beta": 5.0,
+      "freq_gamma": 0.0,
+      "tempo": {
+        "ref_len": 16,
+        "min_factor": 1.2,
+        "max_factor": 2.5,
+        "min_segments": 2
+      },
+      "post": {
+        "min_frames": 10,
+        "null_gap_max": 0.1,
+        "p_sign_min": 0.65,
+        "repeat_penalty": true
+      },
+      "grammar_rerank_weight": 0.7
+    },
+    "stride2": {
+      "lens": [
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48
+      ],
+      "stride": 2,
+      "min_inside": 0.6,
+      "delta": 0.0,
+      "act_thr": 0.5,
+      "mu_null": 5.0,
+      "csls_alpha": 0.0,
+      "one_pass": true,
+      "exact_rescore": false,
+      "lam": 6.0,
+      "gap_cost": 0.5,
+      "min_len": 14,
+      "beta": 5.0,
+      "freq_gamma": 0.0,
+      "tempo": {
+        "ref_len": 16,
+        "min_factor": 1.2,
+        "max_factor": 2.5,
+        "min_segments": 2
+      },
+      "post": {
+        "min_frames": 10,
+        "null_gap_max": 0.1,
+        "p_sign_min": 0.65,
+        "repeat_penalty": true
+      },
+      "grammar_rerank_weight": 0.5
+    },
+    "csls015": {
+      "lens": [
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48
+      ],
+      "stride": 4,
+      "min_inside": 0.6,
+      "delta": 0.0,
+      "act_thr": 0.5,
+      "mu_null": 5.0,
+      "csls_alpha": 0.15,
+      "one_pass": true,
+      "exact_rescore": false,
+      "lam": 6.0,
+      "gap_cost": 0.5,
+      "min_len": 14,
+      "beta": 5.0,
+      "freq_gamma": 0.0,
+      "tempo": {
+        "ref_len": 16,
+        "min_factor": 1.2,
+        "max_factor": 2.5,
+        "min_segments": 2
+      },
+      "post": {
+        "min_frames": 10,
+        "null_gap_max": 0.1,
+        "p_sign_min": 0.65,
+        "repeat_penalty": true
+      },
+      "grammar_rerank_weight": 0.5
+    },
+    "combined_without_csls": {
+      "lens": [
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48
+      ],
+      "stride": 4,
+      "min_inside": 0.6,
+      "delta": 0.0,
+      "act_thr": 0.6,
+      "mu_null": 5.0,
+      "csls_alpha": 0.0,
+      "one_pass": true,
+      "exact_rescore": true,
+      "lam": 6.0,
+      "gap_cost": 0.5,
+      "min_len": 16,
+      "beta": 5.0,
+      "freq_gamma": 0.0,
+      "tempo": {
+        "ref_len": 16,
+        "min_factor": 1.2,
+        "max_factor": 2.5,
+        "min_segments": 2
+      },
+      "post": {
+        "min_frames": 12,
+        "null_gap_max": 0.1,
+        "p_sign_min": 0.7,
+        "repeat_penalty": true
+      },
+      "grammar_rerank_weight": 0.7
+    }
+  },
+  "blocked": {
+    "csls015": "missing hub; do not silently run alpha with no effect"
+  },
+  "symbolic_weight": 0,
+  "alphabet": "off",
+  "use_llm": false,
+  "hashes": {
+    "models/spotting.json": "1f550529879a5be136f9da1448d8f1b7a6945aba8f2a02eaf115205cbc9a2bcf",
+    "models/bank.npz": "a5ff3ce9ce7f63de3eef9ceb786124933a5ff982f496efddaec50680d2230047",
+    "models/onnx/tagger.onnx": "11d4bd8e7a24ddb056a30da8aeb6e09df846a30301d8fa7cfda27a52a4cd9a89",
+    "modules/pipeline.py": "bd834ae044e1f137575bdb60e1218a6e6dd2e8fff821dcfadb94489487cc1c42",
+    "modules/decode.py": "5eb88b0ef5d91e14254b3118650b6d97cd36cf239b41310ed42276ac1818e60e"
+  },
+  "mediapipe": "1.1.0",
+  "python": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/venv-sign2say/bin/python"
+}

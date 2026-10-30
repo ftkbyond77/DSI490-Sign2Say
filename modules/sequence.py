@@ -70,10 +70,12 @@ class Synth:
     """Continuous sentences from isolated clips. pools: dict signer → list of clip dict(row, f0, f1, concept); null_rows: list."""
 
     def __init__(self, store, pools, null_rows, rest_rows, seed=0, cross_dataset=0.35, max_len=900, speed=(0.9, 1.7), fluent=0.0,
-                 fluent_trim=(0.15, 0.3), fluent_overlap=(0, 4)):
+                 fluent_trim=(0.15, 0.3), fluent_overlap=(0, 4), edge=0.0, fluent_speed=None):
         self.store, self.pools, self.null_rows, self.rest_rows = store, pools, null_rows, rest_rows
         self.fluent = fluent        # pitty: share of sentences signed fluently (sign cores, no pauses, curved joins — see _fluent_core)
         self.fluent_trim, self.fluent_overlap = fluent_trim, fluent_overlap
+        self.edge = edge                    # pitty: chance (per sentence end) the hands leave / enter the bottom of the frame
+        self.fluent_speed = fluent_speed    # pitty: per-sign speed range for fluent sentences (None = `speed`) — slow fluent signing too
         self.speed = speed
         self.signers = [s for s, v in pools.items() if len(v) >= 6]
         self.all_clips = [c for v in pools.values() for c in v]
@@ -131,7 +133,7 @@ class Synth:
             kp, sc = self._clip(c)
             if fl:
                 kp, sc = _fluent_core(kp, sc, rng.uniform(*self.fluent_trim))
-            kp, sc = resample(kp, sc, rng.uniform(*self.speed))
+            kp, sc = resample(kp, sc, rng.uniform(*(self.fluent_speed if fl and self.fluent_speed else self.speed)))
             if KP and fl:
                 bk, bs, o = _fluent_join(KP[-1], SC[-1], kp, sc, rng, overlap=self.fluent_overlap)
                 if o:                                   # cross-fade: the last o frames of A and first o of B become one blend
@@ -157,6 +159,14 @@ class Synth:
             put(*_bridge(KP[-1][-1], r[0][0], SC[-1][-1], r[1][0], 3), 0); put(*r, 0)
         if rng.rand() < 0.1:
             n = rng.randint(10, 40); put(np.zeros((n, 133, 2), np.float32), np.zeros((n, 133), np.float32), 0)
+        if self.edge > 0:                   # pitty: hands leaving (end) / entering (start) the frame — webcam clips of a seated signer
+            live = [i for i, s_ in enumerate(SC) if s_.sum() > 0]
+            if live and rng.rand() < self.edge:
+                ek, es = _edge_frames(KP[live[-1]][-1], SC[live[-1]][-1], rng)
+                KP.insert(live[-1] + 1, ek); SC.insert(live[-1] + 1, es); Y.insert(live[-1] + 1, np.zeros(len(ek), np.int64))
+            if live and rng.rand() < self.edge:
+                ek, es = _edge_frames(KP[live[0]][0], SC[live[0]][0], rng)
+                KP.insert(live[0], ek[::-1].copy()); SC.insert(live[0], es[::-1].copy()); Y.insert(live[0], np.zeros(len(ek), np.int64))
         kp = np.concatenate(KP)[:self.max_len]; sc = np.concatenate(SC)[:self.max_len]; y = np.concatenate(Y)[:self.max_len]
         ang = np.deg2rad(rng.uniform(-6, 6)); s = rng.uniform(0.85, 1.15)
         R = np.array([[np.cos(ang), -np.sin(ang)], [np.sin(ang), np.cos(ang)]]) * s
@@ -164,6 +174,31 @@ class Synth:
         kp[live] = ((kp[live] - [0.75, 0.45]) @ R.T + [0.75, 0.45] + rng.uniform(-0.05, 0.05, 2)).astype(np.float32)
         kp = kp + rng.normal(0, 0.002, kp.shape).astype(np.float32)
         return dict(kp=kp, sc=sc, y=y, words=words)
+
+
+def _edge_frames(k, s, rng):
+    """pitty: a seated webcam signer's hands dropping out of the bottom of the frame (read in reverse: coming in). The hands and
+    wrists slide down 0.4–0.7 (retargeted units, shoulder width 0.22) over 3–7 frames while their scores fade, then 5–24 frames
+    with no hand points; the body wrist either disappears or freezes at an invalid spot above the shoulders — what MediaPipe gave
+    on our own clips (hand detected 0 %, wrist "height +1.4" with speed spikes of 10–20 shoulder widths/s)."""
+    n_move, n_gone = rng.randint(3, 8), rng.randint(5, 25)
+    hands = list(range(91, 133)); dy = rng.uniform(0.4, 0.7)
+    K, S = [], []
+    for t in range(1, n_move + 1):
+        f = t / n_move; kk = k.copy(); ss = s.copy()
+        kk[hands + [9, 10], 1] += dy * f; kk[[7, 8], 1] += 0.5 * dy * f
+        ss[hands] = s[hands] * (1 - f); K.append(kk); S.append(ss)
+    stuck = rng.rand() < 0.5
+    pos = np.array([k[5, 0] + rng.uniform(-0.1, 0.1), rng.uniform(0.12, 0.35)], np.float32)
+    for _ in range(n_gone):
+        kk = K[-1].copy(); ss = S[-1].copy()
+        kk[hands] = 0.0; ss[hands] = 0.0
+        if stuck:
+            kk[[9, 10]] = pos; ss[[9, 10]] = 0.6
+        else:
+            ss[[9, 10]] = 0.0
+        K.append(kk); S.append(ss)
+    return np.stack(K).astype(np.float32), np.stack(S).astype(np.float32)
 
 
 def _bridge(k0, k1, s0, s1, n):
@@ -332,9 +367,12 @@ def stage_sequence(a, paths_, load_model):
     ftrim = tuple(float(x) for x in str(getattr(a, "fluent_trim", "0.15,0.3") or "0.15,0.3").split(","))
     fover = tuple(int(x) for x in str(getattr(a, "fluent_overlap", "0,4") or "0,4").split(","))
     fkw = dict(fluent=fluent, fluent_trim=ftrim, fluent_overlap=fover)
-    synth_tr = Synth(store, train_pools, null_rows, rest_rows, seed=1, speed=(0.8, 2.4), **fkw)
+    edge = float(getattr(a, "edge", 0.0) or 0.0)            # pitty: hands leave / enter the frame (train synth only)
+    fsp = str(getattr(a, "fluent_speed", "") or "")
+    fspeed = tuple(float(x) for x in fsp.split(",")) if fsp else None
+    synth_tr = Synth(store, train_pools, null_rows, rest_rows, seed=1, speed=(0.8, 2.4), edge=edge, fluent_speed=fspeed, **fkw)
     synth_ho = Synth(store, heldout_pools, null_rows, rest_rows, seed=2, cross_dataset=0.0, speed=(0.8, 2.4), **fkw)
-    log.info("synthetic sentences: fluent share %.2f · trim %s · cross-fade %s", fluent, ftrim, fover)
+    log.info("synthetic sentences: fluent share %.2f · trim %s · cross-fade %s · edge %.2f · fluent speed %s", fluent, ftrim, fover, edge, fspeed)
     syn_train, distill = [], []
 
     def distill_windows(T, y=None, n=24):
@@ -464,6 +502,11 @@ def stage_sequence(a, paths_, load_model):
         return syn_train + items * 4 + [f for s in items for f in fast[id(s)]] * 2
     tagger, info_final = train_tagger(set_for(tune), "final")
     torch.save(tagger.state_dict(), out / "tagger.pt")
+    if getattr(a, "stop_after_tagger", False):              # pitty: only the tagger is needed (evaluated locally afterwards)
+        write_json(out / "tagger_info.json", dict(best_sel=info_final["best_sel"], hist=info_final["hist"], fluent=fluent, edge=edge,
+                                                  fluent_speed=fspeed, minutes=round((time.time() - t0) / 60, 1)))
+        log.info("stop_after_tagger: saved tagger.pt (%.1f min)", (time.time() - t0) / 60)
+        return
     folds = {f: train_tagger(set_for([s for s in tune if fold_of[tuple(s["glosses"])] != f]), f"fold{f}")[0] for f in (0, 1)}
 
     def prob_of(tg, x):

@@ -533,7 +533,7 @@ def cmd_label(a):
     person = dict(zip(sg.channel_id, sg.signer))
     lookalike = set(sg[sg.datatest_lookalike.astype(bool)].channel_id)
     vids = pd.read_csv(OUT / "videos.csv")
-    enc = load_encoder(ROOT / "models", ROOT / "models" / "encoder.pt", device="cuda" if torch.cuda.is_available() else "cpu")
+    enc = load_encoder(ROOT / "models", ROOT / "models" / "encoder.pt", device=None)
     parts, keys = [], []
     v4_ids = {p.stem[3:] for p in (DATA / "raw_data" / "word_level" / "youtube_word").glob("yt_*.mp4")}
     seen_hash, fp_rows = {}, []
@@ -610,7 +610,7 @@ def cmd_label(a):
     pd.DataFrame(dup_log, columns=["clip", "match", "look", "motion"]).to_csv(OUT / "qc" / "duplicates.csv", index=False)
     log.info("duplicates: %d by content (re-uploads), %s by id / file hash", len(dup_log),
              int(M.reason.fillna("").str.startswith("duplicate:same").sum()))
-    Z = embed_parts(enc, parts, bs=64, device="cuda" if torch.cuda.is_available() else "cpu") if parts else np.zeros((0, 768))
+    Z = embed_parts(enc, parts, bs=64, device=None) if parts else np.zeros((0, 768))
     M["emb_i"] = -1
     M.loc[keys, "emb_i"] = np.arange(len(keys))
     # consistency: same-word clips from OTHER channels vs clips of other words

@@ -1,0 +1,1834 @@
+[
+  {
+    "clip": "clip1",
+    "baseline": {
+      "clip": "clip1",
+      "variant": "baseline",
+      "threshold": 0.8,
+      "sentence": "",
+      "mirrored": true,
+      "seconds": 0.6465871334075928,
+      "segments": [
+        {
+          "t0": 0.96,
+          "t1": 1.76,
+          "word": "ข้าว",
+          "p": 0.3777352025742742,
+          "status": "uncertain",
+          "top5": [
+            "ข้าว",
+            "เกิด",
+            "ฉัน",
+            "ไป",
+            "ภาษามือ"
+          ]
+        },
+        {
+          "t0": 1.76,
+          "t1": 3.68,
+          "word": "ภาษามือ",
+          "p": 0.4876534996930793,
+          "status": "uncertain",
+          "top5": [
+            "ภาษามือ",
+            "เพื่อน",
+            "เที่ยว",
+            "ที่ไหน",
+            "ข้าว"
+          ]
+        }
+      ],
+      "coverage": {
+        "lh": 0.7872340425531915,
+        "rh": 0.48936170212765956
+      }
+    },
+    "quality_gate": {
+      "block_flip": true,
+      "observed_rate": [
+        0.7872340425531915,
+        0.48936170212765956
+      ],
+      "jump_rate": [
+        0.014492753623188406,
+        0.046511627906976744
+      ]
+    },
+    "gated_segments": [
+      {
+        "t0": 0.8,
+        "t1": 1.6,
+        "top5": [
+          "น้อง",
+          "ทำไม",
+          "ข้าว",
+          "สวัสดี",
+          "ขอ"
+        ],
+        "nearest": "น้อง",
+        "original_p": 0.29216315245862967
+      },
+      {
+        "t0": 1.6,
+        "t1": 2.24,
+        "top5": [
+          "เที่ยว",
+          "ข้าว",
+          "ฉัน",
+          "กิน",
+          "ขอโทษ"
+        ],
+        "nearest": "เที่ยว",
+        "original_p": 0.23206367913500842
+      },
+      {
+        "t0": 2.24,
+        "t1": 3.68,
+        "top5": [
+          "ภาษามือ",
+          "ข้าว",
+          "เพื่อน",
+          "เที่ยว",
+          "แต่งงาน"
+        ],
+        "nearest": "ภาษามือ",
+        "original_p": 0.5329850265815763
+      }
+    ],
+    "adjacent_proposals": [
+      {
+        "pair": [
+          0,
+          1
+        ],
+        "merge": false,
+        "reasons": [
+          "hand_disappears",
+          "missing_hand",
+          "motion_discontinuous"
+        ],
+        "overlap": [
+          "ข้าว"
+        ],
+        "hands": [
+          {
+            "hand": 0,
+            "before_speed": 0.0,
+            "after_speed": 2.399138389297991,
+            "max_step": 0.09596553557191972,
+            "continuous": false
+          },
+          {
+            "hand": 1,
+            "before_speed": 0.0,
+            "after_speed": 0.0,
+            "max_step": null,
+            "continuous": false
+          }
+        ],
+        "config": {
+          "max_gap": 0.2,
+          "max_duration": 3.2,
+          "radius": 0.16,
+          "max_jump": 0.4,
+          "min_speed": 0.15,
+          "min_observed": 0.75,
+          "min_speed_ratio": 0.25,
+          "max_speed_ratio": 4.0
+        }
+      },
+      {
+        "pair": [
+          1,
+          2
+        ],
+        "merge": true,
+        "reasons": [],
+        "overlap": [
+          "ข้าว"
+        ],
+        "hands": [
+          {
+            "hand": 0,
+            "before_speed": 1.124531764267707,
+            "after_speed": 1.8407346244379283,
+            "max_step": 0.1488125581648064,
+            "continuous": true
+          },
+          {
+            "hand": 1,
+            "before_speed": 1.7539941662750422,
+            "after_speed": 1.536895159158374,
+            "max_step": 0.11501836174799092,
+            "continuous": true
+          }
+        ],
+        "config": {
+          "max_gap": 0.2,
+          "max_duration": 3.2,
+          "radius": 0.16,
+          "max_jump": 0.4,
+          "min_speed": 0.15,
+          "min_observed": 0.75,
+          "min_speed_ratio": 0.25,
+          "max_speed_ratio": 4.0
+        }
+      }
+    ],
+    "merge_decisions": [
+      {
+        "merge": false,
+        "reasons": [
+          "hand_disappears",
+          "missing_hand",
+          "motion_discontinuous"
+        ],
+        "overlap": [
+          "ข้าว"
+        ],
+        "hands": [
+          {
+            "hand": 0,
+            "before_speed": 0.0,
+            "after_speed": 2.399138389297991,
+            "max_step": 0.09596553557191972,
+            "continuous": false
+          },
+          {
+            "hand": 1,
+            "before_speed": 0.0,
+            "after_speed": 0.0,
+            "max_step": null,
+            "continuous": false
+          }
+        ],
+        "config": {
+          "max_gap": 0.2,
+          "max_duration": 3.2,
+          "radius": 0.16,
+          "max_jump": 0.4,
+          "min_speed": 0.15,
+          "min_observed": 0.75,
+          "min_speed_ratio": 0.25,
+          "max_speed_ratio": 4.0
+        }
+      },
+      {
+        "merge": true,
+        "reasons": [],
+        "overlap": [
+          "ข้าว"
+        ],
+        "hands": [
+          {
+            "hand": 0,
+            "before_speed": 1.124531764267707,
+            "after_speed": 1.8407346244379283,
+            "max_step": 0.1488125581648064,
+            "continuous": true
+          },
+          {
+            "hand": 1,
+            "before_speed": 1.7539941662750422,
+            "after_speed": 1.536895159158374,
+            "max_step": 0.11501836174799092,
+            "continuous": true
+          }
+        ],
+        "config": {
+          "max_gap": 0.2,
+          "max_duration": 3.2,
+          "radius": 0.16,
+          "max_jump": 0.4,
+          "min_speed": 0.15,
+          "min_observed": 0.75,
+          "min_speed_ratio": 0.25,
+          "max_speed_ratio": 4.0
+        }
+      }
+    ],
+    "without_merge": [
+      {
+        "segment": {
+          "t0": 0.8,
+          "t1": 1.6,
+          "top5": [
+            "น้อง",
+            "ทำไม",
+            "ข้าว",
+            "สวัสดี",
+            "ขอ"
+          ],
+          "nearest": "น้อง",
+          "original_p": 0.29216315245862967
+        },
+        "profile": {
+          "is_two_handed": null,
+          "gross_location": 0.10730692651152376,
+          "face_location": 0.831492159352631,
+          "motion_energy": 3.5634951298013773,
+          "symmetry": null,
+          "observed_rate": [
+            0.8,
+            0.0
+          ]
+        },
+        "temporal_top5": [
+          {
+            "word": "น้อง",
+            "support": 0.4835607012112935,
+            "cosine": 0.5042808055877686
+          },
+          {
+            "word": "ทำไม",
+            "support": 0.24389960368474325,
+            "cosine": 0.3753829002380371
+          },
+          {
+            "word": "ข้าว",
+            "support": 0.23889036973317465,
+            "cosine": 0.3768154978752136
+          },
+          {
+            "word": "สวัสดี",
+            "support": 0.23219457268714905,
+            "cosine": 0.367618590593338
+          },
+          {
+            "word": "ขอ",
+            "support": 0.14627410968144736,
+            "cosine": 0.43882232904434204
+          }
+        ],
+        "reranked_top5": [
+          {
+            "word": "น้อง",
+            "support": 0.4835607012112935,
+            "cosine": 0.5042808055877686,
+            "rule_score": -0.7559070128305413,
+            "bonus": -0.07559070128305413,
+            "final_score": 0.4079699999282394,
+            "rule_parts": {
+              "gross_location": -0.8927414425009303,
+              "face_location": -0.5130767822167772,
+              "motion_energy": -0.8619028137739162
+            },
+            "p_correct": null
+          },
+          {
+            "word": "สวัสดี",
+            "support": 0.23219457268714905,
+            "cosine": 0.367618590593338,
+            "rule_score": 0.4395401349296737,
+            "bonus": 0.043954013492967375,
+            "final_score": 0.2761485861801164,
+            "rule_parts": {
+              "gross_location": 0.40298035502035845,
+              "face_location": 0.8457854264125496,
+              "motion_energy": 0.06985462335611303
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ทำไม",
+            "support": 0.24389960368474325,
+            "cosine": 0.3753829002380371,
+            "rule_score": 0.2467258587021687,
+            "bonus": 0.02467258587021687,
+            "final_score": 0.26857218955496015,
+            "rule_parts": {
+              "gross_location": 0.13483915615638342,
+              "face_location": 0.6000253191053404,
+              "motion_energy": 0.005313100844782315
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ข้าว",
+            "support": 0.23889036973317465,
+            "cosine": 0.3768154978752136,
+            "rule_score": -0.07467687088258086,
+            "bonus": -0.007467687088258086,
+            "final_score": 0.23142268264491656,
+            "rule_parts": {
+              "gross_location": 0.26833023217131113,
+              "face_location": 0.5076391551809463,
+              "motion_energy": -1.0
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ขอ",
+            "support": 0.14627410968144736,
+            "cosine": 0.43882232904434204,
+            "rule_score": -0.32120713819689,
+            "bonus": -0.032120713819689,
+            "final_score": 0.11415339586175835,
+            "rule_parts": {
+              "gross_location": -0.22179183372837574,
+              "face_location": 0.25817041913770566,
+              "motion_energy": -1.0
+            },
+            "p_correct": null
+          }
+        ]
+      },
+      {
+        "segment": {
+          "t0": 1.6,
+          "t1": 2.24,
+          "top5": [
+            "เที่ยว",
+            "ข้าว",
+            "ฉัน",
+            "กิน",
+            "ขอโทษ"
+          ],
+          "nearest": "เที่ยว",
+          "original_p": 0.23206367913500842
+        },
+        "profile": {
+          "is_two_handed": 0.9519477114450534,
+          "gross_location": 0.3394609957911643,
+          "face_location": 1.0282224987565511,
+          "motion_energy": 1.2040151087400754,
+          "symmetry": -0.5604635794237585,
+          "observed_rate": [
+            0.875,
+            0.8125
+          ]
+        },
+        "temporal_top5": [
+          {
+            "word": "เที่ยว",
+            "support": 0.5207628011703491,
+            "cosine": 0.5207628011703491
+          },
+          {
+            "word": "ข้าว",
+            "support": 0.48142969608306885,
+            "cosine": 0.48142969608306885
+          },
+          {
+            "word": "ฉัน",
+            "support": 0.4708295464515686,
+            "cosine": 0.4708295464515686
+          },
+          {
+            "word": "กิน",
+            "support": 0.4454241991043091,
+            "cosine": 0.4454241991043091
+          },
+          {
+            "word": "ขอโทษ",
+            "support": 0.42978209257125854,
+            "cosine": 0.42978209257125854
+          }
+        ],
+        "reranked_top5": [
+          {
+            "word": "ข้าว",
+            "support": 0.48142969608306885,
+            "cosine": 0.48142969608306885,
+            "rule_score": 0.26807380363816813,
+            "bonus": 0.026807380363816816,
+            "final_score": 0.5082370764468856,
+            "rule_parts": {
+              "is_two_handed": -1.0,
+              "gross_location": 0.7763435436786394,
+              "face_location": 0.9155217394071333,
+              "motion_energy": 0.982247518382209,
+              "symmetry": -0.33374378327714105
+            },
+            "p_correct": null
+          },
+          {
+            "word": "เที่ยว",
+            "support": 0.5207628011703491,
+            "cosine": 0.5207628011703491,
+            "rule_score": -0.12637942512131572,
+            "bonus": -0.012637942512131572,
+            "final_score": 0.5081248586582175,
+            "rule_parts": {
+              "is_two_handed": -1.0,
+              "gross_location": 0.6135220802116246,
+              "face_location": 0.3096926720653119,
+              "motion_energy": -0.14384128781994598,
+              "symmetry": -0.41127059006356914
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ฉัน",
+            "support": 0.4708295464515686,
+            "cosine": 0.4708295464515686,
+            "rule_score": 0.05754566451918963,
+            "bonus": 0.005754566451918963,
+            "final_score": 0.47658411290348757,
+            "rule_parts": {
+              "is_two_handed": -1.0,
+              "gross_location": 0.11466663756602513,
+              "face_location": 0.45568108843780897,
+              "motion_energy": 0.8408691603815917,
+              "symmetry": -0.12348856378947759
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ขอโทษ",
+            "support": 0.42978209257125854,
+            "cosine": 0.42978209257125854,
+            "rule_score": 0.35113571612343775,
+            "bonus": 0.035113571612343776,
+            "final_score": 0.46489566418360234,
+            "rule_parts": {
+              "is_two_handed": 0.39833548920218753,
+              "gross_location": 0.6811992402111735,
+              "face_location": 0.7571830294995063,
+              "motion_energy": 0.918960821704321,
+              "symmetry": -1.0
+            },
+            "p_correct": null
+          },
+          {
+            "word": "กิน",
+            "support": 0.4454241991043091,
+            "cosine": 0.4454241991043091,
+            "rule_score": -0.07837925145694302,
+            "bonus": -0.007837925145694303,
+            "final_score": 0.43758627395861477,
+            "rule_parts": {
+              "is_two_handed": -1.0,
+              "gross_location": -0.009791874014012603,
+              "face_location": 0.17318887924328508,
+              "motion_energy": 0.4586421462050775,
+              "symmetry": -0.013935408719065068
+            },
+            "p_correct": null
+          }
+        ]
+      },
+      {
+        "segment": {
+          "t0": 2.24,
+          "t1": 3.68,
+          "top5": [
+            "ภาษามือ",
+            "ข้าว",
+            "เพื่อน",
+            "เที่ยว",
+            "แต่งงาน"
+          ],
+          "nearest": "ภาษามือ",
+          "original_p": 0.5329850265815763
+        },
+        "profile": {
+          "is_two_handed": 0.9017514460002836,
+          "gross_location": 0.23712053705232244,
+          "face_location": 0.9089666442665121,
+          "motion_energy": 1.6551461977524546,
+          "symmetry": -0.4277001307890567,
+          "observed_rate": [
+            0.8888888888888888,
+            0.8611111111111112
+          ]
+        },
+        "temporal_top5": [
+          {
+            "word": "ภาษามือ",
+            "support": 0.525686210110074,
+            "cosine": 0.5930308103561401
+          },
+          {
+            "word": "ข้าว",
+            "support": 0.2988396102473849,
+            "cosine": 0.4086099863052368
+          },
+          {
+            "word": "เพื่อน",
+            "support": 0.22963584888549077,
+            "cosine": 0.360185444355011
+          },
+          {
+            "word": "เที่ยว",
+            "support": 0.21250686049461365,
+            "cosine": 0.42848464846611023
+          },
+          {
+            "word": "แต่งงาน",
+            "support": 0.17495707812763395,
+            "cosine": 0.3343333303928375
+          }
+        ],
+        "reranked_top5": [
+          {
+            "word": "ภาษามือ",
+            "support": 0.525686210110074,
+            "cosine": 0.5930308103561401,
+            "rule_score": 0.4528813726047233,
+            "bonus": 0.04528813726047233,
+            "final_score": 0.5709743473705463,
+            "rule_parts": {
+              "is_two_handed": 0.7411852290485883,
+              "gross_location": 0.3257953455706746,
+              "face_location": 0.7202070100042293,
+              "motion_energy": 0.8056143714491699,
+              "symmetry": -0.3283950930490458
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ข้าว",
+            "support": 0.2988396102473849,
+            "cosine": 0.4086099863052368,
+            "rule_score": 0.15708998661224377,
+            "bonus": 0.01570899866122438,
+            "final_score": 0.3145486089086093,
+            "rule_parts": {
+              "is_two_handed": -1.0,
+              "gross_location": 0.5523960785042368,
+              "face_location": 0.6682676236419572,
+              "motion_energy": 0.5666213926054118,
+              "symmetry": -0.0018351616903868884
+            },
+            "p_correct": null
+          },
+          {
+            "word": "เพื่อน",
+            "support": 0.22963584888549077,
+            "cosine": 0.360185444355011,
+            "rule_score": 0.38791153020635216,
+            "bonus": 0.03879115302063522,
+            "final_score": 0.268427001906126,
+            "rule_parts": {
+              "is_two_handed": 0.7047108619556925,
+              "gross_location": 0.6691569396398179,
+              "face_location": 0.962563811639667,
+              "motion_energy": 0.08269741603670167,
+              "symmetry": -0.4795713782401181
+            },
+            "p_correct": null
+          },
+          {
+            "word": "เที่ยว",
+            "support": 0.21250686049461365,
+            "cosine": 0.42848464846611023,
+            "rule_score": 0.10968837948826507,
+            "bonus": 0.010968837948826507,
+            "final_score": 0.22347569844344015,
+            "rule_parts": {
+              "is_two_handed": -1.0,
+              "gross_location": 0.7999282305370106,
+              "face_location": 0.5205858341886963,
+              "motion_energy": 0.3072898011924332,
+              "symmetry": -0.07936196847681476
+            },
+            "p_correct": null
+          },
+          {
+            "word": "แต่งงาน",
+            "support": 0.17495707812763395,
+            "cosine": 0.3343333303928375,
+            "rule_score": -0.08203890282846796,
+            "bonus": -0.008203890282846796,
+            "final_score": 0.16675318784478715,
+            "rule_parts": {
+              "is_two_handed": -0.014078490611179717,
+              "gross_location": 0.01319388225017859,
+              "face_location": 0.3054568892257028,
+              "motion_energy": 0.28523320499295857,
+              "symmetry": -1.0
+            },
+            "p_correct": null
+          }
+        ]
+      }
+    ],
+    "combined": [
+      {
+        "segment": {
+          "t0": 0.8,
+          "t1": 1.6,
+          "top5": [
+            "น้อง",
+            "ทำไม",
+            "ข้าว",
+            "สวัสดี",
+            "ขอ"
+          ],
+          "nearest": "น้อง",
+          "original_p": 0.29216315245862967
+        },
+        "profile": {
+          "is_two_handed": null,
+          "gross_location": 0.10730692651152376,
+          "face_location": 0.831492159352631,
+          "motion_energy": 3.5634951298013773,
+          "symmetry": null,
+          "observed_rate": [
+            0.8,
+            0.0
+          ]
+        },
+        "temporal_top5": [
+          {
+            "word": "น้อง",
+            "support": 0.4835607012112935,
+            "cosine": 0.5042808055877686
+          },
+          {
+            "word": "ทำไม",
+            "support": 0.24389960368474325,
+            "cosine": 0.3753829002380371
+          },
+          {
+            "word": "ข้าว",
+            "support": 0.23889036973317465,
+            "cosine": 0.3768154978752136
+          },
+          {
+            "word": "สวัสดี",
+            "support": 0.23219457268714905,
+            "cosine": 0.367618590593338
+          },
+          {
+            "word": "ขอ",
+            "support": 0.14627410968144736,
+            "cosine": 0.43882232904434204
+          }
+        ],
+        "reranked_top5": [
+          {
+            "word": "น้อง",
+            "support": 0.4835607012112935,
+            "cosine": 0.5042808055877686,
+            "rule_score": -0.7559070128305413,
+            "bonus": -0.07559070128305413,
+            "final_score": 0.4079699999282394,
+            "rule_parts": {
+              "gross_location": -0.8927414425009303,
+              "face_location": -0.5130767822167772,
+              "motion_energy": -0.8619028137739162
+            },
+            "p_correct": null
+          },
+          {
+            "word": "สวัสดี",
+            "support": 0.23219457268714905,
+            "cosine": 0.367618590593338,
+            "rule_score": 0.4395401349296737,
+            "bonus": 0.043954013492967375,
+            "final_score": 0.2761485861801164,
+            "rule_parts": {
+              "gross_location": 0.40298035502035845,
+              "face_location": 0.8457854264125496,
+              "motion_energy": 0.06985462335611303
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ทำไม",
+            "support": 0.24389960368474325,
+            "cosine": 0.3753829002380371,
+            "rule_score": 0.2467258587021687,
+            "bonus": 0.02467258587021687,
+            "final_score": 0.26857218955496015,
+            "rule_parts": {
+              "gross_location": 0.13483915615638342,
+              "face_location": 0.6000253191053404,
+              "motion_energy": 0.005313100844782315
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ข้าว",
+            "support": 0.23889036973317465,
+            "cosine": 0.3768154978752136,
+            "rule_score": -0.07467687088258086,
+            "bonus": -0.007467687088258086,
+            "final_score": 0.23142268264491656,
+            "rule_parts": {
+              "gross_location": 0.26833023217131113,
+              "face_location": 0.5076391551809463,
+              "motion_energy": -1.0
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ขอ",
+            "support": 0.14627410968144736,
+            "cosine": 0.43882232904434204,
+            "rule_score": -0.32120713819689,
+            "bonus": -0.032120713819689,
+            "final_score": 0.11415339586175835,
+            "rule_parts": {
+              "gross_location": -0.22179183372837574,
+              "face_location": 0.25817041913770566,
+              "motion_energy": -1.0
+            },
+            "p_correct": null
+          }
+        ]
+      },
+      {
+        "segment": {
+          "t0": 1.6,
+          "t1": 3.68,
+          "top5": [
+            "ภาษามือ",
+            "เพื่อน",
+            "เที่ยว",
+            "ข้าว",
+            "ที่ไหน"
+          ],
+          "merged": true
+        },
+        "profile": {
+          "is_two_handed": 0.9243857752618844,
+          "gross_location": 0.26187732452365403,
+          "face_location": 0.9527209021996359,
+          "motion_energy": 1.5069736545255725,
+          "symmetry": -0.463221371360835,
+          "observed_rate": [
+            0.8846153846153846,
+            0.8461538461538461
+          ]
+        },
+        "temporal_top5": [
+          {
+            "word": "ภาษามือ",
+            "support": 0.40000210923177226,
+            "cosine": 0.5930308103561401
+          },
+          {
+            "word": "เพื่อน",
+            "support": 0.3169105428236502,
+            "cosine": 0.4710540175437927
+          },
+          {
+            "word": "เที่ยว",
+            "support": 0.21646205280665998,
+            "cosine": 0.5207628011703491
+          },
+          {
+            "word": "ข้าว",
+            "support": 0.18610548476378122,
+            "cosine": 0.48142969608306885
+          },
+          {
+            "word": "ที่ไหน",
+            "support": 0.13639223796349983,
+            "cosine": 0.38759270310401917
+          }
+        ],
+        "reranked_top5": [
+          {
+            "word": "ภาษามือ",
+            "support": 0.40000210923177226,
+            "cosine": 0.5930308103561401,
+            "rule_score": 0.4809033202571575,
+            "bonus": 0.04809033202571575,
+            "final_score": 0.44809244125748804,
+            "rule_parts": {
+              "is_two_handed": 0.6506479120021851,
+              "gross_location": 0.3876873142490035,
+              "face_location": 0.8295926548370388,
+              "motion_energy": 0.953786914676052,
+              "symmetry": -0.4171981944784917
+            },
+            "p_correct": null
+          },
+          {
+            "word": "เพื่อน",
+            "support": 0.3169105428236502,
+            "cosine": 0.4710540175437927,
+            "rule_score": 0.37217921992566266,
+            "bonus": 0.037217921992566266,
+            "final_score": 0.3541284648162165,
+            "rule_parts": {
+              "is_two_handed": 0.6141735449092893,
+              "gross_location": 0.7310489083181468,
+              "face_location": 0.8531781668068574,
+              "motion_energy": 0.23086995926358378,
+              "symmetry": -0.5683744796695642
+            },
+            "p_correct": null
+          },
+          {
+            "word": "เที่ยว",
+            "support": 0.21646205280665998,
+            "cosine": 0.5207628011703491,
+            "rule_score": 0.03779960399480302,
+            "bonus": 0.003779960399480302,
+            "final_score": 0.22024201320614029,
+            "rule_parts": {
+              "is_two_handed": -1.0,
+              "gross_location": 0.7548354343562642,
+              "face_location": 0.44321039755846026,
+              "motion_energy": 0.1591172579655511,
+              "symmetry": -0.16816506990626046
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ข้าว",
+            "support": 0.18610548476378122,
+            "cosine": 0.48142969608306885,
+            "rule_score": 0.19794193977636035,
+            "bonus": 0.019794193977636036,
+            "final_score": 0.20589967874141726,
+            "rule_parts": {
+              "is_two_handed": -1.0,
+              "gross_location": 0.606570350032706,
+              "face_location": 0.7589836761366344,
+              "motion_energy": 0.7147939358322939,
+              "symmetry": -0.09063826311983258
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ที่ไหน",
+            "support": 0.13639223796349983,
+            "cosine": 0.38759270310401917,
+            "rule_score": 0.08550780476331174,
+            "bonus": 0.008550780476331175,
+            "final_score": 0.144943018439831,
+            "rule_parts": {
+              "is_two_handed": -1.0,
+              "gross_location": 0.2609967811906221,
+              "face_location": 0.6391001766316597,
+              "motion_energy": 0.7987315214087598,
+              "symmetry": -0.2712894554144829
+            },
+            "p_correct": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "clip": "clip2",
+    "baseline": {
+      "clip": "clip2",
+      "variant": "baseline",
+      "threshold": 0.8,
+      "sentence": "",
+      "mirrored": false,
+      "seconds": 0.8967909812927246,
+      "segments": [
+        {
+          "t0": 0.16,
+          "t1": 1.28,
+          "word": "สวัสดี",
+          "p": 0.20817753082216367,
+          "status": "uncertain",
+          "top5": [
+            "สวัสดี",
+            "ไป",
+            "ทำไม",
+            "น้อง",
+            "ลาก่อน"
+          ]
+        },
+        {
+          "t0": 1.44,
+          "t1": 2.72,
+          "word": "เพื่อน",
+          "p": 0.10009980858676437,
+          "status": "uncertain",
+          "top5": [
+            "เพื่อน",
+            "ข้าว",
+            "ภาษามือ",
+            "กิน",
+            "ขอโทษ"
+          ]
+        },
+        {
+          "t0": 2.72,
+          "t1": 4.48,
+          "word": "กรุงเทพ",
+          "p": 0.1643562077219021,
+          "status": "uncertain",
+          "top5": [
+            "กรุงเทพ",
+            "ภาษามือ",
+            "พี่ชาย",
+            "ขอโทษ",
+            "อยู่บ้าน"
+          ]
+        }
+      ],
+      "coverage": {
+        "lh": 0.9565217391304348,
+        "rh": 0.8434782608695652
+      }
+    },
+    "quality_gate": {
+      "block_flip": false,
+      "observed_rate": [
+        0.9565217391304348,
+        0.8434782608695652
+      ],
+      "jump_rate": [
+        0.009523809523809525,
+        0.011494252873563218
+      ]
+    },
+    "gated_segments": [
+      {
+        "t0": 0.16,
+        "t1": 1.28,
+        "top5": [
+          "สวัสดี",
+          "ไป",
+          "ทำไม",
+          "น้อง",
+          "ลาก่อน"
+        ],
+        "nearest": "สวัสดี",
+        "original_p": 0.20817753082216367
+      },
+      {
+        "t0": 1.44,
+        "t1": 2.72,
+        "top5": [
+          "เพื่อน",
+          "ข้าว",
+          "ภาษามือ",
+          "กิน",
+          "ขอโทษ"
+        ],
+        "nearest": "เพื่อน",
+        "original_p": 0.10009980858676437
+      },
+      {
+        "t0": 2.72,
+        "t1": 4.48,
+        "top5": [
+          "กรุงเทพ",
+          "ภาษามือ",
+          "พี่ชาย",
+          "ขอโทษ",
+          "อยู่บ้าน"
+        ],
+        "nearest": "กรุงเทพ",
+        "original_p": 0.1643562077219021
+      }
+    ],
+    "adjacent_proposals": [
+      {
+        "pair": [
+          0,
+          1
+        ],
+        "merge": false,
+        "reasons": [
+          "hand_disappears",
+          "motion_discontinuous",
+          "top3_disjoint"
+        ],
+        "overlap": [],
+        "hands": [
+          {
+            "hand": 0,
+            "before_speed": 0.1955332552375075,
+            "after_speed": 1.9290710908449977,
+            "max_step": 0.1667675376911066,
+            "continuous": false
+          },
+          {
+            "hand": 1,
+            "before_speed": 0.9552234219048966,
+            "after_speed": 4.677467445292636,
+            "max_step": 0.1870986978117056,
+            "continuous": false
+          }
+        ],
+        "config": {
+          "max_gap": 0.2,
+          "max_duration": 3.2,
+          "radius": 0.16,
+          "max_jump": 0.4,
+          "min_speed": 0.15,
+          "min_observed": 0.75,
+          "min_speed_ratio": 0.25,
+          "max_speed_ratio": 4.0
+        }
+      },
+      {
+        "pair": [
+          1,
+          2
+        ],
+        "merge": true,
+        "reasons": [],
+        "overlap": [
+          "ภาษามือ"
+        ],
+        "hands": [
+          {
+            "hand": 0,
+            "before_speed": 1.4213699454835775,
+            "after_speed": 2.5673764983561584,
+            "max_step": 0.1086264063730917,
+            "continuous": true
+          },
+          {
+            "hand": 1,
+            "before_speed": 1.6275926433829586,
+            "after_speed": 2.5635089279023298,
+            "max_step": 0.11184533771569756,
+            "continuous": true
+          }
+        ],
+        "config": {
+          "max_gap": 0.2,
+          "max_duration": 3.2,
+          "radius": 0.16,
+          "max_jump": 0.4,
+          "min_speed": 0.15,
+          "min_observed": 0.75,
+          "min_speed_ratio": 0.25,
+          "max_speed_ratio": 4.0
+        }
+      }
+    ],
+    "merge_decisions": [
+      {
+        "merge": false,
+        "reasons": [
+          "hand_disappears",
+          "motion_discontinuous",
+          "top3_disjoint"
+        ],
+        "overlap": [],
+        "hands": [
+          {
+            "hand": 0,
+            "before_speed": 0.1955332552375075,
+            "after_speed": 1.9290710908449977,
+            "max_step": 0.1667675376911066,
+            "continuous": false
+          },
+          {
+            "hand": 1,
+            "before_speed": 0.9552234219048966,
+            "after_speed": 4.677467445292636,
+            "max_step": 0.1870986978117056,
+            "continuous": false
+          }
+        ],
+        "config": {
+          "max_gap": 0.2,
+          "max_duration": 3.2,
+          "radius": 0.16,
+          "max_jump": 0.4,
+          "min_speed": 0.15,
+          "min_observed": 0.75,
+          "min_speed_ratio": 0.25,
+          "max_speed_ratio": 4.0
+        }
+      },
+      {
+        "merge": true,
+        "reasons": [],
+        "overlap": [
+          "ภาษามือ"
+        ],
+        "hands": [
+          {
+            "hand": 0,
+            "before_speed": 1.4213699454835775,
+            "after_speed": 2.5673764983561584,
+            "max_step": 0.1086264063730917,
+            "continuous": true
+          },
+          {
+            "hand": 1,
+            "before_speed": 1.6275926433829586,
+            "after_speed": 2.5635089279023298,
+            "max_step": 0.11184533771569756,
+            "continuous": true
+          }
+        ],
+        "config": {
+          "max_gap": 0.2,
+          "max_duration": 3.2,
+          "radius": 0.16,
+          "max_jump": 0.4,
+          "min_speed": 0.15,
+          "min_observed": 0.75,
+          "min_speed_ratio": 0.25,
+          "max_speed_ratio": 4.0
+        }
+      }
+    ],
+    "without_merge": [
+      {
+        "segment": {
+          "t0": 0.16,
+          "t1": 1.28,
+          "top5": [
+            "สวัสดี",
+            "ไป",
+            "ทำไม",
+            "น้อง",
+            "ลาก่อน"
+          ],
+          "nearest": "สวัสดี",
+          "original_p": 0.20817753082216367
+        },
+        "profile": {
+          "is_two_handed": 0.2718345841121863,
+          "gross_location": 1.1339325916257226,
+          "face_location": 1.8057135661152879,
+          "motion_energy": 1.7033154356797815,
+          "symmetry": 0.010827573511883848,
+          "observed_rate": [
+            1.0,
+            0.8928571428571429
+          ]
+        },
+        "temporal_top5": [
+          {
+            "word": "สวัสดี",
+            "support": 0.4906955987215042,
+            "cosine": 0.5443072319030762
+          },
+          {
+            "word": "ไป",
+            "support": 0.3378340154886246,
+            "cosine": 0.4314335286617279
+          },
+          {
+            "word": "ทำไม",
+            "support": 0.3084003120660782,
+            "cosine": 0.4337044358253479
+          },
+          {
+            "word": "น้อง",
+            "support": 0.2808385580778122,
+            "cosine": 0.4281514286994934
+          },
+          {
+            "word": "ลาก่อน",
+            "support": 0.2400827705860138,
+            "cosine": 0.37951284646987915
+          }
+        ],
+        "reranked_top5": [
+          {
+            "word": "สวัสดี",
+            "support": 0.4906955987215042,
+            "cosine": 0.5443072319030762,
+            "rule_score": -0.008504544878563091,
+            "bonus": -0.0008504544878563092,
+            "final_score": 0.4898451442336479,
+            "rule_parts": {
+              "is_two_handed": 0.20004114274535256,
+              "gross_location": -0.7194431444983314,
+              "face_location": -1.0,
+              "motion_energy": 0.6139531889863362,
+              "symmetry": 0.8629260883738271
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ไป",
+            "support": 0.3378340154886246,
+            "cosine": 0.4314335286617279,
+            "rule_score": 0.1063828663111784,
+            "bonus": 0.01063828663111784,
+            "final_score": 0.3484723021197424,
+            "rule_parts": {
+              "is_two_handed": 0.2473262785280328,
+              "gross_location": -0.2702472107430609,
+              "face_location": -0.7709047180216129,
+              "motion_energy": 0.42803704065946535,
+              "symmetry": 0.8977029411330676
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ทำไม",
+            "support": 0.3084003120660782,
+            "cosine": 0.4337044358253479,
+            "rule_score": 0.26418776592519017,
+            "bonus": 0.026418776592519018,
+            "final_score": 0.3348190886585972,
+            "rule_parts": {
+              "is_two_handed": 0.2798799987666607,
+              "gross_location": -0.022470212300465198,
+              "face_location": -0.3325085255898643,
+              "motion_energy": 0.41732173920158366,
+              "symmetry": 0.9787158295480359
+            },
+            "p_correct": null
+          },
+          {
+            "word": "น้อง",
+            "support": 0.2808385580778122,
+            "cosine": 0.4281514286994934,
+            "rule_score": 0.478113324932929,
+            "bonus": 0.047811332493292905,
+            "final_score": 0.3286498905711051,
+            "rule_parts": {
+              "is_two_handed": 0.21407651318567755,
+              "gross_location": 0.3261772797154333,
+              "face_location": 0.07752326531013509,
+              "motion_energy": 0.9982768803476796,
+              "symmetry": 0.7745126861057194
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ลาก่อน",
+            "support": 0.2400827705860138,
+            "cosine": 0.37951284646987915,
+            "rule_score": 0.0,
+            "bonus": 0.0,
+            "final_score": 0.2400827705860138,
+            "rule_parts": {},
+            "p_correct": null
+          }
+        ]
+      },
+      {
+        "segment": {
+          "t0": 1.44,
+          "t1": 2.72,
+          "top5": [
+            "เพื่อน",
+            "ข้าว",
+            "ภาษามือ",
+            "กิน",
+            "ขอโทษ"
+          ],
+          "nearest": "เพื่อน",
+          "original_p": 0.10009980858676437
+        },
+        "profile": {
+          "is_two_handed": 0.8850085457552825,
+          "gross_location": 0.2807859334212559,
+          "face_location": 0.8472817265015632,
+          "motion_energy": 1.5164673860553286,
+          "symmetry": -0.5534243100994327,
+          "observed_rate": [
+            1.0,
+            0.96875
+          ]
+        },
+        "temporal_top5": [
+          {
+            "word": "เพื่อน",
+            "support": 0.3964505275090536,
+            "cosine": 0.5443888902664185
+          },
+          {
+            "word": "ข้าว",
+            "support": 0.35739838480949404,
+            "cosine": 0.5310819149017334
+          },
+          {
+            "word": "ภาษามือ",
+            "support": 0.31881754398345946,
+            "cosine": 0.49411478638648987
+          },
+          {
+            "word": "กิน",
+            "support": 0.2680346151192983,
+            "cosine": 0.5039854049682617
+          },
+          {
+            "word": "ขอโทษ",
+            "support": 0.23086090286572775,
+            "cosine": 0.48481467366218567
+          }
+        ],
+        "reranked_top5": [
+          {
+            "word": "เพื่อน",
+            "support": 0.3964505275090536,
+            "cosine": 0.5443888902664185,
+            "rule_score": 0.3721442377327157,
+            "bonus": 0.037214423773271575,
+            "final_score": 0.43366495128232513,
+            "rule_parts": {
+              "is_two_handed": 0.7716824629356966,
+              "gross_location": 0.7783204305621516,
+              "face_location": 0.8832238939479609,
+              "motion_energy": 0.2213762277338277,
+              "symmetry": -0.7938818265160583
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ข้าว",
+            "support": 0.35739838480949404,
+            "cosine": 0.5310819149017334,
+            "rule_score": 0.11549553507332004,
+            "bonus": 0.011549553507332005,
+            "final_score": 0.36894793831682604,
+            "rule_parts": {
+              "is_two_handed": -1.0,
+              "gross_location": 0.6479472901478371,
+              "face_location": 0.5403757908825519,
+              "motion_energy": 0.7053002043025378,
+              "symmetry": -0.3161456099663267
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ภาษามือ",
+            "support": 0.31881754398345946,
+            "cosine": 0.49411478638648987,
+            "rule_score": 0.42213960478695345,
+            "bonus": 0.04221396047869535,
+            "final_score": 0.3610315044621548,
+            "rule_parts": {
+              "is_two_handed": 0.8081568300285924,
+              "gross_location": 0.43495883649300815,
+              "face_location": 0.565994715591857,
+              "motion_energy": 0.944293183146296,
+              "symmetry": -0.642705541324986
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ขอโทษ",
+            "support": 0.23086090286572775,
+            "cosine": 0.48481467366218567,
+            "rule_score": 0.3519311354182246,
+            "bonus": 0.03519311354182247,
+            "final_score": 0.2660540164075502,
+            "rule_parts": {
+              "is_two_handed": 0.666092151961271,
+              "gross_location": 0.5345115842864026,
+              "face_location": 0.7904650398630239,
+              "motion_energy": 0.7685869009804258,
+              "symmetry": -1.0
+            },
+            "p_correct": null
+          },
+          {
+            "word": "กิน",
+            "support": 0.2680346151192983,
+            "cosine": 0.5039854049682617,
+            "rule_score": -0.1211558974018893,
+            "bonus": -0.01211558974018893,
+            "final_score": 0.2559190253791094,
+            "rule_parts": {
+              "is_two_handed": -1.0,
+              "gross_location": -0.11916343547828401,
+              "face_location": -0.15178151663220096,
+              "motion_energy": 0.6615027005092893,
+              "symmetry": 0.0036627645917491902
+            },
+            "p_correct": null
+          }
+        ]
+      },
+      {
+        "segment": {
+          "t0": 2.72,
+          "t1": 4.48,
+          "top5": [
+            "กรุงเทพ",
+            "ภาษามือ",
+            "พี่ชาย",
+            "ขอโทษ",
+            "อยู่บ้าน"
+          ],
+          "nearest": "กรุงเทพ",
+          "original_p": 0.1643562077219021
+        },
+        "profile": {
+          "is_two_handed": 0.6443299353394585,
+          "gross_location": 0.4211101082827113,
+          "face_location": 0.9921611034832245,
+          "motion_energy": 2.0803339552943636,
+          "symmetry": -0.5616364315315386,
+          "observed_rate": [
+            0.8863636363636364,
+            0.6818181818181818
+          ]
+        },
+        "temporal_top5": [
+          {
+            "word": "กรุงเทพ",
+            "support": 0.40297970672448474,
+            "cosine": 0.4673279821872711
+          },
+          {
+            "word": "ภาษามือ",
+            "support": 0.37490404811170364,
+            "cosine": 0.42894408106803894
+          },
+          {
+            "word": "พี่ชาย",
+            "support": 0.20414257629050148,
+            "cosine": 0.35046476125717163
+          },
+          {
+            "word": "ขอโทษ",
+            "support": 0.1551213322414292,
+            "cosine": 0.3338887393474579
+          },
+          {
+            "word": "อยู่บ้าน",
+            "support": 0.12211532394091289,
+            "cosine": 0.3420701026916504
+          }
+        ],
+        "reranked_top5": [
+          {
+            "word": "กรุงเทพ",
+            "support": 0.40297970672448474,
+            "cosine": 0.4673279821872711,
+            "rule_score": 0.22750687852472878,
+            "bonus": 0.02275068785247288,
+            "final_score": 0.4257303945769576,
+            "rule_parts": {
+              "is_two_handed": 0.4547953029331948,
+              "gross_location": 0.6719778708799653,
+              "face_location": 0.6142299817907884,
+              "motion_energy": 0.3965312370196954,
+              "symmetry": -1.0
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ภาษามือ",
+            "support": 0.37490404811170364,
+            "cosine": 0.42894408106803894,
+            "rule_score": 0.33205638580055563,
+            "bonus": 0.03320563858005556,
+            "final_score": 0.4081096866917592,
+            "rule_parts": {
+              "is_two_handed": 0.22912872830811137,
+              "gross_location": 0.7857692736466466,
+              "face_location": 0.9281931580460103,
+              "motion_energy": 0.38042661390726096,
+              "symmetry": -0.6632358449052509
+            },
+            "p_correct": null
+          },
+          {
+            "word": "พี่ชาย",
+            "support": 0.20414257629050148,
+            "cosine": 0.35046476125717163,
+            "rule_score": 0.12240229996144283,
+            "bonus": 0.012240229996144283,
+            "final_score": 0.21638280628664575,
+            "rule_parts": {
+              "is_two_handed": -1.0,
+              "gross_location": 0.22509076438400233,
+              "face_location": 0.22839389783378738,
+              "motion_energy": 0.8628093947570428,
+              "symmetry": 0.29571744283238166
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ขอโทษ",
+            "support": 0.1551213322414292,
+            "cosine": 0.3338887393474579,
+            "rule_score": 0.2617144554479375,
+            "bonus": 0.02617144554479375,
+            "final_score": 0.18129277778622296,
+            "rule_parts": {
+              "is_two_handed": 0.37119340637543274,
+              "gross_location": 0.885322021440041,
+              "face_location": 0.8473365176828229,
+              "motion_energy": 0.20472033174139082,
+              "symmetry": -1.0
+            },
+            "p_correct": null
+          },
+          {
+            "word": "อยู่บ้าน",
+            "support": 0.12211532394091289,
+            "cosine": 0.3420701026916504,
+            "rule_score": 0.3914385822930942,
+            "bonus": 0.03914385822930942,
+            "final_score": 0.1612591821702223,
+            "rule_parts": {
+              "is_two_handed": 0.9869410951717272,
+              "gross_location": 0.387658788524586,
+              "face_location": 0.2754905499144191,
+              "motion_energy": 0.5277187786330662,
+              "symmetry": -0.2206163007783275
+            },
+            "p_correct": null
+          }
+        ]
+      }
+    ],
+    "combined": [
+      {
+        "segment": {
+          "t0": 0.16,
+          "t1": 1.28,
+          "top5": [
+            "สวัสดี",
+            "ไป",
+            "ทำไม",
+            "น้อง",
+            "ลาก่อน"
+          ],
+          "nearest": "สวัสดี",
+          "original_p": 0.20817753082216367
+        },
+        "profile": {
+          "is_two_handed": 0.2718345841121863,
+          "gross_location": 1.1339325916257226,
+          "face_location": 1.8057135661152879,
+          "motion_energy": 1.7033154356797815,
+          "symmetry": 0.010827573511883848,
+          "observed_rate": [
+            1.0,
+            0.8928571428571429
+          ]
+        },
+        "temporal_top5": [
+          {
+            "word": "สวัสดี",
+            "support": 0.4906955987215042,
+            "cosine": 0.5443072319030762
+          },
+          {
+            "word": "ไป",
+            "support": 0.3378340154886246,
+            "cosine": 0.4314335286617279
+          },
+          {
+            "word": "ทำไม",
+            "support": 0.3084003120660782,
+            "cosine": 0.4337044358253479
+          },
+          {
+            "word": "น้อง",
+            "support": 0.2808385580778122,
+            "cosine": 0.4281514286994934
+          },
+          {
+            "word": "ลาก่อน",
+            "support": 0.2400827705860138,
+            "cosine": 0.37951284646987915
+          }
+        ],
+        "reranked_top5": [
+          {
+            "word": "สวัสดี",
+            "support": 0.4906955987215042,
+            "cosine": 0.5443072319030762,
+            "rule_score": -0.008504544878563091,
+            "bonus": -0.0008504544878563092,
+            "final_score": 0.4898451442336479,
+            "rule_parts": {
+              "is_two_handed": 0.20004114274535256,
+              "gross_location": -0.7194431444983314,
+              "face_location": -1.0,
+              "motion_energy": 0.6139531889863362,
+              "symmetry": 0.8629260883738271
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ไป",
+            "support": 0.3378340154886246,
+            "cosine": 0.4314335286617279,
+            "rule_score": 0.1063828663111784,
+            "bonus": 0.01063828663111784,
+            "final_score": 0.3484723021197424,
+            "rule_parts": {
+              "is_two_handed": 0.2473262785280328,
+              "gross_location": -0.2702472107430609,
+              "face_location": -0.7709047180216129,
+              "motion_energy": 0.42803704065946535,
+              "symmetry": 0.8977029411330676
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ทำไม",
+            "support": 0.3084003120660782,
+            "cosine": 0.4337044358253479,
+            "rule_score": 0.26418776592519017,
+            "bonus": 0.026418776592519018,
+            "final_score": 0.3348190886585972,
+            "rule_parts": {
+              "is_two_handed": 0.2798799987666607,
+              "gross_location": -0.022470212300465198,
+              "face_location": -0.3325085255898643,
+              "motion_energy": 0.41732173920158366,
+              "symmetry": 0.9787158295480359
+            },
+            "p_correct": null
+          },
+          {
+            "word": "น้อง",
+            "support": 0.2808385580778122,
+            "cosine": 0.4281514286994934,
+            "rule_score": 0.478113324932929,
+            "bonus": 0.047811332493292905,
+            "final_score": 0.3286498905711051,
+            "rule_parts": {
+              "is_two_handed": 0.21407651318567755,
+              "gross_location": 0.3261772797154333,
+              "face_location": 0.07752326531013509,
+              "motion_energy": 0.9982768803476796,
+              "symmetry": 0.7745126861057194
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ลาก่อน",
+            "support": 0.2400827705860138,
+            "cosine": 0.37951284646987915,
+            "rule_score": 0.0,
+            "bonus": 0.0,
+            "final_score": 0.2400827705860138,
+            "rule_parts": {},
+            "p_correct": null
+          }
+        ]
+      },
+      {
+        "segment": {
+          "t0": 1.44,
+          "t1": 4.48,
+          "top5": [
+            "ภาษามือ",
+            "กรุงเทพ",
+            "ข้าว",
+            "ขอโทษ",
+            "กิน"
+          ],
+          "merged": true
+        },
+        "profile": {
+          "is_two_handed": 0.7545964235539165,
+          "gross_location": 0.3302941402871158,
+          "face_location": 0.896515656499163,
+          "motion_energy": 1.8442571535981027,
+          "symmetry": -0.5606423249824466,
+          "observed_rate": [
+            0.9342105263157895,
+            0.8026315789473685
+          ]
+        },
+        "temporal_top5": [
+          {
+            "word": "ภาษามือ",
+            "support": 0.33830360847490804,
+            "cosine": 0.49411478638648987
+          },
+          {
+            "word": "กรุงเทพ",
+            "support": 0.2781837635018207,
+            "cosine": 0.4673279821872711
+          },
+          {
+            "word": "ข้าว",
+            "support": 0.16989674419164658,
+            "cosine": 0.5310819149017334
+          },
+          {
+            "word": "ขอโทษ",
+            "support": 0.15608534161691312,
+            "cosine": 0.48481467366218567
+          },
+          {
+            "word": "กิน",
+            "support": 0.1374620588289367,
+            "cosine": 0.5039854049682617
+          }
+        ],
+        "reranked_top5": [
+          {
+            "word": "ภาษามือ",
+            "support": 0.33830360847490804,
+            "cosine": 0.49411478638648987,
+            "rule_score": 0.3747512824960918,
+            "bonus": 0.037475128249609184,
+            "final_score": 0.3757787367245172,
+            "rule_parts": {
+              "is_two_handed": 0.6701946811659436,
+              "gross_location": 0.5587293536576579,
+              "face_location": 0.6890795405858565,
+              "motion_energy": 0.6165034156035218,
+              "symmetry": -0.6607505785325207
+            },
+            "p_correct": null
+          },
+          {
+            "word": "กรุงเทพ",
+            "support": 0.2781837635018207,
+            "cosine": 0.4673279821872711,
+            "rule_score": 0.44868545436375395,
+            "bonus": 0.0448685454363754,
+            "final_score": 0.32305230893819614,
+            "rule_parts": {
+              "is_two_handed": 0.895861255791027,
+              "gross_location": 0.8990177908689541,
+              "face_location": 0.8533435992509422,
+              "motion_energy": 0.5952046259078463,
+              "symmetry": -1.0
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ขอโทษ",
+            "support": 0.15608534161691312,
+            "cosine": 0.48481467366218567,
+            "rule_score": 0.3649776917957984,
+            "bonus": 0.03649776917957984,
+            "final_score": 0.19258311079649296,
+            "rule_parts": {
+              "is_two_handed": 0.812259359233265,
+              "gross_location": 0.6582821014510523,
+              "face_location": 0.9135498648570233,
+              "motion_energy": 0.4407971334376517,
+              "symmetry": -1.0
+            },
+            "p_correct": null
+          },
+          {
+            "word": "ข้าว",
+            "support": 0.16989674419164658,
+            "cosine": 0.5310819149017334,
+            "rule_score": 0.08841135345763913,
+            "bonus": 0.008841135345763914,
+            "final_score": 0.1787378795374105,
+            "rule_parts": {
+              "is_two_handed": -1.0,
+              "gross_location": 0.7562840864605477,
+              "face_location": 0.6424528912417456,
+              "motion_energy": 0.3775104367597637,
+              "symmetry": -0.3341906471738614
+            },
+            "p_correct": null
+          },
+          {
+            "word": "กิน",
+            "support": 0.1374620588289367,
+            "cosine": 0.5039854049682617,
+            "rule_score": -0.046059472758682496,
+            "bonus": -0.00460594727586825,
+            "final_score": 0.13285611155306845,
+            "rule_parts": {
+              "is_two_handed": -1.0,
+              "gross_location": -0.02687908721328336,
+              "face_location": -0.06335716913754763,
+              "motion_energy": 0.8743211651732039,
+              "symmetry": -0.014382272615785396
+            },
+            "p_correct": null
+          }
+        ]
+      }
+    ]
+  }
+]
