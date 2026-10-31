@@ -133,3 +133,8 @@ Jack/
 
 # HF download cache (large, re-downloadable)
 hub/
+
+
+
+# eTSL
+book-data/
