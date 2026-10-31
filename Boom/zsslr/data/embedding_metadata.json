@@ -1,0 +1,12 @@
+{
+  "model": "bert-base-multilingual-cased",
+  "revision": "3f076fdb1ab68d5b2880cb87a0886f315b8146f8",
+  "pooling": "last_hidden_state[:,0,:] raw CLS",
+  "shape": [
+    473,
+    768
+  ],
+  "truncated_rows": 0,
+  "max_tokens": 256,
+  "source_sha256": "1bd42e4d24432a115634d6e8472067506d74b89493378fdc89218e424d5a9393"
+}

@@ -1,0 +1,662 @@
+[
+  {
+    "step": 100,
+    "loss": 17.409517288208008
+  },
+  {
+    "step": 200,
+    "loss": 15.169124603271484
+  },
+  {
+    "step": 300,
+    "loss": 14.014171600341797
+  },
+  {
+    "step": 400,
+    "loss": 13.34827995300293
+  },
+  {
+    "step": 500,
+    "loss": 11.824914932250977
+  },
+  {
+    "step": 600,
+    "loss": 11.405651092529297
+  },
+  {
+    "step": 700,
+    "loss": 11.594159126281738
+  },
+  {
+    "step": 800,
+    "loss": 10.254613876342773
+  },
+  {
+    "step": 900,
+    "loss": 8.31246566772461
+  },
+  {
+    "step": 1000,
+    "loss": 7.582907676696777
+  },
+  {
+    "step": 1000,
+    "val": 0.3068122158394728,
+    "E1_ttrs_val|open_vocab": 0.0864,
+    "E1_ttrs_val|daily_vocab": 0.3846,
+    "ONE_val|open_vocab": 0.6387,
+    "ONE_val|daily_vocab": 0.8241,
+    "THSL_val|open_vocab": 0.1198,
+    "THSL_val|daily_vocab": 0.2333,
+    "AGENT_val|open_vocab": 0.1111,
+    "AGENT_val|daily_vocab": 0.0,
+    "ONE_val|closed_184": 0.709,
+    "E1_ttrs_test|open_vocab": 0.0714,
+    "E1_ttrs_test|daily_vocab": 0.2222,
+    "ONE_test|open_vocab": 0.6369,
+    "ONE_test|daily_vocab": 0.7778,
+    "THSL_test|open_vocab": 0.0712,
+    "THSL_test|daily_vocab": 0.0909,
+    "AGENT_test|open_vocab": 0.1818,
+    "AGENT_test|daily_vocab": 0.4412,
+    "ONE_test|closed_184": 0.6987,
+    "T51U|open_vocab": 0.3645,
+    "T51U|closed_51": 0.7882,
+    "T51U|daily_vocab": 0.6053,
+    "T51U|null_auc": 0.8151
+  },
+  {
+    "step": 1100,
+    "loss": 5.567422389984131
+  },
+  {
+    "step": 1200,
+    "loss": 4.78425407409668
+  },
+  {
+    "step": 1300,
+    "loss": 5.315516948699951
+  },
+  {
+    "step": 1400,
+    "loss": 4.813503265380859
+  },
+  {
+    "step": 1500,
+    "loss": 3.6796305179595947
+  },
+  {
+    "step": 1600,
+    "loss": 3.793398857116699
+  },
+  {
+    "step": 1700,
+    "loss": 3.3597161769866943
+  },
+  {
+    "step": 1800,
+    "loss": 3.1012890338897705
+  },
+  {
+    "step": 1900,
+    "loss": 2.1541457176208496
+  },
+  {
+    "step": 2000,
+    "loss": 2.6335082054138184
+  },
+  {
+    "step": 2000,
+    "val": 0.37469295503970534,
+    "E1_ttrs_val|open_vocab": 0.1605,
+    "E1_ttrs_val|daily_vocab": 0.5385,
+    "ONE_val|open_vocab": 0.7402,
+    "ONE_val|daily_vocab": 0.8611,
+    "THSL_val|open_vocab": 0.1521,
+    "THSL_val|daily_vocab": 0.3,
+    "AGENT_val|open_vocab": 0.2222,
+    "AGENT_val|daily_vocab": 0.5,
+    "ONE_val|closed_184": 0.791,
+    "E1_ttrs_test|open_vocab": 0.1071,
+    "E1_ttrs_test|daily_vocab": 0.2222,
+    "ONE_test|open_vocab": 0.7274,
+    "ONE_test|daily_vocab": 0.8389,
+    "THSL_test|open_vocab": 0.0644,
+    "THSL_test|daily_vocab": 0.3636,
+    "AGENT_test|open_vocab": 0.2273,
+    "AGENT_test|daily_vocab": 0.4706,
+    "ONE_test|closed_184": 0.7835,
+    "T51U|open_vocab": 0.3989,
+    "T51U|closed_51": 0.7901,
+    "T51U|daily_vocab": 0.581,
+    "T51U|null_auc": 0.7531
+  },
+  {
+    "step": 2100,
+    "loss": 2.092226982116699
+  },
+  {
+    "step": 2200,
+    "loss": 2.418987274169922
+  },
+  {
+    "step": 2300,
+    "loss": 2.429206371307373
+  },
+  {
+    "step": 2400,
+    "loss": 2.1079635620117188
+  },
+  {
+    "step": 2500,
+    "loss": 2.6095430850982666
+  },
+  {
+    "step": 2600,
+    "loss": 1.9600223302841187
+  },
+  {
+    "step": 2700,
+    "loss": 2.325458288192749
+  },
+  {
+    "step": 2800,
+    "loss": 2.174542188644409
+  },
+  {
+    "step": 2900,
+    "loss": 2.524343967437744
+  },
+  {
+    "step": 3000,
+    "loss": 1.2899378538131714
+  },
+  {
+    "step": 3000,
+    "val": 0.3906502439176115,
+    "E1_ttrs_val|open_vocab": 0.1358,
+    "E1_ttrs_val|daily_vocab": 0.3846,
+    "ONE_val|open_vocab": 0.7715,
+    "ONE_val|daily_vocab": 0.9167,
+    "THSL_val|open_vocab": 0.1429,
+    "THSL_val|daily_vocab": 0.3333,
+    "AGENT_val|open_vocab": 0.2778,
+    "AGENT_val|daily_vocab": 0.25,
+    "ONE_val|closed_184": 0.8086,
+    "E1_ttrs_test|open_vocab": 0.1071,
+    "E1_ttrs_test|daily_vocab": 0.2222,
+    "ONE_test|open_vocab": 0.7847,
+    "ONE_test|daily_vocab": 0.8833,
+    "THSL_test|open_vocab": 0.0847,
+    "THSL_test|daily_vocab": 0.3636,
+    "AGENT_test|open_vocab": 0.2614,
+    "AGENT_test|daily_vocab": 0.5294,
+    "ONE_test|closed_184": 0.8247,
+    "T51U|open_vocab": 0.4275,
+    "T51U|closed_51": 0.8053,
+    "T51U|daily_vocab": 0.5668,
+    "T51U|null_auc": 0.7976
+  },
+  {
+    "step": 3100,
+    "loss": 2.3266830444335938
+  },
+  {
+    "step": 3200,
+    "loss": 1.534523367881775
+  },
+  {
+    "step": 3300,
+    "loss": 1.4662039279937744
+  },
+  {
+    "step": 3400,
+    "loss": 1.9480042457580566
+  },
+  {
+    "step": 3500,
+    "loss": 2.258037567138672
+  },
+  {
+    "step": 3600,
+    "loss": 1.4705637693405151
+  },
+  {
+    "step": 3700,
+    "loss": 1.488802194595337
+  },
+  {
+    "step": 3800,
+    "loss": 2.2160415649414062
+  },
+  {
+    "step": 3900,
+    "loss": 1.3128843307495117
+  },
+  {
+    "step": 4000,
+    "loss": 0.9958186745643616
+  },
+  {
+    "step": 4000,
+    "val": 0.3818784268981844,
+    "E1_ttrs_val|open_vocab": 0.1852,
+    "E1_ttrs_val|daily_vocab": 0.3077,
+    "ONE_val|open_vocab": 0.7637,
+    "ONE_val|daily_vocab": 0.9167,
+    "THSL_val|open_vocab": 0.1521,
+    "THSL_val|daily_vocab": 0.3,
+    "AGENT_val|open_vocab": 0.1667,
+    "AGENT_val|daily_vocab": 0.5,
+    "ONE_val|closed_184": 0.7969,
+    "E1_ttrs_test|open_vocab": 0.1071,
+    "E1_ttrs_test|daily_vocab": 0.2222,
+    "ONE_test|open_vocab": 0.7961,
+    "ONE_test|daily_vocab": 0.8389,
+    "THSL_test|open_vocab": 0.0881,
+    "THSL_test|daily_vocab": 0.2727,
+    "AGENT_test|open_vocab": 0.25,
+    "AGENT_test|daily_vocab": 0.5294,
+    "ONE_test|closed_184": 0.8362,
+    "T51U|open_vocab": 0.4084,
+    "T51U|closed_51": 0.7729,
+    "T51U|daily_vocab": 0.5526,
+    "T51U|null_auc": 0.667
+  },
+  {
+    "step": 4100,
+    "loss": 0.9013214707374573
+  },
+  {
+    "step": 4200,
+    "loss": 1.674267292022705
+  },
+  {
+    "step": 4300,
+    "loss": 0.790940523147583
+  },
+  {
+    "step": 4400,
+    "loss": 1.2795774936676025
+  },
+  {
+    "step": 4500,
+    "loss": 1.0061763525009155
+  },
+  {
+    "step": 4600,
+    "loss": 2.0808138847351074
+  },
+  {
+    "step": 4700,
+    "loss": 0.9495394825935364
+  },
+  {
+    "step": 4800,
+    "loss": 1.2115437984466553
+  },
+  {
+    "step": 4900,
+    "loss": 1.178261399269104
+  },
+  {
+    "step": 5000,
+    "loss": 0.9871944189071655
+  },
+  {
+    "step": 5000,
+    "val": 0.3724666176740628,
+    "E1_ttrs_val|open_vocab": 0.1975,
+    "E1_ttrs_val|daily_vocab": 0.4615,
+    "ONE_val|open_vocab": 0.7949,
+    "ONE_val|daily_vocab": 0.9074,
+    "THSL_val|open_vocab": 0.1475,
+    "THSL_val|daily_vocab": 0.3667,
+    "AGENT_val|open_vocab": 0.1111,
+    "AGENT_val|daily_vocab": 0.25,
+    "ONE_val|closed_184": 0.8379,
+    "E1_ttrs_test|open_vocab": 0.1071,
+    "E1_ttrs_test|daily_vocab": 0.1111,
+    "ONE_test|open_vocab": 0.8076,
+    "ONE_test|daily_vocab": 0.8944,
+    "THSL_test|open_vocab": 0.0949,
+    "THSL_test|daily_vocab": 0.3636,
+    "AGENT_test|open_vocab": 0.3295,
+    "AGENT_test|daily_vocab": 0.6471,
+    "ONE_test|closed_184": 0.8454,
+    "T51U|open_vocab": 0.4447,
+    "T51U|closed_51": 0.771,
+    "T51U|daily_vocab": 0.6073,
+    "T51U|null_auc": 0.7814
+  },
+  {
+    "step": 5100,
+    "loss": 0.8614152073860168
+  },
+  {
+    "step": 5200,
+    "loss": 0.627872109413147
+  },
+  {
+    "step": 5300,
+    "loss": 0.9090141654014587
+  },
+  {
+    "step": 5400,
+    "loss": 0.7404420971870422
+  },
+  {
+    "step": 5500,
+    "loss": 0.6625685691833496
+  },
+  {
+    "step": 5600,
+    "loss": 0.7694937586784363
+  },
+  {
+    "step": 5700,
+    "loss": 0.9361449480056763
+  },
+  {
+    "step": 5800,
+    "loss": 0.27285122871398926
+  },
+  {
+    "step": 5900,
+    "loss": 0.6035140752792358
+  },
+  {
+    "step": 6000,
+    "loss": 1.228377103805542
+  },
+  {
+    "step": 6000,
+    "val": 0.39920531163335615,
+    "E1_ttrs_val|open_vocab": 0.2222,
+    "E1_ttrs_val|daily_vocab": 0.4615,
+    "ONE_val|open_vocab": 0.8008,
+    "ONE_val|daily_vocab": 0.8981,
+    "THSL_val|open_vocab": 0.1567,
+    "THSL_val|daily_vocab": 0.3333,
+    "AGENT_val|open_vocab": 0.2222,
+    "AGENT_val|daily_vocab": 0.25,
+    "ONE_val|closed_184": 0.8418,
+    "E1_ttrs_test|open_vocab": 0.1071,
+    "E1_ttrs_test|daily_vocab": 0.2222,
+    "ONE_test|open_vocab": 0.8121,
+    "ONE_test|daily_vocab": 0.8778,
+    "THSL_test|open_vocab": 0.0881,
+    "THSL_test|daily_vocab": 0.2727,
+    "AGENT_test|open_vocab": 0.3182,
+    "AGENT_test|daily_vocab": 0.5882,
+    "ONE_test|closed_184": 0.8454,
+    "T51U|open_vocab": 0.4676,
+    "T51U|closed_51": 0.7538,
+    "T51U|daily_vocab": 0.5972,
+    "T51U|null_auc": 0.7433
+  },
+  {
+    "step": 6100,
+    "loss": 1.3567049503326416
+  },
+  {
+    "step": 6200,
+    "loss": 1.7114313840866089
+  },
+  {
+    "step": 6300,
+    "loss": 0.47474077343940735
+  },
+  {
+    "step": 6400,
+    "loss": 0.6329371929168701
+  },
+  {
+    "step": 6500,
+    "loss": 0.24357303977012634
+  },
+  {
+    "step": 6600,
+    "loss": 0.43966856598854065
+  },
+  {
+    "step": 6700,
+    "loss": 1.0269039869308472
+  },
+  {
+    "step": 6800,
+    "loss": 0.6834203004837036
+  },
+  {
+    "step": 6900,
+    "loss": 0.4749942421913147
+  },
+  {
+    "step": 7000,
+    "loss": 0.31859129667282104
+  },
+  {
+    "step": 7000,
+    "val": 0.37602272228390043,
+    "E1_ttrs_val|open_vocab": 0.1852,
+    "E1_ttrs_val|daily_vocab": 0.4615,
+    "ONE_val|open_vocab": 0.7969,
+    "ONE_val|daily_vocab": 0.8889,
+    "THSL_val|open_vocab": 0.1613,
+    "THSL_val|daily_vocab": 0.2667,
+    "AGENT_val|open_vocab": 0.1111,
+    "AGENT_val|daily_vocab": 0.25,
+    "ONE_val|closed_184": 0.832,
+    "E1_ttrs_test|open_vocab": 0.1071,
+    "E1_ttrs_test|daily_vocab": 0.2222,
+    "ONE_test|open_vocab": 0.8167,
+    "ONE_test|daily_vocab": 0.8889,
+    "THSL_test|open_vocab": 0.0983,
+    "THSL_test|daily_vocab": 0.3636,
+    "AGENT_test|open_vocab": 0.2841,
+    "AGENT_test|daily_vocab": 0.5882,
+    "ONE_test|closed_184": 0.8454,
+    "T51U|open_vocab": 0.4466,
+    "T51U|closed_51": 0.729,
+    "T51U|daily_vocab": 0.5688,
+    "T51U|null_auc": 0.7755
+  },
+  {
+    "step": 7100,
+    "loss": 1.2724196910858154
+  },
+  {
+    "step": 7200,
+    "loss": 0.39660441875457764
+  },
+  {
+    "step": 7300,
+    "loss": 0.5765308141708374
+  },
+  {
+    "step": 7400,
+    "loss": 0.291220098733902
+  },
+  {
+    "step": 7500,
+    "loss": 0.20376074314117432
+  },
+  {
+    "step": 7600,
+    "loss": 0.6471371054649353
+  },
+  {
+    "step": 7700,
+    "loss": 0.18348117172718048
+  },
+  {
+    "step": 7800,
+    "loss": 0.2571493089199066
+  },
+  {
+    "step": 7900,
+    "loss": 0.4453027844429016
+  },
+  {
+    "step": 8000,
+    "loss": 0.4058651030063629
+  },
+  {
+    "step": 8000,
+    "val": 0.3894814503495103,
+    "E1_ttrs_val|open_vocab": 0.2222,
+    "E1_ttrs_val|daily_vocab": 0.5385,
+    "ONE_val|open_vocab": 0.8086,
+    "ONE_val|daily_vocab": 0.9352,
+    "THSL_val|open_vocab": 0.1659,
+    "THSL_val|daily_vocab": 0.3,
+    "AGENT_val|open_vocab": 0.1667,
+    "AGENT_val|daily_vocab": 0.25,
+    "ONE_val|closed_184": 0.8438,
+    "E1_ttrs_test|open_vocab": 0.131,
+    "E1_ttrs_test|daily_vocab": 0.2222,
+    "ONE_test|open_vocab": 0.8076,
+    "ONE_test|daily_vocab": 0.8944,
+    "THSL_test|open_vocab": 0.1153,
+    "THSL_test|daily_vocab": 0.3636,
+    "AGENT_test|open_vocab": 0.2955,
+    "AGENT_test|daily_vocab": 0.6176,
+    "ONE_test|closed_184": 0.8408,
+    "T51U|open_vocab": 0.4752,
+    "T51U|closed_51": 0.7557,
+    "T51U|daily_vocab": 0.5951,
+    "T51U|null_auc": 0.7582
+  },
+  {
+    "step": 8100,
+    "loss": 0.23951026797294617
+  },
+  {
+    "step": 8200,
+    "loss": 0.4994054138660431
+  },
+  {
+    "step": 8300,
+    "loss": 0.31545349955558777
+  },
+  {
+    "step": 8400,
+    "loss": 0.6389278769493103
+  },
+  {
+    "step": 8500,
+    "loss": 0.22144821286201477
+  },
+  {
+    "step": 8600,
+    "loss": 0.17054049670696259
+  },
+  {
+    "step": 8700,
+    "loss": 0.7941276431083679
+  },
+  {
+    "step": 8800,
+    "loss": 0.23724892735481262
+  },
+  {
+    "step": 8900,
+    "loss": 0.5111539363861084
+  },
+  {
+    "step": 9000,
+    "loss": 0.259896844625473
+  },
+  {
+    "step": 9000,
+    "val": 0.3928873748073901,
+    "E1_ttrs_val|open_vocab": 0.2346,
+    "E1_ttrs_val|daily_vocab": 0.5385,
+    "ONE_val|open_vocab": 0.8203,
+    "ONE_val|daily_vocab": 0.9167,
+    "THSL_val|open_vocab": 0.1613,
+    "THSL_val|daily_vocab": 0.3,
+    "AGENT_val|open_vocab": 0.1667,
+    "AGENT_val|daily_vocab": 0.25,
+    "ONE_val|closed_184": 0.8516,
+    "E1_ttrs_test|open_vocab": 0.1429,
+    "E1_ttrs_test|daily_vocab": 0.2222,
+    "ONE_test|open_vocab": 0.8213,
+    "ONE_test|daily_vocab": 0.8778,
+    "THSL_test|open_vocab": 0.1153,
+    "THSL_test|daily_vocab": 0.3636,
+    "AGENT_test|open_vocab": 0.2955,
+    "AGENT_test|daily_vocab": 0.5588,
+    "ONE_test|closed_184": 0.8442,
+    "T51U|open_vocab": 0.4733,
+    "T51U|closed_51": 0.7328,
+    "T51U|daily_vocab": 0.587,
+    "T51U|null_auc": 0.7526
+  },
+  {
+    "step": 9100,
+    "loss": 0.8154444098472595
+  },
+  {
+    "step": 9200,
+    "loss": 0.3456117510795593
+  },
+  {
+    "step": 9300,
+    "loss": 0.1674831658601761
+  },
+  {
+    "step": 9400,
+    "loss": 0.5384092330932617
+  },
+  {
+    "step": 9500,
+    "loss": 0.22194088995456696
+  },
+  {
+    "step": 9600,
+    "loss": 0.3801825940608978
+  },
+  {
+    "step": 9700,
+    "loss": 0.37991154193878174
+  },
+  {
+    "step": 9800,
+    "loss": 0.6874659657478333
+  },
+  {
+    "step": 9900,
+    "loss": 0.38095828890800476
+  },
+  {
+    "step": 10000,
+    "loss": 0.5270141959190369
+  },
+  {
+    "step": 10000,
+    "val": 0.3941456548824452,
+    "E1_ttrs_val|open_vocab": 0.2346,
+    "E1_ttrs_val|daily_vocab": 0.5385,
+    "ONE_val|open_vocab": 0.8145,
+    "ONE_val|daily_vocab": 0.9074,
+    "THSL_val|open_vocab": 0.1682,
+    "THSL_val|daily_vocab": 0.3,
+    "AGENT_val|open_vocab": 0.1667,
+    "AGENT_val|daily_vocab": 0.25,
+    "ONE_val|closed_184": 0.8457,
+    "E1_ttrs_test|open_vocab": 0.1548,
+    "E1_ttrs_test|daily_vocab": 0.2222,
+    "ONE_test|open_vocab": 0.8213,
+    "ONE_test|daily_vocab": 0.8722,
+    "THSL_test|open_vocab": 0.122,
+    "THSL_test|daily_vocab": 0.3636,
+    "AGENT_test|open_vocab": 0.3068,
+    "AGENT_test|daily_vocab": 0.5882,
+    "ONE_test|closed_184": 0.8454,
+    "T51U|open_vocab": 0.4752,
+    "T51U|closed_51": 0.7252,
+    "T51U|daily_vocab": 0.587,
+    "T51U|null_auc": 0.7552
+  }
+]

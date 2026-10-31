@@ -1,0 +1,212 @@
+{
+  "ขนมปัง": [
+    {
+      "clip_id": "thsl:th_sl_00449",
+      "word": "ขนมปัง",
+      "signer": "S_thsl_05",
+      "role": "train",
+      "raw_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp_raw/th_sl/th_sl_00449.npz",
+      "raw_exists": true,
+      "standard_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp/th_sl/th_sl_00449.npz",
+      "standard_exists": true,
+      "source_file": "raw_data/word_level/th_sl_dictionary/videos/th_sl/th_sl_00449.mp4",
+      "local_video": null,
+      "n_frames": 118,
+      "duration_s": 4.679999828338623,
+      "left_observed": 0.3559322033898305,
+      "right_observed": 0.2796610169491525
+    }
+  ],
+  "ข้าว": [
+    {
+      "clip_id": "thsl:th_sl_00451",
+      "word": "ข้าว",
+      "signer": "S_thsl_05",
+      "role": "train",
+      "raw_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp_raw/th_sl/th_sl_00451.npz",
+      "raw_exists": true,
+      "standard_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp/th_sl/th_sl_00451.npz",
+      "standard_exists": true,
+      "source_file": "raw_data/word_level/th_sl_dictionary/videos/th_sl/th_sl_00451.mp4",
+      "local_video": null,
+      "n_frames": 109,
+      "duration_s": 4.320000171661377,
+      "left_observed": 0.0,
+      "right_observed": 0.3761467889908257
+    }
+  ],
+  "คุณ": [
+    {
+      "clip_id": "thsl:th_sl_00172",
+      "word": "คุณ",
+      "signer": "S_thsl_04",
+      "role": "train",
+      "raw_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp_raw/th_sl/th_sl_00172.npz",
+      "raw_exists": true,
+      "standard_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp/th_sl/th_sl_00172.npz",
+      "standard_exists": true,
+      "source_file": "raw_data/word_level/th_sl_dictionary/videos/th_sl/th_sl_00172.mp4",
+      "local_video": null,
+      "n_frames": 87,
+      "duration_s": 3.440000057220459,
+      "left_observed": 0.0,
+      "right_observed": 0.2988505747126437
+    }
+  ],
+  "ฉัน": [
+    {
+      "clip_id": "thsl:th_sl_00164",
+      "word": "ฉัน",
+      "signer": "S_thsl_04",
+      "role": "train",
+      "raw_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp_raw/th_sl/th_sl_00164.npz",
+      "raw_exists": true,
+      "standard_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp/th_sl/th_sl_00164.npz",
+      "standard_exists": true,
+      "source_file": "raw_data/word_level/th_sl_dictionary/videos/th_sl/th_sl_00164.mp4",
+      "local_video": null,
+      "n_frames": 83,
+      "duration_s": 3.2799999713897705,
+      "left_observed": 0.0,
+      "right_observed": 0.26506024096385544
+    }
+  ],
+  "ชอบ": [
+    {
+      "clip_id": "thsl:th_sl_00827",
+      "word": "ชอบ",
+      "signer": "S_thsl_05",
+      "role": "train",
+      "raw_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp_raw/th_sl/th_sl_00827.npz",
+      "raw_exists": true,
+      "standard_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp/th_sl/th_sl_00827.npz",
+      "standard_exists": true,
+      "source_file": "raw_data/word_level/th_sl_dictionary/videos/th_sl/th_sl_00827.mp4",
+      "local_video": null,
+      "n_frames": 94,
+      "duration_s": 3.7200000286102295,
+      "left_observed": 0.0,
+      "right_observed": 0.3617021276595745
+    },
+    {
+      "clip_id": "thsl:th_sl_01604",
+      "word": "ชอบ",
+      "signer": "S_thsl_00",
+      "role": "train",
+      "raw_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp_raw/th_sl/th_sl_01604.npz",
+      "raw_exists": true,
+      "standard_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp/th_sl/th_sl_01604.npz",
+      "standard_exists": true,
+      "source_file": "raw_data/word_level/th_sl_dictionary/videos/th_sl/th_sl_01604.mp4",
+      "local_video": null,
+      "n_frames": 50,
+      "duration_s": 1.9600000381469727,
+      "left_observed": 0.0,
+      "right_observed": 0.54
+    }
+  ],
+  "ช่วย": [
+    {
+      "clip_id": "thsl:th_sl_02122",
+      "word": "ช่วย",
+      "signer": "S_thsl_00",
+      "role": "train",
+      "raw_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp_raw/th_sl/th_sl_02122.npz",
+      "raw_exists": true,
+      "standard_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp/th_sl/th_sl_02122.npz",
+      "standard_exists": true,
+      "source_file": "raw_data/word_level/th_sl_dictionary/videos/th_sl/th_sl_02122.mp4",
+      "local_video": null,
+      "n_frames": 48,
+      "duration_s": 1.8799999952316284,
+      "left_observed": 0.5833333333333334,
+      "right_observed": 0.625
+    }
+  ],
+  "ญาติ": [
+    {
+      "clip_id": "thsl:th_sl_00213",
+      "word": "ญาติ",
+      "signer": "S_thsl_04",
+      "role": "train",
+      "raw_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp_raw/th_sl/th_sl_00213.npz",
+      "raw_exists": true,
+      "standard_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp/th_sl/th_sl_00213.npz",
+      "standard_exists": true,
+      "source_file": "raw_data/word_level/th_sl_dictionary/videos/th_sl/th_sl_00213.mp4",
+      "local_video": null,
+      "n_frames": 99,
+      "duration_s": 3.9200000762939453,
+      "left_observed": 0.0,
+      "right_observed": 0.30303030303030304
+    },
+    {
+      "clip_id": "thsl:th_sl_07692",
+      "word": "ญาติ",
+      "signer": "S_thsl_01",
+      "role": "train",
+      "raw_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp_raw/th_sl/th_sl_07692.npz",
+      "raw_exists": true,
+      "standard_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp/th_sl/th_sl_07692.npz",
+      "standard_exists": true,
+      "source_file": "raw_data/word_level/th_sl_dictionary/videos/th_sl/th_sl_07692.mp4",
+      "local_video": null,
+      "n_frames": 73,
+      "duration_s": 2.880000114440918,
+      "left_observed": 0.0,
+      "right_observed": 0.547945205479452
+    }
+  ],
+  "ลืม": [
+    {
+      "clip_id": "thsl:th_sl_00842",
+      "word": "ลืม",
+      "signer": "S_thsl_05",
+      "role": "train",
+      "raw_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp_raw/th_sl/th_sl_00842.npz",
+      "raw_exists": true,
+      "standard_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp/th_sl/th_sl_00842.npz",
+      "standard_exists": true,
+      "source_file": "raw_data/word_level/th_sl_dictionary/videos/th_sl/th_sl_00842.mp4",
+      "local_video": null,
+      "n_frames": 88,
+      "duration_s": 3.4800000190734863,
+      "left_observed": 0.0,
+      "right_observed": 0.38636363636363635
+    }
+  ],
+  "แฟน": [
+    {
+      "clip_id": "thsl:th_sl_00204",
+      "word": "แฟน",
+      "signer": "S_thsl_04",
+      "role": "train",
+      "raw_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp_raw/th_sl/th_sl_00204.npz",
+      "raw_exists": true,
+      "standard_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp/th_sl/th_sl_00204.npz",
+      "standard_exists": true,
+      "source_file": "raw_data/word_level/th_sl_dictionary/videos/th_sl/th_sl_00204.mp4",
+      "local_video": null,
+      "n_frames": 91,
+      "duration_s": 3.5999999046325684,
+      "left_observed": 0.0,
+      "right_observed": 0.31868131868131866
+    },
+    {
+      "clip_id": "thsl:th_sl_07657",
+      "word": "แฟน",
+      "signer": "S_thsl_01",
+      "role": "train",
+      "raw_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp_raw/th_sl/th_sl_07657.npz",
+      "raw_exists": true,
+      "standard_path": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/cloud_s3/data_prep/pose_mp/th_sl/th_sl_07657.npz",
+      "standard_exists": true,
+      "source_file": "raw_data/word_level/th_sl_dictionary/videos/th_sl/th_sl_07657.mp4",
+      "local_video": null,
+      "n_frames": 70,
+      "duration_s": 2.759999990463257,
+      "left_observed": 0.0,
+      "right_observed": 0.3142857142857143
+    }
+  ]
+}

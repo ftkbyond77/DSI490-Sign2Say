@@ -1,0 +1,33 @@
+{
+  "inputs": {
+    "cloud_s3/data_prep/shards/clips.parquet": "07561270f16598a41d712fc6a252a41467c84a1ab0be2bc07a1532340ca167ee",
+    "cloud_s3/data_prep/manifest/clips.parquet": "b1f25a4760dd740bcbdda8781db680fd899346bb3cb6c11f5dee5f43a8c03fee",
+    "Boom/phase2.1/02_hybrid_score/boom_datatest/scientific/segments.csv": "07664617cbed883fef3bd56e44dd7702e8e825c62b7dac718ed2e1d275479753"
+  },
+  "pairs": [
+    [
+      "ชอบ",
+      "ข้าว"
+    ],
+    [
+      "ฉัน",
+      "คุณ"
+    ],
+    [
+      "ฉัน",
+      "แฟน"
+    ],
+    [
+      "ลืม",
+      "ญาติ"
+    ],
+    [
+      "ช่วย",
+      "ขนมปัง"
+    ]
+  ],
+  "deduplication": "dataset=th_sl, extractor=mp, unique clip_id",
+  "training_readiness": "at least 3 training signers per class (screening only, not sufficient for reliable accuracy)",
+  "evidence": "Errors come from proposed text edit alignment; no verified temporal ground truth",
+  "geometry_code_sha256": "4d2dff82be397cb93a710abbb497e177e384a5d9d1d9ef7edba3f16241b9f749"
+}

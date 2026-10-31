@@ -1,0 +1,12 @@
+{
+  "before": {
+    "n": 178,
+    "correct": 125
+  },
+  "after": {
+    "n": 178,
+    "correct": 125
+  },
+  "new_concept_validation_queries": 0,
+  "scope": "cached embedding retrieval only; validation role, no test selection"
+}

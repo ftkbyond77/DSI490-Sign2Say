@@ -1,0 +1,42 @@
+[
+  {
+    "id": "video_01",
+    "enabled": false,
+    "approved_for_evaluation": false,
+    "video": "",
+    "reference_words": [],
+    "reference_segments": []
+  },
+  {
+    "id": "video_02",
+    "enabled": false,
+    "approved_for_evaluation": false,
+    "video": "",
+    "reference_words": [],
+    "reference_segments": []
+  },
+  {
+    "id": "video_03",
+    "enabled": false,
+    "approved_for_evaluation": false,
+    "video": "",
+    "reference_words": [],
+    "reference_segments": []
+  },
+  {
+    "id": "video_04",
+    "enabled": false,
+    "approved_for_evaluation": false,
+    "video": "",
+    "reference_words": [],
+    "reference_segments": []
+  },
+  {
+    "id": "video_05",
+    "enabled": false,
+    "approved_for_evaluation": false,
+    "video": "",
+    "reference_words": [],
+    "reference_segments": []
+  }
+]

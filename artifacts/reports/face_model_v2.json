@@ -1,0 +1,103 @@
+{
+  "variants": {
+    "v9 recipe": {
+      "l2": 0.01,
+      "tune": {
+        "clips_acc": 0.5638888888888889,
+        "neutral_vs_emotion": 0.8125,
+        "false_alarm_cv": 0.0888753908205273,
+        "valence_agree_cv": 0.3404255319148936,
+        "valence_gap_cv": 0.23581919110451552,
+        "n_emotion": 47
+      }
+    },
+    "neutral signing (all training signers)": {
+      "l2": 0.01,
+      "tune": {
+        "clips_acc": 0.5423611111111111,
+        "neutral_vs_emotion": 0.7930555555555555,
+        "false_alarm_cv": 0.09028484308968587,
+        "valence_agree_cv": 0.3829787234042553,
+        "valence_gap_cv": 0.22230974408438264,
+        "n_emotion": 47
+      }
+    },
+    "+ emotion-word signing (weak labels)": {
+      "l2": 0.01,
+      "tune": {
+        "clips_acc": 0.5430555555555555,
+        "neutral_vs_emotion": 0.8097222222222222,
+        "false_alarm_cv": 0.10454636587740862,
+        "valence_agree_cv": 0.3829787234042553,
+        "valence_gap_cv": 0.2447998663622183,
+        "n_emotion": 47
+      }
+    },
+    "+ emotion words, mouthing masked": {
+      "l2": 0.003,
+      "tune": {
+        "clips_acc": 0.5416666666666666,
+        "neutral_vs_emotion": 0.8013888888888889,
+        "false_alarm_cv": 0.180959965630136,
+        "valence_agree_cv": 0.3617021276595745,
+        "valence_gap_cv": 0.13599814684614323,
+        "n_emotion": 47
+      }
+    },
+    "neutral (all), mouthing masked": {
+      "l2": 0.01,
+      "tune": {
+        "clips_acc": 0.5493055555555556,
+        "neutral_vs_emotion": 0.7854166666666667,
+        "false_alarm_cv": 0.1703925658785787,
+        "valence_agree_cv": 0.3404255319148936,
+        "valence_gap_cv": 0.11930216905301799,
+        "n_emotion": 47
+      }
+    },
+    "domain input (acted / signing) + neutral (all)": {
+      "l2": 0.001,
+      "tune": {
+        "clips_acc": 0.5465277777777777,
+        "neutral_vs_emotion": 0.8298611111111112,
+        "false_alarm_cv": 0.01594718635982991,
+        "valence_agree_cv": 0.1702127659574468,
+        "valence_gap_cv": 0.1426168167747488,
+        "n_emotion": 47
+      }
+    },
+    "domain input + neutral (all) + emotion words": {
+      "l2": 0.01,
+      "tune": {
+        "clips_acc": 0.5451388888888888,
+        "neutral_vs_emotion": 0.8201388888888889,
+        "false_alarm_cv": 0.04985366285273178,
+        "valence_agree_cv": 0.23404255319148937,
+        "valence_gap_cv": 0.25075390188543795,
+        "n_emotion": 47
+      }
+    }
+  },
+  "chosen": null,
+  "test": {
+    "v10": {
+      "neutral_n": 300,
+      "false_alarm": 0.21666666666666667,
+      "emotion_n": 1,
+      "valence_agree": 0.0,
+      "mean_valence_pos": -0.20010551288723946,
+      "mean_valence_neg": null,
+      "valence_gap": null
+    },
+    "v9": {
+      "neutral_n": 300,
+      "false_alarm": 0.21666666666666667,
+      "emotion_n": 1,
+      "valence_agree": 0.0,
+      "mean_valence_pos": -0.20010551288723946,
+      "mean_valence_neg": null,
+      "valence_gap": null
+    }
+  },
+  "latency_ms_per_stretch": 0.03971499991166638
+}

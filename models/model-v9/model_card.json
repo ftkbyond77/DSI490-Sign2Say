@@ -1,0 +1,8 @@
+{
+ "name": "model-v9",
+ "branch": "jack_master",
+ "base": "Jack-model (v8.1)",
+ "code": "this checkout",
+ "setting": "models/model-v9/spotting.json + segment_calibration.json chosen by `python main.py decision tune --start v8.1` (tune data only)",
+ "report": "result_reporting/result_v9.md"
+}

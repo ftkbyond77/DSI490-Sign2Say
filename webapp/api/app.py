@@ -4,6 +4,10 @@
                              (browser MediaPipe)
   POST /v1/translate/video   multipart file=<video>  (?vocab=conversation&llm=1&speak=0&face_question=0)          (server MediaPipe)
   …/stream                   the same two endpoints as NDJSON: {"stage", "p"} progress lines, then {"result": …}
+  WS   /v1/live              v10 streaming: {"hw": [H, W], "vocab"?, "alphabet"?} once, then one {t, pose, lh, rh, face, bs} per camera
+                             frame → {"partial": [{word, status, p}], "confirmed": [{word, status, t0, t1, latency, p}]} whenever
+                             the words change (the web's filter shows a word below its threshold as [?]);
+                             {"end": true} → the rest is confirmed ({"final": true, …}). Settings = <model>/spotting.json "stream".
   GET  /v1/health · /v1/info · /v1/vocab
 
 Stateless (model files are read-only, mounted at /app/models) → scale horizontally: `docker compose up --scale sign-api=3`.
@@ -21,6 +25,7 @@ if (_root / "modules").is_dir() and str(_root) not in sys.path:      # running f
 
 import base64
 import json
+import logging
 import os
 import queue
 import tempfile
@@ -29,19 +34,24 @@ import time
 from pathlib import Path
 
 import httpx
-from fastapi import FastAPI, File, HTTPException, Query, UploadFile
+from fastapi import FastAPI, File, HTTPException, Query, UploadFile, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 
 from modules.pipeline import SignPipeline
 from modules.utils import read_json
+if __package__:
+    from .request_cache import save_request
+else:
+    from request_cache import save_request
 
 MODEL_DIR = Path(os.environ.get("THAISLM_MODELS", "/app/models"))
 TTS_URL = os.environ.get("TTS_URL", "http://tts:8001")
+TTS_URLS = [u.strip() for u in TTS_URL.split(",") if u.strip()]             # v10: GPU voice first, CPU voice as the fallback
 MAX_FRAMES = int(os.environ.get("MAX_FRAMES", 25 * 60))
 
-app = FastAPI(title="ThaiSLM sign-api", version="7.0")
+app = FastAPI(title="ThaiSLM sign-api", version="10.0")
 app.add_middleware(CORSMiddleware, allow_origins=os.environ.get("CORS_ORIGINS", "*").split(","), allow_methods=["*"], allow_headers=["*"])
 _pipes: dict[tuple, SignPipeline] = {}
 _lock = threading.Lock()
@@ -51,7 +61,8 @@ def pipe(vocab="conversation", llm=True) -> SignPipeline:
     key = (vocab, bool(llm))
     with _lock:
         if key not in _pipes:
-            _pipes[key] = SignPipeline(MODEL_DIR, backend="onnx", device=os.environ.get("ORT_DEVICE", "cpu"), vocab=vocab, use_llm=llm)
+            _pipes[key] = SignPipeline(MODEL_DIR, backend="onnx", device=os.environ.get("ORT_DEVICE", "auto"), vocab=vocab, use_llm=llm)
+            logging.getLogger("sign-api").info("model_version=%s model_dir=%s backend=%s providers=%s", _pipes[key].cfg.get("version", "unknown"), MODEL_DIR, _pipes[key].be.name, getattr(_pipes[key].be, "providers", None))
         return _pipes[key]
 
 
@@ -114,20 +125,36 @@ class TranslateRequest(BaseModel):
     user_bank: list[MySign] = []                # this user's confirmed signs (personal sign memory, kept by the client)
     alphabet: str = "en"                        # fingerspelled letters: en (A–Z) | th (ก–ฮ, vowels) | both | off
     spell_only: bool = False                    # this utterance is fingerspelling only (the "สะกดอย่างเดียว" button)
+    perf_mode: str | None = None                 # optional client live-capture diagnostic mode
+    face_every: int | None = Field(default=None, ge=1)  # optional requested expression cadence
+    client_fps: float | None = None              # optional FPS measured from captured frame timestamps
 
 
 def _speak(result, tentative=False):
-    """Speech for the confirmed sentence; with tentative=True also for a withheld reading (the client marks it as uncertain).
-    Unknown-word marks are never read out."""
+    """Speech v2 (models/speech-model-v2 behind the tts service): the forward result goes to /v1/speak_plan — accepted words in
+    signing order (+ tentative ones when asked), a natural hesitation where a sign could not be read, never a guessed word, in the
+    signer's emotion. TTS_URL may list several services, GPU first (`gpu` profile, F5-TTS-THAI) then CPU: the first that answers
+    speaks. An older tts service (no plan endpoint) gets the confirmed sentence as in v9."""
+    face = result.get("face") or {}
+    aff = face.get("affect") or {k: face.get(k) for k in ("emotion", "intensity")}
+    body = dict(segments=[{k: s.get(k) for k in ("nearest", "status", "p_correct", "t0", "t1", "f0", "f1")} for s in result.get("segments", [])],
+                affect={k: aff.get(k) for k in ("emotion", "intensity", "arousal") if aff.get(k) is not None}, sentence=result.get("sentence") or "",
+                provider=(result.get("fusion") or {}).get("provider") or "rules", timings_ms=result.get("timings_ms") or {}, speak_uncertain=bool(tentative))
+    for url in TTS_URLS:
+        try:
+            r = httpx.post(f"{url}/v1/speak_plan", json=body, timeout=60)
+            r.raise_for_status()
+            return r.json().get("wav_b64") or None
+        except Exception:  # noqa: BLE001  (next service / v9 endpoint)
+            continue
     text = result.get("sentence") or ""
     if not text and tentative:
         text = (result.get("fusion") or {}).get("tentative_sentence_th") or ""
     text = text.replace("[?]", " ").strip()
     if not text:
         return None
-    face = result.get("face") or {}
     try:
-        r = httpx.post(f"{TTS_URL}/v1/speak", json=dict(text=text, emotion=face.get("emotion", "neutral"), intensity=face.get("intensity", 0.0)), timeout=30)
+        r = httpx.post(f"{TTS_URLS[-1]}/v1/speak", json=dict(text=text, emotion=face.get("emotion", "neutral"), intensity=face.get("intensity", 0.0)), timeout=30)
         r.raise_for_status()
         return base64.b64encode(r.content).decode()
     except Exception:  # noqa: BLE001  (speech is optional; text is the result)
@@ -135,10 +162,14 @@ def _speak(result, tentative=False):
 
 
 def _public(result):
-    keep = ("title", "duration_s", "n_frames", "signer_visible_frac", "signing_frac", "mirrored_to_right_hand", "sentence", "vocab", "model", "timings_ms")
+    keep = ("title", "duration_s", "n_frames", "signer_visible_frac", "signing_frac", "mirrored_to_right_hand", "sentence", "vocab", "model", "model_version", "timings_ms")
     out = {k: result.get(k) for k in keep}
+    if result.get("hand_canonicalization") is not None:
+        out["hand_canonicalization"] = result["hand_canonicalization"]
     out["segments"] = [dict(t0=s["t0"], t1=s["t1"], status=s["status"], word=s["nearest"], p=round(s.get("p_correct", 0), 3), kind=s.get("kind", "sign"),
-                            candidates=[c["word"] for c in s["candidates"][:5]], **({"emb": _vec_to_b64(s["emb"])} if "emb" in s else {}))
+                            candidates=[c["word"] for c in s["candidates"][:5]],     # words only: the web shows them in the [?] menu
+                            candidate_scores=[dict(word=c["word"], score=c.get("score"), ai_prob=c.get("ai_prob"), pose_score=c.get("pose_score"), fused_score=c.get("fused_score")) for c in s["candidates"][:5]],
+                            **({"symbolic": s["symbolic"]} if "symbolic" in s else {}), **({"emb": _vec_to_b64(s["emb"])} if "emb" in s else {}))
                        for s in result.get("segments", [])]
     f = result.get("fusion") or {}
     out["language"] = {k: f.get(k) for k in ("sentence_th", "tentative_sentence_th", "meaning_th", "evidence_gloss", "evidence_guard", "provider", "chosen")}
@@ -146,6 +177,10 @@ def _public(result):
     out["face"] = {k: face.get(k) for k in ("question_yesno", "question_furrow", "question_wh", "negation", "affirmation", "emotion", "emotion_th", "intensity",
                                             "face_frames")}
     out["face"]["brow_furrow_rel"] = (face.get("cues") or {}).get("brow_furrow_rel")
+    aff = face.get("affect")                   # v9 face model (models/face-model): fused affect + Thai explanation
+    if aff:
+        out["face"]["affect"] = {k: aff.get(k) for k in ("emotion", "emotion_th", "probs", "valence", "arousal", "intensity", "confidence",
+                                                          "explanation_th", "sources")}
     return out
 
 
@@ -182,21 +217,8 @@ def _check(req: TranslateRequest):
 SAVE_DIR = os.environ.get("THAISLM_SAVE_REQUESTS", "")      # diagnosis: keep each utterance's landmarks + result (landmarks only, no video)
 
 
-def _save_request(req: TranslateRequest, out: dict):
-    if not SAVE_DIR:
-        return
-    try:
-        import gzip
-        d = Path(SAVE_DIR); d.mkdir(parents=True, exist_ok=True)
-        rec = dict(time=time.strftime("%Y-%m-%d %H:%M:%S"), width=req.width, height=req.height, vocab=req.vocab, alphabet=req.alphabet,
-                   n_user_signs=len(req.user_bank), frames=[f.model_dump() for f in req.frames],
-                   result={k: out.get(k) for k in ("sentence", "language", "face", "timings_ms", "duration_s")})
-        # copies without the embedding — the response itself must keep "emb" (the client saves it when the user teaches a word)
-        rec["result"]["segments"] = [{k: v for k, v in sgm.items() if k != "emb"} for sgm in out.get("segments") or []]
-        with gzip.open(d / f"{time.strftime('%Y%m%d_%H%M%S')}_{int(time.time() * 1000) % 1000:03d}.json.gz", "wt", encoding="utf-8") as fh:
-            json.dump(rec, fh, ensure_ascii=False)
-    except Exception:  # noqa: BLE001  (diagnosis must never break a request)
-        pass
+def _save_request(req: TranslateRequest, out: dict, hand_canonicalization: dict | None, hand_gap_s: float):
+    save_request(SAVE_DIR, req, out, hand_canonicalization, hand_gap_s)
 
 
 def _frames_job(req: TranslateRequest, progress=None):
@@ -214,7 +236,7 @@ def _frames_job(req: TranslateRequest, progress=None):
         out["audio_wav_b64"] = _speak(r, req.speak_tentative)
         out["spoken"] = "sentence" if r.get("sentence") else "tentative"
     out["timings_ms"]["total_ms"] = round((time.perf_counter() - t) * 1000, 1)
-    _save_request(req, out)
+    _save_request(req, out, r.get("hand_canonicalization"), float(p.spot_all.get("hand_gap_s", 0.2)))
     return out
 
 
@@ -302,3 +324,46 @@ def translate_video_stream(file: UploadFile = File(...), vocab: str = Query("con
         finally:
             os.unlink(path)
     return _stream(job)
+
+
+@app.websocket("/v1/live")
+async def live(ws: WebSocket):
+    """v10 streaming recognition (modules/stream.LiveStream): words appear while the person signs instead of after the hands go down.
+    The model work runs on the stream's own thread; this coroutine only forwards frames and sends changes."""
+    import asyncio
+    import numpy as np
+    from modules.mediapipe_pose import from_browser
+    from modules.stream import KEYS, LiveStream
+    await ws.accept()
+    init = await ws.receive_json()
+    hw = tuple(int(x) for x in init.get("hw") or (init.get("height", 720), init.get("width", 1280)))
+    p = pipe(init.get("vocab", "conversation"), llm=False)
+    cfg = {**dict(step_s=0.5, lookahead_s=0.8, stable_n=1), **(p.spot_all.get("stream") or {})}     # the model's "stream" overrides v9's
+    stream = LiveStream(p, hw, alphabet=init.get("alphabet", p.spot_all.get("alphabet", "en")), **cfg)
+    sent, last = 0, None
+
+    def changes(final=False):
+        nonlocal sent, last
+        conf, part = stream.confirmed, [dict(word=x["word"], status=x["status"], p=x["p"]) for x in stream.partial_segments]
+        if len(conf) == sent and part == last and not final:
+            return None
+        new = [dict(word=c["word"], status=c["status"], t0=round(c["t0"], 2), t1=round(c["t1"], 2), latency=round(c["latency"], 2),
+                    p=round(float(c["p"]), 3))
+               for c in conf[sent:]]
+        sent, last = len(conf), part
+        return dict(partial=[] if final else part, confirmed=new, final=final)
+    try:
+        while True:
+            msg = await ws.receive_json()
+            if msg.get("end"):
+                break
+            raw = from_browser([msg], hw)
+            stream.add({k: raw[k][0] for k in KEYS}, float(msg.get("t", 0.0)) / 1000.0)
+            ch = changes()
+            if ch:
+                await ws.send_json(ch)
+        await asyncio.get_running_loop().run_in_executor(None, stream.close)
+        await ws.send_json(changes(final=True))
+        await ws.close()
+    except WebSocketDisconnect:
+        stream.close(flush=False)

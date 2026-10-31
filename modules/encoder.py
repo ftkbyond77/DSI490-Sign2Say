@@ -24,6 +24,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+from .utils import device as resolve_device, inference_precision
 from .schema import USED
 from .parts import MAX_LEN, MODES, prepare_parts, resample_len as _resample_len, to_iso  # noqa: F401
 from .unisign import UniSignPose
@@ -84,7 +85,8 @@ class SignEncoder(nn.Module):
         return F.normalize(z.float(), dim=-1)
 
 
-def collate(parts_list, device="cuda"):
+def collate(parts_list, device=None):
+    device = resolve_device(device)
     L = max(len(p["body"]) for p in parts_list)
     B = len(parts_list)
     out = {m: np.zeros((B, L, parts_list[0][m].shape[1], 3), np.float32) for m in MODES}
@@ -178,6 +180,26 @@ def webcam_augment(kp, sc, rng):
     return kp, sc
 
 
+def frame_crop(kp, sc, rng=None, c=None, lo=0.25, hi=1.1):
+    """Tight webcam framing (v8.1): the image ends `c` shoulder widths below the shoulders (c ~ U(lo, hi); training videos show
+    1.2–1.8, laptop webcams 0.25–0.7). A hand whose wrist or ≥ 40 % of whose points fall below that line is not detected (MediaPipe
+    drops it); the body keeps its points (the pose model extrapolates wrists and elbows). kp: isotropic [T,133,2] (y grows down)."""
+    ok = (sc[:, 5] > 0) & (sc[:, 6] > 0)
+    if not ok.any():
+        return kp, sc
+    mid_y = float(np.median((kp[ok, 5, 1] + kp[ok, 6, 1]) / 2))
+    sw = float(np.median(np.linalg.norm(kp[ok, 5] - kp[ok, 6], axis=1)))
+    if c is None:
+        c = rng.uniform(lo, hi)
+    line = mid_y + c * sw
+    sc = sc.copy()
+    for hand in (slice(91, 112), slice(112, 133)):
+        below = kp[:, hand, 1] > line
+        lost = below[:, 0] | (below.mean(1) >= 0.4)
+        sc[lost, hand] = 0.0
+    return kp, sc
+
+
 def augment(kp, sc, hw, rng, strength=1.0):
     kp = to_iso(kp, hw)
     if SIGNER_AUG["p"] or SIGNER_AUG["mirror"]:
@@ -221,8 +243,12 @@ class ClipDataset:
       * K instances: a different signer when one exists (85 %), else the other extractor's view of the same video (RTMW ↔
         MediaPipe — a free cross-extractor positive), else an augmented view; any instance uses its RTMW view with p = aux_p."""
 
-    def __init__(self, store: PoseStore, table, concept_index, null_sources, seed=0, transitions=None, daily=None, aux_p=0.25, hard_frac=0.5):
+    def __init__(self, store: PoseStore, table, concept_index, null_sources, seed=0, transitions=None, daily=None, aux_p=0.25, hard_frac=0.5,
+                 prep_fn=None):
         self.store, self.t = store, table
+        self.prep = prep_fn or prep               # encoder input of a window: Uni-Sign parts (v7) or landmark features (v8, modules.lmenc.prep)
+        self.jitter, self.context_p = 0.15, 0.0   # span-boundary jitter (share of the sign length) · co-articulation context (v8)
+        self.framing_p = 0.0                      # tight webcam framing: hands lost below the frame (v8.1, frame_crop)
         self.cidx = concept_index
         self.by_c = {}
         for i, r in enumerate(table):
@@ -244,15 +270,60 @@ class ClipDataset:
         n = self.store.length(row)
         f0, f1 = min(r["f0"], max(0, n - 4)), min(r["f1"], n)
         L = f1 - f0
+        j = self.jitter
         if aug:
-            f0 = int(np.clip(f0 + rng.randint(-int(0.15 * L) - 1, int(0.15 * L) + 2), 0, max(0, f1 - 4)))
-            f1 = int(np.clip(f1 + rng.randint(-int(0.15 * L) - 1, int(0.15 * L) + 2), f0 + 4, n))
+            f0 = int(np.clip(f0 + rng.randint(-int(j * L) - 1, int(j * L) + 2), 0, max(0, f1 - 4)))
+            f1 = int(np.clip(f1 + rng.randint(-int(j * L) - 1, int(j * L) + 2), f0 + 4, n))
         kp, sc, hw = self.store.get(row, f0, f1)
         if aug:
             kp, sc = augment(kp, sc, hw, rng)
+            if self.context_p and rng.rand() < self.context_p:
+                kp, sc = self._context(kp, sc, rng)
+            if self.framing_p and rng.rand() < self.framing_p:
+                kp, sc = frame_crop(kp, sc, rng)
         else:
             kp = to_iso(kp, hw)
-        return prep(kp, sc)
+        return self.prep(kp, sc)
+
+    def _context(self, kp, sc, rng):
+        """v8 co-articulation: continuous signing puts the end of the previous sign and / or the start of the next one inside a
+        spotting window. Glue 3–10 frames of other signs before and / or after this one (retargeted to this signer's shoulder frame,
+        joined by a 1–4 frame transition); the label stays this sign. Teaches the encoder what a window cut from real sentences looks
+        like instead of only clean dictionary spans."""
+        def body(k, s):
+            ok = (s[:, 5] > 0) & (s[:, 6] > 0)
+            if not ok.any():
+                return None
+            return ((k[ok, 5] + k[ok, 6]) / 2).mean(0), max(float(np.linalg.norm(k[ok, 5] - k[ok, 6], axis=1).mean()), 1e-3)
+        ref = body(kp, sc)
+        if ref is None:
+            return kp, sc
+        parts_k, parts_s = [kp], [sc]
+        for side in ("pre", "post"):
+            if rng.rand() < 0.6:
+                o = self.t[rng.randint(len(self.t))]
+                L = o["f1"] - o["f0"]
+                if L < 6:
+                    continue
+                m = rng.randint(3, min(11, L))
+                a, b = (o["f1"] - m, o["f1"]) if side == "pre" else (o["f0"], o["f0"] + m)
+                ko, so, hwo = self.store.get(o["row"], a, b)
+                ko = to_iso(ko, hwo)
+                bo = body(ko, so)
+                if bo is None:
+                    continue
+                ko = ((ko - bo[0]) * (ref[1] / bo[1]) + ref[0]).astype(np.float32)
+                ntr = rng.randint(1, 5)
+                w = np.linspace(0, 1, ntr + 2)[1:-1, None, None]
+                if side == "pre":
+                    tr = ko[-1][None] * (1 - w) + parts_k[0][0][None] * w
+                    parts_k = [ko, tr.astype(np.float32)] + parts_k
+                    parts_s = [so, np.minimum(so[-1], parts_s[0][0])[None].repeat(ntr, 0)] + parts_s
+                else:
+                    tr = parts_k[-1][-1][None] * (1 - w) + ko[0][None] * w
+                    parts_k = parts_k + [tr.astype(np.float32), ko]
+                    parts_s = parts_s + [np.minimum(parts_s[-1][-1], so[0])[None].repeat(ntr, 0), so]
+        return np.concatenate(parts_k).astype(np.float32), np.concatenate(parts_s).astype(np.float32)
 
     def null_view(self, rng):
         """Not a sign: rest before/after an isolated sign, a real between-sign movement from continuous signing, or a synthetic
@@ -264,7 +335,7 @@ class ClipDataset:
             a = max(0, a - rng.randint(0, 3)); b = min(n, max(b + rng.randint(0, 3), a + 6))
             kp, sc, hw = self.store.get(row, a, b)
             kp, sc = augment(kp, sc, hw, rng, 0.5)
-            return prep(kp, sc)
+            return self.prep(kp, sc)
         r = self.null_sources[rng.randint(len(self.null_sources))]
         n = self.store.length(r["row"])
         if u < 0.65:
@@ -273,7 +344,7 @@ class ClipDataset:
                 a, b = (0, r["f0"]) if pre >= post else (r["f1"], n)
                 kp, sc, hw = self.store.get(r["row"], a, b)
                 kp, sc = augment(kp, sc, hw, rng, 0.5)
-                return prep(kp, sc)
+                return self.prep(kp, sc)
         o = self.null_sources[rng.randint(len(self.null_sources))]
         L1, L2 = r["f1"] - r["f0"], o["f1"] - o["f0"]
         ka, sa, hwa = self.store.get(r["row"], r["f1"] - max(3, int(L1 * rng.uniform(0.3, 0.5))), r["f1"])
@@ -294,7 +365,7 @@ class ClipDataset:
         kp = np.concatenate([ka, tr, kb]).astype(np.float32)
         sc = np.concatenate([sa, np.minimum(sa[-1], sb[0])[None].repeat(ntr, 0), sb]).astype(np.float32)
         kp = (kp + rng.normal(0, 0.003, kp.shape)).astype(np.float32)
-        return prep(kp, sc)
+        return self.prep(kp, sc)
 
     def _concepts(self, P, multi, allc, rng):
         n_multi = min(len(multi), int(P * 0.65))
@@ -402,8 +473,9 @@ def supcon(z, y, temp=0.07):
 
 # ----------------------------------------------------------------------------- inference helpers
 @torch.no_grad()
-def embed_parts(model, parts_list, bs=256, zero_shot=False, device="cuda"):
+def embed_parts(model, parts_list, bs=256, zero_shot=False, device=None):
     """Embeddings of many clips, longest-similar batches. GPU OOM-safe: a batch that does not fit is halved and retried."""
+    device = str(next(model.parameters()).device) if device is None else resolve_device(device)
     model.eval()
     order = np.argsort([len(p["body"]) for p in parts_list])
     out = np.zeros((len(parts_list), 768), np.float32)
@@ -412,12 +484,12 @@ def embed_parts(model, parts_list, bs=256, zero_shot=False, device="cuda"):
         idx = order[i:i + bs]
         try:
             P, M = collate([parts_list[j] for j in idx], device)
-            with torch.autocast("cuda" if device == "cuda" else "cpu", dtype=torch.bfloat16, enabled=device == "cuda"):
+            with inference_precision(device):
                 z = model(P, M, zero_shot=zero_shot)
             out[idx] = z.float().cpu().numpy()
             i += len(idx)
         except torch.cuda.OutOfMemoryError:
-            del P, M
+            P = M = None
             torch.cuda.empty_cache()
             if bs == 1:
                 raise
@@ -426,8 +498,9 @@ def embed_parts(model, parts_list, bs=256, zero_shot=False, device="cuda"):
 
 
 @torch.no_grad()
-def frame_features(model, kp_iso, sc, device="cuda", chunk=400):
+def frame_features(model, kp_iso, sc, device=None, chunk=400):
     """Contextual frame states [T,768] for a long sequence (chunks of `chunk` frames with 50-frame overlap)."""
+    device = str(next(model.parameters()).device) if device is None else resolve_device(device)
     model.eval()
     T = len(kp_iso)
     out = np.zeros((T, 768), np.float32); wsum = np.zeros(T, np.float32)
@@ -435,7 +508,7 @@ def frame_features(model, kp_iso, sc, device="cuda", chunk=400):
     for a in range(0, max(1, T - 50), step):
         b = min(T, a + chunk)
         P, M = collate([prepare_parts(kp_iso[a:b], sc[a:b])], device)
-        with torch.autocast("cuda", dtype=torch.bfloat16, enabled=device == "cuda"):
+        with inference_precision(device):
             h = model.frames(P, M)[0].float().cpu().numpy()
         w = np.minimum(np.arange(1, b - a + 1), np.arange(b - a, 0, -1)).clip(max=25).astype(np.float32)
         out[a:b] += h * w[:, None]; wsum[a:b] += w
@@ -494,11 +567,12 @@ def retrieval_metrics(S, target, allowed=None):
                 MRR=float((1 / (rank + 1)).mean()), median_rank=float(np.median(rank) + 1))
 
 
-def load_encoder(models_dir, weights=None, device="cuda"):
+def load_encoder(models_dir, weights=None, device=None):
     """Fine-tuned encoder (weights = models/encoder.pt: full state dict, needs only mt5_config.json next to it) or the zero-shot
     Uni-Sign encoder (weights None: artifacts/pretrained/unisign_wlasl_enc.pt)."""
     import json
     from pathlib import Path
+    device = resolve_device(device)
     models_dir = Path(models_dir)
     cfg = json.loads((models_dir / "mt5_config.json").read_text())
     if weights is not None:

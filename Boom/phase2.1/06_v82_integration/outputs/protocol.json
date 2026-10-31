@@ -1,0 +1,14 @@
+{
+  "baseline_required": "v8.1",
+  "gate": {
+    "max_set_wer_regression": 0.003,
+    "minimum_mean_wer_improvement_exclusive": 0.002,
+    "minimum_accepted_precision_each_set": 0.9
+  },
+  "bootstrap": 10000,
+  "selection": "tune only; Eval-Test observation only; freeze before final test batch",
+  "test_history": "TSL51 test previously evaluated in earlier work; do not describe as never seen",
+  "baseline_inference": "test baseline delayed until final batch despite numbered step 2",
+  "face_identity_matching": false,
+  "backup_policy": "Create artifacts/baselines/v8.1 only after verifying actual v8.1; current v7.2 not copied under that name"
+}

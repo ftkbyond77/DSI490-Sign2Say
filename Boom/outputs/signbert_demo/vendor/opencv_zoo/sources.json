@@ -1,0 +1,18 @@
+[
+  {
+    "file": "mp_handpose.py",
+    "sha256": "7d67bfc645f8807496af26b8f393e084d72113cf5293a520b0e9905e9a331aa5"
+  },
+  {
+    "file": "mp_pose.py",
+    "sha256": "7e1953d1fb848c64fd3b44277e615e273e7fb2f325f7633eb9c1e32948d45e67"
+  },
+  {
+    "file": "mp_palmdet.py",
+    "sha256": "f06ce44a9b77e12b49d72416388829fd1a481ffe7a516d914e5a8c6ca50710be"
+  },
+  {
+    "file": "mp_persondet.py",
+    "sha256": "e530a8ebc3c218376d5dd1c13aa8ed39a850fac4dbcd6928144746b33477b9c7"
+  }
+]

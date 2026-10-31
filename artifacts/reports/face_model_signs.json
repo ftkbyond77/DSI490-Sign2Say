@@ -1,0 +1,3526 @@
+{
+  "neutral_clips": 299,
+  "emotion_word_clips": 52,
+  "false_alarm_model": 0.12374581939799331,
+  "false_alarm_rule": 0.2608695652173913,
+  "emotion_words_valence_agree_model": 0.3076923076923077,
+  "emotion_words_valence_agree_rule": 0.2692307692307692,
+  "emotion_words_nonneutral_model": 0.36538461538461536,
+  "emotion_words_nonneutral_rule": 0.36538461538461536,
+  "emotion_words_exact_model": 0.1346153846153846,
+  "emotion_words_exact_rule": 0.11538461538461539,
+  "mean_model_valence_pos_words": -0.14723106911397355,
+  "mean_model_valence_neg_words": -0.3065344492180469,
+  "per_clip": [
+    {
+      "set": "neutral_dictionary",
+      "concept": "ห้องอาหาร",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.574,
+      "model_v": -0.08965389700606463,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "พระโขนง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.672,
+      "model_v": -0.13830464067868886,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "วัดพระราม ๙",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.775,
+      "model_v": -0.05440220963209867,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "นักแสดง",
+      "signer": "S_thsl_02",
+      "model": "happy",
+      "model_p": 0.45,
+      "model_v": 0.33268404162954546,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "บางคน",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.692,
+      "model_v": -0.12843892266973853,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ทนทาน",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.482,
+      "model_v": -0.3046060992404819,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ขี้โม้มาก",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.639,
+      "model_v": -0.1802297347225249,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ไม่อั้น",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.47,
+      "model_v": -0.040783816343173365,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "โอเค",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.478,
+      "model_v": 0.05302098505198956,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "คันตา",
+      "signer": "S_thsl_02",
+      "model": "sad",
+      "model_p": 0.585,
+      "model_v": -0.4721302421763539,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ใบแดง",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.641,
+      "model_v": -0.14527124473825095,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "อาเฮีย",
+      "signer": "S_thsl_02",
+      "model": "surprise",
+      "model_p": 0.359,
+      "model_v": 0.030022465833462776,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ไหวพริบ",
+      "signer": "S_thsl_02",
+      "model": "surprise",
+      "model_p": 0.385,
+      "model_v": -0.0648812657687813,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ผ้าเบรค",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.653,
+      "model_v": -0.15142090660519897,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ข่าวด่วน",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.763,
+      "model_v": -0.12139098602347077,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เซ็นทรัลลาดพร้าว",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.67,
+      "model_v": -0.13319077081978317,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "จมน้ำ",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.684,
+      "model_v": -0.061759338527917845,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "อาอี๊",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.598,
+      "model_v": -0.09447401324287055,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ตาเบลอ",
+      "signer": "S_thsl_02",
+      "model": "sad",
+      "model_p": 0.445,
+      "model_v": -0.3456933757290244,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "สังเกตการณ์",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.688,
+      "model_v": -0.04260769784450532,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ฌ เฌอ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.619,
+      "model_v": -0.15988855664618312,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ไอจี",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.738,
+      "model_v": -0.12347382362931968,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "กระชาก",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.686,
+      "model_v": -0.11699493573978541,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "รหัสลับ",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.499,
+      "model_v": -0.06236037233611568,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ลำดับ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.56,
+      "model_v": -0.14458425734192132,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ท่ากบ",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.633,
+      "model_v": -0.10360078434459864,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ข้อ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.653,
+      "model_v": -0.16633938634768125,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "น้ำลาย",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.578,
+      "model_v": -0.20512288007885215,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ผลักดัน",
+      "signer": "S_thsl_02",
+      "model": "surprise",
+      "model_p": 0.323,
+      "model_v": 0.03317788466811182,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ทรงตื่น",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.567,
+      "model_v": -0.1716343932319432,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "อากง",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.605,
+      "model_v": -0.15847520562820136,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "โช๊คหลัง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.63,
+      "model_v": -0.15990284346044062,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ICSD คณะกรรมการกีฬาระหว่างประเทศสำหรับคนหูหนวก",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.512,
+      "model_v": -0.05843794583342968,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "อาม่า",
+      "signer": "S_thsl_02",
+      "model": "fear",
+      "model_p": 0.294,
+      "model_v": -0.13281599753536283,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ชู้",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.49,
+      "model_v": -0.27686001807451244,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ชมรมคนหูหนวกจังหวัดนนทบุรี",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.631,
+      "model_v": -0.12326565366238355,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "สแกนเนอร์",
+      "signer": "S_thsl_02",
+      "model": "happy",
+      "model_p": 0.294,
+      "model_v": 0.1848885024141055,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "นักข่าว",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.492,
+      "model_v": -0.010180454386863845,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "รั้ว",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.629,
+      "model_v": -0.1376627990510315,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "สัตว์ปีก",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.614,
+      "model_v": -0.17450937996618449,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "งานศพ",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.337,
+      "model_v": -0.19370718291029335,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "สำนึก",
+      "signer": "S_thsl_02",
+      "model": "happy",
+      "model_p": 0.396,
+      "model_v": 0.15208453540690245,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ของฉัน",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.715,
+      "model_v": -0.07789036273024975,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "รัฐบาลข้ามขั้ว",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.375,
+      "model_v": -0.11592697463929652,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ลักษณะ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.598,
+      "model_v": -0.11448985002934933,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ต่อเนื่อง",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.628,
+      "model_v": -0.07259857744211332,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ไฟดูด",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.566,
+      "model_v": -0.1919185965787619,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "รางวัลรองชนะเลิศอันดับ 1",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.571,
+      "model_v": -0.13277901301626116,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "วาดภาพ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.758,
+      "model_v": -0.0700560206081718,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ฝ่ายทรัพยากรบุคคล HR",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.599,
+      "model_v": -0.12852202316280453,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เครา",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.69,
+      "model_v": -0.15877747768536207,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ต่อรอง",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.512,
+      "model_v": -0.10891475742682813,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เสื้อลาย",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.494,
+      "model_v": -0.02823366322554646,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "โยน",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.572,
+      "model_v": -0.13094821104314175,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ถ่อมตัว",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.623,
+      "model_v": -0.17330700704769697,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "พวกเรา",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.826,
+      "model_v": -0.05922019262798129,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "กระจอก",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.447,
+      "model_v": -0.23523183725774285,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "หน้าบาง",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.726,
+      "model_v": -0.1457684871042147,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ซื้อเสียง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.514,
+      "model_v": -0.1418858031742275,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ลด",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.848,
+      "model_v": -0.02744533426593989,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ชั้้นล่าง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.609,
+      "model_v": -0.1645998489577323,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ปกป้อง",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.624,
+      "model_v": -0.1157859803759493,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "กระดุม",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.681,
+      "model_v": -0.12707495654467493,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "วีดีโอ",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.642,
+      "model_v": -0.09484308762475847,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ชมรมคนหูหนวกจังหวัดพังงา",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.666,
+      "model_v": -0.11853177081793546,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ปากกาลบคำผิด",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.69,
+      "model_v": -0.08526865236926823,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "วางมือ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.633,
+      "model_v": -0.23434404651634394,
+      "rule": "happy",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ช้อปติ๊กตอก",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.722,
+      "model_v": -0.1274791179224849,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ลูกโป่ง",
+      "signer": "S_thsl_02",
+      "model": "surprise",
+      "model_p": 0.39,
+      "model_v": -0.025504167680628603,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ชุดข้อเหวี่ยง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.706,
+      "model_v": -0.13095182976685465,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ยําทะเลรวมมิตร",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.602,
+      "model_v": -0.1002109625376761,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "คุมบังเหียน",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.442,
+      "model_v": -0.03322915027383714,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ปลอบใจ",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.6,
+      "model_v": -0.09455425080377608,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ปากเหม็น",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.365,
+      "model_v": -0.26384238665923476,
+      "rule": "happy",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เย็บ",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.503,
+      "model_v": 0.011002339399419733,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "วัดมังกร",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.865,
+      "model_v": -0.02830150960362516,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "รถเกีย",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.588,
+      "model_v": -0.09856873831013216,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "นักพากย์บอล",
+      "signer": "S_thsl_02",
+      "model": "surprise",
+      "model_p": 0.396,
+      "model_v": -0.04890916002914307,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "พ่อมด",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.697,
+      "model_v": -0.10459619583562016,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ถั่วแดง",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.332,
+      "model_v": -0.07603800531942397,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ท่าฟรีสไตล์",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.543,
+      "model_v": -0.007818626018706698,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ทรงยืน",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.454,
+      "model_v": 0.07515216276515277,
+      "rule": "happy",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เย็ด",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.52,
+      "model_v": -0.3031632947269827,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "กู",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.766,
+      "model_v": -0.11453638803213832,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "มนุษย์",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.872,
+      "model_v": -0.04318649924825877,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ไม่ว่า",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.414,
+      "model_v": -0.32083305409178137,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "พลบค่ำคืน",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.483,
+      "model_v": 0.025583472015568993,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ชมรมคนหูหนวกจังหวัดหนองคาย",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.515,
+      "model_v": -0.12401098394766447,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "แฮชแท็ก",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.671,
+      "model_v": -0.1311017363332212,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ไขลาน",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.587,
+      "model_v": 0.006666519690770659,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ปั้มน้ำมันปตท.",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.593,
+      "model_v": -0.14118597018532453,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "พระเชษฐา - พี่ชาย",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.484,
+      "model_v": -0.06974223243305458,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ต่างจังหวัด",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.632,
+      "model_v": -0.1401548176072538,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ลาดพร้าว 71",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.682,
+      "model_v": -0.14181641563773154,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เพศเมีย",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.414,
+      "model_v": -0.06338167163776232,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ไทยประกันชีวิต",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.624,
+      "model_v": -0.14979293253272774,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "สำรอง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.807,
+      "model_v": -0.07862476846203208,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ของใหม่",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.793,
+      "model_v": -0.06254408969543873,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "จำไว้",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.704,
+      "model_v": -0.09073466269765049,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ปูเสื่อ",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.467,
+      "model_v": -0.10494159180670976,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ถึง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.624,
+      "model_v": -0.1479615119285881,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "กรมส่งเสริมการเกษตร",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.505,
+      "model_v": -0.2736694457009435,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เป๋าตัง",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.338,
+      "model_v": 0.06400556613225492,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "บิดเบี้ยว",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.752,
+      "model_v": -0.11885422766208648,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ห้องทำงาน",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.669,
+      "model_v": -0.11236484134569763,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ดนตรี",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.656,
+      "model_v": -0.15713667925447225,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "น้ำตกหมู",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.523,
+      "model_v": -0.10299167017219588,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เจาะน้ำเกลือที่มือ",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.437,
+      "model_v": 0.05350193588528782,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "คลี่คลาย",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.805,
+      "model_v": -0.05561619489453733,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ข่มขี่",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.556,
+      "model_v": -0.15149347006808964,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "รองเท้าสตั๊ด",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.573,
+      "model_v": -0.1856289215153083,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "อา",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.628,
+      "model_v": -0.14846500055864456,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ทอดพระเนตร",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.623,
+      "model_v": -0.07115567366126924,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "อาทิตย์ก่อน",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.649,
+      "model_v": -0.13143913988023997,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "บางพลัด",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.685,
+      "model_v": -0.1263010843191296,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ตกอับ",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.598,
+      "model_v": -0.22089584015775468,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "พวงหรีด",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.501,
+      "model_v": -0.18518109526485202,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ร้าง",
+      "signer": "S_thsl_02",
+      "model": "sad",
+      "model_p": 0.261,
+      "model_v": -0.20232037547975779,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ปีนผา",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.649,
+      "model_v": -0.1262267912738025,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "นักปีน",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.63,
+      "model_v": -0.13206043150275942,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เพชรเกษม 48",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.723,
+      "model_v": -0.11587888533249496,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "วัยเยาว์",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.843,
+      "model_v": -0.07061557215638459,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ผลักดัน",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.354,
+      "model_v": -0.004165833233855637,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ผมหน้าม้า",
+      "signer": "S_thsl_02",
+      "model": "surprise",
+      "model_p": 0.433,
+      "model_v": 0.029984585760394138,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ว่ายน้ำ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.802,
+      "model_v": -0.08504743129014969,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "แซง",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.637,
+      "model_v": -0.15906950837234035,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "กู้",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.848,
+      "model_v": -0.05517782038077712,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "กระทรวงการพัฒนาสังคมและความมั่นคงของมนุษย์",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.351,
+      "model_v": -0.044359579426236445,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ช่างมัน",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.706,
+      "model_v": -0.1557358705904335,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "โดนัท",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.683,
+      "model_v": -0.10769395295064896,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "หลานสาว",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.612,
+      "model_v": -0.11090941820293662,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "สะพานใหม่",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.611,
+      "model_v": -0.17748835976235566,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "กรีดยาง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.612,
+      "model_v": -0.15231528067961334,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "รางวัลชมเชย",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.523,
+      "model_v": -0.12080593752907588,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "มะเส็ง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.604,
+      "model_v": -0.13054285272955893,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ต่ำ",
+      "signer": "S_thsl_02",
+      "model": "surprise",
+      "model_p": 0.467,
+      "model_v": 0.11725401632720606,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ห้องพระ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.678,
+      "model_v": -0.11614529117941856,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ผีป่า",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.505,
+      "model_v": -0.031150934321340168,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ถาวร",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.585,
+      "model_v": -0.2371537716127932,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "โล่รางวัล",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.535,
+      "model_v": 0.10848339693620802,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "บัตรดี",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.614,
+      "model_v": -0.16266825804486873,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ฤา",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.409,
+      "model_v": 0.044230486790183945,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "แปลว่า",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.695,
+      "model_v": -0.11394265955314038,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "กำลัง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.643,
+      "model_v": -0.12601926270872352,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "โปโลม้า",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.613,
+      "model_v": -0.09871086513157933,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ปกติ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.667,
+      "model_v": -0.16853118501603603,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "กะละมังเหล็ก",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.61,
+      "model_v": -0.1483909876551479,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "กล่องของขวัญ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.655,
+      "model_v": -0.15198141420260072,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "สยาม",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.571,
+      "model_v": -0.1612743288744241,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "วิตามิน",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.633,
+      "model_v": -0.1610777951194905,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "สัตว์สะเทินน้ำสะเทินบก",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.663,
+      "model_v": -0.15797990038990972,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ลูกสูบ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.812,
+      "model_v": -0.06722612478770316,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ติ๊กต็อก TikTok",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.584,
+      "model_v": -0.19472297718748446,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "คิดหนัก",
+      "signer": "S_thsl_02",
+      "model": "surprise",
+      "model_p": 0.355,
+      "model_v": -0.15378041155636313,
+      "rule": "angry",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ประวิงเวลา",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.581,
+      "model_v": -0.13313010162673894,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ผีกระสือ",
+      "signer": "S_thsl_02",
+      "model": "surprise",
+      "model_p": 0.536,
+      "model_v": 0.10140946158207956,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เติม",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.742,
+      "model_v": -0.08029116124380378,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "จุบจิบ",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.36,
+      "model_v": -0.31596901044249537,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ไม่มีอะไร",
+      "signer": "S_thsl_02",
+      "model": "sad",
+      "model_p": 0.613,
+      "model_v": -0.5585047982633113,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "กลาง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.577,
+      "model_v": -0.20753214359283442,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ตอแหล",
+      "signer": "S_thsl_02",
+      "model": "angry",
+      "model_p": 0.516,
+      "model_v": -0.25686991289258004,
+      "rule": "happy",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "หลังคา",
+      "signer": "S_thsl_02",
+      "model": "happy",
+      "model_p": 0.644,
+      "model_v": 0.4960743841424119,
+      "rule": "happy",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เผอิญ",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.398,
+      "model_v": 0.024990772735327495,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "หัวแข็ง",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.597,
+      "model_v": -0.20071054766885932,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "สถานพยาบาล",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.678,
+      "model_v": -0.14534563133493064,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เฟรนช์ฟรายส์",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.538,
+      "model_v": -0.17622737381607295,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ชิงแชมป์โลก",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.532,
+      "model_v": -0.12894422558601942,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "หน้าหนา",
+      "signer": "S_thsl_02",
+      "model": "fear",
+      "model_p": 0.393,
+      "model_v": -0.20033409825991838,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "สถานีรถประจำทาง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.677,
+      "model_v": -0.1543452491983771,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ปากเสีย",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.463,
+      "model_v": -0.03636618435848505,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "น้ำอสุจิ",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.633,
+      "model_v": -0.12527731624431906,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ยึด",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.613,
+      "model_v": -0.16057860013097522,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ปลอบโยน",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.675,
+      "model_v": -0.17900254493579265,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "บ้านใหญ่",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.469,
+      "model_v": -0.2450817365664989,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "พอเพียง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.755,
+      "model_v": -0.10459431996569038,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ชมรมคนหูหนวกจังหวัดชัยภูมิ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.488,
+      "model_v": -0.12773352484218775,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ถ่าน",
+      "signer": "S_thsl_02",
+      "model": "happy",
+      "model_p": 0.517,
+      "model_v": 0.40488310753717094,
+      "rule": "happy",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "คอแห้ง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.599,
+      "model_v": -0.12561735175549982,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เกียม",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.495,
+      "model_v": 0.1381730427907314,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ร้องคาราโอเกะ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.655,
+      "model_v": -0.036217236286029214,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "วีระยุทธ กาญจน์ชูฉัตร",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.652,
+      "model_v": -0.11015745024196802,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "กระดาษอาร์ต",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.529,
+      "model_v": -0.03589470201404764,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ดื่ม",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.939,
+      "model_v": 0.012196439460854693,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "แว่นตาว่ายน้ำ",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.64,
+      "model_v": -0.13673607618547978,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "โซ่",
+      "signer": "S_thsl_03",
+      "model": "fear",
+      "model_p": 0.407,
+      "model_v": -0.4463522750884295,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ถุงมือผู้รักษาประตู",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.657,
+      "model_v": -0.12153687250101938,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "พระโขนง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.707,
+      "model_v": -0.1218505972996354,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "วอลดอร์ฟ",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.636,
+      "model_v": -0.13497107197763397,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ตัดความสัมพันธ์",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.588,
+      "model_v": -0.03705528846476225,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "แจก",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.57,
+      "model_v": -0.07164444053778425,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "สระน้ำเป่าลม",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.532,
+      "model_v": -0.06720659742131826,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เรือนลิ้นเร่ง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.685,
+      "model_v": -0.14487235480919478,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "น้ำมันเครื่อง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.634,
+      "model_v": -0.16454983111470936,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "วันสตรีสากล",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.92,
+      "model_v": -0.019331269781105224,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ฯ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.608,
+      "model_v": -0.16868968950584529,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ศิริราช",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.68,
+      "model_v": -0.1371741399168968,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "กรมขนส่งทางบก",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.571,
+      "model_v": -0.10838228503707793,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "แข่ง",
+      "signer": "S_thsl_02",
+      "model": "sad",
+      "model_p": 0.425,
+      "model_v": -0.2667601244058459,
+      "rule": "happy",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "รำวง",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.756,
+      "model_v": 0.0007553961127996518,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "พระเจ้าวรวงศ์เธอ พระองค์เจ้าโสมสวลี กรมหมื่นสุทธนารีนาถ",
+      "signer": "S_thsl_02",
+      "model": "happy",
+      "model_p": 0.417,
+      "model_v": 0.3252099925768562,
+      "rule": "happy",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "กองทุนเงินให้กู้ยืมเพื่อการศึกษา",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.621,
+      "model_v": -0.15848296815529467,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ชมรมเยาวชนคนหูหนวกไทย",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.7,
+      "model_v": -0.1173859033267945,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ฮาร์เลย์",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.617,
+      "model_v": -0.17282868064939974,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ไอจี",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.694,
+      "model_v": -0.132475519599393,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "แต่",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.533,
+      "model_v": -0.2323956655338406,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ลำดับ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.53,
+      "model_v": -0.16452017240226266,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ชั้้นบน",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.636,
+      "model_v": -0.1428891124203801,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "มุสา",
+      "signer": "S_thsl_02",
+      "model": "surprise",
+      "model_p": 0.444,
+      "model_v": 0.03978343639755622,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "นมข้นหวาน",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.582,
+      "model_v": -0.07155466617550699,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "นโยบาย",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.389,
+      "model_v": 0.014200299815274792,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ถ่ายทอดสด",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.593,
+      "model_v": -0.14631795287132263,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ธนบัตร",
+      "signer": "S_thsl_02",
+      "model": "surprise",
+      "model_p": 0.364,
+      "model_v": 0.17994169632438567,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "หมายเลข",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.553,
+      "model_v": 0.019783585937693717,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ราชเทวี",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.67,
+      "model_v": -0.1351913304068148,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ซื่อสัตย์",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.767,
+      "model_v": -0.10172244310379028,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เหม็น",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.453,
+      "model_v": -0.006212032819166768,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "โฮจิมินห์",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.516,
+      "model_v": -0.1257185683469288,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "อุทกภัย",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.509,
+      "model_v": -0.22470689930487417,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ชั้นวางหนังสือ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.639,
+      "model_v": -0.14624795853160324,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "อายัด",
+      "signer": "S_thsl_02",
+      "model": "surprise",
+      "model_p": 0.4,
+      "model_v": -0.05805861200205978,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "แฝดสี่",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.407,
+      "model_v": -0.21310888319276272,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "โรงเรียนโสตศึกษาจังหวัดมุกดาหาร",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.468,
+      "model_v": -0.09849934284575285,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ไม่จริงใจ",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.541,
+      "model_v": -0.2371978703420609,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "กระดาษแข็ง",
+      "signer": "S_thsl_02",
+      "model": "happy",
+      "model_p": 0.421,
+      "model_v": 0.2961124190245756,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "คิดเบี้ยว",
+      "signer": "S_thsl_02",
+      "model": "sad",
+      "model_p": 0.361,
+      "model_v": -0.31904583014547827,
+      "rule": "angry",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "Easy Pass",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.326,
+      "model_v": 0.16801135787973182,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "แซง",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.718,
+      "model_v": -0.0943257897684816,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "สภากาชาดไทย",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.575,
+      "model_v": -0.03888265502173453,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "สนามบินสุวรรณภูมิ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.615,
+      "model_v": -0.1978956057690084,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ขัด",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.551,
+      "model_v": -0.24980989843606946,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "กระแสสังคม",
+      "signer": "S_thsl_02",
+      "model": "surprise",
+      "model_p": 0.59,
+      "model_v": 0.023650312673271418,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "องค์กร",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.611,
+      "model_v": -0.1069099036976695,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เดา",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.838,
+      "model_v": -0.06009545084089041,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "นางงาม",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.324,
+      "model_v": -0.03378964993171394,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เครื่องชงกาแฟ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.691,
+      "model_v": -0.11734147155657411,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เฉย",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.596,
+      "model_v": -0.13630360753741114,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ขูดชาม",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.68,
+      "model_v": -0.141785587137565,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "แทรก",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.539,
+      "model_v": -0.0560746513889171,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ซื่อสัตย์",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.825,
+      "model_v": -0.06183794625103474,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เปปเปอร์ ลันช์",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.643,
+      "model_v": -0.15359027963131663,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เสียเวลา",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.648,
+      "model_v": -0.15546889528632166,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "โรคมะเร็งปากมดลูก",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.542,
+      "model_v": -0.027208631916437284,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "รถของเล่น",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.676,
+      "model_v": -0.15596795920282602,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ล้างมือ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.622,
+      "model_v": -0.132452292740345,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "หมอนข้าง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.773,
+      "model_v": -0.10119189135730265,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ไม่รู้อีโหน่อีเหน่",
+      "signer": "S_thsl_02",
+      "model": "sad",
+      "model_p": 0.344,
+      "model_v": -0.3596251767128706,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "คอมพิวเตอร์",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.785,
+      "model_v": -0.09253507386893034,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "หลุมฝังศพ",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.65,
+      "model_v": -0.01642441784497349,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "สลับกัน",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.621,
+      "model_v": -0.18368631172925232,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ของเขา",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.424,
+      "model_v": -0.022027747659012664,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "คอแห้ง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.472,
+      "model_v": -0.27540358640253537,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "บู๊ทส์",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.57,
+      "model_v": 0.016458360472461214,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ทูต",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.559,
+      "model_v": -0.11209137651603665,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "พระบรมราชชนนี - แม่",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.393,
+      "model_v": 0.01535611266735943,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ล้างจาน",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.401,
+      "model_v": -0.1596778202569112,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "วัดตัว",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.627,
+      "model_v": -0.11063019975554199,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "รถจิ๊ป Jeep",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.373,
+      "model_v": 0.1660698501742445,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ฝนปรอย",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.584,
+      "model_v": -0.20359257031232117,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "คณะกรรมการการเลือกตั้ง กกต",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.441,
+      "model_v": -0.03584425465669481,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ประจำ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.559,
+      "model_v": -0.14553321609273553,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ชมรมคนหูหนวกจังหวัดตราด",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.656,
+      "model_v": -0.1572435291483998,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ก๊อกน้ำ",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.597,
+      "model_v": -0.1061972952913493,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "สำเนา",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.636,
+      "model_v": -0.16665600528940558,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "อากง",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.654,
+      "model_v": -0.1397299065371044,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ฝ้า",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.585,
+      "model_v": -0.20344206560403105,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ฝาขวดน้ำ",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.721,
+      "model_v": -0.06749150035902858,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ภ สำเภา",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.576,
+      "model_v": -0.21051765615120527,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "สุ่ม",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.643,
+      "model_v": -0.10995357318315656,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เตียงพับ",
+      "signer": "S_thsl_02",
+      "model": "happy",
+      "model_p": 0.484,
+      "model_v": 0.22474330102850226,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ไม่เข้า",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.4,
+      "model_v": -0.2511819217354059,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ผ ผึ้ง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.615,
+      "model_v": -0.16054988233372566,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ฝ่าฝืน",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.556,
+      "model_v": -0.22836696463637052,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "เสด็จพระราชดำเนินทรงเปิดงาน",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.552,
+      "model_v": -0.043688763235695635,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ต่อไป",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.66,
+      "model_v": -0.10098231676965952,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "นักเลง",
+      "signer": "S_thsl_02",
+      "model": "sad",
+      "model_p": 0.666,
+      "model_v": -0.5956453196704388,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "พังงา",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.616,
+      "model_v": -0.19182135802693662,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "น้ำเย็น",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.391,
+      "model_v": -0.22899459768086672,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ประชามติ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.65,
+      "model_v": -0.14520288016647098,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ขาตั้งกล้อง",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.577,
+      "model_v": -0.00979073054622858,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "พระบาทสมเด็จพระปรเมนทรมหาอานันทมหิดล พระอัฐมรามาธิบดินทร รัชกาลที่ 8",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.478,
+      "model_v": 0.020937744004186264,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "รถมาสด้า",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.514,
+      "model_v": 0.07428122261189855,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ท่าพระ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.714,
+      "model_v": -0.12292453488335012,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "รอ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.758,
+      "model_v": -0.10937534505501388,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "กระปุก",
+      "signer": "S_thsl_02",
+      "model": "surprise",
+      "model_p": 0.328,
+      "model_v": 0.002894832519814386,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "กระท่อมน้ำแข็ง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.662,
+      "model_v": -0.1396985087543726,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "คนขายดอกไม้",
+      "signer": "S_thsl_02",
+      "model": "surprise",
+      "model_p": 0.665,
+      "model_v": 0.1446662898408249,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ปลอมตัว",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.474,
+      "model_v": -0.24654104225337503,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "กลืน",
+      "signer": "S_thsl_02",
+      "model": "sad",
+      "model_p": 0.423,
+      "model_v": -0.516585449874401,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "รถหมุน",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.682,
+      "model_v": -0.16134919840842482,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "สมาคมสภาคนพิการทุกประเภทแห่งประเทศไทย",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.435,
+      "model_v": 0.04617818979313599,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "หมวกคลุมอาบน้ำ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.624,
+      "model_v": -0.1588750658556819,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ตู้จดหมาย",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.672,
+      "model_v": -0.0826347050257027,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "คลาน",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.455,
+      "model_v": -0.2414921887218952,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "มาร",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.354,
+      "model_v": -0.1925261103082448,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ทอดทิ้ง",
+      "signer": "S_thsl_02",
+      "model": "happy",
+      "model_p": 0.499,
+      "model_v": 0.3433832778711804,
+      "rule": "surprise",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "แสงสว่าง",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.511,
+      "model_v": -0.1939383393153548,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "อวสาน",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.766,
+      "model_v": -0.099754463264253,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "ส เสือ",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.58,
+      "model_v": -0.17770278002135453,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "neutral_dictionary",
+      "concept": "มึง",
+      "signer": "S_thsl_02",
+      "model": "neutral",
+      "model_p": 0.298,
+      "model_v": -0.1983200501650572,
+      "rule": "neutral",
+      "expected": "neutral"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "เหนื่อย",
+      "signer": "S_ttrs_02",
+      "model": "sad",
+      "model_p": 0.344,
+      "model_v": -0.5109818324446678,
+      "rule": "angry",
+      "expected": "sad"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "โกรธ",
+      "signer": "S_ttrs_02",
+      "model": "neutral",
+      "model_p": 0.977,
+      "model_v": -0.0015609062087662555,
+      "rule": "neutral",
+      "expected": "angry"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "กลัว",
+      "signer": "S_ttrs_02",
+      "model": "neutral",
+      "model_p": 0.648,
+      "model_v": -0.20339667554944754,
+      "rule": "neutral",
+      "expected": "fear"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "ขยะแขยง",
+      "signer": "S_ttrs_02",
+      "model": "disgust",
+      "model_p": 0.616,
+      "model_v": -0.5837992325425148,
+      "rule": "angry",
+      "expected": "disgust"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "ดีใจ",
+      "signer": "S_ttrs_02",
+      "model": "neutral",
+      "model_p": 0.285,
+      "model_v": -0.21509842313826083,
+      "rule": "happy",
+      "expected": "happy"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "ตกใจ",
+      "signer": "S_ttrs_02",
+      "model": "neutral",
+      "model_p": 0.542,
+      "model_v": -0.25436848243698473,
+      "rule": "neutral",
+      "expected": "surprise"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "มีความสุข",
+      "signer": "S_ttrs_02",
+      "model": "neutral",
+      "model_p": 0.571,
+      "model_v": -0.18467635326087473,
+      "rule": "neutral",
+      "expected": "happy"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "ยิ้ม",
+      "signer": "S_ttrs_01",
+      "model": "neutral",
+      "model_p": 0.679,
+      "model_v": -0.1501396714709699,
+      "rule": "happy",
+      "expected": "happy"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "ร้องไห้",
+      "signer": "S_ttrs_01",
+      "model": "neutral",
+      "model_p": 0.775,
+      "model_v": -0.12642556838691232,
+      "rule": "neutral",
+      "expected": "sad"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "หัวเราะ",
+      "signer": "S_ttrs_01",
+      "model": "sad",
+      "model_p": 0.312,
+      "model_v": -0.3366741083562374,
+      "rule": "neutral",
+      "expected": "happy"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "รัก",
+      "signer": "S_ttrs_01",
+      "model": "neutral",
+      "model_p": 0.635,
+      "model_v": -0.2077360790222883,
+      "rule": "neutral",
+      "expected": "happy"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "สงสาร",
+      "signer": "S_ttrs_02",
+      "model": "angry",
+      "model_p": 0.269,
+      "model_v": -0.36977535639889536,
+      "rule": "neutral",
+      "expected": "sad"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "เสียใจ",
+      "signer": "S_ttrs_02",
+      "model": "neutral",
+      "model_p": 0.272,
+      "model_v": -0.2608858872205019,
+      "rule": "neutral",
+      "expected": "sad"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "เครียด",
+      "signer": "S_ttrs_02",
+      "model": "disgust",
+      "model_p": 0.329,
+      "model_v": -0.5732337864115834,
+      "rule": "angry",
+      "expected": "fear"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "คิดถึง",
+      "signer": "S_ttrs_02",
+      "model": "angry",
+      "model_p": 0.338,
+      "model_v": -0.3553416050970554,
+      "rule": "neutral",
+      "expected": "sad"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "โมโห",
+      "signer": "S_ttrs_02",
+      "model": "neutral",
+      "model_p": 0.832,
+      "model_v": 0.029899279760195442,
+      "rule": "neutral",
+      "expected": "angry"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "เกลียด",
+      "signer": "S_ttrs_02",
+      "model": "disgust",
+      "model_p": 0.449,
+      "model_v": -0.5322775352746248,
+      "rule": "angry",
+      "expected": "angry"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "เศร้า",
+      "signer": "S_ttrs_02",
+      "model": "neutral",
+      "model_p": 0.358,
+      "model_v": -0.262100604432635,
+      "rule": "angry",
+      "expected": "sad"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "สนุก",
+      "signer": "S_ttrs_02",
+      "model": "neutral",
+      "model_p": 0.706,
+      "model_v": -0.17044941177591683,
+      "rule": "neutral",
+      "expected": "happy"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "ร้องไห้",
+      "signer": "S_ttrs_00",
+      "model": "neutral",
+      "model_p": 0.543,
+      "model_v": -0.2016318589448929,
+      "rule": "neutral",
+      "expected": "sad"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "สงสาร",
+      "signer": "S_ttrs_00",
+      "model": "neutral",
+      "model_p": 0.593,
+      "model_v": -0.15397504139691592,
+      "rule": "neutral",
+      "expected": "sad"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "หัวเราะ",
+      "signer": "S_ttrs_00",
+      "model": "neutral",
+      "model_p": 0.54,
+      "model_v": -0.20010551288723946,
+      "rule": "neutral",
+      "expected": "happy"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "หงุดหงิด",
+      "signer": "S_ttrs_02",
+      "model": "surprise",
+      "model_p": 0.245,
+      "model_v": -0.31686336472630494,
+      "rule": "neutral",
+      "expected": "angry"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "กังวล",
+      "signer": "S_ttrs_02",
+      "model": "sad",
+      "model_p": 0.466,
+      "model_v": -0.5999673362821341,
+      "rule": "angry",
+      "expected": "fear"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "ขอบคุณ",
+      "signer": "S_thsl_04",
+      "model": "neutral",
+      "model_p": 0.705,
+      "model_v": -0.006449756026268003,
+      "rule": "angry",
+      "expected": "happy"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "สนุก",
+      "signer": "S_thsl_04",
+      "model": "neutral",
+      "model_p": 0.531,
+      "model_v": -0.08291721157729624,
+      "rule": "angry",
+      "expected": "happy"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "รัก",
+      "signer": "S_thsl_05",
+      "model": "neutral",
+      "model_p": 0.581,
+      "model_v": -0.22000788659788661,
+      "rule": "happy",
+      "expected": "happy"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "โกรธ",
+      "signer": "S_thsl_05",
+      "model": "neutral",
+      "model_p": 0.599,
+      "model_v": -0.1906118702143431,
+      "rule": "neutral",
+      "expected": "angry"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "คิดถึง",
+      "signer": "S_thsl_05",
+      "model": "neutral",
+      "model_p": 0.411,
+      "model_v": -0.28370896521955724,
+      "rule": "happy",
+      "expected": "sad"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "ยิ้ม",
+      "signer": "S_thsl_05",
+      "model": "happy",
+      "model_p": 0.278,
+      "model_v": -0.01430765464901921,
+      "rule": "happy",
+      "expected": "happy"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "กลัว",
+      "signer": "S_thsl_05",
+      "model": "neutral",
+      "model_p": 0.424,
+      "model_v": -0.30172358974814417,
+      "rule": "neutral",
+      "expected": "fear"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "กลัว",
+      "signer": "S_thsl_05",
+      "model": "neutral",
+      "model_p": 0.56,
+      "model_v": -0.21538712456822393,
+      "rule": "neutral",
+      "expected": "fear"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "ดีใจ",
+      "signer": "S_thsl_05",
+      "model": "happy",
+      "model_p": 0.631,
+      "model_v": 0.41663003731518994,
+      "rule": "happy",
+      "expected": "happy"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "เสียใจ",
+      "signer": "S_thsl_05",
+      "model": "sad",
+      "model_p": 0.539,
+      "model_v": -0.4577080462127923,
+      "rule": "neutral",
+      "expected": "sad"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "ร้องไห้",
+      "signer": "S_thsl_05",
+      "model": "disgust",
+      "model_p": 0.348,
+      "model_v": -0.4224270302802324,
+      "rule": "neutral",
+      "expected": "sad"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "เศร้า",
+      "signer": "S_thsl_05",
+      "model": "neutral",
+      "model_p": 0.47,
+      "model_v": -0.33931022575125097,
+      "rule": "neutral",
+      "expected": "sad"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "โมโห",
+      "signer": "S_thsl_04",
+      "model": "neutral",
+      "model_p": 0.906,
+      "model_v": -0.03580696606077253,
+      "rule": "neutral",
+      "expected": "angry"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "หงุดหงิด",
+      "signer": "S_thsl_00",
+      "model": "neutral",
+      "model_p": 0.525,
+      "model_v": -0.30073190964758395,
+      "rule": "neutral",
+      "expected": "angry"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "กลัว",
+      "signer": "S_thsl_05",
+      "model": "neutral",
+      "model_p": 0.635,
+      "model_v": -0.17442261017858984,
+      "rule": "neutral",
+      "expected": "fear"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "เกลียด",
+      "signer": "S_thsl_05",
+      "model": "sad",
+      "model_p": 0.687,
+      "model_v": -0.5022624354809523,
+      "rule": "happy",
+      "expected": "angry"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "ตกใจ",
+      "signer": "S_thsl_00",
+      "model": "neutral",
+      "model_p": 0.593,
+      "model_v": -0.23196117235347627,
+      "rule": "neutral",
+      "expected": "surprise"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "รัก",
+      "signer": "S_thsl_00",
+      "model": "neutral",
+      "model_p": 0.807,
+      "model_v": -0.12401991710066795,
+      "rule": "neutral",
+      "expected": "happy"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "กังวล",
+      "signer": "S_thsl_00",
+      "model": "sad",
+      "model_p": 0.458,
+      "model_v": -0.5140444316901265,
+      "rule": "neutral",
+      "expected": "fear"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "เครียด",
+      "signer": "S_thsl_00",
+      "model": "disgust",
+      "model_p": 0.882,
+      "model_v": -0.617285595393734,
+      "rule": "sad",
+      "expected": "fear"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "เหนื่อย",
+      "signer": "S_thsl_00",
+      "model": "neutral",
+      "model_p": 0.786,
+      "model_v": -0.13610970517620444,
+      "rule": "neutral",
+      "expected": "sad"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "รังเกียจ",
+      "signer": "S_thsl_00",
+      "model": "disgust",
+      "model_p": 0.857,
+      "model_v": -0.6007087204350853,
+      "rule": "sad",
+      "expected": "disgust"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "หัวเราะ",
+      "signer": "S_thsl_00",
+      "model": "disgust",
+      "model_p": 0.907,
+      "model_v": -0.6287033900138339,
+      "rule": "neutral",
+      "expected": "happy"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "สงสาร",
+      "signer": "S_thsl_00",
+      "model": "neutral",
+      "model_p": 0.591,
+      "model_v": -0.285546838780283,
+      "rule": "neutral",
+      "expected": "sad"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "สงสาร",
+      "signer": "S_thsl_00",
+      "model": "neutral",
+      "model_p": 0.629,
+      "model_v": -0.2589098267257213,
+      "rule": "neutral",
+      "expected": "sad"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "คิดถึง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.563,
+      "model_v": -0.011440599057823412,
+      "rule": "happy",
+      "expected": "sad"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "ผิดหวัง",
+      "signer": "S_thsl_03",
+      "model": "neutral",
+      "model_p": 0.89,
+      "model_v": -0.058241920452564946,
+      "rule": "neutral",
+      "expected": "sad"
+    },
+    {
+      "set": "emotion_words",
+      "concept": "ประหลาดใจ",
+      "signer": "S_thsl_01",
+      "model": "surprise",
+      "model_p": 0.49,
+      "model_v": 0.10805681841447952,
+      "rule": "happy",
+      "expected": "surprise"
+    }
+  ]
+}

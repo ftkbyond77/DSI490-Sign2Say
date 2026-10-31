@@ -1,0 +1,16 @@
+# ThaiSLM tts-gpu (compose profile `gpu`) — the same service with the F5-TTS-THAI voice (flow matching, cloned from the emotion
+# references of models/speech-model-v2) on an NVIDIA GPU. F5 is not interactive on CPU (real-time factor ≫ 10), so this image only
+# makes sense with `deploy.resources … gpu` (NVIDIA Container Toolkit / Docker Desktop WSL2 GPU). The CPU `tts` service stays the
+# fallback: sign-api tries TTS_URL in order (tts-gpu first). Weights are downloaded once into the hf-cache volume.
+FROM pytorch/pytorch:2.7.0-cuda12.8-cudnn9-runtime
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1 HF_HOME=/app/hf SPEECH_MODEL=/app/speech-model SPEECH_DEVICE=cuda
+RUN apt-get update && apt-get install -y --no-install-recommends curl libsndfile1 ffmpeg && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+COPY webapp/tts/requirements.txt /app/requirements.txt
+RUN pip install -r /app/requirements.txt && pip install "transformers==4.57.6" f5-tts-th vocos
+RUN python -c "from transformers import AutoTokenizer, VitsModel; AutoTokenizer.from_pretrained('facebook/mms-tts-tha'); VitsModel.from_pretrained('facebook/mms-tts-tha')"
+COPY modules/__init__.py modules/tts.py modules/speech.py modules/utils.py /app/modules/
+COPY webapp/tts/app.py /app/app.py
+EXPOSE 8001
+HEALTHCHECK --interval=20s --timeout=5s --start-period=240s CMD curl -fs http://localhost:8001/v1/health || exit 1
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8001", "--workers", "1"]

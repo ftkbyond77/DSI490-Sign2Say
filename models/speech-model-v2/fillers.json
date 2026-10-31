@@ -1,0 +1,37 @@
+{
+  "female": {
+    "um": [
+      "fillers/female_um_0.wav",
+      "fillers/female_um_1.wav"
+    ],
+    "uh": [
+      "fillers/female_uh_0.wav",
+      "fillers/female_uh_1.wav"
+    ],
+    "uh_long": [
+      "fillers/female_uh_long_0.wav",
+      "fillers/female_uh_long_1.wav"
+    ],
+    "like": [
+      "fillers/female_like_0.wav",
+      "fillers/female_like_1.wav"
+    ]
+  },
+  "male": {
+    "um": [
+      "fillers/male_um_0.wav"
+    ],
+    "uh": [
+      "fillers/male_uh_0.wav",
+      "fillers/male_uh_1.wav"
+    ],
+    "uh_long": [
+      "fillers/male_uh_long_0.wav",
+      "fillers/male_uh_long_1.wav"
+    ],
+    "like": [
+      "fillers/male_like_0.wav",
+      "fillers/male_like_1.wav"
+    ]
+  }
+}

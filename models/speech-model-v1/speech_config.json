@@ -1,0 +1,9 @@
+{
+ "name": "speech-model-v1",
+ "tts_repo": "VIZINTZOR/F5-TTS-THAI",
+ "tts_ckpt": "model_1000000.pt",
+ "tts_arch": {"dim": 1024, "depth": 22, "heads": 16, "ff_mult": 2, "text_dim": 512, "text_mask_padding": false, "conv_layers": 4, "pe_attn_head": 1},
+ "asr_repo": "Qwen/Qwen3-ASR-0.6B",
+ "min_intensity": 0.25,
+ "voices": ["female", "male"]
+}

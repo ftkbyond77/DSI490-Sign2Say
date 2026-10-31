@@ -1,0 +1,14 @@
+{
+  "version": "v7.2",
+  "ready": false,
+  "missing": [
+    "scripts/decision.py",
+    "modules/handshape.py",
+    "models/hand_bank.npz",
+    "artifacts/eval/hand_bank_eval.npz"
+  ],
+  "python": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/venv-sign2say/bin/python",
+  "root": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say",
+  "no_inference_run": true,
+  "test_predictions_opened": false
+}

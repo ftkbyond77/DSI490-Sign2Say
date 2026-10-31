@@ -1,0 +1,16 @@
+{
+  "selection": {
+    "config": "w1.0_n2_g0.12",
+    "params": {
+      "weight": 1.0,
+      "topn": 2,
+      "min_gap": 0.12
+    },
+    "criterion": "lowest out-of-fold tune macro WER; tie fewer D, S, config name",
+    "cv_is_selection_estimate": true,
+    "test_previously_reported_by_user": true,
+    "production_enable": false
+  },
+  "warning": "previously inspected test according to user; this is a frozen reproduction, not a virgin holdout",
+  "started": "2026-10-19 20:34:58"
+}

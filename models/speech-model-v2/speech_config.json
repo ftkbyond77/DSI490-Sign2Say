@@ -1,0 +1,44 @@
+{
+ "name": "speech-model-v2",
+ "tts_repo": "VIZINTZOR/F5-TTS-THAI",
+ "tts_ckpt": "model_1000000.pt",
+ "tts_arch": {
+  "dim": 1024,
+  "depth": 22,
+  "heads": 16,
+  "ff_mult": 2,
+  "text_dim": 512,
+  "text_mask_padding": false,
+  "conv_layers": 4,
+  "pe_attn_head": 1
+ },
+ "asr_repo": "Qwen/Qwen3-ASR-0.6B",
+ "min_intensity": 0.25,
+ "voices": [
+  "female",
+  "male"
+ ],
+ "disfluency": {
+  "mode": "filler",
+  "modes": [
+   "filler",
+   "pause",
+   "skip"
+  ],
+  "pause_min_s": 0.35,
+  "pause_max_s": 1.4,
+  "fillers": [
+   "like",
+   "uh",
+   "uh_long",
+   "um"
+  ],
+  "render": "spliced",
+  "cpu_render": "spliced",
+  "note": "v10 eval (8 sentences × voices): spliced filler content CER 0.117 (F5) / 0.32 (CPU) vs inline 0.30 / 0.95; guessed words 0 in every mode"
+ },
+ "cpu_voice": "facebook/mms-tts-tha",
+ "asr": {
+  "default": "Qwen/Qwen3-ASR-0.6B"
+ }
+}

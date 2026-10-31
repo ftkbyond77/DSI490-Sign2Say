@@ -1,0 +1,46 @@
+{
+  "source_boom": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/phase2.1/05_decoder_tuning/outputs/20261019_153342",
+  "source_tsl51": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/phase2.1/05_decoder_tuning/outputs/tsl51_tune_20261019_153646",
+  "items": [
+    [
+      "boom_01",
+      "ฉันยังลืมคุณไม่ได้",
+      "RGB video"
+    ],
+    [
+      "boom_02",
+      "ฉันแอบชอบคุณ",
+      "RGB video"
+    ],
+    [
+      "boom_03",
+      "ตอนนี้กำลังเรียนภาษา",
+      "RGB video"
+    ],
+    [
+      "boom_04",
+      "มีอะไรให้ฉันช่วยไหม",
+      "RGB video"
+    ],
+    [
+      "boom_05",
+      "เราจะเป็นเพื่อนกันตลอดไป",
+      "RGB video"
+    ],
+    [
+      "boom_06",
+      "เล่นเกมส์กันไหม",
+      "RGB video"
+    ],
+    [
+      "tsl51_improved",
+      "TSL51 improved | GT: กรุงเทพ น้อง เที่ยว ชอบ",
+      "pose; WER 0.5 → 0.25"
+    ],
+    [
+      "tsl51_worsened",
+      "TSL51 worsened | GT: กรุงเทพ น้อง เที่ยว ชอบ",
+      "pose; WER 0.25 → 0.5"
+    ]
+  ]
+}

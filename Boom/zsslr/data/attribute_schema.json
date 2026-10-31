@@ -1,0 +1,324 @@
+{
+  "version": "project-53-v1",
+  "note": "Custom schema; multi-hot presence across described sequence. Last group includes coarse palm orientation. Unknown is not negative.",
+  "attributes": [
+    {
+      "index": 0,
+      "name": "กำหมัด",
+      "field": "handshape",
+      "positive_regex": "กำมือ|กำหมัด"
+    },
+    {
+      "index": 1,
+      "name": "แบมือ",
+      "field": "handshape",
+      "positive_regex": "แบมือ"
+    },
+    {
+      "index": 2,
+      "name": "ชี้นิ้วชี้",
+      "field": "handshape",
+      "positive_regex": "นิ้วชี้เหยียด|เหยียดนิ้วชี้"
+    },
+    {
+      "index": 3,
+      "name": "นิ้วชี้กลางเหยียด",
+      "field": "handshape",
+      "positive_regex": "นิ้วชี้[–\\-และ]+กลาง|นิ้วชี้และนิ้วกลาง"
+    },
+    {
+      "index": 4,
+      "name": "จีบ",
+      "field": "handshape",
+      "positive_regex": "จีบ"
+    },
+    {
+      "index": 5,
+      "name": "หยิบ",
+      "field": "handshape",
+      "positive_regex": "หยิบ"
+    },
+    {
+      "index": 6,
+      "name": "นิ้วโค้ง",
+      "field": "handshape",
+      "positive_regex": "นิ้วโค้ง"
+    },
+    {
+      "index": 7,
+      "name": "นิ้วเหยียดชิด",
+      "field": "handshape",
+      "positive_regex": "นิ้วเหยียดชิด"
+    },
+    {
+      "index": 8,
+      "name": "กางนิ้ว",
+      "field": "handshape",
+      "positive_regex": "กางนิ้ว"
+    },
+    {
+      "index": 9,
+      "name": "นิ้วโป้งยื่น",
+      "field": "handshape",
+      "positive_regex": "นิ้วโป้งยื่น|นิ้วโป้งเหยียด"
+    },
+    {
+      "index": 10,
+      "name": "รูปแอล",
+      "field": "handshape",
+      "positive_regex": "กางเป็นมุม|รูป L"
+    },
+    {
+      "index": 11,
+      "name": "ชี้และก้อยเหยียด",
+      "field": "handshape",
+      "positive_regex": "นิ้วชี้และก้อยเหยียด"
+    },
+    {
+      "index": 12,
+      "name": "โป้งจรดนิ้วอื่น",
+      "field": "handshape",
+      "positive_regex": "นิ้วโป้งจรด"
+    },
+    {
+      "index": 13,
+      "name": "งอข้อมือ",
+      "field": "handshape",
+      "positive_regex": "งอข้อมือ|มือห้อย"
+    },
+    {
+      "index": 14,
+      "name": "นิ้วไขว้",
+      "field": "handshape",
+      "positive_regex": "นิ้วไขว้|ไขว้นิ้ว"
+    },
+    {
+      "index": 15,
+      "name": "รูปวงโอ",
+      "field": "handshape",
+      "positive_regex": "รูปวง|รูปโอ|รูป O"
+    },
+    {
+      "index": 16,
+      "name": "นิ้วกลางเหยียด",
+      "field": "handshape",
+      "positive_regex": "(?<!และ)นิ้วกลางเหยียด"
+    },
+    {
+      "index": 17,
+      "name": "นิ้วก้อยเหยียด",
+      "field": "handshape",
+      "positive_regex": "นิ้วก้อยเหยียด"
+    },
+    {
+      "index": 18,
+      "name": "โป้งงอ",
+      "field": "handshape",
+      "positive_regex": "นิ้วโป้งงอ"
+    },
+    {
+      "index": 19,
+      "name": "นิ้วงอ",
+      "field": "handshape",
+      "positive_regex": "งอนิ้ว|นิ้ว.*งอ"
+    },
+    {
+      "index": 20,
+      "name": "ศีรษะหน้าผาก",
+      "field": "location",
+      "positive_regex": "ศีรษะ|หน้าผาก"
+    },
+    {
+      "index": 21,
+      "name": "ตา",
+      "field": "location",
+      "positive_regex": "รอบตา|ดวงตา|ข้างตา|คิ้ว"
+    },
+    {
+      "index": 22,
+      "name": "จมูก",
+      "field": "location",
+      "positive_regex": "จมูก"
+    },
+    {
+      "index": 23,
+      "name": "ปาก",
+      "field": "location",
+      "positive_regex": "ปาก"
+    },
+    {
+      "index": 24,
+      "name": "คาง",
+      "field": "location",
+      "positive_regex": "คาง"
+    },
+    {
+      "index": 25,
+      "name": "แก้มหู",
+      "field": "location",
+      "positive_regex": "แก้ม|หู"
+    },
+    {
+      "index": 26,
+      "name": "คอ",
+      "field": "location",
+      "positive_regex": "คอ"
+    },
+    {
+      "index": 27,
+      "name": "ไหล่",
+      "field": "location",
+      "positive_regex": "ไหล่"
+    },
+    {
+      "index": 28,
+      "name": "หน้าอก",
+      "field": "location",
+      "positive_regex": "หน้าอก"
+    },
+    {
+      "index": 29,
+      "name": "ท้องเอว",
+      "field": "location",
+      "positive_regex": "หน้าท้อง|เอว"
+    },
+    {
+      "index": 30,
+      "name": "หน้าลำตัว",
+      "field": "location",
+      "positive_regex": "หน้าลำตัว"
+    },
+    {
+      "index": 31,
+      "name": "แขนหรือมืออีกข้าง",
+      "field": "location",
+      "positive_regex": "ท่อนแขน|ข้อศอก|ข้อมือ|มืออีกข้าง|ฝ่ามืออีกข้าง"
+    },
+    {
+      "index": 32,
+      "name": "นิ่ง",
+      "field": "movement",
+      "positive_regex": "อยู่นิ่ง|ค้างท่า"
+    },
+    {
+      "index": 33,
+      "name": "ขึ้น",
+      "field": "movement",
+      "positive_regex": "ยกขึ้น|เลื่อนขึ้น|เคลื่อนขึ้น"
+    },
+    {
+      "index": 34,
+      "name": "ลง",
+      "field": "movement",
+      "positive_regex": "เลื่อนลง|เคลื่อนลง|ลดลง"
+    },
+    {
+      "index": 35,
+      "name": "ออกข้าง",
+      "field": "movement",
+      "positive_regex": "ออกข้าง|ไปด้านข้าง"
+    },
+    {
+      "index": 36,
+      "name": "เข้าตัว",
+      "field": "movement",
+      "positive_regex": "เข้าหาตัว|เข้าตัว"
+    },
+    {
+      "index": 37,
+      "name": "ออกจากตัว",
+      "field": "movement",
+      "positive_regex": "ออกจากตัว|ไปข้างหน้า"
+    },
+    {
+      "index": 38,
+      "name": "วน",
+      "field": "movement",
+      "positive_regex": "วน|ควง"
+    },
+    {
+      "index": 39,
+      "name": "สลับ",
+      "field": "movement",
+      "positive_regex": "สลับ"
+    },
+    {
+      "index": 40,
+      "name": "แตะเคาะ",
+      "field": "movement",
+      "positive_regex": "แตะ|เคาะ"
+    },
+    {
+      "index": 41,
+      "name": "ถูปัด",
+      "field": "movement",
+      "positive_regex": "ถู|ปัด"
+    },
+    {
+      "index": 42,
+      "name": "หมุนพลิก",
+      "field": "movement",
+      "positive_regex": "หมุน|พลิก"
+    },
+    {
+      "index": 43,
+      "name": "กางหุบ",
+      "field": "movement",
+      "positive_regex": "กาง.*หุบ|หุบ.*กาง"
+    },
+    {
+      "index": 44,
+      "name": "มือเดียว",
+      "field": "num_hands",
+      "positive_regex": "^1$"
+    },
+    {
+      "index": 45,
+      "name": "สองมือ",
+      "field": "num_hands",
+      "positive_regex": "^2$"
+    },
+    {
+      "index": 46,
+      "name": "สองมือประกบ",
+      "field": "handshape",
+      "positive_regex": "ประกบ.*มือ|ประกบ.*ฝ่ามือ|ประนม"
+    },
+    {
+      "index": 47,
+      "name": "สองมือซ้อน",
+      "field": "handshape",
+      "positive_regex": "สองมือซ้อน|มือ.*รอง"
+    },
+    {
+      "index": 48,
+      "name": "สองมือแยกออก",
+      "field": "movement",
+      "positive_regex": "แยก.*มือ|แยกออก"
+    },
+    {
+      "index": 49,
+      "name": "ทำซ้ำ",
+      "field": "movement",
+      "positive_regex": "ซ้ำ"
+    },
+    {
+      "index": 50,
+      "name": "ฝ่ามือเข้าตัว",
+      "field": "palm_orientation",
+      "positive_regex": "หันเข้าตัว"
+    },
+    {
+      "index": 51,
+      "name": "ฝ่ามือออก",
+      "field": "palm_orientation",
+      "positive_regex": "หันออก"
+    },
+    {
+      "index": 52,
+      "name": "หงายหรือคว่ำ",
+      "field": "palm_orientation",
+      "positive_regex": "หงาย|คว่ำ"
+    }
+  ]
+}

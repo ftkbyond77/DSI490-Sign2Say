@@ -1,0 +1,7 @@
+{
+ "name": "Pitty-model",
+ "branch": "pitty",
+ "commit": "4aeb7b9ab0ae9a2f1c0b9aab9e0c8664322852cf",
+ "code": "modules/ of pitty @ 4aeb7b9a",
+ "setting": "branch models/spotting.json as is"
+}

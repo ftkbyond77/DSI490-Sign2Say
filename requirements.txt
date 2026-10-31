@@ -1,4 +1,6 @@
-# ThaiSLM v7 — Python 3.10 (conda env `hugging`). Install PyTorch for your CUDA first (training / development only), e.g.
+# ThaiSLM v7 — Python 3.10 (conda env `hugging`). Install native PyTorch first for training/development.
+# Mac: pip install torch
+# NVIDIA CUDA (cloud/heavy training), e.g.
 #   pip install torch==2.7.0 --index-url https://download.pytorch.org/whl/cu128
 # then:  pip install -r requirements.txt
 # Serving only needs numpy + onnxruntime + mediapipe (+ opencv for videos) — see webapp/api/requirements.txt.
@@ -8,7 +10,7 @@ pyarrow>=14
 scikit-learn==1.6.1
 opencv-python==4.11.0.86
 mediapipe==1.0.1               # the extractor (Holistic, tasks API) — same version as @mediapipe/tasks-vision in the web demo
-onnxruntime-gpu==1.23.2        # CPU-only machines: onnxruntime==1.23.2
+onnxruntime==1.23.2            # Mac/CPU default; install onnxruntime-gpu instead for CUDA serving
 onnx>=1.16                     # scripts/export_onnx.py
 transformers==4.51.3           # mT5 encoder config · DINOv2 (signer identity) · MMS-TTS Thai voice
 sentencepiece==0.2.0

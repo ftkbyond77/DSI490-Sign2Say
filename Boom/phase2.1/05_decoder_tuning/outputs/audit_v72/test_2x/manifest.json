@@ -1,0 +1,28 @@
+{
+  "dataset": "test",
+  "speed": 2.0,
+  "configs": [
+    "grammar_off",
+    "grammar_original",
+    "grammar_clean_selected",
+    "filters_all"
+  ],
+  "hashes": {
+    "models/bank.npz": "a5ff3ce9ce7f63de3eef9ceb786124933a5ff982f496efddaec50680d2230047",
+    "artifacts/eval/bank_eval.npz": "6e7903a3dfab9203d05e6f18126b051b7d6213cc1579d387a0e62bbbe9127e3c",
+    "models/spotting.json": "1f550529879a5be136f9da1448d8f1b7a6945aba8f2a02eaf115205cbc9a2bcf",
+    "models/grammar.json": "b985b5ca86273c45f3a0e341f8ae7a7801f33bd64562f57217fe31c39fa57069",
+    "models/onnx/tagger.onnx": "11d4bd8e7a24ddb056a30da8aeb6e09df846a30301d8fa7cfda27a52a4cd9a89",
+    "models/onnx/encoder.onnx": "f55467fbcdeed114c830a3ede4ec653e0f9f55f3923ad30e72a035f0182db4a8"
+  },
+  "bank": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/artifacts/eval/bank_eval.npz",
+  "grammar_params": {
+    "weight": 1.0,
+    "topn": 2,
+    "min_gap": 0.12
+  },
+  "neural_cache": "per clip only; exact input bytes",
+  "timing": "amortised cached pipeline, not independent E2E latency",
+  "hand_definition": "any hand with mean standard-schema landmark confidence >= .5; standardisation may interpolate; not raw observed rate",
+  "production_enable": false
+}

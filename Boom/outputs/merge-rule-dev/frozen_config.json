@@ -1,0 +1,11 @@
+{
+  "max_gap_s": 0.2,
+  "min_common_candidates": 2,
+  "motion_radius_s": 0.16,
+  "min_observed_fraction": 0.6,
+  "min_speed": 0.15,
+  "max_step": 0.35,
+  "min_boundary_speed_ratio": 0.25,
+  "max_boundary_speed_ratio": 4.0,
+  "max_duration_s": 3.2
+}

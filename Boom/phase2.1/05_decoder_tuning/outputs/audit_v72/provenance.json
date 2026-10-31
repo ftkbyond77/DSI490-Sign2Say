@@ -1,0 +1,11 @@
+{
+  "grammar_n": 62,
+  "reconstructed_n": 62,
+  "exact_reconstruction": true,
+  "recording_provenance": "Original grammar omits clip IDs; this reconstructs current script/manifest, not a historical execution log",
+  "test_metadata_only": true,
+  "source_script": "scripts/eval.py:cmd_grammar",
+  "tune_test_clip_id_overlap": 0,
+  "tune_test_word_sequence_overlap": 7,
+  "tune_test_role_template_overlap": 9
+}

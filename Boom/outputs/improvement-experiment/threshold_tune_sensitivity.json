@@ -1,0 +1,148 @@
+{
+  "source": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/artifacts/reports/phrases.json",
+  "sha256": "4ae18cc878eb3be33b912a2539550198502dd07c83dd362166cb0d71a6f3005c",
+  "tune_videos": 26,
+  "test_videos_used": 0,
+  "rows": [
+    {
+      "threshold": 0.05,
+      "accepted": 42,
+      "ordered_matches": 9,
+      "unmatched": 33,
+      "precision_proxy": 0.21428571428571427
+    },
+    {
+      "threshold": 0.1,
+      "accepted": 37,
+      "ordered_matches": 9,
+      "unmatched": 28,
+      "precision_proxy": 0.24324324324324326
+    },
+    {
+      "threshold": 0.15,
+      "accepted": 32,
+      "ordered_matches": 9,
+      "unmatched": 23,
+      "precision_proxy": 0.28125
+    },
+    {
+      "threshold": 0.2,
+      "accepted": 26,
+      "ordered_matches": 8,
+      "unmatched": 18,
+      "precision_proxy": 0.3076923076923077
+    },
+    {
+      "threshold": 0.25,
+      "accepted": 21,
+      "ordered_matches": 7,
+      "unmatched": 14,
+      "precision_proxy": 0.3333333333333333
+    },
+    {
+      "threshold": 0.3,
+      "accepted": 19,
+      "ordered_matches": 6,
+      "unmatched": 13,
+      "precision_proxy": 0.3157894736842105
+    },
+    {
+      "threshold": 0.35,
+      "accepted": 15,
+      "ordered_matches": 4,
+      "unmatched": 11,
+      "precision_proxy": 0.26666666666666666
+    },
+    {
+      "threshold": 0.4,
+      "accepted": 12,
+      "ordered_matches": 3,
+      "unmatched": 9,
+      "precision_proxy": 0.25
+    },
+    {
+      "threshold": 0.45,
+      "accepted": 11,
+      "ordered_matches": 3,
+      "unmatched": 8,
+      "precision_proxy": 0.2727272727272727
+    },
+    {
+      "threshold": 0.5,
+      "accepted": 8,
+      "ordered_matches": 2,
+      "unmatched": 6,
+      "precision_proxy": 0.25
+    },
+    {
+      "threshold": 0.55,
+      "accepted": 5,
+      "ordered_matches": 0,
+      "unmatched": 5,
+      "precision_proxy": 0.0
+    },
+    {
+      "threshold": 0.6,
+      "accepted": 2,
+      "ordered_matches": 0,
+      "unmatched": 2,
+      "precision_proxy": 0.0
+    },
+    {
+      "threshold": 0.65,
+      "accepted": 0,
+      "ordered_matches": 0,
+      "unmatched": 0,
+      "precision_proxy": null
+    },
+    {
+      "threshold": 0.7,
+      "accepted": 0,
+      "ordered_matches": 0,
+      "unmatched": 0,
+      "precision_proxy": null
+    },
+    {
+      "threshold": 0.75,
+      "accepted": 0,
+      "ordered_matches": 0,
+      "unmatched": 0,
+      "precision_proxy": null
+    },
+    {
+      "threshold": 0.8,
+      "accepted": 0,
+      "ordered_matches": 0,
+      "unmatched": 0,
+      "precision_proxy": null
+    },
+    {
+      "threshold": 0.85,
+      "accepted": 0,
+      "ordered_matches": 0,
+      "unmatched": 0,
+      "precision_proxy": null
+    },
+    {
+      "threshold": 0.9,
+      "accepted": 0,
+      "ordered_matches": 0,
+      "unmatched": 0,
+      "precision_proxy": null
+    },
+    {
+      "threshold": 0.95,
+      "accepted": 0,
+      "ordered_matches": 0,
+      "unmatched": 0,
+      "precision_proxy": null
+    }
+  ],
+  "decision": "retain production 0.8; do not fit from historical lexical-proxy scores",
+  "limitations": [
+    "Historical model predictions, not freshly rerun modified model",
+    "LCS matches words in order; no manually verified segment alignment",
+    "No new-signer test set supplied",
+    "No inference of calibrated precision from six dictionary smoke clips"
+  ]
+}

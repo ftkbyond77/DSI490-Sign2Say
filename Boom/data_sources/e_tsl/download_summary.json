@@ -1,0 +1,16 @@
+{
+  "downloaded": 12,
+  "all_sample_frames_decoded": true,
+  "exact_duplicates": 0,
+  "manifest_thsl_rows": 7719,
+  "thsl_source_url_nonmissing": 7719,
+  "metadata_hash_rows": 5229,
+  "available_manifest_rgb_files": 0,
+  "bank_modified": false,
+  "limitations": [
+    "No visual identity matching",
+    "Hash mismatch does not rule out re-encoding or edited duplicates",
+    "Absent source files limit duplicate audit",
+    "No human validation of meaning or sign variant yet"
+  ]
+}

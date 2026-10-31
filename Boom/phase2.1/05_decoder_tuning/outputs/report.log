@@ -1,0 +1,9 @@
+/Users/voltrondata/github-actions-runner/_work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.l1dcachesize'. Detail: [errno 1] Operation not permitted
+/Users/voltrondata/github-actions-runner/_work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.l2cachesize'. Detail: [errno 1] Operation not permitted
+/Users/voltrondata/github-actions-runner/_work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.l3cachesize'. Detail: [errno 1] Operation not permitted
+/Users/voltrondata/github-actions-runner/_work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:239: IOError: sysctlbyname failed for 'hw.optional.neon'. Detail: [errno 1] Operation not permitted
+/Users/thawaphorn/.matplotlib is not a writable directory
+Matplotlib created a temporary cache directory at /var/folders/pj/c4vc1tc55lb51zmb0cvrdyfr0000gn/T/matplotlib-djkbutfy because there was an issue with the default path (/Users/thawaphorn/.matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Matplotlib is building the font cache; this may take a moment.
+/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/phase2.1/05_decoder_tuning/outputs/audit_v72/REPORT.md
+/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/phase2.1/05_decoder_tuning/outputs/audit_v72/index.html

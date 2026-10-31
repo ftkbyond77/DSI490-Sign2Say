@@ -1,0 +1,47 @@
+การเคลื่อนที่จากจุดหนึ่งไปยังอีกจุดหนึ่ง
+
+A.   ศีง io |
+
+โดยก้าวสั้นๆ
+
+3.8"
+
+e
+
+๑
+
+Movement is from point to point
+
+tt
+
+ก
+
+by small steps, with a slight bounce
+
+. การเคลื่อนไหวที่ข้าๆ กัน
+
+Repeated movements
+
+การเคลื่อนที่ไปในทางเดียวหลายๆ ครั้ง
+
+Unidirectional movements
+
+การเคลื่อนไหวที่ไป-กลับหลายๆ ครั้ง
+
+Bidirectional movements
+
+ฑิ
+
+การที่มือทั้งสองเคลื่อนสลับกันในทิศทาง
+
+เดียวกัน (ข้ายครั้ง ขวาครั้ง)
+
+1
+
+3
+
+Alternating movements by the two
+
+€
+
+hands, unidirectional movements

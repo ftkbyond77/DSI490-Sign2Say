@@ -1,0 +1,13 @@
+{
+ "name": "baseline-model",
+ "encoder": "Uni-Sign pose-only (WLASL ISLR checkpoint): part-wise ST-GCN + mT5-base encoder, frozen",
+ "pooling": "mean over frames of the mT5 encoder states, L2-normalised (768-d)",
+ "retrieval": "mean of the top-2 instance cosines per concept",
+ "variants": {
+  "zeroshot": "frozen encoder, bank of Thai clips",
+  "adapted": "+ residual MLP adapter (768-1024-768, CosFace on train signers)"
+ },
+ "median_sign_frames": 49,
+ "seed": 0,
+ "built": "2026-10-31 17:40"
+}

@@ -1,0 +1,45 @@
+{
+ "version": "v7.2",
+ "encoder_run": "enc-v7-europe-west4",
+ "sequence_run": "seq-v7",
+ "tagger_arch": "gru",
+ "extractor": "MediaPipe Holistic (tasks 1.0.1)",
+ "built": "2026-10-03 09:31",
+ "concepts": 9929,
+ "bank_eval": 14204,
+ "bank": 19656,
+ "bank_concepts": 9922,
+ "conversation_concepts": 326,
+ "aligned_sentence_words_added": 650,
+ "alignment_score_cut": 0.354,
+ "bank_added": {
+  "clips": 40,
+  "eval_clips": 39,
+  "new_concepts": [
+   "กวาดบ้าน",
+   "กินข้าว",
+   "ทิ้ง",
+   "ปิยมหาราช",
+   "ภาพพิมพ์",
+   "ไม้ประดับ"
+  ],
+  "built": "2026-10-04 04:07"
+ },
+ "built_v72": "2026-10-04 07:06",
+ "fingerspelling": {
+  "model": "fingerspell.npz (3 averaged NumPy MLPs) + letters_bank.npz (encoder embeddings)",
+  "classes": 76,
+  "held_out_combined": {
+   "en_top1": 0.838,
+   "en_top3": 0.957,
+   "th_top1": 0.927,
+   "th_top3": 0.98
+  },
+  "data": "agent_data/en_alpha (30 lessons, 26 channels, eye-checked seeds) + TSL-ONE-S (25 signers)"
+ },
+ "personal_sign_memory": "client-side; one averaged prototype per word / letter per user (models are never changed)",
+ "bank_cleaning": {
+  "removed_auto_aligned_clips": 24,
+  "rule": "auto-aligned sentence word whose embedding matches another word better by > 0.15 (data_prep/qc/conversation_label_audit.csv)"
+ }
+}

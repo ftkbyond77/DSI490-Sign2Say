@@ -1,0 +1,18 @@
+[
+  {
+    "id": "919",
+    "label": "สวัสดี  ท่ามือนี้ใช้กับผู้ใหญ่ ผู้มีอาวุโส ผู้มีตำแหน่งสูง",
+    "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/919_สวัสดี__ท่ามือนี้ใช้กับผู้ใหญ่_ผู้มีอาวุโส_ผู้มีตำแหน่งสูง.mp4",
+    "sha256": "8d2ce42975dd32a5413c781b6a50c7430dc04e20c3c97aa935a25aaac0cc8d33",
+    "signer_id": null,
+    "split": "train"
+  },
+  {
+    "id": "1577",
+    "label": "มะม่วงหิมพานต์",
+    "video": "/Users/thawaphorn/Pee4/Term1/DSI490/data/videos/1577_มะม่วงหิมพานต์.mp4",
+    "sha256": "e3cbbffd4011d6f252ba0b950751d49ed783e5f6e11ec626df16fc008d4743c8",
+    "signer_id": null,
+    "split": "train"
+  }
+]

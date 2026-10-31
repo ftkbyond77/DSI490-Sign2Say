@@ -1,0 +1,11 @@
+{
+ "name": "Boom-model",
+ "branch": "boom",
+ "commit": "04cc177899dda09e0d04260bd2eda7c67113c543",
+ "code": "modules/ of boom @ 04cc1778",
+ "setting": {
+  "conversation.post.p_sign_min": 0.55,
+  "conversation.act_thr": 0.6,
+  "accept_min": 0.7
+ }
+}

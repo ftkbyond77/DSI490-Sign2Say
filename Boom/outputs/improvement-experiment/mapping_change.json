@@ -1,0 +1,20 @@
+{
+  "old": "ทั้งหมด (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)",
+  "new": "ทั้งหมด",
+  "concept_id": 2511,
+  "manifest_rows": 1,
+  "concept_count_before": 9929,
+  "concept_count_after": 9929,
+  "conversation_before": 326,
+  "conversation_after": 327,
+  "production_modified": false,
+  "weights_changed": false,
+  "threshold_changed": false,
+  "language_role_conflict": {
+    "annotated": "ADJ",
+    "canonical": "OBJ"
+  },
+  "deployment_status": "candidate_only_requires_role_review",
+  "renamed_bank_rows": 1,
+  "structural_checks": "passed"
+}

@@ -1,0 +1,22 @@
+{
+  "สวัสดี": {
+    "conversation": true,
+    "full": true
+  },
+  "คุย": {
+    "conversation": false,
+    "full": true
+  },
+  "คุยกัน": {
+    "conversation": false,
+    "full": false
+  },
+  "ภาษามือ": {
+    "conversation": true,
+    "full": true
+  },
+  "ค่ะ": {
+    "conversation": false,
+    "full": false
+  }
+}

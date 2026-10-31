@@ -1,0 +1,11 @@
+{
+  "improved": 27,
+  "unchanged": 79,
+  "worsened": 20,
+  "mean_delta": -0.016798941798941796,
+  "ci95": [
+    -0.05145833333333333,
+    0.017331349206349163
+  ],
+  "caveat": "clip-level bootstrap, not signer-clustered; tune evaluation only"
+}

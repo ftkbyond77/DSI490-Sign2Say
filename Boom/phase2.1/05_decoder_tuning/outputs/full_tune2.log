@@ -1,0 +1,21 @@
+tune 2.0 1 / 126
+tune 2.0 11 / 126
+tune 2.0 21 / 126
+tune 2.0 31 / 126
+tune 2.0 41 / 126
+tune 2.0 51 / 126
+tune 2.0 61 / 126
+tune 2.0 71 / 126
+tune 2.0 81 / 126
+tune 2.0 91 / 126
+tune 2.0 101 / 126
+tune 2.0 111 / 126
+tune 2.0 121 / 126
+                  mode  macro_WER   S  D  I  accepted  accepted_correct  count_error
+             accept070     0.3851 113 49  1       110               109       0.3968
+           filters_all     0.3751 125 33  1       110               109       0.2698
+grammar_clean_selected     0.3761 108 49  1        66                65       0.3968
+           grammar_off     0.3813 112 49  1        66                65       0.3968
+      grammar_original     0.3851 113 49  1        66                65       0.3968
+               hand030     0.3877 112 51  1        66                65       0.4127
+             p_sign055     0.3698 126 30  1        66                65       0.2460

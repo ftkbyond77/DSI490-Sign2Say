@@ -1,0 +1,3 @@
+split,n_recordings,same_word_sequence,same_role_template,recordings_in_reconstructed_input
+sentence_test,126,126,126,126
+tagger_train,126,126,126,126

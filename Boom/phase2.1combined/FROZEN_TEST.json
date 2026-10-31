@@ -1,0 +1,40 @@
+{
+  "trials": {
+    "baseline": {},
+    "A": {
+      "post.p_sign_min": 0.55
+    },
+    "Combined": {
+      "post.p_sign_min": 0.55,
+      "act_thr": 0.6,
+      "accept_min": 0.7
+    }
+  },
+  "tune_source": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/phase2.2/outputs/20261024_031853",
+  "hashes": {
+    "models/config.json": "7333c45674aba9af16ec5d139270c9c493e38ac2d0c6209c91c42e03affbeb34",
+    "models/spotting.json": "1f550529879a5be136f9da1448d8f1b7a6945aba8f2a02eaf115205cbc9a2bcf",
+    "models/segment_calibration.json": "0acb25c2705b6fbf4037d8e8b2f966cabcf82961eec72903504844db0423ba87",
+    "models/grammar.json": "b985b5ca86273c45f3a0e341f8ae7a7801f33bd64562f57217fe31c39fa57069",
+    "models/concepts.json": "c8aad472e3723558ce8e39307ec9ca9e3d915bb7d321e0ec93f3f1f27d525176",
+    "models/vocab_conversation.json": "4a6e233d8a27707ea05be9733148d8d837f620085b438177e8a4458c8ca53a24",
+    "models/onnx/encoder.onnx": "f55467fbcdeed114c830a3ede4ec653e0f9f55f3923ad30e72a035f0182db4a8",
+    "models/onnx/tagger.onnx": "11d4bd8e7a24ddb056a30da8aeb6e09df846a30301d8fa7cfda27a52a4cd9a89",
+    "artifacts/eval/bank_eval.npz": "6e7903a3dfab9203d05e6f18126b051b7d6213cc1579d387a0e62bbbe9127e3c",
+    "modules/pipeline.py": "bd834ae044e1f137575bdb60e1218a6e6dd2e8fff821dcfadb94489487cc1c42",
+    "modules/decode.py": "5eb88b0ef5d91e14254b3118650b6d97cd36cf239b41310ed42276ac1818e60e"
+  },
+  "speeds": [
+    1,
+    1.5,
+    2
+  ],
+  "test_role": "sentence_test",
+  "production_enable": false,
+  "limitations": [
+    "test previously evaluated in earlier experiments",
+    "existing grammar contains reference leakage",
+    "not independent signer validation"
+  ],
+  "policy": "No retuning from test; compare all three fixed cases once"
+}

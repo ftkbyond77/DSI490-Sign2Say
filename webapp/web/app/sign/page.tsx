@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import AppShell, { greeting } from "@/components/AppShell";
 import SettingsSheet, { QuickOptions } from "@/components/SettingsSheet";
 import { CamToggle, CameraFeed, Dot, Seen, statusOf } from "@/components/sign/CameraView";
+import LiveWords from "@/components/sign/LiveWords";
 import Words, { cues, shownText, useSigns } from "@/components/sign/Words";
 import { Ic, ProgressBar, Sentence } from "@/components/ui";
 import type { TranslateResult } from "@/lib/api";
@@ -44,6 +45,7 @@ export default function SignPage() {
               </Link>
             </div>
             {e.camOn && <div className="bl"><Seen e={e} /></div>}
+            {e.camOn && e.liveWords && <div className="live-cap"><LiveWords w={e.liveWords} busy={e.liveState === "processing"} minP={e.minP} /></div>}
           </div>
           <Actions e={e} />
           <ProgressBar progress={e.progress} />
@@ -125,7 +127,7 @@ function Actions({ e }: { e: SignEngine }) {
 }
 
 function Latest({ r, e }: { r: TranslateResult; e: SignEngine }) {
-  const { text, tentative } = shownText(r);
+  const { text, tentative } = shownText(r, e.minP);
   const signs = useSigns(r);
   const c = cues(r);
   const speaking = !!e.speaking;
@@ -135,7 +137,7 @@ function Latest({ r, e }: { r: TranslateResult; e: SignEngine }) {
       <p className={`sentence ${tentative || !text ? "tentative" : ""}`}>
         {text ? <Sentence text={text} /> : signs.length ? `เห็น ${signs.length} ท่า แต่ยังไม่มั่นใจว่าเป็นคำอะไร — แตะ [?] เพื่อบอกคำที่ทำจริง` : "ไม่พบท่ามือ — ยกมือให้อยู่ในกรอบแล้วลองอีกครั้ง"}
       </p>
-      <Words r={r} onTeal vocab={e.vocab} />
+      <Words r={r} onTeal vocab={e.vocab} minP={e.minP} />
       {c.length > 0 && <div className="cues">{c.map((x) => <span key={x}>{x}</span>)}</div>}
       {text && <button className={`listen ${speaking ? "on" : ""}`} onClick={() => e.say(r, true)} disabled={speaking}>
         <Ic n="speaker-teal" />{speaking ? "กำลังพูด…" : "ฟังเสียง"}</button>}
@@ -144,14 +146,14 @@ function Latest({ r, e }: { r: TranslateResult; e: SignEngine }) {
 }
 
 function Previous({ r, e, label }: { r: TranslateResult; e: SignEngine; label?: string }) {
-  const { text } = shownText(r);
+  const { text } = shownText(r, e.minP);
   const n = useSigns(r).length;
   return (
     <article className="prev">
       <span className="cap">{label ?? (r.title && r.title !== "camera" ? r.title : "ก่อนหน้า")}
         {text && <button onClick={() => e.say(r, true)}>ฟังอีกครั้ง</button>}</span>
       <p className="sentence">{text ? <Sentence text={text} /> : n ? `ยังไม่มั่นใจ ${n} ท่า` : "ไม่พบท่ามือ"}</p>
-      <Words r={r} vocab={e.vocab} />
+      <Words r={r} vocab={e.vocab} minP={e.minP} />
     </article>
   );
 }

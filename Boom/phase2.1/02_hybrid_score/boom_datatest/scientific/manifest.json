@@ -1,0 +1,69 @@
+{
+  "created": "2026-10-19T10:02:29+0700",
+  "python": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/venv-sign2say/bin/python",
+  "versions": {
+    "torch": "2.14.1",
+    "onnxruntime": "1.23.2",
+    "numpy": "1.26.4",
+    "mediapipe": "1.1.0"
+  },
+  "hashes": {
+    "Boom/phase2.1/02_hybrid_score/dictionary_attributes.json": "e19f03cc66ebe2cb91e6eef8f56d09fb8f7d2b53812df5672f5f7b7e682f7e7e",
+    "modules/pipeline.py": "bd834ae044e1f137575bdb60e1218a6e6dd2e8fff821dcfadb94489487cc1c42",
+    "modules/symbolic.py": "e9bf493eafc8ef22d5a04488c24d7ffef2db5892ea9397be71ecd3cce452bf9c",
+    "models/spotting.json": "1f550529879a5be136f9da1448d8f1b7a6945aba8f2a02eaf115205cbc9a2bcf",
+    "models/bank.npz": "a5ff3ce9ce7f63de3eef9ceb786124933a5ff982f496efddaec50680d2230047",
+    "models/concepts.json": "c8aad472e3723558ce8e39307ec9ca9e3d915bb7d321e0ec93f3f1f27d525176",
+    "models/segment_calibration.json": "0acb25c2705b6fbf4037d8e8b2f966cabcf82961eec72903504844db0423ba87",
+    "models/onnx/encoder.onnx": "f55467fbcdeed114c830a3ede4ec653e0f9f55f3923ad30e72a035f0182db4a8",
+    "models/onnx/tagger.onnx": "11d4bd8e7a24ddb056a30da8aeb6e09df846a30301d8fa7cfda27a52a4cd9a89"
+  },
+  "weights": [
+    0,
+    0.3
+  ],
+  "shared_landmarks": true,
+  "latency_policy": "single measurement; extraction shared; model load excluded",
+  "spot": {
+    "lens": [
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32,
+      36,
+      40,
+      44,
+      48
+    ],
+    "stride": 4,
+    "min_inside": 0.6,
+    "delta": 0.0,
+    "act_thr": 0.5,
+    "mu_null": 5.0,
+    "csls_alpha": 0.0,
+    "one_pass": true,
+    "exact_rescore": false,
+    "lam": 6.0,
+    "gap_cost": 0.5,
+    "min_len": 14,
+    "beta": 5.0,
+    "freq_gamma": 0.0,
+    "tempo": {
+      "ref_len": 16,
+      "min_factor": 1.2,
+      "max_factor": 2.5,
+      "min_segments": 2
+    },
+    "post": {
+      "min_frames": 10,
+      "null_gap_max": 0.1,
+      "p_sign_min": 0.65,
+      "repeat_penalty": true
+    },
+    "grammar_rerank_weight": 0.5
+  },
+  "bank_note": "production conversation bank; not signer-held-out evaluation"
+}

@@ -1,0 +1,8 @@
+[
+  {
+    "clip_id":"thsl:th_sl_00936",
+    "source_file":"raw_data\/word_level\/th_sl_dictionary\/videos\/th_sl\/th_sl_00936.mp4",
+    "pose_file":"pose\/th_sl\/thsl_th_sl_00936.npz",
+    "exclude_reason":"pose_missing"
+  }
+]

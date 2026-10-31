@@ -1,0 +1,19 @@
+{
+  "enabled": false,
+  "production_enable": false,
+  "post_filter_trial": {
+    "enabled": false,
+    "post.p_sign_min": 0.55,
+    "accept_min": 0.70,
+    "post.min_hand_frac": 0.30,
+    "visibility_definition": "Experimental standard-schema mean hand confidence >= 0.5; not claimed identical to v8 raw observed-hand implementation"
+  },
+  "grammar_trial": {
+    "enabled": false,
+    "weights": [0, 0.3, 0.5, 0.7, 1.0],
+    "topn": [2, 3, 4],
+    "min_gap": [0.03, 0.05, 0.08, 0.12],
+    "selection_split": "tune leave-role-template-out",
+    "production_bank_mutable": false
+  }
+}

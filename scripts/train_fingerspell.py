@@ -125,7 +125,8 @@ def collect(max_none_clips=2500):
 def train_mlp(X, y, classes, hidden=(256, 128), epochs=60, seed=0):
     import torch
     torch.manual_seed(seed)
-    dev = "cuda" if torch.cuda.is_available() else "cpu"
+    from modules.utils import device as resolve_device
+    dev = resolve_device()
     mu, sd = X.mean(0), X.std(0) + 1e-4
     Xt = torch.tensor((X - mu) / sd, dtype=torch.float32, device=dev)
     ci = {c: i for i, c in enumerate(classes)}

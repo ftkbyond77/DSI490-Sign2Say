@@ -1,0 +1,183 @@
+{
+  "weight": 0.9,
+  "dictionary_concepts": 367,
+  "clip": "t51s:กรุงเทพ_var_1__ฉัน_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_0",
+  "segments": [
+    {
+      "segment": [
+        28,
+        68
+      ],
+      "symbolic": {
+        "hands": 2,
+        "location_zone": "chest",
+        "relation": null,
+        "motion": [
+          "circle"
+        ],
+        "hand_observed": {
+          "left": 1.0,
+          "right": 1.0
+        }
+      },
+      "candidates": [
+        {
+          "word": "กรุงเทพ",
+          "score": 0.4495,
+          "support": 0.3726,
+          "ai_prob": 0.2259,
+          "pose_score": 0.0,
+          "fused_score": 0.0226
+        },
+        {
+          "word": "หนังสือ",
+          "score": 0.3065,
+          "support": 0.2057,
+          "ai_prob": 0.1958,
+          "pose_score": 0.0,
+          "fused_score": 0.0196
+        },
+        {
+          "word": "ขนมปัง",
+          "score": 0.3051,
+          "support": 0.1747,
+          "ai_prob": 0.1956,
+          "pose_score": 0.0,
+          "fused_score": 0.0196
+        }
+      ]
+    },
+    {
+      "segment": [
+        72,
+        108
+      ],
+      "symbolic": {
+        "hands": 2,
+        "location_zone": "low",
+        "relation": null,
+        "motion": [
+          "circle"
+        ],
+        "hand_observed": {
+          "left": 1.0,
+          "right": 1.0
+        }
+      },
+      "candidates": [
+        {
+          "word": "ฉัน",
+          "score": 0.5864,
+          "support": 0.56,
+          "ai_prob": 0.2316,
+          "pose_score": 0.0,
+          "fused_score": 0.0232
+        },
+        {
+          "word": "เรา",
+          "score": 0.562,
+          "support": 0.5347,
+          "ai_prob": 0.226,
+          "pose_score": 0.0,
+          "fused_score": 0.0226
+        },
+        {
+          "word": "ภูมิใจ",
+          "score": 0.3951,
+          "support": 0.3722,
+          "ai_prob": 0.1912,
+          "pose_score": 0.0,
+          "fused_score": 0.0191
+        }
+      ]
+    },
+    {
+      "segment": [
+        152,
+        184
+      ],
+      "symbolic": {
+        "hands": 2,
+        "location_zone": "low",
+        "relation": null,
+        "motion": [
+          "circle"
+        ],
+        "hand_observed": {
+          "left": 1.0,
+          "right": 1.0
+        }
+      },
+      "candidates": [
+        {
+          "word": "หนึ่ง",
+          "score": 0.5341,
+          "support": 0.4594,
+          "ai_prob": 0.225,
+          "pose_score": 0.0,
+          "fused_score": 0.0225
+        },
+        {
+          "word": "ลุง",
+          "score": 0.4764,
+          "support": 0.3855,
+          "ai_prob": 0.2124,
+          "pose_score": 0.3,
+          "fused_score": 0.2912
+        },
+        {
+          "word": "เที่ยว",
+          "score": 0.3927,
+          "support": 0.363,
+          "ai_prob": 0.1953,
+          "pose_score": 0.0,
+          "fused_score": 0.0195
+        }
+      ]
+    },
+    {
+      "segment": [
+        200,
+        248
+      ],
+      "symbolic": {
+        "hands": 2,
+        "location_zone": "low",
+        "relation": null,
+        "motion": [
+          "circle"
+        ],
+        "hand_observed": {
+          "left": 1.0,
+          "right": 1.0
+        }
+      },
+      "candidates": [
+        {
+          "word": "ชอบ",
+          "score": 0.7304,
+          "support": 0.5522,
+          "ai_prob": 0.2424,
+          "pose_score": 0.0,
+          "fused_score": 0.0242
+        },
+        {
+          "word": "ฉัน",
+          "score": 0.7393,
+          "support": 0.6018,
+          "ai_prob": 0.2446,
+          "pose_score": 0.0,
+          "fused_score": 0.0245
+        },
+        {
+          "word": "ขอโทษ",
+          "score": 0.3957,
+          "support": 0.2725,
+          "ai_prob": 0.1734,
+          "pose_score": 0.0,
+          "fused_score": 0.0173
+        }
+      ]
+    }
+  ]
+}

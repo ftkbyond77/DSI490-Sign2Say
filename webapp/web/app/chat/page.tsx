@@ -106,9 +106,9 @@ export default function ChatPage() {
               <div key={m.id} className="msg sign">
                 <span className="who">ภาษามือ · {m.at}</span>
                 <div className="bubble">
-                  {(() => { const { text, tentative } = shownText(m.r); return <p className={tentative ? "tentative" : ""}>{text ? <Sentence text={text} /> : "ไม่พบท่ามือ"}</p>; })()}
-                  <Words r={m.r} onTeal vocab={e.vocab} />
-                  {shownText(m.r).text && <button className="replay-chip" style={{ color: "var(--teal-700)" }} onClick={() => e.say(m.r, true)}><Ic n="speaker-teal" s={14} />ฟังเสียง</button>}
+                  {(() => { const { text, tentative } = shownText(m.r, e.minP); return <p className={tentative ? "tentative" : ""}>{text ? <Sentence text={text} /> : "ไม่พบท่ามือ"}</p>; })()}
+                  <Words r={m.r} onTeal vocab={e.vocab} minP={e.minP} />
+                  {shownText(m.r, e.minP).text && <button className="replay-chip" style={{ color: "var(--teal-700)" }} onClick={() => e.say(m.r, true)}><Ic n="speaker-teal" s={14} />ฟังเสียง</button>}
                 </div>
               </div>
             ) : (

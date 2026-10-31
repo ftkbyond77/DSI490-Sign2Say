@@ -1,0 +1,6 @@
+pair_id,reference,prediction,observed_errors,a_clips,a_signers,a_train_clips,a_train_signers,a_raw_available,a_videos_available,b_clips,b_signers,b_train_clips,b_train_signers,b_raw_available,b_videos_available,ready_for_review,multi_signer_training_ready
+pair01,ชอบ,ข้าว,1,2,2,2,2,2,0,1,1,1,1,1,0,True,False
+pair02,ฉัน,คุณ,1,1,1,1,1,1,0,1,1,1,1,1,0,True,False
+pair03,ฉัน,แฟน,1,1,1,1,1,1,0,2,2,2,2,2,0,True,False
+pair04,ลืม,ญาติ,1,1,1,1,1,1,0,2,2,2,2,2,0,True,False
+pair05,ช่วย,ขนมปัง,1,1,1,1,1,1,0,1,1,1,1,1,0,True,False

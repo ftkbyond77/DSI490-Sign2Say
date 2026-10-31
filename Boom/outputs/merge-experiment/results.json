@@ -1,0 +1,345 @@
+{
+  "note": "Development-only forced-boundary diagnostic, not a general merge-rule fix. No threshold or production changes. Clip3 untouched. No recalibrated p for changed spans.",
+  "results": [
+    {
+      "frames": [
+        36,
+        68
+      ],
+      "seconds": [
+        1.44,
+        2.72
+      ],
+      "method": "span_head",
+      "top5": [
+        {
+          "word": "ภาษามือ",
+          "cosine": 0.47998878359794617
+        },
+        {
+          "word": "ขอโทษ",
+          "cosine": 0.4696308374404907
+        },
+        {
+          "word": "เพื่อน",
+          "cosine": 0.4692089855670929
+        },
+        {
+          "word": "ข้าว",
+          "cosine": 0.4580066204071045
+        },
+        {
+          "word": "กิน",
+          "cosine": 0.4514669179916382
+        }
+      ],
+      "target_rank": 1,
+      "target_score": 0.47998878359794617,
+      "p_correct": null
+    },
+    {
+      "frames": [
+        36,
+        68
+      ],
+      "seconds": [
+        1.44,
+        2.72
+      ],
+      "method": "exact_encoder",
+      "top5": [
+        {
+          "word": "เพื่อน",
+          "cosine": 0.4124112129211426
+        },
+        {
+          "word": "อะไร",
+          "cosine": 0.3343980312347412
+        },
+        {
+          "word": "พบกันใหม่",
+          "cosine": 0.3257027268409729
+        },
+        {
+          "word": "โสด",
+          "cosine": 0.311279296875
+        },
+        {
+          "word": "เป็น",
+          "cosine": 0.28396880626678467
+        }
+      ],
+      "target_rank": 7,
+      "target_score": 0.2743505835533142,
+      "p_correct": null
+    },
+    {
+      "frames": [
+        36,
+        68
+      ],
+      "seconds": [
+        1.44,
+        2.72
+      ],
+      "method": "temporal_ensemble_forced_span",
+      "windows": 15,
+      "top5": [
+        {
+          "word": "เพื่อน",
+          "peak_cosine": 0.5443888902664185,
+          "support": 0.3964505275090536
+        },
+        {
+          "word": "ข้าว",
+          "peak_cosine": 0.5310819149017334,
+          "support": 0.35739838480949404
+        },
+        {
+          "word": "ภาษามือ",
+          "peak_cosine": 0.49411478638648987,
+          "support": 0.31881754398345946
+        },
+        {
+          "word": "กิน",
+          "peak_cosine": 0.5039854049682617,
+          "support": 0.2680346151192983
+        },
+        {
+          "word": "ขอโทษ",
+          "peak_cosine": 0.48481467366218567,
+          "support": 0.23086090286572775
+        }
+      ],
+      "target_rank": 3,
+      "p_correct": null
+    },
+    {
+      "frames": [
+        68,
+        112
+      ],
+      "seconds": [
+        2.72,
+        4.48
+      ],
+      "method": "span_head",
+      "top5": [
+        {
+          "word": "กรุงเทพ",
+          "cosine": 0.42583537101745605
+        },
+        {
+          "word": "ภาษามือ",
+          "cosine": 0.34409767389297485
+        },
+        {
+          "word": "อยู่บ้าน",
+          "cosine": 0.2677481770515442
+        },
+        {
+          "word": "วิ่ง",
+          "cosine": 0.26349371671676636
+        },
+        {
+          "word": "ขอบคุณ",
+          "cosine": 0.25754261016845703
+        }
+      ],
+      "target_rank": 2,
+      "target_score": 0.34409767389297485,
+      "p_correct": null
+    },
+    {
+      "frames": [
+        68,
+        112
+      ],
+      "seconds": [
+        2.72,
+        4.48
+      ],
+      "method": "exact_encoder",
+      "top5": [
+        {
+          "word": "กรุงเทพ",
+          "cosine": 0.3930881917476654
+        },
+        {
+          "word": "ภาษามือ",
+          "cosine": 0.37041670083999634
+        },
+        {
+          "word": "อยู่บ้าน",
+          "cosine": 0.25261902809143066
+        },
+        {
+          "word": "น้องชาย",
+          "cosine": 0.24595148861408234
+        },
+        {
+          "word": "วิ่ง",
+          "cosine": 0.22895634174346924
+        }
+      ],
+      "target_rank": 2,
+      "target_score": 0.37041670083999634,
+      "p_correct": null
+    },
+    {
+      "frames": [
+        68,
+        112
+      ],
+      "seconds": [
+        2.72,
+        4.48
+      ],
+      "method": "temporal_ensemble_forced_span",
+      "windows": 36,
+      "top5": [
+        {
+          "word": "กรุงเทพ",
+          "peak_cosine": 0.4673279821872711,
+          "support": 0.40297970672448474
+        },
+        {
+          "word": "ภาษามือ",
+          "peak_cosine": 0.42894408106803894,
+          "support": 0.37490404811170364
+        },
+        {
+          "word": "พี่ชาย",
+          "peak_cosine": 0.35046476125717163,
+          "support": 0.20414257629050148
+        },
+        {
+          "word": "ขอโทษ",
+          "peak_cosine": 0.3338887393474579,
+          "support": 0.1551213322414292
+        },
+        {
+          "word": "อยู่บ้าน",
+          "peak_cosine": 0.3420701026916504,
+          "support": 0.12211532394091289
+        }
+      ],
+      "target_rank": 2,
+      "p_correct": null
+    },
+    {
+      "frames": [
+        36,
+        112
+      ],
+      "seconds": [
+        1.44,
+        4.48
+      ],
+      "method": "span_head",
+      "top5": [
+        {
+          "word": "กรุงเทพ",
+          "cosine": 0.3353942036628723
+        },
+        {
+          "word": "ภาษามือ",
+          "cosine": 0.29931876063346863
+        },
+        {
+          "word": "ขอโทษ",
+          "cosine": 0.2731500267982483
+        },
+        {
+          "word": "ข้าว",
+          "cosine": 0.2713775038719177
+        },
+        {
+          "word": "ผลไม้",
+          "cosine": 0.2539776861667633
+        }
+      ],
+      "target_rank": 2,
+      "target_score": 0.29931876063346863,
+      "p_correct": null
+    },
+    {
+      "frames": [
+        36,
+        112
+      ],
+      "seconds": [
+        1.44,
+        4.48
+      ],
+      "method": "exact_encoder",
+      "top5": [
+        {
+          "word": "กรุงเทพ",
+          "cosine": 0.3188856244087219
+        },
+        {
+          "word": "ภาษามือ",
+          "cosine": 0.3176097273826599
+        },
+        {
+          "word": "เพื่อน",
+          "cosine": 0.28242406249046326
+        },
+        {
+          "word": "พบกันใหม่",
+          "cosine": 0.21174952387809753
+        },
+        {
+          "word": "อยู่บ้าน",
+          "cosine": 0.20291131734848022
+        }
+      ],
+      "target_rank": 2,
+      "target_score": 0.3176097273826599,
+      "p_correct": null
+    },
+    {
+      "frames": [
+        36,
+        112
+      ],
+      "seconds": [
+        1.44,
+        4.48
+      ],
+      "method": "temporal_ensemble_forced_span",
+      "windows": 108,
+      "top5": [
+        {
+          "word": "ภาษามือ",
+          "peak_cosine": 0.49411478638648987,
+          "support": 0.33830360847490804
+        },
+        {
+          "word": "กรุงเทพ",
+          "peak_cosine": 0.4673279821872711,
+          "support": 0.2781837635018207
+        },
+        {
+          "word": "ข้าว",
+          "peak_cosine": 0.5310819149017334,
+          "support": 0.16989674419164658
+        },
+        {
+          "word": "ขอโทษ",
+          "peak_cosine": 0.48481467366218567,
+          "support": 0.15608534161691312
+        },
+        {
+          "word": "กิน",
+          "peak_cosine": 0.5039854049682617,
+          "support": 0.1374620588289367
+        }
+      ],
+      "target_rank": 1,
+      "p_correct": null
+    }
+  ],
+  "mirrored": false
+}

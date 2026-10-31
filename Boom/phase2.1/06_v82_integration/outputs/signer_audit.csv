@@ -1,0 +1,4 @@
+person,declared_training_signer_id,person_overlap,reason
+Boom,,unknown,No user-verified mapping from folder person to training signer IDs; no facial identity inference
+Jack,,unknown,No user-verified mapping from folder person to training signer IDs; no facial identity inference
+Pitty,,unknown,No user-verified mapping from folder person to training signer IDs; no facial identity inference

@@ -6,6 +6,67 @@ layer write a Thai sentence from the evidence (never beyond it) — and speaks i
 Results: `result_reporting/result_v7.md` · file map: `result_reporting/file_structure.pdf` · lab: `lab.ipynb`.
 
 
+## v10 — diagnosis · extractor study · real-time · natural speech (prompt_14)
+
+Report: `result_reporting/result_v10.md` (+ pdf) · labs: `lab4.ipynb` (results computed live), `real-time-lab.ipynb` (camera → sign /
+face / speech, tier A/B) · models: `models/model-v10/` (forward, Docker default) · `models/face-model/` · `models/speech-model-v2/`.
+Every setting chosen on tune data; automatic release gate `python main.py decision gate` (tolerance from v9's bootstrap); $0 cloud.
+* **Recognition = v9, on purpose.** The v10 candidate (extractor-averaged bank + re-tuned decision layer) won on tune but failed the
+  release gate on the held-out test sets twice (coverage, calibration, TSL51 2×, fluent sentences) → not shipped, kept opt-in
+  as `v10x` in `artifacts/v10_experimental/`. `models/model-v10` recognises byte-for-byte like v9 and passes the gate.
+* **Diagnosis** (`python main.py diagnose deep`): low hand visibility explains ≤ 3 % of errors (AUC 0.52); the driver is bank depth
+  (words with ≤ 2 example clips: 74 % wrong) and the signer gap, not the extractor.
+* **Extractor study** (`python main.py extractor …`, `modules/wholebody.py`): RTMW-X fails both the Pose Quality Gate (fingers more
+  distorted, blinded visual check MediaPipe 50 % vs RTMW 41 %) and the Recognition Quality Gate (encoders trained per extractor: MediaPipe
+  wins 4/5 sets) → MediaPipe stays tier B default; RTMW-X fp16 + tracking (35 fps on an RTX 2050) is the optional tier A.
+* **Real-time**: `/v1/live` WebSocket in the sign API, used by the web's live mode (`/sign/live`, `/sign`): words appear while signing
+  (confirmed white, unsure `[?]`, still-changing faded; `?stream=0` turns it off), streaming settings chosen on tune
+  (`spotting.json` `"stream"`), `real-time-lab.ipynb`.
+* **Speech v2** (`models/speech-model-v2`): an unread sign becomes a human hesitation ("ฉัน… อืม… พ่อ"), never a guessed word
+  (0 guessed words in 48 cases); `/tts/v1/speak_plan`; CPU voice fallback. Face: v1 kept (no v2 candidate better on every metric).
+* Rollback: `THAISLM_MODELS_DIR=./models/model-v9 docker compose up`.
+
+## v9 — recognition · calibration · face emotion · speech (prompt_13)
+
+Report: `result_reporting/result_v9.md` (+ pdf) · lab: `lab3.ipynb` · models: `models/model-v9/` (forward; rollback since v10) ·
+`models/face-model/` · `models/speech-model-v1/`. All settings chosen on tune data (`python main.py decision tune --start v8.1`); $0 cloud.
+* **Diagnosis first** (`python main.py diagnose ledger`): TSL51 errors are recognition, not segmentation (perfect naming on the current
+  segments → WER 0.065; perfect segments with the current reader → 0.26).
+* **Second recogniser**: the Thai-only landmark encoder (`onnx/lmenc.onnx`, `lm_bank.npz`) fused with Uni-Sign + hand cue; grammar
+  re-rank off; isotonic calibration, τ_accept 0.92 → 0.88 (accepted precision ≥ 0.90 on every tune set); lone letters 0.95 / 0.7 after
+  "ชื่อ"; enrolled users (personal bank) run with the v8.1 settings (they win there).
+* Held-out WER v8.1 → v9: TSL51 1× / 1.5× / 2× 0.309 / 0.284 / 0.292 → **0.296 / 0.263 / 0.274** · unseen-signer words 0.257 → **0.243**
+  · fluent 0.411 → **0.378** · iPhone sentences 0.126 → **0.097** · team-drive per performance 0.550 → **0.508**; accepted words ×1.5–2.
+  Enrolled signer (own word clips in the bank): TSL51 **0.119 / 0.109 / 0.137**.
+* **Face emotion** (`modules/face_model.py`): 7 emotions from MediaPipe blendshapes, RAVDESS + neutral signing, explained in Thai,
+  fused with the signed words and signing energy → `result.face.affect`, API `face.affect`.
+* **Speech v1** (`modules/speech.py`, speech env `D:/SLM-labs/envs/speech`): F5-TTS-THAI cloned from emotion references (ElevenLabs
+  teacher) — CER 0.06 % vs 8.2 % (old voice), needs a GPU; Qwen3-ASR-0.6B (LoRA tried, not default: hurts real speech).
+* **Streaming** (`modules/stream.py`): partial → confirmed words while signing, compute counted.
+
+## v8.1 — recognition (prompt_12): hand-shape cue, automatic fingerspelling, จีน / ประเทศ
+
+Report: `result_reporting/result_v8-1.md` (+ pdf) · lab: `lab2.ipynb` → "2. After Tuning". Models unchanged; CPU only ($0); every setting chosen
+on tune data with `python main.py decision hands | tune --write | report | figures`; v8 settings kept in `artifacts/baselines/v8/` (rollback).
+* **Hand-shape cue** (`modules/handshape.py`, `models/hand_bank.npz`): finger angles, palm direction, hand place and motion of each segment
+  vs every bank clip (metric learned on training signers), fused with the encoder's reading of the whole segment — ฉัน/ชอบ, ชื่อ/เพื่อน now right.
+* **Fingerspelling always on** (English A–Z, `spotting.json` `"alphabet": "en"`; 0 inserted letters on 783 tune utterances); **จีน, ประเทศ**
+  added; 61 sign **variants** (school / politeness styles) read as their word; split test for fluent signing; grammar re-rank guarded.
+* Held-out TSL51 test WER 1× / 1.5× / 2×: 0.394 / 0.364 / 0.376 → **0.309 / 0.284 / 0.292** (Recall@1 1× 0.61 → 0.70); unseen-signer words
+  0.295 → **0.253**; fluent sentences 0.448 → **0.397**; iPhone sentences 0.283 → **0.126**. Trade-offs: ECE 0.04 → 0.06, fewer accepted words at 1.5×/2×.
+
+## v8 — decision layer (prompt_11): split signs, calibrated confidence, Accept / Uncertain / Reject
+
+Report: `result_reporting/result_v8.md` (+ pdf) · lab: `lab2.ipynb` → "Phase 2 — Optimized". Encoder / tagger / bank unchanged; tuned on tune
+data only with `python main.py decision cache | tune --write | report | figures` (CPU, $0).
+* **Split-sign merge** (`decode.merge_split`): a small model gives P(same sign) for neighbouring segments (tagger begin/rest at the cut,
+  hand-speed dip, lengths, the union read as one piece) — "แมว → กิน แมว" becomes one sign. Held-out word clips: count error 0.171 → 0.083.
+* **Calibrated confidence**: temperature-scaled top-1/top-2 probabilities + P(correct) with 13 features (incl. each word's reliability
+  in the bank, `models/class_prior.npz`); ECE on test 0.14 → 0.04, correct words get higher P.
+* **Three states** (`decode.decide`): Accept P ≥ 0.90 · Uncertain "อาจหมายถึง …" · Reject P < 0.25 "ไม่สามารถรู้จำได้", with a reason per segment.
+* Held-out TSL51 test WER 1× / 1.5× / 2×: 0.432 / 0.374 / 0.386 → **0.394 / 0.364 / 0.376**; accepted precision 0.82 → 0.97 (1×);
+  iPhone sentences 0.311 → 0.283; fluent synthetic sentences 0.435 → 0.448 (the trade-off).
+
 ## v7.2 — after the first live tests
 
 * **Fingerspelling** A–Z (the one-handed manual alphabet Thai deaf schools teach) and Thai ก–ฮ + 7 vowels: `models/fingerspell.npz`
@@ -20,7 +81,7 @@ Results: `result_reporting/result_v7.md` · file map: `result_reporting/file_str
 * **Data**: +40 YouTube word clips; 32 clips of a channel whose signer looks like a data_test person were removed from both banks.
 * Non-regression (TSL51 test sentences, same harness): recall 0.642 → 0.647, accepted errors 15 → 15, WER 0.446 → 0.450 with letters
   on (3 uncertain lone letters in 126 sentences) / 0.444 with letters off. data_test unchanged (R@1 0.41, R@5 0.73).
-* New steps: `python main.py letters …`, `train-letters`, `tune-spelling`, `study-clips`, `eval bank_add`, `harvest discover --words …`.
+* New steps: `python main.py letters …`, `train-letters`, `study-clips` (letter settings: since v8.1 chosen by `decision tune`), `eval bank_add`, `harvest discover --words …`.
 
 ## Reverse part — text / speech → Thai Sign Language avatar
 
@@ -36,9 +97,9 @@ docker compose up --build                            # web demo → http://local
 ```bash
 conda activate hugging                               # Python 3.10, see requirements.txt
 git lfs install && git lfs pull                      # model weights are in Git LFS
-python main.py infer --video path/to/video.mp4       # translate a video with models/ (ONNX Runtime; --backend torch for the GPU)
+python main.py infer --video path/to/video.mp4       # translate a video with models/model-v10/ (ONNX Runtime; --backend torch for the GPU)
 python main.py test                                  # data_test/ end-to-end from the raw videos + scores
-jupyter lab lab.ipynb                                # data, latent space, tagger, segmentation, results, self-made sentence tests
+jupyter lab lab4.ipynb                               # v10 results (computed live) · real-time-lab.ipynb = camera → sign / face / speech
 ```
 `python main.py` with no arguments lists every command.
 
@@ -47,8 +108,8 @@ jupyter lab lab.ipynb                                # data, latent space, tagge
 | path | what | in git |
 |---|---|---|
 | `main.py` | the only CLI entry point (infer · test · data · prep · extract · harvest · cloud · train-seq · eval · export-onnx) | ✓ |
-| `docker-compose.yml`, `webapp/` | web demo: `web` (Next.js) · `sign-api` (FastAPI + ONNX Runtime) · `tts` (MMS-TTS Thai) · `gateway` (nginx) — see `webapp/README.md` | ✓ |
-| `models/` | **the deployable model** — everything inference loads (+ `onnx/`, `mediapipe/`). See `models/README.md` | ✓ (LFS) |
+| `docker-compose.yml`, `webapp/` | web demo: `web` (Next.js) · `sign-api` (FastAPI + ONNX Runtime, WebSocket `/v1/live` streaming) · `tts` (speech v2: plan + hesitation fillers, MMS-TTS on CPU; `tts-gpu` F5 with `--profile gpu`) · `gateway` (nginx) — see `webapp/README.md` | ✓ |
+| `models/` | **the forward models**, one complete model folder each: `model-v10/` (main, default `MODEL`, Docker) · `model-v9/` (rollback) · `archive/` (Jack = v8.1, Boom, Pitty); + `face-model/` (face emotion) · `speech-model-v2/` (voice + hesitation fillers) · `speech-model-v1/` | ✓ (LFS) |
 | `modules/` | library (see below) | ✓ |
 | `scripts/` | pipeline steps: `data_prep.py` · `extract_mp.py` · `harvest_words.py` · `eval.py` · `export_onnx.py` · `infer.py` · `make_lab.py` · `s3_sync.py` · `md_to_pdf.py` · `pretrained.py` · `collect/` (v4 raw-data harvester) | ✓ |
 | `GCP/script/` | Vertex AI: `vertex.py` (upload · load-balanced launch · wait · **cleanup**) · `job_entry.py` (training stages) | ✓ |
@@ -104,3 +165,39 @@ python main.py cloud cleanup                                          # empty th
 Raw data came from public endpoints for research. th-sl.com (NADT) carries an explicit AI-training rights reservation; its use
 here was approved by the project owner for research only. YouTube clips (v4 and v7 harvest) remain the publishers' — research
 use only. Redistribution or release of models trained on these sources is a separate conversation with each rights holder.
+
+
+## Mac first; cloud only for heavy training
+
+Local commands never launch a cloud job automatically. PyTorch helpers choose CUDA
+when available, otherwise Apple MPS, otherwise CPU. Set `DEVICE=cpu` to force CPU
+if an operation is unsupported on MPS. ONNX web inference stays on CPU; Docker on
+Mac does not expose Apple MPS, so run Python natively for MPS acceleration.
+Install native macOS PyTorch in your Python environment (`pip install torch`), then
+the project dependencies. The default requirements now use CPU ONNX Runtime.
+
+```bash
+# Local sequence training (requires prepared shards and complete encoder run)
+python main.py train-seq --encoder_run artifacts/runs/<run> --out artifacts/runs/seq-local-mac
+# Explicit CPU fallback
+python main.py train-seq --encoder_run artifacts/runs/<run> --device cpu
+# Build/tune use the same local device selection
+DEVICE=cpu python main.py eval build --run <run> --seq seq-local-mac
+# Torch inference on Apple GPU; ONNX remains the default CPU backend
+python main.py infer --video clip.mp4 --backend torch --device mps
+# A small local encoder experiment (no cloud job)
+python GCP/script/job_entry.py --stage train_encoder --device auto --steps 20 --eval_every 10 --out artifacts/runs/enc-local-smoke
+```
+
+Non-CUDA training defaults to 0 data-loader workers, P=8 and embedding batches of
+16; explicit CLI values override these. CUDA keeps the original 10 / 48 / 384
+settings. CPU/MPS use FP32; CUDA uses BF16 only when the GPU supports it. A request
+for unavailable hardware fails with a clear error instead of silently changing it.
+MPS operator coverage and available memory still need checking with your datasets;
+use CPU or smaller batches if needed. Existing browser personal-sign embeddings
+must be regenerated when changing the encoder.
+
+Use the explicit `cloud` commands only for heavy training. GPU prices and the
+cheapest machine depend on region, availability and runtime: the existing
+multi-region launcher has not been changed into an automatic cheapest-GPU picker.
+Set a bounded `--hours`, fetch the results, and inspect running jobs afterwards.

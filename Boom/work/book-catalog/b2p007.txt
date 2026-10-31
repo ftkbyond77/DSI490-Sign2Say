@@ -1,0 +1,51 @@
+การเคลอนทีจากจุดหนึ่งไปยังอีกจุดหนึ่ง
+
+A. ONIN
+
+ไม่
+
+๑
+
+ไม่
+
+|
+
+โดยก้าวสั้นๆ
+
+อ.*
+
+Movement is from point to point
+
+ศศภาศาศ์น
+
+by small steps, with a slight bounce
+
+การเคลื่อนไหวที่ซ้้าๆ กัน
+
+Repeated movements
+
+การเคลือนที่ไปในทางเดียวหลายๆ ครั้ง
+
+Unidirectional movements
+
+|
+
+การเคลื่อนไหวที่ไป-กลับหลายๆ ครั้ง
+
+Bidirectional movements
+
+i |
+
+การที่มือทั้งสองเคลื่อนสลับกันในทิศทาง
+
+เดียวกัน (ข้ายครั้ง ขวาครั้ง)
+
+Alternating movements by the two
+
+1
+
+3
+
+hands, unidirectional movements
+
+«8

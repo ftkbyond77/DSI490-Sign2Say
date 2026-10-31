@@ -1,0 +1,930 @@
+{
+  "video": "ฉันแอบชอบคุณ.MOV",
+  "modes": {
+    "baseline": {
+      "weight": 0,
+      "inference_s": 3.2210375838913023,
+      "result": {
+        "title": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/boom datatest/ฉันแอบชอบคุณ.MOV",
+        "fps": 25.0,
+        "n_frames": 325,
+        "duration_s": 13.0,
+        "signer_visible_frac": 1.0,
+        "signing_frac": 0.6861538461538461,
+        "mirrored_to_right_hand": false,
+        "segments": [
+          {
+            "f0": 8,
+            "f1": 56,
+            "z": 3.910266876220703,
+            "wins": [
+              [
+                8,
+                56
+              ]
+            ],
+            "nearest": "แฟน",
+            "candidates": [
+              {
+                "word": "แฟน",
+                "score": 0.647,
+                "support": 0.4596
+              },
+              {
+                "word": "ข้าว",
+                "score": 0.6082,
+                "support": 0.3004
+              },
+              {
+                "word": "ฉัน",
+                "score": 0.6152,
+                "support": 0.2888
+              },
+              {
+                "word": "ใช่",
+                "score": 0.4243,
+                "support": 0.1858
+              },
+              {
+                "word": "กิน",
+                "score": 0.5629,
+                "support": 0.1711
+              }
+            ],
+            "score": 0.446252703666687,
+            "margin": 0.05827373266220093,
+            "null_gap": -0.04510924220085144,
+            "p_sign": 0.6712093537978822,
+            "agree": 1.0,
+            "support_ratio": 1.529960053262317,
+            "window_top1": "แฟน",
+            "depth": 0.0,
+            "p_correct": 0.38863474422877703,
+            "status": "uncertain",
+            "t0": 0.32,
+            "t1": 2.24
+          },
+          {
+            "f0": 56,
+            "f1": 92,
+            "z": 4.162106037139893,
+            "wins": [
+              [
+                56,
+                92
+              ]
+            ],
+            "nearest": "แต่งงาน",
+            "candidates": [
+              {
+                "word": "แต่งงาน",
+                "score": 0.5277,
+                "support": 0.4928
+              },
+              {
+                "word": "ขอโทษ",
+                "score": 0.4102,
+                "support": 0.2816
+              },
+              {
+                "word": "ขนมปัง",
+                "score": 0.3613,
+                "support": 0.1994
+              },
+              {
+                "word": "ภรรยา",
+                "score": 0.3473,
+                "support": 0.197
+              },
+              {
+                "word": "เรียน",
+                "score": 0.3466,
+                "support": 0.1691
+              }
+            ],
+            "score": 0.44220033288002014,
+            "margin": 0.10506260395050049,
+            "null_gap": -0.21090669929981232,
+            "p_sign": 0.9449039835275878,
+            "agree": 1.0,
+            "support_ratio": 1.75,
+            "window_top1": "แต่งงาน",
+            "depth": 0.0,
+            "p_correct": 0.26044443978364895,
+            "status": "uncertain",
+            "t0": 2.24,
+            "t1": 3.68
+          },
+          {
+            "f0": 92,
+            "f1": 120,
+            "z": 3.2747411727905273,
+            "wins": [
+              [
+                92,
+                120
+              ]
+            ],
+            "nearest": "เกิด",
+            "candidates": [
+              {
+                "word": "เกิด",
+                "score": 0.4191,
+                "support": 0.3305
+              },
+              {
+                "word": "เพื่อน",
+                "score": 0.3696,
+                "support": 0.2776
+              },
+              {
+                "word": "ลูก",
+                "score": 0.3279,
+                "support": 0.2531
+              },
+              {
+                "word": "ญาติ",
+                "score": 0.3742,
+                "support": 0.1888
+              },
+              {
+                "word": "ภาษามือ",
+                "score": 0.412,
+                "support": 0.1439
+              }
+            ],
+            "score": 0.37416037917137146,
+            "margin": 0.06434085965156555,
+            "null_gap": -0.34451425075531006,
+            "p_sign": 0.9731551395529616,
+            "agree": 0.0,
+            "support_ratio": 1.1905619596541788,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "p_correct": 0.03644672360080124,
+            "status": "unknown",
+            "t0": 3.68,
+            "t1": 4.8
+          },
+          {
+            "f0": 132,
+            "f1": 148,
+            "z": 4.14288330078125,
+            "wins": [
+              [
+                132,
+                148
+              ]
+            ],
+            "nearest": "เป็น",
+            "candidates": [
+              {
+                "word": "เป็น",
+                "score": 0.5551,
+                "support": 0.5551
+              },
+              {
+                "word": "ถาม",
+                "score": 0.4748,
+                "support": 0.4748
+              },
+              {
+                "word": "คุณ",
+                "score": 0.4703,
+                "support": 0.4703
+              },
+              {
+                "word": "อะไร",
+                "score": 0.4579,
+                "support": 0.4579
+              },
+              {
+                "word": "ที่ไหน",
+                "score": 0.4294,
+                "support": 0.4294
+              }
+            ],
+            "score": 0.5551359057426453,
+            "margin": 0.08036115765571594,
+            "null_gap": -0.4103139340877533,
+            "p_sign": 0.8725348804786336,
+            "agree": 1.0,
+            "support_ratio": 1.1691238416175231,
+            "window_top1": "เป็น",
+            "depth": 0.0,
+            "p_correct": 0.2539819960347888,
+            "status": "uncertain",
+            "t0": 5.28,
+            "t1": 5.92
+          },
+          {
+            "f0": 184,
+            "f1": 208,
+            "z": 3.6720542907714844,
+            "wins": [
+              [
+                184,
+                208
+              ]
+            ],
+            "nearest": "แฟน",
+            "candidates": [
+              {
+                "word": "แฟน",
+                "score": 0.5146,
+                "support": 0.4504
+              },
+              {
+                "word": "เที่ยว",
+                "score": 0.4438,
+                "support": 0.3149
+              },
+              {
+                "word": "กิน",
+                "score": 0.4371,
+                "support": 0.2685
+              },
+              {
+                "word": "ข้าว",
+                "score": 0.4555,
+                "support": 0.2553
+              },
+              {
+                "word": "คุณ",
+                "score": 0.3666,
+                "support": 0.2385
+              }
+            ],
+            "score": 0.4540124237537384,
+            "margin": 0.059797972440719604,
+            "null_gap": -0.138229638338089,
+            "p_sign": 0.9699291843290818,
+            "agree": 1.0,
+            "support_ratio": 1.4302953318513814,
+            "window_top1": "แฟน",
+            "depth": 0.0,
+            "p_correct": 0.20598195451147647,
+            "status": "unknown",
+            "t0": 7.36,
+            "t1": 8.32,
+            "repeat_of": "แฟน"
+          },
+          {
+            "f0": 208,
+            "f1": 248,
+            "z": 3.9653480052948,
+            "wins": [
+              [
+                208,
+                248
+              ]
+            ],
+            "nearest": "แต่งงาน",
+            "candidates": [
+              {
+                "word": "แต่งงาน",
+                "score": 0.4634,
+                "support": 0.4241
+              },
+              {
+                "word": "ขนมปัง",
+                "score": 0.3815,
+                "support": 0.3447
+              },
+              {
+                "word": "ขอโทษ",
+                "score": 0.3911,
+                "support": 0.3251
+              },
+              {
+                "word": "ล้าง",
+                "score": 0.3205,
+                "support": 0.1361
+              },
+              {
+                "word": "เรียน",
+                "score": 0.3118,
+                "support": 0.093
+              }
+            ],
+            "score": 0.42015954852104187,
+            "margin": 0.08726570010185242,
+            "null_gap": -0.39471346139907837,
+            "p_sign": 0.9690812818950508,
+            "agree": 1.0,
+            "support_ratio": 1.2303452277342617,
+            "window_top1": "แต่งงาน",
+            "depth": 0.0,
+            "p_correct": 0.14318524265725735,
+            "status": "uncertain",
+            "t0": 8.32,
+            "t1": 9.92,
+            "repeat_of": "แต่งงาน",
+            "visual_top1": "ขนมปัง",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 252,
+            "f1": 280,
+            "z": 3.3909950256347656,
+            "wins": [
+              [
+                252,
+                280
+              ]
+            ],
+            "nearest": "ข้าว",
+            "candidates": [
+              {
+                "word": "ข้าว",
+                "score": 0.4523,
+                "support": 0.3862
+              },
+              {
+                "word": "เที่ยว",
+                "score": 0.4267,
+                "support": 0.2705
+              },
+              {
+                "word": "เกิด",
+                "score": 0.4164,
+                "support": 0.2536
+              },
+              {
+                "word": "เป็น",
+                "score": 0.4275,
+                "support": 0.2143
+              },
+              {
+                "word": "หมา",
+                "score": 0.4028,
+                "support": 0.1598
+              }
+            ],
+            "score": 0.40282201766967773,
+            "margin": 0.005975484848022461,
+            "null_gap": -0.28015434741973877,
+            "p_sign": 0.6083706200576022,
+            "agree": 0.0,
+            "support_ratio": 1.4277264325323473,
+            "window_top1": "หมา",
+            "depth": 0.0,
+            "p_correct": 0.07458469522366315,
+            "status": "unknown",
+            "t0": 10.08,
+            "t1": 11.2
+          },
+          {
+            "f0": 288,
+            "f1": 320,
+            "z": 4.501826763153076,
+            "wins": [
+              [
+                288,
+                320
+              ]
+            ],
+            "nearest": "ถาม",
+            "candidates": [
+              {
+                "word": "ถาม",
+                "score": 0.6822,
+                "support": 0.6198
+              },
+              {
+                "word": "หนึ่ง",
+                "score": 0.6623,
+                "support": 0.5445
+              },
+              {
+                "word": "ที่ไหน",
+                "score": 0.5753,
+                "support": 0.5015
+              },
+              {
+                "word": "เป็น",
+                "score": 0.6007,
+                "support": 0.3396
+              },
+              {
+                "word": "คุณ",
+                "score": 0.6089,
+                "support": 0.3081
+              }
+            ],
+            "score": 0.6006819009780884,
+            "margin": 0.045398056507110596,
+            "null_gap": -0.6107757091522217,
+            "p_sign": 0.8384063840949239,
+            "agree": 0.0,
+            "support_ratio": 1.1382920110192838,
+            "window_top1": "เป็น",
+            "depth": 0.0,
+            "p_correct": 0.1190297965939784,
+            "status": "uncertain",
+            "t0": 11.52,
+            "t1": 12.8
+          }
+        ],
+        "face": {},
+        "fusion": {
+          "chosen": [
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]"
+          ],
+          "sentence_th": "",
+          "meaning_th": "ยังไม่มั่นใจพอจะแปล — ลองทำท่าช้าลง ให้มืออยู่ในกรอบ หรือกดยืนยันคำที่ถูก",
+          "confidence": 0.0,
+          "provider": "none",
+          "evidence_gloss": "แฟน? | แต่งงาน? | [?]≈เกิด | เป็น? | [?]≈แฟน | แต่งงาน? | [?]≈ข้าว | ถาม?",
+          "evidence_guard": "withheld: no confident sign"
+        },
+        "sentence": "",
+        "timings_ms": {
+          "schema_ms": 43.9,
+          "tagger_ms": 2472.9,
+          "spotting_ms": 700.4,
+          "n_windows": 557,
+          "tempo_factor": 1.0,
+          "language_ms": 0.9,
+          "mediapipe_ms": 0.0
+        },
+        "model": "v7.2",
+        "vocab": "conversation"
+      }
+    },
+    "combined_without_csls": {
+      "weight": 0,
+      "inference_s": 6.7414897501003,
+      "result": {
+        "title": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/boom datatest/ฉันแอบชอบคุณ.MOV",
+        "fps": 25.0,
+        "n_frames": 325,
+        "duration_s": 13.0,
+        "signer_visible_frac": 1.0,
+        "signing_frac": 0.6615384615384615,
+        "mirrored_to_right_hand": false,
+        "segments": [
+          {
+            "f0": 8,
+            "f1": 56,
+            "z": 3.0520190240741876,
+            "wins": [
+              [
+                8,
+                56
+              ]
+            ],
+            "nearest": "แฟน",
+            "candidates": [
+              {
+                "word": "แฟน",
+                "score": 0.3137,
+                "support": 0.3137
+              },
+              {
+                "word": "ถูก",
+                "score": 0.3134,
+                "support": 0.3134
+              },
+              {
+                "word": "เรียก",
+                "score": 0.2818,
+                "support": 0.2818
+              },
+              {
+                "word": "วิ่ง",
+                "score": 0.2762,
+                "support": 0.2762
+              },
+              {
+                "word": "พร้อม",
+                "score": 0.2653,
+                "support": 0.2653
+              }
+            ],
+            "score": 0.3136757016181946,
+            "margin": 0.0002294778823852539,
+            "null_gap": -0.12755391001701355,
+            "p_sign": 0.6712093537978822,
+            "agree": 1.0,
+            "support_ratio": 1.568519157749396,
+            "window_top1": "แฟน",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.13926912041698783,
+            "status": "uncertain",
+            "t0": 0.32,
+            "t1": 2.24
+          },
+          {
+            "f0": 56,
+            "f1": 92,
+            "z": 4.95519479954633,
+            "wins": [
+              [
+                56,
+                92
+              ]
+            ],
+            "nearest": "แต่งงาน",
+            "candidates": [
+              {
+                "word": "แต่งงาน",
+                "score": 0.4743,
+                "support": 0.4743
+              },
+              {
+                "word": "ล้าง",
+                "score": 0.3359,
+                "support": 0.3359
+              },
+              {
+                "word": "กอด",
+                "score": 0.3073,
+                "support": 0.3073
+              },
+              {
+                "word": "สะอาด",
+                "score": 0.2949,
+                "support": 0.2949
+              },
+              {
+                "word": "ตลาด",
+                "score": 0.276,
+                "support": 0.276
+              }
+            ],
+            "score": 0.47431015968322754,
+            "margin": 0.13841617107391357,
+            "null_gap": -0.35594451427459717,
+            "p_sign": 0.9449039835275878,
+            "agree": 1.0,
+            "support_ratio": 1.75,
+            "window_top1": "แต่งงาน",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.311344301316537,
+            "status": "uncertain",
+            "t0": 2.24,
+            "t1": 3.68
+          },
+          {
+            "f0": 92,
+            "f1": 120,
+            "z": 3.551452267460337,
+            "wins": [
+              [
+                92,
+                120
+              ]
+            ],
+            "nearest": "เหงา",
+            "candidates": [
+              {
+                "word": "เหงา",
+                "score": 0.3614,
+                "support": 0.3614
+              },
+              {
+                "word": "ด้วยกัน",
+                "score": 0.3237,
+                "support": 0.3237
+              },
+              {
+                "word": "เป็น",
+                "score": 0.2682,
+                "support": 0.2682
+              },
+              {
+                "word": "มา",
+                "score": 0.2621,
+                "support": 0.2621
+              },
+              {
+                "word": "ปลา",
+                "score": 0.2583,
+                "support": 0.2583
+              }
+            ],
+            "score": 0.3614140450954437,
+            "margin": 0.03772765398025513,
+            "null_gap": -0.4755033850669861,
+            "p_sign": 0.9731551395529616,
+            "agree": 0.0,
+            "support_ratio": 1.1905619596541788,
+            "window_top1": "ญาติ",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.026070495510849723,
+            "status": "unknown",
+            "t0": 3.68,
+            "t1": 4.8
+          },
+          {
+            "f0": 132,
+            "f1": 148,
+            "z": 3.6061369590461196,
+            "wins": [
+              [
+                132,
+                148
+              ]
+            ],
+            "nearest": "คุณ",
+            "candidates": [
+              {
+                "word": "คุณ",
+                "score": 0.4754,
+                "support": 0.4754
+              },
+              {
+                "word": "หนึ่ง",
+                "score": 0.477,
+                "support": 0.477
+              },
+              {
+                "word": "ที่ไหน",
+                "score": 0.4721,
+                "support": 0.4721
+              },
+              {
+                "word": "อะไร",
+                "score": 0.4536,
+                "support": 0.4536
+              },
+              {
+                "word": "เที่ยว",
+                "score": 0.4387,
+                "support": 0.4387
+              }
+            ],
+            "score": 0.47700029611587524,
+            "margin": 0.001644521951675415,
+            "null_gap": -0.2471686601638794,
+            "p_sign": 0.8725348804786336,
+            "agree": 0.0,
+            "support_ratio": 1.1691238416175231,
+            "window_top1": "เป็น",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.07155953058529793,
+            "status": "unknown",
+            "t0": 5.28,
+            "t1": 5.92,
+            "visual_top1": "หนึ่ง",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 184,
+            "f1": 208,
+            "z": 3.645801879439554,
+            "wins": [
+              [
+                184,
+                208
+              ]
+            ],
+            "nearest": "โสด",
+            "candidates": [
+              {
+                "word": "โสด",
+                "score": 0.3861,
+                "support": 0.3861
+              },
+              {
+                "word": "แม่",
+                "score": 0.3273,
+                "support": 0.3273
+              },
+              {
+                "word": "รถเมล์",
+                "score": 0.276,
+                "support": 0.276
+              },
+              {
+                "word": "วิ่ง",
+                "score": 0.2755,
+                "support": 0.2755
+              },
+              {
+                "word": "และ",
+                "score": 0.2686,
+                "support": 0.2686
+              }
+            ],
+            "score": 0.38607972860336304,
+            "margin": 0.05875343084335327,
+            "null_gap": -0.3730024993419647,
+            "p_sign": 0.9699291843290818,
+            "agree": 0.0,
+            "support_ratio": 1.4302953318513814,
+            "window_top1": "แฟน",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.041410120951280466,
+            "status": "unknown",
+            "t0": 7.36,
+            "t1": 8.32
+          },
+          {
+            "f0": 208,
+            "f1": 248,
+            "z": 3.922805078667085,
+            "wins": [
+              [
+                208,
+                248
+              ]
+            ],
+            "nearest": "แต่งงาน",
+            "candidates": [
+              {
+                "word": "แต่งงาน",
+                "score": 0.3811,
+                "support": 0.3811
+              },
+              {
+                "word": "ขนมปัง",
+                "score": 0.3076,
+                "support": 0.3076
+              },
+              {
+                "word": "ขอโทษ",
+                "score": 0.2988,
+                "support": 0.2988
+              },
+              {
+                "word": "สะอาด",
+                "score": 0.2827,
+                "support": 0.2827
+              },
+              {
+                "word": "ตลาด",
+                "score": 0.2793,
+                "support": 0.2793
+              }
+            ],
+            "score": 0.3811284303665161,
+            "margin": 0.0735744833946228,
+            "null_gap": -0.36310887336730957,
+            "p_sign": 0.9690812818950508,
+            "agree": 1.0,
+            "support_ratio": 1.2303452277342617,
+            "window_top1": "แต่งงาน",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.11855363638215666,
+            "status": "uncertain",
+            "t0": 8.32,
+            "t1": 9.92,
+            "repeat_of": "แต่งงาน",
+            "visual_top1": "ขนมปัง",
+            "reranked_by_grammar": true
+          },
+          {
+            "f0": 252,
+            "f1": 280,
+            "z": 3.880466671158656,
+            "wins": [
+              [
+                252,
+                280
+              ]
+            ],
+            "nearest": "หมา",
+            "candidates": [
+              {
+                "word": "หมา",
+                "score": 0.4072,
+                "support": 0.4072
+              },
+              {
+                "word": "ข้าว",
+                "score": 0.4063,
+                "support": 0.4063
+              },
+              {
+                "word": "เหงา",
+                "score": 0.3392,
+                "support": 0.3392
+              },
+              {
+                "word": "เกิด",
+                "score": 0.3256,
+                "support": 0.3256
+              },
+              {
+                "word": "ร้อน",
+                "score": 0.2639,
+                "support": 0.2639
+              }
+            ],
+            "score": 0.40715959668159485,
+            "margin": 0.0008850693702697754,
+            "null_gap": -0.3081532120704651,
+            "p_sign": 0.6083706200576022,
+            "agree": 0.0,
+            "support_ratio": 1.4277264325323473,
+            "window_top1": "หมา",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.08169353918730907,
+            "status": "unknown",
+            "t0": 10.08,
+            "t1": 11.2
+          },
+          {
+            "f0": 288,
+            "f1": 320,
+            "z": 5.029289703856134,
+            "wins": [
+              [
+                288,
+                320
+              ]
+            ],
+            "nearest": "เป็น",
+            "candidates": [
+              {
+                "word": "เป็น",
+                "score": 0.6007,
+                "support": 0.6007
+              },
+              {
+                "word": "ถาม",
+                "score": 0.5331,
+                "support": 0.5331
+              },
+              {
+                "word": "คุณ",
+                "score": 0.4536,
+                "support": 0.4536
+              },
+              {
+                "word": "ที่ไหน",
+                "score": 0.3916,
+                "support": 0.3916
+              },
+              {
+                "word": "หนึ่ง",
+                "score": 0.3898,
+                "support": 0.3898
+              }
+            ],
+            "score": 0.6006853580474854,
+            "margin": 0.06756788492202759,
+            "null_gap": -0.5284749865531921,
+            "p_sign": 0.8384063840949239,
+            "agree": 0.0,
+            "support_ratio": 1.1382920110192838,
+            "window_top1": "เป็น",
+            "depth": 0.0,
+            "exact": true,
+            "p_correct": 0.1685237932944836,
+            "status": "uncertain",
+            "t0": 11.52,
+            "t1": 12.8
+          }
+        ],
+        "face": {},
+        "fusion": {
+          "chosen": [
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]",
+            "[?]"
+          ],
+          "sentence_th": "",
+          "meaning_th": "ยังไม่มั่นใจพอจะแปล — ลองทำท่าช้าลง ให้มืออยู่ในกรอบ หรือกดยืนยันคำที่ถูก",
+          "confidence": 0.0,
+          "provider": "none",
+          "evidence_gloss": "แฟน? | แต่งงาน? | [?]≈เหงา | [?]≈คุณ | [?]≈โสด | แต่งงาน? | [?]≈หมา | เป็น?",
+          "evidence_guard": "withheld: no confident sign"
+        },
+        "sentence": "",
+        "timings_ms": {
+          "schema_ms": 81.5,
+          "tagger_ms": 2659.8,
+          "spotting_ms": 3999.7,
+          "n_windows": 538,
+          "tempo_factor": 1.0,
+          "language_ms": 0.2,
+          "mediapipe_ms": 0.0
+        },
+        "model": "v7.2",
+        "vocab": "conversation"
+      }
+    }
+  }
+}

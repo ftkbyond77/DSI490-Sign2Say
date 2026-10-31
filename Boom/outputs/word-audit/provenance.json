@@ -1,0 +1,8 @@
+{
+  "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/models/bank.npz": "a5ff3ce9ce7f63de3eef9ceb786124933a5ff982f496efddaec50680d2230047",
+  "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/artifacts/eval/bank_eval.npz": "6e7903a3dfab9203d05e6f18126b051b7d6213cc1579d387a0e62bbbe9127e3c",
+  "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/models/concepts.json": "c8aad472e3723558ce8e39307ec9ca9e3d915bb7d321e0ec93f3f1f27d525176",
+  "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/models/vocab_conversation.json": "4a6e233d8a27707ea05be9733148d8d837f620085b438177e8a4458c8ca53a24",
+  "/Users/thawaphorn/Documents/Codex/2026-10-07/new-chat/outputs/full-audit/production_query_embeddings.npy": "5b983a9c8679b6e75de50ac8d90096890e2c1bfba697d3cb839daf97f9dcd6db",
+  "/Users/thawaphorn/Documents/Codex/2026-10-07/new-chat/outputs/full-audit/evaluation_queries.csv": "e7fbcc63cd86ae85ab630b7e60483227d02cb980532500ab84302b9b797d41c3"
+}

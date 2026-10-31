@@ -1,0 +1,9 @@
+boom 1 1 / 6
+                  mode  macro_WER  S  D  I  accepted accepted_correct  count_error
+             accept070     1.7139 27  0 21         4                0       3.5000
+           filters_all     1.6722 28  0 19         4                0       3.1667
+grammar_clean_selected     1.7139 27  0 21         3                0       3.5000
+           grammar_off     1.8028 27  0 23         3                0       3.8333
+      grammar_original     1.7139 27  0 21         3                0       3.5000
+               hand030     1.6722 28  0 19         3                0       3.1667
+             p_sign055     1.7139 27  0 21         3                0       3.5000

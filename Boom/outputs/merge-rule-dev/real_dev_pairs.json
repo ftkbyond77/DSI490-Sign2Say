@@ -1,0 +1,351 @@
+[
+  {
+    "clip": "clip1",
+    "pair": [
+      1,
+      2
+    ],
+    "span": [
+      0.96,
+      3.68
+    ],
+    "assessment": {
+      "merge": true,
+      "gap_s": 0.0,
+      "common_candidates": [
+        "ข้าว",
+        "ภาษามือ"
+      ],
+      "checks": {
+        "gap": true,
+        "candidate_overlap": true,
+        "motion": true,
+        "duration": true
+      },
+      "hands": [
+        {
+          "hand": "left",
+          "observed_fraction": 0.75,
+          "speed": 3.166530242437955,
+          "max_step": 0.23324462610558067,
+          "boundary_ratio": 1.581101387466962,
+          "continuous": true
+        },
+        {
+          "hand": "right",
+          "observed_fraction": 0.625,
+          "speed": 6.4807183943069475,
+          "max_step": 0.8119517123429195,
+          "boundary_ratio": 6.498356771458628,
+          "continuous": false
+        }
+      ],
+      "config": {
+        "max_gap_s": 0.2,
+        "min_common_candidates": 2,
+        "motion_radius_s": 0.16,
+        "min_observed_fraction": 0.6,
+        "min_speed": 0.15,
+        "max_step": 0.35,
+        "min_boundary_speed_ratio": 0.25,
+        "max_boundary_speed_ratio": 4.0,
+        "max_duration_s": 3.2
+      }
+    },
+    "reference_status": "unverified sign boundary; no human time-aligned gloss labels",
+    "sensitivity": [
+      {
+        "min_speed": 0.1,
+        "min_ratio": 0.15,
+        "merge": true
+      },
+      {
+        "min_speed": 0.1,
+        "min_ratio": 0.25,
+        "merge": true
+      },
+      {
+        "min_speed": 0.1,
+        "min_ratio": 0.4,
+        "merge": true
+      },
+      {
+        "min_speed": 0.15,
+        "min_ratio": 0.15,
+        "merge": true
+      },
+      {
+        "min_speed": 0.15,
+        "min_ratio": 0.25,
+        "merge": true
+      },
+      {
+        "min_speed": 0.15,
+        "min_ratio": 0.4,
+        "merge": true
+      },
+      {
+        "min_speed": 0.2,
+        "min_ratio": 0.15,
+        "merge": true
+      },
+      {
+        "min_speed": 0.2,
+        "min_ratio": 0.25,
+        "merge": true
+      },
+      {
+        "min_speed": 0.2,
+        "min_ratio": 0.4,
+        "merge": true
+      }
+    ],
+    "merged_top5": [
+      {
+        "word": "ภาษามือ",
+        "support": 0.46786451678384433
+      },
+      {
+        "word": "เที่ยว",
+        "support": 0.249813060360876
+      },
+      {
+        "word": "ข้าว",
+        "support": 0.2452069395645098
+      },
+      {
+        "word": "เพื่อน",
+        "support": 0.21865110810507427
+      },
+      {
+        "word": "ฉัน",
+        "support": 0.16028994779017838
+      }
+    ],
+    "merged_p": null
+  },
+  {
+    "clip": "clip2",
+    "pair": [
+      1,
+      2
+    ],
+    "span": [
+      0.16,
+      2.72
+    ],
+    "assessment": {
+      "merge": false,
+      "gap_s": 0.15999999999999992,
+      "common_candidates": [],
+      "checks": {
+        "gap": true,
+        "candidate_overlap": false,
+        "motion": true,
+        "duration": true
+      },
+      "hands": [
+        {
+          "hand": "left",
+          "observed_fraction": 1.0,
+          "speed": 1.8453254052147605,
+          "max_step": 0.11531457703478354,
+          "boundary_ratio": 0.8136754914082917,
+          "continuous": true
+        },
+        {
+          "hand": "right",
+          "observed_fraction": 0.875,
+          "speed": 0.4338787405158167,
+          "max_step": 0.19416541585533206,
+          "boundary_ratio": 0.3908014554438039,
+          "continuous": true
+        }
+      ],
+      "config": {
+        "max_gap_s": 0.2,
+        "min_common_candidates": 2,
+        "motion_radius_s": 0.16,
+        "min_observed_fraction": 0.6,
+        "min_speed": 0.15,
+        "max_step": 0.35,
+        "min_boundary_speed_ratio": 0.25,
+        "max_boundary_speed_ratio": 4.0,
+        "max_duration_s": 3.2
+      }
+    },
+    "reference_status": "unverified sign boundary; no human time-aligned gloss labels",
+    "sensitivity": [
+      {
+        "min_speed": 0.1,
+        "min_ratio": 0.15,
+        "merge": false
+      },
+      {
+        "min_speed": 0.1,
+        "min_ratio": 0.25,
+        "merge": false
+      },
+      {
+        "min_speed": 0.1,
+        "min_ratio": 0.4,
+        "merge": false
+      },
+      {
+        "min_speed": 0.15,
+        "min_ratio": 0.15,
+        "merge": false
+      },
+      {
+        "min_speed": 0.15,
+        "min_ratio": 0.25,
+        "merge": false
+      },
+      {
+        "min_speed": 0.15,
+        "min_ratio": 0.4,
+        "merge": false
+      },
+      {
+        "min_speed": 0.2,
+        "min_ratio": 0.15,
+        "merge": false
+      },
+      {
+        "min_speed": 0.2,
+        "min_ratio": 0.25,
+        "merge": false
+      },
+      {
+        "min_speed": 0.2,
+        "min_ratio": 0.4,
+        "merge": false
+      }
+    ]
+  },
+  {
+    "clip": "clip2",
+    "pair": [
+      2,
+      3
+    ],
+    "span": [
+      1.44,
+      4.48
+    ],
+    "assessment": {
+      "merge": true,
+      "gap_s": 0.0,
+      "common_candidates": [
+        "ขอโทษ",
+        "ภาษามือ"
+      ],
+      "checks": {
+        "gap": true,
+        "candidate_overlap": true,
+        "motion": true,
+        "duration": true
+      },
+      "hands": [
+        {
+          "hand": "left",
+          "observed_fraction": 1.0,
+          "speed": 1.5921013946987093,
+          "max_step": 0.1432031153622393,
+          "boundary_ratio": 0.8585919665699125,
+          "continuous": true
+        },
+        {
+          "hand": "right",
+          "observed_fraction": 1.0,
+          "speed": 2.1766671755793583,
+          "max_step": 0.16682946306496552,
+          "boundary_ratio": 0.6414796722826992,
+          "continuous": true
+        }
+      ],
+      "config": {
+        "max_gap_s": 0.2,
+        "min_common_candidates": 2,
+        "motion_radius_s": 0.16,
+        "min_observed_fraction": 0.6,
+        "min_speed": 0.15,
+        "max_step": 0.35,
+        "min_boundary_speed_ratio": 0.25,
+        "max_boundary_speed_ratio": 4.0,
+        "max_duration_s": 3.2
+      }
+    },
+    "reference_status": "unverified sign boundary; no human time-aligned gloss labels",
+    "sensitivity": [
+      {
+        "min_speed": 0.1,
+        "min_ratio": 0.15,
+        "merge": true
+      },
+      {
+        "min_speed": 0.1,
+        "min_ratio": 0.25,
+        "merge": true
+      },
+      {
+        "min_speed": 0.1,
+        "min_ratio": 0.4,
+        "merge": true
+      },
+      {
+        "min_speed": 0.15,
+        "min_ratio": 0.15,
+        "merge": true
+      },
+      {
+        "min_speed": 0.15,
+        "min_ratio": 0.25,
+        "merge": true
+      },
+      {
+        "min_speed": 0.15,
+        "min_ratio": 0.4,
+        "merge": true
+      },
+      {
+        "min_speed": 0.2,
+        "min_ratio": 0.15,
+        "merge": true
+      },
+      {
+        "min_speed": 0.2,
+        "min_ratio": 0.25,
+        "merge": true
+      },
+      {
+        "min_speed": 0.2,
+        "min_ratio": 0.4,
+        "merge": true
+      }
+    ],
+    "merged_top5": [
+      {
+        "word": "ภาษามือ",
+        "support": 0.33830360847490804
+      },
+      {
+        "word": "กรุงเทพ",
+        "support": 0.2781837635018207
+      },
+      {
+        "word": "ข้าว",
+        "support": 0.16989674419164658
+      },
+      {
+        "word": "ขอโทษ",
+        "support": 0.15608534161691312
+      },
+      {
+        "word": "กิน",
+        "support": 0.1374620588289367
+      }
+    ],
+    "merged_p": null
+  }
+]

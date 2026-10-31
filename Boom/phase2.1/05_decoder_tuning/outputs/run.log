@@ -1,0 +1,154 @@
+Matplotlib is building the font cache; this may take a moment.
+I0000 00:00:1792398880.941545   25170 init-domain.cc:132] Fiber init: default domain = pthread, concurrency = 8, prefix = pthread-default
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+W0000 00:00:1792398881.110419   25173 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792398881.135002   25178 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792398881.138951   25175 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792398881.139479   25178 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792398881.139603   25176 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792398881.169150   25178 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792398881.169239   25179 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792398881.292392   25178 landmark_projection_calculator.cc:81] Using NORM_RECT without IMAGE_DIMENSIONS is only supported for the square ROI. Provide IMAGE_DIMENSIONS or use PROJECTION_MATRIX.
+RUN ฉันยังลืมคุณไม่ได้.MOV baseline
+DONE baseline 2.88 seconds 8 segments
+RUN ฉันยังลืมคุณไม่ได้.MOV activity060
+DONE activity060 2.52 seconds 8 segments
+RUN ฉันยังลืมคุณไม่ได้.MOV min_len16
+DONE min_len16 2.22 seconds 8 segments
+RUN ฉันยังลืมคุณไม่ได้.MOV exact_rescore
+DONE exact_rescore 5.36 seconds 8 segments
+RUN ฉันยังลืมคุณไม่ได้.MOV post_frames12
+DONE post_frames12 2.55 seconds 8 segments
+RUN ฉันยังลืมคุณไม่ได้.MOV post_psign070
+DONE post_psign070 2.6 seconds 8 segments
+RUN ฉันยังลืมคุณไม่ได้.MOV grammar070
+DONE grammar070 2.56 seconds 8 segments
+RUN ฉันยังลืมคุณไม่ได้.MOV stride2
+DONE stride2 2.89 seconds 8 segments
+SKIP csls015 missing hub; do not silently run alpha with no effect
+RUN ฉันยังลืมคุณไม่ได้.MOV combined_without_csls
+DONE combined_without_csls 4.66 seconds 8 segments
+RUN ฉันแอบชอบคุณ.MOV baseline
+DONE baseline 2.45 seconds 8 segments
+RUN ฉันแอบชอบคุณ.MOV activity060
+DONE activity060 3.52 seconds 8 segments
+RUN ฉันแอบชอบคุณ.MOV min_len16
+DONE min_len16 2.7 seconds 8 segments
+RUN ฉันแอบชอบคุณ.MOV exact_rescore
+DONE exact_rescore 4.65 seconds 8 segments
+RUN ฉันแอบชอบคุณ.MOV post_frames12
+DONE post_frames12 2.22 seconds 8 segments
+RUN ฉันแอบชอบคุณ.MOV post_psign070
+DONE post_psign070 1.97 seconds 8 segments
+RUN ฉันแอบชอบคุณ.MOV grammar070
+DONE grammar070 2.0 seconds 8 segments
+RUN ฉันแอบชอบคุณ.MOV stride2
+DONE stride2 2.29 seconds 8 segments
+SKIP csls015 missing hub; do not silently run alpha with no effect
+RUN ฉันแอบชอบคุณ.MOV combined_without_csls
+DONE combined_without_csls 3.76 seconds 8 segments
+W0000 00:00:1792398967.730464   28881 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792398967.746997   28883 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792398967.749122   28883 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792398967.752925   28884 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792398967.755460   28885 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792398967.756225   28883 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792398967.760169   28884 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+RUN ตอนนี้กำลังเรียนภาษา.MOV baseline
+DONE baseline 2.07 seconds 9 segments
+RUN ตอนนี้กำลังเรียนภาษา.MOV activity060
+DONE activity060 1.96 seconds 8 segments
+RUN ตอนนี้กำลังเรียนภาษา.MOV min_len16
+DONE min_len16 1.98 seconds 9 segments
+RUN ตอนนี้กำลังเรียนภาษา.MOV exact_rescore
+DONE exact_rescore 3.64 seconds 9 segments
+RUN ตอนนี้กำลังเรียนภาษา.MOV post_frames12
+DONE post_frames12 1.92 seconds 9 segments
+RUN ตอนนี้กำลังเรียนภาษา.MOV post_psign070
+DONE post_psign070 3.64 seconds 9 segments
+RUN ตอนนี้กำลังเรียนภาษา.MOV grammar070
+DONE grammar070 4.11 seconds 9 segments
+RUN ตอนนี้กำลังเรียนภาษา.MOV stride2
+DONE stride2 4.24 seconds 9 segments
+SKIP csls015 missing hub; do not silently run alpha with no effect
+RUN ตอนนี้กำลังเรียนภาษา.MOV combined_without_csls
+DONE combined_without_csls 6.2 seconds 8 segments
+W0000 00:00:1792399020.754601   30431 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792399020.767220   30435 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792399020.769613   30429 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792399020.770186   30430 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792399020.770322   30428 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792399020.778728   30428 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792399020.779122   30430 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+RUN มีอะไรให้ฉันช่วยไหม.MOV baseline
+DONE baseline 3.84 seconds 9 segments
+RUN มีอะไรให้ฉันช่วยไหม.MOV activity060
+DONE activity060 4.96 seconds 9 segments
+RUN มีอะไรให้ฉันช่วยไหม.MOV min_len16
+DONE min_len16 4.05 seconds 9 segments
+RUN มีอะไรให้ฉันช่วยไหม.MOV exact_rescore
+DONE exact_rescore 7.61 seconds 9 segments
+RUN มีอะไรให้ฉันช่วยไหม.MOV post_frames12
+DONE post_frames12 3.67 seconds 9 segments
+RUN มีอะไรให้ฉันช่วยไหม.MOV post_psign070
+DONE post_psign070 3.99 seconds 9 segments
+RUN มีอะไรให้ฉันช่วยไหม.MOV grammar070
+DONE grammar070 3.49 seconds 9 segments
+RUN มีอะไรให้ฉันช่วยไหม.MOV stride2
+DONE stride2 5.24 seconds 9 segments
+SKIP csls015 missing hub; do not silently run alpha with no effect
+RUN มีอะไรให้ฉันช่วยไหม.MOV combined_without_csls
+DONE combined_without_csls 7.01 seconds 9 segments
+W0000 00:00:1792399096.437590   32729 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792399096.453084   32730 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792399096.456087   32729 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792399096.456487   32734 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792399096.456511   32733 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792399096.468118   32734 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792399096.468151   32735 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+RUN เราจะเป็นเพื่อนกันตลอดไป.MOV baseline
+DONE baseline 3.73 seconds 8 segments
+RUN เราจะเป็นเพื่อนกันตลอดไป.MOV activity060
+DONE activity060 3.8 seconds 8 segments
+RUN เราจะเป็นเพื่อนกันตลอดไป.MOV min_len16
+DONE min_len16 3.7 seconds 8 segments
+RUN เราจะเป็นเพื่อนกันตลอดไป.MOV exact_rescore
+DONE exact_rescore 7.74 seconds 8 segments
+RUN เราจะเป็นเพื่อนกันตลอดไป.MOV post_frames12
+DONE post_frames12 3.97 seconds 8 segments
+RUN เราจะเป็นเพื่อนกันตลอดไป.MOV post_psign070
+DONE post_psign070 3.75 seconds 8 segments
+RUN เราจะเป็นเพื่อนกันตลอดไป.MOV grammar070
+DONE grammar070 3.45 seconds 8 segments
+RUN เราจะเป็นเพื่อนกันตลอดไป.MOV stride2
+DONE stride2 4.29 seconds 8 segments
+SKIP csls015 missing hub; do not silently run alpha with no effect
+RUN เราจะเป็นเพื่อนกันตลอดไป.MOV combined_without_csls
+DONE combined_without_csls 7.48 seconds 8 segments
+W0000 00:00:1792399170.791230   35191 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792399170.806240   35191 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792399170.808097   35192 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792399170.808198   35196 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792399170.808291   35197 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792399170.815631   35196 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1792399170.816007   35197 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+RUN เล่นเกมส์กันไหม.MOV baseline
+DONE baseline 3.25 seconds 9 segments
+RUN เล่นเกมส์กันไหม.MOV activity060
+DONE activity060 3.93 seconds 9 segments
+RUN เล่นเกมส์กันไหม.MOV min_len16
+DONE min_len16 3.77 seconds 9 segments
+RUN เล่นเกมส์กันไหม.MOV exact_rescore
+DONE exact_rescore 6.71 seconds 9 segments
+RUN เล่นเกมส์กันไหม.MOV post_frames12
+DONE post_frames12 3.49 seconds 9 segments
+RUN เล่นเกมส์กันไหม.MOV post_psign070
+DONE post_psign070 3.56 seconds 9 segments
+RUN เล่นเกมส์กันไหม.MOV grammar070
+DONE grammar070 3.69 seconds 9 segments
+RUN เล่นเกมส์กันไหม.MOV stride2
+DONE stride2 3.98 seconds 9 segments
+SKIP csls015 missing hub; do not silently run alpha with no effect
+RUN เล่นเกมส์กันไหม.MOV combined_without_csls
+DONE combined_without_csls 6.74 seconds 9 segments
+SAVED /Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/phase2.1/05_decoder_tuning/outputs/20261019_153342

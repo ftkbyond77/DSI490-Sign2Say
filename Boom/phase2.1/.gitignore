@@ -1,0 +1,7 @@
+# Local dependencies and generated interpreter caches
+**/runtime_packages/
+**/runtime_wheels/
+**/__pycache__/
+**/.ipynb_checkpoints/
+**/.pytest_cache/
+.DS_Store

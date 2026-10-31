@@ -1,0 +1,1151 @@
+[
+  {
+    "video": "ฉันยังลืมคุณไม่ได้.MOV",
+    "sha256": "71ef9033fcea12bb94d7e5ed4e0f350dc99e5d8dafd7faa611f5fd449bc5b000",
+    "extraction_s": 24.333014165982604,
+    "modes": {
+      "ai_only": {
+        "weight": 0.0,
+        "inference_s": 3.864787416998297,
+        "result": {
+          "title": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/boom datatest/ฉันยังลืมคุณไม่ได้.MOV",
+          "fps": 25.0,
+          "n_frames": 306,
+          "duration_s": 12.24,
+          "signer_visible_frac": 1.0,
+          "signing_frac": 0.7973856209150327,
+          "mirrored_to_right_hand": false,
+          "segments": [
+            {
+              "f0": 20,
+              "f1": 68,
+              "z": 4.2452521324157715,
+              "wins": [
+                [
+                  20,
+                  68
+                ]
+              ],
+              "nearest": "ยาย",
+              "candidates": [
+                {
+                  "word": "ยาย",
+                  "score": 0.6531,
+                  "support": 0.4173
+                },
+                {
+                  "word": "แฟน",
+                  "score": 0.6342,
+                  "support": 0.4398
+                },
+                {
+                  "word": "ฉัน",
+                  "score": 0.6101,
+                  "support": 0.2982
+                },
+                {
+                  "word": "ข้าว",
+                  "score": 0.5748,
+                  "support": 0.2817
+                },
+                {
+                  "word": "ญาติ",
+                  "score": 0.6637,
+                  "support": 0.1466
+                }
+              ],
+              "score": 0.4799533784389496,
+              "margin": 0.014627814292907715,
+              "null_gap": -0.24653002619743347,
+              "p_sign": 0.9494375284733962,
+              "agree": 0.0,
+              "support_ratio": 1.0539180445722502,
+              "window_top1": "ญาติ",
+              "depth": 0.0,
+              "p_correct": 0.09876571052763305,
+              "status": "uncertain",
+              "t0": 0.8,
+              "t1": 2.72,
+              "visual_top1": "แฟน",
+              "reranked_by_grammar": true
+            },
+            {
+              "f0": 72,
+              "f1": 96,
+              "z": 3.136132001876831,
+              "wins": [
+                [
+                  72,
+                  96
+                ]
+              ],
+              "nearest": "ไป",
+              "candidates": [
+                {
+                  "word": "ไป",
+                  "score": 0.4486,
+                  "support": 0.408
+                },
+                {
+                  "word": "เกิด",
+                  "score": 0.4195,
+                  "support": 0.3611
+                },
+                {
+                  "word": "พี่",
+                  "score": 0.3997,
+                  "support": 0.2514
+                },
+                {
+                  "word": "อิ่ม",
+                  "score": 0.364,
+                  "support": 0.1806
+                },
+                {
+                  "word": "ฉัน",
+                  "score": 0.3539,
+                  "support": 0.1738
+                }
+              ],
+              "score": 0.41269955039024353,
+              "margin": 0.055280983448028564,
+              "null_gap": -0.26813799142837524,
+              "p_sign": 0.9105300264122587,
+              "agree": 1.0,
+              "support_ratio": 1.129880919412905,
+              "window_top1": "ไป",
+              "depth": 0.0,
+              "p_correct": 0.11972792478333517,
+              "status": "uncertain",
+              "t0": 2.88,
+              "t1": 3.84
+            },
+            {
+              "f0": 96,
+              "f1": 132,
+              "z": 3.7958712577819824,
+              "wins": [
+                [
+                  96,
+                  132
+                ]
+              ],
+              "nearest": "คุณ",
+              "candidates": [
+                {
+                  "word": "คุณ",
+                  "score": 0.5841,
+                  "support": 0.3026
+                },
+                {
+                  "word": "อย่า",
+                  "score": 0.6109,
+                  "support": 0.3106
+                },
+                {
+                  "word": "ฉัน",
+                  "score": 0.4498,
+                  "support": 0.21
+                },
+                {
+                  "word": "ข้าว",
+                  "score": 0.4367,
+                  "support": 0.1967
+                },
+                {
+                  "word": "ไม่",
+                  "score": 0.4458,
+                  "support": 0.1687
+                }
+              ],
+              "score": 0.41938745975494385,
+              "margin": 0.045168161392211914,
+              "null_gap": -0.28961530327796936,
+              "p_sign": 0.9709457212024266,
+              "agree": 0.0,
+              "support_ratio": 1.0264375413086584,
+              "window_top1": "คุณ",
+              "depth": 0.0,
+              "p_correct": 0.0575642258962318,
+              "status": "unknown",
+              "t0": 3.84,
+              "t1": 5.28,
+              "repeat_of": "อย่า"
+            },
+            {
+              "f0": 132,
+              "f1": 148,
+              "z": 5.640353202819824,
+              "wins": [
+                [
+                  132,
+                  148
+                ]
+              ],
+              "nearest": "ชอบ",
+              "candidates": [
+                {
+                  "word": "ชอบ",
+                  "score": 0.6546,
+                  "support": 0.6546
+                },
+                {
+                  "word": "ฉัน",
+                  "score": 0.536,
+                  "support": 0.536
+                },
+                {
+                  "word": "เกิด",
+                  "score": 0.4903,
+                  "support": 0.4903
+                },
+                {
+                  "word": "ขนมปัง",
+                  "score": 0.328,
+                  "support": 0.328
+                },
+                {
+                  "word": "เหงา",
+                  "score": 0.3198,
+                  "support": 0.3198
+                }
+              ],
+              "score": 0.6545698642730713,
+              "margin": 0.11855965852737427,
+              "null_gap": -0.3391076922416687,
+              "p_sign": 0.95429457873106,
+              "agree": 1.0,
+              "support_ratio": 1.2212686567164177,
+              "window_top1": "ชอบ",
+              "depth": 0.0,
+              "p_correct": 0.5239142662211285,
+              "status": "uncertain",
+              "t0": 5.28,
+              "t1": 5.92
+            },
+            {
+              "f0": 164,
+              "f1": 212,
+              "z": 5.321439266204834,
+              "wins": [
+                [
+                  164,
+                  212
+                ]
+              ],
+              "nearest": "ญาติ",
+              "candidates": [
+                {
+                  "word": "ญาติ",
+                  "score": 0.6415,
+                  "support": 0.4129
+                },
+                {
+                  "word": "ยาย",
+                  "score": 0.5292,
+                  "support": 0.4007
+                },
+                {
+                  "word": "ถูก",
+                  "score": 0.5231,
+                  "support": 0.3914
+                },
+                {
+                  "word": "ถูกต้อง",
+                  "score": 0.4771,
+                  "support": 0.2402
+                },
+                {
+                  "word": "ย่า",
+                  "score": 0.5606,
+                  "support": 0.2024
+                }
+              ],
+              "score": 0.5489621162414551,
+              "margin": 0.049980342388153076,
+              "null_gap": -0.5126777291297913,
+              "p_sign": 0.9507858306950002,
+              "agree": 1.0,
+              "support_ratio": 1.0304467182430745,
+              "window_top1": "ญาติ",
+              "depth": 0.0,
+              "p_correct": 0.27235304067277194,
+              "status": "uncertain",
+              "t0": 6.56,
+              "t1": 8.48
+            },
+            {
+              "f0": 212,
+              "f1": 260,
+              "z": 2.8773233890533447,
+              "wins": [
+                [
+                  212,
+                  260
+                ]
+              ],
+              "nearest": "เป็น",
+              "candidates": [
+                {
+                  "word": "เป็น",
+                  "score": 0.531,
+                  "support": 0.2623
+                },
+                {
+                  "word": "คุณ",
+                  "score": 0.5564,
+                  "support": 0.1953
+                },
+                {
+                  "word": "แม่",
+                  "score": 0.3905,
+                  "support": 0.1414
+                },
+                {
+                  "word": "เที่ยว",
+                  "score": 0.3642,
+                  "support": 0.1307
+                },
+                {
+                  "word": "ถาม",
+                  "score": 0.3899,
+                  "support": 0.1265
+                }
+              ],
+              "score": 0.3155685067176819,
+              "margin": 0.009713470935821533,
+              "null_gap": -0.15835364162921906,
+              "p_sign": 0.9979620136320592,
+              "agree": 0.0,
+              "support_ratio": 1.3430619559651817,
+              "window_top1": "ฉัน",
+              "depth": 0.0,
+              "p_correct": 0.03233821577524687,
+              "status": "unknown",
+              "t0": 8.48,
+              "t1": 10.4
+            },
+            {
+              "f0": 260,
+              "f1": 276,
+              "z": 4.310478210449219,
+              "wins": [
+                [
+                  260,
+                  276
+                ]
+              ],
+              "nearest": "อย่า",
+              "candidates": [
+                {
+                  "word": "อย่า",
+                  "score": 0.5415,
+                  "support": 0.5415
+                },
+                {
+                  "word": "น้อง",
+                  "score": 0.417,
+                  "support": 0.417
+                },
+                {
+                  "word": "ไม่",
+                  "score": 0.3693,
+                  "support": 0.3693
+                },
+                {
+                  "word": "ข้าว",
+                  "score": 0.3429,
+                  "support": 0.3429
+                },
+                {
+                  "word": "กิน",
+                  "score": 0.335,
+                  "support": 0.335
+                }
+              ],
+              "score": 0.5415043830871582,
+              "margin": 0.12454411387443542,
+              "null_gap": -0.22717362642288208,
+              "p_sign": 0.7047657014103607,
+              "agree": 1.0,
+              "support_ratio": 1.2985611510791366,
+              "window_top1": "อย่า",
+              "depth": 0.0,
+              "p_correct": 0.4313120751995045,
+              "status": "uncertain",
+              "t0": 10.4,
+              "t1": 11.04
+            },
+            {
+              "f0": 276,
+              "f1": 296,
+              "z": 5.063838005065918,
+              "wins": [
+                [
+                  276,
+                  296
+                ]
+              ],
+              "nearest": "เกิด",
+              "candidates": [
+                {
+                  "word": "เกิด",
+                  "score": 0.5766,
+                  "support": 0.4809
+                },
+                {
+                  "word": "ชอบ",
+                  "score": 0.5216,
+                  "support": 0.5157
+                },
+                {
+                  "word": "ฉัน",
+                  "score": 0.502,
+                  "support": 0.442
+                },
+                {
+                  "word": "เสียใจ",
+                  "score": 0.3252,
+                  "support": 0.2085
+                },
+                {
+                  "word": "มี",
+                  "score": 0.3026,
+                  "support": 0.2013
+                }
+              ],
+              "score": 0.5216251611709595,
+              "margin": 0.06025952100753784,
+              "null_gap": -0.3435576558113098,
+              "p_sign": 0.8702333140780685,
+              "agree": 1.0,
+              "support_ratio": 1.0723643169058017,
+              "window_top1": "ชอบ",
+              "depth": 0.0,
+              "p_correct": 0.2867392248043399,
+              "status": "uncertain",
+              "t0": 11.04,
+              "t1": 11.84,
+              "repeat_of": "ชอบ"
+            }
+          ],
+          "face": {},
+          "fusion": {
+            "chosen": [
+              "[?]",
+              "[?]",
+              "[?]",
+              "[?]",
+              "[?]",
+              "[?]",
+              "[?]",
+              "[?]"
+            ],
+            "sentence_th": "",
+            "meaning_th": "ยังไม่มั่นใจพอจะแปล — ลองทำท่าช้าลง ให้มืออยู่ในกรอบ หรือกดยืนยันคำที่ถูก",
+            "confidence": 0.0,
+            "provider": "none",
+            "evidence_gloss": "ยาย? | ไป? | [?]≈คุณ | ชอบ? | ญาติ? | [?]≈เป็น | อย่า? | เกิด?",
+            "evidence_guard": "withheld: no confident sign"
+          },
+          "sentence": "",
+          "timings_ms": {
+            "schema_ms": 48.2,
+            "tagger_ms": 2959.8,
+            "spotting_ms": 852.6,
+            "n_windows": 662,
+            "tempo_factor": 1.0,
+            "language_ms": 1.1,
+            "mediapipe_ms": 0.0
+          },
+          "model": "v7.2",
+          "vocab": "conversation"
+        }
+      },
+      "hybrid030": {
+        "weight": 0.3,
+        "inference_s": 3.5115151670761406,
+        "result": {
+          "title": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/Boom/boom datatest/ฉันยังลืมคุณไม่ได้.MOV",
+          "fps": 25.0,
+          "n_frames": 306,
+          "duration_s": 12.24,
+          "signer_visible_frac": 1.0,
+          "signing_frac": 0.7973856209150327,
+          "mirrored_to_right_hand": false,
+          "segments": [
+            {
+              "f0": 20,
+              "f1": 68,
+              "z": 4.2452521324157715,
+              "wins": [
+                [
+                  20,
+                  68
+                ]
+              ],
+              "nearest": "ญาติ",
+              "candidates": [
+                {
+                  "word": "ญาติ",
+                  "score": 0.6637,
+                  "support": 0.1466,
+                  "ai_prob": 0.2073,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1451
+                },
+                {
+                  "word": "ยาย",
+                  "score": 0.6531,
+                  "support": 0.4173,
+                  "ai_prob": 0.2051,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1436
+                },
+                {
+                  "word": "แฟน",
+                  "score": 0.6342,
+                  "support": 0.4398,
+                  "ai_prob": 0.2013,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1409
+                },
+                {
+                  "word": "ฉัน",
+                  "score": 0.6101,
+                  "support": 0.2982,
+                  "ai_prob": 0.1965,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1376
+                },
+                {
+                  "word": "ข้าว",
+                  "score": 0.5748,
+                  "support": 0.2817,
+                  "ai_prob": 0.1897,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1328
+                }
+              ],
+              "score": 0.4799533784389496,
+              "margin": 0.014627814292907715,
+              "null_gap": -0.24653002619743347,
+              "p_sign": 0.9494375284733962,
+              "agree": 0.0,
+              "support_ratio": 1.0539180445722502,
+              "window_top1": "ญาติ",
+              "depth": 0.0,
+              "symbolic": {
+                "hands": 1,
+                "location_zone": "face",
+                "relation": null,
+                "motion": [
+                  "circle",
+                  "down"
+                ],
+                "hand_observed": {
+                  "left": 0.0,
+                  "right": 0.812
+                }
+              },
+              "p_correct": 0.09876571052763305,
+              "status": "uncertain",
+              "t0": 0.8,
+              "t1": 2.72,
+              "repeat_of": "ญาติ",
+              "visual_top1": "ยาย",
+              "reranked_by_grammar": true
+            },
+            {
+              "f0": 72,
+              "f1": 96,
+              "z": 3.136132001876831,
+              "wins": [
+                [
+                  72,
+                  96
+                ]
+              ],
+              "nearest": "ไป",
+              "candidates": [
+                {
+                  "word": "ไป",
+                  "score": 0.4486,
+                  "support": 0.408,
+                  "ai_prob": 0.2104,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1473
+                },
+                {
+                  "word": "พี่",
+                  "score": 0.3997,
+                  "support": 0.2514,
+                  "ai_prob": 0.2004,
+                  "pose_score": 0.8125,
+                  "fused_score": 0.384
+                },
+                {
+                  "word": "เกิด",
+                  "score": 0.4195,
+                  "support": 0.3611,
+                  "ai_prob": 0.2044,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1431
+                },
+                {
+                  "word": "อิ่ม",
+                  "score": 0.364,
+                  "support": 0.1806,
+                  "ai_prob": 0.1934,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1354
+                },
+                {
+                  "word": "ฉัน",
+                  "score": 0.3539,
+                  "support": 0.1738,
+                  "ai_prob": 0.1914,
+                  "pose_score": 0.0,
+                  "fused_score": 0.134
+                }
+              ],
+              "score": 0.41269955039024353,
+              "margin": 0.055280983448028564,
+              "null_gap": -0.26813799142837524,
+              "p_sign": 0.9105300264122587,
+              "agree": 1.0,
+              "support_ratio": 1.129880919412905,
+              "window_top1": "ไป",
+              "depth": 0.0,
+              "symbolic": {
+                "hands": 1,
+                "location_zone": "face",
+                "relation": null,
+                "motion": [
+                  "circle"
+                ],
+                "hand_observed": {
+                  "left": 0.0,
+                  "right": 1.0
+                }
+              },
+              "p_correct": 0.11972792478333517,
+              "status": "uncertain",
+              "t0": 2.88,
+              "t1": 3.84,
+              "visual_top1": "พี่",
+              "reranked_by_grammar": true
+            },
+            {
+              "f0": 96,
+              "f1": 132,
+              "z": 3.7958712577819824,
+              "wins": [
+                [
+                  96,
+                  132
+                ]
+              ],
+              "nearest": "คุณ",
+              "candidates": [
+                {
+                  "word": "คุณ",
+                  "score": 0.5841,
+                  "support": 0.3026,
+                  "ai_prob": 0.2157,
+                  "pose_score": 0.0,
+                  "fused_score": 0.151
+                },
+                {
+                  "word": "อย่า",
+                  "score": 0.6109,
+                  "support": 0.3106,
+                  "ai_prob": 0.2216,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1551
+                },
+                {
+                  "word": "ฉัน",
+                  "score": 0.4498,
+                  "support": 0.21,
+                  "ai_prob": 0.1886,
+                  "pose_score": 0.0,
+                  "fused_score": 0.132
+                },
+                {
+                  "word": "ไม่",
+                  "score": 0.4458,
+                  "support": 0.1687,
+                  "ai_prob": 0.1879,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1315
+                },
+                {
+                  "word": "ข้าว",
+                  "score": 0.4367,
+                  "support": 0.1967,
+                  "ai_prob": 0.1862,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1303
+                }
+              ],
+              "score": 0.41938745975494385,
+              "margin": 0.045168161392211914,
+              "null_gap": -0.28961530327796936,
+              "p_sign": 0.9709457212024266,
+              "agree": 0.0,
+              "support_ratio": 1.0264375413086584,
+              "window_top1": "คุณ",
+              "depth": 0.0,
+              "symbolic": {
+                "hands": 1,
+                "location_zone": "face",
+                "relation": null,
+                "motion": [
+                  "circle"
+                ],
+                "hand_observed": {
+                  "left": 0.0,
+                  "right": 1.0
+                }
+              },
+              "p_correct": 0.0575642258962318,
+              "status": "unknown",
+              "t0": 3.84,
+              "t1": 5.28,
+              "visual_top1": "อย่า",
+              "reranked_by_grammar": true
+            },
+            {
+              "f0": 132,
+              "f1": 148,
+              "z": 5.640353202819824,
+              "wins": [
+                [
+                  132,
+                  148
+                ]
+              ],
+              "nearest": "ชอบ",
+              "candidates": [
+                {
+                  "word": "ชอบ",
+                  "score": 0.6546,
+                  "support": 0.6546,
+                  "ai_prob": 0.2396,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1677
+                },
+                {
+                  "word": "ฉัน",
+                  "score": 0.536,
+                  "support": 0.536,
+                  "ai_prob": 0.2128,
+                  "pose_score": 0.0,
+                  "fused_score": 0.149
+                },
+                {
+                  "word": "เกิด",
+                  "score": 0.4903,
+                  "support": 0.4903,
+                  "ai_prob": 0.2033,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1423
+                },
+                {
+                  "word": "ขนมปัง",
+                  "score": 0.328,
+                  "support": 0.328,
+                  "ai_prob": 0.1728,
+                  "pose_score": 0.0,
+                  "fused_score": 0.121
+                },
+                {
+                  "word": "เหงา",
+                  "score": 0.3198,
+                  "support": 0.3198,
+                  "ai_prob": 0.1714,
+                  "pose_score": 0.0,
+                  "fused_score": 0.12
+                }
+              ],
+              "score": 0.6545698642730713,
+              "margin": 0.11855965852737427,
+              "null_gap": -0.3391076922416687,
+              "p_sign": 0.95429457873106,
+              "agree": 1.0,
+              "support_ratio": 1.2212686567164177,
+              "window_top1": "ชอบ",
+              "depth": 0.0,
+              "symbolic": {
+                "hands": 1,
+                "location_zone": "face",
+                "relation": null,
+                "motion": [
+                  "circle"
+                ],
+                "hand_observed": {
+                  "left": 0.0,
+                  "right": 1.0
+                }
+              },
+              "p_correct": 0.5239142662211285,
+              "status": "uncertain",
+              "t0": 5.28,
+              "t1": 5.92
+            },
+            {
+              "f0": 164,
+              "f1": 212,
+              "z": 5.321439266204834,
+              "wins": [
+                [
+                  164,
+                  212
+                ]
+              ],
+              "nearest": "ญาติ",
+              "candidates": [
+                {
+                  "word": "ญาติ",
+                  "score": 0.6415,
+                  "support": 0.4129,
+                  "ai_prob": 0.2196,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1538
+                },
+                {
+                  "word": "ย่า",
+                  "score": 0.5606,
+                  "support": 0.2024,
+                  "ai_prob": 0.2026,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1418
+                },
+                {
+                  "word": "ยาย",
+                  "score": 0.5292,
+                  "support": 0.4007,
+                  "ai_prob": 0.1963,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1374
+                },
+                {
+                  "word": "ถูก",
+                  "score": 0.5231,
+                  "support": 0.3914,
+                  "ai_prob": 0.1951,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1366
+                },
+                {
+                  "word": "ถูกต้อง",
+                  "score": 0.4771,
+                  "support": 0.2402,
+                  "ai_prob": 0.1863,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1304
+                }
+              ],
+              "score": 0.5489621162414551,
+              "margin": 0.049980342388153076,
+              "null_gap": -0.5126777291297913,
+              "p_sign": 0.9507858306950002,
+              "agree": 1.0,
+              "support_ratio": 1.0304467182430745,
+              "window_top1": "ญาติ",
+              "depth": 0.0,
+              "symbolic": {
+                "hands": 1,
+                "location_zone": "face",
+                "relation": null,
+                "motion": [
+                  "circle",
+                  "down"
+                ],
+                "hand_observed": {
+                  "left": 0.0,
+                  "right": 0.792
+                }
+              },
+              "p_correct": 0.27235304067277194,
+              "status": "uncertain",
+              "t0": 6.56,
+              "t1": 8.48
+            },
+            {
+              "f0": 212,
+              "f1": 260,
+              "z": 2.8773233890533447,
+              "wins": [
+                [
+                  212,
+                  260
+                ]
+              ],
+              "nearest": "เป็น",
+              "candidates": [
+                {
+                  "word": "เป็น",
+                  "score": 0.531,
+                  "support": 0.2623,
+                  "ai_prob": 0.2169,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1519
+                },
+                {
+                  "word": "คุณ",
+                  "score": 0.5564,
+                  "support": 0.1953,
+                  "ai_prob": 0.2225,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1558
+                },
+                {
+                  "word": "แม่",
+                  "score": 0.3905,
+                  "support": 0.1414,
+                  "ai_prob": 0.1885,
+                  "pose_score": 0.0,
+                  "fused_score": 0.132
+                },
+                {
+                  "word": "ถาม",
+                  "score": 0.3899,
+                  "support": 0.1265,
+                  "ai_prob": 0.1884,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1319
+                },
+                {
+                  "word": "เที่ยว",
+                  "score": 0.3642,
+                  "support": 0.1307,
+                  "ai_prob": 0.1836,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1285
+                }
+              ],
+              "score": 0.3155685067176819,
+              "margin": 0.009713470935821533,
+              "null_gap": -0.15835364162921906,
+              "p_sign": 0.9979620136320592,
+              "agree": 0.0,
+              "support_ratio": 1.3430619559651817,
+              "window_top1": "ฉัน",
+              "depth": 0.0,
+              "symbolic": {
+                "hands": 1,
+                "location_zone": "face",
+                "relation": null,
+                "motion": [
+                  "circle"
+                ],
+                "hand_observed": {
+                  "left": 0.0,
+                  "right": 1.0
+                }
+              },
+              "p_correct": 0.03233821577524687,
+              "status": "unknown",
+              "t0": 8.48,
+              "t1": 10.4,
+              "visual_top1": "คุณ",
+              "reranked_by_grammar": true
+            },
+            {
+              "f0": 260,
+              "f1": 276,
+              "z": 4.310478210449219,
+              "wins": [
+                [
+                  260,
+                  276
+                ]
+              ],
+              "nearest": "อย่า",
+              "candidates": [
+                {
+                  "word": "อย่า",
+                  "score": 0.5415,
+                  "support": 0.5415,
+                  "ai_prob": 0.2295,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1606
+                },
+                {
+                  "word": "น้อง",
+                  "score": 0.417,
+                  "support": 0.417,
+                  "ai_prob": 0.2026,
+                  "pose_score": 0.4375,
+                  "fused_score": 0.2731
+                },
+                {
+                  "word": "ไม่",
+                  "score": 0.3693,
+                  "support": 0.3693,
+                  "ai_prob": 0.1932,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1352
+                },
+                {
+                  "word": "ข้าว",
+                  "score": 0.3429,
+                  "support": 0.3429,
+                  "ai_prob": 0.1881,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1317
+                },
+                {
+                  "word": "กิน",
+                  "score": 0.335,
+                  "support": 0.335,
+                  "ai_prob": 0.1866,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1307
+                }
+              ],
+              "score": 0.5415043830871582,
+              "margin": 0.12454411387443542,
+              "null_gap": -0.22717362642288208,
+              "p_sign": 0.7047657014103607,
+              "agree": 1.0,
+              "support_ratio": 1.2985611510791366,
+              "window_top1": "อย่า",
+              "depth": 0.0,
+              "symbolic": {
+                "hands": 1,
+                "location_zone": "face",
+                "relation": null,
+                "motion": [
+                  "circle",
+                  "up"
+                ],
+                "hand_observed": {
+                  "left": 0.0,
+                  "right": 1.0
+                }
+              },
+              "p_correct": 0.4313120751995045,
+              "status": "uncertain",
+              "t0": 10.4,
+              "t1": 11.04,
+              "visual_top1": "น้อง",
+              "reranked_by_grammar": true
+            },
+            {
+              "f0": 276,
+              "f1": 296,
+              "z": 5.063838005065918,
+              "wins": [
+                [
+                  276,
+                  296
+                ]
+              ],
+              "nearest": "เกิด",
+              "candidates": [
+                {
+                  "word": "เกิด",
+                  "score": 0.5766,
+                  "support": 0.4809,
+                  "ai_prob": 0.2266,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1586
+                },
+                {
+                  "word": "ชอบ",
+                  "score": 0.5216,
+                  "support": 0.5157,
+                  "ai_prob": 0.2145,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1501
+                },
+                {
+                  "word": "ฉัน",
+                  "score": 0.502,
+                  "support": 0.442,
+                  "ai_prob": 0.2103,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1472
+                },
+                {
+                  "word": "เสียใจ",
+                  "score": 0.3252,
+                  "support": 0.2085,
+                  "ai_prob": 0.1762,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1234
+                },
+                {
+                  "word": "มี",
+                  "score": 0.3026,
+                  "support": 0.2013,
+                  "ai_prob": 0.1723,
+                  "pose_score": 0.0,
+                  "fused_score": 0.1206
+                }
+              ],
+              "score": 0.5216251611709595,
+              "margin": 0.06025952100753784,
+              "null_gap": -0.3435576558113098,
+              "p_sign": 0.8702333140780685,
+              "agree": 1.0,
+              "support_ratio": 1.0723643169058017,
+              "window_top1": "ชอบ",
+              "depth": 0.0,
+              "symbolic": {
+                "hands": 1,
+                "location_zone": "face",
+                "relation": null,
+                "motion": [
+                  "down"
+                ],
+                "hand_observed": {
+                  "left": 0.0,
+                  "right": 1.0
+                }
+              },
+              "p_correct": 0.2867392248043399,
+              "status": "uncertain",
+              "t0": 11.04,
+              "t1": 11.84
+            }
+          ],
+          "face": {},
+          "fusion": {
+            "chosen": [
+              "[?]",
+              "[?]",
+              "[?]",
+              "[?]",
+              "[?]",
+              "[?]",
+              "[?]",
+              "[?]"
+            ],
+            "sentence_th": "",
+            "meaning_th": "ยังไม่มั่นใจพอจะแปล — ลองทำท่าช้าลง ให้มืออยู่ในกรอบ หรือกดยืนยันคำที่ถูก",
+            "confidence": 0.0,
+            "provider": "none",
+            "evidence_gloss": "ญาติ? | ไป? | [?]≈คุณ | ชอบ? | ญาติ? | [?]≈เป็น | อย่า? | เกิด?",
+            "evidence_guard": "withheld: no confident sign"
+          },
+          "sentence": "",
+          "timings_ms": {
+            "schema_ms": 95.9,
+            "tagger_ms": 2432.8,
+            "spotting_ms": 981.9,
+            "n_windows": 662,
+            "tempo_factor": 1.0,
+            "language_ms": 0.4,
+            "mediapipe_ms": 0.0
+          },
+          "model": "v7.2",
+          "vocab": "conversation"
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "status": "no_mano_implementation_ready_real_data_training_blocked",
+  "method": "SignBERT-inspired without MANO",
+  "decoder": "direct_2d_coordinate_mlp",
+  "requires_mano": false,
+  "source_clips": 20,
+  "model_unit_tests_passed": 5,
+  "synthetic_integration": {
+    "pretrain_epochs": 2,
+    "finetune_epochs": 2,
+    "checkpoint_roundtrip": "passed",
+    "location": "work/signbert-smoke; excluded from demo"
+  },
+  "real_keypoint_extraction": "blocked by MediaPipe OpenGL initialization in assistant environment",
+  "real_training_checkpoint": null,
+  "user_launcher": "train_demo.command"
+}

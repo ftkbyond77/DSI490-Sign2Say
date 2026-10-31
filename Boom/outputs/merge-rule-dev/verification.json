@@ -1,0 +1,12 @@
+{
+  "production_unchanged": true,
+  "dev_ids_used": [
+    "clip1",
+    "clip2"
+  ],
+  "heldout_inference_performed": false,
+  "unit_tests_passed": 8,
+  "real_adjacent_pairs": 3,
+  "manually_verified_negative_pairs": 0,
+  "ready_to_deploy": false
+}

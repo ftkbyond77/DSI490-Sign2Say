@@ -60,12 +60,14 @@ class SpanHeadNP:
         return z / (np.linalg.norm(z, axis=1, keepdims=True) + 1e-9)
 
 
-def train_span_head(samples, epochs=8, bs=256, lr=1e-3, device="cuda", log=None, val=None):
+def train_span_head(samples, epochs=8, bs=256, lr=1e-3, device=None, log=None, val=None):
     """samples: list of (H [T,768] float16, wins [(a,b)], teacher Z [N,768]). Returns numpy weights dict."""
     import torch
     import torch.nn as nn
     import torch.nn.functional as F
 
+    from .utils import device as resolve_device
+    device = resolve_device(device)
     class Head(nn.Module):
         def __init__(self):
             super().__init__()

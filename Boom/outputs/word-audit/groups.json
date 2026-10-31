@@ -1,0 +1,143 @@
+[
+  {
+    "word": "สวัสดี",
+    "group": "many_examples",
+    "bank_examples": 45,
+    "signers": 7,
+    "sources": {
+      "tsl51": 32,
+      "tsl51_sentence_aligned": 9,
+      "thsl": 2,
+      "youtube": 2
+    },
+    "test_queries": 10,
+    "correct": 10,
+    "top1": 1.0
+  },
+  {
+    "word": "ขอบคุณ",
+    "group": "many_examples",
+    "bank_examples": 42,
+    "signers": 8,
+    "sources": {
+      "tsl51": 31,
+      "tsl51_sentence_aligned": 6,
+      "youtube": 4,
+      "thsl": 1
+    },
+    "test_queries": 10,
+    "correct": 10,
+    "top1": 1.0
+  },
+  {
+    "word": "ชอบ",
+    "group": "many_examples",
+    "bank_examples": 117,
+    "signers": 9,
+    "sources": {
+      "tsl51_sentence_aligned": 81,
+      "tsl51": 29,
+      "youtube": 3,
+      "ttrs": 2,
+      "thsl": 2
+    },
+    "test_queries": 11,
+    "correct": 11,
+    "top1": 1.0
+  },
+  {
+    "word": "ฉัน",
+    "group": "many_examples",
+    "bank_examples": 161,
+    "signers": 6,
+    "sources": {
+      "tsl51_sentence_aligned": 98,
+      "tsl51": 61,
+      "ttrs": 1,
+      "thsl": 1
+    },
+    "test_queries": 20,
+    "correct": 19,
+    "top1": 0.95
+  },
+  {
+    "word": "แม่",
+    "group": "many_examples",
+    "bank_examples": 83,
+    "signers": 33,
+    "sources": {
+      "tsl51": 33,
+      "tslone": 26,
+      "tsl51_sentence_aligned": 21,
+      "ttrs": 1,
+      "thsl": 1,
+      "youtube": 1
+    },
+    "test_queries": 15,
+    "correct": 14,
+    "top1": 0.9333333333333333
+  },
+  {
+    "word": "กาแฟ",
+    "group": "dictionary_only",
+    "bank_examples": 2,
+    "signers": 2,
+    "sources": {
+      "ttrs": 1,
+      "thsl": 1
+    },
+    "test_queries": 0,
+    "correct": 0,
+    "top1": null
+  },
+  {
+    "word": "ชา",
+    "group": "dictionary_only",
+    "bank_examples": 2,
+    "signers": 2,
+    "sources": {
+      "ttrs": 1,
+      "thsl": 1
+    },
+    "test_queries": 0,
+    "correct": 0,
+    "top1": null
+  },
+  {
+    "word": "ธนาคาร",
+    "group": "dictionary_only",
+    "bank_examples": 2,
+    "signers": 1,
+    "sources": {
+      "ttrs": 1,
+      "thsl": 1
+    },
+    "test_queries": 0,
+    "correct": 0,
+    "top1": null
+  },
+  {
+    "word": "ซื้อ",
+    "group": "dictionary_only",
+    "bank_examples": 2,
+    "signers": 2,
+    "sources": {
+      "thsl": 2
+    },
+    "test_queries": 0,
+    "correct": 0,
+    "top1": null
+  },
+  {
+    "word": "จ่าย",
+    "group": "dictionary_only",
+    "bank_examples": 2,
+    "signers": 2,
+    "sources": {
+      "thsl": 2
+    },
+    "test_queries": 0,
+    "correct": 0,
+    "top1": null
+  }
+]

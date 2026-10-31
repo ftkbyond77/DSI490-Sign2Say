@@ -1,5 +1,6 @@
-# tts service: MMS-TTS Thai (VITS) on CPU
+# tts service: speech v2 plan + MMS-TTS Thai (VITS) on CPU + filler clips
 fastapi==0.115.12
 uvicorn[standard]==0.34.2
 numpy==1.26.4
 transformers==4.51.3
+soundfile==0.13.1

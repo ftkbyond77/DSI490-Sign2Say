@@ -1,0 +1,41 @@
+{
+  "selection_rule": "lexicographic filename order: first two development, third heldout; fixed before any inference",
+  "same_signer_user_reported": true,
+  "reference_text_user_reported": "สวัสดีค่ะ คุยกันภาษามือ",
+  "reference_gloss_verified": false,
+  "clips": [
+    {
+      "id": "clip1",
+      "file": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/คุยกันภาษามือ/v10044g50000cojlhu7og65kbldusc80.MOV",
+      "sha256": "02e0b79d19b7896400c6a821421af385b880cd0094f6b63b75c1b169de6f920d",
+      "fps": 29.828318066988604,
+      "frames": 113,
+      "width": 576,
+      "height": 1024,
+      "duration_s": 3.788346354166667,
+      "split": "development"
+    },
+    {
+      "id": "clip2",
+      "file": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/คุยกันภาษามือ/v10044g50000crj92tvog65pkq09shv0.MOV",
+      "sha256": "fc326c616d394dbc8b47a4b56578abab1db6d43bfd14ef40f58cd47944458939",
+      "fps": 29.871143756558237,
+      "frames": 139,
+      "width": 576,
+      "height": 1024,
+      "duration_s": 4.6533203125,
+      "split": "development"
+    },
+    {
+      "id": "clip3",
+      "file": "/Users/thawaphorn/Pee4/Term1/DSI490/DSI490-Sign2Say/คุยกันภาษามือ/v14044g50000da8j0unog65jf9f7eiag.MOV",
+      "sha256": "6be3cf8b2a3b2b81097b3834fec29ced1be9d87f5a7b57cbb65e93de3485c235",
+      "fps": 29.820314758973936,
+      "frames": 141,
+      "width": 576,
+      "height": 1024,
+      "duration_s": 4.7283203125,
+      "split": "heldout"
+    }
+  ]
+}

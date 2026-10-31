@@ -1,0 +1,2741 @@
+{
+  "fillers": {
+    "candidates": [
+      {
+        "voice": "female",
+        "name": "um",
+        "k": 0,
+        "dur": 0.7893333333333333,
+        "hyp": "อุโมง",
+        "content_chars": 3,
+        "ok": false
+      },
+      {
+        "voice": "female",
+        "name": "um",
+        "k": 1,
+        "dur": 0.8533333333333334,
+        "hyp": "อืม",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "female",
+        "name": "um",
+        "k": 2,
+        "dur": 0.7466666666666667,
+        "hyp": "อืม",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "female",
+        "name": "um",
+        "k": 3,
+        "dur": 0.7466666666666667,
+        "hyp": "의몸",
+        "content_chars": 2,
+        "ok": false
+      },
+      {
+        "voice": "female",
+        "name": "uh",
+        "k": 0,
+        "dur": 0.5333333333333333,
+        "hyp": "เออ",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "female",
+        "name": "uh",
+        "k": 1,
+        "dur": 0.5546666666666666,
+        "hyp": "เออ",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "female",
+        "name": "uh",
+        "k": 2,
+        "dur": 0.5973333333333334,
+        "hyp": "เออ",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "female",
+        "name": "uh",
+        "k": 3,
+        "dur": 0.6186666666666667,
+        "hyp": "เออ",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "female",
+        "name": "uh_long",
+        "k": 0,
+        "dur": 0.768,
+        "hyp": "เออ",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "female",
+        "name": "uh_long",
+        "k": 1,
+        "dur": 0.7253333333333334,
+        "hyp": "เอออือ",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "female",
+        "name": "uh_long",
+        "k": 2,
+        "dur": 0.6613333333333333,
+        "hyp": "เออ",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "female",
+        "name": "uh_long",
+        "k": 3,
+        "dur": 0.6826666666666666,
+        "hyp": "เอออ๋อ",
+        "content_chars": 1,
+        "ok": false
+      },
+      {
+        "voice": "female",
+        "name": "like",
+        "k": 0,
+        "dur": 0.768,
+        "hyp": "แบบว่า",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "female",
+        "name": "like",
+        "k": 1,
+        "dur": 0.8746666666666667,
+        "hyp": "แบบว่า",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "female",
+        "name": "like",
+        "k": 2,
+        "dur": 0.8746666666666667,
+        "hyp": "แบบว่า",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "female",
+        "name": "like",
+        "k": 3,
+        "dur": 0.8106666666666666,
+        "hyp": "แบบว่า",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "male",
+        "name": "um",
+        "k": 0,
+        "dur": 0.64,
+        "hyp": "มุม",
+        "content_chars": 1,
+        "ok": false
+      },
+      {
+        "voice": "male",
+        "name": "um",
+        "k": 1,
+        "dur": 0.64,
+        "hyp": "อุโมง",
+        "content_chars": 3,
+        "ok": false
+      },
+      {
+        "voice": "male",
+        "name": "um",
+        "k": 2,
+        "dur": 0.576,
+        "hyp": "เอิ่ม",
+        "content_chars": 3,
+        "ok": false
+      },
+      {
+        "voice": "male",
+        "name": "um",
+        "k": 3,
+        "dur": 0.64,
+        "hyp": "อืมอืม",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "male",
+        "name": "uh",
+        "k": 0,
+        "dur": 0.384,
+        "hyp": "เออ",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "male",
+        "name": "uh",
+        "k": 1,
+        "dur": 0.3626666666666667,
+        "hyp": "เอ.",
+        "content_chars": 1,
+        "ok": false
+      },
+      {
+        "voice": "male",
+        "name": "uh",
+        "k": 2,
+        "dur": 0.3626666666666667,
+        "hyp": "เออ",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "male",
+        "name": "uh",
+        "k": 3,
+        "dur": 0.3413333333333333,
+        "hyp": "เออ",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "male",
+        "name": "uh_long",
+        "k": 0,
+        "dur": 0.5973333333333334,
+        "hyp": "โอ้โห",
+        "content_chars": 4,
+        "ok": false
+      },
+      {
+        "voice": "male",
+        "name": "uh_long",
+        "k": 1,
+        "dur": 0.6186666666666667,
+        "hyp": "เอออือ",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "male",
+        "name": "uh_long",
+        "k": 2,
+        "dur": 0.5973333333333334,
+        "hyp": "เอออือ",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "male",
+        "name": "uh_long",
+        "k": 3,
+        "dur": 0.7253333333333334,
+        "hyp": "เอออือ",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "male",
+        "name": "like",
+        "k": 0,
+        "dur": 0.7466666666666667,
+        "hyp": "แบบว่า",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "male",
+        "name": "like",
+        "k": 1,
+        "dur": 0.6613333333333333,
+        "hyp": "แบบว่า",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "male",
+        "name": "like",
+        "k": 2,
+        "dur": 0.6186666666666667,
+        "hyp": "แบบว่า",
+        "content_chars": 0,
+        "ok": true
+      },
+      {
+        "voice": "male",
+        "name": "like",
+        "k": 3,
+        "dur": 0.6826666666666666,
+        "hyp": "แบบว่า",
+        "content_chars": 0,
+        "ok": true
+      }
+    ],
+    "kept": {
+      "female": {
+        "um": 2,
+        "uh": 2,
+        "uh_long": 2,
+        "like": 2
+      },
+      "male": {
+        "um": 1,
+        "uh": 2,
+        "uh_long": 2,
+        "like": 2
+      }
+    }
+  },
+  "disfluency": {
+    "summary": [
+      {
+        "voice": "CPUVoice",
+        "mode": "filler",
+        "content_cer": 0.3225,
+        "guessed": 0,
+        "extra_chars": 0.75,
+        "dur_s": 3.0514,
+        "synth_s": 0.0018
+      },
+      {
+        "voice": "CPUVoice",
+        "mode": "filler-inline",
+        "content_cer": 0.9487,
+        "guessed": 0,
+        "extra_chars": 6.125,
+        "dur_s": 1.84,
+        "synth_s": 0.7679
+      },
+      {
+        "voice": "CPUVoice",
+        "mode": "pause",
+        "content_cer": 0.3642,
+        "guessed": 0,
+        "extra_chars": 1.25,
+        "dur_s": 2.7527,
+        "synth_s": 0.7645
+      },
+      {
+        "voice": "CPUVoice",
+        "mode": "pause-inline",
+        "content_cer": 0.7192,
+        "guessed": 0,
+        "extra_chars": 3.875,
+        "dur_s": 1.694,
+        "synth_s": 0.6247
+      },
+      {
+        "voice": "CPUVoice",
+        "mode": "skip",
+        "content_cer": 0.209,
+        "guessed": 0,
+        "extra_chars": 0.5,
+        "dur_s": 1.51,
+        "synth_s": 0.7785
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "mode": "filler",
+        "content_cer": 0.1165,
+        "guessed": 0,
+        "extra_chars": 0.0,
+        "dur_s": 2.6027,
+        "synth_s": 6.7035
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "mode": "filler-inline",
+        "content_cer": 0.301,
+        "guessed": 0,
+        "extra_chars": 0.875,
+        "dur_s": 1.436,
+        "synth_s": 3.3008
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "mode": "pause",
+        "content_cer": 0.1165,
+        "guessed": 0,
+        "extra_chars": 0.0,
+        "dur_s": 2.304,
+        "synth_s": 6.6179
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "mode": "pause-inline",
+        "content_cer": 0.0853,
+        "guessed": 0,
+        "extra_chars": 0.0,
+        "dur_s": 1.196,
+        "synth_s": 3.2862
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "mode": "skip",
+        "content_cer": 0.0853,
+        "guessed": 0,
+        "extra_chars": 0.0,
+        "dur_s": 1.0627,
+        "synth_s": 3.6695
+      }
+    ],
+    "cases": [
+      {
+        "voice": "ExpressiveTTS",
+        "case": 0,
+        "seq": "ฉัน ? พ่อ",
+        "gold": "ฉันพ่อ",
+        "mode": "skip",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_00_skip.wav",
+        "dur_s": 0.6826666666666666,
+        "synth_s": 5.867742538452148,
+        "units": [],
+        "hyp": "ฉันพ่อ",
+        "content_cer": 0.16666666666666666,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 0,
+        "seq": "ฉัน ? พ่อ",
+        "gold": "ฉันพ่อ",
+        "mode": "pause",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_00_pause.wav",
+        "dur_s": 2.0352916666666667,
+        "synth_s": 6.797181129455566,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉัน พ่อ",
+        "content_cer": 0.16666666666666666,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 0,
+        "seq": "ฉัน ? พ่อ",
+        "gold": "ฉันพ่อ",
+        "mode": "filler",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_00_filler.wav",
+        "dur_s": 2.4469583333333333,
+        "synth_s": 6.560452461242676,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "um",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉันอืมพ่อ",
+        "content_cer": 0.16666666666666666,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 0,
+        "seq": "ฉัน ? พ่อ",
+        "gold": "ฉันพ่อ",
+        "mode": "filler-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_00_filler-inline.wav",
+        "dur_s": 1.056,
+        "synth_s": 3.3306407928466797,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "um",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉันอุ้มพ่อ",
+        "content_cer": 0.5,
+        "guessed": false,
+        "extra_chars": 1
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 0,
+        "seq": "ฉัน ? พ่อ",
+        "gold": "ฉันพ่อ",
+        "mode": "pause-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_00_pause-inline.wav",
+        "dur_s": 0.7893333333333333,
+        "synth_s": 3.273608922958374,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉันพ่อ",
+        "content_cer": 0.16666666666666666,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 1,
+        "seq": "? ฉัน",
+        "gold": "ฉัน",
+        "mode": "skip",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_01_skip.wav",
+        "dur_s": 0.736,
+        "synth_s": 3.334453821182251,
+        "units": [],
+        "hyp": "ฉัน",
+        "content_cer": 0.0,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 1,
+        "seq": "? ฉัน",
+        "gold": "ฉัน",
+        "mode": "pause",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_01_pause.wav",
+        "dur_s": 1.4059583333333334,
+        "synth_s": 3.31248140335083,
+        "units": [
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉัน",
+        "content_cer": 0.0,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 1,
+        "seq": "? ฉัน",
+        "gold": "ฉัน",
+        "mode": "filler",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_01_filler.wav",
+        "dur_s": 1.625625,
+        "synth_s": 3.3048906326293945,
+        "units": [
+          [
+            "hesitate",
+            "uh",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "เออ, ฉัน",
+        "content_cer": 0.0,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 1,
+        "seq": "? ฉัน",
+        "gold": "ฉัน",
+        "mode": "filler-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_01_filler-inline.wav",
+        "dur_s": 0.736,
+        "synth_s": 3.105154275894165,
+        "units": [
+          [
+            "hesitate",
+            "uh",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "อย่าฉัน",
+        "content_cer": 1.0,
+        "guessed": false,
+        "extra_chars": 3
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 1,
+        "seq": "? ฉัน",
+        "gold": "ฉัน",
+        "mode": "pause-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_01_pause-inline.wav",
+        "dur_s": 0.9493333333333334,
+        "synth_s": 3.2559568881988525,
+        "units": [
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉัน",
+        "content_cer": 0.0,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 2,
+        "seq": "ฉัน ? ? กิน",
+        "gold": "ฉันกิน",
+        "mode": "skip",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_02_skip.wav",
+        "dur_s": 0.576,
+        "synth_s": 3.412017822265625,
+        "units": [],
+        "hyp": "ฉันกิน",
+        "content_cer": 0.0,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 2,
+        "seq": "ฉัน ? ? กิน",
+        "gold": "ฉันกิน",
+        "mode": "pause",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_02_pause.wav",
+        "dur_s": 2.2419583333333333,
+        "synth_s": 6.570695877075195,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            1.09
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉันกิน",
+        "content_cer": 0.0,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 2,
+        "seq": "ฉัน ? ? กิน",
+        "gold": "ฉันกิน",
+        "mode": "filler",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_02_filler.wav",
+        "dur_s": 2.464958333333333,
+        "synth_s": 6.6100945472717285,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh_long",
+            0.54
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉันเออกิน",
+        "content_cer": 0.0,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 2,
+        "seq": "ฉัน ? ? กิน",
+        "gold": "ฉันกิน",
+        "mode": "filler-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_02_filler-inline.wav",
+        "dur_s": 0.9493333333333334,
+        "synth_s": 3.3443620204925537,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh_long",
+            0.54
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉันเออกิน",
+        "content_cer": 0.0,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 2,
+        "seq": "ฉัน ? ? กิน",
+        "gold": "ฉันกิน",
+        "mode": "pause-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_02_pause-inline.wav",
+        "dur_s": 0.6826666666666666,
+        "synth_s": 3.3184237480163574,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            1.09
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉันกิน",
+        "content_cer": 0.0,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 3,
+        "seq": "พรุ่งนี้ ฉัน ? ไป โรงเรียน",
+        "gold": "พรุ่งนี้ฉันไปโรงเรียน",
+        "mode": "skip",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_03_skip.wav",
+        "dur_s": 1.6426666666666667,
+        "synth_s": 3.397488832473755,
+        "units": [],
+        "hyp": "พรุ่งนี้ฉันไปโรงเรียน",
+        "content_cer": 0.0,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 3,
+        "seq": "พรุ่งนี้ ฉัน ? ไป โรงเรียน",
+        "gold": "พรุ่งนี้ฉันไปโรงเรียน",
+        "mode": "pause",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_03_pause.wav",
+        "dur_s": 2.3019583333333333,
+        "synth_s": 6.680165529251099,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "พรุ่งนี้ฉันไปโรงเรียน",
+        "content_cer": 0.0,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 3,
+        "seq": "พรุ่งนี้ ฉัน ? ไป โรงเรียน",
+        "gold": "พรุ่งนี้ฉันไปโรงเรียน",
+        "mode": "filler",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_03_filler.wav",
+        "dur_s": 2.5002916666666666,
+        "synth_s": 6.417181730270386,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "พรุ่งนี้ฉันเออไปโรงเรียน",
+        "content_cer": 0.0,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 3,
+        "seq": "พรุ่งนี้ ฉัน ? ไป โรงเรียน",
+        "gold": "พรุ่งนี้ฉันไปโรงเรียน",
+        "mode": "filler-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_03_filler-inline.wav",
+        "dur_s": 2.016,
+        "synth_s": 3.2803049087524414,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "พรุ่งนี้ฉันเอิบไปโรงเรียน",
+        "content_cer": 0.14285714285714285,
+        "guessed": false,
+        "extra_chars": 3
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 3,
+        "seq": "พรุ่งนี้ ฉัน ? ไป โรงเรียน",
+        "gold": "พรุ่งนี้ฉันไปโรงเรียน",
+        "mode": "pause-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_03_pause-inline.wav",
+        "dur_s": 1.7493333333333334,
+        "synth_s": 3.2553582191467285,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "พรุ่งนี้ฉันไปโรงเรียน",
+        "content_cer": 0.0,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 4,
+        "seq": "แม่ ? ชอบ ? ขนมปัง",
+        "gold": "แม่ชอบขนมปัง",
+        "mode": "skip",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_04_skip.wav",
+        "dur_s": 1.2693333333333334,
+        "synth_s": 3.2482821941375732,
+        "units": [],
+        "hyp": "แม่ชอบขนมปัง",
+        "content_cer": 0.25,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 4,
+        "seq": "แม่ ? ชอบ ? ขนมปัง",
+        "gold": "แม่ชอบขนมปัง",
+        "mode": "pause",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_04_pause.wav",
+        "dur_s": 3.2812916666666667,
+        "synth_s": 9.849817514419556,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "แม่ชอบขนม",
+        "content_cer": 0.5,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 4,
+        "seq": "แม่ ? ชอบ ? ขนมปัง",
+        "gold": "แม่ชอบขนมปัง",
+        "mode": "filler",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_04_filler.wav",
+        "dur_s": 4.019291666666667,
+        "synth_s": 10.142695903778076,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "um",
+            0.34
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "แม่เออชอบอืมขนม",
+        "content_cer": 0.5,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 4,
+        "seq": "แม่ ? ชอบ ? ขนมปัง",
+        "gold": "แม่ชอบขนมปัง",
+        "mode": "filler-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_04_filler-inline.wav",
+        "dur_s": 2.016,
+        "synth_s": 3.2783076763153076,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "um",
+            0.34
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "แม่เอ๋ยชอบอืมขนมปัง",
+        "content_cer": 0.5,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 4,
+        "seq": "แม่ ? ชอบ ? ขนมปัง",
+        "gold": "แม่ชอบขนมปัง",
+        "mode": "pause-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_04_pause-inline.wav",
+        "dur_s": 1.4826666666666666,
+        "synth_s": 3.3753654956817627,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "แม่ชอบขนมปัง",
+        "content_cer": 0.25,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 5,
+        "seq": "สวัสดี ฉัน ชื่อ ?",
+        "gold": "สวัสดีฉันชื่อ",
+        "mode": "skip",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_05_skip.wav",
+        "dur_s": 1.2693333333333334,
+        "synth_s": 3.3565263748168945,
+        "units": [],
+        "hyp": "สวัสดี ฉันชื่อ",
+        "content_cer": 0.07692307692307693,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 5,
+        "seq": "สวัสดี ฉัน ชื่อ ?",
+        "gold": "สวัสดีฉันชื่อ",
+        "mode": "pause",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_05_pause.wav",
+        "dur_s": 1.2693333333333334,
+        "synth_s": 3.337845802307129,
+        "units": [],
+        "hyp": "สวัสดี ฉันชื่อ",
+        "content_cer": 0.07692307692307693,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 5,
+        "seq": "สวัสดี ฉัน ชื่อ ?",
+        "gold": "สวัสดีฉันชื่อ",
+        "mode": "filler",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_05_filler.wav",
+        "dur_s": 1.2693333333333334,
+        "synth_s": 3.4433753490448,
+        "units": [],
+        "hyp": "สวัสดี ฉันชื่อ",
+        "content_cer": 0.07692307692307693,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 5,
+        "seq": "สวัสดี ฉัน ชื่อ ?",
+        "gold": "สวัสดีฉันชื่อ",
+        "mode": "filler-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_05_filler-inline.wav",
+        "dur_s": 1.2693333333333334,
+        "synth_s": 3.5585544109344482,
+        "units": [],
+        "hyp": "สวัสดี ฉันชื่อ",
+        "content_cer": 0.07692307692307693,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 5,
+        "seq": "สวัสดี ฉัน ชื่อ ?",
+        "gold": "สวัสดีฉันชื่อ",
+        "mode": "pause-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_05_pause-inline.wav",
+        "dur_s": 1.2693333333333334,
+        "synth_s": 3.4030890464782715,
+        "units": [],
+        "hyp": "สวัสดี ฉันชื่อ",
+        "content_cer": 0.07692307692307693,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 6,
+        "seq": "วันนี้ ? เพื่อน ? ? ร้องไห้",
+        "gold": "วันนี้เพื่อนร้องไห้",
+        "mode": "skip",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_06_skip.wav",
+        "dur_s": 1.3226666666666667,
+        "synth_s": 3.4349920749664307,
+        "units": [],
+        "hyp": "วันนี้เพื่อนร้องไห้",
+        "content_cer": 0.10526315789473684,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 6,
+        "seq": "วันนี้ ? เพื่อน ? ? ร้องไห้",
+        "gold": "วันนี้เพื่อนร้องไห้",
+        "mode": "pause",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_06_pause.wav",
+        "dur_s": 3.861291666666667,
+        "synth_s": 9.991397380828857,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            1.09
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "วันนี้ เพื่อนร้องไห้",
+        "content_cer": 0.10526315789473684,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 6,
+        "seq": "วันนี้ ? เพื่อน ? ? ร้องไห้",
+        "gold": "วันนี้เพื่อนร้องไห้",
+        "mode": "filler",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_06_filler.wav",
+        "dur_s": 4.239958333333333,
+        "synth_s": 10.363829851150513,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh_long",
+            0.55
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "วันนี้เออเพื่อนเอออ๋อร้องไห้",
+        "content_cer": 0.10526315789473684,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 6,
+        "seq": "วันนี้ ? เพื่อน ? ? ร้องไห้",
+        "gold": "วันนี้เพื่อนร้องไห้",
+        "mode": "filler-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_06_filler-inline.wav",
+        "dur_s": 2.0693333333333332,
+        "synth_s": 3.228668451309204,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh_long",
+            0.55
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "วันนี้เอ่อเพื่อนเอ่อร้องไห้",
+        "content_cer": 0.10526315789473684,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 6,
+        "seq": "วันนี้ ? เพื่อน ? ? ร้องไห้",
+        "gold": "วันนี้เพื่อนร้องไห้",
+        "mode": "pause-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_06_pause-inline.wav",
+        "dur_s": 1.536,
+        "synth_s": 3.208280563354492,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            1.09
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "วันนี้เพื่อนร้องไห้",
+        "content_cer": 0.10526315789473684,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 7,
+        "seq": "ฉัน รัก ? เพื่อน",
+        "gold": "ฉันรักเพื่อน",
+        "mode": "skip",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_07_skip.wav",
+        "dur_s": 1.0026666666666666,
+        "synth_s": 3.3041610717773438,
+        "units": [],
+        "hyp": "ฉันรักเพื่อน",
+        "content_cer": 0.08333333333333333,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 7,
+        "seq": "ฉัน รัก ? เพื่อน",
+        "gold": "ฉันรักเพื่อน",
+        "mode": "pause",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_07_pause.wav",
+        "dur_s": 2.0352916666666667,
+        "synth_s": 6.40355372428894,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉันรักเพื่อน",
+        "content_cer": 0.08333333333333333,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 7,
+        "seq": "ฉัน รัก ? เพื่อน",
+        "gold": "ฉันรักเพื่อน",
+        "mode": "filler",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_07_filler.wav",
+        "dur_s": 2.254958333333333,
+        "synth_s": 6.7854297161102295,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉันรักเออเพื่อน",
+        "content_cer": 0.08333333333333333,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 7,
+        "seq": "ฉัน รัก ? เพื่อน",
+        "gold": "ฉันรักเพื่อน",
+        "mode": "filler-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_07_filler-inline.wav",
+        "dur_s": 1.376,
+        "synth_s": 3.2801268100738525,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉันรักเอ่อเพื่อน",
+        "content_cer": 0.08333333333333333,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "ExpressiveTTS",
+        "case": 7,
+        "seq": "ฉัน รัก ? เพื่อน",
+        "gold": "ฉันรักเพื่อน",
+        "mode": "pause-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\gpu_07_pause-inline.wav",
+        "dur_s": 1.1093333333333333,
+        "synth_s": 3.1992292404174805,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉันรักเพื่อน",
+        "content_cer": 0.08333333333333333,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 0,
+        "seq": "ฉัน ? พ่อ",
+        "gold": "ฉันพ่อ",
+        "mode": "skip",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_00_skip.wav",
+        "dur_s": 1.008,
+        "synth_s": 1.2580044269561768,
+        "units": [],
+        "hyp": "ฉันพ่อ",
+        "content_cer": 0.16666666666666666,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 0,
+        "seq": "ฉัน ? พ่อ",
+        "gold": "ฉันพ่อ",
+        "mode": "pause",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_00_pause.wav",
+        "dur_s": 2.2699375,
+        "synth_s": 0.9420084953308105,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉันเพลง",
+        "content_cer": 0.5,
+        "guessed": false,
+        "extra_chars": 1
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 0,
+        "seq": "ฉัน ? พ่อ",
+        "gold": "ฉันพ่อ",
+        "mode": "filler",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_00_filler.wav",
+        "dur_s": 2.681625,
+        "synth_s": 0.0025060176849365234,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "um",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉันเอิ่มเพิ่ม",
+        "content_cer": 0.5,
+        "guessed": false,
+        "extra_chars": 1
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 0,
+        "seq": "ฉัน ? พ่อ",
+        "gold": "ฉันพ่อ",
+        "mode": "filler-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_00_filler-inline.wav",
+        "dur_s": 1.488,
+        "synth_s": 0.7196557521820068,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "um",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉันอึนล่อลพ่อ",
+        "content_cer": 1.0,
+        "guessed": false,
+        "extra_chars": 4
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 0,
+        "seq": "ฉัน ? พ่อ",
+        "gold": "ฉันพ่อ",
+        "mode": "pause-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_00_pause-inline.wav",
+        "dur_s": 0.992,
+        "synth_s": 0.5468449592590332,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ชั้นเรียนพ่อ",
+        "content_cer": 1.3333333333333333,
+        "guessed": false,
+        "extra_chars": 5
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 1,
+        "seq": "? ฉัน",
+        "gold": "ฉัน",
+        "mode": "skip",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_01_skip.wav",
+        "dur_s": 0.864,
+        "synth_s": 0.0,
+        "units": [],
+        "hyp": "ฉัน",
+        "content_cer": 0.0,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 1,
+        "seq": "? ฉัน",
+        "gold": "ฉัน",
+        "mode": "pause",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_01_pause.wav",
+        "dur_s": 1.5339375,
+        "synth_s": 0.0005042552947998047,
+        "units": [
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉัน",
+        "content_cer": 0.0,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 1,
+        "seq": "? ฉัน",
+        "gold": "ฉัน",
+        "mode": "filler",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_01_filler.wav",
+        "dur_s": 1.753625,
+        "synth_s": 0.0020008087158203125,
+        "units": [
+          [
+            "hesitate",
+            "uh",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "เออ ฉัน",
+        "content_cer": 0.0,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 1,
+        "seq": "? ฉัน",
+        "gold": "ฉัน",
+        "mode": "filler-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_01_filler-inline.wav",
+        "dur_s": 0.864,
+        "synth_s": 0.43501973152160645,
+        "units": [
+          [
+            "hesitate",
+            "uh",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ก็ไปคุยฉัน",
+        "content_cer": 2.3333333333333335,
+        "guessed": false,
+        "extra_chars": 7
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 1,
+        "seq": "? ฉัน",
+        "gold": "ฉัน",
+        "mode": "pause-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_01_pause-inline.wav",
+        "dur_s": 0.864,
+        "synth_s": 0.0,
+        "units": [
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉัน",
+        "content_cer": 0.0,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 2,
+        "seq": "ฉัน ? ? กิน",
+        "gold": "ฉันกิน",
+        "mode": "skip",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_02_skip.wav",
+        "dur_s": 1.056,
+        "synth_s": 0.5618290901184082,
+        "units": [],
+        "hyp": "ฉันติน",
+        "content_cer": 0.16666666666666666,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 2,
+        "seq": "ฉัน ? ? กิน",
+        "gold": "ฉันกิน",
+        "mode": "pause",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_02_pause.wav",
+        "dur_s": 2.6099375,
+        "synth_s": 0.4128232002258301,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            1.09
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉันติน",
+        "content_cer": 0.16666666666666666,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 2,
+        "seq": "ฉัน ? ? กิน",
+        "gold": "ฉันกิน",
+        "mode": "filler",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_02_filler.wav",
+        "dur_s": 2.8329375,
+        "synth_s": 0.002323627471923828,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh_long",
+            0.54
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉัน เออ ติน",
+        "content_cer": 0.16666666666666666,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 2,
+        "seq": "ฉัน ? ? กิน",
+        "gold": "ฉันกิน",
+        "mode": "filler-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_02_filler-inline.wav",
+        "dur_s": 1.408,
+        "synth_s": 0.7167670726776123,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh_long",
+            0.54
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉันนี่เอาให้กิน",
+        "content_cer": 1.3333333333333333,
+        "guessed": false,
+        "extra_chars": 8
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 2,
+        "seq": "ฉัน ? ? กิน",
+        "gold": "ฉันกิน",
+        "mode": "pause-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_02_pause-inline.wav",
+        "dur_s": 1.216,
+        "synth_s": 0.6161727905273438,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            1.09
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "จริงที่นี่จริง",
+        "content_cer": 2.0,
+        "guessed": false,
+        "extra_chars": 8
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 3,
+        "seq": "พรุ่งนี้ ฉัน ? ไป โรงเรียน",
+        "gold": "พรุ่งนี้ฉันไปโรงเรียน",
+        "mode": "skip",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_03_skip.wav",
+        "dur_s": 2.112,
+        "synth_s": 1.047607660293579,
+        "units": [],
+        "hyp": "พรุ่งนี้ฉันไปโรงเรียน",
+        "content_cer": 0.0,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 3,
+        "seq": "พรุ่งนี้ ฉัน ? ไป โรงเรียน",
+        "gold": "พรุ่งนี้ฉันไปโรงเรียน",
+        "mode": "pause",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_03_pause.wav",
+        "dur_s": 2.9739375,
+        "synth_s": 1.2175843715667725,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "พรุ่งนี้ฉันไปโรงเรียน",
+        "content_cer": 0.0,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 3,
+        "seq": "พรุ่งนี้ ฉัน ? ไป โรงเรียน",
+        "gold": "พรุ่งนี้ฉันไปโรงเรียน",
+        "mode": "filler",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_03_filler.wav",
+        "dur_s": 3.1723125,
+        "synth_s": 0.0019989013671875,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "พรุ่งนี้ฉันไปโรงเรียน",
+        "content_cer": 0.0,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 3,
+        "seq": "พรุ่งนี้ ฉัน ? ไป โรงเรียน",
+        "gold": "พรุ่งนี้ฉันไปโรงเรียน",
+        "mode": "filler-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_03_filler-inline.wav",
+        "dur_s": 2.304,
+        "synth_s": 1.0501728057861328,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "พรุ่งนี้ฉันออดแล้วไปโรงเรียน",
+        "content_cer": 0.23809523809523808,
+        "guessed": false,
+        "extra_chars": 5
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 3,
+        "seq": "พรุ่งนี้ ฉัน ? ไป โรงเรียน",
+        "gold": "พรุ่งนี้ฉันไปโรงเรียน",
+        "mode": "pause-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_03_pause-inline.wav",
+        "dur_s": 2.416,
+        "synth_s": 1.0956177711486816,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "พรุ่งนี้ฉันหันไปโรงเรียน",
+        "content_cer": 0.14285714285714285,
+        "guessed": false,
+        "extra_chars": 3
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 4,
+        "seq": "แม่ ? ชอบ ? ขนมปัง",
+        "gold": "แม่ชอบขนมปัง",
+        "mode": "skip",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_04_skip.wav",
+        "dur_s": 1.536,
+        "synth_s": 0.7745218276977539,
+        "units": [],
+        "hyp": "ไม่ชอบขลุ่งปัง",
+        "content_cer": 0.5833333333333334,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 4,
+        "seq": "แม่ ? ชอบ ? ขนมปัง",
+        "gold": "แม่ชอบขนมปัง",
+        "mode": "pause",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_04_pause.wav",
+        "dur_s": 3.4519375,
+        "synth_s": 1.3612101078033447,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "เว ชราหมู่คุณน้ำตัง",
+        "content_cer": 1.1666666666666667,
+        "guessed": false,
+        "extra_chars": 5
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 4,
+        "seq": "แม่ ? ชอบ ? ขนมปัง",
+        "gold": "แม่ชอบขนมปัง",
+        "mode": "filler",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_04_filler.wav",
+        "dur_s": 4.19,
+        "synth_s": 0.003010272979736328,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "um",
+            0.34
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "เออ ชรามุ เอิ่ม คุณน้ำตัง",
+        "content_cer": 0.8333333333333334,
+        "guessed": false,
+        "extra_chars": 1
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 4,
+        "seq": "แม่ ? ชอบ ? ขนมปัง",
+        "gold": "แม่ชอบขนมปัง",
+        "mode": "filler-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_04_filler-inline.wav",
+        "dur_s": 2.352,
+        "synth_s": 1.1493322849273682,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "um",
+            0.34
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "แม่เอาแต่ชอบรื่งกระขุนล้มปัง",
+        "content_cer": 1.3333333333333333,
+        "guessed": false,
+        "extra_chars": 12
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 4,
+        "seq": "แม่ ? ชอบ ? ขนมปัง",
+        "gold": "แม่ชอบขนมปัง",
+        "mode": "pause-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_04_pause-inline.wav",
+        "dur_s": 2.08,
+        "synth_s": 0.9862213134765625,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "นายเหล่าชอบปลดหลอมปัง",
+        "content_cer": 1.0833333333333333,
+        "guessed": false,
+        "extra_chars": 6
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 5,
+        "seq": "สวัสดี ฉัน ชื่อ ?",
+        "gold": "สวัสดีฉันชื่อ",
+        "mode": "skip",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_05_skip.wav",
+        "dur_s": 1.984,
+        "synth_s": 0.9589939117431641,
+        "units": [],
+        "hyp": "สวัสดีน์ฉันนะเชื่อ",
+        "content_cer": 0.46153846153846156,
+        "guessed": false,
+        "extra_chars": 4
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 5,
+        "seq": "สวัสดี ฉัน ชื่อ ?",
+        "gold": "สวัสดีฉันชื่อ",
+        "mode": "pause",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_05_pause.wav",
+        "dur_s": 1.984,
+        "synth_s": 0.0,
+        "units": [],
+        "hyp": "สวัสดีน์ฉันนะเชื่อ",
+        "content_cer": 0.46153846153846156,
+        "guessed": false,
+        "extra_chars": 4
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 5,
+        "seq": "สวัสดี ฉัน ชื่อ ?",
+        "gold": "สวัสดีฉันชื่อ",
+        "mode": "filler",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_05_filler.wav",
+        "dur_s": 1.984,
+        "synth_s": 0.0,
+        "units": [],
+        "hyp": "สวัสดีน์ฉันนะเชื่อ",
+        "content_cer": 0.46153846153846156,
+        "guessed": false,
+        "extra_chars": 4
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 5,
+        "seq": "สวัสดี ฉัน ชื่อ ?",
+        "gold": "สวัสดีฉันชื่อ",
+        "mode": "filler-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_05_filler-inline.wav",
+        "dur_s": 1.984,
+        "synth_s": 0.0,
+        "units": [],
+        "hyp": "สวัสดีน์ฉันนะเชื่อ",
+        "content_cer": 0.46153846153846156,
+        "guessed": false,
+        "extra_chars": 4
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 5,
+        "seq": "สวัสดี ฉัน ชื่อ ?",
+        "gold": "สวัสดีฉันชื่อ",
+        "mode": "pause-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_05_pause-inline.wav",
+        "dur_s": 1.984,
+        "synth_s": 0.0,
+        "units": [],
+        "hyp": "สวัสดีน์ฉันนะเชื่อ",
+        "content_cer": 0.46153846153846156,
+        "guessed": false,
+        "extra_chars": 4
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 6,
+        "seq": "วันนี้ ? เพื่อน ? ? ร้องไห้",
+        "gold": "วันนี้เพื่อนร้องไห้",
+        "mode": "skip",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_06_skip.wav",
+        "dur_s": 2.032,
+        "synth_s": 0.9640092849731445,
+        "units": [],
+        "hyp": "วันนี้ผื่นร้องไห้",
+        "content_cer": 0.21052631578947367,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 6,
+        "seq": "วันนี้ ? เพื่อน ? ? ร้องไห้",
+        "gold": "วันนี้เพื่อนร้องไห้",
+        "mode": "pause",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_06_pause.wav",
+        "dur_s": 4.5599375,
+        "synth_s": 1.5811872482299805,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            1.09
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "วันนี้พืนร่องไร",
+        "content_cer": 0.3684210526315789,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 6,
+        "seq": "วันนี้ ? เพื่อน ? ? ร้องไห้",
+        "gold": "วันนี้เพื่อนร้องไห้",
+        "mode": "filler",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_06_filler.wav",
+        "dur_s": 4.9386875,
+        "synth_s": 0.0025167465209960938,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh_long",
+            0.55
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "วันนี้เออพืดเอออ๋อร้องไร",
+        "content_cer": 0.3684210526315789,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 6,
+        "seq": "วันนี้ ? เพื่อน ? ? ร้องไห้",
+        "gold": "วันนี้เพื่อนร้องไห้",
+        "mode": "filler-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_06_filler-inline.wav",
+        "dur_s": 2.496,
+        "synth_s": 1.2323429584503174,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh_long",
+            0.55
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "วันนี้เอาเลยเพื่อนน้อยร้องไห้",
+        "content_cer": 0.47368421052631576,
+        "guessed": false,
+        "extra_chars": 6
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 6,
+        "seq": "วันนี้ ? เพื่อน ? ? ร้องไห้",
+        "gold": "วันนี้เพื่อนร้องไห้",
+        "mode": "pause-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_06_pause-inline.wav",
+        "dur_s": 2.384,
+        "synth_s": 1.0519299507141113,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            1.09
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "วันนี้หลายเพื่อนร้องไห้",
+        "content_cer": 0.3157894736842105,
+        "guessed": false,
+        "extra_chars": 2
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 7,
+        "seq": "ฉัน รัก ? เพื่อน",
+        "gold": "ฉันรักเพื่อน",
+        "mode": "skip",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_07_skip.wav",
+        "dur_s": 1.488,
+        "synth_s": 0.6628978252410889,
+        "units": [],
+        "hyp": "ฉันรักเพื่อน",
+        "content_cer": 0.08333333333333333,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 7,
+        "seq": "ฉัน รัก ? เพื่อน",
+        "gold": "ฉันรักเพื่อน",
+        "mode": "pause",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_07_pause.wav",
+        "dur_s": 2.6379375,
+        "synth_s": 0.6007814407348633,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉันรักพื้น",
+        "content_cer": 0.25,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 7,
+        "seq": "ฉัน รัก ? เพื่อน",
+        "gold": "ฉันรักเพื่อน",
+        "mode": "filler",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_07_filler.wav",
+        "dur_s": 2.857625,
+        "synth_s": 0.0,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉันรักเอ่อพื้น",
+        "content_cer": 0.25,
+        "guessed": false,
+        "extra_chars": 0
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 7,
+        "seq": "ฉัน รัก ? เพื่อน",
+        "gold": "ฉันรักเพื่อน",
+        "mode": "filler-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_07_filler-inline.wav",
+        "dur_s": 1.824,
+        "synth_s": 0.839916467666626,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            "uh",
+            0.33
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉันรักอ๋อเอ๋ยเพื่อน",
+        "content_cer": 0.4166666666666667,
+        "guessed": false,
+        "extra_chars": 3
+      },
+      {
+        "voice": "CPUVoice",
+        "case": 7,
+        "seq": "ฉัน รัก ? เพื่อน",
+        "gold": "ฉันรักเพื่อน",
+        "mode": "pause-inline",
+        "wav": "D:\\SLM-labs\\SLM-Labs-SignDINO\\result_reporting\\speech_samples_v2\\cpu_07_pause-inline.wav",
+        "dur_s": 1.616,
+        "synth_s": 0.7005095481872559,
+        "units": [
+          [
+            "say",
+            null,
+            0
+          ],
+          [
+            "hesitate",
+            null,
+            0.67
+          ],
+          [
+            "say",
+            null,
+            0
+          ]
+        ],
+        "hyp": "ฉันรักหลายเพื่อน",
+        "content_cer": 0.4166666666666667,
+        "guessed": false,
+        "extra_chars": 3
+      }
+    ]
+  },
+  "asr": {
+    "results": {
+      "qwen3-asr-0.6b (v1)": {
+        "asr_th (short daily phrases)": {
+          "n": 96,
+          "CER": 0.2149,
+          "sec_per_utt": 0.38
+        },
+        "test-A (held-out sentences, male voice)": {
+          "n": 73,
+          "CER": 0.0201,
+          "sec_per_utt": 0.42
+        },
+        "FLEURS-th (real read speech)": {
+          "n": 100,
+          "CER": 0.0667,
+          "sec_per_utt": 1.43
+        }
+      },
+      "thonburian-whisper-medium": {
+        "asr_th (short daily phrases)": {
+          "n": 96,
+          "CER": 0.3352272174652689,
+          "sec_per_utt": 0.5361417829990387,
+          "examples": [
+            {
+              "ref": "สวัสดีครับ",
+              "hyp": "สวัสดีครับ"
+            },
+            {
+              "ref": "สวัสดีค่ะ ยินดีที่ได้รู้จัก",
+              "hyp": "สวัสดีค่ะ ยินดีที่ได้รู้จัก"
+            },
+            {
+              "ref": "สบายดีไหม",
+              "hyp": "อิอิ"
+            },
+            {
+              "ref": "เป็นยังไงบ้าง",
+              "hyp": "ฮึ ฮึ"
+            },
+            {
+              "ref": "ฉันสบายดี ขอบคุณ",
+              "hyp": "ฉันสบายดี ขอบคุณ"
+            },
+            {
+              "ref": "ขอบคุณมากครับ",
+              "hyp": "ขอบคุณมากครับ"
+            }
+          ]
+        },
+        "test-A (held-out sentences, male voice)": {
+          "n": 73,
+          "CER": 0.029583020049792717,
+          "sec_per_utt": 0.580334676455145,
+          "examples": [
+            {
+              "ref": "เธอชื่ออะไร",
+              "hyp": "เธอชื่ออะไร"
+            },
+            {
+              "ref": "ร้านกาแฟอยู่ที่ไหน",
+              "hyp": "ร้านกาแฟอยู่ที่ไหน"
+            },
+            {
+              "ref": "ใครมาบ้านฉันเมื่อวาน",
+              "hyp": "ใครมาบ้านฉันเมื่อวาน"
+            },
+            {
+              "ref": "ทำไมเธอร้องไห้",
+              "hyp": "ทำไมเธอร้องไห้"
+            },
+            {
+              "ref": "คุณจะกลับบ้านเมื่อไร",
+              "hyp": "คุณจะกลับบ้านเมื่อไหร่"
+            },
+            {
+              "ref": "ไปโรงพยาบาลอย่างไร",
+              "hyp": "ไปโรงพยาบาลอย่างไร"
+            }
+          ]
+        },
+        "FLEURS-th (real read speech)": {
+          "n": 100,
+          "CER": 0.12008222350484658,
+          "sec_per_utt": 1.3347981214523315,
+          "examples": [
+            {
+              "ref": "ในที่สุดล้อเหล็กก็มาแทนที่ล้อไม้ และในปี 1767 ก็มีการใช้รางเหล็กล้วนเป็นครั้งแรก",
+              "hyp": "ในที่สุดล้อเหล็กก็มาแทนที่ล้อไม้ และในปี 1767 ก็มีการใช้รางเหล็กล้วนเป็นครั้งแรก"
+            },
+            {
+              "ref": "ในที่สุดล้อเหล็กก็มาแทนที่ล้อไม้ และในปี 1767 ก็มีการใช้รางเหล็กล้วนเป็นครั้งแรก",
+              "hyp": "ในที่สุด ล้อเหล็กก็มาแทนที่ล้อไม้ และในปี 1767 ก็มีการใช้รางเหล็กล้วนเป็นครั้งแรก"
+            },
+            {
+              "ref": "ในที่สุดล้อเหล็กก็มาแทนที่ล้อไม้ และในปี 1767 ก็มีการใช้รางเหล็กล้วนเป็นครั้งแรก",
+              "hyp": "ในที่สุด ล้อเหล็กก็มาแทนที่ล้อไม้ และในปี 1767 ก็มีการใช้รางเหล็กล้วนเป็นครั้งแรก"
+            },
+            {
+              "ref": "บริษัทจัดส่งได้รับค่าตอบแทนที่ดีสำหรับการจัดส่งสิ่งต่าง ๆ อย่างรวดเร็ว บ่อยครั้งที่เวลามีความสำคัญมากกับเอกสารทางธุรกิจ สินค้า หรืออะไหล่สำหรับการซ่อมแซมเร่งด่วน",
+              "hyp": "บริษัทจัดส่งได้รับค่าตอบแทนที่ดีสำหรับการจัดส่องสิ่งต่าง ๆ อย่างรวดเร็ว บ่อยครั้งที่เวลามีความสำคัญมากกับเอกสารท"
+            },
+            {
+              "ref": "บริษัทจัดส่งได้รับค่าตอบแทนที่ดีสำหรับการจัดส่งสิ่งต่าง ๆ อย่างรวดเร็ว บ่อยครั้งที่เวลามีความสำคัญมากกับเอกสารทางธุรกิจ สินค้า หรืออะไหล่สำหรับการซ่อมแซมเร่งด่วน",
+              "hyp": "บริษัทจัดส่งได้รับค่าตอบแทนที่ดีสำหรับการจัดส่องสิ่งต่าง ๆ อย่างรวดเร็ว บ่อยครั้งที่เวลามีความสำคัญมากกับเอกสารท"
+            },
+            {
+              "ref": "บริษัทจัดส่งได้รับค่าตอบแทนที่ดีสำหรับการจัดส่งสิ่งต่าง ๆ อย่างรวดเร็ว บ่อยครั้งที่เวลามีความสำคัญมากกับเอกสารทางธุรกิจ สินค้า หรืออะไหล่สำหรับการซ่อมแซมเร่งด่วน",
+              "hyp": "บริษัทจัดส่งได้รับค่าตอบแทนที่ดีสำหรับการจัดส่องสิ่งต่าง ๆ อย่างรวดเร็ว บ่อยครั้งที่เวลามีความสำคัญมากกับเอกสารท"
+            }
+          ]
+        }
+      }
+    },
+    "mean_real_CER": {
+      "qwen3-asr-0.6b (v1)": 0.1408,
+      "thonburian-whisper-medium": 0.22765472048505775
+    },
+    "chosen": "qwen3-asr-0.6b (v1)"
+  }
+}

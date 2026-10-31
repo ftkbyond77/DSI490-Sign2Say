@@ -1,0 +1,18 @@
+{
+  "n_windows": 162,
+  "fp32": {
+    "cos_mean": 1.0,
+    "cos_min": 0.9999998807907104,
+    "top1_same_as_torch": 1.0,
+    "size_mb": 367.9
+  },
+  "int8": {
+    "cos_mean": 0.995874285697937,
+    "cos_min": 0.9918648600578308,
+    "top1_same_as_torch": 0.9567901234567902,
+    "size_mb": 106.3
+  },
+  "tagger_max_abs_diff": 2.86102294921875e-06,
+  "int8_tagger_p_sign_max_abs_diff": 0.6963575482368469,
+  "int8_ok": false
+}

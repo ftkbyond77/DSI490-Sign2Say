@@ -73,7 +73,7 @@ Use it: `SignPipeline(backend="onnx", device="cpu", vocab="conversation").run("v
 | `make_lab.py` | writes / executes `lab.ipynb` |
 | `harvest_letters.py` | alphabet lessons → letter holds (`agent_data/en_alpha`, `th_alpha`) |
 | `train_fingerspell.py` | trains the fingerspelling recogniser + letter bank (CPU) |
-| `tune_spelling.py` | letter settings on tune data, report on held-out data |
+| `decision.py` | v8/v8.1 decision layer: hand-shape cue, merge / split, calibration, thresholds, fingerspelling settings (tune data only) |
 | `study_clips.py` | reference clips of each word / letter of a sentence (e.g. `data_test/jack_test/`) |
 | `report_figures.py` | figures for the report (`result_reporting/figures_v7/`) |
 | `md_to_pdf.py` | Markdown report → PDF (headless Chrome) |

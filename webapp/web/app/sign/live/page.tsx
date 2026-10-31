@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import AvatarStage from "@/components/avatar/AvatarStage";
 import SettingsSheet from "@/components/SettingsSheet";
 import { CamToggle, CameraFeed, Dot, statusOf } from "@/components/sign/CameraView";
+import LiveWords from "@/components/sign/LiveWords";
 import Words, { shownText } from "@/components/sign/Words";
 import { Ic, Logo, ProgressBar, Sentence } from "@/components/ui";
 import { api } from "@/lib/t2s/api";
@@ -21,7 +22,7 @@ export default function LivePage() {
   const [items, setItems] = useState<Item[]>([]);
   const seq = useRef(0);
   const e = useSignEngine(settings, (r) => {
-    const { text } = shownText(r);
+    const { text } = shownText(r, settings.opts.minP);
     if (text) setItems((x) => [{ id: ++seq.current, kind: "sign" as const, text }, ...x].slice(0, 8));
   });
   const hostRef = useRef<HTMLDivElement>(null);
@@ -51,7 +52,7 @@ export default function LivePage() {
   const st = statusOf(e);
   const live = e.mode === "live" && e.camOn;
   const latest = e.results[0];
-  const shown = latest ? shownText(latest) : null;
+  const shown = latest ? shownText(latest, e.minP) : null;
   const handsN = (e.seen.left ? 1 : 0) + (e.seen.right ? 1 : 0);
   const units = a.current?.ir.units ?? [];
   const cur = a.unit >= 0 ? units[a.unit] : null;
@@ -99,15 +100,17 @@ export default function LivePage() {
           <button type="submit" className="btn coral sm" disabled={!reply.trim() || busy}>{busy ? "กำลังแปล…" : "ส่ง"}</button>
           <button type="button" className="btn sm" style={{ background: "transparent", border: "1px solid var(--glass-line)" }} onClick={() => setReplyOpen(false)}>ยกเลิก</button>
         </form>
+      ) : e.liveWords ? (                                        // v10: the words of this utterance while it is signed
+        <div className="caption glass"><LiveWords w={e.liveWords} busy={e.liveState === "processing"} minP={e.minP} /></div>
       ) : e.progress && !shown ? (
         <div className="im-progress"><ProgressBar progress={e.progress} /></div>
       ) : shown && (
         <div className="caption glass new" key={latest!.uid} aria-live="polite">
           <p className={shown.tentative ? "tentative" : ""}>{shown.text ? <Sentence text={shown.text} /> : "ไม่พบท่ามือ"}</p>
-          <Words r={latest!} onTeal hint vocab={e.vocab} />
+          <Words r={latest!} onTeal hint vocab={e.vocab} minP={e.minP} />
         </div>
       )}
-      {!shown && !replyOpen && !e.progress && live && <div className="caption glass"><span className="hint">ยกมือแล้วทำภาษามือเป็นประโยค · ลดมือเพื่อให้ระบบแปลและอ่านออกเสียง</span></div>}
+      {!shown && !replyOpen && !e.progress && !e.liveWords && live && <div className="caption glass"><span className="hint">ยกมือแล้วทำภาษามือเป็นประโยค · ลดมือเพื่อให้ระบบแปลและอ่านออกเสียง</span></div>}
 
       <div className="im-controls">
         <label className="side" aria-label="อัปโหลดวิดีโอ" title="อัปโหลดวิดีโอ"><Ic n="upload-mint" s={24} />

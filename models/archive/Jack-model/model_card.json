@@ -1,0 +1,7 @@
+{
+ "name": "Jack-model",
+ "branch": "jack_master",
+ "commit": "c6a1cfe71f07bd5f845f199a89cb6010029cb283",
+ "code": "this checkout",
+ "setting": "branch models/spotting.json as is"
+}

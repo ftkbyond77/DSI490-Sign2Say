@@ -67,8 +67,10 @@ class UniSignPose(nn.Module):
 class UniSignEncoder(nn.Module):
     """pose GCN → (optional) mT5-base encoder with the Uni-Sign task prefix."""
 
-    def __init__(self, ckpt="wlasl", use_mt5=True, device="cuda"):
+    def __init__(self, ckpt="wlasl", use_mt5=True, device=None):
         super().__init__()
+        from .utils import device as resolve_device
+        device = resolve_device(device)
         sd = torch.load(CKPTS.get(ckpt, ckpt), map_location="cpu", weights_only=False)["model"]
         self.pose = UniSignPose()
         missing = self.pose.load_state_dict({k: v for k, v in sd.items() if not k.startswith("mt5_model")}, strict=False)

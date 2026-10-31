@@ -3,11 +3,22 @@
 import Link from "next/link";
 import { useEffect } from "react";
 import Portal from "./Portal";
-import type { Alphabet, Options, Speak } from "@/lib/api";
+import type { Alphabet, MinP, Options, Speak } from "@/lib/api";
 import { LIVE_END_OPTIONS, type ModelInfo, type SignSettings } from "@/lib/useSignEngine";
 
 export const SPEAK_TH: Record<Speak, string> = { off: "ไม่ออกเสียง", confident: "ออกเสียงเฉพาะที่มั่นใจ", all: "ออกเสียงทุกผล (รวมที่ไม่แน่ใจ)" };
 export const ALPHA_TH: Partial<Record<Alphabet, string>> = { en: "A–Z", th: "ก–ฮ", off: "ปิด" };
+export const MINP_TH: [MinP, string][] = [[0, "ไม่มี threshold"], [0.5, "threshold 0.50"], [0.8, "threshold 0.80"]];
+
+/** The word filter: which unsure words are shown (else [?]) — live mode and video results alike. */
+function MinPSelect({ s }: { s: SignSettings }) {
+  const { opts, setOpts } = s;
+  return (
+    <select value={opts.minP ?? 0.8} onChange={(e) => setOpts({ ...opts, minP: Number(e.target.value) as MinP })}>
+      {MINP_TH.map(([v, t]) => <option key={v} value={v}>{t}</option>)}
+    </select>
+  );
+}
 
 /** The two quick selects of the title row (v2-C “คลังคำ ประจำวัน ▾”, “สะกดนิ้ว A–Z ▾”). */
 export function QuickOptions({ s, model }: { s: SignSettings; model?: ModelInfo | null }) {
@@ -24,6 +35,9 @@ export function QuickOptions({ s, model }: { s: SignSettings; model?: ModelInfo 
         <select value={opts.alphabet} onChange={(e) => setOpts({ ...opts, alphabet: e.target.value as Alphabet })}>
           {(Object.keys(ALPHA_TH) as Alphabet[]).map((a) => <option key={a} value={a}>{ALPHA_TH[a]}</option>)}
         </select>
+      </label>
+      <label className="select">filter
+        <MinPSelect s={s} />
       </label>
     </>
   );
@@ -46,6 +60,10 @@ export default function SettingsSheet({ s, model, onClose, onServerFile }: {
           <select value={opts.speak} onChange={(e) => setOpts({ ...opts, speak: e.target.value as Speak })}>
             {(Object.keys(SPEAK_TH) as Speak[]).map((x) => <option key={x} value={x}>{SPEAK_TH[x]}</option>)}
           </select>
+        </label>
+        <label className="field"><span>filter คำที่ไม่แน่ใจ</span>
+          <MinPSelect s={s} />
+          <small>คำที่ความมั่นใจต่ำกว่า threshold แสดงเป็น [?] · ไม่มี threshold = แสดงทุกคำที่อ่านได้ · คำที่ระบบยืนยันแล้วแสดงเสมอ (ทั้งโหมดสดและวิดีโอ)</small>
         </label>
         <label className="field"><span>คลังคำ</span>
           <select value={opts.vocab} onChange={(e) => setOpts({ ...opts, vocab: e.target.value as Options["vocab"] })}>

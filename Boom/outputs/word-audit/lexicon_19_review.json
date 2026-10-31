@@ -1,0 +1,287 @@
+[
+  {
+    "word": "กับ",
+    "mapped_concept": "กับ",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {},
+    "metadata_exact": [],
+    "metadata_annotated": [],
+    "candidate_concepts_review_only": [
+      "ด้วยกัน"
+    ]
+  },
+  {
+    "word": "จะ",
+    "mapped_concept": "จะ",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {},
+    "metadata_exact": [],
+    "metadata_annotated": [],
+    "candidate_concepts_review_only": []
+  },
+  {
+    "word": "ตาย",
+    "mapped_concept": "ตาย",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {},
+    "metadata_exact": [],
+    "metadata_annotated": [],
+    "candidate_concepts_review_only": [
+      "เสียชีวิต"
+    ]
+  },
+  {
+    "word": "ทั้งหมด",
+    "mapped_concept": "ทั้งหมด",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {},
+    "metadata_exact": [],
+    "metadata_annotated": [
+      {
+        "uid": "ttrs:61dd058b66b04b724e2f1eff",
+        "label": "ทั้งหมด (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)",
+        "rel_path": "raw_data/word_level/ttrs_dictionary/ttrs_VWMwBf.mp4"
+      }
+    ],
+    "candidate_concepts_review_only": [],
+    "source_manifest_matches": [
+      {
+        "clip_id": "ttrs:61dd058b66b04b724e2f1eff",
+        "gloss": "ทั้งหมด (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)",
+        "lemma": "ทั้งหมด (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)",
+        "concept": "ทั้งหมด (ภาษามือโรงเรียนเศรษฐเสถียรในพระราชูปถัมภ์)",
+        "use": true,
+        "exclude_reason": null
+      }
+    ]
+  },
+  {
+    "word": "ทำ",
+    "mapped_concept": "ทำ",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [
+      "ทำ"
+    ],
+    "roles": {
+      "train": 1
+    },
+    "excluded_reasons": {
+      "pose_missing": 1
+    },
+    "metadata_exact": [],
+    "metadata_annotated": [],
+    "candidate_concepts_review_only": []
+  },
+  {
+    "word": "ทีวี",
+    "mapped_concept": "ทีวี",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {},
+    "metadata_exact": [],
+    "metadata_annotated": [],
+    "candidate_concepts_review_only": [
+      "โทรทัศน์"
+    ]
+  },
+  {
+    "word": "ที่ทำงาน",
+    "mapped_concept": "ที่ทำงาน",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {},
+    "metadata_exact": [],
+    "metadata_annotated": [],
+    "candidate_concepts_review_only": []
+  },
+  {
+    "word": "นัด",
+    "mapped_concept": "นัด",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {},
+    "metadata_exact": [],
+    "metadata_annotated": [],
+    "candidate_concepts_review_only": []
+  },
+  {
+    "word": "พัน",
+    "mapped_concept": "พัน",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {},
+    "metadata_exact": [],
+    "metadata_annotated": [],
+    "candidate_concepts_review_only": [
+      "หนึ่งพัน"
+    ]
+  },
+  {
+    "word": "ยินดีที่ได้รู้จัก",
+    "mapped_concept": "ยินดีที่ได้รู้จัก",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {},
+    "metadata_exact": [],
+    "metadata_annotated": [],
+    "candidate_concepts_review_only": []
+  },
+  {
+    "word": "รถ",
+    "mapped_concept": "รถ",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {},
+    "metadata_exact": [],
+    "metadata_annotated": [],
+    "candidate_concepts_review_only": [
+      "รถยนต์"
+    ]
+  },
+  {
+    "word": "ราตรีสวัสดิ์",
+    "mapped_concept": "ราตรีสวัสดิ์",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {},
+    "metadata_exact": [],
+    "metadata_annotated": [],
+    "candidate_concepts_review_only": [
+      "ฝันดี"
+    ]
+  },
+  {
+    "word": "ล่าม",
+    "mapped_concept": "ล่าม",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {},
+    "metadata_exact": [],
+    "metadata_annotated": [],
+    "candidate_concepts_review_only": []
+  },
+  {
+    "word": "หรือเปล่า",
+    "mapped_concept": "หรือเปล่า",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {},
+    "metadata_exact": [],
+    "metadata_annotated": [],
+    "candidate_concepts_review_only": []
+  },
+  {
+    "word": "อาจารย์",
+    "mapped_concept": "อาจารย์",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {},
+    "metadata_exact": [],
+    "metadata_annotated": [],
+    "candidate_concepts_review_only": [
+      "ครู"
+    ]
+  },
+  {
+    "word": "เพราะ",
+    "mapped_concept": "เพราะ",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {},
+    "metadata_exact": [],
+    "metadata_annotated": [],
+    "candidate_concepts_review_only": []
+  },
+  {
+    "word": "แดด",
+    "mapped_concept": "แดด",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {},
+    "metadata_exact": [],
+    "metadata_annotated": [],
+    "candidate_concepts_review_only": [
+      "แสงแดด"
+    ]
+  },
+  {
+    "word": "แล้ว",
+    "mapped_concept": "แล้ว",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {},
+    "metadata_exact": [],
+    "metadata_annotated": [],
+    "candidate_concepts_review_only": []
+  },
+  {
+    "word": "ไหม",
+    "mapped_concept": "ไหม",
+    "in_model": false,
+    "in_conversation": false,
+    "bank_examples": 0,
+    "glosses": [],
+    "roles": {},
+    "excluded_reasons": {},
+    "metadata_exact": [],
+    "metadata_annotated": [],
+    "candidate_concepts_review_only": []
+  }
+]
