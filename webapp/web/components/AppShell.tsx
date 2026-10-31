@@ -2,7 +2,7 @@
 // v2-C: the teal side menu (desktop) / top bar (phone) around the sign-language screens.
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Ic, Logo } from "./ui";
 import { useMySignCount } from "@/lib/useSignEngine";
 
@@ -49,6 +49,15 @@ export default function AppShell({ children, tone = "teal", fill = false }: { ch
   // the state is <html data-sidebar="folded"> (set before paint by app/layout.tsx); React only mirrors it for the button's label
   const [folded, setFolded] = useState(false);
   useEffect(() => setFolded(document.documentElement.dataset.sidebar === "folded"), []);
+  // phone: the top menu scrolls sideways — bring the current page's tab into view (it can sit past the right edge)
+  const path = usePathname();
+  const barRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const bar = barRef.current, on = bar?.querySelector<HTMLElement>(".nav.on");
+    if (!bar || !on || bar.scrollWidth <= bar.clientWidth) return;
+    const b = bar.getBoundingClientRect(), r = on.getBoundingClientRect();
+    bar.scrollLeft += r.left - b.left - (b.width - r.width) / 2;
+  }, [path]);
   const toggle = () => {
     const next = !folded;
     if (next) document.documentElement.dataset.sidebar = "folded"; else delete document.documentElement.dataset.sidebar;
@@ -74,7 +83,7 @@ export default function AppShell({ children, tone = "teal", fill = false }: { ch
       </aside>
       <header className="mobile-bar">
         <Logo variant="on-teal" />
-        <nav><Nav compact /></nav>
+        <nav ref={barRef}><Nav compact /></nav>
       </header>
       <main className={`content ${fill ? "fill" : ""}`}>{children}</main>
     </div>

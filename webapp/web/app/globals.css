@@ -136,7 +136,8 @@ button.chip:hover { transform: translateY(-1px); filter: brightness(1.04); }
 /* ------------------------------------------------------------------ v2-D home (kiosk) */
 .home { min-height: 100vh; display: flex; flex-direction: column; align-items: center; gap: 30px; padding: 40px clamp(16px, 7vw, 100px); }
 .home > * { width: 100%; max-width: 1240px; }
-.home-head { display: flex; justify-content: space-between; align-items: center; }
+.home-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+@media (max-width: 400px) { .home-head .btn { min-width: 0; height: 44px; padding: 0 16px; } }   /* smallest phones: logo + help button on one row */
 .hero { text-align: center; display: flex; flex-direction: column; gap: 8px; }
 .hero h1 { font-weight: 700; font-size: clamp(32px, 4.4vw, 48px); line-height: 1.25; }
 .hero h1 em { font-style: normal; color: var(--teal-600); }
@@ -253,6 +254,10 @@ html[data-sidebar="folded"] .shell .sidebar .tip { display: none; }
 .content.fill { height: 100vh; overflow: hidden; }
 .content .rev-main, .content .chat-main { padding: 0; }
 .content .chat-main { flex: 1; min-height: 0; grid-template-columns: minmax(280px, 400px) minmax(0, 1fr); }
+/* window just wider than the phone layout (sidebar visible, ~981–1240px): narrower camera / avatar column so the conversation keeps room */
+@media (max-width: 1240px) { .content .chat-main { grid-template-columns: minmax(200px, 280px) minmax(0, 1fr); gap: 16px; } }
+/* /text in the same range: the avatar column would shrink to ~170px beside the 470px text column — stack them (avatar first) */
+@media (max-width: 1240px) { .content .rev-main { grid-template-columns: 1fr; } .content .rev-main .avatar-col { order: -1; } }
 .content .stage { height: clamp(340px, calc(100vh - 330px), 600px); }
 .chat-main .stage, .pip .stage { height: 100%; }
 @media (max-width: 980px) { .content.fill { height: auto; overflow: visible; } }
@@ -608,10 +613,17 @@ pre.ir { max-height: 300px; overflow: auto; background: var(--rose-50); border-r
 @media (max-width: 980px) {
   .chat { height: auto; min-height: 100vh; }
   .chat-main { grid-template-columns: 1fr; padding: 0 16px 16px; }
+  .content .chat-main { grid-template-columns: 1fr; }   /* inside the app shell: beat the two-column `.content .chat-main` rule */
   .tiles { flex-direction: row; gap: 12px; }
   .tile { min-height: 180px; }
   .convo { min-height: 60vh; }
   .composer { flex-wrap: wrap; } .composer .btn { width: 100%; }
+}
+@media (max-width: 640px) {   /* two half-width tiles: keep the status pill clear of the camera button, let labels wrap */
+  .tile .tl { left: 10px; top: 10px; right: 58px; }
+  .tile .tr { right: 8px; top: 8px; }
+  .tile .pill { padding: 6px 10px; font-size: 12px; gap: 6px; max-width: 100%; }
+  .tile .name { left: 12px; right: 12px; bottom: 10px; font-size: 13px; line-height: 1.3; }
 }
 
 /* ------------------------------------------------------------------ v2-B immersive (full-screen camera) */
