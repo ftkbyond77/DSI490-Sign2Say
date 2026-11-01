@@ -24,6 +24,7 @@ if (_root / "modules").is_dir() and str(_root) not in sys.path:      # running f
     sys.path.insert(0, str(_root))
 
 import base64
+import re
 import json
 import logging
 import os
@@ -119,7 +120,8 @@ class TranslateRequest(BaseModel):
     vocab: str = "conversation"
     llm: bool = True
     speak: bool = False
-    speak_tentative: bool = False               # also speak a withheld (uncertain) reading — the user's choice in the web UI
+    speak_min_p: float = Field(0.8, ge=0, le=1)  # speech follows the web's word filter: words with P(correct) ≥ this (accepted ones always) are said, the rest is a pause "…"
+    voice: str = "male"                         # male | female (speech v3 voice profile)
     face_question: bool = False                 # experimental: furrowed brows at the end → yes/no question (ไหม)
     face_baseline: list[float] | None = None    # the signer's resting-face blendshapes (52), measured by the client
     user_bank: list[MySign] = []                # this user's confirmed signs (personal sign memory, kept by the client)
@@ -130,35 +132,60 @@ class TranslateRequest(BaseModel):
     client_fps: float | None = None              # optional FPS measured from captured frame timestamps
 
 
-def _speak(result, tentative=False):
-    """Speech v2 (models/speech-model-v2 behind the tts service): the forward result goes to /v1/speak_plan — accepted words in
-    signing order (+ tentative ones when asked), a natural hesitation where a sign could not be read, never a guessed word, in the
-    signer's emotion. TTS_URL may list several services, GPU first (`gpu` profile, F5-TTS-THAI) then CPU: the first that answers
-    speaks. An older tts service (no plan endpoint) gets the confirmed sentence as in v9."""
-    face = result.get("face") or {}
-    aff = face.get("affect") or {k: face.get(k) for k in ("emotion", "intensity")}
-    body = dict(segments=[{k: s.get(k) for k in ("nearest", "status", "p_correct", "t0", "t1", "f0", "f1")} for s in result.get("segments", [])],
-                affect={k: aff.get(k) for k in ("emotion", "intensity", "arousal") if aff.get(k) is not None}, sentence=result.get("sentence") or "",
-                provider=(result.get("fusion") or {}).get("provider") or "rules", timings_ms=result.get("timings_ms") or {}, speak_uncertain=bool(tentative))
+def _spoken_text(out, min_p):
+    """What the screen shows for this result at filter `min_p` (web/lib/shown.ts shownText): the words that pass the filter, "…" for the
+    signs below it — or the sentence when every sign is accepted. Returns (text, tentative)."""
+    signs = [s for s in out.get("segments", []) if s["status"] != "transition"]
+    shows = lambda s: s["status"] == "accepted" or (s.get("p") or 0) >= min_p      # noqa: E731
+    if any(s["status"] != "accepted" and shows(s) for s in signs):
+        return re.sub(r"(…\s*){2,}", "… ", " ".join(s["word"] if shows(s) else "…" for s in signs)).strip(), True      # neighbouring unread signs = one pause
+    sent = out.get("sentence") or ""
+    return sent or (out.get("language") or {}).get("tentative_sentence_th") or "", not sent
+
+
+FER_TO_SPEECH = {"neutral": "neutral", "happy": "happy", "sad": "sad", "angry": "angry", "fear": "fear", "fearful": "fear", "disgust": "disgust",
+                 "disgusted": "disgust", "surprise": "surprise", "surprised": "surprise"}        # the face model's labels -> the voice's 7 FER2013 emotions
+TTS_DEFER = os.environ.get("TTS_DEFER", "1") != "0"        # 1 (default): the result returns without waiting for the voice; the web fetches the audio (speak_text) itself
+
+
+def _voice_affect(out):
+    """(emotion, intensity) for the voice from the face model's affect: only a confident non-neutral emotion is voiced, and subtly (0.25-0.75)."""
+    aff = (out.get("face") or {}).get("affect") or {}
+    emo = FER_TO_SPEECH.get(str(aff.get("emotion") or (out.get("face") or {}).get("emotion") or "").lower(), "neutral")
+    conf = aff.get("confidence")
+    if emo == "neutral" or (conf is not None and conf < 0.5):
+        return None, None
+    inten = aff.get("intensity") if aff.get("intensity") is not None else (out.get("face") or {}).get("intensity")
+    return emo, round(0.25 + 0.5 * min(max(float(inten if inten is not None else 0.5), 0.0), 1.0), 2)
+
+
+def _speak(text, voice="male", emotion=None, intensity=None):
+    """Speech v4: the text (with "…" where a sign is unread) → the tts service → base64 WAV; None when nothing is sayable or the service is down
+    (speech is optional; the text is the result)."""
+    body = dict(text=text, voice=voice)
+    if emotion:
+        body.update(emotion=emotion, intensity=intensity if intensity is not None else 0.5)
     for url in TTS_URLS:
         try:
-            r = httpx.post(f"{url}/v1/speak_plan", json=body, timeout=60)
+            r = httpx.post(f"{url}/v1/speak", json=body, timeout=60)
+            if r.status_code == 400:
+                return None                                   # only gaps: nothing to say
             r.raise_for_status()
-            return r.json().get("wav_b64") or None
-        except Exception:  # noqa: BLE001  (next service / v9 endpoint)
+            return base64.b64encode(r.content).decode()
+        except Exception:  # noqa: BLE001
             continue
-    text = result.get("sentence") or ""
-    if not text and tentative:
-        text = (result.get("fusion") or {}).get("tentative_sentence_th") or ""
-    text = text.replace("[?]", " ").strip()
-    if not text:
-        return None
-    try:
-        r = httpx.post(f"{TTS_URLS[-1]}/v1/speak", json=dict(text=text, emotion=face.get("emotion", "neutral"), intensity=face.get("intensity", 0.0)), timeout=30)
-        r.raise_for_status()
-        return base64.b64encode(r.content).decode()
-    except Exception:  # noqa: BLE001  (speech is optional; text is the result)
-        return None
+    return None
+
+
+def _attach_speech(out, min_p, voice, say):
+    text, tentative = _spoken_text(out, min_p)
+    if text.replace("[?]", "").replace("…", "").strip():
+        emo, inten = _voice_affect(out)
+        out["spoken"] = "tentative" if tentative else "sentence"
+        out["speak_text"], out["speak_emotion"], out["speak_intensity"] = text, emo, inten
+        if not TTS_DEFER:
+            say("tts", 0.9)
+            out["audio_wav_b64"] = _speak(text, voice, emo, inten)
 
 
 def _public(result):
@@ -231,16 +258,14 @@ def _frames_job(req: TranslateRequest, progress=None):
                         face_baseline=req.face_baseline, user_bank=ub, alphabet=req.alphabet if req.alphabet in ("en", "th", "both", "off") else "off",
                         spell_only=req.spell_only)
     out = _public(r)
-    if req.speak and (r.get("sentence") or (req.speak_tentative and (r.get("fusion") or {}).get("tentative_sentence_th"))):
-        say("tts", 0.9)
-        out["audio_wav_b64"] = _speak(r, req.speak_tentative)
-        out["spoken"] = "sentence" if r.get("sentence") else "tentative"
+    if req.speak:
+        _attach_speech(out, req.speak_min_p, req.voice, say)
     out["timings_ms"]["total_ms"] = round((time.perf_counter() - t) * 1000, 1)
     _save_request(req, out, r.get("hand_canonicalization"), float(p.spot_all.get("hand_gap_s", 0.2)))
     return out
 
 
-def _video_job(path, name, vocab, llm, speak, face_question, progress=None, speak_tentative=False, alphabet="en", spell_only=False):
+def _video_job(path, name, vocab, llm, speak, face_question, progress=None, speak_min_p=0.8, voice="male", alphabet="en", spell_only=False):
     t = time.perf_counter()
     say = progress or (lambda stage, p: None)
     p = pipe(vocab, llm)
@@ -250,10 +275,8 @@ def _video_job(path, name, vocab, llm, speak, face_question, progress=None, spea
         raise HTTPException(422, r["error"])
     r["title"] = name
     out = _public(r)
-    if speak and (r.get("sentence") or (speak_tentative and (r.get("fusion") or {}).get("tentative_sentence_th"))):
-        say("tts", 0.93)
-        out["audio_wav_b64"] = _speak(r, speak_tentative)
-        out["spoken"] = "sentence" if r.get("sentence") else "tentative"
+    if speak:
+        _attach_speech(out, speak_min_p, voice, say)
     out["timings_ms"]["total_ms"] = round((time.perf_counter() - t) * 1000, 1)
     return out
 
@@ -302,11 +325,11 @@ def translate_stream(req: TranslateRequest):
 
 @app.post("/v1/translate/video")
 def translate_video(file: UploadFile = File(...), vocab: str = Query("conversation"), llm: bool = Query(True), speak: bool = Query(False),
-                    face_question: bool = Query(False), speak_tentative: bool = Query(False), alphabet: str = Query("en"),
+                    face_question: bool = Query(False), speak_min_p: float = Query(0.8, ge=0, le=1), voice: str = Query("male"), alphabet: str = Query("en"),
                     spell_only: bool = Query(False)):
     path = _save_upload(file)
     try:
-        return _video_job(path, file.filename, vocab, llm, speak, face_question, speak_tentative=speak_tentative, alphabet=alphabet,
+        return _video_job(path, file.filename, vocab, llm, speak, face_question, speak_min_p=speak_min_p, voice=voice, alphabet=alphabet,
                           spell_only=spell_only)
     finally:
         os.unlink(path)
@@ -314,13 +337,13 @@ def translate_video(file: UploadFile = File(...), vocab: str = Query("conversati
 
 @app.post("/v1/translate/video/stream")
 def translate_video_stream(file: UploadFile = File(...), vocab: str = Query("conversation"), llm: bool = Query(True), speak: bool = Query(False),
-                           face_question: bool = Query(False), speak_tentative: bool = Query(False), alphabet: str = Query("en"),
+                           face_question: bool = Query(False), speak_min_p: float = Query(0.8, ge=0, le=1), voice: str = Query("male"), alphabet: str = Query("en"),
                            spell_only: bool = Query(False)):
     path = _save_upload(file)
 
     def job(progress):
         try:
-            return _video_job(path, file.filename, vocab, llm, speak, face_question, progress, speak_tentative, alphabet, spell_only)
+            return _video_job(path, file.filename, vocab, llm, speak, face_question, progress, speak_min_p, voice, alphabet, spell_only)
         finally:
             os.unlink(path)
     return _stream(job)

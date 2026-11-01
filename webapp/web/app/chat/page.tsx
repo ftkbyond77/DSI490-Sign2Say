@@ -4,6 +4,7 @@
 import { useEffect, useRef, useState } from "react";
 import AvatarStage from "@/components/avatar/AvatarStage";
 import SettingsSheet from "@/components/SettingsSheet";
+import VoiceToggle from "@/components/VoiceToggle";
 import { CamToggle, CameraFeed, Dot, statusOf } from "@/components/sign/CameraView";
 import Words, { shownText } from "@/components/sign/Words";
 import AppShell from "@/components/AppShell";
@@ -64,6 +65,7 @@ export default function ChatPage() {
             onClick={() => { if (msgs.length && confirm("เริ่มบทสนทนาใหม่? ข้อความทั้งหมดจะหายไป")) setMsgs([]); }} title="เริ่มบทสนทนาใหม่">
             <span className={`dot ${live ? "live" : msgs.length ? "" : "off"}`} style={{ width: 8, height: 8 }} />บทสนทนาใหม่ · {msgs.length} ข้อความ
           </button>
+          <VoiceToggle s={settings} />
           <button className="icon-btn" onClick={() => setShowSettings(true)} aria-label="ตั้งค่า"><Ic n="sliders-teal" /></button>
         </div>
       </div>

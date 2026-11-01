@@ -4,15 +4,14 @@
 import { useState } from "react";
 import type { TranslateResult } from "@/lib/api";
 import { saveSign } from "@/lib/mysigns";
+import { shows } from "@/lib/shown";
 import { signsChanged } from "@/lib/useSignEngine";
 
 export function useSigns(r: TranslateResult) {
   return r.segments.filter((s) => s.status !== "transition");
 }
 
-/** The word filter (settings → filter): a sign's word is shown when the server accepted it, or when its P(correct) reaches the chosen
- *  threshold (0 = no threshold: every reading shown); otherwise it is [?]. The same rule for live and video results. */
-export const shows = (s: { status: string; p?: number }, minP: number) => s.status === "accepted" || (s.p ?? 0) >= minP;
+export { shows, shownText } from "@/lib/shown";
 
 export default function Words({ r, onTeal = false, hint = false, vocab = [], minP = 0.8 }: { r: TranslateResult; onTeal?: boolean; hint?: boolean; vocab?: string[]; minP?: number }) {
   const signs = useSigns(r);
@@ -63,13 +62,3 @@ export function cues(r: TranslateResult) {
     r.face?.affirmation && "ยืนยัน (พยักหน้า)", r.face?.emotion && r.face.emotion !== "neutral" && `อารมณ์: ${r.face.emotion_th}`].filter(Boolean) as string[];
 }
 
-/** The sentence to show for a result: the confident sentence, else the tentative reading (marked), else nothing. When the filter
- *  lets through words the server did not accept, the server's sentence would not hold them: the words themselves are shown
- *  (marked tentative), [?] for the ones still below the threshold. */
-export function shownText(r: TranslateResult, minP = 0.8) {
-  const signs = r.segments.filter((s) => s.status !== "transition");
-  if (signs.some((s) => s.status !== "accepted" && shows(s, minP)))
-    return { text: signs.map((s) => (shows(s, minP) ? s.word : "[?]")).join(" "), tentative: true };
-  const s = r.sentence || "";
-  return { text: s || r.language?.tentative_sentence_th || "", tentative: !s };
-}

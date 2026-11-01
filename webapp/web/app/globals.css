@@ -128,6 +128,13 @@ button.chip:hover { transform: translateY(-1px); filter: brightness(1.04); }
 .seg.teal button { color: var(--ink-3); }
 .seg.teal button.on { background: var(--teal-50); color: var(--teal-700); }
 
+.voice-toggle { display: inline-flex; padding: 3px; gap: 2px; border-radius: 14px; background: #fff; box-shadow: var(--shadow-teal-sm); }
+.voice-toggle button { border: none; border-radius: 11px; padding: 7px 12px; background: transparent; color: var(--teal-800); font-size: 14px; cursor: pointer; white-space: nowrap; }
+.voice-toggle button.on { background: var(--teal-700); color: #fff; }
+.voice-toggle.glass { background: var(--glass); border: 1px solid var(--glass-line); backdrop-filter: blur(7px); box-shadow: none; }
+.voice-toggle.glass button { color: var(--teal-100); font-size: 13px; padding: 9px 11px; }
+.voice-toggle.glass button.on { background: rgba(255, 255, 255, .22); color: #fff; }
+
 .select { display: inline-flex; align-items: center; gap: 8px; padding: 6px 6px 6px 14px; border-radius: 14px; background: #fff; box-shadow: var(--shadow-teal-sm);
   color: var(--teal-800); font-size: 14px; }
 .select select { appearance: none; border: none; border-radius: 10px; padding: 6px 26px 6px 10px; background: var(--teal-50) no-repeat right 9px center / 9px 6px;

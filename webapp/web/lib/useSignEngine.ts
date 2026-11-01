@@ -10,6 +10,7 @@ import { ExpressionModel } from "@/lib/expression";
 import { createHolistic, detect, drawV2 as draw, EmotionMeter, getHolistic, preloadHolistic, replaceHolistic, handsUp, Normalizer, parts, type Delegate, type Emotion, type LmFrame, type Tone } from "@/lib/holistic";
 import { info, openLive, speak, translateFramesStream, translateVideoOnServerStream, vocabList, type LiveSocket, type LiveWords, type Options, type Progress, type TranslateResult } from "@/lib/api";
 import { b64ToBytes, playWav, unlockAudio } from "@/lib/audio";
+import { sayable, shownText } from "@/lib/shown";
 import { signWords } from "@/lib/mysigns";
 import { parseFaceEvery } from "@/lib/faceCadence";
 
@@ -40,7 +41,7 @@ const median = (rows: number[][]) => rows[0].map((_, j) => { const v = rows.map(
 export const load = <T,>(k: string, d: T): T => { try { const v = localStorage.getItem(k); return v ? (JSON.parse(v) as T) : d; } catch { return d; } };
 export const save = (k: string, v: unknown) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* private mode */ } };
 
-export const DEFAULT_OPTS: Options = { vocab: "conversation", llm: true, speak: "confident", faceQuestion: false, alphabet: "en", minP: 0.8 };
+export const DEFAULT_OPTS: Options = { vocab: "conversation", llm: true, speak: "confident", faceQuestion: false, alphabet: "en", minP: 0.8, voice: "male" };
 
 /** Settings shared by every screen (and remembered in this browser) — the same keys the original studio used. */
 export function useSignSettings() {
@@ -153,17 +154,20 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
   }, []);
   useEffect(() => { if (normRef.current) normRef.current.enabled = autoLight; }, [autoLight]);
 
-  /** Speak a result according to the speech setting (the server already attached the audio when it was allowed). */
+  /** Speak a result: exactly the text the screen shows at the current filter (words below it are a pause, never a guess), in the chosen
+   *  voice. Without `force` (a fresh result) the audio the server attached is played; the ฟังเสียง buttons pass force and always re-say it. */
   const say = useCallback(async (r: TranslateResult, force = false) => {
     const o = optsRef.current;
-    const tentative = !r.sentence;
-    if (!force && (o.speak === "off" || (tentative && o.speak !== "all"))) return;
-    const text = (r.sentence || r.language?.tentative_sentence_th || "").replaceAll("[?]", " ").trim();
-    if (!text) return;
-    if (force) unlockAudio();
+    if (!force && o.speak === "off") return;
+    const text = shownText(r, o.minP ?? DEFAULT_OPTS.minP).text.trim();
+    if (!sayable(text)) {
+      if (force) setError("ไม่มีคำที่ออกเสียงได้ที่ threshold นี้ — ลองเลือก threshold ที่ต่ำลง");
+      return;
+    }
+    if (force) { unlockAudio(); setError(""); }
     setSpeaking(text);
     try {
-      const bytes = !force && r.audio_wav_b64 ? b64ToBytes(r.audio_wav_b64) : await speak(text, r.face?.emotion, r.face?.intensity);
+      const bytes = !force && r.audio_wav_b64 ? b64ToBytes(r.audio_wav_b64) : await speak(text, o.voice ?? "male", r.speak_emotion, r.speak_intensity);
       await playWav(bytes);
     } catch (e) { setError(`เล่นเสียงไม่ได้ (${(e as Error).message}) — กดปุ่ม “ฟังเสียง” อีกครั้ง`); }
     finally { setSpeaking(""); }

@@ -1,0 +1,6 @@
+# No NVIDIA GPU: docker compose -f docker-compose.yml -f docker-compose.cpu.yml up --build   (the tts service then uses the MMS-TTS Thai CPU voice)
+services:
+  tts:
+    deploy: !reset {}
+    environment:
+      - SPEECH_DEVICE=cpu

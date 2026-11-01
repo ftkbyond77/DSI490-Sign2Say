@@ -1,6 +1,6 @@
-# tts service: speech v2 plan + MMS-TTS Thai (VITS) on CPU + filler clips
+# tts service: fastapi + MMS-TTS Thai (fallback voice); the v3 model's packages are installed in the Dockerfile
 fastapi==0.115.12
 uvicorn[standard]==0.34.2
-numpy==1.26.4
-transformers==4.51.3
+transformers>=4.51.3
 soundfile==0.13.1
+praat-parselmouth==0.4.7   # emotion prosody layer (PSOLA) in the v4 model's tts.py

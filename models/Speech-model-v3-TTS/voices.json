@@ -1,0 +1,30 @@
+{
+ "masculine_1": {
+  "ref": "refs/masculine_1.wav",
+  "ref_text": "แล้วก็ปลายสายกระบอกฉีดก็จะเป็น ท่อยางสีดำ ๆ นะครับ",
+  "voice_profile": "masculine",
+  "f0_hz": 139.5,
+  "dnsmos": 3.72
+ },
+ "masculine_2": {
+  "ref": "refs/masculine_2.wav",
+  "ref_text": "ก็ควรเป็นคอกแม่พันธุ์พื้นคอกควรแห้งสะอาด และควรเก็บกวาดมูลออกให้หมดด้วยนะครับ",
+  "voice_profile": "masculine",
+  "f0_hz": 114.6,
+  "dnsmos": 3.57
+ },
+ "feminine_1": {
+  "ref": "refs/feminine_1.wav",
+  "ref_text": "ให้ผู้เรียนช่วยกันอภิปราย ที่มาของปัญหาและแนวทางแก้ไขปัญหาดังกล่าว",
+  "voice_profile": "feminine",
+  "f0_hz": 216.4,
+  "dnsmos": 3.54
+ },
+ "feminine_2": {
+  "ref": "refs/feminine_2.wav",
+  "ref_text": "สีเขียว เป็นสีที่ให้ความรู้สึกในทางกลับกันกับสีแดง โดยคลื่นแสงของสีเขียวแผ่กระจายอย่างนุ่มนวล",
+  "voice_profile": "feminine",
+  "f0_hz": 201.8,
+  "dnsmos": 3.6
+ }
+}

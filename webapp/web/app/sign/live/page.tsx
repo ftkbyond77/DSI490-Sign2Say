@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import AvatarStage from "@/components/avatar/AvatarStage";
 import SettingsSheet from "@/components/SettingsSheet";
+import VoiceToggle from "@/components/VoiceToggle";
 import { CamToggle, CameraFeed, Dot, statusOf } from "@/components/sign/CameraView";
 import LiveWords from "@/components/sign/LiveWords";
 import Words, { shownText } from "@/components/sign/Words";
@@ -69,6 +70,7 @@ export default function LivePage() {
         </div>
         <div className="right">
           {e.camOn && <div className="det glass">มือ {handsN}/2 · หน้า {e.seen.face ? "✓" : "✗"}</div>}
+          <VoiceToggle s={settings} glass />
           <CamToggle e={e} onOpen={e.startLive} className="im-btn" />
           <button className="im-btn" onClick={() => setShowSettings(true)} aria-label="ตั้งค่า"><Ic n="sliders-mint" /></button>
         </div>

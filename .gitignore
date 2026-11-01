@@ -138,3 +138,15 @@ hub/
 
 # eTSL
 book-data/
+
+
+# TTS-Lab
+TTS-Lab/data/
+TTS-Lab/prompts/
+
+
+# FER2013 Data
+FER2013-Data/
+# ---- TTS weights (674 MB each, above GitHub's 100 MB limit and not under LFS): keep local / share outside git
+models/Speech-model-v*-TTS/model.safetensors
+artifacts/runs/**/model*.safetensors

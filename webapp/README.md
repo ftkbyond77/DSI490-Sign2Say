@@ -26,9 +26,9 @@ UI motion respects `prefers-reduced-motion`.
 
 **Models behind the site (main, v9):** `sign-api` reads the forward model `models/model-v9` (Uni-Sign encoder + the Thai landmark
 encoder as a second opinion, isotonic calibration, "enrolled" settings for personal signs) and the face emotion model
-`models/face-model` (fused with the signed words → `face.emotion` / `face.affect`, which also sets the voice's emotion). Speech =
-the `tts` service (MMS-TTS Thai, emotion → rate / pitch). `models/speech-model-v1` (F5-TTS-THAI voice, Qwen3-ASR) is not served
-in Docker yet: F5 needs a GPU (see its README). Another forward model: `THAISLM_MODELS_DIR=./models/archive/Jack-model` (v8.1).
+`models/face-model` (fused with the signed words → `face.emotion` / `face.affect`). Speech =
+the `tts` service: `models/Speech-model-v4-TTS` on the GPU (youthful male / female voice, 7 emotions, a pause where a sign is below the threshold; rollback `SPEECH_MODEL_DIR=./models/Speech-model-v3-TTS`), MMS-TTS Thai
+(CPU) as the fallback voice. Another forward model: `THAISLM_MODELS_DIR=./models/archive/Jack-model` (v8.1).
 (optional) put `OPENAI_API_KEY=...` in the root `.env` to let an LLM write the Thai sentence (otherwise a rules composer does it).
 
 ## What you can do
@@ -96,7 +96,7 @@ browser ─ camera → MediaPipe Holistic (WASM, @mediapipe/tasks-vision 1.0.1) 
    ▼
 gateway (nginx :8080) ──/───► web       Next.js 16 (React 19) UI
                      ├─/api/► sign-api  FastAPI + ONNX Runtime + NumPy (stateless — `docker compose up --scale sign-api=3`)
-                     └─/tts/► tts       FastAPI + MMS-TTS Thai (VITS, CPU)
+                     └─/tts/► tts       FastAPI + Speech v4 (ThonburianTTS fine-tuned, GPU; MMS-TTS Thai CPU fallback)
 sign-api → tts (internal) when speak=true · sign-api → OpenAI (optional) for the sentence layer
 ```
 
@@ -105,11 +105,11 @@ sign-api → tts (internal) when speak=true · sign-api → OpenAI (optional) fo
 | gateway | `webapp/gateway/nginx.conf` | nginx:1.27-alpine | one origin (camera needs a secure context → localhost is fine; use HTTPS in production); resolves scaled replicas through Docker DNS |
 | web | `webapp/web` | node:22-alpine (Next.js standalone) | serves MediaPipe WASM + the `.task` model from its own origin |
 | sign-api | `webapp/api` | python:3.11-slim | mounts `./models` read-only (`THAISLM_MODELS_DIR` to use another model folder) |
-| tts | `webapp/tts` | python:3.11-slim + CPU torch | the Thai voice is baked into the image |
+| tts | `webapp/tts` | pytorch 2.7 CUDA runtime + f5-tts | `SPEECH_MODEL_DIR` (default `models/Speech-model-v4-TTS`) mounted; MMS voice + Vocos baked in; GPU reserved (CPU: `docker-compose.cpu.yml`) |
 
 API reference: `GET /api/v1/health · /api/v1/info · /api/v1/vocab`, `POST /api/v1/translate`, `POST /api/v1/translate/video`
 (multipart `file`), and the same two as `…/stream` (NDJSON: `{"stage","p"}` progress lines, then `{"result"}`; the gateway does
-not buffer them), `POST /tts/v1/speak {text, emotion, intensity}` → `audio/wav`. Interactive docs: http://localhost:8080/api/docs
+not buffer them), `POST /tts/v1/speak {text, voice: male|female, speed?, gap_s?}` → `audio/wav` ("…" / "[?]" in the text = a pause). Interactive docs: http://localhost:8080/api/docs
 is not exposed through the gateway by default; run `docker compose exec sign-api curl localhost:8000/docs`.
 
 ## Scaling to a product

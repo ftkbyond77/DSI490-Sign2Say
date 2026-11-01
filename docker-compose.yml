@@ -4,10 +4,9 @@
 #            three-vrm signing avatar (text / speech → sign); screens /, /sign, /sign/live, /text, /chat (Figma “ThaiSLM v2”)
 #   sign-api FastAPI + ONNX Runtime: landmarks or video → words / Thai sentence (stateless; scale with --scale sign-api=N)
 #   (+ the reverse part's back end: reverse-api / reverse-speech — see the block at the end)
-#   tts      FastAPI speech v2 (models/speech-model-v2): forward result → what to say (natural hesitation for unread signs, never a
-#            guessed word) → MMS-TTS Thai (VITS, CPU) with the voice's fillers
-#   tts-gpu  (profile `gpu`, opt-in: `docker compose --profile gpu up`) the same service with the F5-TTS-THAI voice on an NVIDIA GPU;
-#            sign-api tries it first and falls back to `tts` automatically (TTS_URL list)
+#   tts      FastAPI speech v4 (models/Speech-model-v4-TTS, GPU; SPEECH_MODEL_DIR=./models/Speech-model-v3-TTS rolls back): the sentence the screen shows (words above the chosen threshold; an unread
+#            sign = a natural pause / soft hum "…", never a guessed word) in a male or female voice; MMS-TTS Thai (CPU) is the fallback
+#            voice. No NVIDIA GPU: docker compose -f docker-compose.yml -f docker-compose.cpu.yml up --build
 # The forward model is read from ./models/model-v10 (mounted read-only; rollback to v9 with ONE variable:
 # THAISLM_MODELS_DIR=./models/model-v9 docker compose up), the face emotion model from ./models/face-model;
 # OPENAI_API_KEY in .env enables the LLM sentence layer (rules otherwise).
@@ -29,6 +28,8 @@ services:
         condition: service_healthy
       reverse-api:
         condition: service_healthy
+      tts:
+        condition: service_healthy              # the site opens when the voice is loaded (≈ 90 s on the GPU)
     restart: unless-stopped
 
   web:
@@ -51,7 +52,8 @@ services:
       - THAISLM_MODELS=/app/models
       - THAISLM_FACE_MODEL=/app/face-model
       - THAISLM_SAVE_REQUESTS=${THAISLM_SAVE_REQUESTS-/app/requests}
-      - TTS_URL=http://tts-gpu:8001,http://tts:8001      # GPU voice first (profile gpu), CPU voice otherwise
+      - TTS_URL=http://tts:8001                           # the tts service (GPU, or the CPU voice when there is no GPU); a non-existent first host cost ~5 s per request
+      - TTS_DEFER=${TTS_DEFER:-1}                         # 1: the result returns without waiting for the voice (the web fetches the audio); 0: audio attached to the result as in v3
       - OPENAI_API_KEY=${OPENAI_API_KEY:-}
       - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4.1-mini}
       - OPENAI_TIMEOUT_S=8
@@ -63,17 +65,7 @@ services:
       context: .
       dockerfile: webapp/tts/Dockerfile
     volumes:
-      - ./models/speech-model-v2:/app/speech-model:ro   # emotion references + hesitation fillers (speech v2)
-    restart: unless-stopped
-
-  tts-gpu:
-    profiles: ["gpu"]
-    build:
-      context: .
-      dockerfile: webapp/tts/Dockerfile.gpu
-    volumes:
-      - ./models/speech-model-v2:/app/speech-model:ro
-      - tts-hf:/app/hf                                  # F5-TTS-THAI + vocoder weights (downloaded once)
+      - ${SPEECH_MODEL_DIR:-./models/Speech-model-v4-TTS}:/app/speech-model:ro   # speech v4: fine-tuned ThonburianTTS, youthful male / female voices, 7 emotions (rollback: SPEECH_MODEL_DIR=./models/Speech-model-v3-TTS)
     deploy:
       resources:
         reservations:
@@ -112,5 +104,4 @@ services:
     restart: unless-stopped
 
 volumes:
-  tts-hf:                   # tts-gpu: Hugging Face weights cache
   reverse-avatars:          # reverse part: content-addressed optimised characters (rebuilt automatically if deleted)

@@ -1,0 +1,53 @@
+{
+ "name": "Speech-model-v4-TTS",
+ "base": "models/Speech-model-v3-TTS (ThonburianTTS F5-TTS 337M, CC-BY-NC-SA)",
+ "arch": {
+  "dim": 1024,
+  "depth": 22,
+  "heads": 16,
+  "ff_mult": 2,
+  "text_dim": 512,
+  "conv_layers": 4
+ },
+ "sample_rate": 24000,
+ "gap_marker": "…",
+ "gap_seconds": 0.8,
+ "default_nfe": 16,
+ "default_cfg": 2.0,
+ "default_sway": 0.0,
+ "min_gen_seconds": 0.9,
+ "ref_tail_s": 0.3,
+ "lead_seconds": 0.0,
+ "emotion_tags": {
+  "neutral": "≡",
+  "happy": "∞",
+  "sad": "∂",
+  "angry": "‡",
+  "fear": "∑",
+  "disgust": "√",
+  "surprise": "⋯"
+ },
+ "emotion_aliases": {
+  "curious": [
+   "surprise",
+   0.4
+  ]
+ },
+ "default_intensity": 0.5,
+ "emotion_rate": {
+  "happy": 1.06,
+  "sad": 0.85,
+  "angry": 1.08,
+  "fear": 1.12,
+  "disgust": 0.9,
+  "surprise": 1.0
+ },
+ "emotion_dsp": true,
+ "emotion_dsp_strength": 1.0,
+ "training": {
+  "run": "run 2: 1238 updates, 20.2 min, A100 Spot (asia-southeast1)",
+  "data": "29,162 clips = 34.7 h, S+/S/A+ (30,000 labelled)",
+  "best_val_flow_loss": 0.6383,
+  "note": "emotion tags trained with PSOLA-transformed clips; the model alone moves pitch only slightly, so tts.py applies the same PSOLA templates after generation (emotion_dsp)"
+ }
+}

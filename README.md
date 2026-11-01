@@ -24,6 +24,13 @@ Every setting chosen on tune data; automatic release gate `python main.py decisi
   (`spotting.json` `"stream"`), `real-time-lab.ipynb`.
 * **Speech v2** (`models/speech-model-v2`): an unread sign becomes a human hesitation ("ฉัน… อืม… พ่อ"), never a guessed word
   (0 guessed words in 48 cases); `/tts/v1/speak_plan`; CPU voice fallback. Face: v1 kept (no v2 candidate better on every metric).
+* **Speech v4** (`models/Speech-model-v4-TTS`, dev + report in `TTS-Lab/`; v3 stays in `models/Speech-model-v3-TTS` as the rollback): ThonburianTTS (F5-TTS)
+  fine-tuned again — youthful male / female voices whose first word is kept, **7 emotions** (FER2013 classes; the face model's emotion is voiced subtly,
+  neutral = no expression) and **~2x lower latency** (16 steps). The `tts` service (GPU; MMS CPU voice = fallback) says exactly what the screen shows at the
+  chosen threshold (0 = every word, 0.50 / 0.80 = only words at or above it; a sign below it = a natural pause / soft hum "…", never a guessed word);
+  **Male / Female** voice button top right (default male). `POST /tts/v1/speak {text | pieces, voice, emotion?, intensity?, speed?, gap_s?}`.
+  The sign-api returns the text first and the web fetches the audio (`TTS_DEFER=0` restores v3's attached audio).
+  Rollback: `SPEECH_MODEL_DIR=./models/Speech-model-v3-TTS docker compose up`. No GPU: `docker compose -f docker-compose.yml -f docker-compose.cpu.yml up --build`.
 * Rollback: `THAISLM_MODELS_DIR=./models/model-v9 docker compose up`.
 
 ## v9 — recognition · calibration · face emotion · speech (prompt_13)

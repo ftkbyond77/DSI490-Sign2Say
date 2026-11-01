@@ -65,7 +65,7 @@ export default function SignStudio() {
   const [status, setStatus] = useState<Status>("idle");
   const [mode, setMode] = useState<Mode>("manual");
   const [perfNoFx, setPerfNoFx] = useState(false);
-  const [opts, setOpts] = useState<Options>({ vocab: "conversation", llm: true, speak: "confident", faceQuestion: false, alphabet: "en", minP: 0.8 });
+  const [opts, setOpts] = useState<Options>({ vocab: "conversation", llm: true, speak: "confident", faceQuestion: false, alphabet: "en", minP: 0.8, voice: "male" });
   const [nFrames, setNFrames] = useState(0);
   const [fps, setFps] = useState(0);
   const [delegate, setDelegate] = useState<Delegate | "">("");
@@ -118,7 +118,7 @@ export default function SignStudio() {
     if (!text) return;
     setSpeaking(tentative ? `🔊 (ไม่แน่ใจ) ${text}` : `🔊 ${text}`);
     try {
-      const bytes = r.audio_wav_b64 ? b64ToBytes(r.audio_wav_b64) : await speak(text, r.face?.emotion, r.face?.intensity);
+      const bytes = r.audio_wav_b64 ? b64ToBytes(r.audio_wav_b64) : await speak(text, optsRef.current.voice, r.speak_emotion, r.speak_intensity);
       await playWav(bytes);
     } catch (e) { setError(`เล่นเสียงไม่ได้ (${(e as Error).message}) — กดปุ่ม 🔊 บนการ์ดผลลัพธ์`); }
     finally { setSpeaking(""); }
