@@ -67,8 +67,49 @@ def pipe(vocab="conversation", llm=True) -> SignPipeline:
         return _pipes[key]
 
 
+FACE_FER_DIR = os.environ.get("THAISLM_FACE_FER", "")      # v11 face branch: expression from the face picture (models/face-model-*-v1), independent of the sign model
+_face = None
+_face_pool = None
+
+
+def face_branch():
+    """The face branch (modules/face_fer.py), loaded once; None when its folder is missing or broken — everything else keeps working."""
+    global _face, _face_pool
+    if _face is None:
+        _face = False
+        if FACE_FER_DIR and (Path(FACE_FER_DIR) / "config.json").exists():
+            try:
+                from concurrent.futures import ThreadPoolExecutor
+                from modules.face_fer import FaceBranch
+                _face = FaceBranch(FACE_FER_DIR, threads=int(os.environ.get("FACE_THREADS", "2")))
+                _face_pool = ThreadPoolExecutor(1, thread_name_prefix="face")      # the face work never runs on the sign thread
+                logging.getLogger("sign-api").info("face_branch=%s providers=%s", _face.model.version, _face.model.sess.get_providers())
+            except Exception as e:  # noqa: BLE001
+                logging.getLogger("sign-api").error("face branch unavailable: %s", e)
+    return _face or None
+
+
+def _face_call(fn, *a, timeout=float(os.environ.get("FACE_TIMEOUT_S", "3")), **kw):
+    """Run a face-branch call on its own thread with a deadline. Any failure / timeout = None (the caller answers `unknown`); never raises."""
+    fb = face_branch()
+    if fb is None or _face_pool is None:
+        return None
+    try:
+        return _face_pool.submit(getattr(fb, fn), *a, **kw).result(timeout=timeout)
+    except Exception as e:  # noqa: BLE001
+        logging.getLogger("sign-api").warning("face branch %s failed or timed out: %s", fn, e)
+        return None
+
+
 @app.on_event("startup")
 def warm():
+    try:
+        fb = face_branch()
+        if fb is not None:
+            import numpy as np
+            fb.live([dict(t=0.0, g=np.full(2304, 128, np.uint8), side_px=80)])                  # first-call latency
+    except Exception as e:  # noqa: BLE001
+        print("face warm-up skipped:", e)
     p = pipe()
     import numpy as np
     from modules.parts import prep
@@ -92,6 +133,25 @@ class Frame(BaseModel):
     rh: list[list[float]] = []
     face: list[list[float]] = []
     bs: list[float] = []
+
+
+class FaceCrop(BaseModel):
+    t: float = Field(..., description="timestamp in ms, same clock as the frames of the request")
+    g: str = Field(..., description="base64 of the 48x48 uint8 grayscale face crop (2304 bytes)")
+    side: float | None = Field(None, description="face size in the camera picture, px")
+    occ: float = Field(0.0, ge=0, le=1, description="share of a hand's points inside the face box")
+
+
+def _crops(items):
+    out = []
+    for c in items[:MAX_FRAMES]:
+        try:
+            b = base64.b64decode(c.g)
+            if len(b) == 2304:
+                out.append(dict(t=c.t / 1000.0, g=b, side_px=c.side, occluded=c.occ))
+        except Exception:  # noqa: BLE001
+            continue
+    return out
 
 
 class MySign(BaseModel):
@@ -127,6 +187,7 @@ class TranslateRequest(BaseModel):
     user_bank: list[MySign] = []                # this user's confirmed signs (personal sign memory, kept by the client)
     alphabet: str = "en"                        # fingerspelled letters: en (A–Z) | th (ก–ฮ, vowels) | both | off
     spell_only: bool = False                    # this utterance is fingerspelling only (the "สะกดอย่างเดียว" button)
+    face_crops: list[FaceCrop] = []             # v11 face branch: 48x48 gray face pictures cut by the client (late fusion only: the sign path never reads them)
     perf_mode: str | None = None                 # optional client live-capture diagnostic mode
     face_every: int | None = Field(default=None, ge=1)  # optional requested expression cadence
     client_fps: float | None = None              # optional FPS measured from captured frame timestamps
@@ -150,6 +211,11 @@ TTS_DEFER = os.environ.get("TTS_DEFER", "1") != "0"        # 1 (default): the re
 
 def _voice_affect(out):
     """(emotion, intensity) for the voice from the face model's affect: only a confident non-neutral emotion is voiced, and subtly (0.25-0.75)."""
+    fer = out.get("face_fer") or {}
+    if fer.get("ok") and (fer.get("summary") or {}).get("valid_frac", 0) >= 0.25:       # v11: late fusion of the face picture's expression with the v9 affect
+        from modules.face_fer import speech_affect
+        emo, inten, _ = speech_affect(fer["summary"], (out.get("face") or {}).get("affect"), grammar=out.get("face"))
+        return emo, inten
     aff = (out.get("face") or {}).get("affect") or {}
     emo = FER_TO_SPEECH.get(str(aff.get("emotion") or (out.get("face") or {}).get("emotion") or "").lower(), "neutral")
     conf = aff.get("confidence")
@@ -211,9 +277,36 @@ def _public(result):
     return out
 
 
+class FaceRequest(BaseModel):
+    crops: list[FaceCrop] = []
+    state: dict | None = None                    # the smoother state returned by the previous call (the service itself keeps none)
+
+
+@app.post("/v1/face")
+def face_live(req: FaceRequest):
+    """Live expression label for the camera overlay: new face crops (+ the previous state) → the smoothed expression and the new state.
+    Independent of the sign endpoints; any failure answers `unknown` (200) so the overlay degrades, never the sign path."""
+    if len(req.crops) > 64:
+        raise HTTPException(413, "too many crops")
+    res = _face_call("live", _crops(req.crops), req.state, timeout=1.5)
+    if res is None:
+        return dict(ok=False, error="face branch unavailable", frames=[], smoothed=dict(expression="unknown", confidence=0.0, probs=None, valid=False), state=req.state)
+    return res
+
+
+@app.get("/v1/face/info")
+def face_info():
+    fb = face_branch()
+    if fb is None:
+        return dict(ok=False)
+    c = fb.model.cfg
+    return dict(ok=True, name=fb.model.version, classes=fb.model.classes, crop=c.get("crop"), unknown=fb.model.unk, smoother=fb.sm_cfg, input=c.get("input"),
+                providers=fb.model.sess.get_providers())
+
+
 @app.get("/v1/health")
 def health():
-    return dict(ok=True, models=str(MODEL_DIR), loaded=[f"{k[0]}{'+llm' if k[1] else ''}" for k in _pipes])
+    return dict(ok=True, models=str(MODEL_DIR), loaded=[f"{k[0]}{'+llm' if k[1] else ''}" for k in _pipes], face=(face_branch().model.version if face_branch() else None))
 
 
 @app.get("/v1/info")
@@ -227,6 +320,18 @@ def info():
 @app.get("/v1/vocab")
 def vocab():
     return read_json(MODEL_DIR / "vocab_conversation.json")
+
+
+def _attach_face_fer(out, crops):
+    """Late fusion: the face branch's expression track / per-sign summary go under their own key `face_fer`. Nothing the sign pipeline
+    produced (segments, sentence, language, face cues) is read for anything but the segment times, and nothing of it is changed."""
+    if not crops or face_branch() is None:
+        return
+    segs = [dict(t0=s["t0"], t1=s["t1"]) for s in out.get("segments", [])]
+    res = _face_call("process", crops, segs, 0.0)
+    if res is not None:
+        res["track"] = res.get("track", [])[:240]
+        out["face_fer"] = res
 
 
 STAGE_P = dict(schema=0.05, tagger=0.15, spotting=0.45, face=0.7, language=0.8)
@@ -258,6 +363,7 @@ def _frames_job(req: TranslateRequest, progress=None):
                         face_baseline=req.face_baseline, user_bank=ub, alphabet=req.alphabet if req.alphabet in ("en", "th", "both", "off") else "off",
                         spell_only=req.spell_only)
     out = _public(r)
+    _attach_face_fer(out, _crops(req.face_crops))      # the sign result is final here; the face branch only adds its own key
     if req.speak:
         _attach_speech(out, req.speak_min_p, req.voice, say)
     out["timings_ms"]["total_ms"] = round((time.perf_counter() - t) * 1000, 1)
@@ -269,12 +375,25 @@ def _video_job(path, name, vocab, llm, speak, face_question, progress=None, spea
     t = time.perf_counter()
     say = progress or (lambda stage, p: None)
     p = pipe(vocab, llm)
-    r = p.run(path, face_question=face_question, alphabet=alphabet if alphabet in ("en", "th", "both", "off") else "off", spell_only=spell_only,
-              progress=lambda st, f: say(st, 0.6 * f if st == "mediapipe" else 0.6 + 0.4 * STAGE_P.get(st, f)))
+    prog = lambda st, f: say(st, 0.6 * f if st == "mediapipe" else 0.6 + 0.4 * STAGE_P.get(st, f))      # noqa: E731
+    t_mp = time.perf_counter()
+    raw = p.landmarks_from_video(path, progress=lambda f: prog("mediapipe", f))        # exactly what p.run() does first; kept so the face branch can reuse the face points
+    if raw is None:
+        raise HTTPException(422, "no frames decoded")
+    mp_ms = (time.perf_counter() - t_mp) * 1000
+    r = p.run(path, raw=raw, face_question=face_question, alphabet=alphabet if alphabet in ("en", "th", "both", "off") else "off", spell_only=spell_only,
+              progress=prog)
     if r.get("error"):
         raise HTTPException(422, r["error"])
+    r["timings_ms"]["mediapipe_ms"] = round(mp_ms, 1)
     r["title"] = name
     out = _public(r)
+    if face_branch() is not None:                       # the face pictures come from the same video at the face points MediaPipe found (read only)
+        try:
+            from modules.face_fer import crops_from_video
+            _attach_face_fer(out, crops_from_video(path, raw, **(face_branch().model.cfg.get("crop") or {})))
+        except Exception as e:  # noqa: BLE001
+            logging.getLogger("sign-api").warning("face crops from video failed: %s", e)
     if speak:
         _attach_speech(out, speak_min_p, voice, say)
     out["timings_ms"]["total_ms"] = round((time.perf_counter() - t) * 1000, 1)

@@ -227,11 +227,12 @@ const BS = ["_neutral", "browDownLeft", "browDownRight", "browInnerUp", "browOut
   "mouthUpperUpRight", "noseSneerLeft", "noseSneerRight"];
 const BI: Record<string, number> = Object.fromEntries(BS.map((n, i) => [n, i]));
 const EMO_REF: Record<string, number> = { happy: 0.545, sad: 0.05, angry: 0.365, surprise: 0.15, fear: 0.05, disgust: 0.15 };
-export const EMO_TH: Record<string, string> = { neutral: "เป็นกลาง", happy: "ดีใจ", sad: "เศร้า", angry: "โกรธ/ขมวดคิ้ว", surprise: "ประหลาดใจ", fear: "กลัว", disgust: "รังเกียจ" };
-export const EMO_ICON: Record<string, string> = { neutral: "😐", happy: "😊", sad: "😢", angry: "😠", surprise: "😮", fear: "😨", disgust: "😖" };
+export const EMO_TH: Record<string, string> = { neutral: "เป็นกลาง", happy: "ดีใจ", sad: "เศร้า", angry: "โกรธ/ขมวดคิ้ว", surprise: "ประหลาดใจ", fear: "กลัว", disgust: "รังเกียจ", unknown: "ไม่แน่ใจ" };
+export const EMO_ICON: Record<string, string> = { neutral: "😐", happy: "😊", sad: "😢", angry: "😠", surprise: "😮", fear: "😨", disgust: "😖", unknown: "❔" };
 /** What the face shows → what it may mean (the live label above the face box). */
 export const EMO_FACE: Record<string, [string, string]> = { neutral: ["หน้าปกติ", "เป็นกลาง"], happy: ["ยิ้ม", "มีความสุข"], sad: ["มุมปากตก", "เศร้า"],
-  angry: ["ขมวดคิ้ว", "ไม่พอใจ / หรือกำลังถาม"], surprise: ["ตาโต ปากอ้า", "ประหลาดใจ"], fear: ["ตาเบิก", "กลัว / กังวล"], disgust: ["ย่นจมูก", "รังเกียจ"] };
+  angry: ["ขมวดคิ้ว", "ไม่พอใจ / หรือกำลังถาม"], surprise: ["ตาโต ปากอ้า", "ประหลาดใจ"], fear: ["ตาเบิก", "กลัว / กังวล"], disgust: ["ย่นจมูก", "รังเกียจ"],
+  unknown: ["ยังอ่านสีหน้าไม่ชัด", "ไม่แน่ใจ"] };
 export type Emotion = { emotion: string; level: number };
 
 export class EmotionMeter {

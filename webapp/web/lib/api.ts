@@ -1,5 +1,18 @@
 import type { LmFrame } from "./holistic";
+import type { FaceCrop } from "./expression";
 import { userBank } from "./mysigns";
+
+/** The face branch's answer (modules/face_fer.py): the expression read from the face PICTURE, kept apart from the sign result (late fusion). */
+export type FerSummary = { expression: string; confidence: number; valid_frac: number; quality: number; stable: number; n: number; probs: Record<string, number> | null };
+export type FaceFer = { ok: boolean; model?: string; n_frames?: number; latency_ms?: number; summary: FerSummary; per_segment: FerSummary[]; sign_modified: false;
+  track?: { t: number; expression: string; confidence: number; valid: boolean }[]; error?: string };
+
+/** One short line for the face branch's reading of a result ("สีหน้า (จากภาพ): ประหลาดใจ 62%"), or "" when the branch gave nothing. Display only. */
+export function ferCue(f?: FaceFer): string {
+  if (!f?.ok) return "";
+  const s = f.summary, th: Record<string, string> = { neutral: "เป็นกลาง", happy: "มีความสุข", sad: "เศร้า", angry: "โกรธ", surprise: "ประหลาดใจ", fear: "กลัว", disgust: "รังเกียจ" };
+  return s.expression === "unknown" ? "สีหน้า (จากภาพ): ไม่แน่ใจ" : `สีหน้า (จากภาพ): ${th[s.expression] ?? s.expression} ${Math.round(s.confidence * 100)}%`;
+}
 
 export type Segment = { t0: number; t1: number; status: "accepted" | "uncertain" | "unknown" | "transition"; word: string; p: number; candidates: string[];
   candidate_scores?: { word: string; score?: number | null }[]; emb?: string; kind?: "sign" | "letter" };
@@ -13,6 +26,7 @@ export type TranslateResult = {
   face: { question_yesno?: boolean; question_furrow?: boolean; question_wh?: boolean; negation?: boolean; affirmation?: boolean; emotion?: string;
     emotion_th?: string; intensity?: number; brow_furrow_rel?: number | null;
     affect?: { emotion?: string; intensity?: number; confidence?: number } };
+  face_fer?: FaceFer;
   timings_ms: Record<string, number>;
   vocab: string;
   model: string;
@@ -71,10 +85,12 @@ async function readStream(r: Response, onProgress: OnProgress): Promise<Translat
 }
 
 export async function translateFramesStream(frames: LmFrame[], width: number, height: number, o: Options, onProgress: OnProgress,
-  faceBaseline?: number[] | null, signal?: AbortSignal, capturePerf?: { mode: "default" | "nofx"; fps?: number; face_every?: number }): Promise<TranslateResult> {
+  faceBaseline?: number[] | null, signal?: AbortSignal, capturePerf?: { mode: "default" | "nofx"; fps?: number; face_every?: number },
+  faceCrops?: FaceCrop[]): Promise<TranslateResult> {
   const t0 = frames.length ? frames[0].t : 0;
   const body = { frames: frames.map((f) => ({ ...f, t: f.t - t0 })), width, height, vocab: o.vocab, llm: o.llm, speak: o.speak !== "off",
     speak_min_p: o.minP ?? 0.8, voice: o.voice ?? "male", face_question: o.faceQuestion, face_baseline: faceBaseline ?? null, user_bank: userBank(), alphabet: o.alphabet,
+    ...(faceCrops?.length ? { face_crops: faceCrops } : {}),
     ...(capturePerf ? { perf_mode: capturePerf.mode, client_fps: capturePerf.fps, face_every: capturePerf.face_every } : {}) };
   onProgress({ stage: "upload", p: 0.01 });
   return readStream(await fetch("/api/v1/translate/stream", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body), signal }), onProgress);

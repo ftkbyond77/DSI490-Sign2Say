@@ -22,3 +22,6 @@ length; same MediaPipe landmarks and scorer as `python main.py test`.
 | `results/` | `adapter_history.json`, `v10_reference.json` |
 
 Results and usage: `baseline-model.ipynb` (repo root). Never tuned on data_test.
+
+Presentation (`baseline.pptx` at the repo root, 5 slides): `collect_metrics.py` (TSL51 / Jack / data_test metrics) → `run_v10_slide.py` (v10 on the 6 shown clips)
+→ `make_figures_slides.py` (`figures/fig_*`) → `make_pptx.py`. Clips shown: `results/slide_selection.json`.

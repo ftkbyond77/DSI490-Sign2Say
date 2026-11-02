@@ -6,7 +6,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { HolisticLandmarker } from "@mediapipe/tasks-vision";
 import { openWidestCamera } from "@/lib/camera";
-import { ExpressionModel } from "@/lib/expression";
+import { ExpressionModel, type FaceCrop } from "@/lib/expression";
 import { createHolistic, detect, drawV2 as draw, EmotionMeter, getHolistic, preloadHolistic, replaceHolistic, handsUp, Normalizer, parts, type Delegate, type Emotion, type LmFrame, type Tone } from "@/lib/holistic";
 import { info, openLive, speak, translateFramesStream, translateVideoOnServerStream, vocabList, type LiveSocket, type LiveWords, type Options, type Progress, type TranslateResult } from "@/lib/api";
 import { b64ToBytes, playWav, unlockAudio } from "@/lib/audio";
@@ -204,9 +204,9 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
   };
 
   const request = useCallback((frames: LmFrame[], w: number, h: number, onProgress: (x: Progress) => void, signal?: AbortSignal,
-    capturePerf?: CapturePerf) => {
+    capturePerf?: CapturePerf, faceCrops?: FaceCrop[]) => {
     const rest = restRef.current;
-    return translateFramesStream(frames, w, h, optsRef.current, onProgress, rest.length >= 10 ? median(rest) : null, signal, capturePerf);
+    return translateFramesStream(frames, w, h, optsRef.current, onProgress, rest.length >= 10 ? median(rest) : null, signal, capturePerf, faceCrops);
   }, []);
 
   /** frames → server (progress streamed back) → result + speech. */
@@ -221,7 +221,8 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
         fps: duration > 0 ? (frames.length - 1) * 1000 / duration : undefined,
         face_every: faceEveryRef.current,
       } : undefined;
-      const r = await request(frames, w, h, setProgress, undefined, capturePerf);
+      const faceCrops = frames.length ? exprRef.current.takeCrops(frames[0].t, frames[frames.length - 1].t) : [];     // face branch: its own pictures, its own field
+      const r = await request(frames, w, h, setProgress, undefined, capturePerf, faceCrops);
       setProgress({ stage: "done", p: 1 });
       await handle(r);                         // unsure signs are shown as [?] (no guessed word) so the user can teach them
     } catch (e) { setError(`ประมวลผลไม่สำเร็จ: ${(e as Error).message}`); }
@@ -271,7 +272,7 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
         lastEmoRef.current = undefined;
       } else if (f && f.face.length) {
         if (expressionFrameRef.current++ % faceEveryRef.current === 0) {
-          const m = exprRef.current.failed ? null : exprRef.current.update(src, c.width, c.height, f.face, t);
+          const m = exprRef.current.failed ? null : exprRef.current.update(src, c.width, c.height, f.face, t, [f.lh, f.rh]);
           if (m) lastEmoRef.current = m;
           else if (f.bs.length >= 52) lastEmoRef.current = emoRef.current.update(f.bs);
         }

@@ -2,7 +2,7 @@
 // The words of one result as chips (Figma “WordChip”: Confident ✓ / Uncertain “?” / On teal). Tapping a chip opens “the right word
 // is …”: the segment is remembered as the user's own way of signing that word (personal sign memory, this browser only).
 import { useState } from "react";
-import type { TranslateResult } from "@/lib/api";
+import { ferCue, type TranslateResult } from "@/lib/api";
 import { saveSign } from "@/lib/mysigns";
 import { shows } from "@/lib/shown";
 import { signsChanged } from "@/lib/useSignEngine";
@@ -59,6 +59,6 @@ export default function Words({ r, onTeal = false, hint = false, vocab = [], min
 /** Non-manual cues the server read from the face (shown under a result). */
 export function cues(r: TranslateResult) {
   return [r.face?.question_yesno && (r.face?.question_furrow ? "คำถาม ไหม (ขมวดคิ้ว)" : "คำถาม (คิ้วยก)"), r.face?.negation && "ปฏิเสธ (ส่ายหัว)",
-    r.face?.affirmation && "ยืนยัน (พยักหน้า)", r.face?.emotion && r.face.emotion !== "neutral" && `อารมณ์: ${r.face.emotion_th}`].filter(Boolean) as string[];
+    r.face?.affirmation && "ยืนยัน (พยักหน้า)", r.face?.emotion && r.face.emotion !== "neutral" && `อารมณ์: ${r.face.emotion_th}`, ferCue(r.face_fer)].filter(Boolean) as string[];
 }
 

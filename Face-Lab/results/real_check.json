@@ -1,0 +1,198 @@
+{
+ "n_frames": 356,
+ "judged": {
+  "neutral": 257,
+  "happy": 3,
+  "ambiguous": 55,
+  "face_covered": 41
+ },
+ "models": {
+  "efficientnetb0": {
+   "stability": {
+    "no prior": {
+     "prior": {},
+     "raw_answered_on_neutral": 0.556,
+     "shown_neutral": 0.646,
+     "shown_wrong_expression": 0.125,
+     "shown_unknown": 0.23,
+     "smiles_shown_happy": "3/3",
+     "per_signer": {
+      "Boom": {
+       "shown_neutral": 0.583,
+       "wrong": 0.136
+      },
+      "Jack": {
+       "shown_neutral": 0.896,
+       "wrong": 0.026
+      },
+      "Pitty": {
+       "shown_neutral": 0.481,
+       "wrong": 0.208
+      }
+     }
+    },
+    "shipped": {
+     "prior": {
+      "neutral": 0.6
+     },
+     "raw_answered_on_neutral": 0.704,
+     "shown_neutral": 0.821,
+     "shown_wrong_expression": 0.066,
+     "shown_unknown": 0.113,
+     "smiles_shown_happy": "2/3",
+     "per_signer": {
+      "Boom": {
+       "shown_neutral": 0.825,
+       "wrong": 0.087
+      },
+      "Jack": {
+       "shown_neutral": 0.961,
+       "wrong": 0.0
+      },
+      "Pitty": {
+       "shown_neutral": 0.675,
+       "wrong": 0.104
+      }
+     }
+    }
+   },
+   "expressive_frames": [
+    {
+     "clip": 12,
+     "t": 1.5,
+     "what": "smile",
+     "top": [
+      [
+       "happy",
+       0.54
+      ],
+      [
+       "neutral",
+       0.17
+      ]
+     ]
+    },
+    {
+     "clip": 15,
+     "t": 0.0,
+     "what": "smile",
+     "top": [
+      [
+       "happy",
+       0.58
+      ],
+      [
+       "fear",
+       0.15
+      ]
+     ]
+    },
+    {
+     "clip": 15,
+     "t": 1.5,
+     "what": "smile",
+     "top": [
+      [
+       "happy",
+       0.3
+      ],
+      [
+       "neutral",
+       0.27
+      ]
+     ]
+    },
+    {
+     "clip": 3,
+     "t": 10.6,
+     "what": "question brows",
+     "top": [
+      [
+       "surprise",
+       0.59
+      ],
+      [
+       "fear",
+       0.11
+      ]
+     ]
+    },
+    {
+     "clip": 5,
+     "t": 7.5,
+     "what": "question brows",
+     "top": [
+      [
+       "surprise",
+       0.67
+      ],
+      [
+       "neutral",
+       0.11
+      ]
+     ]
+    },
+    {
+     "clip": 5,
+     "t": 9.0,
+     "what": "question brows",
+     "top": [
+      [
+       "surprise",
+       0.74
+      ],
+      [
+       "happy",
+       0.07
+      ]
+     ]
+    },
+    {
+     "clip": 0,
+     "t": 0.0,
+     "what": "sad line",
+     "top": [
+      [
+       "sad",
+       0.42
+      ],
+      [
+       "neutral",
+       0.34
+      ]
+     ]
+    },
+    {
+     "clip": 0,
+     "t": 1.5,
+     "what": "sad line",
+     "top": [
+      [
+       "sad",
+       0.32
+      ],
+      [
+       "neutral",
+       0.28
+      ]
+     ]
+    },
+    {
+     "clip": 9,
+     "t": 3.2,
+     "what": "head back",
+     "top": [
+      [
+       "disgust",
+       0.89
+      ],
+      [
+       "angry",
+       0.09
+      ]
+     ]
+    }
+   ]
+  }
+ }
+}
