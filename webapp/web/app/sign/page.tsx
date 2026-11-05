@@ -41,7 +41,7 @@ export default function SignPage() {
             <div className="tr">
               <CamToggle e={e} onOpen={() => e.openCamera()} />
               <Link href="/sign/live" className="glass-btn" aria-label="กล้องเต็มจอ" title="กล้องเต็มจอ (โหมดสด)">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ccfbf1" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" /></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d9f3f4" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" /></svg>
               </Link>
             </div>
             {e.camOn && <div className="bl"><Seen e={e} /></div>}
@@ -53,7 +53,7 @@ export default function SignPage() {
           {e.camOn && e.fps > 0 && e.fps < 8 && <p className="note">เครื่องประมวลผลได้ {e.fps} fps (ช้า) — ทำท่าช้าลงเล็กน้อย และให้มืออยู่ในกรอบชัด ๆ</p>}
           {e.exposure && <p className="note">ปรับภาพอัตโนมัติ: {e.exposure}</p>}
           {e.error && <p className="err">{e.error}</p>}
-          {e.apiDown && <p className="err">เชื่อมต่อเซิร์ฟเวอร์แปลภาษามือไม่ได้ — ตรวจว่า sign-api ทำงานอยู่</p>}
+          {e.apiDown && <p className="err">กำลังเชื่อมต่อเซิร์ฟเวอร์แปลภาษามือ… (ระบบอาจเพิ่งเริ่มทำงาน — ลองใหม่ให้เองทุกไม่กี่วินาที ถ้านานเกินไปให้ตรวจว่า sign-api ทำงานอยู่)</p>}
           <div className="cam-meta">
             <span>{e.camOn ? `${e.delegate} · ${e.fps} fps` : "ภาพประมวลผลในเบราว์เซอร์ ส่งเฉพาะจุด landmark"}</span>
           </div>

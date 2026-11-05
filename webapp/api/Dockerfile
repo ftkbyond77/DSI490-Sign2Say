@@ -11,5 +11,5 @@ COPY modules /app/modules
 COPY webapp/api/app.py /app/app.py
 COPY webapp/api/request_cache.py /app/request_cache.py
 EXPOSE 8000
-HEALTHCHECK --interval=20s --timeout=5s --start-period=60s CMD curl -fs http://localhost:8000/v1/health || exit 1
+HEALTHCHECK --interval=20s --timeout=5s --start-period=60s --start-interval=2s CMD curl -fs http://localhost:8000/v1/health || exit 1
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]

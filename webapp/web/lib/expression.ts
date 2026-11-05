@@ -34,7 +34,7 @@ export class ExpressionModel {
         if (j.crop) this.cfg = { scale: j.crop.scale ?? this.cfg.scale, shift_up: j.crop.shift_up ?? this.cfg.shift_up };
         if (this.c96 && this.c48) { this.c96.width = this.c96.height = 96; this.c48.width = this.c48.height = 48; }
         this.failed = false;
-      } catch (e) { this.failed = true; console.warn("face expression model unavailable, using blendshapes", e); }
+      } catch (e) { this.failed = true; this.loading = null; console.warn("face expression model unavailable, using blendshapes", e); }   // loading = null: asked again when the camera opens
     })();
     return this.loading;
   }

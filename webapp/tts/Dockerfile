@@ -18,5 +18,5 @@ RUN python -c "from vocos import Vocos; Vocos.from_pretrained('charactr/vocos-me
 COPY modules/__init__.py modules/tts.py modules/utils.py /app/modules/
 COPY webapp/tts/app.py /app/app.py
 EXPOSE 8001
-HEALTHCHECK --interval=20s --timeout=5s --start-period=240s CMD curl -fs http://localhost:8001/v1/health || exit 1
+HEALTHCHECK --interval=20s --timeout=5s --start-period=240s --start-interval=3s CMD curl -fs http://localhost:8001/v1/health || exit 1
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8001", "--workers", "1"]

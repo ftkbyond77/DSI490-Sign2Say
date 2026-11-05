@@ -11,9 +11,9 @@ export function Ic({ n, s = 20, className }: { n: string; s?: number; className?
 export function Logo({ variant = "default", href = "/" }: { variant?: "default" | "on-teal" | "glass"; href?: string }) {
   const icon = variant === "on-teal" ? "hand-teal" : variant === "glass" ? "hand-white-22" : "logo-hand";
   return (
-    <Link href={href} className={`logo ${variant}`} aria-label="ThaiSLM — หน้าแรก">
+    <Link href={href} className={`logo ${variant}`} aria-label="Sign2Say — หน้าแรก">
       <span className="mark"><Ic n={icon} s={variant === "default" ? 24 : 22} /></span>
-      <span className="name">ThaiSLM</span>
+      <span className="name">Sign2Say</span>
     </Link>
   );
 }

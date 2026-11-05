@@ -119,7 +119,7 @@ export default function ChatPage() {
                 <div className="bubble">
                   <p>{m.text}</p>
                   <button className={`replay-chip ${playingId === m.id ? "on" : ""}`} onClick={() => { a.show(m.t2s, true); setPlayingId(m.id); }}>
-                    <Ic n="play-coral" s={14} />{playingId === m.id ? "อวาตาร์กำลังทำภาษามือ…" : "ดูอวาตาร์ทำภาษามืออีกครั้ง"}
+                    <Ic n="play-teal" s={14} />{playingId === m.id ? "อวาตาร์กำลังทำภาษามือ…" : "ดูอวาตาร์ทำภาษามืออีกครั้ง"}
                   </button>
                 </div>
               </div>
@@ -137,7 +137,7 @@ export default function ChatPage() {
             <form className="input" onSubmit={(ev) => { ev.preventDefault(); send(draft); }}>
               <input value={draft} onChange={(ev) => setDraft(ev.target.value)} placeholder="พิมพ์หรือพูด แล้วอวาตาร์จะทำภาษามือให้…" aria-label="ข้อความถึงผู้ใช้ภาษามือ" maxLength={400} />
               <button type="button" className={`sq ${mic.state === "recording" ? "on" : ""}`} onClick={() => mic.start("th")} disabled={mic.state === "final"}
-                aria-label={mic.state === "recording" ? "หยุดพูด" : "กดเพื่อพูด"}><Ic n="mic-coral-19" s={19} /></button>
+                aria-label={mic.state === "recording" ? "หยุดพูด" : "กดเพื่อพูด"}><Ic n="mic-teal-19" s={19} /></button>
               <button type="submit" className="sq send" disabled={!draft.trim() || busy} aria-label="ส่ง"><Ic n="send-white" s={19} /></button>
             </form>
           </div>

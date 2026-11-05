@@ -1,5 +1,6 @@
 # ThaiSLM web demo — `docker compose up --build`, then open http://localhost:8080 (ONE site for both directions)
 #   gateway  nginx, the only published port (8080) — / → web, /api → sign-api, /tts → tts, /t2s → reverse-api, /avatars → character files
+#            (starts with `web`; the back ends may still be loading — see the note at the gateway service)
 #   web      Next.js front end, both directions: camera + MediaPipe Holistic in the browser (sign → text / speech) and the
 #            three-vrm signing avatar (text / speech → sign); screens /, /sign, /sign/live, /text, /chat (Figma “ThaiSLM v2”)
 #   sign-api FastAPI + ONNX Runtime: landmarks or video → words / Thai sentence (stateless; scale with --scale sign-api=N)
@@ -21,15 +22,12 @@ services:
       - reverse-avatars:/srv/avatars:ro                           # optimised copies + thumbnails written by reverse-api
     ports:
       - "8080:80"
+    # The site opens as soon as the web front end runs (seconds). It no longer waits for the back ends (sign-api / reverse-api / tts:
+    # the voice alone needs ≈ 90 s on the GPU): nginx resolves them per request, answers 503 {"detail":"starting"} while one is not up,
+    # and the screens retry by themselves, so each feature turns on the moment its service is healthy.
     depends_on:
       web:
         condition: service_started
-      sign-api:
-        condition: service_healthy
-      reverse-api:
-        condition: service_healthy
-      tts:
-        condition: service_healthy              # the site opens when the voice is loaded (≈ 90 s on the GPU)
     restart: unless-stopped
 
   web:

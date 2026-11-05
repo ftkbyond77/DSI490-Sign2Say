@@ -46,12 +46,22 @@ export default function TextPage() {
   const pending = useRef<string | null>(null);
 
   useEffect(() => {
-    api.health().then((h) => setHealth({ ok: h.ok, device: h.speech?.device ?? "cpu",
-      text: `คลังท่า ${h.signs.toLocaleString()} คำ${h.english ? " · EN" : ""}${h.speech?.th_model ? ` · เสียง ${h.speech.th_model.replace("whisper-th-", "Whisper-th ")}` : ""}` }))
-      .catch(() => setHealth({ ok: false, device: "cpu", text: "เชื่อมต่อเซิร์ฟเวอร์แปลข้อความไม่ได้" }));
-    api.examples().then(({ examples }) => examples.length && setExamples(examples.slice(0, 6))).catch(() => {});
+    // the server may still be starting (docker compose opens the site first): ask again every few seconds until it answers
+    let stop = false, timer = 0;
+    const probe = () => api.health().then((h) => {
+      if (stop) return;
+      setHealth({ ok: h.ok, device: h.speech?.device ?? "cpu",
+        text: `คลังท่า ${h.signs.toLocaleString()} คำ${h.english ? " · EN" : ""}${h.speech?.th_model ? ` · เสียง ${h.speech.th_model.replace("whisper-th-", "Whisper-th ")}` : ""}` });
+      api.examples().then(({ examples }) => examples.length && !stop && setExamples(examples.slice(0, 6))).catch(() => {});
+    }).catch(() => {
+      if (stop) return;
+      setHealth({ ok: false, device: "cpu", text: "กำลังเชื่อมต่อเซิร์ฟเวอร์แปลข้อความ… (ลองใหม่ให้เอง)" });
+      timer = window.setTimeout(probe, 3000);
+    });
+    probe();
     const q = new URLSearchParams(window.location.search).get("q");         // /text?q=คำ (from คลังคำ): sign it right away
     if (q) { setText(q); pending.current = q; }
+    return () => { stop = true; window.clearTimeout(timer); };
   }, []);
 
   const go = useCallback(async (source = "text", t = text, g = grammar) => {
@@ -141,7 +151,7 @@ export default function TextPage() {
             <div className="in-actions">
               <button className={`mic ${mic.state === "recording" ? "on" : mic.state === "final" ? "wait" : ""}`} onClick={() => mic.start(lang === "en" ? "en" : "th")}
                 disabled={mic.state === "final"} aria-label={mic.state === "recording" ? "หยุดพูด" : "กดเพื่อพูด"} title={mic.state === "recording" ? `หยุด (${mic.seconds.toFixed(0)} วิ)` : "กดเพื่อพูด กดอีกครั้งเพื่อหยุด"}>
-                <img src="/ui/mic-coral-24.svg" width={24} height={24} alt="" />
+                <img src="/ui/mic-teal-24.svg" width={24} height={24} alt="" />
               </button>
               <button className="btn coral wide" onClick={() => go()} disabled={busy || !text.trim()}>{busy ? "กำลังแปล…" : "▶ แสดงภาษามือ"}</button>
             </div>
@@ -236,7 +246,7 @@ export default function TextPage() {
               {a.playing ? <img src="/ui/pause-white.svg" width={22} height={22} alt="" />
                 : <svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" /></svg>}
             </button>
-            <button className="replay" onClick={a.replay} aria-label="เล่นซ้ำ"><img src="/ui/replay-coral.svg" width={22} height={22} alt="" /></button>
+            <button className="replay" onClick={a.replay} aria-label="เล่นซ้ำ"><img src="/ui/replay-teal.svg" width={22} height={22} alt="" /></button>
             <div className="seg" role="radiogroup" aria-label="ความเร็ว">
               {[0.5, 0.75, 1, 1.25].map((s) => <button key={s} className={a.speed === s ? "on" : ""} onClick={() => a.setSpeed(s)} role="radio" aria-checked={a.speed === s}>{s}×</button>)}
             </div>

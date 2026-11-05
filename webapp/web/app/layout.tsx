@@ -7,10 +7,10 @@ const prompt = Prompt({ subsets: ["thai", "latin"], weight: ["500", "600", "700"
 const plex = IBM_Plex_Sans_Thai({ subsets: ["thai", "latin"], weight: ["400", "500", "600"], variable: "--font-plex", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "ThaiSLM — แปลภาษามือไทย",
+  title: "Sign2Say — แปลภาษามือไทย",
   description: "Thai Sign Language ⇄ Thai text and speech: sign to the camera, or type / speak and the avatar signs",
 };
-export const viewport: Viewport = { themeColor: "#0f766e", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#2aafb3", width: "device-width", initialScale: 1 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

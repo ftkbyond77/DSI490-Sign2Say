@@ -31,5 +31,5 @@ COPY --from=convert /models /models
 COPY reverse_text2sign/service/speech/app.py /app/app.py
 ENV SPEECH_MODELS=/models SPEECH_THREADS=4 SPEECH_DEVICE=auto SPEECH_TH_MODEL=auto
 EXPOSE 8002
-HEALTHCHECK --interval=20s --timeout=5s --start-period=120s CMD curl -fs http://localhost:8002/health || exit 1
+HEALTHCHECK --interval=20s --timeout=5s --start-period=120s --start-interval=3s CMD curl -fs http://localhost:8002/health || exit 1
 CMD ["uvicorn", "--app-dir", "/app", "app:app", "--host", "0.0.0.0", "--port", "8002", "--workers", "1"]

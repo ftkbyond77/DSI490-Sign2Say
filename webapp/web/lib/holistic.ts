@@ -313,9 +313,9 @@ export function draw(ctx: CanvasRenderingContext2D, f: LmFrame | null, w: number
 }
 
 // ----------------------------------------------------------------------------------------------------------------------------
-// v2 overlay (the app's teal / coral theme): body as soft lines, each hand in its colour with white joints (left = mint, right = coral),
+// v2 overlay (the app's teal / coral theme): body as soft lines, each hand in its colour with white joints (left = mint, right = white),
 // the face framed by rounded corner marks with a small label pill in the app's font. Same landmarks as draw(); /classic keeps draw().
-const V2 = { body: "rgba(204, 251, 241, .45)", left: "#5eead4", right: "#fb7185", face: "rgba(153, 246, 228, .9)", faceOn: "#2dd4bf", ink: "#042f2e" };
+const V2 = { body: "rgba(204, 251, 241, .45)", left: "#5eead4", right: "#ffffff", face: "rgba(153, 246, 228, .9)", faceOn: "#2dd4bf", ink: "#042f2e" };
 let v2Font = "";
 function rounded(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
   ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();

@@ -4,10 +4,10 @@
 // with streamed progress, and speech. The logic is the one of the original SignStudio (components/SignStudio.tsx, kept at /classic);
 // only the UI moved out, so each screen draws it its own way.
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { HolisticLandmarker } from "@mediapipe/tasks-vision";
 import { openWidestCamera } from "@/lib/camera";
 import { ExpressionModel, type FaceCrop } from "@/lib/expression";
-import { createHolistic, detect, drawV2 as draw, EmotionMeter, getHolistic, preloadHolistic, replaceHolistic, handsUp, Normalizer, parts, type Delegate, type Emotion, type LmFrame, type Tone } from "@/lib/holistic";
+import { drawV2 as draw, EmotionMeter, handsUp, Normalizer, parts, type Delegate, type Emotion, type LmFrame, type Tone } from "@/lib/holistic";
+import { createDetector, getDetector, preloadDetector, replaceDetector, type Detector } from "@/lib/detector";   // MediaPipe in a Web Worker (main-thread fallback inside)
 import { info, openLive, speak, translateFramesStream, translateVideoOnServerStream, vocabList, type LiveSocket, type LiveWords, type Options, type Progress, type TranslateResult } from "@/lib/api";
 import { b64ToBytes, playWav, unlockAudio } from "@/lib/audio";
 import { sayable, shownText } from "@/lib/shown";
@@ -80,11 +80,10 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
   const { opts, endMs, autoLight } = settings;
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const lmRef = useRef<HolisticLandmarker | null>(null);
+  const detRef = useRef<Detector | null>(null);
   const delegateRef = useRef<Delegate>("GPU");
-  const faceLmRef = useRef<HolisticLandmarker | null>(null);      // GPU+CPU mode: expressions on the CPU every few frames
-  const nRef = useRef(0);
-  const fileLmRef = useRef<{ lm: HolisticLandmarker; t: number } | null>(null);
+  const genRef = useRef(0);                                       // the camera loop that is current (a loop from before a close / re-open stops itself)
+  const fileDetRef = useRef<{ det: Detector; t: number } | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const rafRef = useRef<number>(0);
   const framesRef = useRef<LmFrame[]>([]);
@@ -141,16 +140,27 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
   const set = (s: Status) => { statusRef.current = s; setStatus(s); };
 
   useEffect(() => {
-    preloadHolistic();                                     // MediaPipe starts loading now, not when the camera button is pressed
+    preloadDetector();                                     // MediaPipe starts loading now (in a worker: the page stays usable), not when the camera button is pressed
     const q = new URLSearchParams(window.location.search);
     perfNoFxRef.current = q.get("perf") === "nofx";
     faceEveryRef.current = parseFaceEvery(q.get("faceEvery"));
     streamOnRef.current = q.get("stream") !== "0";
     const ex = exprRef.current;
-    const t = window.setTimeout(() => ex.load(), 2500);     // the expression model after it (small; not competing with MediaPipe)
-    info().then((m) => { setModel(m); setApiDown(false); }).catch(() => { setModel(null); setApiDown(true); });
-    vocabList().then(setVocab).catch(() => setVocab([]));
-    return () => window.clearTimeout(t);
+    // The server may still be starting (docker compose opens the site before the back ends are up): ask again every few seconds until it
+    // answers, then fetch the vocabulary and the expression model — nothing needs a page reload.
+    let stop = false, timer = 0, late = 0;
+    const probe = (n: number) => info().then((m) => {
+      if (stop) return;
+      setModel(m); setApiDown(false);
+      vocabList().then((v) => { if (!stop) setVocab(v); }).catch(() => { if (!stop) setVocab([]); });
+      late = window.setTimeout(() => ex.load(), 2500);       // the expression model after it (small; not competing with MediaPipe)
+    }).catch(() => {
+      if (stop) return;
+      setModel(null); setApiDown(true);
+      timer = window.setTimeout(() => probe(n + 1), Math.min(5000, 1500 + n * 500));
+    });
+    probe(0);
+    return () => { stop = true; window.clearTimeout(timer); window.clearTimeout(late); };
   }, []);
   useEffect(() => { if (normRef.current) normRef.current.enabled = autoLight; }, [autoLight]);
 
@@ -234,19 +244,22 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
     if (errRef.current.switching) return;
     errRef.current.switching = true;
     try {
-      lmRef.current?.close(); lmRef.current = null;
-      faceLmRef.current?.close(); faceLmRef.current = null;
-      const l = await createHolistic("CPU");
-      replaceHolistic(l);                                  // the shared one failed on this machine: every screen uses the CPU one now
-      lmRef.current = l.lm; delegateRef.current = l.delegate; setDelegate(l.delegate);
+      const old = detRef.current;
+      const d = await createDetector("CPU");
+      replaceDetector(d);                                  // the shared one failed on this machine: every screen uses the CPU one now
+      detRef.current = d; delegateRef.current = d.delegate; setDelegate(d.delegate);
+      old?.close();
     } catch (e) { setError(`MediaPipe ใช้งานไม่ได้: ${(e as Error).message}`); }
     finally { errRef.current = { n: 0, switching: false }; }
   }, []);
 
-  const loop = useCallback(() => {
+  // One frame at a time: snapshot → worker → landmarks → everything below (as before). The next frame is requested when this one is done,
+  // so a slow machine simply runs at a lower frame rate instead of piling frames up.
+  const loop = useCallback(async () => {
+    const gen = genRef.current;
     try {
-      const v = videoRef.current, c = canvasRef.current, lm = lmRef.current;
-      if (!(v && c && lm && v.readyState >= 2)) return;
+      const v = videoRef.current, c = canvasRef.current, det = detRef.current;
+      if (!(v && c && det && v.readyState >= 2)) return;
       const t = performance.now();
       let f: LmFrame | null = null;
       if (!normRef.current) { normRef.current = new Normalizer(); normRef.current.enabled = autoLightRef.current; }
@@ -254,14 +267,11 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
       let src: HTMLVideoElement | HTMLCanvasElement = v;
       try {
         src = N.frame(v, t);
-        f = detect(lm, src, t); errRef.current.n = 0;
-        const fl = faceLmRef.current;
         const skipLiveFace = perfNoFxRef.current && modeRef.current === "live";
+        f = await det.detect(src, t, !skipLiveFace);       // expressions (blendshapes) every 8th frame on the CPU, decided inside the detector
+        errRef.current.n = 0;
         if (skipLiveFace && f) f.bs = [];
-        if (!skipLiveFace && f && fl && f.face.length && nRef.current++ % 8 === 0) {        // expressions (blendshapes) every 8th frame on the CPU
-          const g = detect(fl, src, t);
-          if (g) f.bs = g.bs;
-        }
+        if (gen !== genRef.current) return;                // the camera was closed / re-opened while this frame was being read
       } catch {                                    // a frame failed (e.g. the GPU path) — never stop the loop; move to the CPU after a few
         if (++errRef.current.n >= 3 && delegateRef.current !== "CPU") switchToCpu();
         return;
@@ -320,7 +330,7 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
         }
       }
     } finally {
-      rafRef.current = requestAnimationFrame(loop);
+      if (gen === genRef.current && streamRef.current) rafRef.current = requestAnimationFrame(loop);
     }
   }, [send, switchToCpu]);
 
@@ -335,9 +345,9 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
   async function openNow() {
     setError(""); set("loading");
     try {
-      if (!lmRef.current) {
-        const { lm, delegate: d, face } = await getHolistic();      // usually ready already: preloaded when the screen opened
-        lmRef.current = lm; faceLmRef.current = face ?? null; delegateRef.current = d; setDelegate(d);
+      if (!detRef.current) {
+        const det = await getDetector();                    // usually ready already: preloaded when the screen opened
+        detRef.current = det; delegateRef.current = det.delegate; setDelegate(det.delegate);
         exprRef.current.load();                               // in the background: the label falls back to blendshapes until it is ready
       }
       const s = await openWidestCamera();
@@ -348,14 +358,14 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
       setCamSize([v.videoWidth, v.videoHeight]);          // the stage takes the camera's own shape (4:3 sensors show their full height)
       set("camera");
       expressionFrameRef.current = 0;
-      cancelAnimationFrame(rafRef.current); rafRef.current = requestAnimationFrame(loop);
+      cancelAnimationFrame(rafRef.current); genRef.current++; rafRef.current = requestAnimationFrame(loop);
       return true;
     } catch (e) { setError(`เปิดกล้องไม่ได้: ${(e as Error).message}`); set("idle"); return false; }
   }
   }, [loop]);
 
   const closeCamera = useCallback(() => {
-    cancelAnimationFrame(rafRef.current);
+    cancelAnimationFrame(rafRef.current); genRef.current++;
     streamRef.current?.getTracks().forEach((t) => t.stop()); streamRef.current = null;
     const L = live.current; L.state = "waiting"; L.pre = []; L.utt = []; L.upSince = 0;
     dropLive();
@@ -392,8 +402,8 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
         const r = await translateVideoOnServerStream(file, optsRef.current, setProgress);
         setProgress({ stage: "done", p: 1 }); await handle({ ...r, title: file.name }); return;
       }
-      if (!fileLmRef.current) { const { lm } = await createHolistic("CPU"); fileLmRef.current = { lm, t: 1000 }; }
-      const F = fileLmRef.current;
+      if (!fileDetRef.current) fileDetRef.current = { det: await createDetector("CPU"), t: 1000 };
+      const F = fileDetRef.current;
       const FN = new Normalizer(); FN.enabled = autoLightRef.current;
       const v = document.createElement("video");
       v.muted = true; v.playsInline = true; v.src = URL.createObjectURL(file);
@@ -403,7 +413,7 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
       for (let t = 0; t < v.duration; t += 1 / 25) {
         v.currentTime = t;
         await new Promise((ok) => { v.onseeked = ok; });
-        const f = detect(F.lm, FN.frame(v, t * 1000), base + t * 1000);
+        const f = await F.det.detect(FN.frame(v, t * 1000), base + t * 1000, false);
         if (f) frames.push({ ...f, t: t * 1000 });
         if (frames.length % 5 === 0) setProgress({ stage: "browser", p: 0.6 * (t / v.duration) });
       }
