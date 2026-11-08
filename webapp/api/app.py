@@ -262,7 +262,10 @@ def _public(result):
     out["segments"] = [dict(t0=s["t0"], t1=s["t1"], status=s["status"], word=s["nearest"], p=round(s.get("p_correct", 0), 3), kind=s.get("kind", "sign"),
                             candidates=[c["word"] for c in s["candidates"][:5]],     # words only: the web shows them in the [?] menu
                             candidate_scores=[dict(word=c["word"], score=c.get("score"), ai_prob=c.get("ai_prob"), pose_score=c.get("pose_score"), fused_score=c.get("fused_score")) for c in s["candidates"][:5]],
-                            **({"symbolic": s["symbolic"]} if "symbolic" in s else {}), **({"emb": _vec_to_b64(s["emb"])} if "emb" in s else {}))
+                            **({"symbolic": s["symbolic"]} if "symbolic" in s else {}),
+                            **({"hand_frac": s["hand_frac"]} if "hand_frac" in s else {}),
+                            # the personal sign memory learns from this embedding: never from a sign nobody saw the hands of (it would teach "ฉัน" / "กิน" for a hand-less wrist)
+                            **({"emb": _vec_to_b64(s["emb"])} if "emb" in s and s.get("hand_frac", 1.0) >= 0.5 else {}))
                        for s in result.get("segments", [])]
     f = result.get("fusion") or {}
     out["language"] = {k: f.get(k) for k in ("sentence_th", "tentative_sentence_th", "meaning_th", "evidence_gloss", "evidence_guard", "provider", "chosen")}
@@ -353,7 +356,25 @@ def _save_request(req: TranslateRequest, out: dict, hand_canonicalization: dict 
     save_request(SAVE_DIR, req, out, hand_canonicalization, hand_gap_s)
 
 
+_ACTIVE = [0]                       # whole-utterance requests being computed right now: live-stream steps wait for them (same answer, less CPU contention)
+_ACTIVE_LOCK = threading.Lock()
+
+
+def _busy():
+    return _ACTIVE[0] > 0
+
+
 def _frames_job(req: TranslateRequest, progress=None):
+    with _ACTIVE_LOCK:
+        _ACTIVE[0] += 1
+    try:
+        return _frames_job_inner(req, progress)
+    finally:
+        with _ACTIVE_LOCK:
+            _ACTIVE[0] -= 1
+
+
+def _frames_job_inner(req: TranslateRequest, progress=None):
     t = time.perf_counter()
     say = progress or (lambda stage, p: None)
     p = pipe(req.vocab, req.llm)
@@ -481,7 +502,7 @@ async def live(ws: WebSocket):
     hw = tuple(int(x) for x in init.get("hw") or (init.get("height", 720), init.get("width", 1280)))
     p = pipe(init.get("vocab", "conversation"), llm=False)
     cfg = {**dict(step_s=0.5, lookahead_s=0.8, stable_n=1), **(p.spot_all.get("stream") or {})}     # the model's "stream" overrides v9's
-    stream = LiveStream(p, hw, alphabet=init.get("alphabet", p.spot_all.get("alphabet", "en")), **cfg)
+    stream = LiveStream(p, hw, alphabet=init.get("alphabet", p.spot_all.get("alphabet", "en")), defer=_busy, **cfg)
     sent, last = 0, None
 
     def changes(final=False):
@@ -499,12 +520,15 @@ async def live(ws: WebSocket):
             msg = await ws.receive_json()
             if msg.get("end"):
                 break
+            if "pause" in msg:                    # phase 3: the client sent the whole utterance early → stop stepping (frames keep buffering)
+                stream.paused = bool(msg["pause"])
+                continue
             raw = from_browser([msg], hw)
             stream.add({k: raw[k][0] for k in KEYS}, float(msg.get("t", 0.0)) / 1000.0)
             ch = changes()
             if ch:
                 await ws.send_json(ch)
-        await asyncio.get_running_loop().run_in_executor(None, stream.close)
+        await asyncio.get_running_loop().run_in_executor(None, lambda: stream.close(flush=not (_busy() or stream.paused)))      # a request for the whole utterance is already running / was sent: it gives the final words
         await ws.send_json(changes(final=True))
         await ws.close()
     except WebSocketDisconnect:

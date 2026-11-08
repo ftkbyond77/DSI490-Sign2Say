@@ -5,15 +5,17 @@
 import type { LiveWords as Words } from "@/lib/api";
 import { shows } from "./Words";
 
-export default function LiveWords({ w, busy = false, minP = 0.8 }: { w: Words; busy?: boolean; minP?: number }) {
-  const empty = !w.confirmed.length && !w.partial.length;
+export default function LiveWords({ w, busy = false, minP = 0.8, waiting = false }: { w: Words; busy?: boolean; minP?: number; waiting?: boolean }) {
+  // waiting = the camera does not see the hands right now: nothing is read from a body without hands, so the words wait for them
+  const partial = waiting ? [] : w.partial;
+  const empty = !w.confirmed.length && !partial.length;
   return (
     <div className="live-words" aria-live="polite" aria-label="คำที่อ่านได้ระหว่างทำท่า">
-      {empty && <span className="lw wait">{busy ? "กำลังอ่านท่า…" : "กำลังดูท่า…"}</span>}
+      {empty && <span className="lw wait">{busy ? "กำลังอ่านท่า…" : waiting ? "กำลังรอเห็นมือ…" : "กำลังดูท่า…"}</span>}
       {w.confirmed.map((x, i) => (
         <span key={`c${i}`} className={shows(x, minP) ? "lw ok" : "lw unsure"}>{shows(x, minP) ? x.word : "[?]"}</span>
       ))}
-      {w.partial.map((x, i) => (
+      {partial.map((x, i) => (
         <span key={`p${i}`} className="lw partial">{shows(x, minP) ? x.word : "…"}</span>
       ))}
     </div>

@@ -91,8 +91,13 @@ class OnnxBackend:
         md = Path(model_dir) / "onnx"
         so = ort.SessionOptions()
         so.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
-        if threads or os.environ.get("ORT_THREADS"):
-            so.intra_op_num_threads = int(threads or os.environ["ORT_THREADS"])
+        # auto-detect: min(8, this machine's CPU count) — 8 is what was measured best on a 12-thread laptop; a 4-core machine / a Mac never gets more threads than cores
+        so.intra_op_num_threads = int(threads or os.environ.get("ORT_THREADS") or min(8, os.cpu_count() or 4))
+        # phase 3: worker threads sleep instead of spin-waiting between runs (ORT_SPIN=1 = the old busy-wait). The browser's MediaPipe shares this
+        # machine's CPU; with spinning, the 0.5 s live-stream steps kept up to 8 cores busy and the camera dropped from ~15 to ~11 fps (measured).
+        if os.environ.get("ORT_SPIN", "0") != "1":
+            so.add_session_config_entry("session.intra_op.allow_spinning", "0")
+            so.add_session_config_entry("session.inter_op.allow_spinning", "0")
         prov = ort_providers(device)
         # CPU: the int8 encoder when the export's parity check kept it (models/onnx/parity.json); THAISLM_INT8=0 forces fp32
         int8 = md / "encoder.int8.onnx"
@@ -100,6 +105,10 @@ class OnnxBackend:
         self.enc = ort_session(int8 if use_int8 else md / "encoder.onnx", so, prov)
         self.precision = "int8" if use_int8 else "fp32"
         self.tagger = ort_session(md / "tagger.onnx", so, prov)
+        # phase-3 signing gate (optional file): the frame tagger fine-tuned with "hands up but NOT signing" negatives; the pipeline uses it only
+        # as a veto on long non-sign runs (SignPipeline._tag, spotting.json "gate"). THAISLM_GATE=0 = exactly the old tagger.
+        gate = md / "gate_tagger.onnx"
+        self.gate = ort_session(gate, so, prov) if gate.exists() and os.environ.get("THAISLM_GATE", "1") != "0" else None
         self.providers = self.enc.get_providers()
         self.device = {v: k for k, v in ORT_GPU.items()}.get(self.providers[0], "cpu")
 
@@ -124,6 +133,10 @@ class OnnxBackend:
 
     def tag(self, x):
         return _softmax(self.tagger.run(None, {"x": x[None].astype(np.float32)})[0][0])
+
+    def gate_tag(self, x):
+        """the signing gate's frame probabilities (same input / output as `tag`), or None when no gate model is shipped / it is turned off"""
+        return None if self.gate is None else _softmax(self.gate.run(None, {"x": x[None].astype(np.float32)})[0][0])
 
 
 class TorchBackend:

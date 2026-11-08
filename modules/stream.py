@@ -74,7 +74,8 @@ class StreamingTranslator:
         self.proc_ms.append((time.perf_counter() - w0) * 1000)
         done = now + self.proc_ms[-1] / 1000.0           # the result exists only after the compute (real-time accounting)
         self.busy_until = done
-        segs = [dict(word=s["nearest"], status=s["status"], p=s.get("p_correct", 0.0), t0=base + s["t0"], t1=base + s["t1"])
+        segs = [dict(word=s["nearest"], status=s["status"], p=s.get("p_correct", 0.0), t0=base + s["t0"], t1=base + s["t1"],
+                     hand_frac=s.get("hand_frac", 1.0))
                 for s in r["segments"] if s["status"] != "transition"]
         resting = final or (len(recent) >= int(self.rest_s * 25) * 0.9 and not any(recent))
         new = []
@@ -89,9 +90,11 @@ class StreamingTranslator:
                 continue                                      # the same sign continued across a step boundary → extend, not repeat
             stable = all(any(p["word"] == s["word"] and min(p["t1"], s["t1"]) - max(p["t0"], s["t0"]) > 0 for p in prev)
                          for prev in self.history[-self.stable_n:]) if len(self.history) >= self.stable_n else False
-            if (now - s["t1"] >= self.look and stable) or resting:
-                if s["status"] == "unknown":
+            steady = now - s["t1"] >= self.look and stable
+            if steady or resting:
+                if s["status"] == "unknown" or (not steady and s["hand_frac"] < 0.5):
                     pass                                      # "[?]" segments are not spoken, but they still close the region
+                                                              # (hands down / lost = `resting` confirms at once — but never a sign whose hands the camera barely saw)
                 else:
                     new.append(dict(s, confirmed_at=done, latency=done - s["t1"]))
                 self.anchor = max(self.anchor, s["t1"])
@@ -134,8 +137,10 @@ class LiveStream:
         words = live.close()                   # flush what is left (hands down / end)
     """
 
-    def __init__(self, pipe, hw, **kw):
+    def __init__(self, pipe, hw, defer=None, **kw):
         import threading
+        self.defer = defer                         # callable → True while a whole-utterance request is being computed: stream steps wait (they would only slow it down)
+        self.paused = False                        # phase 3: the client sent the whole utterance early (hands down) — no more steps until it resumes
         self.st = StreamingTranslator(pipe, hw=hw, **kw)
         self.st.lock = threading.Lock()
         self._new, self._stop = threading.Event(), False
@@ -153,6 +158,9 @@ class LiveStream:
             with self.st.lock:
                 now = self.st.ts[-1] if self.st.ts else None
             if now is not None and now - self.st.last_run >= self.st.step_s:
+                if self.paused or (self.defer is not None and self.defer()):
+                    time.sleep(0.05)
+                    continue
                 self.st._step(now)
 
     @property

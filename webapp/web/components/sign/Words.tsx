@@ -45,7 +45,7 @@ export default function Words({ r, onTeal = false, hint = false, vocab = [], min
                   <button className="save" disabled={!s.emb || !known} onClick={() => confirm(i, t)}>บันทึก</button>
                 </span>
                 {t && !known && <small>ไม่มีคำนี้ในคลังคำ — เลือกจากรายการ</small>}
-                {!s.emb && <small>ช่วงนี้ไม่มีข้อมูลท่า บันทึกไม่ได้</small>}
+                {!s.emb && <small>{(s.hand_frac ?? 1) < 0.5 ? "ช่วงนี้ไม่เห็นมือ จึงบันทึกเป็นท่าของคุณไม่ได้ — ทำท่าให้เห็นมือชัดแล้วลองใหม่" : "ช่วงนี้ไม่มีข้อมูลท่า บันทึกไม่ได้"}</small>}
                 <button className="x" onClick={() => setOpen(-1)}>ปิด</button>
               </span>
             )}

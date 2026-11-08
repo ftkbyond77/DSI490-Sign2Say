@@ -11,9 +11,23 @@ export interface Detector {
 }
 
 const SETUP_KEY = "thaislm.mp.setup";                    // the same remembered set-up as lib/holistic.ts
-const remembered = (): string | null => { try { return localStorage.getItem(SETUP_KEY); } catch { return null; } };
-const remember = (d: string | null) => { try { if (d) localStorage.setItem(SETUP_KEY, d); else localStorage.removeItem(SETUP_KEY); } catch { /* storage blocked */ } };
-const WORKER_URL = "/workers/holistic.worker.js?v=1";
+// A failed GPU set-up is remembered so that a machine whose GPU never works does not pay the failed start every time — but only for SETUP_TTL_MS: a transient
+// failure (GPU memory full while another program held it) used to stick for ever ("CPU · 13 fps", hands not found) until the browser storage was cleared.
+const SETUP_TTL_MS = 30 * 60 * 1000;
+const SETUP_AT_KEY = "thaislm.mp.setup.at";
+const remembered = (): string | null => {
+  try {
+    const v = localStorage.getItem(SETUP_KEY), at = Number(localStorage.getItem(SETUP_AT_KEY) || 0);
+    if (v && (!at || Date.now() - at > SETUP_TTL_MS)) { localStorage.removeItem(SETUP_KEY); localStorage.removeItem(SETUP_AT_KEY); return null; }
+    return v;
+  } catch { return null; }
+};
+const remember = (d: string | null) => { try { if (d) { localStorage.setItem(SETUP_KEY, d); localStorage.setItem(SETUP_AT_KEY, String(Date.now())); } else { localStorage.removeItem(SETUP_KEY); localStorage.removeItem(SETUP_AT_KEY); } } catch { /* storage blocked */ } };
+const WORKER_URL = "/workers/holistic.worker.js?v=2";
+// Hand recovery (public/workers/holistic.worker.js, port of modules/hand_recovery.py): OFF by default in the browser — measured in real Chrome on the iPhone clips it
+// recovered ≤ 1 point of missing hands but made p95 frame time 64 → 216 ms (a Hand Landmarker run on the CPU inside the worker). Turn on with
+// localStorage "thaislm.hand.recover" = "1"; One-Euro smoothing of the hands with "thaislm.hand.smooth" = "1".
+const handFlags = () => { try { return { recover: localStorage.getItem("thaislm.hand.recover") === "1", smooth: localStorage.getItem("thaislm.hand.smooth") === "1" }; } catch { return { recover: false, smooth: false }; } };
 
 type Ready = { delegate: Delegate; face: boolean; remember: string | null };
 type Frame = { frame: LmFrame | null; bs: number[] | null };
@@ -40,7 +54,7 @@ class WorkerDetector implements Detector {
     this.waiting.forEach((p) => p.bad(err)); this.waiting.clear();
   }
   init(prefer: "GPU" | "CPU"): Promise<void> {
-    return new Promise<Ready>((ok, bad) => { this.onReady = { ok, bad }; this.w.postMessage({ type: "init", prefer, last: remembered() }); })
+    return new Promise<Ready>((ok, bad) => { this.onReady = { ok, bad }; this.w.postMessage({ type: "init", prefer, last: remembered(), ...handFlags() }); })
       .then((r) => { this.delegate = r.delegate; if (prefer === "GPU") remember(r.remember); });
   }
   async detect(src: CanvasImageSource, t: number, face: boolean): Promise<LmFrame | null> {

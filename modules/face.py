@@ -46,14 +46,31 @@ def _z(x, ok):
     return (x - base) / mad
 
 
-def _cycles(sig, amp):
-    """Number of back-and-forth swings larger than `amp` (head shake / nod counter)."""
+def _cycles(sig, amp, t=None, window_s=2.0):
+    """Number of back-and-forth swings larger than `amp` (head shake / nod counter) — the most found inside any `window_s` stretch.
+    Phase 3 (Error-Analysis-v2): the old counter (a) detrended with zero padding, so the first / last frames of every clip looked like a big
+    swing, and (b) added up direction changes over the WHOLE clip, so three unrelated head turns seconds apart became "a head shake" →
+    a false "ไม่" in real webcam sentences ("ไม่สบายดีสบายดี", "ไม่ชื่อ"). A head shake is a quick back-and-forth: edge-padded detrend +
+    alternations counted within a 2 s window. t: timestamps in seconds (None = 25 fps)."""
     if len(sig) < 5:
         return 0
-    s = sig - np.convolve(sig, np.ones(9) / 9, "same")
-    big = np.abs(s) > amp
-    sg = np.sign(s[big])
-    return int((np.diff(sg) != 0).sum() // 2) if len(sg) > 1 else 0
+    pad = np.pad(sig, 4, mode="edge")
+    s = sig - np.convolve(pad, np.ones(9) / 9, "valid")
+    big = np.flatnonzero(np.abs(s) > amp)
+    if len(big) < 2:
+        return 0
+    tt = (np.arange(len(sig)) / 25.0) if t is None else np.asarray(t, np.float64)
+    sg, tb = np.sign(s[big]), tt[big]
+    flips = np.flatnonzero(np.diff(sg) != 0) + 1                    # index (in `big`) of each direction change
+    if not len(flips):
+        return 0
+    ft = tb[flips]
+    best, j = 0, 0
+    for i in range(len(ft)):
+        while ft[i] - ft[j] > window_s:
+            j += 1
+        best = max(best, i - j + 1)
+    return int(best // 2)
 
 
 def head_pose(face, ok):
@@ -122,7 +139,7 @@ def analyse(raw, spans=None, fps=25.0, baseline_bs=None):
                 brow_raise_peak=float(np.percentile(brow_q[ok], 90) - np.median(brow_q[ok])),
                 brow_furrow=float(np.percentile(zd[ok], 90)),
                 head_forward_tail=float(np.median(pitch[tail]) - np.median(pitch)) if T else 0.0,
-                head_shake_cycles=_cycles(yaw, 0.06), head_nod_cycles=_cycles(pitch, 0.05),
+                head_shake_cycles=_cycles(yaw, 0.06, t), head_nod_cycles=_cycles(pitch, 0.05, t),
                 mouth_open_frac=float((jaw[ok] > 0.35).mean()), cheek_puff=float(np.percentile(puff[ok], 95)), duration_s=round(dur, 2))
     # furrow relative to the resting face, over the last 40 % of the signing frames
     up = hands_up(raw) & ok

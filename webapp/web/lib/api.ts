@@ -15,7 +15,7 @@ export function ferCue(f?: FaceFer): string {
 }
 
 export type Segment = { t0: number; t1: number; status: "accepted" | "uncertain" | "unknown" | "transition"; word: string; p: number; candidates: string[];
-  candidate_scores?: { word: string; score?: number | null }[]; emb?: string; kind?: "sign" | "letter" };
+  candidate_scores?: { word: string; score?: number | null }[]; emb?: string; kind?: "sign" | "letter"; hand_frac?: number };
 export type TranslateResult = {
   uid?: number;                 // client-side identity of one result card (never from the server)
   title?: string;
@@ -139,6 +139,10 @@ export function openLive(width: number, height: number, o: Options, onWords: (w:
   return {
     add(f: LmFrame) { if (done) return; if (t0 === null) t0 = f.t; post(JSON.stringify({ ...f, t: f.t - t0 })); },
     end() { if (!done) { done = true; post(JSON.stringify({ end: true })); } },
+    // phase 3: the whole-utterance request went out early (hands down) — the stream stops computing (frames are still buffered) so the two do not
+    // fight for the CPU; resume() if the hands come back up. Measured: the early request 2.7 → ~1.6 s server time without the overlapping stream step.
+    pause() { if (!done) post(JSON.stringify({ pause: true })); },
+    resume() { if (!done) post(JSON.stringify({ pause: false })); },
     close() { done = true; try { ws.close(); } catch { /* already closed */ } },
   };
 }

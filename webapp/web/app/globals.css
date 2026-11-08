@@ -626,6 +626,11 @@ pre.ir { max-height: 300px; overflow: auto; background: var(--rose-50); border-r
 .camera .live-cap { position: absolute; left: 50%; bottom: 52px; transform: translateX(-50%); z-index: 2; max-width: calc(100% - 32px); padding: 8px 18px;
   border-radius: 18px; background: rgba(4, 30, 28, .55); backdrop-filter: blur(6px); }
 .camera .live-cap .live-words { font-size: clamp(20px, 2.2vw, 28px); }
+/* live words never cover the signer: /sign shows them in a strip under the picture, /sign/live (full screen) as a slim line at the very bottom, above the buttons */
+.live-strip { margin-top: 10px; min-height: 52px; display: flex; justify-content: center; align-items: center; padding: 6px 16px; border-radius: 16px; background: rgba(4, 30, 28, .9); }
+.live-strip .live-words { font-size: clamp(20px, 2.2vw, 28px); }
+.caption.live { bottom: 118px; padding: 6px 16px; border-radius: 16px; gap: 0; }
+.caption.live .live-words { font-size: clamp(18px, 1.9vw, 26px); }
 .im-controls { position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%); display: flex; gap: 16px; align-items: center; z-index: 3; }
 .im-controls .side { width: 56px; height: 56px; border-radius: 999px; display: grid; place-items: center; border: 1px solid var(--glass-line); background: var(--glass);
   backdrop-filter: blur(7px); position: relative; transition: transform .18s var(--ease-out); }
@@ -642,6 +647,8 @@ pre.ir { max-height: 300px; overflow: auto; background: var(--rose-50); border-r
 .reply input { flex: 1; min-width: 0; border: none; outline: none; background: transparent; color: #fff; font-size: 16px; padding: 0 10px; }
 .reply input::placeholder { color: var(--teal-200); opacity: .7; }
 .im-err { position: absolute; left: 50%; top: 86px; transform: translateX(-50%); z-index: 4; max-width: min(640px, calc(100vw - 32px)); }
+/* framing check: the camera is too close (hands bigger than the sign model was trained on) — a hint above the picture, never over the hands */
+.frame-hint { position: absolute; left: 50%; top: 86px; transform: translateX(-50%); z-index: 4; max-width: min(640px, calc(100vw - 32px)); padding: 10px 16px; border-radius: 14px; color: #fff3d6; font-size: 15px; line-height: 1.45; text-align: center; }
 .im-progress { position: absolute; left: 50%; bottom: 122px; transform: translateX(-50%); width: min(420px, calc(100vw - 32px)); z-index: 3; }
 .im-progress small { color: var(--teal-100); }
 @media (max-width: 860px) {

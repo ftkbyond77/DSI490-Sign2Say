@@ -58,7 +58,7 @@ services:
       - OPENAI_API_KEY=${OPENAI_API_KEY:-}
       - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4.1-mini}
       - OPENAI_TIMEOUT_S=8
-      - ORT_THREADS=${ORT_THREADS:-8}           # 8 threads: 10 s utterance encoder 631 → 427 ms (measured)
+      - ORT_THREADS=${ORT_THREADS:-}            # empty = auto: ONNX Runtime uses the machine's own core count (any CPU / Mac / Linux); set a number only to cap it
     restart: unless-stopped
 
   tts:

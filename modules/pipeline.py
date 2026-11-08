@@ -69,6 +69,25 @@ log = get_logger("pipeline")
 NAME_SIGNS = {"ชื่อ", "ชื่อเล่น", "นามสกุล"}       # signs after which a spelled name is expected
 
 
+def gate_veto(prob, gate, min_frames):
+    """Signing gate (phase 3): `prob` = the tagger's frame probabilities, `gate` = the gate model's (the tagger fine-tuned with hands-up-but-not-
+    signing negatives). Only runs where the gate says non-sign for ≥ min_frames frames take the gate's output; every other frame keeps the
+    tagger's exactly — so real signing decodes as before and a hold / idle stretch of hands-up is not read as signs."""
+    ns = gate.argmax(-1) == 0
+    out, i, T = prob.copy(), 0, len(prob)
+    while i < T:
+        if not ns[i]:
+            i += 1
+            continue
+        j = i
+        while j < T and ns[j]:
+            j += 1
+        if j - i >= min_frames:
+            out[i:j] = gate[i:j]
+        i = j
+    return out
+
+
 def merge_repeats(segs, max_gap=12):
     """Neighbouring sign segments with the same word (one long sign cut in two — live tests showed "ฉัน กิน กิน ขนมปัง") → one
     segment spanning both, with the better confidence. Transitions between them (≤ max_gap frames) are absorbed."""
@@ -185,6 +204,11 @@ class SignPipeline:
         H = self.be.frames(kpi, sc)
         x = np.concatenate([H, kin_features(kpi, sc)], 1).astype(np.float32)
         prob = self.be.tag(x)
+        gc = self.spot_all.get("gate") or {}
+        if gc.get("veto_s") and getattr(self.be, "gate_tag", None) is not None:
+            g = self.be.gate_tag(x)
+            if g is not None:
+                prob = gate_veto(prob, g, int(round(float(gc["veto_s"]) * 25)))
         prob[~present] = [1.0, 0.0, 0.0]
         return prob, H
 
@@ -486,10 +510,11 @@ class SignPipeline:
         decide(segs, P, self.cal)
         postprocess(segs, self.spot)
         mh = self.spot.get("post", {}).get("min_hand_frac", 0.0)
-        if mh and segs and sc is not None:   # pitty: live webcams lose the hands (exposure, low fps) — a sign nobody saw the hands of is a transition
+        if segs and sc is not None:          # pitty: live webcams lose the hands (exposure, low fps) — a sign nobody saw the hands of is a transition
             seen = (sc[:, LH].mean(1) > 0.3) | (sc[:, RH].mean(1) > 0.3)
             for s in segs:
-                if s["status"] not in ("accepted", "transition") and seen[s["f0"]:max(s["f1"], s["f0"] + 1)].mean() < mh:
+                s["hand_frac"] = round(float(seen[s["f0"]:max(s["f1"], s["f0"] + 1)].mean()), 3)      # share of the sign's frames with a hand (the web: no teaching from hand-less signs)
+                if mh and s["status"] not in ("accepted", "transition") and s["hand_frac"] < mh:
                     s["status"] = "transition"
         w = self.spot.get("grammar_rerank_weight", 0.0)
         live = [s for s in segs if s["status"] != "transition"]
