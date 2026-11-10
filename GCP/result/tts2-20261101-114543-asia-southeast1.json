@@ -1,0 +1,33 @@
+{
+  "run_id": "tts2-20261101-114543-asia-southeast1",
+  "job": "projects/796579703294/locations/asia-southeast1/customJobs/601443580631842816",
+  "display_name": "thai-sign-training-tts",
+  "submitted": "20261101-114547",
+  "profile": "a100_spot",
+  "machine": "a2-highgpu-1g",
+  "gpu": "1xNVIDIA_TESLA_A100",
+  "spot": true,
+  "timeout_h": 1.6833333333333333,
+  "env_requested": "NVIDIA_L4@g2-standard-4",
+  "region": "asia-southeast1",
+  "image": "asia-docker.pkg.dev/vertex-ai/training/pytorch-gpu.2-4.py310:latest",
+  "command": "mkdir -p /workspace/out /gcs/temp-gpu-bucket-job/thaislm/runs/tts2-20261101-114543-asia-southeast1; cd /workspace; python -c \"import sys;from google.cloud import storage;b,p=sys.argv[1],sys.argv[2];storage.Client().bucket(b).blob(p).download_to_filename(sys.argv[3])\" temp-gpu-bucket-job thaislm/tts2/code.tar.gz code.tar.gz && tar xzf code.tar.gz && python -c \"import sys;from google.cloud import storage;b,p=sys.argv[1],sys.argv[2];storage.Client().bucket(b).blob(p).download_to_filename(sys.argv[3])\" temp-gpu-bucket-job thaislm/tts2/data.tar data.tar && mkdir -p data && tar xf data.tar -C data && rm data.tar && pip freeze | grep -E '^(torch|torchaudio|numpy)==' > /tmp/c.txt; pip uninstall -y -q torchvision; pip install -q --no-cache-dir --no-deps f5-tts==1.1.22 && pip install -q --no-cache-dir -c /tmp/c.txt accelerate click datasets ema_pytorch matplotlib pydub pypinyin rjieba torchdiffeq 'transformers>=4.45' vocos wandb x_transformers cached_path unidecode hydra-core tomli safetensors soundfile librosa pythainlp pandas pyarrow scipy praat-parselmouth 2>&1 | tail -3; pip install -q --no-cache-dir --no-deps --force-reinstall torchaudio==2.4.0 --index-url https://download.pytorch.org/whl/cu124 2>&1 | tail -2; pip freeze | grep -iE '^(torch|numpy)' ; python -c 'import torch,torchaudio;print(torch.__version__,torchaudio.__version__,torch.cuda.is_available())' || exit 1; python -c \"import f5_tts.model, f5_tts.infer.utils_infer; print('import ok')\" || exit 1; cp -r v4 v4_out && cp v3/vocab.txt v4_out/vocab.txt; python train.py --data data --ckpt v3/model.safetensors --vocab v4/vocab.txt --config v4/config.json --out out/gate --minutes 1 --gate > out/gate.log 2>&1 || { tail -25 out/gate.log; cp out/gate.log /gcs/temp-gpu-bucket-job/thaislm/runs/tts2-20261101-114543-asia-southeast1/; exit 1; }; tail -2 out/gate.log; python train.py --data data --ckpt v3/model.safetensors --vocab v4/vocab.txt --config v4/config.json --out out --minutes 50.0 2>&1 | tee out/train.log; cp out/model_best.safetensors v4_out/model.safetensors && cp v4/config.json v4_out/config.json && cp v4/voices.json v4_out/ && cp -r v4/refs v4_out/ && cp tts.py v4_out/ && python evaluate.py gen --model_dir v4_out --out out/gen_v4 --sets main,onset,short,emo --voices male,female,male_2,female_2 --emo_voices male,female 2>&1 | tail -2 | tee out/gen_v4.log; python evaluate.py gen --model_dir v3 --out out/gen_v3 --nfe 32 --sets main,onset,short --voices masculine_1,masculine_2,feminine_1,feminine_2 2>&1 | tail -2 | tee out/gen_v3.log; cp -r v3 v3y && cp v4/voices.json v3y/voices.json && cp v4/refs/* v3y/refs/; python evaluate.py gen --model_dir v3y --out out/gen_v3y_n32 --nfe 32 --sets onset,short --voices male,female --seeds 0 2>&1 | tail -1; python evaluate.py gen --model_dir v3y --out out/gen_v3y_n16 --nfe 16 --sets onset,short --voices male,female --seeds 0 2>&1 | tail -1; for n in 32 12 10 8; do python evaluate.py gen --model_dir v4_out --out out/gen_v4_n$n --nfe $n --sets onset,short --voices male,female --seeds 0 2>&1 | tail -1; done; python evaluate.py latency --model_dir v4_out --voice male --out out/latency_v4.json 2>&1 | tail -3; python evaluate.py latency --model_dir v3 --voice masculine_1 --nfe 32 --out out/latency_v3.json 2>&1 | tail -3; cp -r out/* /gcs/temp-gpu-bucket-job/thaislm/runs/tts2-20261101-114543-asia-southeast1/ && cp out/model_best.safetensors /gcs/temp-gpu-bucket-job/thaislm/runs/tts2-20261101-114543-asia-southeast1/model.safetensors; nvidia-smi --query-gpu=name --format=csv,noheader > /gcs/temp-gpu-bucket-job/thaislm/runs/tts2-20261101-114543-asia-southeast1/gpu.txt; ls -la /gcs/temp-gpu-bucket-job/thaislm/runs/tts2-20261101-114543-asia-southeast1",
+  "outputs": "gs://temp-gpu-bucket-job/thaislm/runs/tts2-20261101-114543-asia-southeast1",
+  "stage": "tts2",
+  "race_group": "tts2-20261101-114543",
+  "billable_basis": "first container log → end",
+  "state": "JOB_STATE_CANCELLED",
+  "create_time": "2026-11-01 11:45:45.017762+00:00",
+  "provisioning_time": "2026-11-01 11:48:48+00:00",
+  "start_time": "2026-11-01 11:49:17.393604+00:00",
+  "end_time": "2026-11-01 11:49:23.432725+00:00",
+  "queue_min": 3.5,
+  "run_min": 0.1,
+  "est_cost_usd": 0.003,
+  "error": {
+    "code": 1,
+    "message": "CANCELED"
+  },
+  "fetched_to": "artifacts\\runs\\tts2-20261101-114543-asia-southeast1",
+  "files": []
+}

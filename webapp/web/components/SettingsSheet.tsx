@@ -4,9 +4,10 @@ import Link from "next/link";
 import { useEffect } from "react";
 import Portal from "./Portal";
 import type { Alphabet, MinP, Options, Speak } from "@/lib/api";
+import VoiceToggle from "./VoiceToggle";
 import { LIVE_END_OPTIONS, type ModelInfo, type SignSettings } from "@/lib/useSignEngine";
 
-export const SPEAK_TH: Record<Speak, string> = { off: "ไม่ออกเสียง", confident: "ออกเสียงเฉพาะที่มั่นใจ", all: "ออกเสียงทุกผล (รวมที่ไม่แน่ใจ)" };
+export const SPEAK_TH: Record<Speak, string> = { off: "ไม่ออกเสียง", confident: "ออกเสียง (ตาม threshold)", all: "ออกเสียง (ตาม threshold)" };
 export const ALPHA_TH: Partial<Record<Alphabet, string>> = { en: "A–Z", th: "ก–ฮ", off: "ปิด" };
 export const MINP_TH: [MinP, string][] = [[0, "ไม่มี threshold"], [0.5, "threshold 0.50"], [0.8, "threshold 0.80"]];
 
@@ -39,6 +40,7 @@ export function QuickOptions({ s, model }: { s: SignSettings; model?: ModelInfo 
       <label className="select">filter
         <MinPSelect s={s} />
       </label>
+      <VoiceToggle s={s} />
     </>
   );
 }
@@ -57,13 +59,13 @@ export default function SettingsSheet({ s, model, onClose, onServerFile }: {
       <aside className="sheet" role="dialog" aria-modal="true" aria-label="ตั้งค่า" onClick={(e) => e.stopPropagation()}>
         <div className="sheet-head"><h2>ตั้งค่า</h2><button className="close" onClick={onClose} aria-label="ปิด">×</button></div>
         <label className="field"><span>เสียงพูด</span>
-          <select value={opts.speak} onChange={(e) => setOpts({ ...opts, speak: e.target.value as Speak })}>
-            {(Object.keys(SPEAK_TH) as Speak[]).map((x) => <option key={x} value={x}>{SPEAK_TH[x]}</option>)}
+          <select value={opts.speak === "off" ? "off" : "confident"} onChange={(e) => setOpts({ ...opts, speak: e.target.value as Speak })}>
+            {(["off", "confident"] as Speak[]).map((x) => <option key={x} value={x}>{SPEAK_TH[x]}</option>)}
           </select>
         </label>
         <label className="field"><span>filter คำที่ไม่แน่ใจ</span>
           <MinPSelect s={s} />
-          <small>คำที่ความมั่นใจต่ำกว่า threshold แสดงเป็น [?] · ไม่มี threshold = แสดงทุกคำที่อ่านได้ · คำที่ระบบยืนยันแล้วแสดงเสมอ (ทั้งโหมดสดและวิดีโอ)</small>
+          <small>คำที่ความมั่นใจต่ำกว่า threshold แสดงเป็น [?] และเสียงจะเว้นจังหวะตรงนั้น · ไม่มี threshold = พูดทุกคำที่อ่านได้ · 0.50 / 0.80 = พูดเฉพาะคำที่ถึงเกณฑ์ · คำที่ระบบยืนยันแล้วพูดเสมอ</small>
         </label>
         <label className="field"><span>คลังคำ</span>
           <select value={opts.vocab} onChange={(e) => setOpts({ ...opts, vocab: e.target.value as Options["vocab"] })}>

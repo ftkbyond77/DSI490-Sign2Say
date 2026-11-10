@@ -10,5 +10,5 @@ COPY reverse_text2sign/t2s /app/t2s
 COPY reverse_text2sign/service/api/app.py /app/service/api/app.py
 ENV T2S_HOME=/app T2S_MODELS=/app/models
 EXPOSE 8001
-HEALTHCHECK --interval=20s --timeout=5s --start-period=60s CMD curl -fs http://localhost:8001/api/health || exit 1
+HEALTHCHECK --interval=20s --timeout=5s --start-period=60s --start-interval=2s CMD curl -fs http://localhost:8001/api/health || exit 1
 CMD ["uvicorn", "--app-dir", "/app/service/api", "app:app", "--host", "0.0.0.0", "--port", "8001", "--workers", "2"]

@@ -10,7 +10,7 @@ Runs (each writes /runs/<name> on the volume):
     python -m modal run pitty/modal/thaislm_modal.py::sequence --name seq-fluent05 --fluent 0.5   # tagger + span head (enc-v7)
 Download:
     python -m modal volume get thaislm /runs/enc-aug cache/modal/
-The code is the working tree (modules/, GCP/script/, scripts/, third_party/, main.py) mounted at run time; models/mt5_config.json too.
+The code is the working tree (modules/, GCP/script/, scripts/, models/unisign/, main.py) mounted at run time; models/mt5_config.json too.
 """
 from pathlib import Path
 
@@ -25,7 +25,7 @@ image = (
     .add_local_dir(ROOT / "modules", "/app/modules")
     .add_local_dir(ROOT / "GCP" / "script", "/app/GCP/script")
     .add_local_dir(ROOT / "scripts", "/app/scripts")
-    .add_local_dir(ROOT / "third_party", "/app/third_party")
+    .add_local_dir(ROOT / "models" / "unisign", "/app/models/unisign")
     .add_local_file(ROOT / "main.py", "/app/main.py")
     .add_local_file(ROOT / "models" / "mt5_config.json", "/app/models/mt5_config.json")
 )

@@ -17,18 +17,19 @@ export function audioReady() {
 }
 
 /** Play WAV bytes; resolves when playback ends. Throws when the browser blocks audio. */
-export async function playWav(bytes: ArrayBuffer): Promise<void> {
+export async function playWav(bytes: ArrayBuffer, onStart?: () => void): Promise<void> {
   if (ctx) {
     if (ctx.state === "suspended") await ctx.resume();
     const buf = await ctx.decodeAudioData(bytes.slice(0));
     const src = ctx.createBufferSource();
     src.buffer = buf; src.connect(ctx.destination);
-    await new Promise<void>((done) => { src.onended = () => done(); src.start(0); });
+    await new Promise<void>((done) => { src.onended = () => done(); src.start(0); onStart?.(); });
     return;
   }
   const url = URL.createObjectURL(new Blob([bytes], { type: "audio/wav" }));
   const a = new Audio(url);
   await a.play();
+  onStart?.();
   await new Promise<void>((done) => { a.onended = () => { URL.revokeObjectURL(url); done(); }; });
 }
 

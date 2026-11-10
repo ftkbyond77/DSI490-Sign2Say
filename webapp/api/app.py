@@ -24,6 +24,7 @@ if (_root / "modules").is_dir() and str(_root) not in sys.path:      # running f
     sys.path.insert(0, str(_root))
 
 import base64
+import re
 import json
 import logging
 import os
@@ -66,8 +67,49 @@ def pipe(vocab="conversation", llm=True) -> SignPipeline:
         return _pipes[key]
 
 
+FACE_FER_DIR = os.environ.get("THAISLM_FACE_FER", "")      # v11 face branch: expression from the face picture (models/face-model-*-v1), independent of the sign model
+_face = None
+_face_pool = None
+
+
+def face_branch():
+    """The face branch (modules/face_fer.py), loaded once; None when its folder is missing or broken — everything else keeps working."""
+    global _face, _face_pool
+    if _face is None:
+        _face = False
+        if FACE_FER_DIR and (Path(FACE_FER_DIR) / "config.json").exists():
+            try:
+                from concurrent.futures import ThreadPoolExecutor
+                from modules.face_fer import FaceBranch
+                _face = FaceBranch(FACE_FER_DIR, threads=int(os.environ.get("FACE_THREADS", "2")))
+                _face_pool = ThreadPoolExecutor(1, thread_name_prefix="face")      # the face work never runs on the sign thread
+                logging.getLogger("sign-api").info("face_branch=%s providers=%s", _face.model.version, _face.model.sess.get_providers())
+            except Exception as e:  # noqa: BLE001
+                logging.getLogger("sign-api").error("face branch unavailable: %s", e)
+    return _face or None
+
+
+def _face_call(fn, *a, timeout=float(os.environ.get("FACE_TIMEOUT_S", "3")), **kw):
+    """Run a face-branch call on its own thread with a deadline. Any failure / timeout = None (the caller answers `unknown`); never raises."""
+    fb = face_branch()
+    if fb is None or _face_pool is None:
+        return None
+    try:
+        return _face_pool.submit(getattr(fb, fn), *a, **kw).result(timeout=timeout)
+    except Exception as e:  # noqa: BLE001
+        logging.getLogger("sign-api").warning("face branch %s failed or timed out: %s", fn, e)
+        return None
+
+
 @app.on_event("startup")
 def warm():
+    try:
+        fb = face_branch()
+        if fb is not None:
+            import numpy as np
+            fb.live([dict(t=0.0, g=np.full(2304, 128, np.uint8), side_px=80)])                  # first-call latency
+    except Exception as e:  # noqa: BLE001
+        print("face warm-up skipped:", e)
     p = pipe()
     import numpy as np
     from modules.parts import prep
@@ -91,6 +133,25 @@ class Frame(BaseModel):
     rh: list[list[float]] = []
     face: list[list[float]] = []
     bs: list[float] = []
+
+
+class FaceCrop(BaseModel):
+    t: float = Field(..., description="timestamp in ms, same clock as the frames of the request")
+    g: str = Field(..., description="base64 of the 48x48 uint8 grayscale face crop (2304 bytes)")
+    side: float | None = Field(None, description="face size in the camera picture, px")
+    occ: float = Field(0.0, ge=0, le=1, description="share of a hand's points inside the face box")
+
+
+def _crops(items):
+    out = []
+    for c in items[:MAX_FRAMES]:
+        try:
+            b = base64.b64decode(c.g)
+            if len(b) == 2304:
+                out.append(dict(t=c.t / 1000.0, g=b, side_px=c.side, occluded=c.occ))
+        except Exception:  # noqa: BLE001
+            continue
+    return out
 
 
 class MySign(BaseModel):
@@ -119,46 +180,78 @@ class TranslateRequest(BaseModel):
     vocab: str = "conversation"
     llm: bool = True
     speak: bool = False
-    speak_tentative: bool = False               # also speak a withheld (uncertain) reading — the user's choice in the web UI
+    speak_min_p: float = Field(0.8, ge=0, le=1)  # speech follows the web's word filter: words with P(correct) ≥ this (accepted ones always) are said, the rest is a pause "…"
+    voice: str = "male"                         # male | female (speech v3 voice profile)
     face_question: bool = False                 # experimental: furrowed brows at the end → yes/no question (ไหม)
     face_baseline: list[float] | None = None    # the signer's resting-face blendshapes (52), measured by the client
     user_bank: list[MySign] = []                # this user's confirmed signs (personal sign memory, kept by the client)
     alphabet: str = "en"                        # fingerspelled letters: en (A–Z) | th (ก–ฮ, vowels) | both | off
     spell_only: bool = False                    # this utterance is fingerspelling only (the "สะกดอย่างเดียว" button)
+    face_crops: list[FaceCrop] = []             # v11 face branch: 48x48 gray face pictures cut by the client (late fusion only: the sign path never reads them)
     perf_mode: str | None = None                 # optional client live-capture diagnostic mode
     face_every: int | None = Field(default=None, ge=1)  # optional requested expression cadence
     client_fps: float | None = None              # optional FPS measured from captured frame timestamps
 
 
-def _speak(result, tentative=False):
-    """Speech v2 (models/speech-model-v2 behind the tts service): the forward result goes to /v1/speak_plan — accepted words in
-    signing order (+ tentative ones when asked), a natural hesitation where a sign could not be read, never a guessed word, in the
-    signer's emotion. TTS_URL may list several services, GPU first (`gpu` profile, F5-TTS-THAI) then CPU: the first that answers
-    speaks. An older tts service (no plan endpoint) gets the confirmed sentence as in v9."""
-    face = result.get("face") or {}
-    aff = face.get("affect") or {k: face.get(k) for k in ("emotion", "intensity")}
-    body = dict(segments=[{k: s.get(k) for k in ("nearest", "status", "p_correct", "t0", "t1", "f0", "f1")} for s in result.get("segments", [])],
-                affect={k: aff.get(k) for k in ("emotion", "intensity", "arousal") if aff.get(k) is not None}, sentence=result.get("sentence") or "",
-                provider=(result.get("fusion") or {}).get("provider") or "rules", timings_ms=result.get("timings_ms") or {}, speak_uncertain=bool(tentative))
+def _spoken_text(out, min_p):
+    """What the screen shows for this result at filter `min_p` (web/lib/shown.ts shownText): the words that pass the filter, "…" for the
+    signs below it — or the sentence when every sign is accepted. Returns (text, tentative)."""
+    signs = [s for s in out.get("segments", []) if s["status"] != "transition"]
+    shows = lambda s: s["status"] == "accepted" or (s.get("p") or 0) >= min_p      # noqa: E731
+    if any(s["status"] != "accepted" and shows(s) for s in signs):
+        return re.sub(r"(…\s*){2,}", "… ", " ".join(s["word"] if shows(s) else "…" for s in signs)).strip(), True      # neighbouring unread signs = one pause
+    sent = out.get("sentence") or ""
+    return sent or (out.get("language") or {}).get("tentative_sentence_th") or "", not sent
+
+
+FER_TO_SPEECH = {"neutral": "neutral", "happy": "happy", "sad": "sad", "angry": "angry", "fear": "fear", "fearful": "fear", "disgust": "disgust",
+                 "disgusted": "disgust", "surprise": "surprise", "surprised": "surprise"}        # the face model's labels -> the voice's 7 FER2013 emotions
+TTS_DEFER = os.environ.get("TTS_DEFER", "1") != "0"        # 1 (default): the result returns without waiting for the voice; the web fetches the audio (speak_text) itself
+
+
+def _voice_affect(out):
+    """(emotion, intensity) for the voice from the face model's affect: only a confident non-neutral emotion is voiced, and subtly (0.25-0.75)."""
+    fer = out.get("face_fer") or {}
+    if fer.get("ok") and (fer.get("summary") or {}).get("valid_frac", 0) >= 0.25:       # v11: late fusion of the face picture's expression with the v9 affect
+        from modules.face_fer import speech_affect
+        emo, inten, _ = speech_affect(fer["summary"], (out.get("face") or {}).get("affect"), grammar=out.get("face"))
+        return emo, inten
+    aff = (out.get("face") or {}).get("affect") or {}
+    emo = FER_TO_SPEECH.get(str(aff.get("emotion") or (out.get("face") or {}).get("emotion") or "").lower(), "neutral")
+    conf = aff.get("confidence")
+    if emo == "neutral" or (conf is not None and conf < 0.5):
+        return None, None
+    inten = aff.get("intensity") if aff.get("intensity") is not None else (out.get("face") or {}).get("intensity")
+    return emo, round(0.25 + 0.5 * min(max(float(inten if inten is not None else 0.5), 0.0), 1.0), 2)
+
+
+def _speak(text, voice="male", emotion=None, intensity=None):
+    """Speech v4: the text (with "…" where a sign is unread) → the tts service → base64 WAV; None when nothing is sayable or the service is down
+    (speech is optional; the text is the result)."""
+    body = dict(text=text, voice=voice)
+    if emotion:
+        body.update(emotion=emotion, intensity=intensity if intensity is not None else 0.5)
     for url in TTS_URLS:
         try:
-            r = httpx.post(f"{url}/v1/speak_plan", json=body, timeout=60)
+            r = httpx.post(f"{url}/v1/speak", json=body, timeout=60)
+            if r.status_code == 400:
+                return None                                   # only gaps: nothing to say
             r.raise_for_status()
-            return r.json().get("wav_b64") or None
-        except Exception:  # noqa: BLE001  (next service / v9 endpoint)
+            return base64.b64encode(r.content).decode()
+        except Exception:  # noqa: BLE001
             continue
-    text = result.get("sentence") or ""
-    if not text and tentative:
-        text = (result.get("fusion") or {}).get("tentative_sentence_th") or ""
-    text = text.replace("[?]", " ").strip()
-    if not text:
-        return None
-    try:
-        r = httpx.post(f"{TTS_URLS[-1]}/v1/speak", json=dict(text=text, emotion=face.get("emotion", "neutral"), intensity=face.get("intensity", 0.0)), timeout=30)
-        r.raise_for_status()
-        return base64.b64encode(r.content).decode()
-    except Exception:  # noqa: BLE001  (speech is optional; text is the result)
-        return None
+    return None
+
+
+def _attach_speech(out, min_p, voice, say):
+    text, tentative = _spoken_text(out, min_p)
+    if text.replace("[?]", "").replace("…", "").strip():
+        emo, inten = _voice_affect(out)
+        out["spoken"] = "tentative" if tentative else "sentence"
+        out["speak_text"], out["speak_emotion"], out["speak_intensity"] = text, emo, inten
+        if not TTS_DEFER:
+            say("tts", 0.9)
+            out["audio_wav_b64"] = _speak(text, voice, emo, inten)
 
 
 def _public(result):
@@ -169,7 +262,10 @@ def _public(result):
     out["segments"] = [dict(t0=s["t0"], t1=s["t1"], status=s["status"], word=s["nearest"], p=round(s.get("p_correct", 0), 3), kind=s.get("kind", "sign"),
                             candidates=[c["word"] for c in s["candidates"][:5]],     # words only: the web shows them in the [?] menu
                             candidate_scores=[dict(word=c["word"], score=c.get("score"), ai_prob=c.get("ai_prob"), pose_score=c.get("pose_score"), fused_score=c.get("fused_score")) for c in s["candidates"][:5]],
-                            **({"symbolic": s["symbolic"]} if "symbolic" in s else {}), **({"emb": _vec_to_b64(s["emb"])} if "emb" in s else {}))
+                            **({"symbolic": s["symbolic"]} if "symbolic" in s else {}),
+                            **({"hand_frac": s["hand_frac"]} if "hand_frac" in s else {}),
+                            # the personal sign memory learns from this embedding: never from a sign nobody saw the hands of (it would teach "ฉัน" / "กิน" for a hand-less wrist)
+                            **({"emb": _vec_to_b64(s["emb"])} if "emb" in s and s.get("hand_frac", 1.0) >= 0.5 else {}))
                        for s in result.get("segments", [])]
     f = result.get("fusion") or {}
     out["language"] = {k: f.get(k) for k in ("sentence_th", "tentative_sentence_th", "meaning_th", "evidence_gloss", "evidence_guard", "provider", "chosen")}
@@ -184,9 +280,36 @@ def _public(result):
     return out
 
 
+class FaceRequest(BaseModel):
+    crops: list[FaceCrop] = []
+    state: dict | None = None                    # the smoother state returned by the previous call (the service itself keeps none)
+
+
+@app.post("/v1/face")
+def face_live(req: FaceRequest):
+    """Live expression label for the camera overlay: new face crops (+ the previous state) → the smoothed expression and the new state.
+    Independent of the sign endpoints; any failure answers `unknown` (200) so the overlay degrades, never the sign path."""
+    if len(req.crops) > 64:
+        raise HTTPException(413, "too many crops")
+    res = _face_call("live", _crops(req.crops), req.state, timeout=1.5)
+    if res is None:
+        return dict(ok=False, error="face branch unavailable", frames=[], smoothed=dict(expression="unknown", confidence=0.0, probs=None, valid=False), state=req.state)
+    return res
+
+
+@app.get("/v1/face/info")
+def face_info():
+    fb = face_branch()
+    if fb is None:
+        return dict(ok=False)
+    c = fb.model.cfg
+    return dict(ok=True, name=fb.model.version, classes=fb.model.classes, crop=c.get("crop"), unknown=fb.model.unk, smoother=fb.sm_cfg, input=c.get("input"),
+                providers=fb.model.sess.get_providers())
+
+
 @app.get("/v1/health")
 def health():
-    return dict(ok=True, models=str(MODEL_DIR), loaded=[f"{k[0]}{'+llm' if k[1] else ''}" for k in _pipes])
+    return dict(ok=True, models=str(MODEL_DIR), loaded=[f"{k[0]}{'+llm' if k[1] else ''}" for k in _pipes], face=(face_branch().model.version if face_branch() else None))
 
 
 @app.get("/v1/info")
@@ -200,6 +323,18 @@ def info():
 @app.get("/v1/vocab")
 def vocab():
     return read_json(MODEL_DIR / "vocab_conversation.json")
+
+
+def _attach_face_fer(out, crops):
+    """Late fusion: the face branch's expression track / per-sign summary go under their own key `face_fer`. Nothing the sign pipeline
+    produced (segments, sentence, language, face cues) is read for anything but the segment times, and nothing of it is changed."""
+    if not crops or face_branch() is None:
+        return
+    segs = [dict(t0=s["t0"], t1=s["t1"]) for s in out.get("segments", [])]
+    res = _face_call("process", crops, segs, 0.0)
+    if res is not None:
+        res["track"] = res.get("track", [])[:240]
+        out["face_fer"] = res
 
 
 STAGE_P = dict(schema=0.05, tagger=0.15, spotting=0.45, face=0.7, language=0.8)
@@ -221,7 +356,25 @@ def _save_request(req: TranslateRequest, out: dict, hand_canonicalization: dict 
     save_request(SAVE_DIR, req, out, hand_canonicalization, hand_gap_s)
 
 
+_ACTIVE = [0]                       # whole-utterance requests being computed right now: live-stream steps wait for them (same answer, less CPU contention)
+_ACTIVE_LOCK = threading.Lock()
+
+
+def _busy():
+    return _ACTIVE[0] > 0
+
+
 def _frames_job(req: TranslateRequest, progress=None):
+    with _ACTIVE_LOCK:
+        _ACTIVE[0] += 1
+    try:
+        return _frames_job_inner(req, progress)
+    finally:
+        with _ACTIVE_LOCK:
+            _ACTIVE[0] -= 1
+
+
+def _frames_job_inner(req: TranslateRequest, progress=None):
     t = time.perf_counter()
     say = progress or (lambda stage, p: None)
     p = pipe(req.vocab, req.llm)
@@ -231,29 +384,39 @@ def _frames_job(req: TranslateRequest, progress=None):
                         face_baseline=req.face_baseline, user_bank=ub, alphabet=req.alphabet if req.alphabet in ("en", "th", "both", "off") else "off",
                         spell_only=req.spell_only)
     out = _public(r)
-    if req.speak and (r.get("sentence") or (req.speak_tentative and (r.get("fusion") or {}).get("tentative_sentence_th"))):
-        say("tts", 0.9)
-        out["audio_wav_b64"] = _speak(r, req.speak_tentative)
-        out["spoken"] = "sentence" if r.get("sentence") else "tentative"
+    _attach_face_fer(out, _crops(req.face_crops))      # the sign result is final here; the face branch only adds its own key
+    if req.speak:
+        _attach_speech(out, req.speak_min_p, req.voice, say)
     out["timings_ms"]["total_ms"] = round((time.perf_counter() - t) * 1000, 1)
     _save_request(req, out, r.get("hand_canonicalization"), float(p.spot_all.get("hand_gap_s", 0.2)))
     return out
 
 
-def _video_job(path, name, vocab, llm, speak, face_question, progress=None, speak_tentative=False, alphabet="en", spell_only=False):
+def _video_job(path, name, vocab, llm, speak, face_question, progress=None, speak_min_p=0.8, voice="male", alphabet="en", spell_only=False):
     t = time.perf_counter()
     say = progress or (lambda stage, p: None)
     p = pipe(vocab, llm)
-    r = p.run(path, face_question=face_question, alphabet=alphabet if alphabet in ("en", "th", "both", "off") else "off", spell_only=spell_only,
-              progress=lambda st, f: say(st, 0.6 * f if st == "mediapipe" else 0.6 + 0.4 * STAGE_P.get(st, f)))
+    prog = lambda st, f: say(st, 0.6 * f if st == "mediapipe" else 0.6 + 0.4 * STAGE_P.get(st, f))      # noqa: E731
+    t_mp = time.perf_counter()
+    raw = p.landmarks_from_video(path, progress=lambda f: prog("mediapipe", f))        # exactly what p.run() does first; kept so the face branch can reuse the face points
+    if raw is None:
+        raise HTTPException(422, "no frames decoded")
+    mp_ms = (time.perf_counter() - t_mp) * 1000
+    r = p.run(path, raw=raw, face_question=face_question, alphabet=alphabet if alphabet in ("en", "th", "both", "off") else "off", spell_only=spell_only,
+              progress=prog)
     if r.get("error"):
         raise HTTPException(422, r["error"])
+    r["timings_ms"]["mediapipe_ms"] = round(mp_ms, 1)
     r["title"] = name
     out = _public(r)
-    if speak and (r.get("sentence") or (speak_tentative and (r.get("fusion") or {}).get("tentative_sentence_th"))):
-        say("tts", 0.93)
-        out["audio_wav_b64"] = _speak(r, speak_tentative)
-        out["spoken"] = "sentence" if r.get("sentence") else "tentative"
+    if face_branch() is not None:                       # the face pictures come from the same video at the face points MediaPipe found (read only)
+        try:
+            from modules.face_fer import crops_from_video
+            _attach_face_fer(out, crops_from_video(path, raw, **(face_branch().model.cfg.get("crop") or {})))
+        except Exception as e:  # noqa: BLE001
+            logging.getLogger("sign-api").warning("face crops from video failed: %s", e)
+    if speak:
+        _attach_speech(out, speak_min_p, voice, say)
     out["timings_ms"]["total_ms"] = round((time.perf_counter() - t) * 1000, 1)
     return out
 
@@ -302,11 +465,11 @@ def translate_stream(req: TranslateRequest):
 
 @app.post("/v1/translate/video")
 def translate_video(file: UploadFile = File(...), vocab: str = Query("conversation"), llm: bool = Query(True), speak: bool = Query(False),
-                    face_question: bool = Query(False), speak_tentative: bool = Query(False), alphabet: str = Query("en"),
+                    face_question: bool = Query(False), speak_min_p: float = Query(0.8, ge=0, le=1), voice: str = Query("male"), alphabet: str = Query("en"),
                     spell_only: bool = Query(False)):
     path = _save_upload(file)
     try:
-        return _video_job(path, file.filename, vocab, llm, speak, face_question, speak_tentative=speak_tentative, alphabet=alphabet,
+        return _video_job(path, file.filename, vocab, llm, speak, face_question, speak_min_p=speak_min_p, voice=voice, alphabet=alphabet,
                           spell_only=spell_only)
     finally:
         os.unlink(path)
@@ -314,13 +477,13 @@ def translate_video(file: UploadFile = File(...), vocab: str = Query("conversati
 
 @app.post("/v1/translate/video/stream")
 def translate_video_stream(file: UploadFile = File(...), vocab: str = Query("conversation"), llm: bool = Query(True), speak: bool = Query(False),
-                           face_question: bool = Query(False), speak_tentative: bool = Query(False), alphabet: str = Query("en"),
+                           face_question: bool = Query(False), speak_min_p: float = Query(0.8, ge=0, le=1), voice: str = Query("male"), alphabet: str = Query("en"),
                            spell_only: bool = Query(False)):
     path = _save_upload(file)
 
     def job(progress):
         try:
-            return _video_job(path, file.filename, vocab, llm, speak, face_question, progress, speak_tentative, alphabet, spell_only)
+            return _video_job(path, file.filename, vocab, llm, speak, face_question, progress, speak_min_p, voice, alphabet, spell_only)
         finally:
             os.unlink(path)
     return _stream(job)
@@ -339,7 +502,7 @@ async def live(ws: WebSocket):
     hw = tuple(int(x) for x in init.get("hw") or (init.get("height", 720), init.get("width", 1280)))
     p = pipe(init.get("vocab", "conversation"), llm=False)
     cfg = {**dict(step_s=0.5, lookahead_s=0.8, stable_n=1), **(p.spot_all.get("stream") or {})}     # the model's "stream" overrides v9's
-    stream = LiveStream(p, hw, alphabet=init.get("alphabet", p.spot_all.get("alphabet", "en")), **cfg)
+    stream = LiveStream(p, hw, alphabet=init.get("alphabet", p.spot_all.get("alphabet", "en")), defer=_busy, **cfg)
     sent, last = 0, None
 
     def changes(final=False):
@@ -357,12 +520,15 @@ async def live(ws: WebSocket):
             msg = await ws.receive_json()
             if msg.get("end"):
                 break
+            if "pause" in msg:                    # phase 3: the client sent the whole utterance early → stop stepping (frames keep buffering)
+                stream.paused = bool(msg["pause"])
+                continue
             raw = from_browser([msg], hw)
             stream.add({k: raw[k][0] for k in KEYS}, float(msg.get("t", 0.0)) / 1000.0)
             ch = changes()
             if ch:
                 await ws.send_json(ch)
-        await asyncio.get_running_loop().run_in_executor(None, stream.close)
+        await asyncio.get_running_loop().run_in_executor(None, lambda: stream.close(flush=not (_busy() or stream.paused)))      # a request for the whole utterance is already running / was sent: it gives the final words
         await ws.send_json(changes(final=True))
         await ws.close()
     except WebSocketDisconnect:

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Portal from "./Portal";
 
-export default function HelpButton() {
+export default function HelpButton({ className = "btn secondary", label = "วิธีใช้" }: { className?: string; label?: string }) {
   const [open, setOpen] = useState(false);
   useEffect(() => {
     if (!open) return;
@@ -13,11 +13,11 @@ export default function HelpButton() {
   }, [open]);
   return (
     <>
-      <button className="btn secondary" onClick={() => setOpen(true)}>วิธีใช้</button>
+      <button className={className} onClick={() => setOpen(true)}>{label}</button>
       {open && (<Portal>
         <div className="scrim center" onClick={() => setOpen(false)}>
           <div className="sheet" role="dialog" aria-modal="true" aria-label="วิธีใช้" onClick={(e) => e.stopPropagation()}>
-            <div className="sheet-head"><h2>วิธีใช้ ThaiSLM</h2><button className="close" onClick={() => setOpen(false)} aria-label="ปิด">×</button></div>
+            <div className="sheet-head"><h2>วิธีใช้ Sign2Say</h2><button className="close" onClick={() => setOpen(false)} aria-label="ปิด">×</button></div>
             <div className="help-grid">
               <section>
                 <h3>ฉันใช้ภาษามือ</h3>

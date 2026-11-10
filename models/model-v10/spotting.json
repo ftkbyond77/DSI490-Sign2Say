@@ -33,6 +33,7 @@
       "min_segments": 2
     },
     "post": {
+      "min_hand_frac": 0.3,
       "min_frames": 10,
       "null_gap_max": 0.1,
       "p_sign_min": 0.65,
@@ -207,6 +208,7 @@
     "freq_gamma": 0.5,
     "tempo": null,
     "post": {
+      "min_hand_frac": 0.3,
       "min_frames": 8,
       "null_gap_max": 0.0,
       "p_sign_min": 0.65,
@@ -261,6 +263,7 @@
         "min_segments": 2
       },
       "post": {
+        "min_hand_frac": 0.3,
         "min_frames": 10,
         "null_gap_max": 0.1,
         "p_sign_min": 0.65,
@@ -408,9 +411,9 @@
     },
     "note": "settings used when a personal bank is active (= v8.1): on t51 tune sentences with the signer's own clips enrolled, v8.1 0.1116 vs v9 0.1138 WER (v9 did not win)"
   },
-  "stream": {
-    "step_s": 0.5,
-    "lookahead_s": 0.45,
-    "stable_n": 1
+  "gate": {
+    "veto_s": 1.2,
+    "model": "onnx/gate_tagger.onnx",
+    "note": "phase-3 signing gate (run 5): the frame tagger fine-tuned (distilled to this tagger on TUNE signing + hands-up-but-not-signing negatives made from webcam frames of other days: holds, flicker, one hand, sway, stop-with-hands-up, hands cut by the bottom edge, palms turning, hands pushed toward the lens); only runs it calls non-sign for >= veto_s replace the tagger output. Held-out webcam idle: 1.67 -> 0.14 words / clip; TEST top-1 WER +0.2..+0.9 pt on t51/flu/iso, accepted precision unchanged. THAISLM_GATE=0 turns it off."
   }
 }

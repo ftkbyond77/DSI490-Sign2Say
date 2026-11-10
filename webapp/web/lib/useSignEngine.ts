@@ -4,12 +4,13 @@
 // with streamed progress, and speech. The logic is the one of the original SignStudio (components/SignStudio.tsx, kept at /classic);
 // only the UI moved out, so each screen draws it its own way.
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { HolisticLandmarker } from "@mediapipe/tasks-vision";
 import { openWidestCamera } from "@/lib/camera";
-import { ExpressionModel } from "@/lib/expression";
-import { createHolistic, detect, drawV2 as draw, EmotionMeter, getHolistic, preloadHolistic, replaceHolistic, handsUp, Normalizer, parts, type Delegate, type Emotion, type LmFrame, type Tone } from "@/lib/holistic";
+import { ExpressionModel, type FaceCrop } from "@/lib/expression";
+import { drawV2 as draw, EmotionMeter, FRAMING_P99, handScale, handsRaised, handsUp, Normalizer, parts, type Delegate, type Emotion, type LmFrame, type Tone } from "@/lib/holistic";
+import { createDetector, getDetector, preloadDetector, replaceDetector, type Detector } from "@/lib/detector";   // MediaPipe in a Web Worker (main-thread fallback inside)
 import { info, openLive, speak, translateFramesStream, translateVideoOnServerStream, vocabList, type LiveSocket, type LiveWords, type Options, type Progress, type TranslateResult } from "@/lib/api";
 import { b64ToBytes, playWav, unlockAudio } from "@/lib/audio";
+import { sayable, shownText } from "@/lib/shown";
 import { signWords } from "@/lib/mysigns";
 import { parseFaceEvery } from "@/lib/faceCadence";
 
@@ -27,6 +28,14 @@ const LIVE_MAX_MS = 20000;
 const MIN_SIGN_MS = 600;       // the model's shortest sign is 14 frames at 25 fps (0.56 s): shorter input cannot hold a sign
 const LIVE_MIN_MS = 1200;      // live mode: a scratch / adjusting the body is shorter than a signed word with its hold
 const LIVE_MIN_UP_MS = 600;    // … and the hands must have been up (signing height) this long in total
+// Early request (latency only, same answer): the live request is built from the frames up to lastUp + 400 ms — those are known 400 ms after the hands go
+// down, long before the end-of-sentence wait (0.9–2.5 s) is over. So the SAME request is sent SPEC_AFTER_MS after the hands go down; at the end it is used if
+// nothing changed (hands still down, same resting-face baseline), else dropped and the request is sent as before. The words, statuses and sentence are exactly
+// what the old flow would show — nothing is displayed or spoken before the sentence is over. ?spec=0 turns it off.
+const SPEC_AFTER_MS = 500;
+const lat = (name: string, t = performance.now()) => { try { console.debug("[lat]", name, Math.round(t)); } catch { /* no console */ } };
+// (measured: a resting-face baseline off by up to ±0.10 per blendshape changed no word, status, probability, sentence or emotion in 24 recorded utterances)
+const sameBaseline = (a: number[] | null, b: number[] | null) => (!a && !b) || (!!a && !!b && a.length === b.length && a.every((x, i) => Math.abs(x - b[i]) <= 0.1));
 const BASELINE_FRAMES = 75;    // resting face (hands down) kept for the experimental question cue
 
 export const STAGE_TH: Record<string, string> = {
@@ -40,7 +49,7 @@ const median = (rows: number[][]) => rows[0].map((_, j) => { const v = rows.map(
 export const load = <T,>(k: string, d: T): T => { try { const v = localStorage.getItem(k); return v ? (JSON.parse(v) as T) : d; } catch { return d; } };
 export const save = (k: string, v: unknown) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* private mode */ } };
 
-export const DEFAULT_OPTS: Options = { vocab: "conversation", llm: true, speak: "confident", faceQuestion: false, alphabet: "en", minP: 0.8 };
+export const DEFAULT_OPTS: Options = { vocab: "conversation", llm: true, speak: "confident", faceQuestion: false, alphabet: "en", minP: 0.8, voice: "male" };
 
 /** Settings shared by every screen (and remembered in this browser) — the same keys the original studio used. */
 export function useSignSettings() {
@@ -79,11 +88,10 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
   const { opts, endMs, autoLight } = settings;
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const lmRef = useRef<HolisticLandmarker | null>(null);
+  const detRef = useRef<Detector | null>(null);
   const delegateRef = useRef<Delegate>("GPU");
-  const faceLmRef = useRef<HolisticLandmarker | null>(null);      // GPU+CPU mode: expressions on the CPU every few frames
-  const nRef = useRef(0);
-  const fileLmRef = useRef<{ lm: HolisticLandmarker; t: number } | null>(null);
+  const genRef = useRef(0);                                       // the camera loop that is current (a loop from before a close / re-open stops itself)
+  const fileDetRef = useRef<{ det: Detector; t: number } | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const rafRef = useRef<number>(0);
   const framesRef = useRef<LmFrame[]>([]);
@@ -105,8 +113,11 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
   const expressionFrameRef = useRef(0);
   // v10: live mode also streams each utterance to /api/v1/live, so its words appear while signing (?stream=0 turns it off);
   // the full result (sentence, face, speech) still comes from the request sent when the hands go down.
-  const streamOnRef = useRef(true);
+  const streamOnRef = useRef(true);                // live words on again (v10 look); the server reads v9's settings — no "stream" block in spotting.json → lookahead 0.8 s
   const liveWsRef = useRef<LiveSocket | null>(null);
+  const specOnRef = useRef(true);
+  const specRef = useRef<{ lastUp: number; baseline: number[] | null; ctrl: AbortController; p: Promise<TranslateResult>; n: number; tLast: number } | null>(null);
+  const prefetchRef = useRef<{ key: string; p: Promise<ArrayBuffer> } | null>(null);
   const onResultRef = useRef(onResult);
   onResultRef.current = onResult;
 
@@ -120,6 +131,12 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
   const [tone, setTone] = useState<Tone>({ brightness: 1, contrast: 1 });
   const [liveState, setLiveState] = useState<LiveState>("waiting");
   const [liveNote, setLiveNote] = useState("");
+  const [handsLost, setHandsLost] = useState(false);                // signing, but the camera has not seen a hand for a moment: the live words wait
+  const handHistRef = useRef<boolean[]>([]);
+  // framing check (lib/holistic handScale): the last ~2 s of hand sizes; "close" = most hands are bigger than the sign model ever saw
+  const [framing, setFraming] = useState<"" | "close">("");
+  const scaleRef = useRef<{ t: number; big: boolean }[]>([]);
+  const framingRef = useRef<"" | "close">("");
   const [liveWords, setLiveWords] = useState<LiveWords | null>(null);
   const [speaking, setSpeaking] = useState("");
   const [vocab, setVocab] = useState<string[]>([]);
@@ -130,6 +147,7 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
   const [progress, setProgress] = useState<Progress | null>(null);
   const [model, setModel] = useState<ModelInfo | null>(null);
   const [apiDown, setApiDown] = useState(false);
+  const handsLostRef = useRef(false);
   const optsRef = useRef(opts);
   optsRef.current = opts;
   const endRef = useRef(endMs);
@@ -140,31 +158,50 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
   const set = (s: Status) => { statusRef.current = s; setStatus(s); };
 
   useEffect(() => {
-    preloadHolistic();                                     // MediaPipe starts loading now, not when the camera button is pressed
+    preloadDetector();                                     // MediaPipe starts loading now (in a worker: the page stays usable), not when the camera button is pressed
     const q = new URLSearchParams(window.location.search);
     perfNoFxRef.current = q.get("perf") === "nofx";
     faceEveryRef.current = parseFaceEvery(q.get("faceEvery"));
     streamOnRef.current = q.get("stream") !== "0";
+    specOnRef.current = q.get("spec") !== "0";
     const ex = exprRef.current;
-    const t = window.setTimeout(() => ex.load(), 2500);     // the expression model after it (small; not competing with MediaPipe)
-    info().then((m) => { setModel(m); setApiDown(false); }).catch(() => { setModel(null); setApiDown(true); });
-    vocabList().then(setVocab).catch(() => setVocab([]));
-    return () => window.clearTimeout(t);
+    // The server may still be starting (docker compose opens the site before the back ends are up): ask again every few seconds until it
+    // answers, then fetch the vocabulary and the expression model — nothing needs a page reload.
+    let stop = false, timer = 0, late = 0;
+    const probe = (n: number) => info().then((m) => {
+      if (stop) return;
+      setModel(m); setApiDown(false);
+      vocabList().then((v) => { if (!stop) setVocab(v); }).catch(() => { if (!stop) setVocab([]); });
+      late = window.setTimeout(() => ex.load(), 2500);       // the expression model after it (small; not competing with MediaPipe)
+    }).catch(() => {
+      if (stop) return;
+      setModel(null); setApiDown(true);
+      timer = window.setTimeout(() => probe(n + 1), Math.min(5000, 1500 + n * 500));
+    });
+    probe(0);
+    return () => { stop = true; window.clearTimeout(timer); window.clearTimeout(late); };
   }, []);
   useEffect(() => { if (normRef.current) normRef.current.enabled = autoLight; }, [autoLight]);
 
-  /** Speak a result according to the speech setting (the server already attached the audio when it was allowed). */
+  /** Speak a result: exactly the text the screen shows at the current filter (words below it are a pause, never a guess), in the chosen
+   *  voice. Without `force` (a fresh result) the audio the server attached is played; the ฟังเสียง buttons pass force and always re-say it. */
   const say = useCallback(async (r: TranslateResult, force = false) => {
     const o = optsRef.current;
-    const tentative = !r.sentence;
-    if (!force && (o.speak === "off" || (tentative && o.speak !== "all"))) return;
-    const text = (r.sentence || r.language?.tentative_sentence_th || "").replaceAll("[?]", " ").trim();
-    if (!text) return;
-    if (force) unlockAudio();
+    if (!force && o.speak === "off") return;
+    const text = shownText(r, o.minP ?? DEFAULT_OPTS.minP).text.trim();
+    if (!sayable(text)) {
+      if (force) setError("ไม่มีคำที่ออกเสียงได้ที่ threshold นี้ — ลองเลือก threshold ที่ต่ำลง");
+      return;
+    }
+    if (force) { unlockAudio(); setError(""); }
     setSpeaking(text);
     try {
-      const bytes = !force && r.audio_wav_b64 ? b64ToBytes(r.audio_wav_b64) : await speak(text, r.face?.emotion, r.face?.intensity);
-      await playWav(bytes);
+      const key = JSON.stringify([text, o.voice ?? "male", r.speak_emotion ?? null, r.speak_intensity ?? null]);
+      const pf = prefetchRef.current; prefetchRef.current = null;
+      const bytes = !force && r.audio_wav_b64 ? b64ToBytes(r.audio_wav_b64)
+        : !force && pf && pf.key === key ? await pf.p.catch(() => speak(text, o.voice ?? "male", r.speak_emotion, r.speak_intensity))
+        : await speak(text, o.voice ?? "male", r.speak_emotion, r.speak_intensity);
+      await playWav(bytes, () => lat("audioStart"));
     } catch (e) { setError(`เล่นเสียงไม่ได้ (${(e as Error).message}) — กดปุ่ม “ฟังเสียง” อีกครั้ง`); }
     finally { setSpeaking(""); }
   }, []);
@@ -180,6 +217,7 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
     dropLive();
     r = { ...r, uid: ++resultSeq.current };        // a stable key: each card keeps its own taught words when a new result is prepended
     setResults((prev) => [r, ...prev].slice(0, 12));
+    lat("result");
     onResultRef.current?.(r);
     await say(r);
   }, [say, dropLive]);
@@ -200,13 +238,13 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
   };
 
   const request = useCallback((frames: LmFrame[], w: number, h: number, onProgress: (x: Progress) => void, signal?: AbortSignal,
-    capturePerf?: CapturePerf) => {
+    capturePerf?: CapturePerf, faceCrops?: FaceCrop[]) => {
     const rest = restRef.current;
-    return translateFramesStream(frames, w, h, optsRef.current, onProgress, rest.length >= 10 ? median(rest) : null, signal, capturePerf);
+    return translateFramesStream(frames, w, h, optsRef.current, onProgress, rest.length >= 10 ? median(rest) : null, signal, capturePerf, faceCrops);
   }, []);
 
   /** frames → server (progress streamed back) → result + speech. */
-  const send = useCallback(async (frames: LmFrame[], w: number, h: number, source: "manual" | "live") => {
+  const send = useCallback(async (frames: LmFrame[], w: number, h: number, source: "manual" | "live", early?: Promise<TranslateResult>) => {
     const why = check(frames, source);
     if (why) { if (source === "live") { setLiveNote(why); dropLive(); } else setError(why); return false; }
     setError(""); setLiveNote("");
@@ -217,7 +255,10 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
         fps: duration > 0 ? (frames.length - 1) * 1000 / duration : undefined,
         face_every: faceEveryRef.current,
       } : undefined;
-      const r = await request(frames, w, h, setProgress, undefined, capturePerf);
+      const faceCrops = frames.length ? exprRef.current.takeCrops(frames[0].t, frames[frames.length - 1].t) : [];     // face branch: its own pictures, its own field
+      let r: TranslateResult | undefined;
+      if (early) { setProgress({ stage: "spotting", p: 0.5 }); try { r = await early; } catch { r = undefined; } }      // the same request, sent early
+      if (!r) r = await request(frames, w, h, setProgress, undefined, capturePerf, faceCrops);
       setProgress({ stage: "done", p: 1 });
       await handle(r);                         // unsure signs are shown as [?] (no guessed word) so the user can teach them
     } catch (e) { setError(`ประมวลผลไม่สำเร็จ: ${(e as Error).message}`); }
@@ -225,23 +266,54 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
     return true;
   }, [handle, request, dropLive]);
 
+  const dropSpec = useCallback(() => { if (specRef.current) liveWsRef.current?.resume(); specRef.current?.ctrl.abort(); specRef.current = null; }, []);
+
+  /** The live request, sent early (see SPEC_AFTER_MS): exactly the frames / options the end of the sentence would send. */
+  const startSpec = useCallback((utt: LmFrame[], lastUp: number, w: number, h: number) => {
+    const frames = utt.filter((x) => x.t <= lastUp + 400);
+    if (check(frames, "live")) return;
+    const rest = restRef.current, baseline = rest.length >= 10 ? median(rest) : null;
+    const duration = durMs(frames);
+    const capturePerf: CapturePerf = { mode: perfNoFxRef.current ? "nofx" : "default", fps: duration > 0 ? (frames.length - 1) * 1000 / duration : undefined, face_every: faceEveryRef.current };
+    const faceCrops = frames.length ? exprRef.current.takeCrops(frames[0].t, frames[frames.length - 1].t) : [];
+    const ctrl = new AbortController();
+    const p = translateFramesStream(frames, w, h, optsRef.current, () => {}, baseline, ctrl.signal, capturePerf, faceCrops);
+    p.catch(() => {});
+    specRef.current = { lastUp, baseline, ctrl, p, n: frames.length, tLast: frames.length ? frames[frames.length - 1].t : 0 };
+    liveWsRef.current?.pause();                 // the live stream would only compete with this request for the CPU (hands are down: it has nothing new to read)
+    lat("specStart");
+    p.then((r) => {
+      lat("specDone");
+      const o = optsRef.current;
+      if (ctrl.signal.aborted || o.speak === "off") return;
+      const text = shownText(r, o.minP ?? DEFAULT_OPTS.minP).text.trim();
+      if (!sayable(text)) return;
+      const pp = speak(text, o.voice ?? "male", r.speak_emotion, r.speak_intensity);       // the same audio request say() would send — only earlier
+      pp.catch(() => {});
+      prefetchRef.current = { key: JSON.stringify([text, o.voice ?? "male", r.speak_emotion ?? null, r.speak_intensity ?? null]), p: pp };
+    }).catch(() => {});
+  }, []);
+
   const switchToCpu = useCallback(async () => {
     if (errRef.current.switching) return;
     errRef.current.switching = true;
     try {
-      lmRef.current?.close(); lmRef.current = null;
-      faceLmRef.current?.close(); faceLmRef.current = null;
-      const l = await createHolistic("CPU");
-      replaceHolistic(l);                                  // the shared one failed on this machine: every screen uses the CPU one now
-      lmRef.current = l.lm; delegateRef.current = l.delegate; setDelegate(l.delegate);
+      const old = detRef.current;
+      const d = await createDetector("CPU");
+      replaceDetector(d);                                  // the shared one failed on this machine: every screen uses the CPU one now
+      detRef.current = d; delegateRef.current = d.delegate; setDelegate(d.delegate);
+      old?.close();
     } catch (e) { setError(`MediaPipe ใช้งานไม่ได้: ${(e as Error).message}`); }
     finally { errRef.current = { n: 0, switching: false }; }
   }, []);
 
-  const loop = useCallback(() => {
+  // One frame at a time: snapshot → worker → landmarks → everything below (as before). The next frame is requested when this one is done,
+  // so a slow machine simply runs at a lower frame rate instead of piling frames up.
+  const loop = useCallback(async () => {
+    const gen = genRef.current;
     try {
-      const v = videoRef.current, c = canvasRef.current, lm = lmRef.current;
-      if (!(v && c && lm && v.readyState >= 2)) return;
+      const v = videoRef.current, c = canvasRef.current, det = detRef.current;
+      if (!(v && c && det && v.readyState >= 2)) return;
       const t = performance.now();
       let f: LmFrame | null = null;
       if (!normRef.current) { normRef.current = new Normalizer(); normRef.current.enabled = autoLightRef.current; }
@@ -249,14 +321,11 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
       let src: HTMLVideoElement | HTMLCanvasElement = v;
       try {
         src = N.frame(v, t);
-        f = detect(lm, src, t); errRef.current.n = 0;
-        const fl = faceLmRef.current;
         const skipLiveFace = perfNoFxRef.current && modeRef.current === "live";
+        f = await det.detect(src, t, !skipLiveFace);       // expressions (blendshapes) every 8th frame on the CPU, decided inside the detector
+        errRef.current.n = 0;
         if (skipLiveFace && f) f.bs = [];
-        if (!skipLiveFace && f && fl && f.face.length && nRef.current++ % 8 === 0) {        // expressions (blendshapes) every 8th frame on the CPU
-          const g = detect(fl, src, t);
-          if (g) f.bs = g.bs;
-        }
+        if (gen !== genRef.current) return;                // the camera was closed / re-opened while this frame was being read
       } catch {                                    // a frame failed (e.g. the GPU path) — never stop the loop; move to the CPU after a few
         if (++errRef.current.n >= 3 && delegateRef.current !== "CPU") switchToCpu();
         return;
@@ -267,7 +336,7 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
         lastEmoRef.current = undefined;
       } else if (f && f.face.length) {
         if (expressionFrameRef.current++ % faceEveryRef.current === 0) {
-          const m = exprRef.current.failed ? null : exprRef.current.update(src, c.width, c.height, f.face, t);
+          const m = exprRef.current.failed ? null : exprRef.current.update(src, c.width, c.height, f.face, t, [f.lh, f.rh]);
           if (m) lastEmoRef.current = m;
           else if (f.bs.length >= 52) lastEmoRef.current = emoRef.current.update(f.bs);
         }
@@ -282,6 +351,16 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
       if (!f) return;
       const fr = fpsRef.current; fr.n++;
       if (t - fr.t > 1000) { setFps(Math.round((fr.n * 1000) / (t - fr.t))); fr.n = 0; fr.t = t; }
+      {
+        // > 60 % of the last 2 s of hand frames bigger than the sign model's 99th percentile → "too close" (on the 597 recorded requests: 2 of the 228
+        // normal-framing test videos ever show it, the user's hands-toward-the-lens test shows it 67 % of the time). A hint only — nothing is blocked.
+        const S = scaleRef.current;
+        const r = handScale(f, v.videoWidth || 1280, v.videoHeight || 720);
+        if (r.length) S.push({ t, big: Math.max(...r) > FRAMING_P99 });
+        while (S.length && t - S[0].t > 2000) S.shift();
+        const fr: "" | "close" = S.length >= 10 && S.filter((x) => x.big).length / S.length > 0.6 ? "close" : "";
+        if (fr !== framingRef.current) { framingRef.current = fr; setFraming(fr); }
+      }
       const up = handsUp(f);
       if (!up && f.bs.length >= 52 && statusRef.current !== "recording") {          // resting face, for the question cue
         restRef.current.push(f.bs); if (restRef.current.length > BASELINE_FRAMES) restRef.current.shift();
@@ -291,7 +370,7 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
         const L = live.current;
         if (L.state === "waiting") {
           L.pre.push(f); while (L.pre.length && t - L.pre[0].t > LIVE_PREROLL_MS) L.pre.shift();
-          if (up) { if (!L.upSince) L.upSince = t; } else L.upSince = 0;
+          if (handsRaised(f)) { if (!L.upSince) L.upSince = t; } else L.upSince = 0;      // starts only on a real, raised hand (not the body's wrist guess)
           if (L.upSince && t - L.upSince >= LIVE_UP_MS) {
             L.state = "signing"; L.utt = [...L.pre]; L.start = t; L.lastUp = t; setLiveState("signing"); setLiveNote("");
             if (streamOnRef.current) {
@@ -304,20 +383,33 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
         } else {
           L.utt.push(f);
           liveWsRef.current?.add(f);
-          if (up) L.lastUp = t;
+          { const h = handHistRef.current; h.push(f.lh.length === 21 || f.rh.length === 21); if (h.length > 12) h.shift();       // ≈ 1 s
+            const lost = h.length >= 8 && h.filter(Boolean).length < 2; if (lost !== handsLostRef.current) { handsLostRef.current = lost; setHandsLost(lost); } }
+          if (up) { L.lastUp = t; if (specRef.current) dropSpec(); }                 // the hands came back: the early request is for a sentence that is not over
+          else if (specOnRef.current && !specRef.current && t - L.lastUp >= SPEC_AFTER_MS && t - L.start < LIVE_MAX_MS) startSpec(L.utt, L.lastUp, v.videoWidth, v.videoHeight);
           if (t - L.lastUp >= endRef.current || t - L.start >= LIVE_MAX_MS) {
             const frames = L.utt.filter((x) => x.t <= L.lastUp + 400);
+            const spec = specRef.current; specRef.current = null;
+            const restNow = restRef.current, baseNow = restNow.length >= 10 ? median(restNow) : null;
+            const early0 = spec && spec.lastUp === L.lastUp && !spec.ctrl.signal.aborted && sameBaseline(spec.baseline, baseNow) && spec.n === frames.length ? spec.p : undefined;
+            const early = early0;
+            if (spec && !early) spec.ctrl.abort();
+            lat("handsDown", L.lastUp); lat("end");
+            if (early && spec) {                                                         // the early request must hold exactly the frames the end would send
+              const same = spec.n === frames.length && spec.tLast === (frames.length ? frames[frames.length - 1].t : 0);
+              lat(same ? "endUsesEarly" : "earlyFramesDiffer");
+            }
             L.state = "waiting"; L.pre = []; L.utt = []; L.upSince = 0;
             setLiveState("processing");
             liveWsRef.current?.end();
-            send(frames, v.videoWidth, v.videoHeight, "live").finally(() => setLiveState(live.current.state));
+            send(frames, v.videoWidth, v.videoHeight, "live", early).finally(() => setLiveState(live.current.state));
           }
         }
       }
     } finally {
-      rafRef.current = requestAnimationFrame(loop);
+      if (gen === genRef.current && streamRef.current) rafRef.current = requestAnimationFrame(loop);
     }
-  }, [send, switchToCpu]);
+  }, [send, switchToCpu, dropSpec, startSpec]);
 
   const opening = useRef<Promise<boolean> | null>(null);
   const openCamera = useCallback(async () => {
@@ -330,9 +422,9 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
   async function openNow() {
     setError(""); set("loading");
     try {
-      if (!lmRef.current) {
-        const { lm, delegate: d, face } = await getHolistic();      // usually ready already: preloaded when the screen opened
-        lmRef.current = lm; faceLmRef.current = face ?? null; delegateRef.current = d; setDelegate(d);
+      if (!detRef.current) {
+        const det = await getDetector();                    // usually ready already: preloaded when the screen opened
+        detRef.current = det; delegateRef.current = det.delegate; setDelegate(det.delegate);
         exprRef.current.load();                               // in the background: the label falls back to blendshapes until it is ready
       }
       const s = await openWidestCamera();
@@ -343,19 +435,19 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
       setCamSize([v.videoWidth, v.videoHeight]);          // the stage takes the camera's own shape (4:3 sensors show their full height)
       set("camera");
       expressionFrameRef.current = 0;
-      cancelAnimationFrame(rafRef.current); rafRef.current = requestAnimationFrame(loop);
+      cancelAnimationFrame(rafRef.current); genRef.current++; rafRef.current = requestAnimationFrame(loop);
       return true;
     } catch (e) { setError(`เปิดกล้องไม่ได้: ${(e as Error).message}`); set("idle"); return false; }
   }
   }, [loop]);
 
   const closeCamera = useCallback(() => {
-    cancelAnimationFrame(rafRef.current);
+    dropSpec(); cancelAnimationFrame(rafRef.current); genRef.current++;
     streamRef.current?.getTracks().forEach((t) => t.stop()); streamRef.current = null;
     const L = live.current; L.state = "waiting"; L.pre = []; L.utt = []; L.upSince = 0;
     dropLive();
     setLiveState("waiting"); setSeen(parts(null)); set("idle");
-  }, [dropLive]);
+  }, [dropLive, dropSpec]);
   useEffect(() => () => closeCamera(), [closeCamera]);
 
   const setMode = useCallback((m: Mode) => {
@@ -387,8 +479,8 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
         const r = await translateVideoOnServerStream(file, optsRef.current, setProgress);
         setProgress({ stage: "done", p: 1 }); await handle({ ...r, title: file.name }); return;
       }
-      if (!fileLmRef.current) { const { lm } = await createHolistic("CPU"); fileLmRef.current = { lm, t: 1000 }; }
-      const F = fileLmRef.current;
+      if (!fileDetRef.current) fileDetRef.current = { det: await createDetector("CPU"), t: 1000 };
+      const F = fileDetRef.current;
       const FN = new Normalizer(); FN.enabled = autoLightRef.current;
       const v = document.createElement("video");
       v.muted = true; v.playsInline = true; v.src = URL.createObjectURL(file);
@@ -398,7 +490,7 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
       for (let t = 0; t < v.duration; t += 1 / 25) {
         v.currentTime = t;
         await new Promise((ok) => { v.onseeked = ok; });
-        const f = detect(F.lm, FN.frame(v, t * 1000), base + t * 1000);
+        const f = await F.det.detect(FN.frame(v, t * 1000), base + t * 1000, false);
         if (f) frames.push({ ...f, t: t * 1000 });
         if (frames.length % 5 === 0) setProgress({ stage: "browser", p: 0.6 * (t / v.duration) });
       }
@@ -414,7 +506,7 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
   const camOn = status === "camera" || status === "recording" || status === "recorded" || (status === "processing" && !!streamRef.current);
 
   return {
-    videoRef, canvasRef, status, mode, setMode, liveState, liveNote, liveWords, nFrames, fps, delegate, seen, exposure, tone, camSize,
+    videoRef, canvasRef, status, mode, setMode, liveState, liveNote, liveWords, handsLost, framing, nFrames, fps, delegate, seen, exposure, tone, camSize,
     speaking, vocab, results, error, setError, progress, model, apiDown, camOn, autoLight, minP: opts.minP ?? DEFAULT_OPTS.minP,
     openCamera, closeCamera, startLive, stopLive, startRec, stopRec, process, onFile, say,
   };

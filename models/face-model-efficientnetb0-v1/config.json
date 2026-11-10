@@ -1,0 +1,73 @@
+{
+ "name": "face-model-efficientnetb0-v1",
+ "task": "facial expression recognition (7 FER2013 classes) — an expression is what the face shows, not proof of a feeling",
+ "arch": "efficientnet_b0",
+ "onnx": "face_fer.onnx",
+ "classes": [
+  "angry",
+  "disgust",
+  "fear",
+  "happy",
+  "sad",
+  "surprise",
+  "neutral"
+ ],
+ "input": {
+  "name": "face",
+  "shape": [
+   null,
+   1,
+   48,
+   48
+  ],
+  "dtype": "float32",
+  "range": "0..255 gray",
+  "preprocessing_in_graph": "bilinear 48->96, /255, gray->3ch, ImageNet mean/std"
+ },
+ "net_res": 96,
+ "temperature": 1.0,
+ "prior_shift": {
+  "neutral": 0.6
+ },
+ "crop": {
+  "scale": 1.22,
+  "shift_up": 0.16,
+  "points": "MediaPipe 68 face points (modules/mediapipe_pose.MESH68)",
+  "note": "measured on FER2013: the 68-point box covers 0.82 of a FER2013 image side (median, 129 faces) and sits 0.16 box-heights below its centre"
+ },
+ "unknown": {
+  "min_conf": 0.48,
+  "min_margin": 0.1,
+  "min_quality": 0.25
+ },
+ "smoother": {
+  "tau_s": 0.35,
+  "switch_margin": 0.12,
+  "min_hold_s": 0.3,
+  "strong": 0.8,
+  "lost_s": 1.5,
+  "min_conf": 0.48
+ },
+ "train": {
+  "args": {
+   "arch": "efficientnet_b0",
+   "res": 96,
+   "epochs": 20,
+   "head_epochs": 1,
+   "unfreeze": 0.0,
+   "bs": 128,
+   "lr_head": 0.001,
+   "lr_back": 0.0003,
+   "wd": 0.0001,
+   "smooth": 0.1,
+   "cw_power": 0.5,
+   "aug": 1.0,
+   "mix": 0.0,
+   "ema": 0.998,
+   "patience": 6,
+   "seed": 42,
+   "tag": "main_efficientnet_b0"
+  },
+  "run": "runs/main_efficientnet_b0"
+ }
+}

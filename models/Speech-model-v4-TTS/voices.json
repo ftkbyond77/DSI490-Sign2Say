@@ -1,0 +1,90 @@
+{
+ "male": {
+  "ref": "refs/male.wav",
+  "ref_text": "ในการได้รับรู้สารสนเทศ ข่าวสารข้อมูล",
+  "voice_profile": "masculine",
+  "est_age": 24.3,
+  "f0_hz": 122.0,
+  "dnsmos": 3.51,
+  "ref_s": 4.03,
+  "source": "spk99159c4a",
+  "note": "reference taken from a dataset speaker (anonymised id; perceived age by the audeering estimator, not a true age)"
+ },
+ "male_2": {
+  "ref": "refs/male_2.wav",
+  "ref_text": "ได้ทราบข้อเท็จจริงข่าวสาร ความก้าวหน้าใหม่ๆ",
+  "voice_profile": "masculine",
+  "est_age": 24.3,
+  "f0_hz": 128.2,
+  "dnsmos": 3.59,
+  "ref_s": 4.0,
+  "source": "spk12fa307f",
+  "note": "reference taken from a dataset speaker (anonymised id; perceived age by the audeering estimator, not a true age)"
+ },
+ "female": {
+  "ref": "refs/female.wav",
+  "ref_text": "ของการที่จะต้องเข้าใจจริยธรรมนะคะ",
+  "voice_profile": "feminine",
+  "est_age": 23.6,
+  "f0_hz": 206.0,
+  "dnsmos": 3.43,
+  "ref_s": 3.18,
+  "source": "spk63668f9d",
+  "note": "reference taken from a dataset speaker (anonymised id; perceived age by the audeering estimator, not a true age)"
+ },
+ "female_2": {
+  "ref": "refs/female_2.wav",
+  "ref_text": "เป็นการเปิดมิติการเที่ยวแต่งกายถ่ายภาพอีกกระแสหนึ่ง",
+  "voice_profile": "feminine",
+  "est_age": 23.6,
+  "f0_hz": 226.1,
+  "dnsmos": 3.61,
+  "ref_s": 3.58,
+  "source": "spk8f7bbabe",
+  "note": "reference taken from a dataset speaker (anonymised id; perceived age by the audeering estimator, not a true age)"
+ },
+ "male_long": {
+  "ref": "refs/male_long.wav",
+  "ref_text": "สารสนเทศมีความเกี่ยวข้องกับทุก ๆ เรื่องในชีวิตประจำวัน",
+  "voice_profile": "masculine",
+  "est_age": 24.3,
+  "f0_hz": 124.0,
+  "dnsmos": 3.67,
+  "ref_s": 4.54,
+  "source": "spk99159c4a",
+  "note": "reference taken from a dataset speaker (anonymised id; perceived age by the audeering estimator, not a true age)"
+ },
+ "male_2_long": {
+  "ref": "refs/male_2_long.wav",
+  "ref_text": "ห้องสมุดโดยทั่วไปมีวัตถุประสงค์ที่สำคัญ ห้า ประการคือ",
+  "voice_profile": "masculine",
+  "est_age": 24.3,
+  "f0_hz": 119.9,
+  "dnsmos": 3.66,
+  "ref_s": 4.58,
+  "source": "spk12fa307f",
+  "note": "reference taken from a dataset speaker (anonymised id; perceived age by the audeering estimator, not a true age)"
+ },
+ "female_long": {
+  "ref": "refs/female_long.wav",
+  "ref_text": "อันนี้สำคัญมาก เพราะพนักงานก็คือผู้ที่จะสามารถหารายได้ให้กับเรา",
+  "voice_profile": "feminine",
+  "est_age": 23.6,
+  "f0_hz": 211.4,
+  "dnsmos": 3.64,
+  "ref_s": 6.75,
+  "source": "spk63668f9d",
+  "note": "reference taken from a dataset speaker (anonymised id; perceived age by the audeering estimator, not a true age)"
+ },
+ "female_2_long": {
+  "ref": "refs/female_2_long.wav",
+  "ref_text": "กลับหันหลังมารับรู้เรื่องราวในประวัติศาสตร์ และวรรณคดีของสมัยอยุธยามากขึ้น",
+  "voice_profile": "feminine",
+  "est_age": 23.6,
+  "f0_hz": 224.7,
+  "dnsmos": 3.66,
+  "ref_s": 6.69,
+  "source": "spk8f7bbabe",
+  "note": "reference taken from a dataset speaker (anonymised id; perceived age by the audeering estimator, not a true age)"
+ }
+}

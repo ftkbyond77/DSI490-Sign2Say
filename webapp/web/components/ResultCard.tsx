@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { speak, type TranslateResult } from "@/lib/api";
+import { ferCue, speak, type TranslateResult } from "@/lib/api";
 import { saveSign } from "@/lib/mysigns";
 import { playWav, unlockAudio } from "@/lib/audio";
 
@@ -25,10 +25,10 @@ export default function ResultCard({ r, latest, onSaved, vocab = [] }: { r: Tran
   const replay = async () => {                     // a click: the user asks for it, so an uncertain reading is spoken too
     if (!sayText) return;
     unlockAudio();
-    await playWav(await speak(sayText, r.face?.emotion, r.face?.intensity));
+    await playWav(await speak(sayText, "male", r.speak_emotion, r.speak_intensity));
   };
   const cues = [r.face?.question_yesno && (r.face?.question_furrow ? "คำถาม ไหม (ขมวดคิ้ว · ทดลอง)" : "คำถาม (คิ้วยก)"), r.face?.negation && "ปฏิเสธ (ส่ายหัว)",
-    r.face?.affirmation && "ยืนยัน (พยักหน้า)", r.face?.emotion && r.face.emotion !== "neutral" && `อารมณ์: ${r.face.emotion_th}`].filter(Boolean) as string[];
+    r.face?.affirmation && "ยืนยัน (พยักหน้า)", r.face?.emotion && r.face.emotion !== "neutral" && `อารมณ์: ${r.face.emotion_th}`, ferCue(r.face_fer)].filter(Boolean) as string[];
   return (
     <article className={`card ${latest ? "latest" : ""}`}>
       <header>

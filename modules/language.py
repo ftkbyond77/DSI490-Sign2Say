@@ -111,7 +111,9 @@ def rules_compose(segments, face, roles=None, allowed=None, words=None):
     chosen = [s["candidates"][0]["word"] if s["status"] == "accepted" else "[?]" for s in segments]
     if words is not None:              # recomposition after the LLM: the words that survived the guard
         chosen = list(words)
-    seq = _order([w for w in chosen if w != "[?]"], roles)
+    kept = [w for w in chosen if w != "[?]"]
+    kept = [w for i, w in enumerate(kept) if i == 0 or w != kept[i - 1]]     # a dropped [?] between two identical signs ("ฉัน สบายดี [?] สบายดี") must not leave "สบายดีสบายดี"
+    seq = _order(kept, roles)
     if seq and face.get("negation") and not any(roles.get(w) == "NEG" for w in seq):
         k = next((i for i, w in enumerate(seq) if roles.get(w) in ("VERB", "STATE")), len(seq))
         seq.insert(k, "ไม่")
@@ -182,7 +184,12 @@ def compose_sentence(segments, face=None, grammar=None, roles=None, use_llm=True
     signs_all, signs = signs, sure
     allowed = allowed_words(signs)
     # the LLM only polishes a sentence of ≥ 3 confident words (word order + particles); shorter ones: the rules composer, no wait
-    if use_llm and os.environ.get("OPENAI_API_KEY") and len(signs) >= 3:
+    # phase-3 grammar gate: when the confident words are ALREADY in Thai order (the learned TSL→Thai order `_order` leaves them as they are) the
+    # rules sentence is the answer — the LLM (1.5–4 s, measured in the browser) is called only when the order really has to change. An LLM asked
+    # to "fix" a correct sentence tends to over-correct (Fang et al. 2023), and this check agreed with an LLM classifier 8/8 (Error-Analysis-v1).
+    gate_words = [s["candidates"][0]["word"] for s in signs]
+    thai_order = _order(gate_words, roles or {}) == gate_words
+    if use_llm and os.environ.get("OPENAI_API_KEY") and len(signs) >= 3 and not thai_order:
         payload = dict(
             segments=[dict(status=s["status"], p_correct=round(s.get("p_correct", 0), 2), allowed=a,
                            candidates=[dict(word=c["word"], score=round(c["score"], 3)) for c in s["candidates"][:5]]) for s, a in zip(signs, allowed)],
@@ -191,7 +198,10 @@ def compose_sentence(segments, face=None, grammar=None, roles=None, use_llm=True
         t = time.time()
         try:
             from openai import OpenAI
-            r = OpenAI(timeout=float(timeout or os.environ.get("OPENAI_TIMEOUT_S", 8))).chat.completions.create(
+            # phase 3: a latency budget, no retries — the rules sentence (learned Thai order) is the answer when the LLM is late. Before: timeout 8 s
+            # and the client's 2 automatic retries (measured 1.5–5.5 s per sentence in the browser). LLM_BUDGET_S=8 restores the old wait.
+            budget = min(float(timeout or os.environ.get("OPENAI_TIMEOUT_S", 8)), float(os.environ.get("LLM_BUDGET_S", "1.5")))
+            r = OpenAI(timeout=budget, max_retries=0).chat.completions.create(
                 model=model or os.environ.get("OPENAI_MODEL", "gpt-4.1-mini"), temperature=0, max_tokens=400,
                 response_format={"type": "json_object"},
                 messages=[{"role": "system", "content": SYSTEM}, {"role": "user", "content": json.dumps(payload, ensure_ascii=False)}])
@@ -203,7 +213,7 @@ def compose_sentence(segments, face=None, grammar=None, roles=None, use_llm=True
     if out is None:
         out = rules_compose(signs, face, roles, allowed)
         if use_llm and os.environ.get("OPENAI_API_KEY"):
-            out["notes"] = locals().get("err", "")
+            out["notes"] = locals().get("err", "") or ("grammar gate: already in Thai order — no LLM" if thai_order and len(signs) >= 3 else "")
     chosen = list(out.get("chosen", []))[:len(signs)] + ["[?]"] * max(0, len(signs) - len(out.get("chosen", [])))
     viol = []
     for i, (w, a) in enumerate(zip(chosen, allowed)):

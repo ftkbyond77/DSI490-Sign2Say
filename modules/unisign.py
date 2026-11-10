@@ -16,7 +16,7 @@ import torch.nn as nn
 from .parts import BODY_IDX, FACE_IDX, MODES, prepare_parts  # noqa: F401  (re-exported: keypoint preparation is NumPy-only)
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "third_party" / "unisign"))
+sys.path.insert(0, str(ROOT / "models" / "unisign"))
 from stgcn_layers import Graph, get_stgcn_chain  # noqa: E402
 
 HF_SNAP = Path.home() / ".cache/huggingface/hub/models--ZechengLi19--Uni-Sign/snapshots/eab251b7fe7e8521afc0e67be98add670ea40a0d"

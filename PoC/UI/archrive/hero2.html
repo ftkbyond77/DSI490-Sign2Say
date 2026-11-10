@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sign → Text → Speech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Prompt:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--teal:#2aafb3;--teal-d:#1d8a8e;--teal-l:#e6f6f6;--ink:#10252a;--mute:#8aa0a4;--line:#e3ecec}
+  html,body{margin:0;height:100%;background:#fff;overflow:hidden}
+  #fit{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#fff}
+  #stage{position:relative;width:1280px;height:520px;flex:none;background:#fff;overflow:hidden;
+         font-family:'IBM Plex Sans Thai','Prompt','Leelawadee UI',Tahoma,sans-serif;color:var(--ink)}
+  .blob{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
+  #b1{width:520px;height:520px;left:-140px;top:-200px;background:rgba(42,175,179,.16)}
+  #b2{width:480px;height:480px;right:-140px;bottom:-240px;background:rgba(42,175,179,.12)}
+  #content{position:absolute;inset:0}
+  /* video card */
+  #card{position:absolute;left:72px;top:40px;width:440px;height:440px;border-radius:30px;overflow:hidden;background:#dfe9ea;
+        box-shadow:0 30px 80px -24px rgba(16,37,42,.35),0 4px 14px rgba(16,37,42,.08)}
+  #card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+  #card video.on{opacity:1}
+  #lm{position:absolute;inset:0;width:100%;height:100%}
+  #pill{position:absolute;left:16px;bottom:16px;display:flex;align-items:center;gap:8px;padding:9px 16px 9px 13px;border-radius:999px;
+        background:rgba(255,255,255,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:14px;font-weight:500;color:var(--ink)}
+  #pill i{width:8px;height:8px;border-radius:50%;background:var(--teal)}
+  /* right column */
+  #right{position:absolute;left:592px;top:40px;width:616px;height:440px}
+  #steps{position:relative;height:12px}
+  #steps .row{display:flex;justify-content:space-between}
+  .st{font:500 15px 'Prompt','IBM Plex Sans Thai',sans-serif;color:var(--mute);display:flex;align-items:center;gap:8px;transition:none}
+  .st b{width:9px;height:9px;border-radius:50%;background:#cfdcdd;display:block}
+  .st.done{color:#5b787c}.st.done b{background:var(--teal)}
+  .st.on{color:var(--ink)}.st.on b{background:var(--teal);box-shadow:0 0 0 5px rgba(42,175,179,.18)}
+  #rail{position:absolute;left:0;right:0;top:0;height:6px;background:var(--line);border-radius:6px;overflow:hidden}
+  #rail div{height:100%;width:0;background:var(--teal);border-radius:6px}
+  #lbl{position:absolute;top:70px;font:500 13px 'Prompt',sans-serif;letter-spacing:.14em;color:var(--teal);text-transform:uppercase}
+  #out{position:absolute;top:104px;left:0;width:616px;font:500 48px/1.3 'Prompt','IBM Plex Sans Thai',sans-serif;letter-spacing:-.01em}
+  #out span{display:inline-block;will-change:filter,opacity}
+  #cur{display:inline-block;width:3px;height:.95em;margin-left:5px;vertical-align:-.12em;background:var(--teal);border-radius:2px}
+  #speech{position:absolute;left:0;bottom:0;width:616px;height:72px;border-radius:36px;background:#f3f9f9;border:1px solid var(--line);display:flex;align-items:center}
+  #play{width:48px;height:48px;margin-left:12px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;flex:none;transition:none}
+  #play svg{width:22px;height:22px}
+  #wave{flex:1;height:60px;margin:0 22px 0 18px}
+  #stl{position:absolute;right:26px;top:-26px;font:500 13px 'Prompt',sans-serif;color:var(--mute)}
+</style>
+</head>
+<body>
+<div id="fit"><div id="stage">
+  <div class="blob" id="b1"></div><div class="blob" id="b2"></div>
+  <div id="content">
+    <div id="card">
+      <video id="v0" muted playsinline preload="auto"></video>
+      <video id="v1" muted playsinline preload="auto"></video>
+      <svg id="lm" viewBox="0 0 600 600"></svg>
+      <div id="pill"><i></i><span id="pt">Human</span></div>
+    </div>
+    <div id="right">
+      <div id="steps">
+        
+        <div id="rail"><div id="railf"></div></div>
+      </div>
+      <div id="lbl">Thai Sign Language → Text</div>
+      <div id="out"></div>
+      <div id="stl"></div>
+      <div id="speech">
+        <div id="play"><svg viewBox="0 0 24 24" fill="#fff"><path id="pi" d="M8 5v14l11-7z"/></svg></div>
+        <svg id="wave" viewBox="0 0 360 60" preserveAspectRatio="none"></svg>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<script>
+/* ================= CONFIG ================= */
+const TAIL = 3.4;                      // seconds after the clip ends (text finishes + speech)
+const CLIPS = [
+  { src:"assets/clip_k.mp4", lm:"assets/clip_k.json", dur:4.04,
+    words:[{t:"สวัสดี",at:1.05},{t:"ค่ะ",at:1.45,sp:1},
+           {t:"ฉัน",at:1.95},{t:"ต้องการ",at:2.25},{t:"ความช่วยเหลือ",at:2.6,sp:1},
+           {t:"ขอบคุณ",at:3.3},{t:"ค่ะ",at:3.75}] },
+];
+const TEAL="#2aafb3";
+const LINKS=[[0,1],[1,2],[2,3],[3,4],[0,5],[5,6],[6,7],[7,8],[0,17],[5,9],[9,10],[10,11],[11,12],[9,13],[13,14],[14,15],[15,16],[13,17],[17,18],[18,19],[19,20]];
+
+/* ================= HELPERS ================= */
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const prog=(t,a,b)=>clamp((t-a)/(b-a));
+const ease=t=>1-Math.pow(1-t,3);
+const $=id=>document.getElementById(id);
+const qs=new URLSearchParams(location.search);
+const CAPTURE=qs.has("capture");
+
+/* ================= STATE ================= */
+let sceneStart=[], TOTAL=0;
+CLIPS.forEach(c=>{c.len=c.dur+TAIL; sceneStart.push(TOTAL); TOTAL+=c.len;});
+const vids=[$("v0"),$("v1")];
+// load as blob so seeking works on any static server (even without HTTP Range support)
+const vidReady=Promise.all(CLIPS.map((c,i)=>fetch(c.src).then(r=>r.blob()).then(b=>new Promise(res=>{
+  vids[i].addEventListener("loadeddata",res,{once:true}); vids[i].src=URL.createObjectURL(b);}))));
+
+const cy=h=>[0,5,9,13,17].reduce((a,i)=>a+h[i][1],0)/5;   // palm centre height (0 top … 1 bottom)
+function analyse(c){
+  // hands "up" = wrist above the lap line; sign span = first..last such frame
+  const F=c.data.frames, fps=c.data.fps; let a=null,b=null;
+  F.forEach((hs,i)=>{ if(hs.some(h=>cy(h)<.8)){ if(a===null)a=i; b=i; }});
+  c.t0=(a??0)/fps; c.t1=(b??F.length-1)/fps;
+  const n=c.words.length, span=c.t1-c.t0;
+  // each word is "recognised" a little after its sign finishes
+  c.words.forEach((w,i)=>{ if(w.at===undefined) w.at=c.t0+span*((i+1)/n)*0.92+0.15; });
+  c.firstWord=c.words[0].at; c.lastWord=c.words[n-1].at;
+  c.spk0=Math.max(c.lastWord+0.55, c.t1+0.5); c.spk1=c.len-0.45;
+}
+const ready=Promise.all([vidReady,...CLIPS.map(c=>fetch(c.lm).then(r=>r.json()).then(d=>{c.data=d;analyse(c);}))]).catch(e=>console.error(e));
+
+/* ================= RENDER ================= */
+let lastScene=-1;
+function setVideo(si){
+  vids.forEach((v,i)=>v.classList.toggle("on",i===si));
+}
+function drawLandmarks(c,vt,st){
+  const fps=c.data.fps, fi=Math.min(c.data.frames.length-1,Math.max(0,Math.round(vt*fps)));
+  const hs=c.data.frames[fi]||[];
+  const on=prog(st,1.1,1.8)*(1-prog(st,c.t1+.3,c.t1+1.0));
+  let s="";
+  if(on>0.01){
+    hs.forEach(h=>{
+      const lift=clamp((0.9-cy(h))/0.12);       // fade out when hand rests low
+      const op=on*lift; if(op<.02)return;
+      const P=h.map(p=>[p[0]*600,p[1]*600]);
+      let g=`<g opacity="${op.toFixed(2)}" style="filter:drop-shadow(0 1px 3px rgba(0,0,0,.35))">`;
+      LINKS.forEach(([a,b])=>{g+=`<line x1="${P[a][0].toFixed(1)}" y1="${P[a][1].toFixed(1)}" x2="${P[b][0].toFixed(1)}" y2="${P[b][1].toFixed(1)}" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-opacity=".92"/>`;});
+      P.forEach((p,i)=>{g+=`<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="${i===0?5.2:3.9}" fill="${TEAL}" stroke="#fff" stroke-width="1.8"/>`;});
+      s+=g+`</g>`;
+    });
+  }
+  $("lm").innerHTML=s;
+}
+function render(T, vt){
+  T=((T%TOTAL)+TOTAL)%TOTAL;
+  let si=0; while(si<CLIPS.length-1&&T>=sceneStart[si+1]) si++;
+  const c=CLIPS[si], st=T-sceneStart[si];
+  if(si!==lastScene){ setVideo(si); lastScene=si; }
+  const vtime = vt===undefined ? Math.min(st,c.dur-0.04) : vt;
+
+  /* stage */
+  const stage = st<1.1?0 : st<c.firstWord?1 : st<c.spk0?2 : 3;
+  const names=["Human","Extracting","Predicting","Speech"];
+  
+  const pills=["Camera on","Tracking hands","Reading signs","Speaking"];
+  $("pt").textContent=pills[stage];
+  // rail: continuous progress through the 4 stages
+  const marks=[0,1.1,c.firstWord,c.spk0,c.spk1];
+  let seg=stage, pr=prog(st,marks[seg],marks[seg+1]);
+  $("railf").style.width=(((seg+pr)/4)*100).toFixed(1)+"%";
+  // stage rail offsets: dots sit at 0,33,66,100% -> approximate with segment fractions
+  $("railf").style.width=(Math.min(1,(seg+pr)/4)*100).toFixed(1)+"%";
+
+  drawLandmarks(c,vtime,st);
+
+  /* text (tokens stream in) */
+  const hl = prog(st,c.spk0,c.spk1);
+  let html="";
+  c.words.forEach((w,i)=>{
+    const age=(st-w.at)/0.45;
+    if(age<=0)return;
+    const a=ease(clamp(age));
+    const spoken = hl>0 && (i/c.words.length)<hl;
+    html+=`<span style="opacity:${a.toFixed(2)};filter:blur(${((1-a)*8).toFixed(1)}px);transform:translateY(${((1-a)*10).toFixed(1)}px);color:${spoken?TEAL:"var(--ink)"}">${w.t}</span>`+(w.sp?`<span style="width:.28em"> </span>`:"");
+  });
+  const typing = st>=c.firstWord-0.25 && st<c.spk0;
+  const caret = (st<c.spk0 && st>c.t0) ? `<i id="cur" style="opacity:${typing||Math.floor(st*2)%2?1:0}"></i>` : "";
+  $("out").innerHTML=html+caret;
+  $("lbl").style.opacity = st>1.1 ? 1 : 0.0;
+
+  /* speech */
+  const speaking = st>=c.spk0 && st<c.spk1;
+  let w="";
+  const nb=48;
+  for(let k=0;k<nb;k++){
+    let amp=.07;
+    if(speaking){
+      const env=.55+.45*Math.sin(st*5.2+k*.15);
+      amp=(.18+.82*Math.abs(Math.sin(st*11+k*.62)*Math.sin(st*4.1+k*.27+1)))*env;
+    }
+    const h=Math.max(3,amp*54), x=k*7.5+2;
+    w+=`<rect x="${x}" y="${(30-h/2).toFixed(1)}" width="3.6" height="${h.toFixed(1)}" rx="1.8" fill="${speaking?TEAL:"#bcd3d4"}"/>`;
+  }
+  $("wave").innerHTML=w;
+  $("pi").setAttribute("d", speaking?"M7 5h4v14H7zM13 5h4v14h-4z":"M8 5v14l11-7z");
+  $("play").style.boxShadow = speaking?`0 0 0 ${(6+4*Math.sin(st*8)).toFixed(1)}px rgba(42,175,179,.18)`:"none";
+  $("stl").textContent = speaking?"Thai voice · speaking":(stage===3?"":"");
+
+  /* scene transitions */
+  const fo=Math.max(prog(st,c.len-.35,c.len), 1-prog(st,0,.35));
+  $("content").style.opacity=(1-fo).toFixed(2);
+}
+
+/* ================= FIT + DRIVER ================= */
+function fit(){
+  const k=Math.min(innerWidth/1280,innerHeight/520);
+  $("stage").style.transform=`scale(${k})`;
+}
+addEventListener("resize",fit); fit();
+
+async function seekTo(si,t){
+  const v=vids[si];
+  if(Math.abs(v.currentTime-t)<0.001) return;
+  await new Promise(res=>{const h=()=>{v.removeEventListener("seeked",h);res();}; v.addEventListener("seeked",h); v.currentTime=t;});
+  await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+}
+// used by the offline renderer: deterministic frame at time T
+window.__frame=async T=>{
+  await ready;
+  T=((T%TOTAL)+TOTAL)%TOTAL;
+  let si=0; while(si<CLIPS.length-1&&T>=sceneStart[si+1]) si++;
+  const st=T-sceneStart[si], vt=Math.min(st,CLIPS[si].dur-0.04);
+  setVideo(si); await seekTo(si,vt); render(T,vt);
+};
+Object.defineProperty(window,"__total",{get:()=>TOTAL});
+
+if(!CAPTURE){
+  ready.then(()=>(document.fonts?document.fonts.ready:Promise.resolve())).then(()=>{
+    let t0=null,cur=-1;
+    function loop(ts){
+      if(t0===null)t0=ts;
+      const T=((ts-t0)/1000)%TOTAL;
+      let si=0; while(si<CLIPS.length-1&&T>=sceneStart[si+1]) si++;
+      const st=T-sceneStart[si], v=vids[si];
+      if(si!==cur){ vids.forEach(x=>x.pause()); v.currentTime=0; v.play().catch(()=>{}); cur=si; }
+      if(st<CLIPS[si].dur){ if(Math.abs(v.currentTime-st)>.25) v.currentTime=st; if(v.paused) v.play().catch(()=>{}); } else v.pause();
+      render(T, v.currentTime);
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+  });
+}
+</script>
+</body>
+</html>

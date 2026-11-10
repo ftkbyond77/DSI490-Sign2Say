@@ -1,7 +1,7 @@
 """ThaiSLM — Vertex AI job launcher, cost-aware, with multi-region load balancing.
 
   python GCP/script/vertex.py smoke                                  # 1-minute job: GPU/quota/service-account/bucket check
-  python GCP/script/vertex.py upload-code --tag <tag>                # snapshot modules/ scripts/ third_party GCP/script → GCS
+  python GCP/script/vertex.py upload-code --tag <tag>                # snapshot modules/ scripts/ models/unisign GCP/script → GCS
   python GCP/script/vertex.py upload-models                          # artifacts/pretrained + rtmlib ONNX checkpoints → gs://…/thaislm/models
   python GCP/script/vertex.py upload-data                            # cloud_s3/data_prep/shards → gs://…/thaislm/data (training shards)
   python GCP/script/vertex.py launch --tag <tag> --stage <stage> --args "…" [--hours 3]
@@ -51,7 +51,7 @@ def image_for(region: str) -> str:
 def _region_of(job):
     return job.split("/locations/")[1].split("/")[0]
 
-CODE_DIRS = ["modules", "scripts", "GCP/script", "third_party/unisign/stgcn_layers"]
+CODE_DIRS = ["modules", "scripts", "GCP/script", "models/unisign/stgcn_layers"]
 CODE_SKIP = ("__pycache__", ".pyc", ".ipynb_checkpoints")
 TERMINAL = {"JOB_STATE_SUCCEEDED", "JOB_STATE_FAILED", "JOB_STATE_CANCELLED", "JOB_STATE_EXPIRED", "JOB_STATE_PARTIALLY_SUCCEEDED"}
 

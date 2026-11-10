@@ -1,0 +1,326 @@
+ThaiSLM (SignDINO) — Related work / reference map
+=================================================
+Built 2026-11-08 for the conference paper. One row per reference:
+
+  [ID] Reference (authors · title · venue · year · identifier)
+       Where in OUR project : file / component / report section that uses or is compared with it
+       Topic               : what the paper is about (one line)
+       How we use it       : what we take from it / how our design relates to it / what we measured against it
+       Status              : USED (in the shipped system) · ADAPTED (idea re-implemented / changed) · COMPARED (baseline / experiment only)
+                             · CONTEXT (motivates a design choice; cite in Related Work)
+       Verified            : bibliographic details checked online on 2026-11-08 (Y) or taken from the code / memory (check before submission: [verify])
+
+Sections
+  A. Sign-language models we build on (forward recognition)
+  B. Pose / hand extraction (the extractor = the start of the whole pipeline)
+  C. Signing-activity detection, segmentation, online / streaming recognition   ← phase 3 (this work)
+  D. Rejection, calibration, open-set decisions                                    ← phase 3 (this work)
+  E. Real-time interaction latency, endpointing                                    ← phase 3 (this work)
+  F. Hand datasets considered for a hand detector (YOLO experiment)                ← phase 3 (this work)
+  G. Retrieval / metric learning used in the sign bank
+  H. Face / emotion branch
+  I. Speech (TTS) and speech-to-text (reverse direction)
+  J. Language layer (sentence composition / grammar correction)
+
+
+A. SIGN-LANGUAGE MODELS WE BUILD ON
+-----------------------------------
+[A1] Zecheng Li, Wengang Zhou, Weichao Zhao, Kepeng Wu, Hezhen Hu, Houqiang Li · "Uni-Sign: Toward Unified Sign Language Understanding at Scale" · ICLR 2025 · arXiv:2501.15187
+     Where   : models/unisign/, modules/unisign.py, modules/encoder.py (L2 sign encoder), result_reporting/architecture_v6.md
+     Topic   : large-scale generative pre-training for sign language understanding; pose branch = part-wise ST-GCN + mT5; CSL-News (1,985 h)
+     How     : our sign encoder is Uni-Sign's pose branch (pre-trained on CSL-News, fine-tuned on WLASL), fine-tuned again on Thai data (CosFace + SupCon). The
+               encoder runs once per utterance; the span head (A6) re-uses its frame states.
+     Status  : USED · Verified: Y
+
+[A2] Sijie Yan, Yuanjun Xiong, Dahua Lin · "Spatial Temporal Graph Convolutional Networks for Skeleton-Based Action Recognition" · AAAI 2018 · arXiv:1801.07455
+     Where   : models/unisign/stgcn_layers (graph convolution inside the Uni-Sign pose branch)
+     Topic   : ST-GCN over body-joint graphs
+     How     : the per-part spatial-temporal graph layers of our encoder
+     Status  : USED · Verified: [verify] (arXiv id from the code header)
+
+[A3] Peiqi Jiao, Yuecong Min, Yanan Li, Xiaotao Wang, Lei Lei, Xilin Chen · "CoSign: Exploring Co-occurrence Signals in Skeleton-based Continuous Sign Language
+     Recognition" · ICCV 2023, pp. 20676–20686 · doi:10.1109/ICCV51070.2023.01890
+     Where   : models/unisign (Uni-Sign's pose / temporal encoders derive from CoSign)
+     Topic   : group-specific GCN for hand / face / lip signals in skeleton CSLR
+     How     : architecture lineage of our pose encoder (part-wise grouping: body · left hand · right hand · face)
+     Status  : USED (indirectly) · Verified: Y
+
+[A4] Benjia Zhou et al. · "Gloss-free Sign Language Translation: Improving from Visual-Language Pretraining" (GFSLT-VLP) · ICCV 2023
+     Where   : models/unisign (the Uni-Sign code base is adapted from GFSLT-VLP)
+     Topic   : gloss-free SLT with visual-language pre-training
+     How     : code lineage only
+     Status  : CONTEXT · Verified: [verify]
+
+[A5] Linting Xue et al. · "mT5: A Massively Multilingual Pre-trained Text-to-Text Transformer" · NAACL 2021
+     Where   : models/unisign (mT5-base encoder on top of the ST-GCN = temporal context model), modules/encoder.py
+     How     : top layers fine-tuned on Thai data; gives the contextual frame states H [T,768]
+     Status  : USED · Verified: [verify]
+
+[A6] Geoffrey Hinton, Oriol Vinyals, Jeff Dean · "Distilling the Knowledge in a Neural Network" · NeurIPS DL Workshop 2014 · arXiv:1503.02531
+     Where   : modules/spanhead.py (v7 span head = student of the full encoder)
+     How     : the span head is distilled from the encoder's isolated-window embeddings → one encoder pass per utterance instead of ~1,000 window passes
+               (the reason live spotting is real-time at all)
+     Status  : ADAPTED · Verified: [verify]
+
+[A7] Dongxu Li, Cristian Rodriguez, Xin Yu, Hongdong Li · "Word-level Deep Sign Language Recognition from Video: A New Large-scale Dataset and Methods
+     Comparison" (WLASL) · WACV 2020
+     Where   : Uni-Sign WLASL-2000 checkpoint used as our starting point; Roh 2024 (B5) numbers are on WLASL
+     Status  : USED (pre-training data of the checkpoint) · Verified: [verify]
+
+
+B. POSE / HAND EXTRACTION
+-------------------------
+[B1] Camillo Lugaresi et al. · "MediaPipe: A Framework for Building Perception Pipelines" · arXiv:1906.08172 · 2019
+     Where   : the extractor everywhere (browser webapp/web/public/workers/holistic.worker.js, server modules/mediapipe_pose.py, training data)
+     Status  : USED · Verified: [verify]
+
+[B2] Fan Zhang, Valentin Bazarevsky, Andrey Vakunov, Andrei Tkachenka, George Sung, Chuo-Ling Chang, Matthias Grundmann · "MediaPipe Hands: On-device Real-time
+     Hand Tracking" · CVPR 2020 Workshop on Computer Vision for AR/VR · arXiv:2006.10214
+     Where   : hand recovery layer (modules/hand_recovery.py, holistic.worker.js "method C"), Error-Analysis-v2 §extractor
+     Topic   : two stages — palm detector (BlazeFace-like, run only when tracking is lost) + 21-point hand landmark model on a crop from the previous frame
+     How     : explains our two observed failure modes: (1) tracking follows the previous frame's box, so at a LOW FRAME RATE a fast hand leaves the box and is lost;
+               (2) the palm detector runs on a small full-frame image, so small / far / side-on hands are missed. Our recovery layer re-runs the landmark model on a
+               zoomed, forearm-aligned crop from the pose wrist = the paper's own two-stage idea, applied where Holistic lost the hand.
+     Status  : USED + ADAPTED · Verified: Y
+
+[B3] Valentin Bazarevsky, Ivan Grishchenko, Karthik Raveendran, Tyler Zhu, Fan Zhang, Matthias Grundmann · "BlazePose: On-device Real-time Body Pose tracking" ·
+     arXiv:2006.10204 · 2020
+     Where   : the pose part of Holistic (33 body points); our hand-ROI centre/size comes from the pose wrist / elbow / finger points
+     Topic   : detector + tracker; 33 keypoints; >30 fps on a phone
+     Status  : USED · Verified: Y
+
+[B4] Ivan Grishchenko et al. · "BlazePose GHUM Holistic: Real-time 3D Human Landmarks and Pose Estimation" · arXiv:2206.11678 · 2022
+     Where   : HolisticLandmarker (tasks-vision 0.10 / mediapipe 1.0.1) = our extractor
+     How     : Holistic crops the hands from the POSE (pose-guided hand ROI) — when the pose wrist is wrong (fast motion, low fps, side view) the hand is lost.
+     Status  : USED · Verified: [verify]
+
+[B5] Kyunggeun Roh, Huije Lee, Eui Jun Hwang, Sukmin Cho, Jong C. Park · "Preprocessing Mediapipe Keypoints with Keypoint Reconstruction and Anchors for Isolated
+     Sign Language Recognition" · LREC-COLING 2024, 11th Workshop on the Representation and Processing of Sign Languages, pp. 323–334 · ACL Anthology 2024.signlang-1.36
+     Where   : modules/schema.py fill_hand_gaps (≤0.2 s train / spotting.json hand_gap_s live), lab4-handExtractor.ipynb §1.1, Error-Analysis-v2
+     Topic   : MediaPipe misses >50 % of hands per frame on WLASL; anchor normalisation; interpolation of missing hands; +6.05 % on WLASL
+     How     : confirms "missing hands = the accuracy bottleneck". We use gap interpolation (short gaps only) and add a recovery detector before interpolation.
+     Status  : ADAPTED · Verified: Y (author list from the anthology page: [verify] spelling)
+
+[B6] Remiro et al. (UPM) · Localization & zoom normalisation of MediaPipe hand landmarks · ECSA-10 2023
+     Where   : lab4-handExtractor.ipynb §1.1 / §4 (norm_wrist, norm_zoom invariance test)
+     How     : the same idea at the IMAGE level = crop + zoom the hand to a fixed size before the landmark model (our ROI recovery)
+     Status  : COMPARED · Verified: [verify] (full title / authors not checked)
+
+[B7] Géry Casiez, Nicolas Roussel, Daniel Vogel · "1€ Filter: A Simple Speed-based Low-pass Filter for Noisy Input in Interactive Systems" · CHI 2012, pp. 2527–2530
+     Where   : modules/posequality.py, holistic.worker.js OneEuro (optional hand smoothing, off by default), lab4 §8
+     How     : adaptive low-pass (low cut-off when slow, higher when fast) → less jitter without lag
+     Status  : USED (optional) · Verified: Y
+
+[B8] Tao Jiang, Xinchen Xie, Yining Li · "RTMW: Real-Time Multi-Person 2D and 3D Whole-body Pose Estimation" · arXiv:2407.08634 · 2024
+     Where   : modules/wholebody.py (tier-A extractor), v7 training views; the 133-slot layout of our Standard Schema; v10 extractor gate (lost both gates)
+     Status  : COMPARED (not shipped) · Verified: Y
+
+[B9] Georgios Pavlakos, Dandan Shan, Ilija Radosavovic, Angjoo Kanazawa, David Fouhey, Jitendra Malik · "Reconstructing Hands in 3D with Transformers" (HaMeR) ·
+     CVPR 2024, pp. 9826–9836 · arXiv:2312.05251
+     Where   : Error-Analysis-v2 (option for side-on hands; too heavy for the browser)
+     How     : a ViT hand-mesh model robust to side views / occlusion; used by He et al. 2025 (C4) for segmentation. Not real-time in a browser → future work
+               (offline re-extraction of training data).
+     Status  : CONTEXT · Verified: Y
+
+[B10] Tomas Simon, Hanbyul Joo, Iain Matthews, Yaser Sheikh · "Hand Keypoint Detection in Single Images using Multiview Bootstrapping" · CVPR 2017, pp. 4645–4653 ·
+      arXiv:1704.07809
+      Where   : F3 (the MPII + NZSL hand keypoint data in the Voxel51 set comes from this work's annotation effort)
+      How     : multi-view bootstrapping → hand keypoints from noisy detectors; OpenPose hand model
+      Status  : CONTEXT · Verified: Y (dataset link to Voxel51: [verify])
+
+[B11] Debapriya Maji, Soyeb Nagori, Manu Mathew, Deepak Poddar · "YOLO-Pose: Enhancing YOLO for Multi Person Pose Estimation Using Object Keypoint Similarity Loss" ·
+      CVPR Workshops 2022 · arXiv:2204.06806 · doi:10.1109/CVPRW56347.2022.00297
+      Where   : PoC/yolo (Ultralytics YOLO11n-pose fine-tuned for hand boxes), lab4 methods F / G, Error-Analysis-v2 §YOLO
+      How     : one-stage box + keypoints (OKS loss). Our measurement: as a ROI source it did not beat the pose-wrist ROI (lab4: F = C on all conditions) and as
+                the first stage it was worse and slower (G). Ultralytics code/weights are AGPL-3.0 (licence check before shipping).
+      Status  : COMPARED · Verified: Y
+
+
+C. SIGNING-ACTIVITY DETECTION, SEGMENTATION, ONLINE RECOGNITION   (phase 3)
+-------------------------------------------------------------------------
+[C1] Amit Moryossef, Ioannis Tsochantaridis, Roee Aharoni, Sarah Ebling, Srini Narayanan · "Real-Time Sign Language Detection using Human Pose Estimation" ·
+     ECCV 2020 Workshops (SLRTP), LNCS 12536, pp. 237–248 · doi:10.1007/978-3-030-66096-3_17 · arXiv:2008.04637
+     Where   : the "is this signing?" gate before any word is spotted (Error-Analysis-v2 issue 1–2; signing gate in this phase)
+     Topic   : frame-level signing / not-signing from pose optical flow; linear 80 %, LSTM 91 % on DGS Corpus, <4 ms, browser demo
+     How     : the closest prior work to our gate: pose MOTION alone separates signing from not-signing well on a corpus, BUT its features are body-wide flow — our
+               ghost words come exactly from body motion without visible hands, so our gate additionally requires hand evidence (C5).
+     Status  : CONTEXT / ADAPTED · Verified: Y
+
+[C2] Abhilash Pal, Stephan Huber, Cyrine Chaabani, Alessandro Manzotti, Oscar Koller · "On the Importance of Signer Overlap for Sign Language Detection" · arXiv:2303.10782 · 2023
+     Where   : Error-Analysis-v2 (evaluation protocol), why our gate is tuned on recorded live requests and checked on held-out people/days
+     Topic   : sign detection accuracy drops 4–6 % (relative) once train/test signers do not overlap
+     How     : argues against tuning on the same signer → our live data is split by recording day, and the test signer of TSL51 stays unseen
+     Status  : CONTEXT · Verified: Y
+
+[C3] Amit Moryossef, Zifan Jiang, Mathias Müller, Sarah Ebling, Yoav Goldberg · "Linguistically Motivated Sign Language Segmentation" · Findings of EMNLP 2023,
+     pp. 12703–12724 · arXiv:2310.13960
+     Where   : our tagger (modules/sequence.py / segment.py: per-frame rest / sign / transition probabilities) and the spotting decoder
+     Topic   : BIO tagging of signs and phrases from pose; optical flow helps shallow models; 3D hand normalisation hurt (noisy 3D pose)
+     How     : our tagger is the same family (frame tagging → segments); their finding that noisy hand estimates hurt matches our hand-loss analysis
+     Status  : CONTEXT · Verified: Y
+
+[C4] Low Jian He, Harry Walsh, Ozge Mercanoglu Sincan, Richard Bowden · "Hands-On: Segmenting Individual Signs from Continuous Sequences" · IEEE FG 2025 · arXiv:2504.08593
+     Where   : Error-Analysis-v2 (hand-shape features for boundaries), future work
+     Topic   : BIO-tagging transformer using HaMeR hand features + 3D skeleton angles; SOTA on DGS Corpus, BSL Corpus
+     How     : evidence that HAND features (not body motion) carry the sign / non-sign boundary — the principle of our hand-evidence gate
+     Status  : CONTEXT · Verified: Y
+
+[C5] Ronglai Zuo, Fangyun Wei, Brian Mak · "Towards Online Continuous Sign Language Recognition and Translation" · EMNLP 2024, pp. 11050–11067 · arXiv:2401.05336
+     Where   : modules/stream.py (StreamingTranslator: sliding window, lookahead confirmation, duplicate merging), Error-Analysis-v2 §stream vs batch
+     Topic   : online CSLR with an isolated-sign model + sliding window; augmented signs for co-articulation; post-processing removes duplicates of overlapping windows
+     How     : our stream is the same design (isolated-sign bank + sliding window + confirm/merge). Their observation that a window trained on full videos but
+               applied to short clips degrades matches our "stream words ≠ batch words in 66 % of utterances" (Error-Analysis-v1).
+     Status  : CONTEXT / COMPARED · Verified: Y
+
+[C6] Takao Obi, Wang Yusong, Koji Inoue, Kotaro Funakoshi · "Toward Signing Activity Projection in Sign Language Interaction" · arXiv:2606.09424 · 2026
+     Where   : end-of-utterance decision (hands-down wait, web LIVE_END_OPTIONS) — future work
+     Topic   : Voice Activity Projection adapted to signing; predicts HOLD vs SHIFT from hand / eye / mouth pose cues (DGS Corpus); hand cues most informative
+     How     : a learned "is the turn over?" predictor could replace our fixed hands-down wait; cited as motivation for an adaptive end
+     Status  : CONTEXT · Verified: Y (author list from an aggregator: [verify])
+
+[C8] Zhizhong Li, Derek Hoiem · "Learning without Forgetting" · ECCV 2016, LNCS pp. 614–629 · doi:10.1007/978-3-319-46493-0_37 · arXiv:1606.09282
+     (journal version: IEEE TPAMI [verify year/volume])
+     Where   : models/model-v10/onnx/gate_tagger.onnx (phase-3 signing gate), Error-Analysis-v2 §2
+     Topic   : add a new capability to a trained network while keeping its old outputs, via distillation to the old model's soft outputs
+     How     : the gate = the v10 frame tagger fine-tuned with a NEW kind of non-sign (hands up but not signing); on real signing it is distilled to the v10
+               tagger (KL to its soft outputs) so the old behaviour is kept; at inference it may only VETO long non-sign runs (≥ 1.2 s)
+     Status  : ADAPTED · Verified: Y (ECCV version)
+
+[C7] Kapitanov, Kvanchiani, Nagaev, Kraynov, Makhliarchuk · "HaGRID — HAnd Gesture Recognition Image Dataset" · WACV 2024, pp. 4572–4581 · arXiv:2206.08219
+     Where   : F4; Error-Analysis-v2 (idea of an explicit "no gesture" class to reduce false triggers)
+     Topic   : 554,800 FullHD images, 18 gestures + a "no_gesture" class, 37,583 subjects, 0.5–4 m from the camera
+     How     : the "no_gesture" negative class is the same idea as our explicit non-sign / idle evidence; not used for training (static images, not motion)
+     Status  : CONTEXT · Verified: Y
+
+
+D. REJECTION, CALIBRATION, OPEN-SET DECISIONS   (phase 3)
+--------------------------------------------------------
+[D1] Dan Hendrycks, Kevin Gimpel · "A Baseline for Detecting Misclassified and Out-of-Distribution Examples in Neural Networks" · ICLR 2017 · arXiv:1610.02136
+     Where   : modules/decode.py (P(correct) features: top-1 score, margin), the accept / uncertain / unknown decision
+     How     : max-score / margin as a correctness signal — and its known weakness (over-confident on inputs far from training) = idle motion read as "ฉัน"
+     Status  : CONTEXT · Verified: Y
+
+[D2] Chuan Guo, Geoff Pleiss, Yu Sun, Kilian Q. Weinberger · "On Calibration of Modern Neural Networks" · ICML 2017, PMLR 70:1321–1330 · arXiv:1706.04599
+     Where   : segment_calibration.json "temperature", the P(correct) shown as [?] vs a word (web threshold 0.8)
+     How     : temperature scaling of the candidate distribution before the logistic P(correct) model
+     Status  : USED · Verified: Y
+
+[D3] John Platt · "Probabilistic Outputs for Support Vector Machines and Comparisons to Regularized Likelihood Methods" · Advances in Large Margin Classifiers, 1999
+     Where   : modules/decode.py LogReg P(correct) on tune data
+     Status  : USED (logistic calibration) · Verified: [verify]
+
+[D4] Bianca Zadrozny, Charles Elkan · "Transforming Classifier Scores into Accurate Multiclass Probability Estimates" · KDD 2002
+     Where   : segment_calibration.json "isotonic" (v9 out-of-fold isotonic re-mapping of P(correct))
+     Status  : USED · Verified: [verify]
+
+[D5] Yiyou Sun, Yifei Ming, Xiaojin Zhu, Yixuan Li · "Out-of-Distribution Detection with Deep Nearest Neighbors" · ICML 2022, PMLR 162:20827–20840 · arXiv:2204.06507
+     Where   : the signing gate / bank decision (Error-Analysis-v2 §embedding): distance of a span embedding to its nearest bank clips (normalised features)
+     Topic   : k-th nearest-neighbour distance in a normalised feature space separates in- from out-of-distribution inputs, no distribution assumption
+     How     : the principle behind treating "far from every bank clip" as not-a-sign rather than "the nearest word"; our bank IS a normalised kNN space
+     Status  : ADAPTED · Verified: Y
+
+[D6] Alexis Conneau, Guillaume Lample, Marc'Aurelio Ranzato, Ludovic Denoyer, Hervé Jégou · "Word Translation Without Parallel Data" · ICLR 2018 (CSLS)
+     Where   : modules/encoder.py (hubness), decode.apply_csls (spotting.json csls_alpha)
+     How     : hub words (ฉัน, ผอม) attract many queries in kNN retrieval; CSLS penalises hubs — the ghost-word "ฉัน" is a hub (Error-Analysis-v1/v2)
+     Status  : USED · Verified: [verify]
+
+[D7] Miloš Radovanović, Alexandros Nanopoulos, Mirjana Ivanović · "Hubs in Space: Popular Nearest Neighbors in High-Dimensional Data" · JMLR 11, 2010
+     Where   : Error-Analysis-v1/v2 hub analysis
+     Status  : CONTEXT · Verified: [verify]
+
+
+E. REAL-TIME INTERACTION LATENCY, ENDPOINTING   (phase 3)
+--------------------------------------------------------
+[E1] Matt Shannon, Gabor Simko, Shuo-Yiin Chang, Carolina Parada · "Improved End-of-Query Detection for Streaming Speech Recognition" · Interspeech 2017, pp. 1909–1913
+     Where   : the end-of-sentence wait (hands down ≥ endMs), early request (SPEC_AFTER_MS), Error-Analysis-v2 §latency
+     Topic   : endpointer latency = time between the end of speech and the system's end decision; a model trained for end-of-query cuts ~100 ms at equal accuracy
+     How     : our "hands down → text" is the sign analogue of endpointer latency; we report it the same way (p50 / p90)
+     Status  : CONTEXT · Verified: Y
+
+[E2] Shuo-Yiin Chang et al. · "Endpoint Detection Using Grid Long Short-Term Memory Networks for Streaming Speech Recognition" · Interspeech 2017
+     Where   : same as E1 (alternative learned endpointer)
+     Status  : CONTEXT · Verified: [verify] (title)
+
+[E3] Jakob Nielsen · Usability Engineering, ch. 5 "response time limits" (0.1 s / 1 s / 10 s) · Morgan Kaufmann 1993; after Robert B. Miller · "Response time in
+     man-computer conversational transactions" · AFIPS Fall Joint Computer Conference 33, pp. 267–277, 1968
+     Where   : Error-Analysis-v2 latency targets (≤1 s keeps the flow; feedback within 0.1 s for the camera overlay)
+     Status  : CONTEXT · Verified: Y (Nielsen excerpt; Miller's exact thresholds are reported inconsistently by secondary sources)
+
+
+F. HAND DATASETS CONSIDERED FOR A HAND DETECTOR   (phase 3, YOLO experiment)
+---------------------------------------------------------------------------
+[F1] Ultralytics · "Hand Keypoints" dataset (26,768 images, 21 keypoints, train 18,776 / val 7,992; labels made with MediaPipe; contributed by Rion Dsilva) ·
+     docs: github.com/ultralytics/ultralytics/blob/main/docs/en/datasets/pose/hand-keypoints.md · 2024
+     Where   : PoC/yolo (training data of the hand-box detector), lab4 §1.5
+     How     : MediaPipe-made labels share MediaPipe's blind spots (side-on hands) → cannot teach the detector what MediaPipe misses
+     Status  : COMPARED · Verified: [verify] (counts from the user's notes / README)
+
+[F2] Mahmoud Afifi · "11K Hands: Gender recognition and biometric identification using a large dataset of hand images" · Multimedia Tools and Applications 78(15):20835–20854,
+     2019 · doi:10.1007/s11042-019-7424-8 · arXiv:1711.04322 (keypoint/box version: huggingface.co/datasets/ryushinn/11k-Hands-BBox-Keypoint)
+     Where   : Error-Analysis-v2 §YOLO (considered, not used: dorsal/palmar photos on a plain background, no signing poses, no side views of signing hands)
+     Status  : CONTEXT · Verified: Y (paper); HF keypoint version [verify]
+
+[F3] Voxel51 · "hand-keypoints" (≈2,800 hands, 21 human-annotated keypoints, from MPII and New Zealand Sign Language exercises; see B10) · huggingface.co/datasets/Voxel51/hand-keypoints
+     Where   : Error-Analysis-v2 §YOLO (the only human-labelled set; too small to train a detector, useful as an independent PCK check of the extractor)
+     Status  : CONTEXT · Verified: [verify]
+
+[F4] HaGRID (see C7) — hand boxes + "no_gesture"; the largest real-world hand-box set (distance 0.5–4 m) → the right data IF a hand detector is ever trained
+     Status  : CONTEXT
+
+
+G. RETRIEVAL / METRIC LEARNING IN THE SIGN BANK
+-----------------------------------------------
+[G1] Hao Wang et al. · "CosFace: Large Margin Cosine Loss for Deep Face Recognition" · CVPR 2018
+     Where   : modules/encoder.py (concept proxies, CosFace loss)          Status: USED · Verified: [verify]
+[G2] Prannay Khosla et al. · "Supervised Contrastive Learning" · NeurIPS 2020
+     Where   : modules/encoder.py (multi-positive SupCon in the batch)     Status: USED · Verified: [verify]
+[G3] Jake Snell, Kevin Swersky, Richard Zemel · "Prototypical Networks for Few-shot Learning" · NeurIPS 2017
+     Where   : pipeline.user_bank (one prototype per word = mean of the user's saved examples: recall@1 0.65 → 0.80 on unseen-signer tests)
+     Status  : ADAPTED · Verified: [verify]
+[G4] Sunita Sarawagi, William W. Cohen · "Semi-Markov Conditional Random Fields for Information Extraction" · NeurIPS 2004
+     Where   : modules/decode.py (semi-Markov DP over windows)             Status: ADAPTED · Verified: [verify]
+[G5] R. A. Fisher · "The Use of Multiple Measurements in Taxonomic Problems" · Annals of Eugenics 1936 (LDA)
+     Where   : modules/handshape.py (standardise + LDA metric on training signers) Status: USED · Verified: [verify]
+
+
+H. FACE / EMOTION BRANCH
+------------------------
+[H1] Steven R. Livingstone, Frank A. Russo · "The Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS)" · PLoS ONE 13(5), 2018
+     Where   : modules/face_model.py (v9 face emotion model trained on RAVDESS through the same extractor)   Status: USED · Verified: [verify]
+[H2] Ian Goodfellow et al. · "Challenges in Representation Learning: A Report on Three Machine Learning Contests" (FER2013) · ICONIP 2013
+     Where   : Face-Lab, models/face-model-efficientnetb0-v1 (48×48 gray crops, 7 FER2013 emotions); TTS emotion set   Status: USED · Verified: [verify]
+[H3] Mingxing Tan, Quoc V. Le · "EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks" · ICML 2019
+     Where   : face-model-efficientnetb0-v1 (B0 backbone, shipped)                Status: USED · Verified: [verify]
+[H4] Kaiming He et al. · "Deep Residual Learning for Image Recognition" · CVPR 2016
+     Where   : Face-Lab ResNet-18 (rejected: insensitive on real faces)           Status: COMPARED · Verified: [verify]
+
+
+I. SPEECH (TTS) AND SPEECH-TO-TEXT
+----------------------------------
+[I1] Yushen Chen et al. · "F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching" · arXiv:2410.06885 · 2024
+     Where   : TTS-Lab (ThonburianTTS = F5-TTS 337M, fine-tuned → Speech-model-v3/v4-TTS), modules/speech.py   Status: USED · Verified: [verify]
+[I2] ThonburianTTS / F5-TTS-THAI (Thai F5-TTS checkpoints: VIZINTZOR/F5-TTS-THAI, CC-BY-4.0; biodatlab ThonburianTTS) — model cards
+     Where   : TTS-Lab, PoC/Speech/thonburian-tts                                 Status: USED · Verified: [verify] (cite the model card / paper if one exists)
+[I3] Jaehyeon Kim, Jungil Kong, Juhee Son · "Conditional Variational Autoencoder with Adversarial Learning for End-to-End Text-to-Speech" (VITS) · ICML 2021
+     Where   : modules/tts.py (MMS-TTS Thai = VITS; the CPU voice)                Status: USED · Verified: [verify]
+[I4] Vineel Pratap et al. · "Scaling Speech Technology to 1,000+ Languages" (MMS) · JMLR 2024 · arXiv:2305.13516
+     Where   : modules/tts.py (facebook/mms-tts-tha)                               Status: USED · Verified: [verify]
+[I5] Alec Radford et al. · "Robust Speech Recognition via Large-Scale Weak Supervision" (Whisper) · ICML 2023
+     Where   : reverse_text2sign ASR (faster-whisper / CTranslate2), TTS-Lab text labels (Whisper-large) and CER evaluation   Status: USED · Verified: [verify]
+[I6] Ziyang Ma et al. · "emotion2vec: Self-Supervised Pre-Training for Speech Emotion Representation" · Findings of ACL 2024
+     Where   : TTS-Lab/prep.py (emotion pseudo-labels of the TTS training clips)   Status: USED · Verified: [verify]
+[I7] Alexei Baevski et al. · "wav2vec 2.0" · NeurIPS 2020; audeering wav2vec2-large-robust-24-ft-age-gender (Burkhardt et al.)
+     Where   : TTS-Lab/prep.py (perceived age / gender labels)                    Status: USED · Verified: [verify]
+[I8] Chandan K. A. Reddy, Vishak Gopal, Ross Cutler · "DNSMOS: A Non-Intrusive Perceptual Objective Speech Quality Metric" · ICASSP 2021
+     Where   : TTS-Lab data grading (DNSMOS per grade)                             Status: USED · Verified: [verify]
+
+
+J. LANGUAGE LAYER (SENTENCE COMPOSITION / GRAMMAR)
+-------------------------------------------------
+[J1] Tao Fang et al. · "Is ChatGPT a Highly Fluent Grammatical Error Correction System? A Comprehensive Evaluation" · arXiv:2304.01746 · 2023
+     Where   : modules/language.py (LLM re-orders TSL gloss order into Thai), the grammar gate of this phase (call the LLM only when the rules say the order is
+               NOT already natural Thai)
+     Topic   : LLM GEC is fluent but over-corrects (does not follow minimal edits)
+     How     : justifies an explicit gate before the LLM: a sentence that is already correct must not be rewritten (over-correction), and skipping the call
+               saves ~1–1.5 s of latency (Error-Analysis-v1: rules check matched the LLM classifier 8/8 in µs)
+     Status  : CONTEXT / ADAPTED · Verified: Y

@@ -1,0 +1,26 @@
+{
+ "name": "Speech-model-v3-TTS",
+ "base": "biodatlab/ThonburianTTS megaF5/mega_f5_last.safetensors (F5-TTS, 337M, CC-BY-NC-SA)",
+ "arch": {
+  "dim": 1024,
+  "depth": 22,
+  "heads": 16,
+  "ff_mult": 2,
+  "text_dim": 512,
+  "conv_layers": 4
+ },
+ "sample_rate": 24000,
+ "gap_marker": "…",
+ "gap_seconds": 0.8,
+ "default_nfe": 32,
+ "default_cfg": 2.0,
+ "training": {
+  "data": "Chalermdej/yodas2_sidon_th_tts S+ subset, 11.8 h train, 2625 speakers, + 20% synthetic gap samples",
+  "updates": 2774,
+  "epochs": 19,
+  "optimizer": "AdamW 1.5e-5, bf16, EMA 0.995",
+  "gpu": "1x A100 (Vertex Spot), 45 min",
+  "best_val_flow_loss": 0.599
+ },
+ "min_gen_seconds": 0.9
+}

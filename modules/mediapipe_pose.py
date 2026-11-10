@@ -22,6 +22,8 @@ from pathlib import Path
 
 import numpy as np
 
+from . import hand_recovery
+
 MODEL_URL = "https://storage.googleapis.com/mediapipe-models/holistic_landmarker/holistic_landmarker/float16/latest/holistic_landmarker.task"
 MODEL_PATH = Path(os.environ.get("MP_HOLISTIC_MODEL", Path.home() / ".cache" / "mediapipe_tasks" / "holistic_landmarker.task"))
 
@@ -54,16 +56,23 @@ def ensure_model(path=MODEL_PATH):
 class Holistic:
     """One MediaPipe HolisticLandmarker in VIDEO mode (tracking across frames). Create one per video (timestamps restart)."""
 
-    def __init__(self, model_path=None, min_pose=0.5, min_hand=0.5):
+    def __init__(self, model_path=None, min_pose=0.5, min_hand=0.5, recover=None):
+        """recover: the hand recovery layer (modules/hand_recovery.py) — a lost hand is searched again on a zoomed crop. None = on unless
+        THAISLM_HAND_RECOVERY=0; False = exactly the plain Holistic output."""
         from mediapipe.tasks.python import BaseOptions, vision
         opts = vision.HolisticLandmarkerOptions(
             base_options=BaseOptions(model_asset_path=str(ensure_model(model_path or MODEL_PATH))),
             running_mode=vision.RunningMode.VIDEO, output_face_blendshapes=True,
             min_pose_detection_confidence=min_pose, min_pose_landmarks_confidence=min_pose, min_hand_landmarks_confidence=min_hand)
         self.lm = vision.HolisticLandmarker.create_from_options(opts)
+        self.rec = None
+        if (hand_recovery.enabled() if recover is None else recover):
+            self.rec = hand_recovery.HandRecovery(near=model_path or MODEL_PATH)
 
     def close(self):
         self.lm.close()
+        if self.rec is not None:
+            self.rec.close()
 
     def frame(self, rgb, t_ms):
         import mediapipe as mp
@@ -76,6 +85,8 @@ class Holistic:
             lh[:] = [(p.x, p.y, p.z) for p in r.left_hand_landmarks]
         if r.right_hand_landmarks:
             rh[:] = [(p.x, p.y, p.z) for p in r.right_hand_landmarks]
+        if self.rec is not None:
+            lh, rh = self.rec.apply(rgb, pose, lh, rh, t_ms)
         if r.face_landmarks:
             fl = r.face_landmarks
             face[:] = [(fl[i].x, fl[i].y) for i in MESH68]

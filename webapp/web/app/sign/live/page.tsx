@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import AvatarStage from "@/components/avatar/AvatarStage";
 import SettingsSheet from "@/components/SettingsSheet";
+import VoiceToggle from "@/components/VoiceToggle";
 import { CamToggle, CameraFeed, Dot, statusOf } from "@/components/sign/CameraView";
 import LiveWords from "@/components/sign/LiveWords";
 import Words, { shownText } from "@/components/sign/Words";
@@ -69,6 +70,7 @@ export default function LivePage() {
         </div>
         <div className="right">
           {e.camOn && <div className="det glass">มือ {handsN}/2 · หน้า {e.seen.face ? "✓" : "✗"}</div>}
+          <VoiceToggle s={settings} glass />
           <CamToggle e={e} onOpen={e.startLive} className="im-btn" />
           <button className="im-btn" onClick={() => setShowSettings(true)} aria-label="ตั้งค่า"><Ic n="sliders-mint" /></button>
         </div>
@@ -91,6 +93,7 @@ export default function LivePage() {
         </AvatarStage>
       </div>
 
+      {e.camOn && e.framing === "close" && <div className="frame-hint glass" role="status">มืออยู่ใกล้กล้องเกินไป — ถอยห่างอีกนิด และทำท่าที่ระดับอก ไม่ยื่นมือเข้าหากล้อง (มือจะถูกจับได้นิ่งและแปลได้แม่นขึ้น)</div>}
       {e.error && <div className="im-err"><p className="err">{e.error}</p></div>}
       {err && <div className="im-err"><p className="err">{err}</p></div>}
 
@@ -101,7 +104,7 @@ export default function LivePage() {
           <button type="button" className="btn sm" style={{ background: "transparent", border: "1px solid var(--glass-line)" }} onClick={() => setReplyOpen(false)}>ยกเลิก</button>
         </form>
       ) : e.liveWords ? (                                        // v10: the words of this utterance while it is signed
-        <div className="caption glass"><LiveWords w={e.liveWords} busy={e.liveState === "processing"} minP={e.minP} /></div>
+        <div className="caption live glass"><LiveWords w={e.liveWords} busy={e.liveState === "processing"} minP={e.minP} waiting={e.handsLost} /></div>
       ) : e.progress && !shown ? (
         <div className="im-progress"><ProgressBar progress={e.progress} /></div>
       ) : shown && (

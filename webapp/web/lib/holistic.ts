@@ -27,8 +27,16 @@ export type Landmarkers = { lm: HolisticLandmarker; delegate: Delegate; face?: H
 let filesetP: ReturnType<typeof FilesetResolver.forVisionTasks> | null = null;
 let modelP: Promise<Uint8Array> | null = null;
 const SETUP_KEY = "thaislm.mp.setup";
-const remembered = (): Delegate | null => { try { return localStorage.getItem(SETUP_KEY) as Delegate | null; } catch { return null; } };
-const remember = (d: Delegate) => { try { localStorage.setItem(SETUP_KEY, d); } catch { /* storage blocked */ } };
+// a failed GPU set-up is remembered for 30 minutes only (same rule as lib/detector.ts): a transient failure must not pin the page to the CPU for ever
+const SETUP_AT_KEY = "thaislm.mp.setup.at";
+const remembered = (): Delegate | null => {
+  try {
+    const v = localStorage.getItem(SETUP_KEY), at = Number(localStorage.getItem(SETUP_AT_KEY) || 0);
+    if (v && (!at || Date.now() - at > 30 * 60 * 1000)) { localStorage.removeItem(SETUP_KEY); localStorage.removeItem(SETUP_AT_KEY); return null; }
+    return v as Delegate | null;
+  } catch { return null; }
+};
+const remember = (d: Delegate) => { try { localStorage.setItem(SETUP_KEY, d); localStorage.setItem(SETUP_AT_KEY, String(Date.now())); } catch { /* storage blocked */ } };
 
 export async function createHolistic(prefer: "GPU" | "CPU" = "GPU"): Promise<Landmarkers> {
   filesetP ??= FilesetResolver.forVisionTasks("/mediapipe/wasm");
@@ -116,6 +124,38 @@ export function handsUp(f: LmFrame): boolean {
   // the body's wrist points are tracked even when a hand's 21 points drop out (fast motion, 12 fps): either counts as "up"
   const wrist = (i: number) => f.pose[i] && f.pose[i][3] > 0.5 && f.pose[i][1] < midY + 1.3 * sw;
   return up(f.lh) || up(f.rh) || wrist(15) || wrist(16);
+}
+
+/** Stricter than handsUp, used only to START a live utterance: a REAL hand (all 21 points detected — never just the body's wrist guess, which a
+ *  tight webcam frame invents for hands that are out of view) held at signing height. 0.8 shoulder widths below the shoulders passed 99.2 % of the
+ *  0.6 s windows inside accepted signs in the 556 recorded live requests (a lower hand is a resting / idle hand); handsUp (1.5) keeps the end rule. */
+export const RAISED_SW = 0.8;
+export function handsRaised(f: LmFrame): boolean {
+  if (f.pose.length < 13) return false;
+  const ls = f.pose[11], rs = f.pose[12];
+  const sw = Math.hypot(ls[0] - rs[0], ls[1] - rs[1]) || 0.2;
+  const midY = (ls[1] + rs[1]) / 2;
+  const up = (hand: number[][]) => hand.length === 21 && hand.reduce((s, p) => s + p[1], 0) / 21 < midY + RAISED_SW * sw;
+  return up(f.lh) || up(f.rh);
+}
+
+/** Framing check (phase 3): hand size relative to the shoulder width, in pixels (w, h = the camera picture). The sign model was trained on
+ *  signers whose hands are 0.47 shoulder widths (median), 0.71 at the 99th percentile; a webcam that is too close (hands pushed toward the
+ *  lens, elbows out of view) gives 0.7–0.8 for half of the frames — and then the body pose loses the wrists, the hands flicker, and the words
+ *  are out of the model's range. Returns the ratios of this frame's detected hands (empty: no hand or no shoulders). */
+export const FRAMING_P99 = 0.71;
+export function handScale(f: LmFrame, w: number, h: number): number[] {
+  if (f.pose.length < 13 || (f.pose[11][3] ?? 1) < 0.5 || (f.pose[12][3] ?? 1) < 0.5) return [];
+  const sw = Math.hypot((f.pose[11][0] - f.pose[12][0]) * w, (f.pose[11][1] - f.pose[12][1]) * h);
+  if (sw < 1) return [];
+  const out: number[] = [];
+  for (const hand of [f.lh, f.rh]) {
+    if (hand.length !== 21) continue;
+    let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
+    for (const p of hand) { x0 = Math.min(x0, p[0]); x1 = Math.max(x1, p[0]); y0 = Math.min(y0, p[1]); y1 = Math.max(y1, p[1]); }
+    out.push(Math.max((x1 - x0) * w, (y1 - y0) * h) / sw);
+  }
+  return out;
 }
 
 // ----------------------------------------------------------------------------------------------------------------------------
@@ -227,11 +267,12 @@ const BS = ["_neutral", "browDownLeft", "browDownRight", "browInnerUp", "browOut
   "mouthUpperUpRight", "noseSneerLeft", "noseSneerRight"];
 const BI: Record<string, number> = Object.fromEntries(BS.map((n, i) => [n, i]));
 const EMO_REF: Record<string, number> = { happy: 0.545, sad: 0.05, angry: 0.365, surprise: 0.15, fear: 0.05, disgust: 0.15 };
-export const EMO_TH: Record<string, string> = { neutral: "เป็นกลาง", happy: "ดีใจ", sad: "เศร้า", angry: "โกรธ/ขมวดคิ้ว", surprise: "ประหลาดใจ", fear: "กลัว", disgust: "รังเกียจ" };
-export const EMO_ICON: Record<string, string> = { neutral: "😐", happy: "😊", sad: "😢", angry: "😠", surprise: "😮", fear: "😨", disgust: "😖" };
+export const EMO_TH: Record<string, string> = { neutral: "เป็นกลาง", happy: "ดีใจ", sad: "เศร้า", angry: "โกรธ/ขมวดคิ้ว", surprise: "ประหลาดใจ", fear: "กลัว", disgust: "รังเกียจ", unknown: "ไม่แน่ใจ" };
+export const EMO_ICON: Record<string, string> = { neutral: "😐", happy: "😊", sad: "😢", angry: "😠", surprise: "😮", fear: "😨", disgust: "😖", unknown: "❔" };
 /** What the face shows → what it may mean (the live label above the face box). */
 export const EMO_FACE: Record<string, [string, string]> = { neutral: ["หน้าปกติ", "เป็นกลาง"], happy: ["ยิ้ม", "มีความสุข"], sad: ["มุมปากตก", "เศร้า"],
-  angry: ["ขมวดคิ้ว", "ไม่พอใจ / หรือกำลังถาม"], surprise: ["ตาโต ปากอ้า", "ประหลาดใจ"], fear: ["ตาเบิก", "กลัว / กังวล"], disgust: ["ย่นจมูก", "รังเกียจ"] };
+  angry: ["ขมวดคิ้ว", "ไม่พอใจ / หรือกำลังถาม"], surprise: ["ตาโต ปากอ้า", "ประหลาดใจ"], fear: ["ตาเบิก", "กลัว / กังวล"], disgust: ["ย่นจมูก", "รังเกียจ"],
+  unknown: ["ยังอ่านสีหน้าไม่ชัด", "ไม่แน่ใจ"] };
 export type Emotion = { emotion: string; level: number };
 
 export class EmotionMeter {
@@ -312,9 +353,9 @@ export function draw(ctx: CanvasRenderingContext2D, f: LmFrame | null, w: number
 }
 
 // ----------------------------------------------------------------------------------------------------------------------------
-// v2 overlay (the app's teal / coral theme): body as soft lines, each hand in its colour with white joints (left = mint, right = coral),
+// v2 overlay (the app's teal / coral theme): body as soft lines, each hand in its colour with white joints (left = mint, right = white),
 // the face framed by rounded corner marks with a small label pill in the app's font. Same landmarks as draw(); /classic keeps draw().
-const V2 = { body: "rgba(204, 251, 241, .45)", left: "#5eead4", right: "#fb7185", face: "rgba(153, 246, 228, .9)", faceOn: "#2dd4bf", ink: "#042f2e" };
+const V2 = { body: "rgba(204, 251, 241, .45)", left: "#5eead4", right: "#ffffff", face: "rgba(153, 246, 228, .9)", faceOn: "#2dd4bf", ink: "#042f2e" };
 let v2Font = "";
 function rounded(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
   ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
