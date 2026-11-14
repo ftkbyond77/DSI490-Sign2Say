@@ -1,0 +1,95 @@
+{
+ "name": "face-model-ravhead-v1",
+ "task": "facial expression recognition (7 FER2013 classes) — an expression is what the face shows, not proof of a feeling",
+ "classes": [
+  "angry",
+  "disgust",
+  "fear",
+  "happy",
+  "sad",
+  "surprise",
+  "neutral"
+ ],
+ "members": [
+  {
+   "onnx": "face_fer.onnx",
+   "kind": "fer48",
+   "temperature": 0.7,
+   "note": "our v2-ferplus (EfficientNet-B0, FER2013 images + FER+ labels), 48x48 gray"
+  },
+  {
+   "onnx": "enet_b2_8_feat.onnx",
+   "kind": "hse",
+   "size": 260,
+   "order": [
+    "angry",
+    "contempt",
+    "disgust",
+    "fear",
+    "happy",
+    "neutral",
+    "sad",
+    "surprise"
+   ],
+   "temperature": 1.0,
+   "note": "HSEmotion enet_b2_8 (Savchenko 2022, AffectNet), 96x96 gray crop; contempt dropped; the graph also returns its 1408-d penultimate features (for the head)"
+  }
+ ],
+ "input": {
+  "g": "48x48 uint8 gray (2304 bytes)",
+  "g96": "96x96 uint8 gray of the same box (9216 bytes); without it only the 48 px member answers"
+ },
+ "prior_shift": {
+  "neutral": 0.75
+ },
+ "crop": {
+  "scale": 1.22,
+  "shift_up": 0.16,
+  "points": "MediaPipe 68 face points (modules/mediapipe_pose.MESH68)",
+  "note": "measured on FER2013: the 68-point box covers 0.82 of a FER2013 image side (median, 129 faces) and sits 0.16 box-heights below its centre"
+ },
+ "unknown": {
+  "min_conf": 0.45,
+  "min_margin": 0.1,
+  "min_quality": 0.25
+ },
+ "smoother": {
+  "tau_s": 0.35,
+  "switch_margin": 0.12,
+  "min_hold_s": 0.3,
+  "strong": 0.8,
+  "lost_s": 1.5,
+  "min_conf": 0.45
+ },
+ "brow": {
+  "thr": 2.0,
+  "span": 1.5,
+  "w_max": 0.5,
+  "unit": 0.02,
+  "base_pct": 85,
+  "min_base": 6,
+  "keep": 60,
+  "target": "angry",
+  "note": "brow-furrow cue from the 68 face points (brow_eval.py; RAVDESS a3-4 F1 0.614 -> 0.675, angry recall 0.25 -> 0.75)"
+ },
+ "head": {
+  "npz": "rav_head.npz",
+  "window_s": 2.0,
+  "min_quality": 0.25,
+  "v2_temperature": 0.7,
+  "emotions": [
+   "neutral",
+   "happy",
+   "sad",
+   "angry",
+   "fear",
+   "disgust",
+   "surprise"
+  ],
+  "prior_shift": {
+   "neutral": 0.5
+  },
+  "note": "RAVDESS-trained multinomial LR (Face-Lab/rav_head.py, 24 actors, leave-actors-out clips macro-F1 0.726 vs blendshape 0.591) on a 2 s window: mean B2 features + mean/max of the members' probabilities (no deployment prior); + 120 neutral dictionary-signing samples (signer false emotion 9.8%). RAVDESS CC BY-NC-SA 4.0 + HSEmotion/AffectNet: research use only.",
+  "prior_note": "rav_prior.py / check_ravhead.py: neutral 0 / 0.5 / 1.0 → RAVDESS clips F1 0.726 / 0.723 / 0.711, signer false emotion (app path) 9.0% / 3.9% / 2.3% (deployed ensemble 2.0%)"
+ }
+}

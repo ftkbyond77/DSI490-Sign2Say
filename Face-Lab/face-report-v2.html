@@ -1,0 +1,130 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><title>Face branch v2 report</title>
+<style>
+@page { size: A4; margin: 16mm 15mm; }
+body { font-family: 'Leelawadee UI', Tahoma, sans-serif; font-size: 10.5pt; color: #1a1a19; line-height: 1.5; }
+h1 { font-size: 19pt; margin: 0 0 2px; } h2 { font-size: 13.5pt; margin: 18px 0 6px; border-bottom: 1.5px solid #2a78d6; padding-bottom: 2px; }
+h3 { font-size: 11pt; margin: 12px 0 4px; }
+.sub { color: #52514e; font-size: 9pt; margin-bottom: 10px; }
+table { border-collapse: collapse; width: 100%; font-size: 9pt; margin: 6px 0 4px; page-break-inside: avoid; }
+th, td { border-bottom: 1px solid #e6e5e0; padding: 3px 5px; text-align: right; } th { background: #f0efec; font-weight: 600; }
+td:first-child, th:first-child { text-align: left; }
+table.data td, table.data th { text-align: left; }
+td.best { font-weight: 700; color: #1c5cab; } tr.ship td { background: #e8f1fc; }
+.note { font-size: 8.5pt; color: #52514e; }
+.box { background: #f5f4f0; border-left: 3px solid #2a78d6; padding: 6px 10px; margin: 8px 0; }
+img { width: 100%; page-break-inside: avoid; } code { font-size: 8.5pt; background: #f0efec; padding: 0 3px; }
+.pb { page-break-before: always; } ul { margin: 4px 0; padding-left: 20px; } li { margin: 2px 0; }
+</style></head><body>
+<h1>Face branch v2: จับสีหน้าจากภาพ + หัวที่เทรนบน RAVDESS</h1>
+<div class="sub">ThaiSLM · 14 พ.ย. 2026 · branch pitty · model <code>models/face-model-ravhead-v1</code> · code <code>modules/face_fer.py</code> · ต่อจาก face-report-v1</div>
+
+<div class="box"><b>สรุป</b> — บนเว็บเดิมป้ายสีหน้าขึ้น "ปกติ" เกือบตลอด (ขมวดคิ้วก็ยังปกติ) เราแก้ 2 ชั้น: (1) ตัวจับขมวดคิ้วจากจุดบนหน้า และ (2) <b>หัวใหม่</b>
+ที่เทรนบน RAVDESS โดยใช้ HSEmotion B2 เป็นตัวดึงฟีเจอร์ภาพ เทียบกับโมเดล blendshape ของเพื่อนด้วย<b>วิธีวัดเดียวกันทุกอย่าง</b> (24 นักแสดง, leave-actors-out 6 กลุ่ม):
+macro-F1 ระดับคลิป <b>0.723</b> เทียบกับ 0.591 ของเพื่อน
+(และ 0.456 ของ ensemble เดิม) ชนะทุกตัววัด บนคลิปคนทำภาษามือของทีม ขึ้นอารมณ์ผิดบนหน้าปกติ 3.9%
+(ensemble เดิม 2.0%) ใช้งานบน http://localhost:8080 แล้ว</div>
+
+<h2>1. ปัญหาเดิมและสิ่งที่แก้</h2>
+<ul>
+<li><b>ensemble เดิม</b> (v2-ferplus 48px + HSEmotion B2 96px, prior หน้าปกติ 0.75) เรียนจากภาพนิ่ง FER2013 / AffectNet และถูกตั้งให้เอนไปทางหน้าปกติเพื่อไม่เดามั่วตอนทำภาษามือ
+ผลคือบน RAVDESS จับโกรธได้ 0.06 กลัว 0.14 ประหลาดใจ 0.22</li>
+<li><b>ตัวจับขมวดคิ้ว (BrowCue)</b>: วัดความสูงของคิ้วด้านในเหนือตา หารด้วยระยะห่างตา (หมุนตามแนวตา) เทียบกับคิ้วตอนพักของคนนั้นเอง (เปอร์เซ็นไทล์ 85 ของ 60 เฟรมล่าสุด)
+ถ้าต่ำกว่าเกิน 2 หน่วย (0.02 × ระยะตา) และโมเดลตอบหน้าปกติ จะดันไปทาง "ขมวดคิ้ว" (โกรธ) สูงสุด 50% บน RAVDESS แยกโกรธจากปกติได้ AUC 0.92
+<b>ใช้กับป้ายบนจอเท่านั้น</b> เพราะคิ้วต่ำเป็นไวยากรณ์คำถาม wh ในภาษามือไทยด้วย; ส่วนเสียง ถ้าเป็นคำถาม wh จะลดน้ำหนักโกรธลงครึ่งหนึ่ง</li>
+<li><b>หัวใหม่ (PictureHead)</b>: ไม่เทรนโมเดลภาพใหม่ (ไม่มี GPU) ใช้ B2 ดึงฟีเจอร์ 1,408 ตัวต่อภาพ ในหน้าต่าง 2 วินาทีเอา
+ค่าเฉลี่ยฟีเจอร์ + ค่าเฉลี่ย/สูงสุดของความน่าจะเป็นจากทั้งสองโมเดล (1,436 ตัว) เข้า multinomial logistic regression แบบถ่วงคลาส (โค้ด <code>fit_lr</code> เดียวกับของเพื่อน, L2 0.1 เลือกจาก grid ด้วยกฎเดียวกัน)</li>
+<li><b>ปรับให้เข้ากับคนทำภาษามือ</b>: เติมตัวอย่างหน้าปกติ 120 ตัวอย่าง จากคลิปท่าพจนานุกรม 53 คลิป (<code>data_test/jack_test</code>,
+ตัดโฟลเดอร์คำที่มีความรู้สึกออก) วิธีเดียวกับที่เพื่อนใช้ 720 ตัวอย่าง คลิปของทีมไม่ได้ใช้เทรน เก็บไว้ทดสอบอย่างเดียว</li>
+<li><b>prior หน้าปกติ 0.5</b> บน logit ของหัว เลือกจากการแลกกันในหัวข้อ 6</li>
+</ul>
+
+<h2 class="pb">2. ข้อมูลที่ใช้</h2>
+<table class="data">
+<tr><th>ชุดข้อมูล</th><th>ใช้ทำอะไร</th><th>จำนวน</th><th>ป้าย</th></tr>
+<tr><td>RAVDESS (วิดีโอพูด, นักแสดง 24 คน)</td><td>เทรน + ทดสอบ (leave-actors-out)</td>
+<td>1,440 คลิป → 4,630 ตัวอย่าง (คลิป + หน้าต่าง 2 วิ) · ภาพหน้า 27,145 ภาพ</td>
+<td>ปกติ 288 (รวม calm), อารมณ์อื่นอย่างละ 192</td></tr>
+<tr><td>คลิปท่าพจนานุกรม (<code>data_test/jack_test</code>)</td><td>เทรน (หน้าปกติขณะทำภาษามือ)</td>
+<td>53 คลิป → ภาพหน้า 653 ภาพ → 120 ตัวอย่าง</td><td>ปกติทั้งหมด</td></tr>
+<tr><td>คลิปของทีม (Boom, Jack, Pitty)</td><td>ทดสอบอย่างเดียว</td>
+<td>18 คลิป → 356 เฟรม (ทุก 0.5 วิ)</td>
+<td>ตัดสินด้วยตา: ปกติ 256 · ยิ้ม 3 · กำกวม 55 · มือบัง/ไม่ชัด 42</td></tr>
+</table>
+<p class="note">ทุกภาพคือสิ่งที่โมเดลเห็นจริง: ครอปหน้าสีเทา 96×96 px จากกรอบที่คำนวณจาก 68 จุดของ MediaPipe (ตัวเดียวกับบนเว็บ)</p>
+<h3>RAVDESS: 7 อารมณ์ (ระดับเข้ม) ของนักแสดง 2 คน</h3>
+<img src="figures/v2_data_ravdess.png">
+<h3>คลิปท่าพจนานุกรม: หน้าปกติขณะทำภาษามือ (ตัวอย่างที่เติมตอนเทรน)</h3>
+<img src="figures/v2_data_signing.png">
+<h3>คลิปของทีม: ชุดทดสอบคนทำภาษามือ</h3>
+<img src="figures/v2_data_team.png">
+<p class="note">สังเกตความต่าง: RAVDESS หน้าตรง แสงสตูดิโอ แสดงอารมณ์ชัด ส่วนคลิปของทีมเป็นเว็บแคม ยิ้มบางๆ ปากขยับตามคำ และมือบังหน้า นี่คือสาเหตุหลักที่คะแนนบนการใช้งานจริงต่ำกว่าบน RAVDESS</p>
+<div style="display:flex; gap:14px; align-items:center; page-break-inside: avoid;"><img src="figures/v2_data_points.png" style="width:48%">
+<p class="note" style="width:52%">68 จุดบนหน้า (ฟ้า) และสิ่งที่ตัวจับขมวดคิ้ววัด: ความสูงของคิ้วด้านใน (ส้ม) เหนือแนวตา (เขียว) หารด้วยระยะห่างตา
+ตอนโกรธเส้นส้มสั้นลงชัดเจน ตัวจับเทียบกับคิ้วตอนพักของคนนั้นเอง จึงไม่ขึ้นกับรูปหน้าแต่ละคน</p></div>
+
+<h2>3. วิธีวัดผล (เหมือนของเพื่อน)</h2>
+<ul>
+<li>RAVDESS วิดีโอพูด 24 นักแสดง × 60 คลิป = 1440 คลิป, ป้ายจากชื่อไฟล์, calm รวมเป็นปกติ → 7 อารมณ์</li>
+<li>ตัวอย่าง = ทั้งคลิป + หน้าต่าง 2 วินาที (เลื่อนทีละ 1 วิ), ดึงจุดหน้า/blendshape 10 fps และภาพหน้า 5 fps (quality ≥ 0.25) ด้วย MediaPipe Holistic ตัวเดียวกับระบบ</li>
+<li>leave-actors-out 6 กลุ่ม (<code>actors[i::6]</code>) ทุกโมเดลที่เทรนได้คะแนนจากนักแสดงที่ไม่เคยเห็นเท่านั้น; ensemble ไม่ได้เทรนบน RAVDESS เลย</li>
+<li><b>ตรวจว่าวัดตรงจริง</b>: รันโมเดล blendshape ของเพื่อนซ้ำได้ accuracy 0.592 ตรงกับรายงาน v9 ของเขา (0.592)</li>
+</ul>
+
+<h2>4. ผลบน RAVDESS (24 นักแสดง)</h2>
+<table><tr><th>โมเดล</th><th>accuracy คลิป</th><th>macro-F1 คลิป</th><th>macro-F1 หน้าต่าง 2 วิ</th><th>acc ระดับเข้ม</th><th>ปกติ vs มีอารมณ์</th><th>บวก/ลบ ตรง</th></tr><tr class=''><td>ensemble เดิม (v2-ferplus + HSEmotion B2, ไม่ได้เทรนบน RAVDESS)</td><td class=''>0.500</td><td class=''>0.456</td><td class=''>0.452</td><td class=''>0.522</td><td class=''>0.592</td><td class=''>0.566</td></tr><tr class=''><td>ensemble + ตัวจับขมวดคิ้ว</td><td class=''>0.549</td><td class=''>0.527</td><td class=''>0.509</td><td class=''>0.591</td><td class=''>0.699</td><td class=''>0.655</td></tr><tr class=''><td>blendshape ของเพื่อน, ตัวที่ใช้จริง (+720 ภาษามือหน้าปกติ) <sup>a</sup></td><td class=''>0.564</td><td class=''>0.567</td><td class=''>0.554</td><td class=''>0.631</td><td class=''>0.812</td><td class=''>0.685</td></tr><tr class=''><td>blendshape ของเพื่อน, RAVDESS อย่างเดียว (รันซ้ำ)</td><td class=''>0.592</td><td class=''>0.591</td><td class=''>0.578</td><td class=''>0.664</td><td class=''>0.853</td><td class=''>0.719</td></tr><tr class=''><td>หัวใหม่, RAVDESS อย่างเดียว</td><td class='best'>0.728</td><td class='best'>0.727</td><td class='best'>0.708</td><td class=''>0.775</td><td class='best'>0.885</td><td class='best'>0.805</td></tr><tr class=''><td>หัวใหม่ + ภาษามือหน้าปกติ</td><td class='best'>0.728</td><td class=''>0.726</td><td class='best'>0.708</td><td class=''>0.772</td><td class=''>0.882</td><td class=''>0.802</td></tr><tr class='ship'><td><b>หัวใหม่ + ภาษามือหน้าปกติ + prior 0.5 (ใช้บนเว็บ)</b></td><td class=''>0.726</td><td class=''>0.723</td><td class=''>0.705</td><td class='best'>0.786</td><td class=''>0.874</td><td class=''>0.799</td></tr><tr class=''><td>หัวใหม่ + ภาษามือหน้าปกติ + prior 1.0</td><td class=''>0.713</td><td class=''>0.711</td><td class=''>0.695</td><td class=''>0.780</td><td class=''>0.858</td><td class=''>0.784</td></tr><tr class=''><td>fusion: หัวใหม่ + blendshape (ไม่ได้ใช้)</td><td class=''>0.746</td><td class=''>0.746</td><td class=''>0.729</td><td class=''>0.796</td><td class='best'>0.885</td><td class=''>0.809</td></tr></table>
+<div class="note">ตัวหนาสีน้ำเงิน = ดีที่สุดในคอลัมน์ (ไม่นับ fusion) · <sup>a</sup> จาก <code>models/face-model/model_card.json</code> (CV ของเพื่อนเอง, วิธีเดียวกัน, temperature 1.6) ·
+fusion ต้องดึง blendshape เพิ่มบนเว็บ ได้เพิ่มเพียง ~0.02 จึงไม่ใช้</div>
+<img src="figures/v2_f1.png">
+
+<h3>recall แยกอารมณ์ (ระดับคลิป)</h3>
+<table><tr><th>โมเดล</th><th>ปกติ</th><th>สุข</th><th>เศร้า</th><th>โกรธ</th><th>กลัว</th><th>รังเกียจ</th><th>ประหลาดใจ</th></tr><tr><td>ensemble เดิม</td><td class='best'>0.86</td><td class='best'>0.92</td><td class=''>0.35</td><td class=''>0.06</td><td class=''>0.14</td><td class=''>0.77</td><td class=''>0.22</td></tr><tr><td>ensemble + คิ้ว</td><td class=''>0.75</td><td class='best'>0.92</td><td class=''>0.35</td><td class=''>0.56</td><td class=''>0.15</td><td class=''>0.77</td><td class=''>0.24</td></tr><tr><td>blendshape ของเพื่อน (RAVDESS อย่างเดียว)</td><td class=''>0.57</td><td class=''>0.78</td><td class=''>0.52</td><td class=''>0.63</td><td class=''>0.53</td><td class=''>0.61</td><td class='best'>0.52</td></tr><tr><td><b>หัวใหม่ (ใช้บนเว็บ)</b></td><td class=''>0.81</td><td class=''>0.88</td><td class='best'>0.59</td><td class='best'>0.73</td><td class='best'>0.64</td><td class='best'>0.91</td><td class=''>0.48</td></tr></table>
+<img src="figures/v2_recall.png">
+<div class="note">หัวใหม่ดีกว่าของเพื่อนทุกอารมณ์ ยกเว้นประหลาดใจ (0.48 vs 0.52)
+ซึ่งเป็นอารมณ์ที่อ่อนที่สุดของทุกโมเดล; ตัวจับขมวดคิ้วทำให้ ensemble จับโกรธได้จาก 0.06 เป็น 0.56</div>
+
+<h2 class="pb">5. คนทำภาษามือ (คลิปของทีม 18 คลิป)</h2>
+<p>ไม่มีป้ายอารมณ์จริง จึงใช้ชุดเดียวกับรายงาน v1 (<code>real_check.py</code>): ตัดสินด้วยตาว่าเป็นหน้าปกติ 256 เฟรม, ยิ้มชัด 3 เฟรม (ยิ้มบางๆ)
+วัดว่าป้ายที่จะขึ้นบนจอ (ผ่าน unknown rule + smoother ส่งทีละภาพแบบเว็บจริง) ขึ้นอารมณ์ผิดบนหน้าปกติบ่อยแค่ไหน</p>
+<table><tr><th>โมเดล (ผ่าน unknown rule + smoother แบบบนเว็บ)</th><th>ขึ้นหน้าปกติ</th><th>ขึ้นอารมณ์ผิด ↓</th><th>ไม่แน่ใจ</th><th>ยิ้มที่จับได้</th><th>ผิดเป็นอะไร</th></tr><tr class=''><td>v1 EfficientNet-B0 + prior 0.6 (รายงาน v1)</td><td>82.0%</td><td>6.6%</td><td>11.3%</td><td>2/3</td><td></td></tr><tr class=''><td>ensemble เดิม (บนเว็บก่อนหน้านี้)</td><td>97.7%</td><td>2.0%</td><td>0.4%</td><td>2/3</td><td>ยิ้ม 5</td></tr><tr class=''><td>หัวใหม่ prior 0</td><td>87.9%</td><td>9.0%</td><td>3.1%</td><td>0/3</td><td>เศร้า 23</td></tr><tr class='ship'><td><b>หัวใหม่ prior 0.5 (ใช้บนเว็บ)</b></td><td>93.8%</td><td>3.9%</td><td>2.3%</td><td>0/3</td><td>เศร้า 10</td></tr><tr class=''><td>หัวใหม่ prior 1.0</td><td>97.7%</td><td>2.3%</td><td>0.0%</td><td>0/3</td><td>เศร้า 6</td></tr></table>
+<div class="note">ก่อนใส่ prior / smoother (หน้าต่าง ±1 วิ, ตัดสินตรงจากหัว): หัวที่เรียนจาก RAVDESS อย่างเดียวผิด 37.1% (ส่วนใหญ่เศร้า),
+เติมภาษามือหน้าปกติแล้วเหลือ 9.8% · โมเดลของเพื่อนรายงาน 12.4% บนชุดคลิปภาษามือของเขาเอง (คนละชุด จึงเทียบตรงไม่ได้; ชุดนั้นไม่มีในเครื่องนี้)</div>
+
+<h2>6. การแลกกัน: ไว vs ไม่เดามั่ว</h2>
+<img src="figures/v2_tradeoff.png">
+<p>prior หน้าปกติบนหัวใหม่: 0 → 0.5 ลดการขึ้นอารมณ์ผิดจาก 9.0% เป็น 3.9%
+โดย F1 แทบไม่ลด (0.726 → 0.723); 1.0 ได้ 2.3% ใกล้ ensemble เดิม
+แต่ F1 ลดเป็น 0.711 และจับเศร้า/โกรธได้น้อยลง เลือก 0.5 · เปลี่ยนได้ที่ <code>head.prior_shift</code> ใน config.json แล้ว restart (ไม่ต้องเทรนหรือ build)</p>
+
+<h2>7. บนเว็บ</h2>
+<ul>
+<li>หลังบ้านใช้ <code>enet_b2_8_feat.onnx</code> (B2 ที่คืนทั้ง logits และฟีเจอร์) เวลาเท่ากับ B2 เดิม: ~220–350 ms ต่อการเรียก 5 ภาพบน CPU</li>
+<li>หัวเป็นเชิงเส้น จึงย่อแต่ละภาพเหลือ 21 ตัวเลข แล้วเก็บ 2 วินาทีล่าสุดใน state ที่ส่งไปกลับกับหน้าเว็บ (หลังบ้านไม่จำอะไร)</li>
+<li>ตรวจว่าผลบนเว็บ = ผลตอนวัด: ต่างกันสูงสุด 1.9e-08 (<code>check_ravhead.py</code>)</li>
+<li>ภาพที่ไม่มีครอป 96px (client เก่า) ใช้ ensemble ตอบแทน; การแปลภาษามือไม่ถูกแตะ (face branch ยังแยกและล้มได้โดยไม่กระทบ)</li>
+<li>ตัวจับขมวดคิ้วทำงานต่อจากหัวใหม่ (ป้ายบนจอเท่านั้น); อารมณ์ของเสียงมาจากสรุปทั้งประโยคของหัวใหม่ + กฎคำถาม yes/no และ wh</li>
+<li>test <code>tests/test_face_branch.py</code> ผ่าน 12/12 (เพิ่ม test หน้าต่างและ state ของหัว)</li>
+</ul>
+
+<h2>8. ข้อจำกัด</h2>
+<ul>
+<li><b>ยิ้มบางๆ</b> ในคลิปทีม หัวใหม่จับได้ 0/3 (ensemble เดิม 2/3) ตัวอย่างน้อยเกินสรุป แต่ควรเก็บคลิปยิ้มของคนทำภาษามือเพิ่ม</li>
+<li><b>ประหลาดใจ / เลิกคิ้ว</b> ยังอ่อน (recall ~0.5) และยังไม่มีตัวช่วยแบบขมวดคิ้ว; การเลิกคิ้วเป็นไวยากรณ์คำถาม yes/no ด้วย</li>
+<li>RAVDESS เป็นนักแสดงพูดภาษาอังกฤษ หน้าตรง แสงดี; คะแนนจริงบนคนทำภาษามือหน้ากล้องจะต่ำกว่า และยังไม่มีชุดภาษามือไทยที่ติดป้ายอารมณ์</li>
+<li>ชุดทดสอบคนทำภาษามือของเรากับของเพื่อนเป็นคนละชุด</li>
+<li><b>สัญญาอนุญาต</b>: RAVDESS (CC BY-NC-SA 4.0) และน้ำหนัก HSEmotion ที่เทรนจาก AffectNet ใช้ได้เพื่อการวิจัย/การศึกษาเท่านั้น ห้ามใช้เชิงพาณิชย์</li>
+</ul>
+
+<h2>9. ไฟล์และการทำซ้ำ</h2>
+<table>
+<tr><th>ไฟล์</th><th>หน้าที่</th></tr>
+<tr><td><code>Face-Lab/ravdess24.py</code></td><td>ดึง RAVDESS 24 คน (จุดหน้า, blendshape, ภาพหน้า) แล้วลบวิดีโอ</td></tr>
+<tr><td><code>Face-Lab/sign_neutral.py</code></td><td>ภาพหน้าปกติจากคลิปท่าพจนานุกรม</td></tr>
+<tr><td><code>Face-Lab/rav_head.py</code></td><td>เทรน/วัดหัวใหม่, blendshape ของเพื่อน, fusion</td></tr>
+<tr><td><code>Face-Lab/rav_prior.py</code> · <code>check_ravhead.py</code></td><td>ผลของ prior บน RAVDESS · ตรวจ bundle + คลิปทีมแบบเว็บ</td></tr>
+<tr><td><code>Face-Lab/ensemble24.py</code> · <code>compare24.py</code></td><td>ensemble เดิม (± คิ้ว) บน 24 คน</td></tr>
+<tr><td><code>Face-Lab/make_data_figures.py</code></td><td>ภาพตัวอย่างข้อมูลและจำนวน (<code>results/data_summary.json</code>)</td></tr>
+<tr><td><code>Face-Lab/make_figures_v2.py</code> · <code>make_report_v2.py</code></td><td>กราฟและรายงานนี้ (อ่านตัวเลขจาก <code>results/*.json</code>)</td></tr>
+<tr><td><code>modules/face_fer.py</code></td><td><code>PictureHead</code>, <code>BrowCue</code>, กฎ wh ใน <code>speech_affect</code></td></tr>
+</table>
+<p class="note">รัน: <code>docker compose -f docker-compose.yml -f docker-compose.cpu.yml up -d --build</code> (ค่าตั้งต้นของ FACE_FER_DIR ชี้ models/face-model-ravhead-v1 แล้ว; ไฟล์ cpu สำหรับเครื่องที่ไม่มี GPU NVIDIA)</p>
+</body></html>

@@ -1,0 +1,141 @@
+{
+ "prior": 0.75,
+ "ravdess_a34": {
+  "ensemble": {
+   "n": 104,
+   "accuracy": 0.6154,
+   "macro_f1": 0.6139,
+   "expression_recall": 0.6667,
+   "neutral_kept": 1.0,
+   "predicted_neutral_share": 0.3846,
+   "per_class": {
+    "angry": {
+     "recall": 0.25,
+     "precision": 1.0,
+     "f1": 0.4,
+     "n": 16
+    },
+    "disgust": {
+     "recall": 1.0,
+     "precision": 0.941,
+     "f1": 0.97,
+     "n": 16
+    },
+    "fear": {
+     "recall": 0.25,
+     "precision": 1.0,
+     "f1": 0.4,
+     "n": 16
+    },
+    "happy": {
+     "recall": 0.875,
+     "precision": 1.0,
+     "f1": 0.933,
+     "n": 16
+    },
+    "sad": {
+     "recall": 0.625,
+     "precision": 0.769,
+     "f1": 0.69,
+     "n": 16
+    },
+    "surprise": {
+     "recall": 0.5,
+     "precision": 0.667,
+     "f1": 0.571,
+     "n": 16
+    },
+    "neutral": {
+     "recall": 1.0,
+     "precision": 0.2,
+     "f1": 0.333,
+     "n": 8
+    }
+   }
+  },
+  "only_48px_member": {
+   "n": 104,
+   "accuracy": 0.5385,
+   "macro_f1": 0.5212,
+   "expression_recall": 0.6146,
+   "neutral_kept": 1.0,
+   "predicted_neutral_share": 0.4327,
+   "per_class": {
+    "angry": {
+     "recall": 0.25,
+     "precision": 0.667,
+     "f1": 0.364,
+     "n": 16
+    },
+    "disgust": {
+     "recall": 0.875,
+     "precision": 1.0,
+     "f1": 0.933,
+     "n": 16
+    },
+    "fear": {
+     "recall": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "n": 16
+    },
+    "happy": {
+     "recall": 0.938,
+     "precision": 1.0,
+     "f1": 0.968,
+     "n": 16
+    },
+    "sad": {
+     "recall": 0.5,
+     "precision": 0.8,
+     "f1": 0.615,
+     "n": 16
+    },
+    "surprise": {
+     "recall": 0.438,
+     "precision": 0.5,
+     "f1": 0.467,
+     "n": 16
+    },
+    "neutral": {
+     "recall": 1.0,
+     "precision": 0.178,
+     "f1": 0.302,
+     "n": 8
+    }
+   }
+  }
+ },
+ "signers": {
+  "min_conf_0.4": {
+   "shown_neutral": 0.98,
+   "wrong": 0.016,
+   "unknown": 0.004,
+   "smiles": "1/3"
+  },
+  "min_conf_0.45": {
+   "shown_neutral": 0.977,
+   "wrong": 0.02,
+   "unknown": 0.004,
+   "smiles": "2/3"
+  },
+  "min_conf_0.5": {
+   "shown_neutral": 0.961,
+   "wrong": 0.027,
+   "unknown": 0.012,
+   "smiles": "1/3"
+  },
+  "min_conf_0.55": {
+   "shown_neutral": 0.957,
+   "wrong": 0.012,
+   "unknown": 0.031,
+   "smiles": "1/3"
+  },
+  "min_conf_0.63": {
+   "shown_neutral": 0.883,
+   "wrong": 0.008,
+   "unknown": 0.109,
+   "smiles": "1/3"
+  }
+ }
+}

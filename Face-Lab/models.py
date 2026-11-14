@@ -41,6 +41,16 @@ class FerNet(nn.Module):
         x = (x.expand(-1, 3, -1, -1) - self.mean) / self.std
         return self.head(torch.flatten(self.pool(self.features(x)), 1))
 
+    def forward_cam(self, x):
+        """Training path for EAC (Zhang et al., ECCV 2022): logits + class activation maps [N,K,h,w]
+        = last conv features weighted by the final linear layer (the map each class score is the spatial mean of)."""
+        x = (x.expand(-1, 3, -1, -1) - self.mean) / self.std
+        f = self.features(x)
+        z = self.head(torch.flatten(self.pool(f), 1))
+        fc = self.head[-1]
+        cam = torch.einsum("nchw,kc->nkhw", f, fc.weight.to(f.dtype))
+        return z, cam
+
     def forward(self, x):
         return self.forward_res(F.interpolate(x / 255.0, size=(self.res, self.res), mode="bilinear", align_corners=False))
 

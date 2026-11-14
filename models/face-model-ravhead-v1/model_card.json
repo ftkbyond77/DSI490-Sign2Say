@@ -1,0 +1,105 @@
+{
+ "name": "face-model-ravhead-v1",
+ "task": "facial expression for the live label and the voice's emotion (7 classes); an expression is what the face shows, not proof of a feeling",
+ "model": "v2-ferplus (EfficientNet-B0, 48 px) + HSEmotion enet_b2_8 (96 px crop, also returns its 1408-d features) → PictureHead: multinomial LR on a 2 s window (mean B2 features + mean/max of both members' probabilities), neutral prior 0.5; BrowCue (live label only)",
+ "training_data": "RAVDESS video speech, 24 actors x 60 clips (calm → neutral), clips + 2 s windows; + 120 neutral samples from 53 dictionary-signing clips (data_test/jack_test)",
+ "evaluation": "leave-actors-out, folds actors[i::6] — the same protocol as models/face-model (scripts/face_model.py); team signer clips (Face-Lab/real_check.py) held out",
+ "ravdess_24_actors": {
+  "this_model": {
+   "clips_acc": 0.726,
+   "clips_macro_f1": 0.723,
+   "windows_acc": 0.711,
+   "windows_macro_f1": 0.705,
+   "strong_intensity_acc": 0.786,
+   "neutral_vs_emotion_acc": 0.874,
+   "valence_sign_agreement": 0.799,
+   "per_class_recall": {
+    "neutral": 0.809,
+    "happy": 0.875,
+    "sad": 0.594,
+    "angry": 0.734,
+    "fear": 0.635,
+    "disgust": 0.906,
+    "surprise": 0.484
+   }
+  },
+  "blendshape_face_model_ravdess_only": {
+   "l2": 0.01,
+   "clips_acc": 0.592,
+   "clips_macro_f1": 0.591,
+   "windows_acc": 0.58,
+   "windows_macro_f1": 0.578,
+   "strong_intensity_acc": 0.664,
+   "neutral_vs_emotion_acc": 0.853,
+   "valence_sign_agreement": 0.719,
+   "per_class_recall": {
+    "neutral": 0.569,
+    "happy": 0.781,
+    "sad": 0.521,
+    "angry": 0.63,
+    "fear": 0.526,
+    "disgust": 0.615,
+    "surprise": 0.516
+   }
+  },
+  "previous_ensemble": {
+   "clips_acc": 0.5,
+   "clips_macro_f1": 0.456,
+   "windows_acc": 0.494,
+   "windows_macro_f1": 0.452,
+   "strong_intensity_acc": 0.522,
+   "neutral_vs_emotion_acc": 0.592,
+   "valence_sign_agreement": 0.566,
+   "per_class_recall": {
+    "neutral": 0.865,
+    "happy": 0.917,
+    "sad": 0.349,
+    "angry": 0.057,
+    "fear": 0.141,
+    "disgust": 0.771,
+    "surprise": 0.219
+   }
+  },
+  "previous_ensemble_brow": {
+   "clips_acc": 0.549,
+   "clips_macro_f1": 0.527,
+   "windows_acc": 0.535,
+   "windows_macro_f1": 0.509,
+   "strong_intensity_acc": 0.591,
+   "neutral_vs_emotion_acc": 0.699,
+   "valence_sign_agreement": 0.655,
+   "per_class_recall": {
+    "neutral": 0.753,
+    "happy": 0.917,
+    "sad": 0.354,
+    "angry": 0.557,
+    "fear": 0.146,
+    "disgust": 0.771,
+    "surprise": 0.245
+   }
+  }
+ },
+ "signers_app_path": {
+  "this_model": {
+   "shown_neutral": 0.938,
+   "wrong": 0.039,
+   "unknown": 0.023,
+   "smiles": "0/3",
+   "wrong_as": {
+    "sad": 10
+   }
+  },
+  "previous_ensemble": {
+   "shown_neutral": 0.977,
+   "wrong": 0.02,
+   "unknown": 0.004,
+   "smiles": "2/3",
+   "wrong_as": {
+    "happy": 5
+   }
+  }
+ },
+ "code": "modules/face_fer.py (PictureHead, BrowCue) · Face-Lab/rav_head.py, rav_prior.py, check_ravhead.py",
+ "report": "Face-Lab/face-report-v2.pdf",
+ "licence": "RAVDESS CC BY-NC-SA 4.0 and HSEmotion weights trained on AffectNet: research / education use only, not commercial"
+}

@@ -1,0 +1,61 @@
+{
+ "n_actors": 20,
+ "n_clips": 1200,
+ "blendshape_lr (friend recipe)": {
+  "l2": 0.01,
+  "clips_acc": 0.578,
+  "clips_macro_f1": 0.575,
+  "windows_acc": 0.57,
+  "windows_macro_f1": 0.565,
+  "strong_intensity_acc": 0.652,
+  "neutral_vs_emotion_acc": 0.855,
+  "valence_sign_agreement": 0.707,
+  "per_class_recall": {
+   "neutral": 0.604,
+   "happy": 0.787,
+   "sad": 0.481,
+   "angry": 0.606,
+   "fear": 0.487,
+   "disgust": 0.569,
+   "surprise": 0.5
+  }
+ },
+ "picture_head (B2 features + member probs)": {
+  "l2": 0.1,
+  "clips_acc": 0.726,
+  "clips_macro_f1": 0.727,
+  "windows_acc": 0.704,
+  "windows_macro_f1": 0.701,
+  "strong_intensity_acc": 0.779,
+  "neutral_vs_emotion_acc": 0.875,
+  "valence_sign_agreement": 0.796,
+  "per_class_recall": {
+   "neutral": 0.692,
+   "happy": 0.912,
+   "sad": 0.65,
+   "angry": 0.762,
+   "fear": 0.656,
+   "disgust": 0.875,
+   "surprise": 0.55
+  }
+ },
+ "fusion (picture head + blendshape)": {
+  "l2": 0.1,
+  "clips_acc": 0.744,
+  "clips_macro_f1": 0.745,
+  "windows_acc": 0.725,
+  "windows_macro_f1": 0.723,
+  "strong_intensity_acc": 0.802,
+  "neutral_vs_emotion_acc": 0.878,
+  "valence_sign_agreement": 0.802,
+  "per_class_recall": {
+   "neutral": 0.683,
+   "happy": 0.912,
+   "sad": 0.7,
+   "angry": 0.769,
+   "fear": 0.706,
+   "disgust": 0.919,
+   "surprise": 0.55
+  }
+ }
+}
