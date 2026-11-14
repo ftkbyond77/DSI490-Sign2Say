@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Sign2Say — แปลภาษามือไทย",
   description: "Thai Sign Language ⇄ Thai text and speech: sign to the camera, or type / speak and the avatar signs",
 };
-export const viewport: Viewport = { themeColor: "#2aafb3", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#187479", width: "device-width", initialScale: 1 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
