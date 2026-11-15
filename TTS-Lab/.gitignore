@@ -1,0 +1,6 @@
+.venv-tts/
+
+# big / local-only (do not commit)
+emo_ft/
+emo_ref/thai-ser/
+emo_ref/listen_test.zip

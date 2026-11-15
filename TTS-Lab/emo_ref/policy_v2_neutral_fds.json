@@ -1,0 +1,34 @@
+{
+ "doc": "Which method makes the voice for each emotion. A = neutral reference + v4 tag + PSOLA; B = emotional reference of the same speaker; C = B + mild PSOLA. Evidence: session1.csv, session2.csv, round 3 (2026-11-15, 64 clips, 7-way choice, one listener).",
+ "methods": {
+  "neutral": "N",
+  "angry": "B",
+  "sad": "A",
+  "happy": "C",
+  "fear": "N",
+  "disgust": "N",
+  "surprise": "N"
+ },
+ "pending": {
+  "happy": "C heard as happy 4/8 (B 3/8; earlier A 0.07, B 0.10-0.25): best so far, still weak; single listener",
+  "fear/disgust/surprise": "A heard correctly 1/8, 0/8, 1/8 (surprise heard as happy 5/8): not conveyed, so spoken neutrally (N) instead of a wrong emotion"
+ },
+ "psola_c": 0.6,
+ "voices": {
+  "female": "f005",
+  "male": "m003",
+  "female_2": "f004",
+  "male_2": "m009"
+ },
+ "overrides": {},
+ "overrides_doc": "Removed 2026-11-15: round 3 f005 angry B heard angry 2/2, f004 happy B/C 1/2 each; A is worse for those. Crackle notes (items 19, 24, 32, 41, 51) are all B/C of angry/happy: the guard retries/falls back; re-check after tts.py clip fix.",
+ "guard": {
+  "max_retries": 2,
+  "clip_frac": 0.0005,
+  "dur_ratio": [
+   0.5,
+   2.2
+  ],
+  "doc": "retry with another seed when the clip has clipped samples, non-finite values, is near-silent, or is far shorter / longer than the text predicts; then fall back B/C -> A -> N"
+ }
+}

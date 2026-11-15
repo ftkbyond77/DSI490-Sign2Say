@@ -1,0 +1,17 @@
+speaker,gender,emotion,path,ref_text,agreement,dur,intensity
+f004,female,neutral,thai-ser/audio/00672_s002_clip_actor004_script2_2_1a.flac,อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว,1.0,4.74,High
+f004,female,happy,thai-ser/audio/00646_s002_clip_actor004_script1_1_3a.flac,พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย,1.0,3.99,Low
+f004,female,sad,thai-ser/audio/00669_s002_clip_actor004_script2_1_4b.flac,อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว,1.0,6.29,Low
+f004,female,angry,thai-ser/audio/00664_s002_clip_actor004_script2_1_2a.flac,อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว,1.0,4.54,Low
+f005,female,neutral,thai-ser/audio/00791_s003_clip_actor005_script1_2_1b.flac,พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย,1.0,3.49,High
+f005,female,happy,thai-ser/audio/00784_s003_clip_actor005_script1_1_3a.flac,พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย,1.0,4.42,Low
+f005,female,sad,thai-ser/audio/00797_s003_clip_actor005_script1_2_4b.flac,พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย,0.9375,5.77,High
+f005,female,angry,thai-ser/audio/00793_s003_clip_actor005_script1_2_2b.flac,พรุ่งนี้มันวันหยุดราชการนะรู้รึยัง หยุดยาวด้วย,1.0,4.52,High
+m003,male,neutral,thai-ser/audio/00545_s002_clip_actor003_script2_2_1a.flac,อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว,1.0,5.17,High
+m003,male,happy,thai-ser/audio/00539_s002_clip_actor003_script2_1_3a.flac,อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว,1.0,4.63,Low
+m003,male,sad,thai-ser/audio/00542_s002_clip_actor003_script2_1_4b.flac,อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว,1.0,5.33,Low
+m003,male,angry,thai-ser/audio/00548_s002_clip_actor003_script2_2_2b.flac,อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว,1.0,5.26,High
+m009,male,neutral,thai-ser/audio/01316_s005_clip_actor009_script2_1_1b.flac,อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว,1.0,5.46,Low
+m009,male,happy,thai-ser/audio/01330_s005_clip_actor009_script2_2_3b.flac,อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว,1.0,5.97,High
+m009,male,sad,thai-ser/audio/01322_s005_clip_actor009_script2_1_4b.flac,อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว,1.0,5.7,Low
+m009,male,angry,thai-ser/audio/01318_s005_clip_actor009_script2_1_2b.flac,อ่านหนังสือพิมพ์วันนี้รึยัง รู้ไหมเรื่องนั้นกลายเป็นข่าวใหญ่ไปแล้ว,0.714286,3.41,Low

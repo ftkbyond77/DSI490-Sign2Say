@@ -1,0 +1,41 @@
+{
+ "doc": "Which method makes the voice for each emotion. A = neutral reference + v4 tag + PSOLA; B = emotional reference of the same speaker; C = B + mild PSOLA. Evidence: session1.csv, session2.csv (session3 pending).",
+ "methods": {
+  "neutral": "N",
+  "angry": "B",
+  "sad": "A",
+  "happy": "B",
+  "fear": "N",
+  "disgust": "N",
+  "surprise": "N"
+ },
+ "pending": {
+  "happy": "B scored 0.10 and 0.25; C (round 3) may replace it",
+  "fear/disgust/surprise": "never listened to; N = spoken neutrally until round 3"
+ },
+ "psola_c": 0.6,
+ "voices": {
+  "female": "f005",
+  "male": "m003",
+  "female_2": "f004",
+  "male_2": "m009"
+ },
+ "overrides": {
+  "f005": {
+   "angry": "A"
+  },
+  "f004": {
+   "happy": "A"
+  }
+ },
+ "overrides_doc": "Per-voice exceptions from listening notes (crackle / unclear): f005 angry B flagged 2 of 3 clips in round 2; f004 happy B flagged in rounds 1-2. Small samples; re-check after each regeneration.",
+ "guard": {
+  "max_retries": 2,
+  "clip_frac": 0.0005,
+  "dur_ratio": [
+   0.5,
+   2.2
+  ],
+  "doc": "retry with another seed when the clip has clipped samples, non-finite values, is near-silent, or is far shorter / longer than the text predicts; then fall back B/C -> A -> N"
+ }
+}
