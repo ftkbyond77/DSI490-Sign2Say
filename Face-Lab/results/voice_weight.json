@@ -1,0 +1,531 @@
+{
+ "note": "Weight of the picture model vs the blendshape model in the voice's emotion (modules/face_fer.speech_affect, w_fer = 0.5 today).\n RAVDESS (24 actors, out-of-fold, cache/fuse24_probs.npz from fuse24.py): F1 of the fused probabilities and of the voice decision\n   (neutral unless a non-neutral class is on top with ≥ 0.5).\n Team clips (18 clips, real_check frames every 0.5 s): 2 s windows (4 frames, hop 1 s) run like the app — the deployed head\n   (models/face-model-ravhead-v1, one crop per call, its window state) → FaceBranch._summary; the shipped blendshape model\n   (models/face-model) on the window's blendshapes + face points → speech_affect(summary, blendshape, w_fer).\n   Reported: on windows whose frames were all judged neutral, how often the voice gets an emotion; windows with a judged smile: voiced happy.\n  python voice_weight.py → results/voice_weight.json",
+ "ravdess": {
+  "0.0": {
+   "fused": {
+    "clips_acc": 0.592,
+    "clips_macro_f1": 0.591,
+    "windows_acc": 0.58,
+    "windows_macro_f1": 0.578,
+    "strong_intensity_acc": 0.664,
+    "neutral_vs_emotion_acc": 0.853,
+    "valence_sign_agreement": 0.719,
+    "per_class_recall": {
+     "neutral": 0.569,
+     "happy": 0.781,
+     "sad": 0.521,
+     "angry": 0.63,
+     "fear": 0.526,
+     "disgust": 0.615,
+     "surprise": 0.516
+    }
+   },
+   "voice": {
+    "clips_acc": 0.487,
+    "clips_macro_f1": 0.487,
+    "windows_acc": 0.484,
+    "windows_macro_f1": 0.48,
+    "strong_intensity_acc": 0.531,
+    "neutral_vs_emotion_acc": 0.59,
+    "valence_sign_agreement": 0.537,
+    "per_class_recall": {
+     "neutral": 0.868,
+     "happy": 0.625,
+     "sad": 0.25,
+     "angry": 0.484,
+     "fear": 0.224,
+     "disgust": 0.464,
+     "surprise": 0.307
+    }
+   }
+  },
+  "0.1": {
+   "fused": {
+    "clips_acc": 0.626,
+    "clips_macro_f1": 0.625,
+    "windows_acc": 0.612,
+    "windows_macro_f1": 0.608,
+    "strong_intensity_acc": 0.704,
+    "neutral_vs_emotion_acc": 0.858,
+    "valence_sign_agreement": 0.74,
+    "per_class_recall": {
+     "neutral": 0.618,
+     "happy": 0.807,
+     "sad": 0.547,
+     "angry": 0.656,
+     "fear": 0.568,
+     "disgust": 0.677,
+     "surprise": 0.516
+    }
+   },
+   "voice": {
+    "clips_acc": 0.506,
+    "clips_macro_f1": 0.509,
+    "windows_acc": 0.501,
+    "windows_macro_f1": 0.499,
+    "strong_intensity_acc": 0.552,
+    "neutral_vs_emotion_acc": 0.59,
+    "valence_sign_agreement": 0.547,
+    "per_class_recall": {
+     "neutral": 0.889,
+     "happy": 0.651,
+     "sad": 0.234,
+     "angry": 0.495,
+     "fear": 0.255,
+     "disgust": 0.5,
+     "surprise": 0.323
+    }
+   }
+  },
+  "0.2": {
+   "fused": {
+    "clips_acc": 0.659,
+    "clips_macro_f1": 0.658,
+    "windows_acc": 0.644,
+    "windows_macro_f1": 0.639,
+    "strong_intensity_acc": 0.723,
+    "neutral_vs_emotion_acc": 0.866,
+    "valence_sign_agreement": 0.753,
+    "per_class_recall": {
+     "neutral": 0.66,
+     "happy": 0.818,
+     "sad": 0.562,
+     "angry": 0.698,
+     "fear": 0.625,
+     "disgust": 0.745,
+     "surprise": 0.505
+    }
+   },
+   "voice": {
+    "clips_acc": 0.528,
+    "clips_macro_f1": 0.539,
+    "windows_acc": 0.524,
+    "windows_macro_f1": 0.528,
+    "strong_intensity_acc": 0.576,
+    "neutral_vs_emotion_acc": 0.592,
+    "valence_sign_agreement": 0.555,
+    "per_class_recall": {
+     "neutral": 0.91,
+     "happy": 0.682,
+     "sad": 0.25,
+     "angry": 0.516,
+     "fear": 0.286,
+     "disgust": 0.526,
+     "surprise": 0.339
+    }
+   }
+  },
+  "0.3": {
+   "fused": {
+    "clips_acc": 0.69,
+    "clips_macro_f1": 0.687,
+    "windows_acc": 0.671,
+    "windows_macro_f1": 0.665,
+    "strong_intensity_acc": 0.747,
+    "neutral_vs_emotion_acc": 0.874,
+    "valence_sign_agreement": 0.776,
+    "per_class_recall": {
+     "neutral": 0.712,
+     "happy": 0.828,
+     "sad": 0.568,
+     "angry": 0.729,
+     "fear": 0.635,
+     "disgust": 0.828,
+     "surprise": 0.516
+    }
+   },
+   "voice": {
+    "clips_acc": 0.566,
+    "clips_macro_f1": 0.581,
+    "windows_acc": 0.557,
+    "windows_macro_f1": 0.565,
+    "strong_intensity_acc": 0.612,
+    "neutral_vs_emotion_acc": 0.622,
+    "valence_sign_agreement": 0.589,
+    "per_class_recall": {
+     "neutral": 0.938,
+     "happy": 0.703,
+     "sad": 0.292,
+     "angry": 0.542,
+     "fear": 0.375,
+     "disgust": 0.589,
+     "surprise": 0.339
+    }
+   }
+  },
+  "0.4": {
+   "fused": {
+    "clips_acc": 0.721,
+    "clips_macro_f1": 0.717,
+    "windows_acc": 0.7,
+    "windows_macro_f1": 0.693,
+    "strong_intensity_acc": 0.772,
+    "neutral_vs_emotion_acc": 0.885,
+    "valence_sign_agreement": 0.797,
+    "per_class_recall": {
+     "neutral": 0.778,
+     "happy": 0.849,
+     "sad": 0.583,
+     "angry": 0.745,
+     "fear": 0.667,
+     "disgust": 0.865,
+     "surprise": 0.531
+    }
+   },
+   "voice": {
+    "clips_acc": 0.601,
+    "clips_macro_f1": 0.618,
+    "windows_acc": 0.591,
+    "windows_macro_f1": 0.602,
+    "strong_intensity_acc": 0.638,
+    "neutral_vs_emotion_acc": 0.654,
+    "valence_sign_agreement": 0.62,
+    "per_class_recall": {
+     "neutral": 0.941,
+     "happy": 0.734,
+     "sad": 0.328,
+     "angry": 0.557,
+     "fear": 0.443,
+     "disgust": 0.682,
+     "surprise": 0.349
+    }
+   }
+  },
+  "0.5": {
+   "fused": {
+    "clips_acc": 0.734,
+    "clips_macro_f1": 0.732,
+    "windows_acc": 0.718,
+    "windows_macro_f1": 0.712,
+    "strong_intensity_acc": 0.784,
+    "neutral_vs_emotion_acc": 0.885,
+    "valence_sign_agreement": 0.805,
+    "per_class_recall": {
+     "neutral": 0.785,
+     "happy": 0.859,
+     "sad": 0.594,
+     "angry": 0.755,
+     "fear": 0.672,
+     "disgust": 0.906,
+     "surprise": 0.542
+    }
+   },
+   "voice": {
+    "clips_acc": 0.642,
+    "clips_macro_f1": 0.658,
+    "windows_acc": 0.627,
+    "windows_macro_f1": 0.638,
+    "strong_intensity_acc": 0.683,
+    "neutral_vs_emotion_acc": 0.696,
+    "valence_sign_agreement": 0.665,
+    "per_class_recall": {
+     "neutral": 0.931,
+     "happy": 0.776,
+     "sad": 0.396,
+     "angry": 0.604,
+     "fear": 0.505,
+     "disgust": 0.776,
+     "surprise": 0.359
+    }
+   }
+  },
+  "0.6": {
+   "fused": {
+    "clips_acc": 0.743,
+    "clips_macro_f1": 0.742,
+    "windows_acc": 0.722,
+    "windows_macro_f1": 0.717,
+    "strong_intensity_acc": 0.793,
+    "neutral_vs_emotion_acc": 0.882,
+    "valence_sign_agreement": 0.808,
+    "per_class_recall": {
+     "neutral": 0.792,
+     "happy": 0.875,
+     "sad": 0.604,
+     "angry": 0.776,
+     "fear": 0.682,
+     "disgust": 0.917,
+     "surprise": 0.531
+    }
+   },
+   "voice": {
+    "clips_acc": 0.669,
+    "clips_macro_f1": 0.685,
+    "windows_acc": 0.652,
+    "windows_macro_f1": 0.661,
+    "strong_intensity_acc": 0.722,
+    "neutral_vs_emotion_acc": 0.726,
+    "valence_sign_agreement": 0.696,
+    "per_class_recall": {
+     "neutral": 0.913,
+     "happy": 0.797,
+     "sad": 0.464,
+     "angry": 0.625,
+     "fear": 0.547,
+     "disgust": 0.844,
+     "surprise": 0.375
+    }
+   }
+  },
+  "0.7": {
+   "fused": {
+    "clips_acc": 0.739,
+    "clips_macro_f1": 0.738,
+    "windows_acc": 0.72,
+    "windows_macro_f1": 0.715,
+    "strong_intensity_acc": 0.79,
+    "neutral_vs_emotion_acc": 0.879,
+    "valence_sign_agreement": 0.806,
+    "per_class_recall": {
+     "neutral": 0.788,
+     "happy": 0.875,
+     "sad": 0.599,
+     "angry": 0.776,
+     "fear": 0.672,
+     "disgust": 0.911,
+     "surprise": 0.526
+    }
+   },
+   "voice": {
+    "clips_acc": 0.676,
+    "clips_macro_f1": 0.689,
+    "windows_acc": 0.666,
+    "windows_macro_f1": 0.67,
+    "strong_intensity_acc": 0.725,
+    "neutral_vs_emotion_acc": 0.741,
+    "valence_sign_agreement": 0.706,
+    "per_class_recall": {
+     "neutral": 0.91,
+     "happy": 0.818,
+     "sad": 0.479,
+     "angry": 0.635,
+     "fear": 0.547,
+     "disgust": 0.859,
+     "surprise": 0.37
+    }
+   }
+  },
+  "0.8": {
+   "fused": {
+    "clips_acc": 0.734,
+    "clips_macro_f1": 0.733,
+    "windows_acc": 0.716,
+    "windows_macro_f1": 0.711,
+    "strong_intensity_acc": 0.789,
+    "neutral_vs_emotion_acc": 0.876,
+    "valence_sign_agreement": 0.804,
+    "per_class_recall": {
+     "neutral": 0.792,
+     "happy": 0.88,
+     "sad": 0.594,
+     "angry": 0.76,
+     "fear": 0.661,
+     "disgust": 0.906,
+     "surprise": 0.516
+    }
+   },
+   "voice": {
+    "clips_acc": 0.689,
+    "clips_macro_f1": 0.699,
+    "windows_acc": 0.674,
+    "windows_macro_f1": 0.676,
+    "strong_intensity_acc": 0.744,
+    "neutral_vs_emotion_acc": 0.767,
+    "valence_sign_agreement": 0.726,
+    "per_class_recall": {
+     "neutral": 0.889,
+     "happy": 0.849,
+     "sad": 0.505,
+     "angry": 0.667,
+     "fear": 0.542,
+     "disgust": 0.865,
+     "surprise": 0.406
+    }
+   }
+  },
+  "0.9": {
+   "fused": {
+    "clips_acc": 0.733,
+    "clips_macro_f1": 0.731,
+    "windows_acc": 0.715,
+    "windows_macro_f1": 0.709,
+    "strong_intensity_acc": 0.793,
+    "neutral_vs_emotion_acc": 0.876,
+    "valence_sign_agreement": 0.805,
+    "per_class_recall": {
+     "neutral": 0.802,
+     "happy": 0.88,
+     "sad": 0.589,
+     "angry": 0.75,
+     "fear": 0.651,
+     "disgust": 0.917,
+     "surprise": 0.51
+    }
+   },
+   "voice": {
+    "clips_acc": 0.69,
+    "clips_macro_f1": 0.696,
+    "windows_acc": 0.678,
+    "windows_macro_f1": 0.677,
+    "strong_intensity_acc": 0.747,
+    "neutral_vs_emotion_acc": 0.783,
+    "valence_sign_agreement": 0.737,
+    "per_class_recall": {
+     "neutral": 0.872,
+     "happy": 0.865,
+     "sad": 0.516,
+     "angry": 0.672,
+     "fear": 0.542,
+     "disgust": 0.875,
+     "surprise": 0.401
+    }
+   }
+  },
+  "1.0": {
+   "fused": {
+    "clips_acc": 0.726,
+    "clips_macro_f1": 0.723,
+    "windows_acc": 0.711,
+    "windows_macro_f1": 0.705,
+    "strong_intensity_acc": 0.786,
+    "neutral_vs_emotion_acc": 0.874,
+    "valence_sign_agreement": 0.799,
+    "per_class_recall": {
+     "neutral": 0.809,
+     "happy": 0.875,
+     "sad": 0.594,
+     "angry": 0.734,
+     "fear": 0.635,
+     "disgust": 0.906,
+     "surprise": 0.484
+    }
+   },
+   "voice": {
+    "clips_acc": 0.699,
+    "clips_macro_f1": 0.703,
+    "windows_acc": 0.682,
+    "windows_macro_f1": 0.681,
+    "strong_intensity_acc": 0.754,
+    "neutral_vs_emotion_acc": 0.799,
+    "valence_sign_agreement": 0.748,
+    "per_class_recall": {
+     "neutral": 0.865,
+     "happy": 0.87,
+     "sad": 0.542,
+     "angry": 0.682,
+     "fear": 0.547,
+     "disgust": 0.88,
+     "surprise": 0.422
+    }
+   }
+  }
+ },
+ "team": {
+  "0.0": {
+   "neutral_windows": 75,
+   "voiced_emotion": 5,
+   "rate": 0.067,
+   "as_": {
+    "sad": 2,
+    "surprise": 3
+   },
+   "smile_windows": 4,
+   "voiced_happy": 0
+  },
+  "0.1": {
+   "neutral_windows": 75,
+   "voiced_emotion": 3,
+   "rate": 0.04,
+   "as_": {
+    "sad": 1,
+    "surprise": 2
+   },
+   "smile_windows": 4,
+   "voiced_happy": 0
+  },
+  "0.2": {
+   "neutral_windows": 75,
+   "voiced_emotion": 1,
+   "rate": 0.013,
+   "as_": {
+    "surprise": 1
+   },
+   "smile_windows": 4,
+   "voiced_happy": 0
+  },
+  "0.3": {
+   "neutral_windows": 75,
+   "voiced_emotion": 0,
+   "rate": 0.0,
+   "as_": {},
+   "smile_windows": 4,
+   "voiced_happy": 0
+  },
+  "0.4": {
+   "neutral_windows": 75,
+   "voiced_emotion": 0,
+   "rate": 0.0,
+   "as_": {},
+   "smile_windows": 4,
+   "voiced_happy": 0
+  },
+  "0.5": {
+   "neutral_windows": 75,
+   "voiced_emotion": 0,
+   "rate": 0.0,
+   "as_": {},
+   "smile_windows": 4,
+   "voiced_happy": 0
+  },
+  "0.6": {
+   "neutral_windows": 75,
+   "voiced_emotion": 1,
+   "rate": 0.013,
+   "as_": {
+    "sad": 1
+   },
+   "smile_windows": 4,
+   "voiced_happy": 0
+  },
+  "0.7": {
+   "neutral_windows": 75,
+   "voiced_emotion": 1,
+   "rate": 0.013,
+   "as_": {
+    "sad": 1
+   },
+   "smile_windows": 4,
+   "voiced_happy": 0
+  },
+  "0.8": {
+   "neutral_windows": 75,
+   "voiced_emotion": 1,
+   "rate": 0.013,
+   "as_": {
+    "sad": 1
+   },
+   "smile_windows": 4,
+   "voiced_happy": 0
+  },
+  "0.9": {
+   "neutral_windows": 75,
+   "voiced_emotion": 1,
+   "rate": 0.013,
+   "as_": {
+    "sad": 1
+   },
+   "smile_windows": 4,
+   "voiced_happy": 0
+  },
+  "1.0": {
+   "neutral_windows": 75,
+   "voiced_emotion": 1,
+   "rate": 0.013,
+   "as_": {
+    "sad": 1
+   },
+   "smile_windows": 4,
+   "voiced_happy": 0
+  }
+ }
+}

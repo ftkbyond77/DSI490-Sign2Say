@@ -1,0 +1,133 @@
+{
+ "note": "Can the picture head also win on FER2013? Retrain the head (same features, same fit_lr, L2 0.1) with FER2013 TRAIN added:\n  A  FER2013 train only\n  B  FER2013 train + RAVDESS + neutral signing (FER rows weighted 1)\n  C  same as B, FER rows down-weighted so FER2013 and RAVDESS weigh the same in total\nScored on (1) the FER2013 test folder (never used to train or choose), (2) RAVDESS 24 actors, leave-actors-out (actors[i::6], FER train\nalways in the training side), (3) the team clips through the app path (check_ravhead.app_path), neutral prior 0.5 as deployed.\nFER2013 images are 48 px: enlarged to 96 px for B2, a \"window\" of one image. Features cached in cache/fer_feats.npz.\n  python fer_head.py → results/fer_head.json (+ candidates/fer_head_<A|B|C>.npz)",
+ "n_fer_train": 28709,
+ "n_fer_test": 7178,
+ "n_ravdess": 4630,
+ "n_signing": 120,
+ "prior": 0.5,
+ "variants": {
+  "A": {
+   "fer_weight": null,
+   "fer2013_test": {
+    "accuracy": 0.659375870716077,
+    "macro_f1": 0.6153217177568572,
+    "per_class_recall": {
+     "angry": 0.5521920668058455,
+     "disgust": 0.8378378378378378,
+     "fear": 0.3017578125,
+     "happy": 0.8652762119503946,
+     "sad": 0.4843624699278268,
+     "surprise": 0.8339350180505415,
+     "neutral": 0.786699107866991
+    }
+   },
+   "ravdess": {
+    "clips_acc": 0.603,
+    "clips_macro_f1": 0.59,
+    "windows_acc": 0.595,
+    "windows_macro_f1": 0.575,
+    "strong_intensity_acc": 0.644,
+    "neutral_vs_emotion_acc": 0.733,
+    "valence_sign_agreement": 0.668,
+    "per_class_recall": {
+     "neutral": 0.823,
+     "happy": 0.932,
+     "sad": 0.333,
+     "angry": 0.417,
+     "fear": 0.354,
+     "disgust": 0.917,
+     "surprise": 0.339
+    }
+   },
+   "team": {
+    "shown_neutral": 0.996,
+    "wrong": 0.0,
+    "unknown": 0.004,
+    "smiles": "0/3",
+    "wrong_as": {}
+   }
+  },
+  "B": {
+   "fer_weight": 1.0,
+   "fer2013_test": {
+    "accuracy": 0.659375870716077,
+    "macro_f1": 0.6175149853220442,
+    "per_class_recall": {
+     "angry": 0.5730688935281837,
+     "disgust": 0.7117117117117117,
+     "fear": 0.310546875,
+     "happy": 0.8579481397970687,
+     "sad": 0.5148356054530874,
+     "surprise": 0.8291215403128761,
+     "neutral": 0.7575020275750203
+    }
+   },
+   "ravdess": {
+    "clips_acc": 0.684,
+    "clips_macro_f1": 0.669,
+    "windows_acc": 0.656,
+    "windows_macro_f1": 0.637,
+    "strong_intensity_acc": 0.717,
+    "neutral_vs_emotion_acc": 0.829,
+    "valence_sign_agreement": 0.755,
+    "per_class_recall": {
+     "neutral": 0.917,
+     "happy": 0.896,
+     "sad": 0.417,
+     "angry": 0.599,
+     "fear": 0.432,
+     "disgust": 0.969,
+     "surprise": 0.443
+    }
+   },
+   "team": {
+    "shown_neutral": 0.996,
+    "wrong": 0.0,
+    "unknown": 0.004,
+    "smiles": "0/3",
+    "wrong_as": {}
+   }
+  },
+  "C": {
+   "fer_weight": 0.1654533421575116,
+   "fer2013_test": {
+    "accuracy": 0.6398718305934801,
+    "macro_f1": 0.595164860492848,
+    "per_class_recall": {
+     "angry": 0.5594989561586639,
+     "disgust": 0.6846846846846847,
+     "fear": 0.3154296875,
+     "happy": 0.8382187147688839,
+     "sad": 0.48997594226142743,
+     "surprise": 0.7978339350180506,
+     "neutral": 0.7274939172749392
+    }
+   },
+   "ravdess": {
+    "clips_acc": 0.706,
+    "clips_macro_f1": 0.698,
+    "windows_acc": 0.689,
+    "windows_macro_f1": 0.676,
+    "strong_intensity_acc": 0.759,
+    "neutral_vs_emotion_acc": 0.847,
+    "valence_sign_agreement": 0.782,
+    "per_class_recall": {
+     "neutral": 0.875,
+     "happy": 0.828,
+     "sad": 0.464,
+     "angry": 0.719,
+     "fear": 0.531,
+     "disgust": 0.958,
+     "surprise": 0.484
+    }
+   },
+   "team": {
+    "shown_neutral": 0.984,
+    "wrong": 0.0,
+    "unknown": 0.016,
+    "smiles": "0/3",
+    "wrong_as": {}
+   }
+  }
+ }
+}

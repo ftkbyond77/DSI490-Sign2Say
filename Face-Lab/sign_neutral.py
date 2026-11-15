@@ -50,7 +50,7 @@ def main(every_s=0.2):
     so = ort.SessionOptions(); so.intra_op_num_threads = 4; so.log_severity_level = 3
     b2 = ort.InferenceSession(str(B2F), so, providers=["CPUExecutionProvider"])
     feat, zb = _b2_run(b2, G96)
-    np.savez_compressed(OUT, clip=np.array(C), t=np.array(T, np.float32), q=np.array(Q, np.float32), feat=feat.astype(np.float16), b2=zb,
+    np.savez_compressed(OUT, clip=np.array(C), t=np.array(T, np.float32), q=np.array(Q, np.float32), feat=feat.astype(np.float16), b2=zb, g96=G96,
                         v2=FaceFER(V2).logits(G).astype(np.float32), names=np.array([str(Path(c).relative_to(ROOT)) for c in clips]))
     print(f"{len(clips)} clips, {len(G)} crops → {OUT}")
 

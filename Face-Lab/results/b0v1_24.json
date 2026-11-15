@@ -1,0 +1,41 @@
+{
+ "bundle": "face-model-efficientnetb0-v1",
+ "temperature": 1.0,
+ "n_clips": 1440,
+ "prior 0.0": {
+  "clips_acc": 0.475,
+  "clips_macro_f1": 0.443,
+  "windows_acc": 0.471,
+  "windows_macro_f1": 0.443,
+  "strong_intensity_acc": 0.487,
+  "neutral_vs_emotion_acc": 0.728,
+  "valence_sign_agreement": 0.648,
+  "per_class_recall": {
+   "neutral": 0.889,
+   "happy": 0.776,
+   "sad": 0.224,
+   "angry": 0.297,
+   "fear": 0.312,
+   "disgust": 0.365,
+   "surprise": 0.255
+  }
+ },
+ "prior 0.6": {
+  "clips_acc": 0.455,
+  "clips_macro_f1": 0.42,
+  "windows_acc": 0.452,
+  "windows_macro_f1": 0.421,
+  "strong_intensity_acc": 0.467,
+  "neutral_vs_emotion_acc": 0.66,
+  "valence_sign_agreement": 0.602,
+  "per_class_recall": {
+   "neutral": 0.965,
+   "happy": 0.682,
+   "sad": 0.188,
+   "angry": 0.24,
+   "fear": 0.276,
+   "disgust": 0.339,
+   "surprise": 0.24
+  }
+ }
+}

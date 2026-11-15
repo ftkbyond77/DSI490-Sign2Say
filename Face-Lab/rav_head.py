@@ -59,16 +59,22 @@ def member_probs(zb, zv, to7, e_idx):
     return pb[:, e_idx], softmax(zv / 0.7)[:, e_idx]
 
 
-def sign_neutral(to7, e_idx, fps=5.0, win_s=2.0, hop_s=1.0):
-    """cache/sign_neutral.npz (sign_neutral.py) → neutral samples: every clip + its 2 s windows, as the RAVDESS samples."""
+def sign_neutral(to7, e_idx, fps=5.0, win_s=2.0, hop_s=1.0, max_happy=None):
+    """cache/sign_neutral.npz (sign_neutral.py) → neutral samples: every clip + its 2 s windows, as the RAVDESS samples.
+    max_happy: leave out a clip whose mean 'happy' from the deployed ensemble (v2 T 0.7 + B2, neutral prior 0.75) is ≥ this — a
+    smiling signer is not a neutral face (round 2: 19 of the 53 clips, mostly en_alpha fingerspelling videos, smile)."""
     p = ROOT / "Face-Lab" / "cache" / "sign_neutral.npz"
     if not p.exists():
         return np.zeros((0, 1408 + 28))
     z = np.load(p); pb, pv = member_probs(z["b2"], z["v2"], to7, e_idx); feat = z["feat"].astype(np.float32)
+    hap = None
+    if max_happy is not None:
+        cls = ["angry", "disgust", "fear", "happy", "sad", "surprise", "neutral"]; bias = np.array([0, 0, 0, 0, 0, 0, 0.75])
+        hap = ((softmax(z["v2"] / 0.7 + bias) + softmax(z["b2"][:, [HSE.index(c) for c in cls]] + bias)) / 2)[:, cls.index("happy")]
     X = []
     for c in np.unique(z["clip"]):
         idx = np.where((z["clip"] == c) & (z["q"] >= 0.25))[0]
-        if not len(idx):
+        if not len(idx) or (hap is not None and hap[idx].mean() >= max_happy):
             continue
         for s, e in spans(len(idx), fps, win_s, hop_s):
             k = idx[s:e]

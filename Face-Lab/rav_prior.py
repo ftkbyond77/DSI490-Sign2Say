@@ -12,10 +12,11 @@ from face_model import fit_lr                              # noqa: E402
 from compare24 import EMO, metrics, spans                  # noqa: E402
 
 
-def main():
+def load_samples():
+    """the RAVDESS samples of rav_head.py → XP, y, actor, whole, inten, meta (+ to7, e_idx)"""
     to7 = [R.HSE.index(c) for c in ["angry", "disgust", "fear", "happy", "sad", "surprise", "neutral"]]
     cls = ["angry", "disgust", "fear", "happy", "sad", "surprise", "neutral"]; e_idx = [cls.index(e) for e in EMOTIONS]
-    XP, y, actor, whole, inten = [], [], [], [], []
+    XP, y, actor, whole, inten, meta = [], [], [], [], [], []
     for f in sorted(R.DATA.glob("actor_*.npz")):
         z = np.load(f); e = np.load(R.FEAT / f.name); fps = float(z["fps"]); a = int(z["actor"])
         pb, pv = R.member_probs(e["b2"], e["v2"], to7, e_idx); feat = e["feat"].astype(np.float32)
@@ -28,13 +29,19 @@ def main():
                     sel = (cc == ci) & (cq >= 0.25)
                 if not sel.any():
                     sel = cc == ci
-                XP.append(R.picfeat(feat[sel], pb[sel], pv[sel])); y.append(lab); actor.append(a); whole.append(k == 0); inten.append(int(z["intensity"][ci]))
+                XP.append(R.picfeat(feat[sel], pb[sel], pv[sel])); y.append(lab); actor.append(a); whole.append(k == 0); inten.append(int(z["intensity"][ci])); meta.append((a, ci, s, en))
     XP, y, actor, whole, inten = map(np.array, (XP, y, actor, whole, inten))
+    return XP, y, actor, whole, inten, meta, to7, e_idx
+
+
+def main():
+    XP, y, actor, whole, inten, meta, to7, e_idx = load_samples()
     Xd = R.sign_neutral(to7, e_idx); acts = np.unique(actor); folds = [acts[i::6] for i in range(6)]
     L = np.zeros((len(XP), len(EMOTIONS)))
     for te in folds:
         m = np.isin(actor, te)
         L[m] = fit_lr(np.r_[XP[~m], Xd], np.r_[y[~m], np.full(len(Xd), 0)], 0.1).logits(XP[m]); print("fold", flush=True)
+    np.savez_compressed(ROOT / "Face-Lab" / "cache" / "rav_oof.npz", L=L, y=y, actor=actor, whole=whole, inten=inten, meta=np.array(meta))
     rep = {}
     for ps in (0.0, 0.5, 1.0):
         Lb = L.copy(); Lb[:, 0] += ps

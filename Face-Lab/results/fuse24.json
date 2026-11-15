@@ -1,0 +1,130 @@
+{
+ "n_clips": 1440,
+ "note": "The whole face system as the app combines it, on ALL 24 RAVDESS actors (same samples / metrics as rav_head.py):\n   voice emotion = speech_affect(picture summary, blendshape affect)  — 0.5 · picture + 0.5 · blendshape probabilities,\n   then neutral when the top class is neutral or < 0.5 (only a confident emotion is voiced).\n main  : picture = EfficientNet-B0 v1 (FER2013, prior 0.6)            + blendshape model (friend's recipe)\n ours  : picture = RAVDESS head (+ neutral signing, prior 0.5)       + the same blendshape model\nPicture summary = the frames' probabilities weighted by top confidence × quality (FaceBranch._summary); the head's answer per sample is\nits out-of-fold logits (cache/rav_oof.npz from rav_prior.py). Blendshape: out-of-fold LR (L2 0.01, temperature 1.6) on RAVDESS only — the\nfriend's 720 neutral signing samples are not on this machine (that recipe scores 0.592 here vs 0.567 shipped, so blendshape is a bit flattered).\n  python fuse24.py → results/fuse24.json",
+ "blendshape alone": {
+  "clips_acc": 0.592,
+  "clips_macro_f1": 0.591,
+  "windows_acc": 0.58,
+  "windows_macro_f1": 0.578,
+  "strong_intensity_acc": 0.664,
+  "neutral_vs_emotion_acc": 0.853,
+  "valence_sign_agreement": 0.719,
+  "per_class_recall": {
+   "neutral": 0.569,
+   "happy": 0.781,
+   "sad": 0.521,
+   "angry": 0.63,
+   "fear": 0.526,
+   "disgust": 0.615,
+   "surprise": 0.516
+  }
+ },
+ "main: B0 v1 alone": {
+  "clips_acc": 0.451,
+  "clips_macro_f1": 0.417,
+  "windows_acc": 0.448,
+  "windows_macro_f1": 0.416,
+  "strong_intensity_acc": 0.466,
+  "neutral_vs_emotion_acc": 0.652,
+  "valence_sign_agreement": 0.593,
+  "per_class_recall": {
+   "neutral": 0.958,
+   "happy": 0.667,
+   "sad": 0.182,
+   "angry": 0.24,
+   "fear": 0.25,
+   "disgust": 0.354,
+   "surprise": 0.255
+  }
+ },
+ "ours: head alone": {
+  "clips_acc": 0.726,
+  "clips_macro_f1": 0.723,
+  "windows_acc": 0.711,
+  "windows_macro_f1": 0.705,
+  "strong_intensity_acc": 0.786,
+  "neutral_vs_emotion_acc": 0.874,
+  "valence_sign_agreement": 0.799,
+  "per_class_recall": {
+   "neutral": 0.809,
+   "happy": 0.875,
+   "sad": 0.594,
+   "angry": 0.734,
+   "fear": 0.635,
+   "disgust": 0.906,
+   "surprise": 0.484
+  }
+ },
+ "main: B0 v1 + blendshape (0.5/0.5)": {
+  "clips_acc": 0.596,
+  "clips_macro_f1": 0.582,
+  "windows_acc": 0.587,
+  "windows_macro_f1": 0.57,
+  "strong_intensity_acc": 0.659,
+  "neutral_vs_emotion_acc": 0.778,
+  "valence_sign_agreement": 0.708,
+  "per_class_recall": {
+   "neutral": 0.917,
+   "happy": 0.776,
+   "sad": 0.344,
+   "angry": 0.526,
+   "fear": 0.464,
+   "disgust": 0.604,
+   "surprise": 0.38
+  }
+ },
+ "main: B0 v1 + blendshape (0.5/0.5) → voice": {
+  "clips_acc": 0.407,
+  "clips_macro_f1": 0.382,
+  "windows_acc": 0.406,
+  "windows_macro_f1": 0.382,
+  "strong_intensity_acc": 0.426,
+  "neutral_vs_emotion_acc": 0.435,
+  "valence_sign_agreement": 0.419,
+  "per_class_recall": {
+   "neutral": 0.969,
+   "happy": 0.589,
+   "sad": 0.062,
+   "angry": 0.297,
+   "fear": 0.094,
+   "disgust": 0.354,
+   "surprise": 0.203
+  }
+ },
+ "ours: head + blendshape (0.5/0.5)": {
+  "clips_acc": 0.734,
+  "clips_macro_f1": 0.732,
+  "windows_acc": 0.718,
+  "windows_macro_f1": 0.712,
+  "strong_intensity_acc": 0.784,
+  "neutral_vs_emotion_acc": 0.885,
+  "valence_sign_agreement": 0.805,
+  "per_class_recall": {
+   "neutral": 0.785,
+   "happy": 0.859,
+   "sad": 0.594,
+   "angry": 0.755,
+   "fear": 0.672,
+   "disgust": 0.906,
+   "surprise": 0.542
+  }
+ },
+ "ours: head + blendshape (0.5/0.5) → voice": {
+  "clips_acc": 0.642,
+  "clips_macro_f1": 0.658,
+  "windows_acc": 0.627,
+  "windows_macro_f1": 0.638,
+  "strong_intensity_acc": 0.683,
+  "neutral_vs_emotion_acc": 0.696,
+  "valence_sign_agreement": 0.665,
+  "per_class_recall": {
+   "neutral": 0.931,
+   "happy": 0.776,
+   "sad": 0.396,
+   "angry": 0.604,
+   "fear": 0.505,
+   "disgust": 0.776,
+   "surprise": 0.359
+  }
+ }
+}

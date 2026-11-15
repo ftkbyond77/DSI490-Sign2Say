@@ -1,0 +1,216 @@
+{
+ "ft prior 0.0": {
+  "clips_acc": 0.677,
+  "clips_macro_f1": 0.667,
+  "windows_acc": 0.671,
+  "windows_macro_f1": 0.658,
+  "strong_intensity_acc": 0.746,
+  "neutral_vs_emotion_acc": 0.883,
+  "valence_sign_agreement": 0.79,
+  "per_class_recall": {
+   "neutral": 0.622,
+   "happy": 0.911,
+   "sad": 0.464,
+   "angry": 0.729,
+   "fear": 0.547,
+   "disgust": 0.979,
+   "surprise": 0.516
+  }
+ },
+ "ft+v2 prior 0.0": {
+  "clips_acc": 0.578,
+  "clips_macro_f1": 0.561,
+  "windows_acc": 0.589,
+  "windows_macro_f1": 0.573,
+  "strong_intensity_acc": 0.626,
+  "neutral_vs_emotion_acc": 0.683,
+  "valence_sign_agreement": 0.644,
+  "per_class_recall": {
+   "neutral": 0.865,
+   "happy": 0.917,
+   "sad": 0.438,
+   "angry": 0.266,
+   "fear": 0.234,
+   "disgust": 0.844,
+   "surprise": 0.339
+  }
+ },
+ "ft prior 0.5": {
+  "clips_acc": 0.682,
+  "clips_macro_f1": 0.67,
+  "windows_acc": 0.677,
+  "windows_macro_f1": 0.663,
+  "strong_intensity_acc": 0.746,
+  "neutral_vs_emotion_acc": 0.874,
+  "valence_sign_agreement": 0.785,
+  "per_class_recall": {
+   "neutral": 0.705,
+   "happy": 0.88,
+   "sad": 0.458,
+   "angry": 0.703,
+   "fear": 0.547,
+   "disgust": 0.984,
+   "surprise": 0.484
+  }
+ },
+ "ft+v2 prior 0.5": {
+  "clips_acc": 0.56,
+  "clips_macro_f1": 0.538,
+  "windows_acc": 0.572,
+  "windows_macro_f1": 0.553,
+  "strong_intensity_acc": 0.606,
+  "neutral_vs_emotion_acc": 0.649,
+  "valence_sign_agreement": 0.618,
+  "per_class_recall": {
+   "neutral": 0.913,
+   "happy": 0.911,
+   "sad": 0.38,
+   "angry": 0.198,
+   "fear": 0.234,
+   "disgust": 0.823,
+   "surprise": 0.281
+  }
+ },
+ "ft prior 1.0": {
+  "clips_acc": 0.683,
+  "clips_macro_f1": 0.67,
+  "windows_acc": 0.68,
+  "windows_macro_f1": 0.665,
+  "strong_intensity_acc": 0.747,
+  "neutral_vs_emotion_acc": 0.857,
+  "valence_sign_agreement": 0.779,
+  "per_class_recall": {
+   "neutral": 0.802,
+   "happy": 0.854,
+   "sad": 0.427,
+   "angry": 0.646,
+   "fear": 0.547,
+   "disgust": 0.979,
+   "surprise": 0.464
+  }
+ },
+ "ft+v2 prior 1.0": {
+  "clips_acc": 0.536,
+  "clips_macro_f1": 0.508,
+  "windows_acc": 0.548,
+  "windows_macro_f1": 0.524,
+  "strong_intensity_acc": 0.58,
+  "neutral_vs_emotion_acc": 0.612,
+  "valence_sign_agreement": 0.59,
+  "per_class_recall": {
+   "neutral": 0.958,
+   "happy": 0.885,
+   "sad": 0.318,
+   "angry": 0.156,
+   "fear": 0.208,
+   "disgust": 0.792,
+   "surprise": 0.224
+  }
+ },
+ "ft_head prior 0.0": {
+  "clips_acc": 0.679,
+  "clips_macro_f1": 0.673,
+  "windows_acc": 0.67,
+  "windows_macro_f1": 0.66,
+  "strong_intensity_acc": 0.738,
+  "neutral_vs_emotion_acc": 0.892,
+  "valence_sign_agreement": 0.792,
+  "per_class_recall": {
+   "neutral": 0.726,
+   "happy": 0.87,
+   "sad": 0.464,
+   "angry": 0.729,
+   "fear": 0.578,
+   "disgust": 0.833,
+   "surprise": 0.531
+  }
+ },
+ "ft_head prior 0.5": {
+  "clips_acc": 0.678,
+  "clips_macro_f1": 0.671,
+  "windows_acc": 0.67,
+  "windows_macro_f1": 0.659,
+  "strong_intensity_acc": 0.741,
+  "neutral_vs_emotion_acc": 0.886,
+  "valence_sign_agreement": 0.786,
+  "per_class_recall": {
+   "neutral": 0.76,
+   "happy": 0.854,
+   "sad": 0.458,
+   "angry": 0.729,
+   "fear": 0.578,
+   "disgust": 0.823,
+   "surprise": 0.5
+  }
+ },
+ "ft_head prior 1.0": {
+  "clips_acc": 0.674,
+  "clips_macro_f1": 0.667,
+  "windows_acc": 0.667,
+  "windows_macro_f1": 0.656,
+  "strong_intensity_acc": 0.738,
+  "neutral_vs_emotion_acc": 0.875,
+  "valence_sign_agreement": 0.778,
+  "per_class_recall": {
+   "neutral": 0.788,
+   "happy": 0.839,
+   "sad": 0.448,
+   "angry": 0.693,
+   "fear": 0.578,
+   "disgust": 0.823,
+   "surprise": 0.49
+  }
+ },
+ "team ft+v2 prior 0.0": {
+  "shown_neutral": 0.977,
+  "wrong": 0.012,
+  "unknown": 0.012,
+  "smiles": "1/3",
+  "wrong_as": {
+   "happy": 2,
+   "sad": 1
+  }
+ },
+ "team ft+v2 prior 0.5": {
+  "shown_neutral": 0.988,
+  "wrong": 0.008,
+  "unknown": 0.004,
+  "smiles": "1/3",
+  "wrong_as": {
+   "happy": 2
+  }
+ },
+ "team ft+v2 prior 1.0": {
+  "shown_neutral": 1.0,
+  "wrong": 0.0,
+  "unknown": 0.0,
+  "smiles": "0/3",
+  "wrong_as": {}
+ },
+ "team ft prior 0.0": {
+  "shown_neutral": 0.98,
+  "wrong": 0.012,
+  "unknown": 0.008,
+  "smiles": "0/3",
+  "wrong_as": {
+   "sad": 1,
+   "surprise": 2
+  }
+ },
+ "team ft prior 0.5": {
+  "shown_neutral": 0.988,
+  "wrong": 0.004,
+  "unknown": 0.008,
+  "smiles": "0/3",
+  "wrong_as": {
+   "sad": 1
+  }
+ },
+ "team ft prior 1.0": {
+  "shown_neutral": 0.996,
+  "wrong": 0.0,
+  "unknown": 0.004,
+  "smiles": "0/3",
+  "wrong_as": {}
+ }
+}
