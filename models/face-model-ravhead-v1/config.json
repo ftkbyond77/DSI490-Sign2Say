@@ -54,9 +54,9 @@
   "min_quality": 0.25
  },
  "smoother": {
-  "tau_s": 0.35,
+  "tau_s": 0.2,
   "switch_margin": 0.12,
-  "min_hold_s": 0.3,
+  "min_hold_s": 0.15,
   "strong": 0.8,
   "lost_s": 1.5,
   "min_conf": 0.45
@@ -74,7 +74,7 @@
  },
  "head": {
   "npz": "rav_head.npz",
-  "window_s": 2.0,
+  "window_s": 1.0,
   "min_quality": 0.25,
   "v2_temperature": 0.7,
   "emotions": [
@@ -91,5 +91,6 @@
   },
   "note": "RAVDESS-trained multinomial LR (Face-Lab/rav_head.py, 24 actors, leave-actors-out clips macro-F1 0.726 vs blendshape 0.591) on a 2 s window: mean B2 features + mean/max of the members' probabilities (no deployment prior); + 120 neutral dictionary-signing samples (signer false emotion 9.8%). RAVDESS CC BY-NC-SA 4.0 + HSEmotion/AffectNet: research use only.",
   "prior_note": "rav_prior.py / check_ravhead.py: neutral 0 / 0.5 / 1.0 → RAVDESS clips F1 0.726 / 0.723 / 0.711, signer false emotion (app path) 9.0% / 3.9% / 2.3% (deployed ensemble 2.0%)"
- }
+ },
+ "speed_note": "live label speed (Face-Lab/latency.py): window 2 s + tau 0.35 / hold 0.3 -> 1 s + tau 0.2 / hold 0.15: median time to the right label on RAVDESS 1.8 s -> 1.0 s, team false emotion 3.9% -> 3.1%"
 }

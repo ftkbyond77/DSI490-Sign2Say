@@ -115,15 +115,28 @@ img {{ width: 100%; page-break-inside: avoid; }} code {{ font-size: 8.5pt; backg
 <td>{ds['team']['clips']} คลิป → {ds['team']['frames_every_0_5s']} เฟรม (ทุก 0.5 วิ)</td>
 <td>ตัดสินด้วยตา: ปกติ {ds['team']['neutral']} · ยิ้ม {ds['team']['smile']} · กำกวม {ds['team']['ambiguous']} · มือบัง/ไม่ชัด {ds['team']['covered_or_poor']}</td></tr>
 </table>
+<div style="page-break-inside: avoid"><h3>อารมณ์ใน RAVDESS</h3>
+<p>RAVDESS มี 8 อารมณ์ ส่วนระบบเรา (และ FER2013) ใช้ 7 อารมณ์</p>
+<table class="data" style="width: 50%">
+<tr><th>RAVDESS</th><th>ระบบเรา</th></tr>
+<tr><td>neutral</td><td>ปกติ</td></tr>
+<tr><td>calm (สงบ)</td><td>รวมเข้าปกติ</td></tr>
+<tr><td>happy</td><td>สุข</td></tr>
+<tr><td>sad</td><td>เศร้า</td></tr>
+<tr><td>angry</td><td>โกรธ</td></tr>
+<tr><td>fearful</td><td>กลัว</td></tr>
+<tr><td>disgust</td><td>รังเกียจ</td></tr>
+<tr><td>surprised</td><td>ประหลาดใจ</td></tr>
+</table></div>
 <p class="note">ภาพคือสิ่งที่โมเดลของเราเห็นจริง: ครอปหน้าสีเทา 96×96 px จากกรอบที่คำนวณจาก 68 จุดของ MediaPipe (ตัวเดียวกับบนเว็บ)</p>
-<h3>RAVDESS: 7 อารมณ์ (ระดับเข้ม) ของนักแสดง 2 คน</h3>
-<img src="figures/v2_data_ravdess.png">
-<h3>FER2013: ข้อมูลที่ B0 v1 ของเพื่อนเทรนและทดสอบ (รูปจากชุด test)</h3>
-<img src="figures/v1_data_fer2013.png">
-<h3>คลิปท่าพจนานุกรม: หน้าปกติขณะทำภาษามือ (ตัวอย่างที่เติมตอนเทรน)</h3>
-<img src="figures/v2_data_signing.png">
-<h3>คลิปของทีม: ชุดทดสอบคนทำภาษามือ</h3>
-<img src="figures/v2_data_team.png">
+<div style="page-break-inside: avoid"><h3>RAVDESS: 7 อารมณ์ (ระดับเข้ม) ของนักแสดง 2 คน</h3>
+<img src="figures/v2_data_ravdess.png"></div>
+<div style="page-break-inside: avoid"><h3>FER2013: ข้อมูลที่ B0 v1 ของเพื่อนเทรนและทดสอบ (รูปจากชุด test)</h3>
+<img src="figures/v1_data_fer2013.png"></div>
+<div style="page-break-inside: avoid"><h3>คลิปท่าพจนานุกรม: หน้าปกติขณะทำภาษามือ (ตัวอย่างที่เติมตอนเทรน)</h3>
+<img src="figures/v2_data_signing.png"></div>
+<div style="page-break-inside: avoid"><h3>คลิปของทีม: ชุดทดสอบคนทำภาษามือ</h3>
+<img src="figures/v2_data_team.png"></div>
 <p class="note">RAVDESS หน้าตรง แสงสตูดิโอ แสดงอารมณ์ชัด · FER2013 รูปนิ่งเล็กจากเน็ต · คลิปของทีมเป็นเว็บแคม ยิ้มบางๆ ปากขยับตามคำ และมือบังหน้า</p>
 
 <h2>3. วิธีวัดผล (เหมือนของเพื่อน)</h2>
