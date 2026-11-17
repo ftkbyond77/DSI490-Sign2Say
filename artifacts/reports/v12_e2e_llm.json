@@ -1,0 +1,80 @@
+{
+  "created": "2026-11-15 20:57",
+  "set": "e2e_v12",
+  "n_items": 66,
+  "parts": {
+    "tsl51_blind": 30,
+    "rid_blind": 30,
+    "negative": 6
+  },
+  "asr": "none",
+  "face": "on",
+  "llm": "on",
+  "modules": {
+    "face": "face-model",
+    "tts": "models/Speech-model-v4-TTS",
+    "voice": "male"
+  },
+  "systems": {
+    "v10": {
+      "n": 60,
+      "BLEU4": 3.13,
+      "sentence_BLEU": 25.3,
+      "chrF": 20.94,
+      "ROUGE1": 0.49323299994352626,
+      "ROUGEL": 0.4064869681974946,
+      "METEOR": 0.31070110538630574,
+      "WER": 0.7009071963754626,
+      "CER": 0.686885709894087,
+      "exact": 0.11666666666666667,
+      "speech_produced": 0.8833333333333333,
+      "empty": 0.11666666666666667,
+      "question_accuracy": 0.5,
+      "question_n": 6,
+      "negative_spoken_rate": 0.0,
+      "RTF_recognition": 0.16620053187477604,
+      "compute_ms_p50": 1131.0563499991986,
+      "compute_ms_p90": 2492.2547500009387
+    },
+    "v11": {
+      "n": 60,
+      "BLEU4": 0.0,
+      "sentence_BLEU": 14.23,
+      "chrF": 12.28,
+      "ROUGE1": 0.36394153456510436,
+      "ROUGEL": 0.3104494710730409,
+      "METEOR": 0.18563266555215352,
+      "WER": 0.7768992598675262,
+      "CER": 0.7780404159976748,
+      "exact": 0.05,
+      "speech_produced": 0.9,
+      "empty": 0.1,
+      "question_accuracy": 0.5,
+      "question_n": 6,
+      "negative_spoken_rate": 0.0,
+      "RTF_recognition": 0.13244040125023462,
+      "compute_ms_p50": 1039.9992000002385,
+      "compute_ms_p90": 1547.4545500001113
+    },
+    "v12": {
+      "n": 60,
+      "BLEU4": 3.02,
+      "sentence_BLEU": 24.83,
+      "chrF": 20.81,
+      "ROUGE1": 0.49323299994352626,
+      "ROUGEL": 0.40172506343558984,
+      "METEOR": 0.30934597421346616,
+      "WER": 0.7050738630421293,
+      "CER": 0.6924412654496427,
+      "exact": 0.11666666666666667,
+      "speech_produced": 0.8833333333333333,
+      "empty": 0.11666666666666667,
+      "question_accuracy": 0.5,
+      "question_n": 6,
+      "negative_spoken_rate": 0.0,
+      "RTF_recognition": 0.17488123912150663,
+      "compute_ms_p50": 1239.1022500014515,
+      "compute_ms_p90": 2606.04394999973
+    }
+  }
+}

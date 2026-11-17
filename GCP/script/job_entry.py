@@ -66,6 +66,24 @@ def _prep_rows(args):
     return [prep(to_iso(kp, hw), sc) for kp, sc, hw in (store.get(r, f0, f1) for r, f0, f1 in rows)]
 
 
+def _combine_stores(d1, d2, dst):
+    """pose_store.npz + clips.parquet of two shard folders -> one folder (offsets shifted); transitions / daily concepts from d1"""
+    dst.mkdir(parents=True, exist_ok=True)
+    if (dst / "pose_store.npz").exists() and (dst / "clips.parquet").exists():
+        return dst
+    z1, z2 = np.load(d1 / "pose_store.npz", allow_pickle=True), np.load(d2 / "pose_store.npz", allow_pickle=True)
+    off = np.concatenate([z1["off"], z2["off"][1:] + z1["off"][-1]])
+    np.savez(dst / "pose_store.npz", KP=np.concatenate([z1["KP"], z2["KP"]]), SC=np.concatenate([z1["SC"], z2["SC"]]), off=off,
+             hw=np.concatenate([z1["hw"], z2["hw"]]), clip_id=np.concatenate([z1["clip_id"].astype(str), z2["clip_id"].astype(str)]))
+    c1, c2 = pd.read_parquet(d1 / "clips.parquet"), pd.read_parquet(d2 / "clips.parquet")
+    pd.concat([c1, c2[[c for c in c2.columns if c in c1.columns]]], ignore_index=True).to_parquet(dst / "clips.parquet", index=False)
+    for f in ("transitions.parquet", "daily_concepts.json", "concepts.json"):
+        if (d1 / f).exists():
+            shutil.copy(d1 / f, dst / f)
+    log.info("combined store: %d + %d clips -> %s", len(z1["clip_id"]), len(z2["clip_id"]), dst)
+    return dst
+
+
 def stage_train_encoder(a):
     from modules.encoder import NULL, BatchIter, ClipDataset, CosFace, PoseStore, collate, concept_scores, embed_parts, prep, retrieval_metrics, supcon, to_iso
     from modules import encoder as _enc
@@ -73,8 +91,15 @@ def stage_train_encoder(a):
     data, models, out = paths(a)
     dev = a.device
     t0 = time.time()
+    if a.data2:                                  # v12: old shards + shards_v12 (new-source signers) concatenated in one store
+        data = _combine_stores(data, Path(a.data2), Path("/tmp/thaislm_data") if Path("/tmp").exists() else out / "data")
     store = PoseStore(data / "pose_store.npz")
     clips = pd.read_parquet(data / "clips.parquet")
+    if a.drop_sealed:                            # v12: BLIND-v11 and BLIND-v12 never train (modules/sealed.py, both manifests)
+        from modules.sealed import is_sealed
+        bad = clips.signer.astype(str).map(lambda s_: is_sealed(signer=s_)) | clips.clip_id.map(lambda c_: is_sealed(c_))
+        log.info("sealed rows removed from training: %d", int((bad & clips.role.eq("train")).sum()))
+        clips.loc[bad, "role"] = "sealed"
     clips = clips[clips.clip_id.isin(store.row)].reset_index(drop=True)
     clips["row"] = clips.clip_id.map(store.row)
     clips["aux"] = clips.aux_clip.map(lambda c: store.row.get(c, -1) if isinstance(c, str) else -1).astype(int)
@@ -152,6 +177,10 @@ def stage_train_encoder(a):
             q(m, f"ONE_{part}|closed_184", allowed=one_cols)
         m = (eval_df.dataset == "youtube_v4").values & (eval_df.role == "test").values
         q(m, "YT_title|open_vocab")
+        m = (eval_df.role == "newsig_dev").values & (eval_df.concept != NULL).values       # v12: new-source signers, word hold-out
+        q(m, "NEWSIG_dev|open_vocab")
+        if daily_cols:
+            q(m & np.isin(eval_df.c.values, daily_cols), "NEWSIG_dev|daily_vocab", allowed=daily_cols)
         for sub in ("tsl51_user_sign",):            # the TSL51 researcher (1 unseen signer), MediaPipe from video
             m = (eval_df.subset == sub).values & (eval_df.concept != NULL).values
             q(m, f"T51U|open_vocab"); q(m, f"T51U|closed_51", allowed=t51_cols)
@@ -172,10 +201,13 @@ def stage_train_encoder(a):
 
     def val_score(r):
         ks = [k for k in ("E1_ttrs_val|open_vocab", "ONE_val|open_vocab", "THSL_val|open_vocab", "AGENT_val|open_vocab") if r.get(k, {}).get("n")]
+        if a.val_newsig and r.get("NEWSIG_dev|daily_vocab", {}).get("n"):      # v12 selection: held-out MRRs + new-signer MRR, equal weight
+            ks = ks + ["NEWSIG_dev|daily_vocab"]
         return float(np.mean([r[k]["MRR"] for k in ks])) if ks else 0.0
 
-    Z0 = embed_parts(model, eval_parts, zero_shot=True, device=dev, bs=a.embed_bs)
-    base = protocols(Z0, embed_parts(model, pair_parts, zero_shot=True, device=dev, bs=a.embed_bs) if pair_parts else None)
+    zs = not str(a.init).startswith("ckpt:")    # v12: a checkpoint init is evaluated as itself at step 0 (the control)
+    Z0 = embed_parts(model, eval_parts, zero_shot=zs, device=dev, bs=a.embed_bs)
+    base = protocols(Z0, embed_parts(model, pair_parts, zero_shot=zs, device=dev, bs=a.embed_bs) if pair_parts else None)
     np.save(out / "emb_zero_shot.npy", Z0.astype(np.float16))
     write_json(out / "metrics_zero_shot.json", base)
     log.info("zero-shot: %s", json.dumps({k: (round(v.get("R1", v.get("auc", v.get("same_clip", 0))), 3) if isinstance(v, dict) else v) for k, v in base.items()}, ensure_ascii=False))
@@ -203,7 +235,16 @@ def stage_train_encoder(a):
     groups.append(dict(params=list(cos.parameters()), lr=a.lr_head))
     ema = {k: v.detach().clone().float() for k, v in model.state_dict().items() if v.is_floating_point()} if a.ema > 0 else None
     opt = torch.optim.AdamW(groups, weight_decay=0.01)
-    sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=[g["lr"] for g in groups], total_steps=a.steps, pct_start=0.06, anneal_strategy="cos")
+    sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=[g["lr"] for g in groups], total_steps=a.steps,
+                                                pct_start=(a.warmup / a.steps) if a.warmup else 0.06, anneal_strategy="cos")
+    teacher, kd_keep = None, None
+    if a.kd > 0:                                 # v12: feature distillation to the init (enc-v7) on words WITHOUT new-source data
+        teacher = load_model(models, dev, a.init).eval()
+        for p_ in teacher.parameters():
+            p_.requires_grad_(False)
+        newc = set(json.loads(Path(a.kd_new_concepts).read_text(encoding="utf-8"))) if a.kd_new_concepts else set()
+        kd_keep = torch.tensor([c not in newc for c in concepts], dtype=torch.bool, device=dev)
+        log.info("distillation to the init: lambda %.2f -> %.2f, %d concepts kept free (new-source data)", a.kd, a.kd_end, len(newc))
     LOCAL = Path("/tmp/thaislm_run") if out.as_posix().startswith("/gcs/") else out
     LOCAL.mkdir(parents=True, exist_ok=True)
 
@@ -260,15 +301,26 @@ def stage_train_encoder(a):
             l_cos = cos(z[cm], y[cm]) if cm.any() else z.sum() * 0
             l_sup = supcon(z, y, a.temp)
             loss = l_cos + a.w_supcon * l_sup
+            if teacher is not None:
+                with torch.no_grad(), inference_precision(dev):
+                    zt = teacher(P_, M_)
+                km = kd_keep[y]
+                lam = a.kd + (a.kd_end - a.kd) * min(1.0, step / max(a.steps - 1, 1))
+                l_kd = (1 - (z[km].float() * zt[km].float()).sum(-1)).mean() if km.any() else z.sum() * 0
+                loss = loss + lam * l_kd
             opt.zero_grad(set_to_none=True)
             loss.backward()
         except torch.cuda.OutOfMemoryError:
             opt.zero_grad(set_to_none=True)
-            z = loss = P_ = M_ = None  # noqa: F841
+            z = loss = P_ = M_ = zt = l_kd = l_cos = l_sup = None  # noqa: F841  (v12: every per-step tensor released, else OOM repeats)
+            import gc; gc.collect()
             torch.cuda.empty_cache()
-            oom_keep *= 0.75; n_oom += 1
-            log.warning("CUDA OOM at step %d → batch scaled to %.0f %% (OOM events %d)", step + 1, 100 * oom_keep, n_oom)
+            oom_keep = max(oom_keep * 0.75, 0.25); n_oom += 1; oom_run = locals().get("oom_run", 0) + 1
+            log.warning("CUDA OOM at step %d -> batch scaled to %.0f %% (OOM events %d)", step + 1, 100 * oom_keep, n_oom)
+            if oom_run >= 10:
+                raise SystemExit("10 consecutive CUDA OOMs: lower --P")
             continue
+        oom_run = 0
         torch.nn.utils.clip_grad_norm_([p for g in groups for p in g["params"]], 1.0)
         opt.step(); sched.step()
         if ema is not None:
@@ -309,7 +361,7 @@ def stage_train_encoder(a):
                                 hist=hist, ema=ema), LOCAL / "ckpt_last.pt")
                 pending_upload = to_gcs(["ckpt_last.pt"])
             model.train()
-            if a.patience and since_best >= a.patience:
+            if a.patience and since_best >= a.patience and step + 1 >= a.min_steps:
                 log.info("early stop at step %d: no val improvement in %d evals (best %.4f)", step + 1, since_best, best)
                 break
             write_neighbours()                       # hard negatives re-mined from the current proxies (workers reload the file)
@@ -326,8 +378,25 @@ def stage_train_encoder(a):
     log.info("done in %.1f min, best val score %.4f", (time.time() - t0) / 60, best)
 
 
+def stage_train_v11(argv):
+    """v11 (prompt-opt-v11 C8, GCP fallback of modal_v11.py): scripts/train_v11.py with the shards staged on local SSD, the pose store in
+    RAM, outputs on the GCS mount (checkpoints every 1,000 steps → resumable after a Spot preemption)."""
+    import os
+    import subprocess
+    p = argparse.ArgumentParser(); p.add_argument("--run_id"); p.add_argument("--data"); p.add_argument("--models"); p.add_argument("--stage")
+    k, rest = p.parse_known_args(argv)
+    out = os.path.join(os.environ["THAISLM_GCS"], "runs", k.run_id)
+    os.makedirs(out, exist_ok=True)
+    env = dict(os.environ, THAISLM_SHARDS=k.data, THAISLM_STORE_RAM="1", PYTHONIOENCODING="utf-8")
+    subprocess.run([sys.executable, "-m", "pip", "install", "-q", "scikit-learn==1.6.1"], check=False)
+    r = subprocess.run([sys.executable, "scripts/train_v11.py", "--out", out] + rest, env=env)
+    raise SystemExit(r.returncode)
+
+
 def main():
     global A
+    if "--stage" in sys.argv and sys.argv[sys.argv.index("--stage") + 1] == "train_v11":
+        return stage_train_v11(sys.argv[1:])
     ap = argparse.ArgumentParser()
     ap.add_argument("--stage", required=True); ap.add_argument("--run_id", default="local")
     ap.add_argument("--gcs"); ap.add_argument("--data"); ap.add_argument("--models"); ap.add_argument("--out")
@@ -339,6 +408,12 @@ def main():
     ap.add_argument("--limit_eval", type=int, default=0); ap.add_argument("--device", default=None, help="auto (default), cpu, mps, cuda; DEVICE env also supported"); ap.add_argument("--embed_bs", type=int, default=None)
     ap.add_argument("--patience", type=int, default=3); ap.add_argument("--ckpt_every", type=int, default=2); ap.add_argument("--ema", type=float, default=0.998)
     ap.add_argument("--init", default="wlasl", help="wlasl | ckpt:<path>")
+    ap.add_argument("--data2", default="", help="v12: second shard folder (shards_v12) concatenated with --data")
+    ap.add_argument("--drop_sealed", action="store_true", help="v12: BLIND-v11/v12 rows never train")
+    ap.add_argument("--val_newsig", action="store_true", help="v12: NEWSIG-dev MRR joins the selection score")
+    ap.add_argument("--kd", type=float, default=0.0); ap.add_argument("--kd_end", type=float, default=0.2)
+    ap.add_argument("--kd_new_concepts", default="", help="v12: JSON list of concepts with new-source data (no distillation)")
+    ap.add_argument("--warmup", type=int, default=0); ap.add_argument("--min_steps", type=int, default=0)
     ap.add_argument("--signer_aug", type=float, default=0.3); ap.add_argument("--mirror", type=float, default=0.1)
     ap.add_argument("--aux_p", type=float, default=0.25); ap.add_argument("--hard_frac", type=float, default=0.5)
     ap.add_argument("--encoder_run"); ap.add_argument("--n_synth", type=int, default=2500); ap.add_argument("--n_synth_heldout", type=int, default=240)

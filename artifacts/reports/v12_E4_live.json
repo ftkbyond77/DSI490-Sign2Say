@@ -1,0 +1,21 @@
+{
+ "v10": {
+  "precision": 1.0,
+  "recall": 0.35842293906810035
+ },
+ "v12_own": {
+  "precision": 1.0,
+  "recall": 0.3763440860215054
+ },
+ "v12_matched": {
+  "tau": null,
+  "recall": 0.3763440860215054
+ },
+ "diff": 0.01792114695340502,
+ "ci": [
+  -0.01090909090909087,
+  0.04642857142857143
+ ],
+ "n": 78,
+ "note": "live mode simulated with the TS-parity rule on web-rate TSL51 test sentences; v10 = v10 model + v10 live rule, v12 = v12 model + v12 live rule"
+}

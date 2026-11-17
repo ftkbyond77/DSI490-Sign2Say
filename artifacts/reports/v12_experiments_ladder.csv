@@ -1,0 +1,96 @@
+rung,source,set,ref,new,diff,ci_lo,ci_hi,n,kept
+v12-B1,v12_paired_tune_v12-B1_v12-B2.json,t51_tune_x1.0,0.2742,0.2897,0.0155,-0.0069,0.0386,126,no
+v12-B1,v12_paired_tune_v12-B1_v12-B2.json,t51_tune_x1.5,0.279,0.2794,0.0004,-0.0204,0.0212,126,no
+v12-B1,v12_paired_tune_v12-B1_v12-B2.json,t51_tune_x2.0,0.3103,0.3083,-0.002,-0.0258,0.0205,126,no
+v12-B1,v12_paired_tune_v12-B1_v12-B2.json,flu_tune,0.4642,0.4697,0.0054,-0.0074,0.018,240,no
+v12-B1,v12_paired_tune_v12-B1_v12-B2.json,iso_tune,0.4419,0.4244,-0.0174,-0.0407,0.0058,172,no
+v12-B1,v12_paired_tune_v12-B1_v12-B2.json,nsig_dev,0.7429,0.7143,-0.0286,-0.0857,0.0,35,no
+v12-B1,v12_paired_tune_v12-B1_v12-B2.json,w_t51_tune,0.2933,0.2981,0.0049,-0.0136,0.0221,126,no
+v12-B1,v12_paired_tune_v12-B1_v12-B2.json,tail_tune,0.1733,0.18,0.0067,-0.0067,0.02,300,no
+v12-B1,v12_paired_tune_v12-B1_v12-B2.json,w_tail_tune,0.1083,0.1083,0.0,-0.025,0.025,120,no
+v12-B1,v12_paired_tune_v12-B1_v12-B2.json,E1_pooled_sentence_WER,0.3563,0.3613,0.0049,-0.0037,0.0138,618,no
+v12-B2,v12_paired_tune_v12-B1_v12-B2.json,t51_tune_x1.0,0.2742,0.2811,0.0069,-0.0146,0.029,126,no
+v12-B2,v12_paired_tune_v12-B1_v12-B2.json,t51_tune_x1.5,0.279,0.2767,-0.0022,-0.0274,0.0218,126,no
+v12-B2,v12_paired_tune_v12-B1_v12-B2.json,t51_tune_x2.0,0.3103,0.2951,-0.0152,-0.0384,0.0053,126,no
+v12-B2,v12_paired_tune_v12-B1_v12-B2.json,flu_tune,0.4642,0.4692,0.005,-0.0094,0.0191,240,no
+v12-B2,v12_paired_tune_v12-B1_v12-B2.json,iso_tune,0.4419,0.407,-0.0349,-0.0756,0.0,172,no
+v12-B2,v12_paired_tune_v12-B1_v12-B2.json,nsig_dev,0.7429,0.7143,-0.0286,-0.0857,0.0,35,no
+v12-B2,v12_paired_tune_v12-B1_v12-B2.json,w_t51_tune,0.2933,0.2915,-0.0017,-0.0246,0.0181,126,no
+v12-B2,v12_paired_tune_v12-B1_v12-B2.json,tail_tune,0.1733,0.17,-0.0033,-0.0167,0.01,300,no
+v12-B2,v12_paired_tune_v12-B1_v12-B2.json,w_tail_tune,0.1083,0.1167,0.0083,0.0,0.025,120,no
+v12-B2,v12_paired_tune_v12-B1_v12-B2.json,E1_pooled_sentence_WER,0.3563,0.3561,-0.0002,-0.0097,0.0095,618,no
+v12-B1b,v12_paired_tune_v12-B1b_v12-B2b.json,t51_tune_x1.0,0.2742,0.2857,0.0115,-0.0053,0.03,126,no
+v12-B1b,v12_paired_tune_v12-B1b_v12-B2b.json,t51_tune_x1.5,0.279,0.2747,-0.0042,-0.0214,0.0126,126,no
+v12-B1b,v12_paired_tune_v12-B1b_v12-B2b.json,t51_tune_x2.0,0.3103,0.307,-0.0033,-0.0199,0.0126,126,no
+v12-B1b,v12_paired_tune_v12-B1b_v12-B2b.json,flu_tune,0.4642,0.4637,-0.0006,-0.011,0.0094,240,no
+v12-B1b,v12_paired_tune_v12-B1b_v12-B2b.json,iso_tune,0.4419,0.4302,-0.0116,-0.0349,0.0116,172,no
+v12-B1b,v12_paired_tune_v12-B1b_v12-B2b.json,nsig_dev,0.7429,0.7143,-0.0286,-0.0857,0.0,35,no
+v12-B1b,v12_paired_tune_v12-B1b_v12-B2b.json,w_t51_tune,0.2933,0.3019,0.0086,-0.0073,0.0245,126,no
+v12-B1b,v12_paired_tune_v12-B1b_v12-B2b.json,tail_tune,0.1733,0.1767,0.0033,-0.01,0.0167,300,no
+v12-B1b,v12_paired_tune_v12-B1b_v12-B2b.json,w_tail_tune,0.1083,0.125,0.0167,0.0,0.0417,120,no
+v12-B1b,v12_paired_tune_v12-B1b_v12-B2b.json,E1_pooled_sentence_WER,0.3563,0.3569,0.0006,-0.0066,0.008,618,no
+v12-B2b,v12_paired_tune_v12-B1b_v12-B2b.json,t51_tune_x1.0,0.2742,0.2745,0.0003,-0.0202,0.0213,126,no
+v12-B2b,v12_paired_tune_v12-B1b_v12-B2b.json,t51_tune_x1.5,0.279,0.275,-0.004,-0.0258,0.0172,126,no
+v12-B2b,v12_paired_tune_v12-B1b_v12-B2b.json,t51_tune_x2.0,0.3103,0.2905,-0.0198,-0.041,-0.0007,126,no
+v12-B2b,v12_paired_tune_v12-B1b_v12-B2b.json,flu_tune,0.4642,0.4617,-0.0025,-0.0137,0.0088,240,no
+v12-B2b,v12_paired_tune_v12-B1b_v12-B2b.json,iso_tune,0.4419,0.4186,-0.0233,-0.0581,0.0,172,no
+v12-B2b,v12_paired_tune_v12-B1b_v12-B2b.json,nsig_dev,0.7429,0.7143,-0.0286,-0.0857,0.0,35,no
+v12-B2b,v12_paired_tune_v12-B1b_v12-B2b.json,w_t51_tune,0.2933,0.2968,0.0036,-0.0156,0.022,126,no
+v12-B2b,v12_paired_tune_v12-B1b_v12-B2b.json,tail_tune,0.1733,0.1733,0.0,-0.0133,0.0133,300,no
+v12-B2b,v12_paired_tune_v12-B1b_v12-B2b.json,w_tail_tune,0.1083,0.1333,0.025,0.0,0.0583,120,no
+v12-B2b,v12_paired_tune_v12-B1b_v12-B2b.json,E1_pooled_sentence_WER,0.3563,0.3506,-0.0058,-0.0139,0.0027,618,no
+v12-J,v12_paired_tune_v12-J.json,t51_tune_x1.0,0.2742,0.261,-0.0132,-0.0265,-0.0013,126,"no (latency, E3)"
+v12-J,v12_paired_tune_v12-J.json,t51_tune_x1.5,0.279,0.279,-0.0,-0.0119,0.0106,126,"no (latency, E3)"
+v12-J,v12_paired_tune_v12-J.json,t51_tune_x2.0,0.3103,0.2925,-0.0179,-0.0357,-0.0026,126,"no (latency, E3)"
+v12-J,v12_paired_tune_v12-J.json,flu_tune,0.4642,0.4643,0.0001,-0.0086,0.0083,240,"no (latency, E3)"
+v12-J,v12_paired_tune_v12-J.json,iso_tune,0.4419,0.4244,-0.0174,-0.0465,0.0,172,"no (latency, E3)"
+v12-J,v12_paired_tune_v12-J.json,nsig_dev,0.7429,0.7429,0.0,0.0,0.0,35,"no (latency, E3)"
+v12-J,v12_paired_tune_v12-J.json,w_t51_tune,0.2933,0.2929,-0.0004,-0.0149,0.0127,126,"no (latency, E3)"
+v12-J,v12_paired_tune_v12-J.json,tail_tune,0.1733,0.1633,-0.01,-0.0233,0.0,300,"no (latency, E3)"
+v12-J,v12_paired_tune_v12-J.json,w_tail_tune,0.1083,0.1083,0.0,0.0,0.0,120,"no (latency, E3)"
+v12-J,v12_paired_tune_v12-J.json,E1_pooled_sentence_WER,0.3563,0.35,-0.0063,-0.0122,-0.0006,618,"no (latency, E3)"
+v12-J3,v12_paired_tune_v12-J3.json,t51_tune_x1.0,0.2742,0.2696,-0.0046,-0.0139,0.004,126,no
+v12-J3,v12_paired_tune_v12-J3.json,t51_tune_x1.5,0.279,0.2717,-0.0073,-0.0165,0.0,126,no
+v12-J3,v12_paired_tune_v12-J3.json,t51_tune_x2.0,0.3103,0.305,-0.0053,-0.0159,0.0053,126,no
+v12-J3,v12_paired_tune_v12-J3.json,flu_tune,0.4642,0.4664,0.0022,-0.0031,0.0071,240,no
+v12-J3,v12_paired_tune_v12-J3.json,iso_tune,0.4419,0.4302,-0.0116,-0.0349,0.0,172,no
+v12-J3,v12_paired_tune_v12-J3.json,nsig_dev,0.7429,0.7429,0.0,0.0,0.0,35,no
+v12-J3,v12_paired_tune_v12-J3.json,w_t51_tune,0.2933,0.2975,0.0042,-0.0053,0.0138,126,no
+v12-J3,v12_paired_tune_v12-J3.json,tail_tune,0.1733,0.17,-0.0033,-0.01,0.0,300,no
+v12-J3,v12_paired_tune_v12-J3.json,w_tail_tune,0.1083,0.1083,0.0,0.0,0.0,120,no
+v12-J3,v12_paired_tune_v12-J3.json,E1_pooled_sentence_WER,0.3563,0.3537,-0.0027,-0.0066,0.0008,618,no
+v12-Jp,v12_paired_tune_v12-Jp.json,t51_tune_x1.0,0.2742,0.2683,-0.006,-0.0192,0.006,126,basis of Jpc
+v12-Jp,v12_paired_tune_v12-Jp.json,t51_tune_x1.5,0.279,0.2737,-0.0053,-0.0152,0.0033,126,basis of Jpc
+v12-Jp,v12_paired_tune_v12-Jp.json,t51_tune_x2.0,0.3103,0.2971,-0.0132,-0.0265,-0.0026,126,basis of Jpc
+v12-Jp,v12_paired_tune_v12-Jp.json,flu_tune,0.4642,0.4652,0.001,-0.0061,0.0081,240,basis of Jpc
+v12-Jp,v12_paired_tune_v12-Jp.json,iso_tune,0.4419,0.4244,-0.0174,-0.0465,0.0,172,basis of Jpc
+v12-Jp,v12_paired_tune_v12-Jp.json,nsig_dev,0.7429,0.7429,0.0,0.0,0.0,35,basis of Jpc
+v12-Jp,v12_paired_tune_v12-Jp.json,w_t51_tune,0.2933,0.2981,0.0049,-0.0094,0.0181,126,basis of Jpc
+v12-Jp,v12_paired_tune_v12-Jp.json,tail_tune,0.1733,0.1633,-0.01,-0.0233,0.0,300,basis of Jpc
+v12-Jp,v12_paired_tune_v12-Jp.json,w_tail_tune,0.1083,0.1083,0.0,0.0,0.0,120,basis of Jpc
+v12-Jp,v12_paired_tune_v12-Jp.json,E1_pooled_sentence_WER,0.3563,0.3517,-0.0046,-0.0094,0.0001,618,basis of Jpc
+v12,v12_paired_devtest_v12.json,t51_test_x1.0,0.3024,0.2917,-0.0107,-0.031,0.0075,78,candidate (Jpc+live); gate: no win
+v12,v12_paired_devtest_v12.json,t51_test_x1.5,0.3002,0.2917,-0.0085,-0.0214,0.0,78,candidate (Jpc+live); gate: no win
+v12,v12_paired_devtest_v12.json,t51_test_x2.0,0.2906,0.2863,-0.0043,-0.0214,0.0128,78,candidate (Jpc+live); gate: no win
+v12,v12_paired_devtest_v12.json,flu_test,0.3971,0.4049,0.0078,-0.0103,0.0275,68,candidate (Jpc+live); gate: no win
+v12,v12_paired_devtest_v12.json,iso_test,0.243,0.243,0.0,0.0,0.0,107,candidate (Jpc+live); gate: no win
+v12,v12_paired_devtest_v12.json,w_t51_test,0.328,0.3269,-0.0011,-0.0128,0.0096,78,candidate (Jpc+live); gate: no win
+v12,v12_paired_devtest_v12.json,tail_test,0.1559,0.1635,0.0076,0.0,0.019,263,candidate (Jpc+live); gate: no win
+v12,v12_paired_devtest_v12.json,w_tail_test,0.0854,0.0854,0.0,0.0,0.0,82,candidate (Jpc+live); gate: no win
+v12,v12_paired_devtest_v12.json,E1_pooled_sentence_WER,0.3201,0.3158,-0.0043,-0.013,0.0038,302,candidate (Jpc+live); gate: no win
+v11,v12_paired_blind_v11_v12.json,nsig_blind12,0.7179,0.7436,0.0256,-0.0513,0.1026,39,reference
+v11,v12_paired_blind_v11_v12.json,t51_blind_x1.0,0.276,0.2795,0.0035,-0.033,0.0382,48,reference
+v11,v12_paired_blind_v11_v12.json,t51_blind_x1.5,0.217,0.2431,0.026,0.0035,0.0521,48,reference
+v11,v12_paired_blind_v11_v12.json,t51_blind_x2.0,0.2726,0.2795,0.0069,-0.0261,0.0417,48,reference
+v11,v12_paired_blind_v11_v12.json,flu_blind,0.354,0.3286,-0.0254,-0.0439,-0.0082,120,reference
+v11,v12_paired_blind_v11_v12.json,iso_blind,0.2742,0.2742,0.0,-0.0242,0.0242,124,reference
+v11,v12_paired_blind_v11_v12.json,tail_blind,0.1704,0.1579,-0.0125,-0.0326,0.0075,399,reference
+v11,v12_paired_blind_v11_v12.json,E1_pooled_sentence_WER,0.3001,0.2952,-0.0049,-0.0179,0.0074,264,reference
+v12,v12_paired_blind_v11_v12.json,nsig_blind12,0.7179,0.7179,0.0,0.0,0.0,39,candidate (Jpc+live); gate: no win
+v12,v12_paired_blind_v11_v12.json,t51_blind_x1.0,0.276,0.2587,-0.0174,-0.0486,0.0104,48,candidate (Jpc+live); gate: no win
+v12,v12_paired_blind_v11_v12.json,t51_blind_x1.5,0.217,0.217,-0.0,-0.0174,0.0139,48,candidate (Jpc+live); gate: no win
+v12,v12_paired_blind_v11_v12.json,t51_blind_x2.0,0.2726,0.2726,0.0,-0.0208,0.0208,48,candidate (Jpc+live); gate: no win
+v12,v12_paired_blind_v11_v12.json,flu_blind,0.354,0.3553,0.0013,-0.0071,0.0096,120,candidate (Jpc+live); gate: no win
+v12,v12_paired_blind_v11_v12.json,iso_blind,0.2742,0.2742,0.0,0.0,0.0,124,candidate (Jpc+live); gate: no win
+v12,v12_paired_blind_v11_v12.json,tail_blind,0.1704,0.1779,0.0075,0.0,0.0175,399,candidate (Jpc+live); gate: no win
+v12,v12_paired_blind_v11_v12.json,E1_pooled_sentence_WER,0.3001,0.2975,-0.0026,-0.0106,0.005,264,candidate (Jpc+live); gate: no win

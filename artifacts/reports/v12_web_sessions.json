@@ -1,0 +1,254 @@
+{
+ "v10": {
+  "sessions": 8,
+  "WER": 0.21238938053097345,
+  "displayed_WER": 0.4336283185840708,
+  "recall": 0.5663716814159292,
+  "precision": 0.9846153846153847,
+  "utterances_per_4": 4.875,
+  "utterance_count_error": 0.875
+ },
+ "v12": {
+  "sessions": 8,
+  "WER": 0.20353982300884957,
+  "displayed_WER": 0.40707964601769914,
+  "recall": 0.5929203539823009,
+  "precision": 1.0,
+  "utterances_per_4": 4.125,
+  "utterance_count_error": 0.125
+ },
+ "diff_wer": {
+  "mean": -0.006547619047619045,
+  "ci": [
+   -0.10002976190476189,
+   0.12499999999999997
+  ],
+  "better": 4
+ },
+ "diff_recall": {
+  "mean": 0.023305860805860813,
+  "ci": [
+   -0.09752747252747254,
+   0.13589743589743591
+  ],
+  "better": 4
+ },
+ "diff_utt_err": {
+  "mean": -0.75,
+  "ci": [
+   -1.75,
+   0.0
+  ],
+  "better": 2
+ },
+ "per_session": {
+  "s0": {
+   "v10": {
+    "wer": 0.3333333333333333,
+    "dwer": 0.6666666666666666,
+    "recall": 0.3333333333333333,
+    "prec": 1.0,
+    "n_shown": 5,
+    "utt": 4,
+    "utt_err": 0,
+    "n_ref": 15,
+    "fps": null,
+    "errors": null
+   },
+   "v12": {
+    "wer": 0.2,
+    "dwer": 0.4,
+    "recall": 0.6,
+    "prec": 1.0,
+    "n_shown": 9,
+    "utt": 4,
+    "utt_err": 0,
+    "n_ref": 15,
+    "fps": null,
+    "errors": null
+   }
+  },
+  "s1": {
+   "v10": {
+    "wer": 0.21428571428571427,
+    "dwer": 0.35714285714285715,
+    "recall": 0.6428571428571429,
+    "prec": 1.0,
+    "n_shown": 9,
+    "utt": 8,
+    "utt_err": 4,
+    "n_ref": 14,
+    "fps": null,
+    "errors": null
+   },
+   "v12": {
+    "wer": 0.5714285714285714,
+    "dwer": 0.6428571428571429,
+    "recall": 0.35714285714285715,
+    "prec": 1.0,
+    "n_shown": 5,
+    "utt": 4,
+    "utt_err": 0,
+    "n_ref": 14,
+    "fps": null,
+    "errors": null
+   }
+  },
+  "s2": {
+   "v10": {
+    "wer": 0.2857142857142857,
+    "dwer": 0.5,
+    "recall": 0.5,
+    "prec": 1.0,
+    "n_shown": 7,
+    "utt": 4,
+    "utt_err": 0,
+    "n_ref": 14,
+    "fps": null,
+    "errors": null
+   },
+   "v12": {
+    "wer": 0.14285714285714285,
+    "dwer": 0.6428571428571429,
+    "recall": 0.35714285714285715,
+    "prec": 1.0,
+    "n_shown": 5,
+    "utt": 4,
+    "utt_err": 0,
+    "n_ref": 14,
+    "fps": null,
+    "errors": null
+   }
+  },
+  "s3": {
+   "v10": {
+    "wer": 0.3333333333333333,
+    "dwer": 0.4,
+    "recall": 0.6,
+    "prec": 0.9,
+    "n_shown": 10,
+    "utt": 7,
+    "utt_err": 3,
+    "n_ref": 15,
+    "fps": null,
+    "errors": null
+   },
+   "v12": {
+    "wer": 0.2,
+    "dwer": 0.2,
+    "recall": 0.8,
+    "prec": 1.0,
+    "n_shown": 12,
+    "utt": 5,
+    "utt_err": 1,
+    "n_ref": 15,
+    "fps": null,
+    "errors": null
+   }
+  },
+  "s4": {
+   "v12": {
+    "wer": 0.07142857142857142,
+    "dwer": 0.35714285714285715,
+    "recall": 0.6428571428571429,
+    "prec": 1.0,
+    "n_shown": 9,
+    "utt": 4,
+    "utt_err": 0,
+    "n_ref": 14,
+    "fps": null,
+    "errors": null
+   },
+   "v10": {
+    "wer": 0.14285714285714285,
+    "dwer": 0.35714285714285715,
+    "recall": 0.6428571428571429,
+    "prec": 1.0,
+    "n_shown": 9,
+    "utt": 4,
+    "utt_err": 0,
+    "n_ref": 14,
+    "fps": null,
+    "errors": null
+   }
+  },
+  "s5": {
+   "v12": {
+    "wer": 0.14285714285714285,
+    "dwer": 0.42857142857142855,
+    "recall": 0.5714285714285714,
+    "prec": 1.0,
+    "n_shown": 8,
+    "utt": 4,
+    "utt_err": 0,
+    "n_ref": 14,
+    "fps": null,
+    "errors": null
+   },
+   "v10": {
+    "wer": 0.14285714285714285,
+    "dwer": 0.42857142857142855,
+    "recall": 0.5714285714285714,
+    "prec": 1.0,
+    "n_shown": 8,
+    "utt": 4,
+    "utt_err": 0,
+    "n_ref": 14,
+    "fps": null,
+    "errors": null
+   }
+  },
+  "s6": {
+   "v12": {
+    "wer": 0.15384615384615385,
+    "dwer": 0.38461538461538464,
+    "recall": 0.6153846153846154,
+    "prec": 1.0,
+    "n_shown": 8,
+    "utt": 4,
+    "utt_err": 0,
+    "n_ref": 13,
+    "fps": null,
+    "errors": null
+   },
+   "v10": {
+    "wer": 0.15384615384615385,
+    "dwer": 0.46153846153846156,
+    "recall": 0.5384615384615384,
+    "prec": 1.0,
+    "n_shown": 7,
+    "utt": 4,
+    "utt_err": 0,
+    "n_ref": 13,
+    "fps": null,
+    "errors": null
+   }
+  },
+  "s7": {
+   "v12": {
+    "wer": 0.14285714285714285,
+    "dwer": 0.21428571428571427,
+    "recall": 0.7857142857142857,
+    "prec": 1.0,
+    "n_shown": 11,
+    "utt": 4,
+    "utt_err": 0,
+    "n_ref": 14,
+    "fps": null,
+    "errors": null
+   },
+   "v10": {
+    "wer": 0.07142857142857142,
+    "dwer": 0.2857142857142857,
+    "recall": 0.7142857142857143,
+    "prec": 1.0,
+    "n_shown": 10,
+    "utt": 4,
+    "utt_err": 0,
+    "n_ref": 14,
+    "fps": null,
+    "errors": null
+   }
+  }
+ }
+}

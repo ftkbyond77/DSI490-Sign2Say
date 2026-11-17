@@ -1,0 +1,48 @@
+{
+  "created": "2026-11-15 20:40",
+  "set": "e2e_v12",
+  "n_items": 3,
+  "parts": {
+    "tsl51_blind": 30,
+    "rid_blind": 30,
+    "negative": 6
+  },
+  "asr": "elevenlabs",
+  "face": "on",
+  "llm": "off",
+  "modules": {
+    "face": "face-model",
+    "tts": "models/Speech-model-v4-TTS",
+    "voice": "male"
+  },
+  "systems": {
+    "v12": {
+      "n": 3,
+      "BLEU4": 9.91,
+      "sentence_BLEU": 22.59,
+      "chrF": 49.51,
+      "ROUGE1": 1.0,
+      "ROUGEL": 0.5833333333333334,
+      "METEOR": 0.5,
+      "WER": 0.6666666666666666,
+      "CER": 0.7017543859649122,
+      "exact": 0.0,
+      "speech_produced": 1.0,
+      "empty": 0.0,
+      "question_accuracy": null,
+      "question_n": 0,
+      "negative_spoken_rate": null,
+      "RTF_recognition": 0.08753958666687443,
+      "compute_ms_p50": 890.8289000028162,
+      "compute_ms_p90": 906.163700002071,
+      "speech_elevenlabs": {
+        "n": 3,
+        "ASR_CER_vs_TTS": 0.0,
+        "ASR_WER_vs_TTS": 0.0,
+        "ASR_CER_vs_GT": 0.7017543859649122,
+        "ASR_WER_vs_GT": 0.6666666666666666,
+        "RTF_speech": 0.7899199074075561
+      }
+    }
+  }
+}

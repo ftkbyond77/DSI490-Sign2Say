@@ -1,0 +1,2068 @@
+{
+ "tag": "v10",
+ "model": "models/model-v10",
+ "contract": {
+  "/v1/health": {
+   "status": 200,
+   "keys": [
+    "face",
+    "loaded",
+    "models",
+    "ok"
+   ]
+  },
+  "/v1/info": {
+   "status": 200,
+   "keys": [
+    "bank_clips",
+    "built",
+    "concepts_full",
+    "conversation_concepts",
+    "extractor",
+    "llm",
+    "version"
+   ]
+  },
+  "/v1/vocab": {
+   "status": 200,
+   "keys": [
+    "concepts",
+    "doc",
+    "not_in_bank",
+    "signers",
+    "variants"
+   ]
+  },
+  "/v1/translate": {
+   "status": 200,
+   "keys": [
+    "duration_s",
+    "face",
+    "hand_canonicalization",
+    "language",
+    "mirrored_to_right_hand",
+    "model",
+    "model_version",
+    "n_frames",
+    "segments",
+    "sentence",
+    "signer_visible_frac",
+    "signing_frac",
+    "timings_ms",
+    "title",
+    "vocab"
+   ],
+   "segment_keys": [
+    "candidate_scores",
+    "candidates",
+    "emb",
+    "hand_frac",
+    "kind",
+    "p",
+    "status",
+    "t0",
+    "t1",
+    "word"
+   ]
+  },
+  "/v1/translate/video": {
+   "status": 200,
+   "keys": [
+    "duration_s",
+    "face",
+    "hand_canonicalization",
+    "language",
+    "mirrored_to_right_hand",
+    "model",
+    "model_version",
+    "n_frames",
+    "segments",
+    "sentence",
+    "signer_visible_frac",
+    "signing_frac",
+    "timings_ms",
+    "title",
+    "vocab"
+   ],
+   "segment_keys": [
+    "candidate_scores",
+    "candidates",
+    "emb",
+    "hand_frac",
+    "kind",
+    "p",
+    "status",
+    "t0",
+    "t1",
+    "word"
+   ]
+  },
+  "/v1/live": {
+   "ok": true,
+   "message_keys": [
+    "partial",
+    "confirmed",
+    "final"
+   ]
+  }
+ },
+ "replay": {
+  "20261004_003600_682.json.gz": {
+   "ms": 697.6514999987558,
+   "words": [
+    "ให้",
+    "เกิด",
+    "เพื่อน"
+   ],
+   "status": [
+    "unknown",
+    "unknown",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 1,
+   "decision": [
+    null,
+    null,
+    null
+   ],
+   "dur_s": 4.815
+  },
+  "20261004_003615_185.json.gz": {
+   "ms": 867.2173999984807,
+   "words": [
+    "ไป",
+    "กลาง",
+    "ดุสิต"
+   ],
+   "status": [
+    "unknown",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 2,
+   "decision": [
+    null,
+    null,
+    null
+   ],
+   "dur_s": 5.767099999997765
+  },
+  "20261004_003638_045.json.gz": {
+   "ms": 841.3252999998804,
+   "words": [
+    "เกิด",
+    "ฉัน",
+    "เข็มกลัด"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 3,
+   "decision": [
+    null,
+    null,
+    null
+   ],
+   "dur_s": 5.78089999999851
+  },
+  "20261004_003651_586.json.gz": {
+   "ms": 358.7614999996731,
+   "words": [
+    "โกรธ"
+   ],
+   "status": [
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 1,
+   "decision": [
+    null
+   ],
+   "dur_s": 2.2887000000029802
+  },
+  "20261004_003656_160.json.gz": {
+   "ms": 553.1950000004144,
+   "words": [
+    "เรียน"
+   ],
+   "status": [
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 1,
+   "decision": [
+    null
+   ],
+   "dur_s": 4.584300000000745
+  },
+  "20261004_003656_310.json.gz": {
+   "ms": 1086.2464999991062,
+   "words": [
+    "โกรธ",
+    "เรียน"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 2,
+   "decision": [
+    null,
+    null
+   ],
+   "dur_s": 6.2838000000007455
+  },
+  "20261004_003659_062.json.gz": {
+   "ms": 1193.0611999996472,
+   "words": [
+    "โกรธ",
+    "หมวก",
+    "พ่อ"
+   ],
+   "status": [
+    "uncertain",
+    "unknown",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 2,
+   "decision": [
+    null,
+    null,
+    null
+   ],
+   "dur_s": 8.825300000000745
+  },
+  "20261004_003659_675.json.gz": {
+   "ms": 175.7923999975901,
+   "words": [
+    "วิ่ง"
+   ],
+   "status": [
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 1,
+   "decision": [
+    null
+   ],
+   "dur_s": 1.0081000000014901
+  },
+  "20261004_003709_796.json.gz": {
+   "ms": 452.1982999976899,
+   "words": [
+    "ฉัน",
+    "แนะนำ"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 2,
+   "decision": [
+    null,
+    null
+   ],
+   "dur_s": 2.958
+  },
+  "20261004_003724_580.json.gz": {
+   "ms": 892.8190000005998,
+   "words": [
+    "เทคโนโลยี",
+    "เข็มกลัด",
+    "ฉัน"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "unknown"
+   ],
+   "shown": [],
+   "unsure": 2,
+   "decision": [
+    null,
+    null,
+    null
+   ],
+   "dur_s": 5.888
+  },
+  "20261004_004031_596.json.gz": {
+   "ms": 2008.604300001025,
+   "words": [
+    "สวัสดี",
+    "ประเทศ",
+    "J",
+    "ฉัน",
+    "เกิด"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "uncertain",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 5,
+   "decision": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 9.383099999997764
+  },
+  "20261004_004115_942.json.gz": {
+   "ms": 192.60140000187675,
+   "words": [
+    "ง่าย"
+   ],
+   "status": [
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 1,
+   "decision": [
+    null
+   ],
+   "dur_s": 1.1199000000022352
+  },
+  "20261004_004142_052.json.gz": {
+   "ms": 258.47439999779454,
+   "words": [],
+   "status": [],
+   "shown": [],
+   "unsure": 0,
+   "decision": [],
+   "dur_s": 1.6328999999985099
+  },
+  "20261004_004210_831.json.gz": {
+   "ms": 397.40700000038487,
+   "words": [],
+   "status": [],
+   "shown": [],
+   "unsure": 0,
+   "decision": [],
+   "dur_s": 5.98079999999702
+  },
+  "20261004_004223_451.json.gz": {
+   "ms": 631.1179000003904,
+   "words": [
+    "สวัสดี",
+    "ฉัน",
+    "วิ่ง"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 3,
+   "decision": [
+    null,
+    null,
+    null
+   ],
+   "dur_s": 4.17639999999851
+  },
+  "20261004_004256_940.json.gz": {
+   "ms": 386.9272000010824,
+   "words": [
+    "วัด",
+    "เกิด"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 2,
+   "decision": [
+    null,
+    null
+   ],
+   "dur_s": 2.453900000002235
+  },
+  "20261004_004257_055.json.gz": {
+   "ms": 678.2791000005091,
+   "words": [
+    "สี",
+    "ฉัน"
+   ],
+   "status": [
+    "unknown",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 1,
+   "decision": [
+    null,
+    null
+   ],
+   "dur_s": 4.343800000000745
+  },
+  "20261004_004259_649.json.gz": {
+   "ms": 1023.8016000002972,
+   "words": [
+    "กรุงเทพ",
+    "ใน",
+    "มาตรา"
+   ],
+   "status": [
+    "uncertain",
+    "unknown",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 2,
+   "decision": [
+    null,
+    null,
+    null
+   ],
+   "dur_s": 7.1485
+  },
+  "20261004_004346_326.json.gz": {
+   "ms": 165.30340000099386,
+   "words": [
+    "ฉัน"
+   ],
+   "status": [
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 1,
+   "decision": [
+    null
+   ],
+   "dur_s": 0.910800000000745
+  },
+  "20261004_004350_079.json.gz": {
+   "ms": 475.99369999807095,
+   "words": [
+    "บ้าน"
+   ],
+   "status": [
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 1,
+   "decision": [
+    null
+   ],
+   "dur_s": 3.412900000002235
+  },
+  "20261004_004419_798.json.gz": {
+   "ms": 319.85510000231443,
+   "words": [
+    "กรุงเทพ",
+    "ฉัน"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 2,
+   "decision": [
+    null,
+    null
+   ],
+   "dur_s": 1.9065
+  },
+  "20261004_004431_072.json.gz": {
+   "ms": 1662.3216000007233,
+   "words": [
+    "กรุงเทพ",
+    "ฉัน",
+    "ถูก",
+    "จังหวัด",
+    "ลูก",
+    "กิน"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "unknown",
+    "unknown",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 4,
+   "decision": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 9.711300000000746
+  },
+  "20261004_004440_788.json.gz": {
+   "ms": 624.2574999996577,
+   "words": [
+    "บ้าน",
+    "O"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 2,
+   "decision": [
+    null,
+    null
+   ],
+   "dur_s": 2.8616999999992547
+  },
+  "20261004_004544_641.json.gz": {
+   "ms": 4554.228299999522,
+   "words": [
+    "ไป",
+    "ชื่อ",
+    "จังหวัด",
+    "สินค้า",
+    "ลูก",
+    "วันนี้",
+    "กิน"
+   ],
+   "status": [
+    "unknown",
+    "uncertain",
+    "uncertain",
+    "unknown",
+    "unknown",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 4,
+   "decision": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 21.7865
+  },
+  "20261004_004625_518.json.gz": {
+   "ms": 1017.9032999985793,
+   "words": [
+    "สวัสดี",
+    "เกิด",
+    "เอง",
+    "จ"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 4,
+   "decision": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 6.30060000000149
+  },
+  "20261004_004643_771.json.gz": {
+   "ms": 95.10609999779263,
+   "words": [],
+   "status": [],
+   "shown": [],
+   "unsure": 0,
+   "decision": [],
+   "dur_s": 0.865
+  },
+  "20261004_004652_248.json.gz": {
+   "ms": 1234.7283000017342,
+   "words": [
+    "ง่าย",
+    "ฉัน",
+    "บ้าน"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 3,
+   "decision": [
+    null,
+    null,
+    null
+   ],
+   "dur_s": 6.211800000000745
+  },
+  "20261004_004805_487.json.gz": {
+   "ms": 157.13580000010552,
+   "words": [
+    "เจ้าของ"
+   ],
+   "status": [
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 1,
+   "decision": [
+    null
+   ],
+   "dur_s": 0.8555
+  },
+  "20261004_004813_451.json.gz": {
+   "ms": 1197.086499996658,
+   "words": [
+    "วันนี้",
+    "ฉัน",
+    "เกิด"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 3,
+   "decision": [
+    null,
+    null,
+    null
+   ],
+   "dur_s": 6.638599999997765
+  },
+  "20261004_004815_484.json.gz": {
+   "ms": 241.0401000015554,
+   "words": [
+    "ได้"
+   ],
+   "status": [
+    "unknown"
+   ],
+   "shown": [],
+   "unsure": 0,
+   "decision": [
+    null
+   ],
+   "dur_s": 1.6715999999977649
+  },
+  "20261004_004829_285.json.gz": {
+   "ms": 876.4768000000913,
+   "words": [
+    "ฉัน",
+    "แข่ง"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 2,
+   "decision": [
+    null,
+    null
+   ],
+   "dur_s": 4.728400000002235
+  },
+  "20261004_004848_283.json.gz": {
+   "ms": 1472.7365999970061,
+   "words": [
+    "อร่อย",
+    "บ้าน",
+    "สวัสดี",
+    "ฉัน",
+    "เหนื่อย",
+    "ไป"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "accepted",
+    "uncertain",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [
+    "สวัสดี"
+   ],
+   "unsure": 5,
+   "decision": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 10.52039999999851
+  },
+  "20261004_004914_280.json.gz": {
+   "ms": 276.9205000004149,
+   "words": [],
+   "status": [],
+   "shown": [],
+   "unsure": 0,
+   "decision": [],
+   "dur_s": 3.68210000000149
+  },
+  "20261004_004929_330.json.gz": {
+   "ms": 1097.2519999995711,
+   "words": [
+    "น้ำตา",
+    "พา",
+    "ฉัน",
+    "กรุงเทพ"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 4,
+   "decision": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 6.873800000000745
+  },
+  "20261004_005016_220.json.gz": {
+   "ms": 1046.881399997801,
+   "words": [
+    "สวัสดี",
+    "ฉัน",
+    "เข็มกลัด",
+    "ถูก"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 4,
+   "decision": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 6.830900000002235
+  },
+  "20261004_005022_637.json.gz": {
+   "ms": 1195.1085000000603,
+   "words": [
+    "วาด",
+    "J",
+    "ฉัน",
+    "บ้าน"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 4,
+   "decision": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 5.563199999999255
+  },
+  "20261004_005023_304.json.gz": {
+   "ms": 154.55939999810653,
+   "words": [
+    "เกิด"
+   ],
+   "status": [
+    "unknown"
+   ],
+   "shown": [],
+   "unsure": 0,
+   "decision": [
+    null
+   ],
+   "dur_s": 0.8142999999970197
+  },
+  "20261004_013359_702.json.gz": {
+   "ms": 2486.6173999980674,
+   "words": [
+    "ฉัน",
+    "ชื่อ",
+    "J",
+    "J",
+    "วันนี้",
+    "เกิด",
+    "สบายดี"
+   ],
+   "status": [
+    "accepted",
+    "uncertain",
+    "accepted",
+    "accepted",
+    "uncertain",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [
+    "ฉัน",
+    "J",
+    "J"
+   ],
+   "unsure": 4,
+   "decision": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 20.511300000000745
+  },
+  "20261004_014142_899.json.gz": {
+   "ms": 473.7005999995745,
+   "words": [
+    "สวัสดี",
+    "ฉัน",
+    "ชื่อ"
+   ],
+   "status": [
+    "accepted",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [
+    "สวัสดี"
+   ],
+   "unsure": 2,
+   "decision": [
+    null,
+    null,
+    null
+   ],
+   "dur_s": 4.17639999999851
+  },
+  "20261004_134232_337.json.gz": {
+   "ms": 4656.107200000406,
+   "words": [
+    "เรียน",
+    "สามี",
+    "ข้าว",
+    "ไข่",
+    "เกิด",
+    "น้อง"
+   ],
+   "status": [
+    "uncertain",
+    "unknown",
+    "uncertain",
+    "unknown",
+    "unknown",
+    "unknown"
+   ],
+   "shown": [],
+   "unsure": 2,
+   "decision": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 54.855199999999954
+  },
+  "20261008_223945_909.json.gz": {
+   "ms": 989.4079999976384,
+   "words": [
+    "สวัสดี",
+    "เล่น",
+    "ฉัน",
+    "ชื่อ",
+    "โสด"
+   ],
+   "status": [
+    "accepted",
+    "uncertain",
+    "accepted",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [
+    "สวัสดี",
+    "ฉัน"
+   ],
+   "unsure": 3,
+   "decision": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 9.383099999997764
+  },
+  "20261008_223953_719.json.gz": {
+   "ms": 85.86629999990691,
+   "words": [],
+   "status": [],
+   "shown": [],
+   "unsure": 0,
+   "decision": [],
+   "dur_s": 0.865
+  },
+  "20261009_001911_501.json.gz": {
+   "ms": 640.294000000722,
+   "words": [
+    "กิน",
+    "ฉัน",
+    "ชื่อ"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 3,
+   "decision": [
+    null,
+    null,
+    null
+   ],
+   "dur_s": 5.78089999999851
+  },
+  "20261009_001916_574.json.gz": {
+   "ms": 773.6834999996063,
+   "words": [
+    "สวัสดี",
+    "ฉัน",
+    "ชื่อ"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 3,
+   "decision": [
+    null,
+    null,
+    null
+   ],
+   "dur_s": 7.1485
+  },
+  "20261009_001922_877.json.gz": {
+   "ms": 495.5303999995522,
+   "words": [],
+   "status": [],
+   "shown": [],
+   "unsure": 0,
+   "decision": [],
+   "dur_s": 3.68210000000149
+  },
+  "20261009_001932_174.json.gz": {
+   "ms": 1627.7173000016774,
+   "words": [
+    "ลูก",
+    "วันนี้",
+    "สบายดี",
+    "วันนี้",
+    "ตอนนี้"
+   ],
+   "status": [
+    "unknown",
+    "uncertain",
+    "uncertain",
+    "unknown",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 3,
+   "decision": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 14.603599999997765
+  },
+  "20261009_001942_066.json.gz": {
+   "ms": 2452.6554999974906,
+   "words": [
+    "ชื่อ"
+   ],
+   "status": [
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 1,
+   "decision": [
+    null
+   ],
+   "dur_s": 20.146
+  },
+  "20261009_013747_307.json.gz": {
+   "ms": 126.00509999901988,
+   "words": [],
+   "status": [],
+   "shown": [],
+   "unsure": 0,
+   "decision": [],
+   "dur_s": 20.54060000000149
+  },
+  "20261009_155500_033.json.gz": {
+   "ms": 945.5368999988423,
+   "words": [
+    "สวัสดี",
+    "ลม",
+    "ฉัน"
+   ],
+   "status": [
+    "accepted",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [
+    "สวัสดี"
+   ],
+   "unsure": 2,
+   "decision": [
+    null,
+    null,
+    null
+   ],
+   "dur_s": 9.3245
+  },
+  "20261030_075312_416.json.gz": {
+   "ms": 191.14389999958803,
+   "words": [
+    "สวัสดี"
+   ],
+   "status": [
+    "accepted"
+   ],
+   "shown": [
+    "สวัสดี"
+   ],
+   "unsure": 0,
+   "decision": [
+    null
+   ],
+   "dur_s": 1.7275
+  },
+  "20261030_200453_093.json.gz": {
+   "ms": 1310.7287999991968,
+   "words": [
+    "ฉัน",
+    "ชื่อ",
+    "J",
+    "ฉัน",
+    "ชอบ",
+    "เรียน"
+   ],
+   "status": [
+    "accepted",
+    "accepted",
+    "uncertain",
+    "accepted",
+    "accepted",
+    "uncertain"
+   ],
+   "shown": [
+    "ฉัน",
+    "ชื่อ",
+    "ฉัน",
+    "ชอบ"
+   ],
+   "unsure": 2,
+   "decision": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 8.6815
+  },
+  "20261030_210003_683.json.gz": {
+   "ms": 216.49989999787067,
+   "words": [
+    "สวัสดี"
+   ],
+   "status": [
+    "accepted"
+   ],
+   "shown": [
+    "สวัสดี"
+   ],
+   "unsure": 0,
+   "decision": [
+    null
+   ],
+   "dur_s": 1.9708000000044703
+  },
+  "20261031_040456_909.json.gz": {
+   "ms": 177.35109999921406,
+   "words": [
+    "สวัสดี"
+   ],
+   "status": [
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 1,
+   "decision": [
+    null
+   ],
+   "dur_s": 1.5223000000000466
+  },
+  "20261031_194217_583.json.gz": {
+   "ms": 157.28830000080052,
+   "words": [
+    "วัด"
+   ],
+   "status": [
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 1,
+   "decision": [
+    null
+   ],
+   "dur_s": 1.36989999999851
+  },
+  "20261101_171642_678.json.gz": {
+   "ms": 659.726199999568,
+   "words": [
+    "วันนี้",
+    "ฉัน",
+    "กิน",
+    "อ้วน"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 4,
+   "decision": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 5.686
+  },
+  "20261101_172529_422.json.gz": {
+   "ms": 653.880099998787,
+   "words": [
+    "วันนี้",
+    "ฉัน",
+    "กิน",
+    "อ้วน"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 4,
+   "decision": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 5.686
+  },
+  "20261101_175643_619.json.gz": {
+   "ms": 181.8304000007629,
+   "words": [
+    "แมว"
+   ],
+   "status": [
+    "accepted"
+   ],
+   "shown": [
+    "แมว"
+   ],
+   "unsure": 0,
+   "decision": [
+    null
+   ],
+   "dur_s": 1.5833000000044704
+  },
+  "20261101_210021_797.json.gz": {
+   "ms": 1640.4122999992978,
+   "words": [
+    "พรุ่งนี้",
+    "ฉัน",
+    "ไป",
+    "เที่ยว",
+    "ประเทศ",
+    "จีน"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "uncertain",
+    "uncertain",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 6,
+   "decision": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 11.265004916420846
+  },
+  "20261101_210133_042.json.gz": {
+   "ms": 2052.598300000682,
+   "words": [
+    "วันนี้",
+    "ฉัน",
+    "ห้า",
+    "ทำงาน",
+    "ภาษามือ",
+    "A",
+    "I"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "uncertain",
+    "uncertain",
+    "uncertain",
+    "accepted",
+    "accepted"
+   ],
+   "shown": [
+    "A",
+    "I"
+   ],
+   "unsure": 5,
+   "decision": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 12.465004444444444
+  },
+  "20261101_210225_939.json.gz": {
+   "ms": 1159.2207999965467,
+   "words": [
+    "วันนี้",
+    "ฉัน",
+    "ชอบ",
+    "เรียน",
+    "ภาษามือ"
+   ],
+   "status": [
+    "uncertain",
+    "accepted",
+    "uncertain",
+    "accepted",
+    "accepted"
+   ],
+   "shown": [
+    "ฉัน",
+    "เรียน",
+    "ภาษามือ"
+   ],
+   "unsure": 2,
+   "decision": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 8.19834008097166
+  },
+  "20261101_210319_727.json.gz": {
+   "ms": 1597.9049000015948,
+   "words": [
+    "สวัสดี",
+    "ฉัน",
+    "ชื่อ",
+    "J",
+    "ฉัน",
+    "ชอบ",
+    "แมว"
+   ],
+   "status": [
+    "accepted",
+    "accepted",
+    "accepted",
+    "uncertain",
+    "accepted",
+    "accepted",
+    "accepted"
+   ],
+   "shown": [
+    "สวัสดี",
+    "ฉัน",
+    "ชื่อ",
+    "ฉัน",
+    "ชอบ",
+    "แมว"
+   ],
+   "unsure": 1,
+   "decision": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 10.96500505050505
+  },
+  "20261101_210950_647.json.gz": {
+   "ms": 1408.9359999998123,
+   "words": [
+    "วันนี้",
+    "ฉัน",
+    "ชอบ",
+    "เรียน",
+    "ภาษามือ"
+   ],
+   "status": [
+    "uncertain",
+    "accepted",
+    "uncertain",
+    "accepted",
+    "accepted"
+   ],
+   "shown": [
+    "ฉัน",
+    "เรียน",
+    "ภาษามือ"
+   ],
+   "unsure": 2,
+   "decision": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 8.19834008097166
+  },
+  "20261101_224604_000.json.gz": {
+   "ms": 1620.5221000018355,
+   "words": [
+    "พรุ่งนี้",
+    "ฉัน",
+    "ไป",
+    "เที่ยว",
+    "ประเทศ",
+    "จีน"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "uncertain",
+    "uncertain",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 6,
+   "decision": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 11.265004916420846
+  },
+  "20261101_224710_372.json.gz": {
+   "ms": 1817.2531000018353,
+   "words": [
+    "วันนี้",
+    "ฉัน",
+    "ห้า",
+    "ทำงาน",
+    "ภาษามือ",
+    "A",
+    "I"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "uncertain",
+    "uncertain",
+    "uncertain",
+    "accepted",
+    "accepted"
+   ],
+   "shown": [
+    "A",
+    "I"
+   ],
+   "unsure": 5,
+   "decision": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 12.465004444444444
+  },
+  "20261101_224800_229.json.gz": {
+   "ms": 1422.7320999998483,
+   "words": [
+    "วันนี้",
+    "ฉัน",
+    "ชอบ",
+    "เรียน",
+    "ภาษามือ"
+   ],
+   "status": [
+    "uncertain",
+    "accepted",
+    "uncertain",
+    "accepted",
+    "accepted"
+   ],
+   "shown": [
+    "ฉัน",
+    "เรียน",
+    "ภาษามือ"
+   ],
+   "unsure": 2,
+   "decision": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 8.19834008097166
+  },
+  "20261101_224850_316.json.gz": {
+   "ms": 1605.8330999985628,
+   "words": [
+    "สวัสดี",
+    "ฉัน",
+    "ชื่อ",
+    "J",
+    "ฉัน",
+    "ชอบ",
+    "แมว"
+   ],
+   "status": [
+    "accepted",
+    "accepted",
+    "accepted",
+    "uncertain",
+    "accepted",
+    "accepted",
+    "accepted"
+   ],
+   "shown": [
+    "สวัสดี",
+    "ฉัน",
+    "ชื่อ",
+    "ฉัน",
+    "ชอบ",
+    "แมว"
+   ],
+   "unsure": 1,
+   "decision": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 10.96500505050505
+  },
+  "20261101_224925_822.json.gz": {
+   "ms": 812.4653000013495,
+   "words": [
+    "ฉัน",
+    "กิน",
+    "ขนมปัง"
+   ],
+   "status": [
+    "accepted",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [
+    "ฉัน"
+   ],
+   "unsure": 2,
+   "decision": [
+    null,
+    null,
+    null
+   ],
+   "dur_s": 5.844933712121212
+  },
+  "20261101_224951_897.json.gz": {
+   "ms": 703.5053999970842,
+   "words": [
+    "พรุ่งนี้",
+    "เที่ยว",
+    "ที่ไหน"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 3,
+   "decision": [
+    null,
+    null,
+    null
+   ],
+   "dur_s": 5.166666666666667
+  },
+  "20261101_225018_731.json.gz": {
+   "ms": 1075.4959000005329,
+   "words": [
+    "แฟน",
+    "พรุ่งนี้",
+    "ฉัน",
+    "ยาย",
+    "โรงเรียน",
+    "น้อง"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "uncertain",
+    "unknown",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 5,
+   "decision": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 6.436649484536082
+  },
+  "20261101_225047_152.json.gz": {
+   "ms": 775.9453999969992,
+   "words": [
+    "สวัสดี",
+    "ฉัน",
+    "ชื่อ",
+    "P"
+   ],
+   "status": [
+    "accepted",
+    "accepted",
+    "accepted",
+    "uncertain"
+   ],
+   "shown": [
+    "สวัสดี",
+    "ฉัน",
+    "ชื่อ"
+   ],
+   "unsure": 1,
+   "decision": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "dur_s": 6.234991134751773
+  },
+  "20261105_143646_889.json.gz": {
+   "ms": 158.07180000047083,
+   "words": [
+    "ชอบ"
+   ],
+   "status": [
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 1,
+   "decision": [
+    null
+   ],
+   "dur_s": 1.4155
+  },
+  "20261107_125812_814.json.gz": {
+   "ms": 2361.3192000011622,
+   "words": [
+    "แมว"
+   ],
+   "status": [
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 1,
+   "decision": [
+    null
+   ],
+   "dur_s": 20.6905
+  },
+  "20261107_150759_869.json.gz": {
+   "ms": 839.2705000005662,
+   "words": [
+    "โกรธ",
+    "ฉัน",
+    "อิ่ม"
+   ],
+   "status": [
+    "uncertain",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 3,
+   "decision": [
+    null,
+    null,
+    null
+   ],
+   "dur_s": 8.338400000000373
+  },
+  "20261107_191803_792.json.gz": {
+   "ms": 2501.5636999996786,
+   "words": [
+    "ชื่อ",
+    "ชื่อ",
+    "C"
+   ],
+   "status": [
+    "accepted",
+    "uncertain",
+    "uncertain"
+   ],
+   "shown": [
+    "ชื่อ"
+   ],
+   "unsure": 2,
+   "decision": [
+    null,
+    null,
+    null
+   ],
+   "dur_s": 20.53129999999702
+  },
+  "20261107_194252_482.json.gz": {
+   "ms": 2413.366299999325,
+   "words": [
+    "กิน"
+   ],
+   "status": [
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 1,
+   "decision": [
+    null
+   ],
+   "dur_s": 20.28660000000149
+  },
+  "20261107_200111_098.json.gz": {
+   "ms": 1188.931100001355,
+   "words": [
+    "ครู"
+   ],
+   "status": [
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 1,
+   "decision": [
+    null
+   ],
+   "dur_s": 8.396300000000744
+  },
+  "20261107_200423_239.json.gz": {
+   "ms": 710.3024000025471,
+   "words": [
+    "ฉัน",
+    "กรุงเทพ",
+    "จีน"
+   ],
+   "status": [
+    "uncertain",
+    "unknown",
+    "uncertain"
+   ],
+   "shown": [],
+   "unsure": 2,
+   "decision": [
+    null,
+    null,
+    null
+   ],
+   "dur_s": 6.693800000000745
+  }
+ },
+ "robustness": {
+  "empty": {
+   "status": 400,
+   "crash": false,
+   "words": null,
+   "shown": null
+  },
+  "no_hands": {
+   "status": 200,
+   "crash": false,
+   "words": [],
+   "shown": []
+  },
+  "one_hand": {
+   "status": 200,
+   "crash": false,
+   "words": [
+    "ให้",
+    "เกิด",
+    "ดู"
+   ],
+   "shown": []
+  },
+  "fps8": {
+   "status": 200,
+   "crash": false,
+   "words": [
+    "เกิด",
+    "สนทนา"
+   ],
+   "shown": []
+  },
+  "long60": {
+   "status": 200,
+   "crash": false,
+   "words": [
+    "สวัสดี",
+    "เข็มกลัด",
+    "ฉัน",
+    "โกรธ",
+    "เข็มกลัด",
+    "เช้า",
+    "ฉัน",
+    "เข็มกลัด",
+    "โกรธ",
+    "เข็มกลัด",
+    "ฉัน",
+    "โกรธ",
+    "เข็มกลัด",
+    "เรียน",
+    "ฉัน",
+    "เข็มกลัด",
+    "ฉัน",
+    "ไป",
+    "เข็มกลัด",
+    "ฉัน",
+    "โกรธ",
+    "อันตราย",
+    "กิน",
+    "เข็มกลัด",
+    "เกิด",
+    "ให้",
+    "เพื่อน",
+    "กิน",
+    "เข็มกลัด",
+    "กิน",
+    "เข็มกลัด"
+   ],
+   "shown": []
+  },
+  "left_handed": {
+   "status": 200,
+   "crash": false,
+   "words": [
+    "ให้",
+    "เกิด",
+    "เพื่อน"
+   ],
+   "shown": []
+  },
+  "out_of_frame": {
+   "status": 200,
+   "crash": false,
+   "words": [
+    "ให้",
+    "เกิด",
+    "เพื่อน"
+   ],
+   "shown": []
+  },
+  "corrupt": {
+   "status": 200,
+   "crash": false,
+   "words": [
+    "ให้",
+    "ฉัน",
+    "เพื่อน"
+   ],
+   "shown": []
+  }
+ },
+ "latency": {
+  "n": 75,
+  "p50": 638.8006999986828,
+  "p90": 1679.1526000015438,
+  "max": 4484.169200000906
+ },
+ "load": {
+  "requests": 16,
+  "concurrent": 4,
+  "errors": 0,
+  "wall_s": 5.889329699999507
+ },
+ "streaming": {
+  "n": 10,
+  "agreement": 0.2566666666666667,
+  "flicker": 0.0,
+  "delay_mean": 3.0615,
+  "items": [
+   {
+    "name": "20261004_003600_682.json.gz",
+    "live": [
+     "สวัสดี",
+     "ไข่",
+     "เพื่อน"
+    ],
+    "final": [
+     "ให้",
+     "เกิด",
+     "เพื่อน"
+    ],
+    "agree": 0.3333333333333333,
+    "exact": 0.0,
+    "flicker": 0,
+    "delay": [
+     4.53,
+     2.93,
+     1.33
+    ]
+   },
+   {
+    "name": "20261004_003615_185.json.gz",
+    "live": [
+     "สวัสดี",
+     "ฉัน",
+     "ชื่อ"
+    ],
+    "final": [
+     "ไป",
+     "กลาง",
+     "ดุสิต"
+    ],
+    "agree": 0.0,
+    "exact": 0.0,
+    "flicker": 0,
+    "delay": [
+     5.13,
+     3.53,
+     1.61
+    ]
+   },
+   {
+    "name": "20261004_003638_045.json.gz",
+    "live": [
+     "ฉัน",
+     "ชื่อ"
+    ],
+    "final": [
+     "เกิด",
+     "ฉัน",
+     "เข็มกลัด"
+    ],
+    "agree": 0.4,
+    "exact": 0.0,
+    "flicker": 0,
+    "delay": [
+     3.33,
+     1.41
+    ]
+   },
+   {
+    "name": "20261004_003651_586.json.gz",
+    "live": [
+     "เรียน"
+    ],
+    "final": [
+     "โกรธ"
+    ],
+    "agree": 0.0,
+    "exact": 0.0,
+    "flicker": 0,
+    "delay": [
+     1.08
+    ]
+   },
+   {
+    "name": "20261004_003656_160.json.gz",
+    "live": [
+     "เรียน"
+    ],
+    "final": [
+     "เรียน"
+    ],
+    "agree": 1.0,
+    "exact": 1.0,
+    "flicker": 0,
+    "delay": [
+     4.22
+    ]
+   },
+   {
+    "name": "20261004_003656_310.json.gz",
+    "live": [
+     "เรียน",
+     "เรียน"
+    ],
+    "final": [
+     "โกรธ",
+     "เรียน"
+    ],
+    "agree": 0.5,
+    "exact": 0.0,
+    "flicker": 0,
+    "delay": [
+     6.12,
+     2.6
+    ]
+   },
+   {
+    "name": "20261004_003659_062.json.gz",
+    "live": [
+     "เรียน",
+     "เที่ยว"
+    ],
+    "final": [
+     "โกรธ",
+     "หมวก",
+     "พ่อ"
+    ],
+    "agree": 0.0,
+    "exact": 0.0,
+    "flicker": 0,
+    "delay": [
+     4.84,
+     2.84
+    ]
+   },
+   {
+    "name": "20261004_003659_675.json.gz",
+    "live": [
+     "ชื่อ"
+    ],
+    "final": [
+     "วิ่ง"
+    ],
+    "agree": 0.0,
+    "exact": 0.0,
+    "flicker": 0,
+    "delay": [
+     0.98
+    ]
+   },
+   {
+    "name": "20261004_003709_796.json.gz",
+    "live": [
+     "อิ่ม",
+     "ศูนย์"
+    ],
+    "final": [
+     "ฉัน",
+     "แนะนำ"
+    ],
+    "agree": 0.0,
+    "exact": 0.0,
+    "flicker": 0,
+    "delay": [
+     2.17,
+     1.21
+    ]
+   },
+   {
+    "name": "20261004_003724_580.json.gz",
+    "live": [
+     "ฉัน",
+     "ชื่อ",
+     "ภาษามือ"
+    ],
+    "final": [
+     "เทคโนโลยี",
+     "เข็มกลัด",
+     "ฉัน"
+    ],
+    "agree": 0.3333333333333333,
+    "exact": 0.0,
+    "flicker": 0,
+    "delay": [
+     5.71,
+     3.79,
+     1.87
+    ]
+   }
+  ]
+ }
+}

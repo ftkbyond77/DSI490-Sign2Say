@@ -324,3 +324,514 @@ J. LANGUAGE LAYER (SENTENCE COMPOSITION / GRAMMAR)
      How     : justifies an explicit gate before the LLM: a sentence that is already correct must not be rewritten (over-correction), and skipping the call
                saves ~1–1.5 s of latency (Error-Analysis-v1: rules check matched the LLM classifier 8/8 in µs)
      Status  : CONTEXT / ADAPTED · Verified: Y
+
+
+================================================================================================================================
+ADDED 2026-11-11 — Error-Analysis-for-v11 (sign recognition only) → methods for the v11 "Super Sign Model"
+================================================================================================================================
+Source of the needs: result_reporting/error-analysis/Error-Analysis-for-v11.pdf (root causes R1–R10, §9). Plan that uses them:
+prompt/phase3/prompt-opt-v11.md (work packages W1–W9). Same row format as above. "Verified" = bibliographic details checked online on
+2026-11-11 (Y) or not yet ([verify]). "OUR IDEA" rows at the end of each section = what we add on top of the cited work (the candidate
+contributions of our own paper) — these are proposals, NOT results; nothing in sections K–Q has been implemented yet.
+
+Sections added
+  K. Signer-invariant representation, cross-signer contrastive learning                      ← R1, R2, R9
+  L. Multi-form signs, sub-center prototypes, label noise, visually similar signs            ← R4, R5
+  M. Phonology-aware recognition, minimal pairs                                              ← R3
+  N. Self-supervised pre-training on pose / landmarks, cross-lingual transfer                ← R1, R6
+  O. Joint segmentation + recognition, sign spotting with dictionary examples                ← R7
+  P. Open-set recognition, selective prediction with guarantees                              ← R8
+  Q. Hand pose under occlusion / interaction (extractor)                                     ← R10
+
+
+K. SIGNER-INVARIANT REPRESENTATION, CROSS-SIGNER CONTRASTIVE LEARNING
+---------------------------------------------------------------------
+[K1] Pedro M. Ferreira, Diogo Pernes, Ana Rebelo, Jaime S. Cardoso · "Learning Signer-Invariant Representations with Adversarial Training" · ICMV 2019,
+     Proc. SPIE 11433, 114333D (2020) · doi:10.1117/12.2559534 · code: github.com/pmmf/SI-SLR
+     Where   : v11 W3 (encoder): signer-adversarial head on the sign embedding
+     Topic   : encoder + sign classifier + signer classifier; the encoder is trained so the signer classifier fails (domain-adversarial)
+     How     : our evidence for the need: words with 22–27 bank clips from 2–4 people are still misread 43–47 % by a new person, and the Thai landmark
+               encoder reads กิน / คุณ / น้อง at 0–7 % for a third TSL51 signer (EA-v11 §2.1, §4.2) = the embedding encodes the person.
+     Status  : CONTEXT → to be ADAPTED · Verified: Y (extended journal version in IJMLC 2021: [verify])
+
+[K2] Pedro M. Ferreira, Diogo Pernes, Ana Rebelo, Jaime S. Cardoso · "DeSIRe: Deep Signer-Invariant Representations for Sign Language Recognition" ·
+     IEEE Trans. Systems, Man, and Cybernetics: Systems, 2021
+     Topic   : signer-invariant latent space with (conditional) variational auto-encoders — not adversarial
+     How     : alternative to K1 when adversarial training is unstable with few signers per word
+     Status  : CONTEXT · Verified: [verify] (volume / pages)
+
+[K3] Yaroslav Ganin, Evgeniya Ustinova, Hana Ajakan, Pascal Germain, Hugo Larochelle, François Laviolette, Mario Marchand, Victor Lempitsky ·
+     "Domain-Adversarial Training of Neural Networks" · JMLR 17(59), 2016
+     Where   : gradient-reversal layer of the signer / source head (W3)
+     Status  : to be USED · Verified: [verify]
+
+[K4] Md Rezwanul Haque, Md. Milon Islam, S M Taslim Uddin Raju, Fakhri Karray · "A Signer-Invariant Conformer and Multi-Scale Fusion Transformer for
+     Continuous Sign Language Recognition" · ICCV 2025 Workshops (MSLR), pp. 4990–4999 · arXiv:2508.09372
+     Topic   : pose-based CSLR; a signer-invariant Conformer for the signer-independent track and a multi-scale fusion transformer for unseen sentences
+     How     : recent evidence that signer invariance is treated as its own problem in pose-based CSLR; conv + attention = the same family as our lmenc
+     Status  : CONTEXT · Verified: Y (main-conference vs workshop: the repository entry says ICCVW)
+
+[K5] Prannay Khosla et al. · "Supervised Contrastive Learning" · NeurIPS 2020  (already G2)
+     How (new in v11): the positive of an anchor must be the same word signed by a DIFFERENT person from a DIFFERENT source whenever one exists; the hardest
+               negatives are a different word by the SAME person (same body, same camera) and the mined confusion pairs. The current recipe already prefers
+               a different signer as the positive, but 53 % of the conversation words have < 3 effective signers, so most positives are the same person.
+
+[K6] Dan Hendrycks*, Norman Mu*, Ekin D. Cubuk, Barret Zoph, Justin Gilmer, Balaji Lakshminarayanan · "AugMix" · ICLR 2020; and Hongyi Zhang et al. ·
+     "mixup: Beyond Empirical Risk Minimization" · ICLR 2018
+     Where   : W2 "virtual signers" — mixing / composing signer-style transformations
+     Status  : CONTEXT · Verified: [verify]
+
+[K7] Hoyeol Sohn · 1st-place solution, Kaggle "Google – Isolated Sign Language Recognition" (asl-signs, Feb–May 2023): 1D-CNN + Transformer on MediaPipe
+     landmarks trained from scratch; strong temporal / spatial augmentation, random masking, drop-path · write-up: kaggle.com/competitions/asl-signs/discussion/406684
+     Where   : the architecture family of modules/lmenc.py (Conv + Transformer) and the augmentation list of W2 / W3
+     How     : reference point that a compact landmark model with heavy augmentation reaches high signer-independent accuracy WHEN the data has many signers
+               per sign (21 participants × 250 signs) — the condition our Core vocabulary must reach (5–10 signers per word)
+     Status  : CONTEXT · Verified: partly (winner, competition, 1D CNN + Transformer from a secondary summary; read the original write-up: [verify])
+
+[K8] Songyao Jiang, Bin Sun, Lichen Wang, Yue Bai, Kunpeng Li, Yun Fu · "Skeleton Aware Multi-modal Sign Language Recognition" (SAM-SLR) · CVPR Workshops 2021
+     How     : joint / bone / joint-motion / bone-motion streams → the motion stream is the direct answer to direction pairs (ไป ↔ กลับ, 91 % error)
+     Status  : CONTEXT · Verified: [verify]
+
+ OUR IDEA K-a · "Virtual signers" (SignerMorph): every single-signer dictionary clip is re-rendered as N synthetic people by sampling a signer style =
+     {bone-length ratios, shoulder width, signing-space scale and offset, dominant-hand bias, tempo curve, hold lengths, wrist-rotation range, extractor noise
+     model}. The style distribution is FITTED on the real multi-signer words (TSL-ONE-S 29 signers, TSL51) and the extractor noise on the paired views we
+     already have (MediaPipe vs RTMW of the same clip; dataset landmarks vs ours). Tested by leave-signers-out: train on k real signers + virtual ones,
+     evaluate on unseen real signers, as a function of k (the "how many real signers does a virtual signer replace" curve).
+ OUR IDEA K-b · Effective-signer-balanced sampling: batches are drawn per (word, signer) cell, not per clip; one person can never supply more than 1/3 of
+     a word's positives. Report accuracy against effective signers (1/Σp²) instead of clip count (EA-v11 §4.1: clips are not monotone, signers are).
+ OUR IDEA K-c · Zero-enrollment signer adaptation (ZESA): at use time the encoder is frozen; a per-session normaliser (body proportions, signing space,
+     handedness) and a low-rank shift of the bank prototypes are estimated from the user's own UNLABELLED signing, plus pseudo-enrolment from words that
+     were accepted with a guarantee (P1) — closing the gap between enrolled (WER 0.11–0.14) and not enrolled (0.26–0.30) without asking the user to record words.
+
+
+L. MULTI-FORM SIGNS, SUB-CENTER PROTOTYPES, LABEL NOISE, VISUALLY SIMILAR SIGNS
+-------------------------------------------------------------------------------
+[L1] Jiankang Deng, Jia Guo, Tongliang Liu, Mingming Gong, Stefanos Zafeiriou · "Sub-center ArcFace: Boosting Face Recognition by Large-scale Noisy Web
+     Faces" · ECCV 2020, LNCS 12356, pp. 741–757 · doi:10.1007/978-3-030-58621-8_43
+     Where   : W3 loss + W4 bank (form-aware prototypes)
+     Topic   : K sub-centres per class; a sample only has to be close to ONE of them; a dominant sub-class collects the clean samples, the others the hard /
+               noisy ones, which can then be dropped
+     How     : a sign with two forms (อะไร: index-finger wag vs finger snap; 79 of our 328 conversation words have ≥ 2 documented entries in one dictionary)
+               is exactly a multi-modal class. Today one proxy per word + "mean of the top-2 bank clips" → the minority form is swamped and the class prior
+               averages both forms (EA-v11 §5). Sub-centres give each form its own centre AND isolate mislabelled web clips in a non-dominant centre.
+     Status  : to be ADAPTED · Verified: Y
+
+[L2] Kelsey R. Allen, Evan Shelhamer, Hanul Shin, Joshua B. Tenenbaum · "Infinite Mixture Prototypes for Few-Shot Learning" · ICML 2019
+     How     : a class = a set of clusters whose number is inferred from the data → the bank keeps 1…K prototypes per word (per form), not one
+     Status  : CONTEXT · Verified: [verify]
+
+[L3] Curtis G. Northcutt, Lu Jiang, Isaac L. Chuang · "Confident Learning: Estimating Uncertainty in Dataset Labels" · JAIR 70, 2021
+     Where   : W1 label-noise check before a clip enters the bank (out-of-fold predicted probabilities → per-class thresholds → suspected label errors)
+     How     : replaces our hand-made rule "another word matches better by > 0.15"; the suspects are reviewed by eye (project rule), never auto-deleted
+     Status  : to be USED · Verified: [verify]
+
+[L4] Ilya Ovodov, Petr Surovtsev, Karina Kvanchiani, Alexander Kapitanov, Alexander Nagaev · "Logos as a Well-Tempered Pre-train for Sign Language
+     Recognition" · EMNLP 2025 · arXiv:2505.10481 · ACL Anthology 2025.emnlp-main.1238 · code/data: github.com/ai-forever/logos
+     Topic   : Russian SL dataset with explicit groups of VISUALLY SIMILAR SIGNS; labelling such groups improves the encoder; multi-head co-training across
+               sign languages helps low-resource targets most
+     How     : (1) our kinship confusions (ยาย / ญาติ / ย่า 89 % error with 21 signers; น้า / อา) are the same phenomenon → group them explicitly for training
+               (group-level target + within-group discrimination) instead of forcing one flat softmax; (2) multi-head co-training is the cheap way to use
+               other sign languages without inheriting their label space (the v7 lesson: ASL/CSL priors caused 41 % inherited errors)
+     Status  : CONTEXT → to be ADAPTED · Verified: Y
+
+[L5] Ronglai Zuo, Fangyun Wei, Brian Mak · "Natural Language-Assisted Sign Language Recognition" (NLA-SLR) · CVPR 2023
+     How     : language-aware label smoothing for visually indistinguishable signs with related meanings; inter-modality mixup
+     Status  : CONTEXT · Verified: [verify]
+
+[L6] Toon Vandendriessche, Mathieu De Coster, Annelies Lejon, Joni Dambre · "Representing Signs as Signs: One-Shot ISLR to Facilitate Functional Sign
+     Language Technologies" · arXiv:2502.20171 · 2025
+     Topic   : embed signs, recognise by dense vector search; 50.8 % one-shot MRR on a 10,235-sign dictionary of a language not seen in training
+     How     : the closest published system to our "embedding + bank, new words without retraining" design, and an honest reference for what one example per
+               sign gives (our measurement: 1–2 bank clips → 68 % error) → the Tail tier cannot be a recognition target
+     Status  : COMPARED (design) · Verified: Y
+
+ OUR IDEA L-a · Form-aware sub-centre prototypes (FASP): sub-centres are tied to SIGN FORMS, not to noise: (1) initialise from the dictionaries' own
+     variant labels (ท่าที่ 1/2, school / college variants), (2) let the loss discover the rest, (3) keep a sub-centre only if ≥ 2 signers land on it,
+     otherwise it is a noise / single-signer bucket that may not be accepted on its own. Score = max over forms; reliability prior and calibration PER FORM.
+ OUR IDEA L-b · Evidence-counted scoring: a word's score is shrunk towards the vocabulary mean by its number of independent signers
+     (score − λ/√n_signers), so a 1-clip word (กลับ) cannot beat a 23-clip word (ไป) on one lucky neighbour — the attractor effect measured in EA-v11 §5.3.
+
+
+M. PHONOLOGY-AWARE RECOGNITION, MINIMAL PAIRS
+---------------------------------------------
+[M1] Lee Kezar, Jesse Thomason, Zed Sevcikova Sehyr · "Improving Sign Recognition with Phonology" · EACL 2023 · arXiv:2302.05759 · ACL Anthology 2023.eacl-main.200
+     Where   : W3 auxiliary heads (handshape, orientation, location, movement, two-handedness)
+     Topic   : predicting ASL-LEX 2.0 phoneme types as auxiliary targets → ≈ +9 % absolute top-1 on WLASL, independent of the architecture
+     How     : the measured need: confusions weighted by count differ in handshape 98 · orientation 40 · location 24 · movement 16 (result_v10 §1.4). We have
+               no Thai phonological lexicon → labels must come from the landmarks (pseudo-labels) and from the dictionaries' text.
+     Status  : to be ADAPTED · Verified: Y (page range differs between listings: [verify])
+
+[M2] Lee Kezar et al. · "The Sem-Lex Benchmark: Modeling ASL Signs and Their Phonemes" · ASSETS 2023 · arXiv:2310.00196 · doi:10.1145/3597638.3608408
+     Topic   : 84k isolated-sign videos; 16 phoneme types recognised at 87 % average with graph convolution; curriculum learning beat multi-task for most types
+     How     : phonemes are learnable from pose; "phonemes first, signs second" (curriculum) is a concrete alternative to joint multi-task training
+     Status  : CONTEXT · Verified: Y
+
+[M3] William C. Stokoe · "Sign Language Structure: An Outline of the Visual Communication Systems of the American Deaf" · Studies in Linguistics, Occasional
+     Papers 8, 1960; Robbin Battison · "Lexical Borrowing in American Sign Language" · Linstok Press, 1978
+     Where   : the four parameters (handshape, location, movement + orientation) that define the factorised embedding
+     Status  : CONTEXT · Verified: [verify]
+
+ OUR IDEA M-a · Phonology-factorised embedding without a phonological lexicon (PhonoFact): the 768-d embedding is split into four sub-spaces, each trained
+     by its own contrastive loss with pseudo-labels computed from the landmarks of the bank clips (handshape cluster from modules/handshape.py; palm
+     normal quantised; location = body region of the dominant wrist at the hold; movement = path shape + direction towards / away / up / down / circular).
+     Two words are a MINIMAL PAIR when they agree in three sub-spaces and differ in one → the mined confusion pairs are explained by the sub-space that
+     must separate them, and the loss weight goes there.
+ OUR IDEA M-b · Minimal-pair verifier: a small pairwise model that runs only when the top-2 candidates are a known confusion group (ยาย / ญาติ / ย่า,
+     น้า / อา, ไป / กลับ, อะไร / ที่ไหน / โสด, กิน / ดู / ฉัน): input = the segment's frame states aligned (soft-DTW) to each candidate's prototypes,
+     output = which one. The R@1 → R@5 gap (9–21 points) is the head-room it works on.
+
+
+N. SELF-SUPERVISED PRE-TRAINING ON POSE / LANDMARKS, CROSS-LINGUAL TRANSFER
+---------------------------------------------------------------------------
+[N1] Shester Gueuwou, Xiaodan Du, Greg Shakhnarovich, Karen Livescu, Alexander H. Liu · "SHuBERT: Self-Supervised Sign Language Representation Learning via
+     Multi-Stream Cluster Prediction" · ACL 2025 (oral), pp. 28792–28810 · arXiv:2411.16765
+     Topic   : HuBERT-style masked prediction of cluster ids over four streams (two hands, face, body pose), ~1,000 h of ASL video; strong on translation and
+               on isolated recognition (ASL-Citizen +5 %, Sem-Lex +20.6 %)
+     How     : the recipe for the unlabelled part of our data (Tail tier ≈ 9k words, YouTube sentence / continuous ≈ 9 h, the web's saved landmark requests):
+               masked multi-stream cluster prediction on landmarks only
+     Status  : to be ADAPTED · Verified: Y
+
+[N2] Weichao Zhao, Hezhen Hu, Wengang Zhou, Yunyao Mao, Min Wang, Houqiang Li · "MASA: Motion-aware Masked Autoencoder with Semantic Alignment for Sign
+     Language Recognition" · IEEE TCSVT 2024 · arXiv:2405.20666
+     Topic   : masked auto-encoding of MOTION residuals of pose sequences + alignment of two augmented views (global semantics)
+     How     : motion-residual targets make the encoder attend to movement direction — the cue Uni-Sign ignores (ไป / กลับ margin negative, result_v10 §1.4)
+     Status  : to be ADAPTED · Verified: Y
+
+[N3] Hezhen Hu, Weichao Zhao, Wengang Zhou, Houqiang Li · "SignBERT+: Hand-model-aware Self-supervised Pre-training for Sign Language Understanding" · IEEE TPAMI 2023
+     How     : masked hand-joint / frame / clip modelling as the pretext for hands (already listed in EA-v1; kept as the baseline SSL recipe)
+     Status  : CONTEXT · Verified: [verify]
+
+[N4] Zifan Jiang, Gerard Sant, Amit Moryossef, Mathias Müller, Rico Sennrich, Sarah Ebling · "SignCLIP: Connecting Text and Sign Language by Contrastive
+     Learning" · EMNLP 2024, pp. 9171–9193 · arXiv:2407.01264 · ACL Anthology 2024.emnlp-main.518
+     Topic   : CLIP-style text ↔ pose contrastive learning on Spreadthesign (~500k clips, up to 44 sign languages, MediaPipe pose)
+     How     : (1) text anchors: a Thai word embedding as an extra positive for every clip of the word pulls forms of one word together without merging
+               them; (2) a pose-only multilingual checkpoint to initialise from — licence of the data to be checked before any use
+     Status  : CONTEXT · Verified: Y
+
+ OUR IDEA N-a · Tier-aware training: the long tail (91 % of our concepts have ≤ 2 clips) is removed from the supervised label space but kept as
+     (1) SSL data, (2) "known unknowns" for open-set training (P), (3) hard negatives. Ablation to report: all 9.9k classes vs Core + Extended classes with
+     the Tail in roles 1–3 vs Tail dropped — measured on Core accuracy AND open-set false accepts.
+
+
+O. JOINT SEGMENTATION + RECOGNITION, SIGN SPOTTING WITH DICTIONARY EXAMPLES
+---------------------------------------------------------------------------
+[O1] Liliane Momeni, Gül Varol, Samuel Albanie, Triantafyllos Afouras, Andrew Zisserman · "Watch, Read and Lookup: Learning to Spot Signs from Multiple
+     Supervisors" · ACCV 2020 · arXiv:2010.04002 (BSLDict)
+     Topic   : spotting a dictionary sign inside continuous signing; training directly on isolated dictionary examples performs poorly because of the
+               domain gap between isolated and co-articulated signs
+     How     : our system IS dictionary-example spotting. The paper's gap is what we measured: the same words, the same people — isolated R@1 0.805 →
+               in fluent sentences 0.727; mid-sentence words are misread almost twice as often as first / last words (EA-v11 §2.2).
+     Status  : CONTEXT · Verified: Y
+
+[O2] Katrin Renz, Nicolaj C. Stache, Samuel Albanie, Gül Varol · "Sign Language Segmentation with Temporal Convolutional Networks" · ICASSP 2021 · arXiv:2011.12986
+     Topic   : sign-boundary detection with an iterative 1D temporal-convolution refinement (MS-TCN style) on BSL-Corpus / PHOENIX14 / BSL-1K
+     How     : a dedicated boundary head with multi-stage refinement = the replacement candidate for our BiGRU tagger (short signs ≤ 12 frames are cut wrong
+               24–53 % of the time)
+     Status  : to be ADAPTED · Verified: Y
+
+[O3] Yazan Abu Farha, Juergen Gall · "MS-TCN: Multi-Stage Temporal Convolutional Network for Action Segmentation" · CVPR 2019
+     Where   : boundary head (W5) + smoothing loss against over-segmentation (our isolated clips: 8–13 % of signs split in two)
+     Status  : to be ADAPTED · Verified: [verify]
+
+[O4] Alex Graves, Santiago Fernández, Faustino Gomez, Jürgen Schmidhuber · "Connectionist Temporal Classification: Labelling Unsegmented Sequence Data with
+     Recurrent Neural Networks" · ICML 2006
+     Where   : W5 prototype-CTC (sequence-level training on TSL51 sentences and synthetic fluent sentences without frame labels)
+     Status  : to be ADAPTED · Verified: [verify]
+
+[O5] Low Jian He, Ozge Mercanoglu Sincan, Richard Bowden · "Sign Spotting Disambiguation using Large Language Models" · arXiv:2507.03703 · 2025
+     Topic   : training-free spotting: dictionary matching (DTW / cosine) proposes candidates, an LLM picks the sequence that makes sense in context
+     How     : context as the tie-breaker for the top-k of each segment — only as a RE-RANK inside the visual top-k with a visual-gap guard (project rule: no
+               invented words; our own grammar re-rank was switched off in v9 because it over-ruled the visual evidence)
+     Status  : CONTEXT · Verified: partly (title, authors, id from an aggregator: [verify])
+
+[O6] Yuecong Min et al. · "A Closer Look at Skeleton-based Continuous Sign Language Recognition" · ICCV 2025 Workshops (MSLR)
+     Topic   : what limits generalisation of skeleton-based CSLR (CoSign baseline)
+     Status  : CONTEXT · Verified: [verify] (authors)
+
+ OUR IDEA O-a · Prototype-CTC (open-vocabulary CTC): the per-frame class scores of the CTC head are cosine similarities between the frame state and the
+     BANK PROTOTYPES (plus a learned blank / not-a-sign prototype), so sequence-level training shapes the same space the bank lives in — segmentation and
+     recognition are learnt jointly, and a new word is still added by appending a prototype (no retraining), which a classic CTC soft-max cannot do.
+ OUR IDEA O-b · Co-articulation curriculum: stage 1 isolated signs, stage 2 the same signs with truncated on/off-sets and blended neighbours (FluentSynth),
+     stage 3 real aligned sentence words; the encoder is always evaluated twice — on gold segments and on its own segments — and the difference
+     ("segmentation tax") is a release metric.
+
+
+P. OPEN-SET RECOGNITION, SELECTIVE PREDICTION WITH GUARANTEES
+-------------------------------------------------------------
+[P1] Anastasios N. Angelopoulos, Stephen Bates, Jitendra Malik, Michael I. Jordan · "Uncertainty Sets for Image Classifiers using Conformal Prediction" ·
+     ICLR 2021 · arXiv:2009.14193 (RAPS)
+     Where   : W6 decision layer: prediction SETS with a coverage guarantee → 1 word = accept, 2–3 words = show the alternatives, empty / large = reject
+     How     : replaces "P(correct) ≥ 0.88" (which hides 43 % of the correct words and is mis-calibrated per group) by a set whose miss-rate is guaranteed on
+               exchangeable data; calibrated PER GROUP (source / signer cluster / camera) because one global threshold fails (TTRS accepted precision 0.45)
+     Status  : to be ADAPTED · Verified: Y (venue year: [verify])
+
+[P2] Yonatan Geifman, Ran El-Yaniv · "Selective Classification for Deep Neural Networks" · NeurIPS 2017
+     Where   : risk–coverage curves as the standard report of dimension D (EA-v11 §8)
+     Status  : USED (evaluation) · Verified: [verify]
+
+[P3] Abhijit Bendale, Terrance E. Boult · "Towards Open Set Deep Networks" (OpenMax) · CVPR 2016; Walter J. Scheirer et al. · "Toward Open Set Recognition" · TPAMI 2013
+     Where   : definition + baseline of the open-set task (unknown signs must be rejected, not mapped to the nearest word)
+     Status  : CONTEXT · Verified: [verify]
+
+[P4] Dan Hendrycks, Mantas Mazeika, Thomas Dietterich · "Deep Anomaly Detection with Outlier Exposure" · ICLR 2019
+     Where   : W6: train the reject decision with real examples of unknown signs
+     How     : we own ~9,000 Tail signs that the product does not need to name — ideal outliers: real Thai signs, same extractor, same signers
+     Status  : to be ADAPTED · Verified: [verify]
+
+[P5] Weitang Liu, Xiaoyun Wang, John D. Owens, Yixuan Li · "Energy-based Out-of-distribution Detection" · NeurIPS 2020; Yiyou Sun et al. · deep kNN (already D5)
+     Where   : candidate unknown-sign scores (energy over prototype similarities; k-th neighbour distance in the normalised space)
+     Status  : to be COMPARED · Verified: [verify]
+
+ OUR IDEA P-a · Tail-as-outlier exposure for sign spotting: the vocabulary the product cannot serve (1–2 clips per word) becomes the training set of the
+     "this is a sign I do not know" decision. Metric introduced in EA-v11: open-set false accept (12.8 % today) reported next to coverage.
+ OUR IDEA P-b · Three-way decision from evidence type, not from one probability: KNOWN-SURE (one form prototype far ahead) · KNOWN-AMBIGUOUS (the set is a
+     known confusion group → show top-k, call the minimal-pair verifier) · UNKNOWN (far from every prototype with ≥ 2 signers). Guarantee per signer
+     group by conformal risk control; the class-reliability prior is removed from the accept decision (it punished the under-resourced words twice).
+
+
+Q. HAND POSE UNDER OCCLUSION / INTERACTION (EXTRACTOR)
+------------------------------------------------------
+[Q1] Rolandos Alexandros Potamias, Jinglei Zhang, Jiankang Deng, Stefanos Zafeiriou · "WiLoR: End-to-end 3D Hand Localization and Reconstruction in-the-wild" ·
+     CVPR 2025, pp. 12242–12254 · arXiv:2409.12259 · doi:10.1109/CVPR52734.2025.01143 · code: github.com/rolpotamias/WiLoR
+     Topic   : a real-time fully convolutional hand DETECTOR trained on > 2 M in-the-wild images (WHIM) + a transformer 3D hand reconstruction (MANO)
+     How     : (1) the detector part is the pose-independent hand localiser our webcam failure needs (Holistic derives the hand ROI from the pose wrist;
+               close to the camera the wrist is wrong and both hands are found in only 10–18 % of frames, EA-v2 §4); (2) the reconstruction part = an
+               OFFLINE teacher for the training videos (occluded fingers get a plausible 3D pose). Licence: models reported CC-BY-NC-ND + MANO licence →
+               research / offline use only, check before anything ships.
+     Status  : to be COMPARED (offline teacher / detector baseline) · Verified: Y (licence text: [verify] on the official repository)
+
+[Q2] Gyeongsik Moon, Shoou-I Yu, He Wen, Takaaki Shiratori, Kyoung Mu Lee · "InterHand2.6M: A Dataset and Baseline for 3D Interacting Hand Pose Estimation
+     from a Single RGB Image" · ECCV 2020 · arXiv:2008.09309 · doi:10.1007/978-3-030-58565-5_33
+     Topic   : 2.6 M frames of single and INTERACTING hands with 3D labels
+     How     : the benchmark / training source for the two-hands-touching case (พนมมือ, hands crossing). Our own measurement on dataset videos: both hands are
+               found in 95.9 % of the frames where the wrists are close vs 95.8 % when apart → not a systematic loss, but MediaPipe always returns 21 points,
+               so a WRONG hand under occlusion is invisible to our "hand found" statistics; InterHand-style data is how to measure and fix that.
+     Status  : CONTEXT · Verified: Y
+
+[Q3] HaMeR (already B9) — second offline teacher; HaGRID (already C7 / F4) — the human-labelled hand boxes for a pose-independent detector (the YOLO
+     experiment of Lab4 used MediaPipe-made labels for 5 CPU epochs → inconclusive; redo with HaGRID boxes at ≥ 640 px on a GPU)
+
+[Q4] Vladimir Vapnik, Akshay Vashist · "A New Learning Paradigm: Learning Using Privileged Information" · Neural Networks 22(5–6), 2009; David Lopez-Paz,
+     Léon Bottou, Bernhard Schölkopf, Vladimir Vapnik · "Unifying Distillation and Privileged Information" · ICLR 2016
+     Where   : W7: the teacher sees clean 3D hands of the training VIDEOS (WiLoR / HaMeR, offline, GPU); the student sees what the browser will have
+               (MediaPipe 2D landmarks, dropped frames, 12 fps)
+     Status  : to be ADAPTED · Verified: [verify]
+
+ OUR IDEA Q-a · Privileged cross-extractor distillation: the sign embedding of the deployable landmark student is distilled from a teacher that reads
+     occlusion-robust 3D hands of the same training clip — robustness to wrong / missing fingers is learnt once at training time, and the browser keeps the
+     cheap extractor. (Our v10 "extractor-averaged bank" averaged two views at the BANK; this moves the idea into the ENCODER.)
+ OUR IDEA Q-b · Visibility-aware input: per-hand confidence channel + a learned "hand not observed" token instead of interpolated points; structured hand
+     drop-out during training (whole hand, finger subsets, the occluded hand of a two-hand contact, bottom-of-frame cut) with rates measured from the web's
+     saved requests, so the model knows which hand evidence to trust.
+
+==== v11 implementation status of the "OUR IDEA" rows (2026-11-13, prompt-opt-v11 TPH 1-4; numbers: TUNE unless marked BLIND) ====
+ K-a lite  IMPLEMENTED as the augmentation pack of run R3 (coherent virtual signer: joint bone ratios, signing-space scale 0.8-1.25,
+           offset, tempo 0.7-1.8x, 12 % left-handed). Control R2 (same sampler, v10 augmentation): TUNE MRR 0.421 -> 0.445, confusion margin
+           0.376 -> 0.404, in-sentence gold-span R@1 0.360 -> 0.425. Kept (final encoder = 3 seeds of R3).
+ K-b       IMPLEMENTED as the cross-signer sampler of run R2 ((word, signer) cells, <= 1/3 per person, same-form positives, confusion-group
+           slots). Control R1: MRR 0.410 -> 0.421, margin 0.275 -> 0.376, in-sentence 0.369 -> 0.360. Kept inside R3.
+ K-c       IMPLEMENTED (session normaliser + pseudo-enrolment, simulation on TUNE signers). Normaliser: th_sl +3 pts, TTRS -28 pts at 30 s;
+           pseudo-enrolment ~0; explicit enrolment 0.475 -> 0.662 after 120 s. Unsafe -> shipped OFF.
+ L-a       IMPLEMENTED (forms.json 87 words with >= 2 forms; run R4 = 3 form-initialised sub-centres + group CosFace 0.3). Control R3:
+           MRR 0.445 -> 0.438, margin 0.404 -> 0.400. Not adopted.
+ L-b       IMPLEMENTED (FormBank: max over forms of 0.5 proto + 0.5 top-2 different-signer exemplars - lam/sqrt(signers)). On v10 embeddings:
+           confusion-group within-error 0.40 -> 0.29; reader-only lam 0.08 on the final encoder: TUNE WER 0.292/0.280/0.296 vs 0.296/0.298/0.310
+           without it. Shipped in the v11 candidate (reader only).
+ M-a       IMPLEMENTED (run R6, 4 sub-spaces, rule-based pseudo-labels audited on contact sheets). Control R5: MRR 0.459 -> 0.353 (flat after
+           8 k steps), in-sentence 0.403 -> 0.448. Dropped (loses MRR / margin / lowest signer).
+ M-b       IMPLEMENTED (GBT per confusion group, leave-signers-out; NumPy/ONNX runtime). 9 / 36 groups kept on TUNE (e.g. ไป/กลับ/ส่ง/มา in-group
+           R@1 0.22 -> 0.56); in the shipped v10-acceptance decision mode it changed no TUNE decision.
+ O-a       IMPLEMENTED (prototype-CTC on the final encoder, drift rule froze the encoder at step 300). Val CTC best at step 300 then rising;
+           S2 TUNE WER iso 0.872 -> not viable.
+ O-b       IMPLEMENTED (stage 1-2 in R3: truncation + context 0.5; stage 3 sentences for the boundary head: segment F1 0.898 / 0.901 at 25 / 12 fps,
+           short-sign recall 0.944). Path B (S1) loses TSL51 / fluent WER to v10 segmentation (0.54 vs 0.27) -> Path A shipped.
+ P-a       IMPLEMENTED (open-set head with Tail-sign + idle outlier exposure, Tail-bank margin feature: AUROC 0.76 -> 0.79). BLIND: Tail signs
+           accepted 0.170 -> 0.125, open-set simulation 0.098 -> 0.073 (v10 -> v11).
+ P-b       IMPLEMENTED (KNOWN-SURE / KNOWN-AMBIGUOUS / UNKNOWN + conformal alternatives). The pure conformal-singleton acceptance gave 12-14 %
+           correct accepted at <= 5 % error; per-group risk-controlled thresholds 27 % (signer-held-out) -> shipped in v10-acceptance mode.
+ Q-b       IMPLEMENTED (input v11 = motion stream + hand-to-face distances + visibility + learned not-observed vector; run R5). Control R4:
+           MRR 0.438 -> 0.459, but vs R3 +1.4 pts (< 1.5) with worse lowest-signer / in-sentence -> not adopted.
+ N-a       IMPLEMENTED as run R1 (tiered label space). Control R0: MRR 0.423 -> 0.410; kept inside the ladder (R2+).
+ Q-a       not implemented (out of the four TPHs: 3D-hand teacher).
+
+
+==========================================================================================================================================================
+v12 ADD-ONS (2026-11-13/14) — references behind Error-Analysis-for-v12 and prompt/phase3/prompt-opt-v12.md
+Bibliographic details were checked online on 2026-11-13 at title / venue / abstract level (search results, not the full PDFs) unless marked [verify].
+"OUR IDEA" rows are design proposals of the v12 plan: NOT implemented yet (status is filled in by the v12 run).
+==========================================================================================================================================================
+
+R. WEAKLY-LABELLED SENTENCES, DICTIONARY-ANCHORED SPOTTING   (new sources: Royal Institute example sentences, e-TSL phrases)
+---------------------------------------------------------------------------------------------------------------------------
+[R1] Gül Varol, Liliane Momeni, Samuel Albanie, Triantafyllos Afouras, Andrew Zisserman · "Scaling up sign spotting through sign language dictionaries" ·
+     IJCV 130, 2022 · doi:10.1007/s11263-022-01589-6 · arXiv:2205.04152
+     Topic   : journal version of [O1]: spotting from three supervisors (sparse mouthing labels, subtitles as weak labels, dictionary look-ups) joined by
+               Noise-Contrastive Estimation + Multiple-Instance Learning; a spotter trained on dictionary clips alone performs poorly (domain gap)
+     How     : the Royal Institute source gives exactly this triple for Thai: an isolated headword clip, 3-4 example SENTENCES that contain the headword,
+               and a Thai caption (EA-v12 §5: 725 sentences, 710 contain >= 2 vocabulary words, 256 distinct vocabulary words). The caption plays the role
+               of the subtitle (a bag of candidate words, not an alignment); the headword clip of the SAME signer is the dictionary query.
+     Status  : to be ADAPTED (v12 TPH 2, "dictionary-anchored spotting") · Verified: Y (abstract level)
+
+[R2] Charles Raude, K R Prajwal, Liliane Momeni, Hannah Bull, Samuel Albanie, Andrew Zisserman, Gül Varol · "A Tale of Two Languages: Large-Vocabulary
+     Continuous Sign Language Recognition from Spoken Language Supervision" (CSLR2) · arXiv:2405.10266 · 2024
+     Topic   : one Transformer trained for continuous recognition AND sign-sentence / text retrieval from weak, noisy supervision (sign-level pseudo-labels
+               + subtitles); the two tasks help each other
+     How     : supports using spoken-language captions as supervision without gloss alignment; we keep the cheaper half only (caption-constrained pseudo
+               spans as extra positives + a caption-bag recall metric for natural sentences), no joint text-embedding space
+     Status  : CONTEXT · Verified: Y (abstract level)
+
+[R3] Oscar Koller, Sepehr Zargaran, Hermann Ney · "Re-Sign: Re-Aligned End-to-End Sequence Modelling with Deep Recurrent CNN-HMMs" · CVPR 2017;
+     Junfu Pu, Wengang Zhou, Houqiang Li · "Iterative Alignment Network for Continuous Sign Language Recognition" · CVPR 2019
+     Topic   : sentence-level labels treated as weak labels; alignment is re-estimated and the feature extractor re-trained in alternation (EM-like)
+     How     : v12 runs ONE re-alignment round only (spot with the v10 readers -> train -> re-spot with the v12 reader -> keep spans both rounds agree on).
+               More rounds are out of the time box; v11's prototype-CTC over-fitted the training signers after 300 steps (result_v11 §6), so alignment is
+               used to make positives for the metric-learning encoder, never as a CTC decoder.
+     Status  : to be ADAPTED · Verified: Y (title / venue)
+
+ OUR IDEA R-a · Dictionary-anchored, caption-constrained spotting. For every example sentence: (1) the headword is searched with the SAME signer's
+     isolated headword clip (same person, same camera: the easy match), (2) other words are searched with the bank, but ONLY words that occur in the
+     caption may be labelled (the caption is the Multiple-Instance bag), (3) a span is kept when two readers agree and its score clears the 90th
+     percentile of the scores that words NOT in the caption reach on the same sentence (a per-sentence null distribution -> no global threshold).
+     Output: co-articulated positives of new signers + the first natural-sentence evaluation set for Thai (caption-bag recall / precision).
+ OUR IDEA R-b · Same-signer anchor as a label-noise filter: a pseudo span of signer S for word w is accepted only if it is closer to S's own isolated
+     clip of w (when S has one) than to S's clips of the other caption words — signer style cancels out, so the test is about the sign.
+
+S. DEPLOYMENT-DOMAIN ROBUSTNESS: FRAME RATE, FRAME LOSS, HAND LOSS, CALIBRATION UNDER SHIFT
+---------------------------------------------------------------------------------------------
+[S1] Yaniv Ovadia, Emily Fertig, Jie Ren, Zachary Nado, D. Sculley, Sebastian Nowozin, Joshua V. Dillon, Balaji Lakshminarayanan, Jasper Snoek ·
+     "Can You Trust Your Model's Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift" · NeurIPS 2019 · arXiv:1906.02530   [verify]
+     Topic   : calibration fitted in-distribution degrades under shift; post-hoc temperature scaling does not survive it
+     How     : what result_v11 §12 measured: on browser landmarks P(correct) moves down for right AND wrong words (0.774 -> 0.716 / 0.453 -> 0.382), so a
+               threshold fitted offline (0.88) hides right words. v12 fits the acceptance in the deployment domain.
+     Status  : CONTEXT
+
+[S2] Yaodong Yu, Stephen Bates, Yi Ma, Michael I. Jordan · "Robust Calibration with Multi-domain Temperature Scaling" · NeurIPS 2022 · arXiv:2206.02757
+     Topic   : one temperature fails on individual domains; a calibration map that depends on the input (domain) is robust to new domains
+     How     : v12 calibration takes input-quality covariates (frame rate, share of frames with a hand, hand size / shoulder width, share of interpolated
+               frames, source = stream / whole utterance) next to the 13 score features, and is fitted on offline + web-rate + labelled live items together
+     Status  : to be ADAPTED · Verified: Y (abstract level)
+
+[S3] Ryan J. Tibshirani, Rina Foygel Barber, Emmanuel J. Candès, Aaditya Ramdas · "Conformal Prediction Under Covariate Shift" · NeurIPS 2019 · arXiv:1904.06019
+     Topic   : weighted conformal prediction: calibration scores re-weighted by the likelihood ratio test / calibration keep coverage under covariate shift
+     How     : the 600+ UNLABELLED live requests give the deployment covariate distribution; offline calibration items are re-weighted towards it
+               (logistic density-ratio on the quality covariates) before the acceptance threshold is chosen. Guard: effective sample size >= 30 % or off.
+     Status  : to be ADAPTED (guarded) · Verified: Y
+
+[S4] DSLNet · "Skeleton-based sign language recognition using a dual-stream spatio-temporal dynamic graph convolutional network" · arXiv:2509.08661 · 2025   [verify authors]
+     Topic   : reports a random frame-drop robustness table for skeleton SLR (LSA64) — frame loss as an explicit evaluation axis
+     How     : our measurement differs in kind: we replay the REAL frame times of the product (median 64 ms with a ~200 ms stall every 8th frame) instead
+               of i.i.d. drops, and find the v10 chain insensitive to it (EA-v12 §3: WER 0.566 -> 0.559)
+     Status  : CONTEXT
+
+ OUR IDEA S-a · Log-replay corruption (label-free domain alignment). The nuisance statistics of the deployment domain are copied from the product's own
+     unlabelled logs instead of being modelled: frame-time sequences, hand-loss run lengths (live: 32 % of runs > 0.3 s vs 14 % on dataset video),
+     hand size / shoulder width, share of one-hand-only frames. Training views and calibration items are corrupted by sampling whole traces from the
+     log. No label of a live request is needed and no live request enters training as a sample.
+ OUR IDEA S-b · Paired nuisance audit before training on a nuisance: every suspected live factor is first applied to labelled clips through the
+     unchanged production chain (EA-v12 §3). Factors with no measurable effect (frame rate, real jitter, hand loss up to 35 %, zoom) are NOT given
+     training budget — the budget goes to what the audit cannot explain (new signers, real-camera framing, session behaviour).
+
+T. STREAMING / TWO-PASS DECODING AND ENDPOINTING   (live mode)
+---------------------------------------------------------------
+[T1] Tara N. Sainath, Ruoming Pang, David Rybach, Yanzhang He, Rohit Prabhavalkar, Wei Li, Mirkó Visontai, Qiao Liang, Trevor Strohman, Yonghui Wu,
+     Ian McGraw, Chung-Cheng Chiu · "Two-Pass End-to-End Speech Recognition" · Interspeech 2019 · arXiv:1908.10992
+     Topic   : a streaming first pass (RNN-T) shows words at once; a full-context second pass (LAS) rescores; 17-22 % relative WER reduction for a small
+               latency increase
+     How     : our live mode already IS two-pass (WebSocket stream = first pass, whole-utterance request = second pass) but the passes do not share
+               evidence. v12 feeds "the stream confirmed the same word at an overlapping place" into the second pass's calibration as a feature.
+     Status  : to be ADAPTED · Verified: Y
+
+[T2] (already C5) Zuo, Wei, Mak · "Towards Online Continuous Sign Language Recognition and Translation" · EMNLP 2024 · arXiv:2401.05336
+     Topic   : CTC models trained on untrimmed video do poorly on sliding windows; an isolated-sign model trained on a dictionary CUT BY A CSLR MODEL
+               from continuous video, plus a background class, is the better online recogniser
+     How     : the direct precedent for training our readers on DECODER-CUT spans (the v10 decoder's own segments matched to gold) instead of gold
+               spans only: the reader then sees the boundary errors it will get at run time (v11 segmentation tax 0.105-0.175).
+     Status  : to be ADAPTED · Verified: Y
+
+[T3] (already E1/E2) end-of-query detection for streaming ASR
+     How     : EA-v12 §3: 17 % of saved live utterances ran into the 20 s cap with a hand visible in only 20 % of frames (12 % more ran 9-19 s) — the end rule accepts the body
+               pose's wrist guess as "hands up". v12 lets the wrist guess hold an utterance open for <= 0.8 s after the last real hand.
+     Status  : to be ADAPTED
+
+ OUR IDEA T-a · Stream-agreement as second-pass evidence: P(correct) of a whole-utterance word gets a binary feature "confirmed by the live stream at an
+     overlapping place"; selected at matched precision on the labelled live set only.
+ OUR IDEA T-b · Test-time span jitter: every decoded segment is read on 5 crops (both boundaries moved by 0 / ±2 / ±4 frames at 25 fps) and the bank
+     scores are averaged — the reader's answer no longer depends on one boundary decision. Cost: a few span embeddings per utterance.
+ OUR IDEA T-c · Prompted live capture: the live page shows the next word / sentence of a script, saves the continuous landmark stream of the whole
+     session with the prompt as label, and the SAME recording is cut twice offline (prompt-aligned = "manual", hands-up / hands-down = "live") —
+     the first paired, labelled live-vs-manual measurement on a real webcam; the recording also serves as calibration data of the deployment domain.
+
+U. REPRESENTATION LEARNING FOR THE PRIMARY READER
+--------------------------------------------------
+[U1] (already in section A) Zecheng Li, Wengang Zhou, Weichao Zhao, Kepeng Wu, Hezhen Hu, Houqiang Li · "Uni-Sign: Toward Unified Sign Language
+     Understanding at Scale" · ICLR 2025 · arXiv:2501.15187
+     How     : our primary reader is this pose encoder fine-tuned ONCE (enc-v7, 2026-10-03: 3,000 steps, best at step 1,500, 38 min) and frozen ever
+               since; v8-v11 trained only the second-opinion landmark encoder (weight 0.3). v12 re-fine-tunes the primary reader with the recipe that
+               helped the landmark encoder in v11 (cross-signer sampler + virtual signer) and the new signers.
+     Status  : USED / to be RE-TRAINED
+
+[U2] Shester Gueuwou, Xiaodan Du, Greg Shakhnarovich, Karen Livescu, Alexander H. Liu · "SHuBERT: Self-Supervised Sign Language Representation Learning via
+     Multi-Stream Cluster Prediction" · ACL 2025 · arXiv:2411.16765
+     Topic   : HuBERT-style masked prediction of clustered hand / face / body streams on ~1,000 h of ASL
+     How     : CONTEXT only — needs two orders of magnitude more unlabelled signing than we have; out of v12
+     Status  : CONTEXT · Verified: Y (abstract level)
+
+[U3] Ryan Wong, Necati Cihan Camgöz, Richard Bowden · "SignRep: Enhancing Self-Supervised Sign Representations" · ICCV 2025 · arXiv:2503.08529;
+     Weichao Zhao, Hezhen Hu, Wengang Zhou et al. · "MASA: Motion-aware Masked Autoencoder with Semantic Alignment for Sign Language Recognition" ·
+     IEEE TCSVT 2024 · arXiv:2405.20666
+     Topic   : masked auto-encoding with sign priors (SignRep: RGB, skeleton priors at training only; MASA: pose, reconstructs motion residuals)
+     How     : CONTEXT — v11's ladder showed our encoders are data-limited (every run peaks at 6-12 k steps), so v12 spends its budget on signers and
+               labels, not on a new pre-training objective
+     Status  : CONTEXT · Verified: Y (abstract level)
+
+[U4] (already C8) Li, Hoiem · "Learning without Forgetting" · ECCV 2016
+     How     : the re-fine-tuned primary reader starts from the enc-v7 weights and is held to enc-v7's embeddings of the old training clips by a
+               feature-distillation term (weight annealed 1.0 -> 0.2) so that words the new data does not cover do not drift (v11: TSL51 got worse)
+     Status  : to be ADAPTED
+
+ OUR IDEA U-a · Re-reader path: the v10 front (tagger, spotting, merge / split) stays byte-identical and only NAMES are re-decided — each decoded span
+     is re-embedded by the v12 primary reader (with T-b jitter) and looked up in the v12 bank. Segmentation regressions are impossible by
+     construction; the segmentation tax can only move through better reading of imperfect spans.
+
+V. DATA-CENTRIC PREPARATION: LABEL NOISE, DATA CARDS, EVALUATION DESIGN
+-------------------------------------------------------------------------
+[V1] Curtis G. Northcutt, Lu Jiang, Isaac L. Chuang · "Confident Learning: Estimating Uncertainty in Dataset Labels" · JAIR 70, 2021 · arXiv:1911.00068   [verify]
+     Topic   : find label errors from out-of-fold predicted probabilities and per-class thresholds
+     How     : v12 label audit: out-of-fold (by signer) bank predictions flag clips whose own label is not in the top-5 while another word scores above
+               that word's own typical score; flagged clips go to a contact sheet and get one of {other form, wrong label, bad extraction, keep}
+     Status  : to be ADAPTED
+
+[V2] Timnit Gebru et al. · "Datasheets for Datasets" · CACM 64(12), 2021 · arXiv:1803.09010   [verify]
+     How     : DATA_CARD v12 — per source: who signs, how recorded, licence, known label conventions, what it may be used for (train / bank / test only)
+     Status  : to be ADAPTED
+
+[V3] Multiple-comparison argument (family-wise error) applied to release gates   [textbook; no single reference]
+     How     : the v10 release gate compares ~60 metrics, each with a tolerance of 0.25 bootstrap SD. A candidate of IDENTICAL true quality fails such a
+               gate almost surely (both v11 and the dual reader failed "21 metrics" while their primary numbers tied or improved). v12 pre-registers 6
+               primary endpoints with paired non-inferiority margins and reports the remaining metrics as diagnostics.
+     Status  : CONTEXT (evaluation design)
+
+ OUR IDEA V-a · Signer-depth-first data policy: a clip's value is the (word, signer) cell it fills, not its count — EA-v11 showed error falls with the
+     number of signers of the word in the bank (1 signer 0.72 ... >= 10 signers 0.13) and not with clips. Every data decision of v12 (which new clips
+     enter the bank first, which words are collected, how batches are sampled, which signer is sealed) is taken on the (word x signer x form) matrix.
+
+==== v12 implementation status of the "OUR IDEA" rows R-V (2026-11-15, prompt-opt-v12 TPH 1-4; result_reporting/result-v12.md section 7) ====
+R-a caption-constrained spotting · IMPLEMENTED (scripts/v12_spot.py, round 1 only): 164 spans / 77 words from 253 TRAIN sentences, 21 % of caption
+    words located; headword anchor NOT implemented. Not used downstream (P2 not run within the $6-7 GPU budget).
+R-b same-signer anchor · IMPLEMENTED as the precision proxy of R-a: 0.89 on 38 checkable spans (no human audit).
+S-a log-replay corruption · IMPLEMENTED (modules/v12data.Replay: frame times, hand-loss runs, LOG hand size 1.04-1.22 x dataset); NOT used in training
+    (P3 dropped) nor as calibration items (calibration v12 not kept).
+S-b paired nuisance audit · DONE in EA-v12 (frame rate / jitter / hand loss / zoom: no effect) — the v12 plan therefore spent no training on them.
+T-a stream agreement · NOT implemented (needs pipeline features; calibration v12 was not kept anyway).
+T-b test-time span jitter · IMPLEMENTED and SHIPPED in the v12 candidate (read.jitter 5, primary + hand cue; calibration features from the
+    single-crop read = "jitter_cal"): TUNE pooled sentence WER -0.005 [-0.009, +0.000], TSL51 2x -0.013 (CI < 0), segmentation tax 1x 0.053 -> 0.034;
+    BLIND-v11 pooled -0.003 [-0.011, +0.005]. Averaging crops for ALL readers was better on WER (-0.006, CI < 0) but cost +23 % latency and
+    -0.017 matched-precision coverage (flattened scores) -> the split "jitter chooses, single crop calibrates" is the new finding.
+T-c prompted live capture · IMPLEMENTED (/sign/live?script=..., /v1/capture, live-replay; Python live rule frame-exact vs TypeScript); LIVE-L not
+    recorded yet. Live rules (pre-roll 1.5 s, tail 0.8 s, wrist grace 0.8 s, cap cut) recover the whole-clip WER: web-rate TSL51 test 0.391 -> 0.345.
+U-a re-reader / primary reader v12 · NEGATIVE: two re-fine-tunes of enc-v7 on old + new-source data (P1: distillation only on words without new
+    data; P1b: distillation on all words, half lr) never beat enc-v7 (selection 0.638 vs best 0.628 / 0.633; YouTube held-out R@1 0.889 -> 0.56-0.67).
+    Verdict: the primary reader is saturated on dictionary-style data; Path R not built.
+V-a signer-depth-first policy · IMPLEMENTED for the data (coverage matrix: <= 1 signer 96 -> 55 words) but adding the new signers to the bank did NOT
+    help the chain (B1: pooled WER +0.005, new-signer top-1 -0.029): one prolific studio signer (1,700 clips, ~50 % different dictionary forms)
+    acts as an attractor. More signers must mean more PEOPLE (and community forms), not more clips of one dictionary signer.

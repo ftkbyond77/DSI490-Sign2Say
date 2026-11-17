@@ -263,6 +263,8 @@ def _public(result):
                             candidates=[c["word"] for c in s["candidates"][:5]],     # words only: the web shows them in the [?] menu
                             candidate_scores=[dict(word=c["word"], score=c.get("score"), ai_prob=c.get("ai_prob"), pose_score=c.get("pose_score"), fused_score=c.get("fused_score")) for c in s["candidates"][:5]],
                             **({"symbolic": s["symbolic"]} if "symbolic" in s else {}),
+                            # v11 (additive; absent for v10): three-way decision KNOWN-SURE / KNOWN-AMBIGUOUS / UNKNOWN + its alternatives
+                            **({"decision": s["decision"], "alternatives": s.get("alternatives", []), "p_known": s.get("p_known")} if "decision" in s else {}),
                             **({"hand_frac": s["hand_frac"]} if "hand_frac" in s else {}),
                             # the personal sign memory learns from this embedding: never from a sign nobody saw the hands of (it would teach "ฉัน" / "กิน" for a hand-less wrist)
                             **({"emb": _vec_to_b64(s["emb"])} if "emb" in s and s.get("hand_frac", 1.0) >= 0.5 else {}))
@@ -317,7 +319,39 @@ def info():
     cfg = read_json(MODEL_DIR / "config.json")
     p = pipe()
     return dict(version=cfg.get("version"), built=cfg.get("built"), concepts_full=len(p.concepts), bank_clips=int(len(p.bank.c)),
-                conversation_concepts=int(len(p.bank.concepts_present)), llm=bool(os.environ.get("OPENAI_API_KEY")), extractor="MediaPipe Holistic 1.0.1")
+                conversation_concepts=int(len(p.bank.concepts_present)), llm=bool(os.environ.get("OPENAI_API_KEY")), extractor="MediaPipe Holistic 1.0.1", live=cfg.get("live"))   # v12: live-mode rules shipped by the model (null = v10 rules)
+
+
+# ----------------------------------------------------------------------------- v12 prompted live capture (prompt-opt-v12 §1I)
+# The page /sign/live?script=<name> shows prompts and uploads the CONTINUOUS landmark stream of the session (landmarks only, never video)
+# in chunks → cache/live_labeled/<session>/part_<seq>.json.gz. Read-only for the model: nothing here changes recognition.
+_REPO = next((q for q in Path(__file__).resolve().parents if (q / "artifacts").is_dir()), Path(__file__).resolve().parent)   # repo checkout or /app
+_CAPTURE_DIR = Path(os.environ.get("THAISLM_CAPTURE_DIR") or (_REPO / "cache" / "live_labeled"))      # docker: /app/live_labeled (mounted)
+_SCRIPT_DIR = Path(os.environ.get("THAISLM_SCRIPT_DIR") or (_REPO / "artifacts" / "eval" / "live_scripts"))   # docker: /app/live_scripts (mounted)
+_SAFE = re.compile(r"^[A-Za-z0-9_\-]{1,80}$")
+
+
+@app.get("/v1/capture/script/{name}")
+def capture_script(name: str):
+    if not _SAFE.match(name):
+        raise HTTPException(400, "bad script name")
+    f = _SCRIPT_DIR / f"{name}.json"
+    if not f.exists():
+        raise HTTPException(404, f"no script {name} (python main.py live-capture script --name {name})")
+    return json.loads(f.read_text(encoding="utf-8"))
+
+
+@app.post("/v1/capture/chunk")
+def capture_chunk(body: dict):
+    import gzip
+    sess, seq = str(body.get("session", "")), int(body.get("seq", -1))
+    if not _SAFE.match(sess) or seq < 0:
+        raise HTTPException(400, "bad session / seq")
+    d = _CAPTURE_DIR / sess
+    d.mkdir(parents=True, exist_ok=True)
+    with gzip.open(d / f"part_{seq:05d}.json.gz", "wt", encoding="utf-8") as f:
+        json.dump(body, f, ensure_ascii=False)
+    return dict(ok=True, session=sess, seq=seq, frames=len(body.get("frames") or []))
 
 
 @app.get("/v1/vocab")

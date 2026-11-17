@@ -1,0 +1,257 @@
+{
+  "groups": {
+    "ยาย|ญาติ|ย่า|ปู่|ตา|ป้า": {
+      "train_pairs": 1692,
+      "tune_n": 19,
+      "tune_R1_encoder": 0.7894736842105263,
+      "tune_R1_verifier": 0.7368421052631579,
+      "kept": false
+    },
+    "น้า|อา|น้ำ": {
+      "train_pairs": 264,
+      "tune_n": 7,
+      "tune_R1_encoder": 0.5714285714285714,
+      "tune_R1_verifier": 0.5714285714285714,
+      "kept": false
+    },
+    "ไป|กลับ|ส่ง|มา": {
+      "train_pairs": 216,
+      "tune_n": 0,
+      "tune_R1_encoder": 0.0,
+      "tune_R1_verifier": 0.0,
+      "kept": false
+    },
+    "อะไร|ที่ไหน|โสด|หนึ่ง": {
+      "train_pairs": 624,
+      "tune_n": 3,
+      "tune_R1_encoder": 1.0,
+      "tune_R1_verifier": 0.6666666666666666,
+      "kept": false
+    },
+    "กิน|ดู|ฉัน|ข้าว|สวัสดี": {
+      "train_pairs": 1260,
+      "tune_n": 0,
+      "tune_R1_encoder": 0.0,
+      "tune_R1_verifier": 0.0,
+      "kept": false
+    },
+    "คุณ|ฉัน|แฟน|ต้อง": {
+      "train_pairs": 726,
+      "tune_n": 0,
+      "tune_R1_encoder": 0.0,
+      "tune_R1_verifier": 0.0,
+      "kept": false
+    },
+    "น้อง|ลูก|ปลา|น้องชาย": {
+      "train_pairs": 504,
+      "tune_n": 7,
+      "tune_R1_encoder": 1.0,
+      "tune_R1_verifier": 1.0,
+      "kept": false
+    },
+    "เหงา|หมู|ภูมิใจ": {
+      "train_pairs": 270,
+      "tune_n": 5,
+      "tune_R1_encoder": 1.0,
+      "tune_R1_verifier": 1.0,
+      "kept": false
+    },
+    "พี่|สูง": {
+      "train_pairs": 100,
+      "tune_n": 2,
+      "tune_R1_encoder": 0.5,
+      "tune_R1_verifier": 0.5,
+      "kept": false
+    },
+    "ร้องไห้|หมู": {
+      "train_pairs": 82,
+      "tune_n": 5,
+      "tune_R1_encoder": 1.0,
+      "tune_R1_verifier": 1.0,
+      "kept": false
+    },
+    "นม|ภรรยา": {
+      "train_pairs": 88,
+      "tune_n": 5,
+      "tune_R1_encoder": 0.8,
+      "tune_R1_verifier": 0.8,
+      "kept": false
+    },
+    "ผอม|ฉัน": {
+      "train_pairs": 178,
+      "tune_n": 2,
+      "tune_R1_encoder": 0.5,
+      "tune_R1_verifier": 0.5,
+      "kept": false
+    },
+    "อ่าน|วิ่ง": {
+      "train_pairs": 72,
+      "tune_n": 4,
+      "tune_R1_encoder": 1.0,
+      "tune_R1_verifier": 1.0,
+      "kept": false
+    },
+    "กิน|หูหนวก": {
+      "train_pairs": 196,
+      "tune_n": 0,
+      "tune_R1_encoder": 0.0,
+      "tune_R1_verifier": 0.0,
+      "kept": false
+    },
+    "กลางคืน|จีน": {
+      "train_pairs": 58,
+      "tune_n": 5,
+      "tune_R1_encoder": 1.0,
+      "tune_R1_verifier": 1.0,
+      "kept": false
+    },
+    "กิน|ร้องไห้": {
+      "train_pairs": 100,
+      "tune_n": 2,
+      "tune_R1_encoder": 0.5,
+      "tune_R1_verifier": 0.5,
+      "kept": false
+    },
+    "เหงา|ตกใจ": {
+      "train_pairs": 100,
+      "tune_n": 2,
+      "tune_R1_encoder": 1.0,
+      "tune_R1_verifier": 1.0,
+      "kept": false
+    },
+    "คุณ|ถาม": {
+      "train_pairs": 192,
+      "tune_n": 0,
+      "tune_R1_encoder": 0.0,
+      "tune_R1_verifier": 0.0,
+      "kept": false
+    },
+    "เกิด|ร้อน": {
+      "train_pairs": 192,
+      "tune_n": 0,
+      "tune_R1_encoder": 0.0,
+      "tune_R1_verifier": 0.0,
+      "kept": false
+    },
+    "แต่งตัว|เหนื่อย": {
+      "train_pairs": 90,
+      "tune_n": 1,
+      "tune_R1_encoder": 0.0,
+      "tune_R1_verifier": 0.0,
+      "kept": false
+    },
+    "เหงา|เรา": {
+      "train_pairs": 94,
+      "tune_n": 3,
+      "tune_R1_encoder": 1.0,
+      "tune_R1_verifier": 0.6666666666666666,
+      "kept": false
+    },
+    "ขนมปัง|ลูก": {
+      "train_pairs": 176,
+      "tune_n": 4,
+      "tune_R1_encoder": 1.0,
+      "tune_R1_verifier": 1.0,
+      "kept": false
+    },
+    "ผิด|ย่า": {
+      "train_pairs": 100,
+      "tune_n": 4,
+      "tune_R1_encoder": 1.0,
+      "tune_R1_verifier": 0.75,
+      "kept": false
+    },
+    "ผอม|เหงา": {
+      "train_pairs": 94,
+      "tune_n": 4,
+      "tune_R1_encoder": 0.75,
+      "tune_R1_verifier": 0.75,
+      "kept": false
+    },
+    "สูง|พี่สาว": {
+      "train_pairs": 88,
+      "tune_n": 4,
+      "tune_R1_encoder": 1.0,
+      "tune_R1_verifier": 1.0,
+      "kept": false
+    },
+    "เกิด|ฉัน": {
+      "train_pairs": 264,
+      "tune_n": 0,
+      "tune_R1_encoder": 0.0,
+      "tune_R1_verifier": 0.0,
+      "kept": false
+    },
+    "รอ|ลูก": {
+      "train_pairs": 80,
+      "tune_n": 5,
+      "tune_R1_encoder": 1.0,
+      "tune_R1_verifier": 1.0,
+      "kept": false
+    },
+    "ส้มตำ|แต่งงาน": {
+      "train_pairs": 116,
+      "tune_n": 1,
+      "tune_R1_encoder": 1.0,
+      "tune_R1_verifier": 1.0,
+      "kept": false
+    },
+    "เหงา|เบื่อ": {
+      "train_pairs": 104,
+      "tune_n": 4,
+      "tune_R1_encoder": 1.0,
+      "tune_R1_verifier": 0.75,
+      "kept": false
+    },
+    "นม|พี่สาว": {
+      "train_pairs": 88,
+      "tune_n": 5,
+      "tune_R1_encoder": 1.0,
+      "tune_R1_verifier": 1.0,
+      "kept": false
+    },
+    "กิน|หลาน": {
+      "train_pairs": 184,
+      "tune_n": 3,
+      "tune_R1_encoder": 1.0,
+      "tune_R1_verifier": 1.0,
+      "kept": false
+    },
+    "ข้าว|เท่าไร": {
+      "train_pairs": 112,
+      "tune_n": 0,
+      "tune_R1_encoder": 0.0,
+      "tune_R1_verifier": 0.0,
+      "kept": false
+    },
+    "ขนมปัง|เกิด": {
+      "train_pairs": 192,
+      "tune_n": 0,
+      "tune_R1_encoder": 0.0,
+      "tune_R1_verifier": 0.0,
+      "kept": false
+    },
+    "ภาษามือ|แต่งงาน": {
+      "train_pairs": 212,
+      "tune_n": 0,
+      "tune_R1_encoder": 0.0,
+      "tune_R1_verifier": 0.0,
+      "kept": false
+    },
+    "เค็ม|หนึ่ง": {
+      "train_pairs": 84,
+      "tune_n": 4,
+      "tune_R1_encoder": 1.0,
+      "tune_R1_verifier": 0.75,
+      "kept": false
+    },
+    "คอมพิวเตอร์|กรุงเทพ": {
+      "train_pairs": 112,
+      "tune_n": 2,
+      "tune_R1_encoder": 0.5,
+      "tune_R1_verifier": 0.0,
+      "kept": false
+    }
+  },
+  "kept": 0
+}

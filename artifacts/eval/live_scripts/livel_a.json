@@ -1,0 +1,650 @@
+{
+  "name": "livel_a",
+  "title": "ชุดทดสอบโหมดสด LIVE-L",
+  "seed": 12,
+  "created": "2026-11-15 15:36",
+  "prompts": [
+    {
+      "id": "w00",
+      "kind": "word",
+      "prompt": "รัก",
+      "gloss": "รัก"
+    },
+    {
+      "id": "w01",
+      "kind": "word",
+      "prompt": "กลับ",
+      "gloss": "กลับ"
+    },
+    {
+      "id": "w02",
+      "kind": "word",
+      "prompt": "ดู",
+      "gloss": "ดู"
+    },
+    {
+      "id": "w03",
+      "kind": "word",
+      "prompt": "น้า",
+      "gloss": "น้า"
+    },
+    {
+      "id": "w04",
+      "kind": "word",
+      "prompt": "ลุง",
+      "gloss": "ลุง"
+    },
+    {
+      "id": "w05",
+      "kind": "word",
+      "prompt": "ขอโทษ",
+      "gloss": "ขอโทษ"
+    },
+    {
+      "id": "w06",
+      "kind": "word",
+      "prompt": "เที่ยว",
+      "gloss": "เที่ยว"
+    },
+    {
+      "id": "w07",
+      "kind": "word",
+      "prompt": "พ่อ",
+      "gloss": "พ่อ"
+    },
+    {
+      "id": "w08",
+      "kind": "word",
+      "prompt": "กลับ",
+      "gloss": "กลับ"
+    },
+    {
+      "id": "w09",
+      "kind": "word",
+      "prompt": "กิน",
+      "gloss": "กิน"
+    },
+    {
+      "id": "w10",
+      "kind": "word",
+      "prompt": "ข้าว",
+      "gloss": "ข้าว"
+    },
+    {
+      "id": "w11",
+      "kind": "word",
+      "prompt": "ยาย",
+      "gloss": "ยาย"
+    },
+    {
+      "id": "w12",
+      "kind": "word",
+      "prompt": "กิน",
+      "gloss": "กิน"
+    },
+    {
+      "id": "w13",
+      "kind": "word",
+      "prompt": "อะไร",
+      "gloss": "อะไร"
+    },
+    {
+      "id": "w14",
+      "kind": "word",
+      "prompt": "วันนี้",
+      "gloss": "วันนี้"
+    },
+    {
+      "id": "w15",
+      "kind": "word",
+      "prompt": "น้อง",
+      "gloss": "น้อง"
+    },
+    {
+      "id": "w16",
+      "kind": "word",
+      "prompt": "เหงา",
+      "gloss": "เหงา"
+    },
+    {
+      "id": "w17",
+      "kind": "word",
+      "prompt": "เรียน",
+      "gloss": "เรียน"
+    },
+    {
+      "id": "w18",
+      "kind": "word",
+      "prompt": "คิดถึง",
+      "gloss": "คิดถึง"
+    },
+    {
+      "id": "w19",
+      "kind": "word",
+      "prompt": "ย่า",
+      "gloss": "ย่า"
+    },
+    {
+      "id": "w20",
+      "kind": "word",
+      "prompt": "ขอ",
+      "gloss": "ขอ"
+    },
+    {
+      "id": "w21",
+      "kind": "word",
+      "prompt": "ได้",
+      "gloss": "ได้"
+    },
+    {
+      "id": "w22",
+      "kind": "word",
+      "prompt": "น้องสาว",
+      "gloss": "น้องสาว"
+    },
+    {
+      "id": "w23",
+      "kind": "word",
+      "prompt": "ตลาด",
+      "gloss": "ตลาด"
+    },
+    {
+      "id": "w24",
+      "kind": "word",
+      "prompt": "กลัว",
+      "gloss": "กลัว"
+    },
+    {
+      "id": "w25",
+      "kind": "word",
+      "prompt": "ดู",
+      "gloss": "ดู"
+    },
+    {
+      "id": "w26",
+      "kind": "word",
+      "prompt": "ยาย",
+      "gloss": "ยาย"
+    },
+    {
+      "id": "w27",
+      "kind": "word",
+      "prompt": "ไป",
+      "gloss": "ไป"
+    },
+    {
+      "id": "w28",
+      "kind": "word",
+      "prompt": "ญาติ",
+      "gloss": "ญาติ"
+    },
+    {
+      "id": "w29",
+      "kind": "word",
+      "prompt": "เก่า",
+      "gloss": "เก่า"
+    },
+    {
+      "id": "w30",
+      "kind": "word",
+      "prompt": "ห่วง",
+      "gloss": "ห่วง"
+    },
+    {
+      "id": "w31",
+      "kind": "word",
+      "prompt": "อา",
+      "gloss": "อา"
+    },
+    {
+      "id": "w32",
+      "kind": "word",
+      "prompt": "สาม",
+      "gloss": "สาม"
+    },
+    {
+      "id": "w33",
+      "kind": "word",
+      "prompt": "เริ่ม",
+      "gloss": "เริ่ม"
+    },
+    {
+      "id": "w34",
+      "kind": "word",
+      "prompt": "แฟน",
+      "gloss": "แฟน"
+    },
+    {
+      "id": "w35",
+      "kind": "word",
+      "prompt": "ย่า",
+      "gloss": "ย่า"
+    },
+    {
+      "id": "w36",
+      "kind": "word",
+      "prompt": "คุณ",
+      "gloss": "คุณ"
+    },
+    {
+      "id": "w37",
+      "kind": "word",
+      "prompt": "อ่าน",
+      "gloss": "อ่าน"
+    },
+    {
+      "id": "w38",
+      "kind": "word",
+      "prompt": "หนึ่ง",
+      "gloss": "หนึ่ง"
+    },
+    {
+      "id": "w39",
+      "kind": "word",
+      "prompt": "อะไร",
+      "gloss": "อะไร"
+    },
+    {
+      "id": "w40",
+      "kind": "word",
+      "prompt": "ส่ง",
+      "gloss": "ส่ง"
+    },
+    {
+      "id": "w41",
+      "kind": "word",
+      "prompt": "บอก",
+      "gloss": "บอก"
+    },
+    {
+      "id": "w42",
+      "kind": "word",
+      "prompt": "มา",
+      "gloss": "มา"
+    },
+    {
+      "id": "w43",
+      "kind": "word",
+      "prompt": "น้า",
+      "gloss": "น้า"
+    },
+    {
+      "id": "w44",
+      "kind": "word",
+      "prompt": "เที่ยว",
+      "gloss": "เที่ยว"
+    },
+    {
+      "id": "w45",
+      "kind": "word",
+      "prompt": "อา",
+      "gloss": "อา"
+    },
+    {
+      "id": "w46",
+      "kind": "word",
+      "prompt": "บ้าน",
+      "gloss": "บ้าน"
+    },
+    {
+      "id": "w47",
+      "kind": "word",
+      "prompt": "แพง",
+      "gloss": "แพง"
+    },
+    {
+      "id": "w48",
+      "kind": "word",
+      "prompt": "พี่ชาย",
+      "gloss": "พี่ชาย"
+    },
+    {
+      "id": "w49",
+      "kind": "word",
+      "prompt": "ข้าว",
+      "gloss": "ข้าว"
+    },
+    {
+      "id": "w50",
+      "kind": "word",
+      "prompt": "ขนมปัง",
+      "gloss": "ขนมปัง"
+    },
+    {
+      "id": "w51",
+      "kind": "word",
+      "prompt": "น้อง",
+      "gloss": "น้อง"
+    },
+    {
+      "id": "w52",
+      "kind": "word",
+      "prompt": "ไป",
+      "gloss": "ไป"
+    },
+    {
+      "id": "w53",
+      "kind": "word",
+      "prompt": "ส่ง",
+      "gloss": "ส่ง"
+    },
+    {
+      "id": "w54",
+      "kind": "word",
+      "prompt": "ตา",
+      "gloss": "ตา"
+    },
+    {
+      "id": "w55",
+      "kind": "word",
+      "prompt": "เหงา",
+      "gloss": "เหงา"
+    },
+    {
+      "id": "w56",
+      "kind": "word",
+      "prompt": "คุณ",
+      "gloss": "คุณ"
+    },
+    {
+      "id": "w57",
+      "kind": "word",
+      "prompt": "มา",
+      "gloss": "มา"
+    },
+    {
+      "id": "w58",
+      "kind": "word",
+      "prompt": "คน",
+      "gloss": "คน"
+    },
+    {
+      "id": "w59",
+      "kind": "word",
+      "prompt": "ญาติ",
+      "gloss": "ญาติ"
+    },
+    {
+      "id": "p00",
+      "kind": "pair",
+      "prompt": "ไป  →  กลับ",
+      "gloss": "ไป กลับ",
+      "note": "สองท่าต่อกัน"
+    },
+    {
+      "id": "p01",
+      "kind": "pair",
+      "prompt": "กลับ  →  ไป",
+      "gloss": "กลับ ไป",
+      "note": "สองท่าต่อกัน"
+    },
+    {
+      "id": "p10",
+      "kind": "pair",
+      "prompt": "ยาย  →  ย่า",
+      "gloss": "ยาย ย่า",
+      "note": "สองท่าต่อกัน"
+    },
+    {
+      "id": "p11",
+      "kind": "pair",
+      "prompt": "ย่า  →  ยาย",
+      "gloss": "ย่า ยาย",
+      "note": "สองท่าต่อกัน"
+    },
+    {
+      "id": "p20",
+      "kind": "pair",
+      "prompt": "น้า  →  อา",
+      "gloss": "น้า อา",
+      "note": "สองท่าต่อกัน"
+    },
+    {
+      "id": "p21",
+      "kind": "pair",
+      "prompt": "อา  →  น้า",
+      "gloss": "อา น้า",
+      "note": "สองท่าต่อกัน"
+    },
+    {
+      "id": "p30",
+      "kind": "pair",
+      "prompt": "กิน  →  ดู",
+      "gloss": "กิน ดู",
+      "note": "สองท่าต่อกัน"
+    },
+    {
+      "id": "p31",
+      "kind": "pair",
+      "prompt": "ดู  →  กิน",
+      "gloss": "ดู กิน",
+      "note": "สองท่าต่อกัน"
+    },
+    {
+      "id": "p40",
+      "kind": "pair",
+      "prompt": "คุณ  →  ฉัน",
+      "gloss": "คุณ ฉัน",
+      "note": "สองท่าต่อกัน"
+    },
+    {
+      "id": "p41",
+      "kind": "pair",
+      "prompt": "ฉัน  →  คุณ",
+      "gloss": "ฉัน คุณ",
+      "note": "สองท่าต่อกัน"
+    },
+    {
+      "id": "s00",
+      "kind": "sentence",
+      "prompt": "ยายกินข้าว",
+      "gloss": "ยาย ข้าว กิน",
+      "note": "TSL51"
+    },
+    {
+      "id": "s01",
+      "kind": "sentence",
+      "prompt": "คุณเรียนภาษามือ",
+      "gloss": "ภาษามือ คุณ เรียน",
+      "note": "TSL51"
+    },
+    {
+      "id": "s02",
+      "kind": "sentence",
+      "prompt": "แฟนเกิดหูหนวก",
+      "gloss": "แฟน เกิด หูหนวก",
+      "note": "TSL51"
+    },
+    {
+      "id": "s03",
+      "kind": "sentence",
+      "prompt": "แม่กินขนมปัง",
+      "gloss": "ขนมปัง แม่ กิน",
+      "note": "TSL51"
+    },
+    {
+      "id": "s04",
+      "kind": "sentence",
+      "prompt": "พี่เกิดหูหนวก",
+      "gloss": "พี่ เกิด หูหนวก",
+      "note": "TSL51"
+    },
+    {
+      "id": "s05",
+      "kind": "sentence",
+      "prompt": "แฟนชอบเรียนภาษามือ",
+      "gloss": "ภาษามือ แฟน เรียน ชอบ",
+      "note": "TSL51"
+    },
+    {
+      "id": "s06",
+      "kind": "sentence",
+      "prompt": "คุณกินขนมปัง",
+      "gloss": "ขนมปัง คุณ กิน",
+      "note": "TSL51"
+    },
+    {
+      "id": "s07",
+      "kind": "sentence",
+      "prompt": "ฉันเรียนภาษามือ",
+      "gloss": "ภาษามือ ฉัน เรียน",
+      "note": "TSL51"
+    },
+    {
+      "id": "s08",
+      "kind": "sentence",
+      "prompt": "คุณชอบกินไข่",
+      "gloss": "ไข่ คุณ กิน ชอบ",
+      "note": "TSL51"
+    },
+    {
+      "id": "s09",
+      "kind": "sentence",
+      "prompt": "พี่ชอบกินไข่",
+      "gloss": "ไข่ พี่ กิน ชอบ",
+      "note": "TSL51"
+    },
+    {
+      "id": "f00",
+      "kind": "sentence",
+      "prompt": "ฉัน กิน ข้าว",
+      "gloss": "ฉัน กิน ข้าว",
+      "note": "เว้นช่วงสั้น ๆ กลางประโยค"
+    },
+    {
+      "id": "f01",
+      "kind": "sentence",
+      "prompt": "คุณ ชื่อ อะไร",
+      "gloss": "คุณ ชื่อ อะไร",
+      "note": "เว้นช่วงสั้น ๆ กลางประโยค"
+    },
+    {
+      "id": "f02",
+      "kind": "sentence",
+      "prompt": "พรุ่งนี้ ฉัน ไป โรงเรียน",
+      "gloss": "พรุ่งนี้ ฉัน ไป โรงเรียน",
+      "note": "เว้นช่วงสั้น ๆ กลางประโยค"
+    },
+    {
+      "id": "f03",
+      "kind": "sentence",
+      "prompt": "ฉัน ชอบ กิน ปลา",
+      "gloss": "ฉัน ชอบ กิน ปลา",
+      "note": "เว้นช่วงสั้น ๆ กลางประโยค"
+    },
+    {
+      "id": "f04",
+      "kind": "sentence",
+      "prompt": "วันนี้ ฉัน เหนื่อย มาก",
+      "gloss": "วันนี้ ฉัน เหนื่อย มาก",
+      "note": "เว้นช่วงสั้น ๆ กลางประโยค"
+    },
+    {
+      "id": "f05",
+      "kind": "sentence",
+      "prompt": "คุณ อยู่ ที่ไหน",
+      "gloss": "คุณ อยู่ ที่ไหน",
+      "note": "ความเร็วปกติ"
+    },
+    {
+      "id": "f06",
+      "kind": "sentence",
+      "prompt": "น้อง ชอบ ดู",
+      "gloss": "น้อง ชอบ ดู",
+      "note": "ความเร็วปกติ"
+    },
+    {
+      "id": "f07",
+      "kind": "sentence",
+      "prompt": "ยาย ไป โรงพยาบาล",
+      "gloss": "ยาย ไป โรงพยาบาล",
+      "note": "ความเร็วปกติ"
+    },
+    {
+      "id": "f08",
+      "kind": "sentence",
+      "prompt": "ฉัน ไม่ เข้าใจ",
+      "gloss": "ฉัน ไม่ เข้าใจ",
+      "note": "ความเร็วปกติ"
+    },
+    {
+      "id": "f09",
+      "kind": "sentence",
+      "prompt": "พ่อ ทำงาน กรุงเทพ",
+      "gloss": "พ่อ ทำงาน กรุงเทพ",
+      "note": "ความเร็วปกติ"
+    },
+    {
+      "id": "i0",
+      "kind": "idle",
+      "prompt": "วางมือบนโต๊ะ / ตัก",
+      "seconds": 20
+    },
+    {
+      "id": "i1",
+      "kind": "idle",
+      "prompt": "เกาหัว / จัดแว่น / จัดผม",
+      "seconds": 20
+    },
+    {
+      "id": "i2",
+      "kind": "idle",
+      "prompt": "ยกมือค้างไว้นิ่ง ๆ (ไม่ทำท่า)",
+      "seconds": 20
+    },
+    {
+      "id": "i3",
+      "kind": "idle",
+      "prompt": "ดื่มน้ำ / หยิบของ",
+      "seconds": 20
+    },
+    {
+      "id": "o0",
+      "kind": "oov",
+      "prompt": "ทำท่าที่รู้จัก แต่ไม่อยู่ในคลังคำ แล้วพิมพ์ชื่อท่า"
+    },
+    {
+      "id": "o1",
+      "kind": "oov",
+      "prompt": "ทำท่าที่รู้จัก แต่ไม่อยู่ในคลังคำ แล้วพิมพ์ชื่อท่า"
+    },
+    {
+      "id": "o2",
+      "kind": "oov",
+      "prompt": "ทำท่าที่รู้จัก แต่ไม่อยู่ในคลังคำ แล้วพิมพ์ชื่อท่า"
+    },
+    {
+      "id": "o3",
+      "kind": "oov",
+      "prompt": "ทำท่าที่รู้จัก แต่ไม่อยู่ในคลังคำ แล้วพิมพ์ชื่อท่า"
+    },
+    {
+      "id": "o4",
+      "kind": "oov",
+      "prompt": "ทำท่าที่รู้จัก แต่ไม่อยู่ในคลังคำ แล้วพิมพ์ชื่อท่า"
+    },
+    {
+      "id": "o5",
+      "kind": "oov",
+      "prompt": "ทำท่าที่รู้จัก แต่ไม่อยู่ในคลังคำ แล้วพิมพ์ชื่อท่า"
+    },
+    {
+      "id": "o6",
+      "kind": "oov",
+      "prompt": "ทำท่าที่รู้จัก แต่ไม่อยู่ในคลังคำ แล้วพิมพ์ชื่อท่า"
+    },
+    {
+      "id": "o7",
+      "kind": "oov",
+      "prompt": "ทำท่าที่รู้จัก แต่ไม่อยู่ในคลังคำ แล้วพิมพ์ชื่อท่า"
+    }
+  ],
+  "counts": {
+    "word": 60,
+    "pair": 10,
+    "sentence": 20,
+    "idle": 4,
+    "oov": 8
+  },
+  "free_sentences_dropped": []
+}

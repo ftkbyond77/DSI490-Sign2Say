@@ -1,0 +1,22 @@
+{
+ "mAP50": 0.9949060093422745,
+ "mAP50_95": 0.8775517282140989,
+ "precision": 0.9964028353955481,
+ "recall": 0.9923578751164958,
+ "split": {
+  "images": {
+   "train": 23965,
+   "val": 3475,
+   "test": 4393
+  },
+  "subjects": {
+   "train": 5979,
+   "val": 798,
+   "test": 1196
+  },
+  "source": "cj-mills/hagrid-sample-30k-384p",
+  "licence": "CC BY-SA 4.0",
+  "split": "by user_id (subject-independent)"
+ },
+ "weights": "artifacts\\runs\\v11-hand-detector\\weights\\best.pt"
+}

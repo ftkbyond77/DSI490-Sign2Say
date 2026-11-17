@@ -1,0 +1,11 @@
+{
+ "clips": 253,
+ "spans": 164,
+ "distinct_words": 77,
+ "caption_words_total": 765,
+ "located_share": 0.21437908496732025,
+ "proxy_checkable": 38,
+ "proxy_precision": 0.8947368421052632,
+ "bank_ok": 34,
+ "words_first_coarticulated": 77
+}

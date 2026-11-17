@@ -1,0 +1,341 @@
+{
+ "contract": {
+  "rows": {
+   "/v1/health": {
+    "status_old": 200,
+    "status_new": 200,
+    "lost": [],
+    "added": []
+   },
+   "/v1/info": {
+    "status_old": 200,
+    "status_new": 200,
+    "lost": [],
+    "added": []
+   },
+   "/v1/vocab": {
+    "status_old": 200,
+    "status_new": 200,
+    "lost": [],
+    "added": []
+   },
+   "/v1/translate": {
+    "status_old": 200,
+    "status_new": 200,
+    "lost": [],
+    "added": []
+   },
+   "/v1/translate/video": {
+    "status_old": 200,
+    "status_new": 200,
+    "lost": [],
+    "added": [
+     "alternatives",
+     "decision",
+     "p_known"
+    ]
+   },
+   "/v1/live": {
+    "status_old": null,
+    "status_new": null,
+    "lost": [],
+    "added": []
+   }
+  },
+  "passed": true
+ },
+ "replay": {
+  "n": 77,
+  "changed": 13,
+  "shown_old": 45,
+  "shown_new": 35,
+  "unsure_old": 162,
+  "unsure_new": 160,
+  "diffs": [
+   {
+    "name": "20261004_013359_702.json.gz",
+    "old": [
+     "ฉัน",
+     "J",
+     "J"
+    ],
+    "new": [
+     "J",
+     "J",
+     "สบายดี"
+    ],
+    "old_unsure": 4,
+    "new_unsure": 4
+   },
+   {
+    "name": "20261004_134232_337.json.gz",
+    "old": [],
+    "new": [],
+    "old_unsure": 2,
+    "new_unsure": 3
+   },
+   {
+    "name": "20261008_223945_909.json.gz",
+    "old": [
+     "สวัสดี",
+     "ฉัน"
+    ],
+    "new": [
+     "สวัสดี"
+    ],
+    "old_unsure": 3,
+    "new_unsure": 4
+   },
+   {
+    "name": "20261009_001911_501.json.gz",
+    "old": [],
+    "new": [],
+    "old_unsure": 3,
+    "new_unsure": 3
+   },
+   {
+    "name": "20261009_001932_174.json.gz",
+    "old": [],
+    "new": [],
+    "old_unsure": 3,
+    "new_unsure": 2
+   },
+   {
+    "name": "20261030_200453_093.json.gz",
+    "old": [
+     "ฉัน",
+     "ชื่อ",
+     "ฉัน",
+     "ชอบ"
+    ],
+    "new": [
+     "ชื่อ",
+     "ชอบ"
+    ],
+    "old_unsure": 2,
+    "new_unsure": 4
+   },
+   {
+    "name": "20261101_210225_939.json.gz",
+    "old": [
+     "ฉัน",
+     "เรียน",
+     "ภาษามือ"
+    ],
+    "new": [
+     "เรียน",
+     "ภาษามือ"
+    ],
+    "old_unsure": 2,
+    "new_unsure": 2
+   },
+   {
+    "name": "20261101_210950_647.json.gz",
+    "old": [
+     "ฉัน",
+     "เรียน",
+     "ภาษามือ"
+    ],
+    "new": [
+     "เรียน",
+     "ภาษามือ"
+    ],
+    "old_unsure": 2,
+    "new_unsure": 2
+   },
+   {
+    "name": "20261101_224800_229.json.gz",
+    "old": [
+     "ฉัน",
+     "เรียน",
+     "ภาษามือ"
+    ],
+    "new": [
+     "เรียน",
+     "ภาษามือ"
+    ],
+    "old_unsure": 2,
+    "new_unsure": 2
+   },
+   {
+    "name": "20261101_224951_897.json.gz",
+    "old": [],
+    "new": [],
+    "old_unsure": 3,
+    "new_unsure": 3
+   },
+   {
+    "name": "20261101_225018_731.json.gz",
+    "old": [],
+    "new": [],
+    "old_unsure": 5,
+    "new_unsure": 5
+   },
+   {
+    "name": "20261105_143646_889.json.gz",
+    "old": [],
+    "new": [],
+    "old_unsure": 1,
+    "new_unsure": 1
+   },
+   {
+    "name": "20261107_200423_239.json.gz",
+    "old": [],
+    "new": [],
+    "old_unsure": 2,
+    "new_unsure": 2
+   }
+  ]
+ },
+ "latency": {
+  "old": {
+   "n": 75,
+   "p50": 638.8006999986828,
+   "p90": 1679.1526000015438,
+   "max": 4484.169200000906
+  },
+  "new": {
+   "n": 75,
+   "p50": 631.3408999994863,
+   "p90": 1684.2159000007086,
+   "max": 4519.889000002877
+  },
+  "p50_ratio": 0.988322179360148,
+  "p90_ratio": 1.0030153900242065,
+  "passed": true
+ },
+ "load": {
+  "old": {
+   "requests": 16,
+   "concurrent": 4,
+   "errors": 0,
+   "wall_s": 5.889329699999507
+  },
+  "new": {
+   "requests": 16,
+   "concurrent": 4,
+   "errors": 0,
+   "wall_s": 6.048555499997747
+  },
+  "passed": true
+ },
+ "streaming": {
+  "old": {
+   "n": 10,
+   "agreement": 0.2566666666666667,
+   "flicker": 0.0,
+   "delay_mean": 3.0615
+  },
+  "new": {
+   "n": 10,
+   "agreement": 0.33,
+   "flicker": 0.0,
+   "delay_mean": 2.895
+  },
+  "passed": true
+ },
+ "robustness": {
+  "new": {
+   "empty": {
+    "status": 400,
+    "crash": false,
+    "words": null,
+    "shown": null
+   },
+   "no_hands": {
+    "status": 200,
+    "crash": false,
+    "words": [],
+    "shown": []
+   },
+   "one_hand": {
+    "status": 200,
+    "crash": false,
+    "words": [
+     "ให้",
+     "เกิด",
+     "ดู"
+    ],
+    "shown": []
+   },
+   "fps8": {
+    "status": 200,
+    "crash": false,
+    "words": [
+     "เกิด",
+     "สนทนา"
+    ],
+    "shown": []
+   },
+   "long60": {
+    "status": 200,
+    "crash": false,
+    "words": [
+     "สวัสดี",
+     "เข็มกลัด",
+     "ฉัน",
+     "โกรธ",
+     "เข็มกลัด",
+     "เช้า",
+     "ฉัน",
+     "เข็มกลัด",
+     "โกรธ",
+     "เข็มกลัด",
+     "ฉัน",
+     "โกรธ",
+     "เข็มกลัด",
+     "เรียน",
+     "ฉัน",
+     "เข็มกลัด",
+     "ฉัน",
+     "ไป",
+     "เข็มกลัด",
+     "ฉัน",
+     "โกรธ",
+     "อันตราย",
+     "กิน",
+     "เข็มกลัด",
+     "เกิด",
+     "ให้",
+     "เพื่อน",
+     "กิน",
+     "เข็มกลัด",
+     "กิน",
+     "เข็มกลัด"
+    ],
+    "shown": []
+   },
+   "left_handed": {
+    "status": 200,
+    "crash": false,
+    "words": [
+     "ให้",
+     "เกิด",
+     "เพื่อน"
+    ],
+    "shown": []
+   },
+   "out_of_frame": {
+    "status": 200,
+    "crash": false,
+    "words": [
+     "ให้",
+     "เกิด",
+     "เพื่อน"
+    ],
+    "shown": []
+   },
+   "corrupt": {
+    "status": 200,
+    "crash": false,
+    "words": [
+     "ให้",
+     "ฉัน",
+     "เพื่อน"
+    ],
+    "shown": []
+   }
+  },
+  "passed": true
+ }
+}

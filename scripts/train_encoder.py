@@ -57,7 +57,8 @@ class PoseStoreMM:
 
     def _open(self):
         if self._kp is None:                      # _sc first: a thread that sees _kp set also sees _sc (eval uses threads)
-            self._sc = np.load(self.root / "SC.npy", mmap_mode="r"); self._kp = np.load(self.root / "KP.npy", mmap_mode="r")
+            mm = None if os.environ.get("THAISLM_STORE_RAM") == "1" else "r"     # v11: RAM copy = 3.7× faster loader (no page faults)
+            self._sc = np.load(self.root / "SC.npy", mmap_mode=mm); self._kp = np.load(self.root / "KP.npy", mmap_mode=mm)
 
     def get(self, i, a=None, b=None):
         from modules.encoder import SLOTS
@@ -75,6 +76,8 @@ class PoseStoreMM:
 def ensure_mm():
     src = SHARDS / "pose_store.npz"
     stamp = MM / "meta.json"
+    if os.environ.get("THAISLM_SKIP_MM_CHECK") == "1" and stamp.exists():      # v11 Modal: the Volume carries shards_mm only
+        return
     if stamp.exists() and json.loads(stamp.read_text(encoding="utf-8")).get("mtime") == src.stat().st_mtime:
         return
     MM.mkdir(parents=True, exist_ok=True)

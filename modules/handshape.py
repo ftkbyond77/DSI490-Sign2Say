@@ -113,11 +113,14 @@ class HandBank:
         return _norm(((D - tf["mu"]) / tf["sd"]) @ tf["A"])
 
     @classmethod
-    def load(cls, npz, n_concepts, allowed=None, fold=None):
-        """fold: runtime.variant_lut (sign variants read as their word)."""
+    def load(cls, npz, n_concepts, allowed=None, fold=None, keep=None):
+        """fold: runtime.variant_lut (sign variants read as their word). keep: row mask (v11: BLIND-v11 rows left out)."""
         z = np.load(npz)
         tf = dict(mu=z["mu"], sd=z["sd"], A=z["A"])
-        return cls(z["P"], z["c"] if fold is None else fold[z["c"]], n_concepts, tf, allowed)
+        P, c = z["P"], z["c"]
+        if keep is not None:
+            P, c = P[keep], c[keep]
+        return cls(P, c if fold is None else fold[c], n_concepts, tf, allowed)
 
     def scores(self, D):
         """raw descriptors [N, DIM] → [N, C]: mean of the top-2 projected similarities per concept, -2 where none."""

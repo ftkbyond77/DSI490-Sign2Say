@@ -1,0 +1,44 @@
+{
+ "v10": {
+  "n": 624,
+  "capped_or_long": 218,
+  "ends_earlier": 7,
+  "accepted_requests_frames_kept_median": 0.8947368421052632,
+  "accepted_requests_losing_half": 0.05405405405405406
+ },
+ "LM2_t800": {
+  "n": 624,
+  "capped_or_long": 218,
+  "ends_earlier": 6,
+  "accepted_requests_frames_kept_median": 0.9311740890688259,
+  "accepted_requests_losing_half": 0.04504504504504504
+ },
+ "LM2_t1000": {
+  "n": 624,
+  "capped_or_long": 218,
+  "ends_earlier": 6,
+  "accepted_requests_frames_kept_median": 0.9311740890688259,
+  "accepted_requests_losing_half": 0.04504504504504504
+ },
+ "LM2_t1200": {
+  "n": 624,
+  "capped_or_long": 218,
+  "ends_earlier": 6,
+  "accepted_requests_frames_kept_median": 0.9311740890688259,
+  "accepted_requests_losing_half": 0.036036036036036036
+ },
+ "LM2_LM1": {
+  "n": 624,
+  "capped_or_long": 218,
+  "ends_earlier": 79,
+  "accepted_requests_frames_kept_median": 0.9311740890688259,
+  "accepted_requests_losing_half": 0.06306306306306306
+ },
+ "LM2_LM1_LM3": {
+  "n": 624,
+  "capped_or_long": 218,
+  "ends_earlier": 77,
+  "accepted_requests_frames_kept_median": 0.9311740890688259,
+  "accepted_requests_losing_half": 0.06306306306306306
+ }
+}

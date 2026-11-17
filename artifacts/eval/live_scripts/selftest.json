@@ -1,0 +1,1 @@
+{"name": "selftest", "title": "self-test (1 min)", "prompts": [{"id": "w00", "kind": "word", "prompt": "กิน", "gloss": "กิน"}, {"id": "w01", "kind": "word", "prompt": "ขอบคุณ", "gloss": "ขอบคุณ"}, {"id": "s00", "kind": "sentence", "prompt": "ฉันกินข้าว", "gloss": "ฉัน กิน ข้าว"}, {"id": "i0", "kind": "idle", "prompt": "วางมือ", "seconds": 5}]}

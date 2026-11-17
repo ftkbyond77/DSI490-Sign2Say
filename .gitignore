@@ -153,3 +153,12 @@ artifacts/runs/**/model*.safetensors
 # ---- YOLO hand-detector PoC (lab4-handExtractor.ipynb): not used by the system — weights / dataset / runs stay local; the README (data URL, training recipe) is kept
 PoC/yolo/*
 !PoC/yolo/README.md
+
+# ---- v11/v12 experiment outputs (not shipped; heavy banks / clips / candidate runs stay local)
+artifacts/v11/
+artifacts/v12/
+artifacts/runs/v11-*/
+artifacts/runs/v12-*/
+artifacts/eval/v11/
+artifacts/eval/hardcase_v11/
+models/model-v11/

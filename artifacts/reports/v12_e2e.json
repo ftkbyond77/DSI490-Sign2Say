@@ -1,0 +1,167 @@
+{
+  "created": "2026-11-15 20:40",
+  "set": "e2e_v12",
+  "n_items": 66,
+  "parts": {
+    "tsl51_blind": 30,
+    "rid_blind": 30,
+    "negative": 6
+  },
+  "asr": "elevenlabs",
+  "face": "on",
+  "llm": "off",
+  "modules": {
+    "face": "face-model",
+    "tts": "models/Speech-model-v4-TTS",
+    "voice": "male"
+  },
+  "systems": {
+    "v10": {
+      "n": 60,
+      "BLEU4": 1.67,
+      "sentence_BLEU": 22.0,
+      "chrF": 19.28,
+      "ROUGE1": 0.49323299994352626,
+      "ROUGEL": 0.3933917301022565,
+      "METEOR": 0.28812201588013286,
+      "WER": 0.721740529708796,
+      "CER": 0.703259978899935,
+      "exact": 0.08333333333333333,
+      "speech_produced": 0.8833333333333333,
+      "empty": 0.11666666666666667,
+      "question_accuracy": 0.5,
+      "question_n": 6,
+      "negative_spoken_rate": 0.0,
+      "RTF_recognition": 0.13922828214066274,
+      "compute_ms_p50": 1109.4620500007295,
+      "compute_ms_p90": 1714.1009499991924,
+      "speech_elevenlabs": {
+        "n": 53,
+        "ASR_CER_vs_TTS": 0.08466376390904692,
+        "ASR_WER_vs_TTS": 0.12264150943396225,
+        "ASR_CER_vs_GT": 0.6533066493141468,
+        "ASR_WER_vs_GT": 0.6876846967053754,
+        "RTF_speech": 1.115504915703461
+      }
+    },
+    "v11": {
+      "n": 60,
+      "BLEU4": 0.0,
+      "sentence_BLEU": 14.23,
+      "chrF": 12.28,
+      "ROUGE1": 0.36394153456510436,
+      "ROUGEL": 0.3104494710730409,
+      "METEOR": 0.18563266555215352,
+      "WER": 0.7768992598675262,
+      "CER": 0.7780404159976748,
+      "exact": 0.05,
+      "speech_produced": 0.9,
+      "empty": 0.1,
+      "question_accuracy": 0.5,
+      "question_n": 6,
+      "negative_spoken_rate": 0.0,
+      "RTF_recognition": 0.15811577680388514,
+      "compute_ms_p50": 1248.7926499998139,
+      "compute_ms_p90": 1771.7730999993364,
+      "speech_elevenlabs": {
+        "n": 54,
+        "ASR_CER_vs_TTS": 0.18415637860082304,
+        "ASR_WER_vs_TTS": 0.3611111111111111,
+        "ASR_CER_vs_GT": 0.764180709133219,
+        "ASR_WER_vs_GT": 0.8014930047910783,
+        "RTF_speech": 1.1809892228225847
+      }
+    },
+    "v12": {
+      "n": 60,
+      "BLEU4": 1.67,
+      "sentence_BLEU": 22.0,
+      "chrF": 19.28,
+      "ROUGE1": 0.49323299994352626,
+      "ROUGEL": 0.3933917301022565,
+      "METEOR": 0.28812201588013286,
+      "WER": 0.721740529708796,
+      "CER": 0.703259978899935,
+      "exact": 0.08333333333333333,
+      "speech_produced": 0.8833333333333333,
+      "empty": 0.11666666666666667,
+      "question_accuracy": 0.5,
+      "question_n": 6,
+      "negative_spoken_rate": 0.0,
+      "RTF_recognition": 0.14605443296113138,
+      "compute_ms_p50": 1143.8275999989855,
+      "compute_ms_p90": 1659.018250000372,
+      "ablations": {
+        "oracle_gloss_rules": {
+          "n": 60,
+          "BLEU4": 18.74,
+          "sentence_BLEU": 34.87,
+          "chrF": 39.88,
+          "ROUGE1": 0.7644097625664735,
+          "ROUGEL": 0.6251240482807592,
+          "METEOR": 0.5487902153246681,
+          "WER": 0.5519220432417027,
+          "CER": 0.6001399113514485,
+          "exact": 0.1,
+          "speech_produced": 1.0,
+          "empty": 0.0,
+          "question_accuracy": 0.8333333333333334,
+          "question_n": 6,
+          "negative_spoken_rate": 0.0
+        },
+        "top1_no_acceptance": {
+          "n": 60,
+          "BLEU4": 3.38,
+          "sentence_BLEU": 26.17,
+          "chrF": 25.05,
+          "ROUGE1": 0.5368505016028746,
+          "ROUGEL": 0.3955291186435606,
+          "METEOR": 0.3633939645308674,
+          "WER": 0.749977973809243,
+          "CER": 0.7433453823676341,
+          "exact": 0.1,
+          "speech_produced": 1.0,
+          "empty": 0.0,
+          "question_accuracy": 0.5,
+          "question_n": 6,
+          "negative_spoken_rate": 0.8333333333333334
+        },
+        "accepted_only_words": {
+          "n": 60,
+          "BLEU4": 0.89,
+          "sentence_BLEU": 18.37,
+          "chrF": 15.88,
+          "ROUGE1": 0.4368892350128048,
+          "ROUGEL": 0.3119950551186249,
+          "METEOR": 0.23884204232585035,
+          "WER": 0.7930542306277601,
+          "CER": 0.7857305022743486,
+          "exact": 0.05,
+          "speech_produced": 0.8333333333333334,
+          "empty": 0.16666666666666666,
+          "question_accuracy": 0.5,
+          "question_n": 6,
+          "negative_spoken_rate": 0.0
+        }
+      },
+      "speech_elevenlabs": {
+        "n": 53,
+        "ASR_CER_vs_TTS": 0.08176100628930819,
+        "ASR_WER_vs_TTS": 0.11320754716981131,
+        "ASR_CER_vs_GT": 0.652163138736674,
+        "ASR_WER_vs_GT": 0.6849892789156179,
+        "RTF_speech": 1.0766299525201706
+      }
+    }
+  },
+  "floor_tts_gt_asr": {
+    "n": 20,
+    "CER": 0.0,
+    "WER": 0.0,
+    "asr_sources": [
+      "elevenlabs"
+    ]
+  },
+  "asr_calls": 66,
+  "asr_audio_minutes": 1.25
+}

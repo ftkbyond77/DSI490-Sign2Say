@@ -161,7 +161,134 @@ def _canon():
     return lambda w: cm.get(TEST_SURFACE.get(w, w), TEST_SURFACE.get(w, w))
 
 
+def _idle_items(role):
+    """v11 idle set: TSL51 'null_act' clips (hands up / moving, not signing). idle_tune = the 34 clips of the train role (the chain's
+    TUNE idle set: the decision layer never trained on them), idle_test = the 23 test-role clips (dev-test). Reference = no words."""
+    from fluent_synth import PoseStore
+    store = PoseStore(ROOT / "cloud_s3/data_prep/shards/pose_store.npz")
+    C = pd.read_parquet(PREP / "shards" / "clips.parquet")
+    q = C[(C.kind == "null") & (C.view == "primary") & (C.role == ("train" if role == "tune" else "test")) & C.clip_id.isin(store.row)]
+    out = []
+    for r in q.itertuples():
+        kp, sc, hw = store.get(store.row[r.clip_id])
+        out.append(dict(id=r.clip_id, kp=kp, sc=sc, hw=hw, ref=[], gold=[], bank="eval", signer=r.signer, dataset=r.dataset))
+    return out
+
+
+def _tail_items(role, n_max=300, seed=0):
+    """v11 known-unknown set: isolated clips of TUNE (val) / dev-test (test) people whose concept is NOT in the conversation vocabulary
+    (Tail signs) — the open-set negatives. Reference = no in-vocabulary word (the right output is UNKNOWN / nothing)."""
+    from fluent_synth import PoseStore
+    from modules.sealed import is_sealed, sealed_signers
+    store = PoseStore(ROOT / "cloud_s3/data_prep/shards/pose_store.npz")
+    C = pd.read_parquet(PREP / "shards" / "clips.parquet")
+    V = set(read_json(V10 / "vocab_conversation.json")["concepts"])
+    q = C[(C.kind == "isolated") & (C.view == "primary") & (C.role == ("val" if role == "tune" else "test")) & ~C.concept.isin(V)
+          & C.concept.notna() & C.has_span & C.clip_id.isin(store.row) & ~C.signer.isin(sealed_signers())]
+    q = q[~q.clip_id.map(is_sealed)]
+    q = q.groupby("signer", group_keys=False)[q.columns.tolist()].apply(lambda g: g.sample(min(len(g), 60), random_state=seed))
+    q = q.sample(min(n_max, len(q)), random_state=seed)
+    out = []
+    for r in q.itertuples():
+        kp, sc, hw = store.get(store.row[r.clip_id])
+        out.append(dict(id=r.clip_id, kp=kp, sc=sc, hw=hw, ref=[], gold=[], bank="eval", signer=r.signer, dataset=r.dataset, tail_concept=r.concept))
+    return out
+
+
+def _blind_pool():
+    """BLIND-v11 people's isolated clips (any role) — only with THAISLM_OPEN_BLIND=1 (modules/sealed.py)"""
+    from fluent_synth import PoseStore
+    from modules.sealed import blind_open, sealed_signers
+    if not blind_open():
+        raise PermissionError("BLIND-v11 is sealed: THAISLM_OPEN_BLIND=1 (TPH 4 only)")
+    store = PoseStore(ROOT / "cloud_s3/data_prep/shards/pose_store.npz")
+    C = pd.read_parquet(PREP / "shards" / "clips.parquet")
+    q = C[(C.kind == "isolated") & (C.view == "primary") & C.signer.isin(sealed_signers()) & C.has_span & C.clip_id.isin(store.row) & C.concept.notna()]
+    return store, q
+
+
+def _blind_items(name):
+    """iso_blind (conversation words, ≤ 3 clips per person × word) · flu_blind (fluent synthetic sentences of each sealed person) ·
+    t51_blind_x<s> (the sealed TSL51 sentence_test templates) · tail_blind (Tail signs of the sealed people: open-set)"""
+    from modules.sealed import manifest
+    V = set(read_json(V10 / "vocab_conversation.json")["concepts"])
+    if name.startswith("t51_blind"):
+        from modules.segment import resample
+        speed = float(name.split("_x")[1])
+        A = read_json(ART / "runs" / "seq-v7" / "tsl51_alignment.json")
+        sealed = set(manifest()["t51_sentences"])
+        out = []
+        for cid, a in A.items():
+            if cid not in sealed:
+                continue
+            z = np.load(PREP / "pose_mp" / "tsl51_user_sentence" / f"{cid.split(':', 1)[1]}.npz")
+            kp, sc, hw = z["kp"].astype(np.float32), z["sc"].astype(np.float32), tuple(int(v) for v in z["hw"])
+            n = len(kp); gold = [(s_["f0"], s_["f1"]) for s_ in a["segments"]]
+            if speed != 1.0:
+                kp, sc = resample(kp, sc, speed); r = (len(kp) - 1) / max(n - 1, 1)
+                gold = [(int(round(f0 * r)), int(round(f1 * r))) for f0, f1 in gold]
+            out.append(dict(id=f"{cid}@{speed}", kp=kp, sc=sc, hw=hw, ref=list(a["glosses"]), gold=gold, bank="eval", signer="S_51_user"))
+        return out
+    store, q = _blind_pool()
+    if name == "iso_blind":
+        q = q[q.concept.isin(V)].groupby(["signer", "concept"], group_keys=False)[q.columns.tolist()].apply(lambda g: g.head(3))
+        return [dict(id=r.clip_id, kp=store.get(store.row[r.clip_id])[0], sc=store.get(store.row[r.clip_id])[1], hw=store.get(store.row[r.clip_id])[2],
+                     ref=[r.concept], gold=[(int(r.span_f0), int(r.span_f1))], bank="eval", signer=r.signer, dataset=r.dataset) for r in q.itertuples()]
+    if name == "tail_blind":
+        q = q[~q.concept.isin(V)].groupby("signer", group_keys=False)[q.columns.tolist()].apply(lambda g: g.sample(min(len(g), 80), random_state=0))
+        return [dict(id=r.clip_id, kp=store.get(store.row[r.clip_id])[0], sc=store.get(store.row[r.clip_id])[1], hw=store.get(store.row[r.clip_id])[2],
+                     ref=[], gold=[], bank="eval", signer=r.signer, dataset=r.dataset, tail_concept=r.concept) for r in q.itertuples()]
+    if name == "flu_blind":
+        from fluent_synth import FluentSynth
+        from modules.segment import resample
+        q = q[q.concept.isin(V)]
+        groups = [g.drop_duplicates("concept") for _, g in q.groupby("signer")]
+        groups = [g for g in groups if len(g) >= 4]
+        rng = np.random.RandomState(29); fs = FluentSynth(store, q, seed=31)
+        out = []
+        for i in range(120):
+            g = groups[i % len(groups)]
+            picks = g.sample(min(len(g), rng.randint(3, 6)), random_state=rng.randint(1e9))
+            kp, sc, bounds, wds = fs.sentence(picks, mode="fluent+blend", trim=rng.uniform(0.15, 0.3), overlap=(0, 4))
+            n0 = len(kp); kp, sc = resample(kp, sc, rng.uniform(0.9, 1.3)); r_ = (len(kp) - 1) / max(n0 - 1, 1)
+            hw = tuple(int(x) for x in store.hw[store.row[picks.clip_id.iloc[0]]])
+            out.append(dict(id=f"flu_blind_{i:03d}", kp=kp, sc=sc, hw=hw, ref=list(wds), gold=[(int(a_ * r_), int(b_ * r_)) for a_, b_ in bounds],
+                            bank="eval", signer=picks.signer.iloc[0]))
+        return out
+    raise KeyError(name)
+
+
+def _newsig_items(name):
+    """v12 NEWSIG sets (prompt-opt-v12 C4): isolated in-vocabulary clips of the new-source signers, gold = movement span (1D phases).
+    nsig_dev = the word-level hold-out of the TRAIN new signers; nsig_blind12 = BLIND-v12 people (THAISLM_OPEN_BLIND12=1 only)."""
+    from modules.schema import load
+    N = pd.read_parquet(PREP / "manifest" / "clips_v12_new.parquet")
+    role = "blind_v12" if "blind12" in name else "newsig_dev"
+    q = N[(N.role == role) & N.extracted & N.use & N.in_vocab & N.kind.eq("isolated")]
+    out = []
+    for r in q.itertuples():
+        d = load(PREP / r.pose_file)
+        f0, f1 = (int(r.phase_f0), int(r.phase_f3) + 1) if r.phases_found else (0, int(r.n_frames))
+        out.append(dict(id=r.clip_id, kp=np.asarray(d["kp"], np.float32), sc=np.asarray(d["sc"], np.float32), hw=tuple(int(x) for x in d["hw"]),
+                        ref=[r.concept], gold=[(f0, f1)], bank="eval", signer=r.signer, dataset=r.dataset))
+    return out
+
+
 def build_items(name):
+    if name.startswith("nsig_"):                    # v12 new-signer sets (before the BLIND-v11 branch: "blind12" is BLIND-v12)
+        from modules.sealed import blind12_open
+        if "blind12" in name and not blind12_open():
+            raise PermissionError("BLIND-v12 is sealed: THAISLM_OPEN_BLIND12=1 (TPH 4 only)")
+        return _newsig_items(name)
+    if name.startswith("w_"):                       # v12 web-domain sets (scripts/v12_merge.py web_items)
+        sys.path.insert(0, str(ROOT / "scripts")); from v12_merge import web_items
+        return web_items(name)
+    if "blind" in name:
+        return _blind_items(name)
+    if name.startswith("tail_"):
+        return _tail_items(name.split("_")[1])
+    if name.startswith("idle_"):
+        return _idle_items(name.split("_")[1])
     if name.startswith("t51_"):
         _, split, sp = name.split("_")
         return _t51_items(split, float(sp[1:]))
@@ -179,7 +306,11 @@ class Harness:
         logging.disable(logging.WARNING)
         from modules.pipeline import SignPipeline, lm_bank
         from modules.runtime import Bank
-        self.pipe = SignPipeline(model_dir=V9, backend="onnx", device="cpu", vocab="conversation", use_llm=False, use_face=False,
+        # v11: the front pass runs model-v10 (= v9 networks + the phase-3 signing gate, onnx/gate_tagger.onnx) so cached sets match
+        # what v10 ships; THAISLM_HARNESS_MD=models/model-v9 restores the pre-gate front pass
+        import os
+        md = Path(os.environ.get("THAISLM_HARNESS_MD", V10))
+        self.pipe = SignPipeline(model_dir=md, backend="onnx", device="cpu", vocab="conversation", use_llm=False, use_face=False,
                                  bank_file=ART / "eval" / "bank_eval.npz")
         b = np.load(V9 / "bank.npz")
         allowed = {self.pipe.concepts.index(c) for c in read_json(V9 / "vocab_conversation.json")["concepts"] if c in self.pipe.concepts}
@@ -208,12 +339,40 @@ class Harness:
         self.fold = variant_lut(self.pipe.concepts, variants or {})
         lm_eval, lm_prod = getattr(self, "lm_files", (ART / "eval" / "lm_bank_eval.npz", V9 / "lm_bank.npz"))
         bank_eval, bank_prod = getattr(self, "bank_files", (ART / "eval" / "bank_eval.npz", V9 / "bank.npz"))
-        for name, bf, hf, lf in (("eval", bank_eval, ART / "eval" / "hand_bank_eval.npz", lm_eval),
-                                 ("prod", bank_prod, V9 / "hand_bank.npz", lm_prod)):
+        for name, bf, hf, lf in (("eval", bank_eval, getattr(self, "hand_eval", ART / "eval" / "hand_bank_eval.npz"), lm_eval),
+                                 ("prod", bank_prod, getattr(self, "hand_prod", V9 / "hand_bank.npz"), lm_prod)):
             z = np.load(bf)
-            self.banks[name] = Bank(z["Z"], self.fold[z["c"]], C, allowed)
-            self.banks[name].hand = HandBank.load(hf, C, allowed, self.fold) if hf.exists() else None
-            self.banks[name].lm = lm_bank(lf, C, allowed, self.fold) if lf.exists() else None
+            keep = unsealed_mask(z)                       # v11: BLIND-v11 people never enter a bank (both versions alike)
+            self.banks[name] = Bank(z["Z"][keep], self.fold[z["c"][keep]], C, allowed)
+            self.banks[name].hand = HandBank.load(hf, C, allowed, self.fold, keep=keep) if hf.exists() else None
+            self.banks[name].lm = lm_bank(lf, C, allowed, self.fold, keep=keep) if lf.exists() else None
+            self.banks[name].keep = keep
+            # v11 known unknowns: every NON-vocabulary concept of the same bank (Tail) — the open-set head compares the best vocabulary
+            # match with the best Tail match (modules/pipeline.hand_rescore → "tail_gap")
+            tail_m = keep & ~np.isin(self.fold[z["c"]], np.asarray(sorted(allowed)))
+            self.banks[name].tail = Bank(z["Z"][tail_m], self.fold[z["c"][tail_m]], C) if tail_m.any() else None
+            if lf.exists():
+                lz_ = np.load(lf); okt = lz_["ok"].astype(bool) & tail_m
+                self.banks[name].lm_tail = Bank(lz_["Z"][okt].astype(np.float32), self.fold[z["c"][okt]], C) if okt.any() else None
+            bv = getattr(self, "bank_v11", None)          # v11 bank scoring (modules/runtime.FormBank), switchable per evaluation
+            if bv and "reader" in bv.get("which", ()):      # v11 bank only where segments are NAMED (hand_rescore); decoding keeps Bank
+                self.banks[name].reader = form_bank_from(z, keep, self.fold, C, allowed, bv)
+                if self.banks[name].lm is not None and lf.exists():
+                    lz = np.load(lf); ok = lz["ok"].astype(bool) & keep
+                    self.banks[name].lm = form_bank_from(dict(z, Z=lz["Z"]), ok, self.fold, C, allowed, bv)
+            elif bv:
+                fb = form_bank_from(z, keep, self.fold, C, allowed, bv)
+                hand, lm = self.banks[name].hand, self.banks[name].lm
+                tl, ltl = self.banks[name].tail, getattr(self.banks[name], "lm_tail", None)
+                if "enc" in bv.get("which", ("enc", "lm")):
+                    self.banks[name] = fb; self.banks[name].keep = keep
+                    self.banks[name].tail, self.banks[name].lm_tail = tl, ltl
+                self.banks[name].hand = hand
+                if "lm" in bv.get("which", ("enc", "lm")) and lm is not None and lf.exists():
+                    lz = np.load(lf); ok = lz["ok"].astype(bool) & keep
+                    self.banks[name].lm = form_bank_from(dict(z, Z=lz["Z"]), ok, self.fold, C, allowed, bv)
+                else:
+                    self.banks[name].lm = lm
         self.pipe.bank = self.banks["eval"]
         self.vocab = {self.pipe.concepts[c] for c in self.banks["eval"].concepts_present}
         self.vocab_words = sorted(words)
@@ -235,6 +394,8 @@ class Harness:
         return {k: (v.astype(np.float16) if k in ("H", "H2") and v is not None else v) for k, v in st.items()}
 
     def back(self, st, bank, raw=False):
+        k_ = np.asarray(st["kpi"], np.float32)          # v11 Path B: front pass cached per utterance CONTENT (ids are reused after a set is freed)
+        self.pipe._pb_key = (len(k_), round(float(k_[::5].sum()), 3), round(float(np.asarray(st["sc"])[::5].sum()), 3), float(st.get("f", 1.0)))
         st = {k: (v.astype(np.float32) if k in ("H", "H2") and v is not None else v) for k, v in st.items()}
         segs, _, _ = self.pipe.back(st, self.banks[bank], raw=raw)
         if not raw and self.alphabet != "off" and st["H"] is not None:      # v8.1: fingerspelling runs on every utterance
@@ -249,26 +410,103 @@ class Harness:
         self._use_lm(version)
         self._use_bank(version)
         b = baseline(version)
+        if b.get("bank_v11") is not None and getattr(self, "bank_v11", None) != b["bank_v11"]:
+            self.bank_v11, self._vkey = b["bank_v11"], None          # v11: the version's own bank scoring (spotting.json "bank_v11")
+        elif b.get("bank_v11") is None and getattr(self, "bank_v11", None) and not getattr(self, "bank_v11_forced", False):
+            self.bank_v11, self._vkey = None, None
         self.set_vocab(b["vocab"], b["variants"])
+        pbc = b["spot"].get("pathb")                    # v11 Path B front end (new encoder + boundary head) when the version ships it
+        if pbc and getattr(self, "_pb_cfg", None) != pbc:
+            from modules.pathb import PathB
+            self.pipe.pathb = PathB(ART / "runs" / pbc["enc"] / "encoder_best.pt",
+                                    ART / "runs" / pbc["boundary"] / "boundary_best.pt" if pbc.get("boundary") else None,
+                                    np.load(ART / "runs" / pbc["enc"] / "null_proto.npy"), gate_veto=pbc.get("gate_veto", True),
+                                    ctc_ckpt=ART / "runs" / pbc["ctc"] / "protoctc_best.pt" if pbc.get("ctc") else None, mode=pbc.get("mode", "S1"))
+            self._pb_cfg, self.pipe._pb_cache = pbc, {}
+        elif not pbc:
+            self.pipe.pathb, self._pb_cfg = None, None
+        vc_ = b["spot"].get("verifier")                    # v11 minimal-pair verifier (modules/verifier.py) when the version ships it
+        if vc_ and getattr(self, "_ver_cfg", None) != vc_:
+            if (b["dir"] / "verifier" / "verifier.json").exists():        # the production verifier (ONNX + NumPy) exactly as shipped
+                from modules.verifier import OnnxVerifier
+                self.pipe.verifier = OnnxVerifier(b["dir"], self.pipe)
+            else:
+                from modules.verifier import RuntimeVerifier
+                self.pipe.verifier = RuntimeVerifier(ART / "runs" / vc_["enc"] / "verifier.pkl", ART / "runs" / vc_["enc"] / "encoder_best.pt", self.pipe)
+            self._ver_cfg = vc_
+        elif not vc_:
+            self.pipe.verifier, self._ver_cfg = None, None
         allowed = {self.pipe.concepts.index(c) for c in self.vocab}
         prior = class_prior(self.bank_files[0], self.pipe.concepts, allowed, self.fold) if b["prior"] else None
         self.configure(spot=b["spot"], cal=b["cal"], prior=prior)
         self.prod_prior = dict(np.load(b["prior"])) if b["prior"] else None
         self.pipe.spell_cfg = dict(self.pipe.spell_cfg, **(b["spell"] or {}))
         self.alphabet = b["alphabet"]
+        self._use_lm2(b.get("dir"))
         return b
+
+    def _use_lm2(self, d):
+        """v12 dual reader: the version's SECOND landmark encoder (onnx/lmenc2.onnx + lm2_bank.npz; spotting.json read.lm2_w) — eval bank
+        = the v11 encoder's evaluation bank (artifacts/eval/v11), BLIND rows out; absent = no second reader."""
+        from modules.pipeline import lm_bank
+        o = d / "onnx" / "lmenc2.onnx" if d is not None else None
+        if o is None or not o.exists():
+            self.pipe.lm2 = None
+            for bk in self.banks.values():
+                bk.lm2 = None
+            return
+        if getattr(self, "_lm2_dir", None) != d:
+            from modules.lmenc import OnnxLM
+            self._lm2_obj, self._lm2_dir = OnnxLM(o, device="cpu"), d
+        self.pipe.lm2 = self._lm2_obj                  # (switching to a version without one sets pipe.lm2 = None: restore it every time)
+        cidx = {c: i for i, c in enumerate(self.pipe.concepts)}
+        allowed = {cidx[w] for w in self.vocab_words if w in cidx}
+        for name, f in (("eval", ART / "eval" / "v11" / "lm_bank_eval.npz"), ("prod", d / "lm2_bank.npz")):
+            self.banks[name].lm2 = lm_bank(f, len(self.pipe.concepts), allowed, self.fold, keep=self.banks[name].keep)
 
     def _use_bank(self, version):
         """v10x (opt-in) ships its own sign banks (artifacts/v10_experimental/bank.npz + eval/bank_eval.npz: extractor-averaged
         exemplars); every other version uses v9's."""
         ev, pr = V10X / "eval" / "bank_eval.npz", V10X / "bank.npz"
         files = (ev, pr) if version == "v10x" and ev.exists() and pr.exists() else (ART / "eval" / "bank_eval.npz", V9 / "bank.npz")
-        if files != getattr(self, "bank_files", None):
+        hand = (ART / "eval" / "hand_bank_eval.npz", V9 / "hand_bank.npz")
+        if version.startswith("v12"):              # v12: the candidate's own banks (new-signer exemplars appended row-aligned in all three)
+            d = baseline(version)["dir"]
+            if (d / "eval" / "bank_eval.npz").exists() and (d / "bank.npz").exists():
+                files = (d / "eval" / "bank_eval.npz", d / "bank.npz")
+                hand = (d / "eval" / "hand_bank_eval.npz", d / "hand_bank.npz")
+        if files != getattr(self, "bank_files", None) or hand != (getattr(self, "hand_eval", None), getattr(self, "hand_prod", None)):
             self.bank_files, self._vkey = files, None
+            self.hand_eval, self.hand_prod = hand
 
     def _use_lm(self, version):
+        if version.startswith("v12"):              # v12: its own landmark encoder (onnx/lmenc.onnx) or v10's, with its own lm banks
+            d = baseline(version)["dir"]
+            md = d if (d / "onnx" / "lmenc.onnx").exists() else V9
+            ev = d / "eval" / "lm_bank_eval.npz" if (d / "eval" / "lm_bank_eval.npz").exists() else ART / "eval" / "lm_bank_eval.npz"
+            pr = d / "lm_bank.npz" if (d / "lm_bank.npz").exists() else V9 / "lm_bank.npz"
+            files = (ev, pr)
+            if files != getattr(self, "lm_files", None) or getattr(self, "_lm_md", None) != md:
+                from modules.lmenc import OnnxLM
+                self.pipe.lm = OnnxLM(md / "onnx" / "lmenc.onnx", device="cpu")
+                self.lm_files, self._lm_md, self._vkey = files, md, None
+            return
         md = V10 if version == "v10" else V9
         ev = ART / "eval" / "v10" / "lm_bank_eval.npz" if version == "v10" else ART / "eval" / "lm_bank_eval.npz"
+        if version.startswith("v11"):              # v11 candidate / release: its own landmark encoder + banks
+            d = baseline(version)["dir"]
+            if (d / "onnx" / "lmenc.onnx").exists():
+                md, ev = d, d / "eval" / "lm_bank_eval.npz"
+                if not ev.exists():                    # the release folder ships no evaluation bank: artifacts/eval/<version>/
+                    ev = ART / "eval" / version / "lm_bank_eval.npz"
+                files = (ev, md / "lm_bank.npz")
+                if files != getattr(self, "lm_files", None) or getattr(self, "_lm_md", None) != md:
+                    from modules.lmenc import OnnxLM
+                    self.pipe.lm = OnnxLM(md / "onnx" / "lmenc.onnx", device="cpu")
+                    self.lm_files, self._lm_md, self._vkey = files, md, None
+                return
+            version = "v10"
+            md, ev = V10, ART / "eval" / "v10" / "lm_bank_eval.npz"
         if version == "v10" and not (ev.exists() and (md / "lm_bank.npz").exists() and (md / "onnx" / "lmenc.onnx").exists()):
             md, ev = V9, ART / "eval" / "lm_bank_eval.npz"            # v10 without its own landmark encoder = v9's
         files = (ev, md / "lm_bank.npz")
@@ -291,13 +529,53 @@ class Harness:
             self.pipe.class_prior = prior
 
 
+def unsealed_mask(z):
+    """rows of a bank npz (with 'clip' / 'signer') that are not BLIND-v11"""
+    from modules.sealed import is_sealed, sealed_signers
+    ss = sealed_signers()
+    return np.array([not (str(sg) in ss or is_sealed(str(cl))) for cl, sg in zip(z["clip"], z["signer"])], bool)
+
+
+_CLIP_FORM = None
+
+
+def clip_forms():
+    global _CLIP_FORM
+    if _CLIP_FORM is None:
+        f = PREP / "manifest" / "forms.json"
+        _CLIP_FORM = read_json(f)["clip_form"] if f.exists() else {}
+    return _CLIP_FORM
+
+
+def form_bank_from(z, keep, fold, C, allowed, bv):
+    """bank npz rows (Z, c, clip, signer) + row mask → FormBank (forms from cloud_s3/data_prep/manifest/forms.json; a clip without a
+    documented form = form 0 of its word)"""
+    from modules.runtime import FormBank
+    cf = clip_forms()
+    clips = np.asarray(z["clip"]).astype(str)
+    form = np.array([int(cf.get(cl.split("@")[0].split("#")[0], [None, "f0"])[1][1:]) for cl in clips])
+    return FormBank(np.asarray(z["Z"])[keep].astype(np.float32), fold[np.asarray(z["c"])[keep]], C, np.asarray(z["signer"])[keep], form[keep],
+                    lam=float(bv.get("lam", 0.0)), allowed=allowed, w_proto=float(bv.get("w_proto", 0.5)))
+
+
 def cache_path(name):
     return CACHE / f"{name}.pkl"
 
 
 def load_set(name):
+    """cached set; BLIND-v11 people / TSL51 templates are dropped from every non-BLIND set (modules/sealed.py) — they were sealed
+    after these caches were built. BLIND sets ("*_blind*") load only with THAISLM_OPEN_BLIND=1."""
+    from modules.sealed import blind12_open, blind_open, drop_sealed_rows
+    if "blind12" in name:                            # BLIND-v12: its own flag, rows never dropped
+        if not blind12_open():
+            raise PermissionError(f"{name} is sealed BLIND-v12 data: set THAISLM_OPEN_BLIND12=1 (TPH 4 only)")
+        with open(cache_path(name), "rb") as f:
+            return pickle.load(f)
+    if "blind" in name and not blind_open():
+        raise PermissionError(f"{name} is sealed BLIND-v11 data: set THAISLM_OPEN_BLIND=1 (TPH 4 only)")
     with open(cache_path(name), "rb") as f:
-        return pickle.load(f)
+        rows = pickle.load(f)
+    return rows if "blind" in name else drop_sealed_rows(rows)
 
 
 def cmd_cache(a):
@@ -559,6 +837,7 @@ def cmd_lmbank(a):
     (out / "onnx").mkdir(parents=True, exist_ok=True)
     onnx = out / "onnx" / "lmenc.onnx"
     err = lmenc.export_onnx(ART / "runs" / a.run / "encoder_best.pt", onnx)
+    (out / "onnx" / "parity_lmenc.json").write_text(json.dumps(dict(run=a.run, max_abs_diff=err)), encoding="utf-8")
     _p("lmenc.onnx parity max|Δ| = %.2e", err)
     lm = lmenc.OnnxLM(onnx)
     load = bank_clip_loader()
@@ -576,7 +855,7 @@ def cmd_lmbank(a):
             f0 = 0 if f0 is None else int(f0); f1 = len(kp) if f1 is None else int(f1)
             if f1 - f0 < 4:
                 f0, f1 = 0, len(kp)
-            F.append(lmenc.prep(kp[f0:f1], sc[f0:f1])); ok[k] = True
+            F.append(lm.prep_fn(kp[f0:f1], sc[f0:f1])); ok[k] = True          # v11: input v11 when the graph expects it
         E = lm.embed(F)
         Z = np.zeros((len(ok), E.shape[1]), np.float16); Z[ok] = E
         np.savez(dst, Z=Z, c=z["c"].astype(np.int32), ok=ok)
@@ -933,7 +1212,15 @@ def cmd_tune(a):
         return obj, res
 
     ref_res = None
-    if a.version in ("v10", "v10x"):          # the guard's reference = v9 exactly as shipped (its banks, its landmark encoder)
+    if a.version.startswith("v11"):           # v11: the guard's reference = v10 exactly as shipped (its landmark encoder, its banks)
+        h._use_lm("v10"); h._use_bank("v10"); h.set_vocab(vc["concepts"], vc.get("variants", {}))
+        b10 = baseline("v10")
+        h.configure(spot=b10["spot"], cal=b10["cal"], prior=class_prior(h.bank_files[0], h.pipe.concepts, allowed, h.fold))
+        _, ref_res = seg_eval(b10["spot"], "v10 as shipped")
+        rep["v10_as_shipped"] = ref_res
+        h._use_lm(a.version); h._use_bank(a.version); h.set_vocab(vc["concepts"], vc.get("variants", {}))
+        h.configure(spot=spot0, cal=v8["cal"], prior=prior_eval)
+    elif a.version in ("v10", "v10x"):          # the guard's reference = v9 exactly as shipped (its banks, its landmark encoder)
         h._use_lm("v9"); h._use_bank("v9"); h.set_vocab(vc["concepts"], vc.get("variants", {}))
         prior_v9 = class_prior(h.bank_files[0], h.pipe.concepts, allowed, h.fold)
         h.configure(spot=spot0, cal=v8["cal"], prior=prior_v9)
@@ -961,6 +1248,10 @@ def cmd_tune(a):
         best = (o_, spot, r_)
     elif a.start == "v8":
         grid = [dict(hand_w=w) for w in (0.4, 0.6, 0.8, 1.0, 1.2, 1.5, 2.0)]
+    elif a.start == "v10":  # v11 reader: the new landmark encoder as PRIMARY reader (Uni-Sign span + hand cue only if they add) or as
+        #                     a weighted second opinion — chosen on TUNE (prompt-opt-v11 §4A)
+        grid = ([dict(read=dict(crops=0, primary="lm", enc_w=e), hand_w=hw) for e in (0.0, 0.5, 1.0) for hw in (0.0, 1.0)] +
+                [dict(read=dict(crops=0, lm_w=lw), hand_w=1.0) for lw in (0.6, 1.0)])
     else:                 # v9 reader: boundary-robust span reading (crops) + the landmark encoder's opinion (lm_w), hand weight re-checked
         lws = (0.0, 0.2, 0.3, 0.4, 0.5, 0.6) if a.start == "v9" else (0.0, 0.2, 0.3, 0.4)     # v10: a stronger 2nd opinion may earn more weight
         crops = (0,) if a.start == "v9" else (0, 1)          # v9 found multi-crop reading ±0 and slower — not re-scanned in v10
@@ -1302,10 +1593,11 @@ def a_ref():
     return "f08a56d"            # the last forward model before v8 (pitty's tagger + min_frames 10, merged into main)
 
 
-VERSIONS = ("v7.2", "v8", "v8.1", "v9", "v10", "v10x")
+VERSIONS = ("v7.2", "v8", "v8.1", "v9", "v10", "v10x", "v11")
 V9 = ROOT / "models" / "model-v9"          # v9 model folder (prompt_13); v8.1 = models/archive/Jack-model, frozen in artifacts/baselines/v8.1
 V10 = ROOT / "models" / "model-v10"        # v10 (prompt_14); v9 is frozen in artifacts/baselines/v9 (release baseline + rollback)
 V10X = ART / "v10_experimental"            # v10x: the v10 re-tune that failed the release gate on test — opt-in only, not shipped
+V11 = ROOT / "models" / "model-v11"        # v11 (prompt-opt-v11); candidates live in artifacts/v11/<name>
 
 
 def baseline(tag):
@@ -1317,9 +1609,17 @@ def baseline(tag):
         return dict(spot=sp["conversation"], cal=_git_json("models/segment_calibration.json")["conversation"], prior=None,
                     vocab=_git_json("models/vocab_conversation.json")["concepts"], variants={}, spell=sp.get("spell"), alphabet="off")
     d = {"v10": V10, "v10x": V10X}.get(tag, ART / "baselines" / tag)
-    sp, vc = read_json(d / "spotting.json"), read_json(d / "vocab_conversation.json")
-    return dict(spot=sp["conversation"], cal=read_json(d / "segment_calibration.json")["conversation"], prior=d / "class_prior.npz",
-                vocab=vc["concepts"], variants=vc.get("variants", {}), spell=sp.get("spell"), alphabet=sp.get("alphabet", "off"))
+    if tag.startswith("v11"):                      # v11: a candidate folder (artifacts/v11/<tag>) or the release (models/model-v11)
+        d = V11 if tag == "v11" else ART / "v11" / tag
+    if tag.startswith("v12-"):                     # v12 ladder rung / candidate: artifacts/v12/<name> (ships only what it changes)
+        d = ART / "v12" / tag[4:]
+    if tag == "v12":
+        d = ROOT / "models" / "model-v12"
+    get = lambda f: d / f if (d / f).exists() else V10 / f                        # noqa: E731  (a candidate ships only what it changes)
+    sp, vc = read_json(get("spotting.json")), read_json(get("vocab_conversation.json"))
+    return dict(spot=sp["conversation"], cal=read_json(get("segment_calibration.json"))["conversation"], prior=get("class_prior.npz"),
+                vocab=vc["concepts"], variants=vc.get("variants", {}), spell=sp.get("spell"), alphabet=sp.get("alphabet", "off"), dir=d,
+                bank_v11=sp.get("bank_v11"))
 
 
 def _seg_view(s):
@@ -1355,15 +1655,15 @@ def enrolled_bank(h):
     from modules.runtime import Bank
     ev_f, pr_f = getattr(h, "bank_files", (ART / "eval" / "bank_eval.npz", V9 / "bank.npz"))
     z = np.load(pr_f); clip = np.asarray(z["clip"]).astype(str)
-    m = np.array([c.startswith("t51u:") for c in clip])
-    ev = np.load(ev_f)
+    m = np.array([c.startswith("t51u:") for c in clip]) & unsealed_mask(z)
+    ev = np.load(ev_f); ek = unsealed_mask(ev)
     C = len(h.pipe.concepts); allowed = set(h.banks["eval"].concepts_present.tolist())
-    eb = Bank(np.r_[ev["Z"], z["Z"][m]], h.fold[np.r_[ev["c"], z["c"][m]]], C, allowed)
-    hp, he = np.load(V9 / "hand_bank.npz"), np.load(ART / "eval" / "hand_bank_eval.npz")
-    eb.hand = HandBank(np.r_[he["P"], hp["P"][m]], h.fold[np.r_[he["c"], hp["c"][m]]], C, dict(mu=he["mu"], sd=he["sd"], A=he["A"]), allowed)
+    eb = Bank(np.r_[ev["Z"][ek], z["Z"][m]], h.fold[np.r_[ev["c"][ek], z["c"][m]]], C, allowed)
+    hp, he = np.load(getattr(h, "hand_prod", V9 / "hand_bank.npz")), np.load(getattr(h, "hand_eval", ART / "eval" / "hand_bank_eval.npz"))
+    eb.hand = HandBank(np.r_[he["P"][ek], hp["P"][m]], h.fold[np.r_[he["c"][ek], hp["c"][m]]], C, dict(mu=he["mu"], sd=he["sd"], A=he["A"]), allowed)
     le_f, lp_f = getattr(h, "lm_files", (ART / "eval" / "lm_bank_eval.npz", V9 / "lm_bank.npz"))
     lp, le = np.load(lp_f), np.load(le_f)
-    okp, oke = lp["ok"].astype(bool), le["ok"].astype(bool)
+    okp, oke = lp["ok"].astype(bool), le["ok"].astype(bool) & ek
     eb.lm = Bank(np.r_[le["Z"][oke], lp["Z"][m & okp]].astype(np.float32), h.fold[np.r_[le["c"][oke], lp["c"][m & okp]]], C, allowed)
     eb.personal = True
     return eb
@@ -1420,7 +1720,7 @@ def cmd_report(a):
                                                                    ref_words=int(sum(len(r["ref"]) for r in rows)))
                 per_utt.setdefault(name + "|perf", {})[tag] = np.array(perf)
             _p("%-16s %-5s %s", name, tag, fmt(m))
-            if name.startswith("t51_test") and tag in ("v8.1", "v9", "v10", "v10x"):        # the enrolled-signer scenario (separate, clearly labelled)
+            if name.startswith("t51_test") and tag in ("v8.1", "v9", "v10", "v10x", "v11"):        # the enrolled-signer scenario (separate, clearly labelled)
                 keep, h.banks["eval"] = h.banks["eval"], enrolled_bank(h)
                 sce = evaluate(h, rows)
                 h.banks["eval"] = keep
@@ -1553,10 +1853,12 @@ def cmd_gate(a):
             out[name] = {k: float(max(GATE[k][1], 0.25 * v)) for k, v in sd.items()}
             out[name]["_sd"] = sd
             _p("%-16s tol %s", name, {k: round(v, 4) for k, v in out[name].items() if k != "_sd"})
-        write_json(TOL_FILE, out)
+        write_json(ART / "baselines" / a.old / "gate_tolerance.json", out)       # v11: tolerance of the OLD version (v10 for v11)
         return
     rep = read_json(REP / f"decision_{a.report}.json")
-    tol = read_json(TOL_FILE) if TOL_FILE.exists() else {}
+    tf = ART / "baselines" / a.old / "gate_tolerance.json"
+    tf = tf if tf.exists() else TOL_FILE
+    tol = read_json(tf) if tf.exists() else {}
     rows, fails = gate_check(rep, a.old, a.new, tol)
     for name, by in rows.items():
         _p("%-22s %s", name, "  ".join(f"{k}:{v['old']:.3f}→{v['new']:.3f}{'' if v['status'] != 'worse' else '✗'}" for k, v in by.items()))
@@ -1705,7 +2007,7 @@ def main():
     c = sub.add_parser("cache"); c.add_argument("--sets", default=""); c.add_argument("--force", action="store_true")
     b = sub.add_parser("baseline"); b.add_argument("--sets", default=""); b.add_argument("--out", default="")
     t = sub.add_parser("tune"); t.add_argument("--accept_precision", type=float, default=0.9); t.add_argument("--write", action="store_true")
-    t.add_argument("--start", default="v9", choices=["v8", "v8.1", "v9"]); t.add_argument("--out", default=str(V10X)); t.add_argument("--version", default="v10x")
+    t.add_argument("--start", default="v9", choices=["v8", "v8.1", "v9", "v10"]); t.add_argument("--out", default=str(V10X)); t.add_argument("--version", default="v10x")
     t.add_argument("--grammar", default="off", choices=["off", "tune"])
     t.add_argument("--spot_from", default="", help="reuse the segmentation of this spotting.json (decision stages only)")
     t.add_argument("--significant", action="store_true", help="v10 release-aligned rules: significant tune gains only, isotonic on any CV "

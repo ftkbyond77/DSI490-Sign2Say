@@ -578,10 +578,26 @@ def cmd_labels(a):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("step", choices=["ledger", "deep", "labels"])
+    ap.add_argument("step", choices=["ledger", "deep", "labels", "v11", "paired", "v12"])
     ap.add_argument("--tag", default="v8.1")
     ap.add_argument("--sets", default="")
+    ap.add_argument("--bank_v11", default="", help='v11: JSON, e.g. {"lam": 0.05, "which": ["enc", "lm"]}')
+    ap.add_argument("--spot_override", default="", help="v11: JSON merged into the version's spotting settings")
+    ap.add_argument("--out", default=""); ap.add_argument("--openset", action="store_true"); ap.add_argument("--folds", type=int, default=4)
+    ap.add_argument("--write_groups", action="store_true"); ap.add_argument("--openset_set", default="iso_tune"); ap.add_argument("--old", default="v10")
+    ap.add_argument("--cand", default="", help="v12: ladder flags (JSON merged into spotting settings)"); ap.add_argument("--freeze", action="store_true")
     a = ap.parse_args()
+    if a.step == "v12":
+        from diag_v12 import cmd_v12
+        a.sets = a.sets or "tune"
+        return cmd_v12(a)
+    if a.step == "paired":
+        from diag_v11 import cmd_paired
+        return cmd_paired(a)
+    if a.step == "v11":
+        from diag_v11 import cmd_v11
+        a.sets = a.sets or "tune"
+        return cmd_v11(a)
     dict(ledger=cmd_ledger, deep=cmd_deep, labels=cmd_labels)[a.step](a)
 
 

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import AvatarStage from "@/components/avatar/AvatarStage";
+import CaptureOverlay from "@/components/sign/CaptureOverlay";
 import SettingsSheet from "@/components/SettingsSheet";
 import VoiceToggle from "@/components/VoiceToggle";
 import { CamToggle, CameraFeed, Dot, statusOf } from "@/components/sign/CameraView";
@@ -34,6 +35,8 @@ export default function LivePage() {
   const [err, setErr] = useState("");
   const [showPip, setShowPip] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [captureScript, setCaptureScript] = useState("");      // v12: /sign/live?script=<name> = prompted live capture (LIVE-L)
+  useEffect(() => { setCaptureScript(new URLSearchParams(window.location.search).get("script") || ""); }, []);
 
   useEffect(() => { e.startLive(); }, []);  // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -93,6 +96,7 @@ export default function LivePage() {
         </AvatarStage>
       </div>
 
+      {captureScript && <CaptureOverlay name={captureScript} e={e} />}
       {e.camOn && e.framing === "close" && <div className="frame-hint glass" role="status">มืออยู่ใกล้กล้องเกินไป — ถอยห่างอีกนิด และทำท่าที่ระดับอก ไม่ยื่นมือเข้าหากล้อง (มือจะถูกจับได้นิ่งและแปลได้แม่นขึ้น)</div>}
       {e.error && <div className="im-err"><p className="err">{e.error}</p></div>}
       {err && <div className="im-err"><p className="err">{err}</p></div>}

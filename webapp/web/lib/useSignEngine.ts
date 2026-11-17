@@ -6,20 +6,22 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { openWidestCamera } from "@/lib/camera";
 import { ExpressionModel, type FaceCrop } from "@/lib/expression";
-import { drawV2 as draw, EmotionMeter, FRAMING_P99, handScale, handsRaised, handsUp, Normalizer, parts, type Delegate, type Emotion, type LmFrame, type Tone } from "@/lib/holistic";
+import { drawV2 as draw, EmotionMeter, FRAMING_P99, handScale, handsRaised, handsUp, handsUpReal, Normalizer, parts, type Delegate, type Emotion, type LmFrame, type Tone } from "@/lib/holistic";
 import { createDetector, getDetector, preloadDetector, replaceDetector, type Detector } from "@/lib/detector";   // MediaPipe in a Web Worker (main-thread fallback inside)
 import { info, openLive, speak, translateFramesStream, translateVideoOnServerStream, vocabList, type LiveSocket, type LiveWords, type Options, type Progress, type TranslateResult } from "@/lib/api";
 import { b64ToBytes, playWav, unlockAudio } from "@/lib/audio";
 import { sayable, shownText } from "@/lib/shown";
 import { signWords } from "@/lib/mysigns";
 import { parseFaceEvery } from "@/lib/faceCadence";
+import { frameTap, resultTap } from "@/lib/capture";        // v12 prompted live capture (no-op unless a capture session is open)
 
 type CapturePerf = { mode: "default" | "nofx"; fps?: number; face_every?: number };
 
 export type Status = "idle" | "loading" | "camera" | "recording" | "recorded" | "processing";
 export type Mode = "manual" | "live";
 export type LiveState = "waiting" | "signing" | "processing";
-export type ModelInfo = { version?: string; conversation_concepts?: number; concepts_full?: number; llm?: boolean };
+export type LiveRules = { preroll_ms?: number; tail_ms?: number; wrist_grace_ms?: number; cap_cut?: boolean };
+export type ModelInfo = { version?: string; conversation_concepts?: number; concepts_full?: number; llm?: boolean; live?: LiveRules };
 
 const LIVE_PREROLL_MS = 500;   // frames kept from before the hands went up
 const LIVE_UP_MS = 250;        // hands up this long → an utterance starts
@@ -33,6 +35,15 @@ const LIVE_MIN_UP_MS = 600;    // … and the hands must have been up (signing h
 // nothing changed (hands still down, same resting-face baseline), else dropped and the request is sent as before. The words, statuses and sentence are exactly
 // what the old flow would show — nothing is displayed or spoken before the sentence is over. ?spec=0 turns it off.
 const SPEC_AFTER_MS = 500;
+// v12 live rules (prompt-opt-v12 3E), shipped by the MODEL (config.json "live" via /v1/info), so model-v10 keeps exactly the v10 behaviour:
+//   preroll / tail: frames kept before the hands went up / after the last hands-up (v10 500 / 400; v12 1500 / 800 recovers the whole-clip
+//   WER on web-rate sentences, scripts/v12_live_rules.py) · wrist_grace_ms: the body-pose wrist keeps an utterance open only this long after
+//   the last real 21-point hand (runaway utterances) · cap_cut: at the 20 s cap, cut at the longest hands-down gap of the last 5 s.
+const LIVE = { preroll: LIVE_PREROLL_MS, tail: 400, wristGrace: 0, capCut: false };
+export function applyLiveRules(r?: LiveRules) {
+  LIVE.preroll = r?.preroll_ms ?? LIVE_PREROLL_MS; LIVE.tail = r?.tail_ms ?? 400;
+  LIVE.wristGrace = r?.wrist_grace_ms ?? 0; LIVE.capCut = !!r?.cap_cut;
+}
 const lat = (name: string, t = performance.now()) => { try { console.debug("[lat]", name, Math.round(t)); } catch { /* no console */ } };
 // (measured: a resting-face baseline off by up to ±0.10 per blendshape changed no word, status, probability, sentence or emotion in 24 recorded utterances)
 const sameBaseline = (a: number[] | null, b: number[] | null) => (!a && !b) || (!!a && !!b && a.length === b.length && a.every((x, i) => Math.abs(x - b[i]) <= 0.1));
@@ -97,7 +108,7 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
   const framesRef = useRef<LmFrame[]>([]);
   const statusRef = useRef<Status>("idle");
   const modeRef = useRef<Mode>("manual");
-  const live = useRef({ state: "waiting" as "waiting" | "signing", pre: [] as LmFrame[], utt: [] as LmFrame[], upSince: 0, lastUp: 0, start: 0 });
+  const live = useRef({ state: "waiting" as "waiting" | "signing", pre: [] as LmFrame[], utt: [] as LmFrame[], upSince: 0, lastUp: 0, lastReal: 0, start: 0 });
   const fpsRef = useRef({ n: 0, t: 0 });
   const errRef = useRef({ n: 0, switching: false });
   const restRef = useRef<number[][]>([]);
@@ -170,7 +181,7 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
     let stop = false, timer = 0, late = 0;
     const probe = (n: number) => info().then((m) => {
       if (stop) return;
-      setModel(m); setApiDown(false);
+      setModel(m); setApiDown(false); applyLiveRules((m as ModelInfo).live);
       vocabList().then((v) => { if (!stop) setVocab(v); }).catch(() => { if (!stop) setVocab([]); });
       late = window.setTimeout(() => ex.load(), 2500);       // the expression model after it (small; not competing with MediaPipe)
     }).catch(() => {
@@ -219,6 +230,7 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
     setResults((prev) => [r, ...prev].slice(0, 12));
     lat("result");
     onResultRef.current?.(r);
+    resultTap.fn?.("result", r);
     await say(r);
   }, [say, dropLive]);
 
@@ -270,7 +282,7 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
 
   /** The live request, sent early (see SPEC_AFTER_MS): exactly the frames / options the end of the sentence would send. */
   const startSpec = useCallback((utt: LmFrame[], lastUp: number, w: number, h: number) => {
-    const frames = utt.filter((x) => x.t <= lastUp + 400);
+    const frames = utt.filter((x) => x.t <= lastUp + LIVE.tail);
     if (check(frames, "live")) return;
     const rest = restRef.current, baseline = rest.length >= 10 ? median(rest) : null;
     const duration = durMs(frames);
@@ -349,6 +361,7 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
         setTone(N.enabled ? N.tone : { brightness: 1, contrast: 1 });
       }
       if (!f) return;
+      frameTap.fn?.(f, live.current.state);
       const fr = fpsRef.current; fr.n++;
       if (t - fr.t > 1000) { setFps(Math.round((fr.n * 1000) / (t - fr.t))); fr.n = 0; fr.t = t; }
       {
@@ -369,10 +382,10 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
       if (modeRef.current === "live" && (statusRef.current === "camera" || statusRef.current === "processing")) {
         const L = live.current;
         if (L.state === "waiting") {
-          L.pre.push(f); while (L.pre.length && t - L.pre[0].t > LIVE_PREROLL_MS) L.pre.shift();
+          L.pre.push(f); while (L.pre.length && t - L.pre[0].t > LIVE.preroll) L.pre.shift();
           if (handsRaised(f)) { if (!L.upSince) L.upSince = t; } else L.upSince = 0;      // starts only on a real, raised hand (not the body's wrist guess)
           if (L.upSince && t - L.upSince >= LIVE_UP_MS) {
-            L.state = "signing"; L.utt = [...L.pre]; L.start = t; L.lastUp = t; setLiveState("signing"); setLiveNote("");
+            L.state = "signing"; L.utt = [...L.pre]; L.start = t; L.lastUp = t; L.lastReal = t; setLiveState("signing"); setLiveNote("");
             if (streamOnRef.current) {
               liveWsRef.current?.close();
               const ws: LiveSocket = openLive(v.videoWidth, v.videoHeight, optsRef.current, (w) => { if (liveWsRef.current === ws) setLiveWords(w); });
@@ -385,10 +398,18 @@ export function useSignEngine(settings: SignSettings, onResult?: (r: TranslateRe
           liveWsRef.current?.add(f);
           { const h = handHistRef.current; h.push(f.lh.length === 21 || f.rh.length === 21); if (h.length > 12) h.shift();       // ≈ 1 s
             const lost = h.length >= 8 && h.filter(Boolean).length < 2; if (lost !== handsLostRef.current) { handsLostRef.current = lost; setHandsLost(lost); } }
-          if (up) { L.lastUp = t; if (specRef.current) dropSpec(); }                 // the hands came back: the early request is for a sentence that is not over
-          else if (specOnRef.current && !specRef.current && t - L.lastUp >= SPEC_AFTER_MS && t - L.start < LIVE_MAX_MS) startSpec(L.utt, L.lastUp, v.videoWidth, v.videoHeight);
+          const real = handsUpReal(f);
+          if (real) L.lastReal = t;
+          const upEff = LIVE.wristGrace ? (real || (up && t - L.lastReal <= LIVE.wristGrace)) : up;
+          if (upEff) { L.lastUp = t; if (specRef.current) dropSpec(); }                 // the hands came back: the early request is for a sentence that is not over
+          else if (specOnRef.current && !specRef.current && t - L.lastUp >= Math.max(SPEC_AFTER_MS, LIVE.tail) && t - L.start < LIVE_MAX_MS) startSpec(L.utt, L.lastUp, v.videoWidth, v.videoHeight);
           if (t - L.lastUp >= endRef.current || t - L.start >= LIVE_MAX_MS) {
-            const frames = L.utt.filter((x) => x.t <= L.lastUp + 400);
+            let frames = L.utt.filter((x) => x.t <= L.lastUp + LIVE.tail);
+            if (LIVE.capCut && t - L.start >= LIVE_MAX_MS && t - L.lastUp < endRef.current) {    // cap: cut at the longest hands-down gap of the last 5 s
+              let best = 0, cur = 0, cutT = -1;
+              for (const x of L.utt) { if (x.t < t - 5000) continue; cur = handsUp(x) ? 0 : cur + 1; if (cur > best) { best = cur; cutT = x.t; } }
+              if (cutT > 0) frames = L.utt.filter((x) => x.t <= cutT);
+            }
             const spec = specRef.current; specRef.current = null;
             const restNow = restRef.current, baseNow = restNow.length >= 10 ? median(restNow) : null;
             const early0 = spec && spec.lastUp === L.lastUp && !spec.ctrl.signal.aborted && sameBaseline(spec.baseline, baseNow) && spec.n === frames.length ? spec.p : undefined;

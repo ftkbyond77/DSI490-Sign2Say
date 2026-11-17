@@ -109,10 +109,11 @@ def merge_repeats(segs, max_gap=12):
     return out
 
 
-def lm_bank(path, n_concepts, allowed=None, fold=None):
-    """lm_bank.npz (Z fp16, c, ok) → a runtime.Bank of landmark-encoder embeddings (clips the pose store lacked are skipped)."""
+def lm_bank(path, n_concepts, allowed=None, fold=None, keep=None):
+    """lm_bank.npz (Z fp16, c, ok) → a runtime.Bank of landmark-encoder embeddings (clips the pose store lacked are skipped).
+    keep: optional row mask (v11 evaluation: BLIND-v11 rows left out)."""
     z = np.load(path)
-    ok = z["ok"].astype(bool)
+    ok = z["ok"].astype(bool) & (keep if keep is not None else True)
     c = z["c"] if fold is None else fold[z["c"]]
     return Bank(z["Z"][ok].astype(np.float32), c[ok], n_concepts, allowed)
 
@@ -139,19 +140,38 @@ class SignPipeline:
         hf = Path(bank_file).with_name("hand_" + Path(bank_file).name) if bank_file else md / "hand_bank.npz"
         self.bank.hand = HandBank.load(hf, len(self.concepts), allowed, self.fold) if hf.exists() else None
         # v9 second opinion: the Thai-only landmark encoder (modules/lmenc.py) and its bank (lm_bank.npz, or lm_<bank_file name>)
-        lf = Path(bank_file).with_name("lm_" + Path(bank_file).name) if bank_file else md / "lm_bank.npz"
+        import os
+        self.v11_off = os.environ.get("THAISLM_V11", "1") == "0" and (md / "onnx" / "lmenc_v10.onnx").exists()   # v11 model, every v11 track off
+        lf = Path(bank_file).with_name("lm_" + Path(bank_file).name) if bank_file else md / ("lm_bank_v10.npz" if self.v11_off else "lm_bank.npz")
         self.lm = None
-        if lf.exists() and (md / "onnx" / "lmenc.onnx").exists():
+        lmo = md / "onnx" / ("lmenc_v10.onnx" if self.v11_off else "lmenc.onnx")
+        if lf.exists() and lmo.exists():
             from .lmenc import OnnxLM
-            self.lm = OnnxLM(md / "onnx" / "lmenc.onnx", device=device if backend == "onnx" else "cpu")
+            self.lm = OnnxLM(lmo, device=device if backend == "onnx" else "cpu")
             self.bank.lm = lm_bank(lf, len(self.concepts), allowed, self.fold)
         else:
             self.bank.lm = None
+        # v12 dual reader: a SECOND landmark encoder (onnx/lmenc2.onnx + lm2_bank.npz; spotting.json read.lm2_w) voting next to the first
+        self.lm2, self.bank.lm2 = None, None
+        lm2o, lf2 = md / "onnx" / "lmenc2.onnx", md / "lm2_bank.npz"
+        if lm2o.exists() and lf2.exists() and bank_file is None and not self.v11_off:
+            from .lmenc import OnnxLM
+            self.lm2 = OnnxLM(lm2o, device=device if backend == "onnx" else "cpu")
+            self.bank.lm2 = lm_bank(lf2, len(self.concepts), allowed, self.fold)
         self.null_proto = np.load(md / "null_proto.npy").astype(np.float32)
         spot = read_json(md / "spotting.json")
+        if self.v11_off:                                  # THAISLM_V11=0: v10's reader / bank scoring / decision exactly
+            spot.pop("bank_v11", None)
+            if isinstance(spot.get("conversation"), dict):
+                spot["conversation"].pop("verifier", None)
+        self._v11_banks(md, b, lab, allowed, spot, bank_file)
         self.spot_all = spot
         self.spot = spot.get(vocab, spot) if isinstance(spot.get(vocab), dict) else spot
         cal = read_json(md / "segment_calibration.json")
+        if self.v11_off:
+            for v in cal.values():
+                if isinstance(v, dict):
+                    v.pop("v11", None)
         self.cal_all = cal
         self.cal = cal.get(vocab, cal) if isinstance(cal.get(vocab), dict) else cal
         self.lr = LogReg.from_dict(self.cal["model"])
@@ -188,6 +208,32 @@ class SignPipeline:
         else:
             self.lbank = None
         self.spell_cfg = dict(dict(thr=0.55, accept=0.8, single_min=0.85, run_gap=15, w_bank=0.5, run_min=0.5), **spot.get("spell", {}))
+
+    def _v11_banks(self, md, b, lab, allowed, spot, bank_file):
+        """v11 (all optional, absent = v10 behaviour): bank scoring v11 for the READER (spotting.json "bank_v11", per-row forms in
+        bank_forms.npy), Tail banks (known unknowns) for the open-set head, the ONNX minimal-pair verifier (verifier/)."""
+        C = len(self.concepts)
+        bv = spot.get("bank_v11")
+        if bv and bank_file is None:
+            from .runtime import FormBank
+            ff = md / "bank_forms.npy"
+            form = np.load(ff) if ff.exists() else np.zeros(len(b["c"]), np.int64)
+            signer = np.asarray(b["signer"]).astype(str)
+            self.bank.reader = FormBank(b["Z"], lab, C, signer, form, lam=float(bv.get("lam", 0.0)), allowed=allowed)
+            if getattr(self.bank, "lm", None) is not None:
+                lz = np.load(md / "lm_bank.npz"); ok = lz["ok"].astype(bool)
+                self.bank.lm = FormBank(lz["Z"][ok].astype(np.float32), lab[ok], C, signer[ok], form[ok], lam=float(bv.get("lam", 0.0)), allowed=allowed)
+        if allowed is not None and bank_file is None:
+            tail = ~np.isin(lab, np.asarray(sorted(allowed)))
+            self.bank.tail = Bank(b["Z"][tail], lab[tail], C) if tail.any() else None
+            if (md / "lm_bank.npz").exists():
+                lz = np.load(md / "lm_bank.npz"); okt = lz["ok"].astype(bool) & tail
+                self.bank.lm_tail = Bank(lz["Z"][okt].astype(np.float32), lab[okt], C) if okt.any() else None
+        self.verifier = None
+        vs = (spot.get("conversation") or {}).get("verifier") if isinstance(spot.get("conversation"), dict) else None
+        if vs and (md / "verifier" / "verifier.json").exists():
+            from .verifier import OnnxVerifier
+            self.verifier = OnnxVerifier(md, self)
 
     # ------------------------------------------------------------------ inputs
     @staticmethod
@@ -411,6 +457,9 @@ class SignPipeline:
         segment_calibration.json when the model ships them (v9: v8.1's — on tune sentences of an enrolled signer the v9 settings
         did not beat them, and the landmark encoder has no personal examples to add)."""
         bank = bank or self.bank
+        pb = getattr(self, "pathb", None)
+        if pb is not None and st.get("H") is not None and getattr(bank, "lm", None) is not None:
+            return self._back_pathb(st, bank, raw)
         enr = self.spot_all.get("enrolled") if getattr(bank, "personal", False) else None
         if enr:
             keep = (self.spot, self.cal, self.lr)
@@ -423,6 +472,48 @@ class SignPipeline:
             finally:
                 self.spot, self.cal, self.lr = keep
         return self._back(st, bank, raw)
+
+    def _back_pathb(self, st, bank, raw=False):
+        """v11 Path B (modules/pathb.py): new-encoder frame states + boundary head → the same decoder / merge / reader / decision,
+        windows scored against the landmark-encoder bank; the v10 signing-gate veto stays on top (from the v10 frame states)."""
+        import copy
+        pb = self.pathb
+        kpi, sc, present = st["kpi"], st["sc"], st["present"]
+        key = getattr(self, "_pb_key", None)
+        if key is not None and key in getattr(self, "_pb_cache", {}):
+            stb = self._pb_cache[key]
+        else:
+            H, prob = pb.front(kpi, sc, present)
+            gc = self.spot_all.get("gate") or {}
+            if pb.gate_veto and gc.get("veto_s") and getattr(self.be, "gate_tag", None) is not None:
+                x = np.concatenate([st["H"].astype(np.float32), kin_features(kpi, sc)], 1).astype(np.float32)
+                g = self.be.gate_tag(x)
+                if g is not None:
+                    prob = gate_veto(prob, g, int(round(float(gc["veto_s"]) * 25)))
+                    prob[~present] = [1.0, 0.0, 0.0]
+            stb = dict(kpi=kpi, sc=sc, present=present, prob=prob, H=H, f=self.tempo_factor(prob))
+            if stb["f"] > 1.0:
+                f = stb["f"]; T = len(kpi)
+                k2, s2 = resample(kpi, sc, 1.0 / f)
+                p2 = present[np.clip(np.round(np.arange(len(k2)) * f).astype(int), 0, T - 1)]
+                H2, prob2 = pb.front(k2, s2, p2)
+                stb.update(k2=k2, s2=s2, p2=p2, prob2=prob2, H2=H2)
+            if key is not None:
+                self._pb_cache = getattr(self, "_pb_cache", {}); self._pb_cache[key] = stb
+        if pb.mode == "S2":                          # prototype-CTC alone: its runs are the segments and its words the reading
+            segs = pb.ctc_segments(self.concepts)
+            for sg in segs:
+                sg["t0"], sg["t1"] = round(sg["f0"] / 25.0, 2), round(sg["f1"] / 25.0, 2)
+            return segs if raw else self.decide(segs, st["sc"]), None, len(segs)
+        view = copy.copy(bank.lm)
+        view.hand, view.lm, view.tail, view.lm_tail, view.reader = getattr(bank, "hand", None), bank.lm, getattr(bank, "lm_tail", None), None, None
+        view.personal = getattr(bank, "personal", False)
+        keep = (self.span, self.null_proto)
+        self.span, self.null_proto = pb.span, pb.null
+        try:
+            return self._back(stb, view, raw)
+        finally:
+            self.span, self.null_proto = keep
 
     def _back(self, st, bank, raw=False):
         prob, present, T = st["prob"], st["present"], len(st["prob"])
@@ -449,6 +540,7 @@ class SignPipeline:
         segs = self.hand_rescore(segs, st, bank)
         if raw:
             return segs, act, n_win
+        self._cur_kp = (st["kpi"], st["sc"])                 # v11 verifier: the utterance landmarks of the segments being decided
         return self.decide(segs, st["sc"]), act, n_win
 
     def hand_rescore(self, segs, st, bank):
@@ -458,8 +550,11 @@ class SignPipeline:
         w = float(self.spot.get("hand_w", 0.0))
         rd = self.spot.get("read", {})              # v9 reader: multi-crop span reading + the landmark encoder's opinion
         hb = getattr(bank, "hand", None)
-        if not segs or not w or hb is None or self.span is None or st.get("H") is None:
+        primary = rd.get("primary") == "lm" and getattr(bank, "lm", None) is not None and self.lm is not None
+        if not segs or self.span is None or st.get("H") is None or (not primary and (not w or hb is None)):
             return segs
+        if hb is None:
+            w = 0.0
         spans = [(s["f0"], max(s["f1"], s["f0"] + 1)) for s in segs]
         f = st.get("f", 1.0)
         if f > 1.0 and st.get("H2") is not None:     # fast signing: read the span where the decoder read it (trained pace)
@@ -467,30 +562,81 @@ class SignPipeline:
             sp = [(min(int(a * f), T2 - 1), min(max(int(round(b * f)), int(a * f) + 1), T2)) for a, b in spans]
         else:
             HH, sp = st["H"], spans
-        enc = bank.scores(self.span(HH, sp))
+        rb = getattr(bank, "reader", None) or bank          # v11: a separate naming bank (FormBank) when the version ships one
+        jit = int(rd.get("jitter", 0) or 0)                # v12 B2: test-time span jitter — every reader scores 3 / 5 shifted crops, averaged
+        J = [(0, 0), (-2, 2), (2, -2), (-4, 4), (4, -4)][:max(jit, 1)]
+
+        def _jit(spans_, T_):
+            out_ = []
+            for a_, b_ in spans_:
+                for da, db in J:
+                    a2 = min(max(0, a_ + da), T_ - 1)
+                    out_.append((a2, max(min(T_, b_ + db), a2 + 1)))
+            return out_
+
+        def _avg(x):
+            return x.reshape(len(spans), len(J), -1).mean(1)
+        enc = rb.scores(self.span(HH, sp)) if not jit else _avg(rb.scores(self.span(HH, _jit(sp, len(HH)))))
         if rd.get("crops"):     # boundary-robust reading: the span ± a sixth of its length on either side (5 readings averaged)
             T_ = len(HH)
             crops = []
             for a, b in sp:
                 d = max(2, (b - a) // 6)
                 crops += [(max(0, a - d), min(T_, b + d)), (a + d, max(a + d + 1, b - d)), (a, max(a + 1, b - d)), (min(a + d, b - 1), b)]
-            ce = bank.scores(self.span(HH, crops)).reshape(len(sp), 4, -1)
+            ce = rb.scores(self.span(HH, crops)).reshape(len(sp), 4, -1)
             enc = np.where(enc > -1.5, (enc + ce.sum(1)) / 5, enc)
-        hand = hb.scores(np.stack([descriptor(st["kpi"], st["sc"], a, b) for a, b in spans]))
-        fused = fuse(enc, hand, w)
+        if hb is not None and jit:
+            hand = _avg(hb.scores(np.stack([descriptor(st["kpi"], st["sc"], a, b) for a, b in _jit(spans, len(st["kpi"]))])))
+        else:
+            hand = hb.scores(np.stack([descriptor(st["kpi"], st["sc"], a, b) for a, b in spans])) if hb is not None else np.full_like(enc, -2.0)
         lw, lb = float(rd.get("lm_w", 0.0)), getattr(bank, "lm", None)
         lm_top = None
-        if lw and lb is not None and self.lm is not None:
-            lm = lb.scores(self.lm.spans(st["kpi"], st["sc"], spans))
-            fused = fuse(fused, lm, lw)
-            lm_top = lm.argmax(1)
-        for k, (s, e, h, f) in enumerate(zip(segs, enc, hand, fused)):
+        if rd.get("primary") == "lm" and lb is not None and self.lm is not None:
+            # v11 Path A: the new Thai landmark encoder is the PRIMARY reader (its row sets the score scale and features); Uni-Sign's
+            # span reading and the hand cue are added only at the weights chosen on TUNE (enc_w / hand_w; 0 = not used)
+            Elm = self.lm.spans(st["kpi"], st["sc"], spans)
+            self._lm_spans_cache = Elm
+            lm = lb.scores(Elm)
+            ew = float(rd.get("enc_w", 0.0))
+            fused = fuse(lm, enc, ew) if ew else lm.copy()
+            fused = fuse(fused, hand, w) if w else fused
+            lm_top = enc.argmax(1)                                       # "second opinion agrees" = Uni-Sign's own top-1 now
+            enc = lm
+        else:
+            fused = fuse(enc, hand, w)
+            if lw and lb is not None and self.lm is not None:
+                lm = (lb.scores(self.lm.spans(st["kpi"], st["sc"], spans)) if not (jit and rd.get("jitter_lm", 1))
+                      else _avg(lb.scores(self.lm.spans(st["kpi"], st["sc"], _jit(spans, len(st["kpi"]))))))
+                fused = fuse(fused, lm, lw)
+                lm_top = lm.argmax(1)
+            lw2, lb2 = float(rd.get("lm2_w", 0.0)), getattr(bank, "lm2", None)
+            if lw2 and lb2 is not None and getattr(self, "lm2", None) is not None:      # v12 dual reader (second landmark encoder)
+                fused = fuse(fused, lb2.scores(self.lm2.spans(st["kpi"], st["sc"], spans)), lw2)
+        # v11 known unknowns: best vocabulary match − best Tail-concept match of the primary reader ("tail_gap", open-set feature)
+        tail_best = None
+        if rd.get("primary") == "lm" and getattr(bank, "lm_tail", None) is not None and self.lm is not None:
+            tail_best = bank.lm_tail.scores(self._lm_spans_cache).max(1) if getattr(self, "_lm_spans_cache", None) is not None else None
+        elif getattr(bank, "tail", None) is not None:
+            tail_best = bank.tail.scores(self.span(HH, sp)).max(1)
+        # v12 B2 "jitter_cal": the jittered reading CHOOSES the words (ranking), the single-crop reading supplies the numbers the calibration
+        # was fitted on (score / support / margin / hand cue) for that same ranking — averaging crops flattens scores and costs coverage
+        feat = (enc, hand, fused)
+        if jit and rd.get("jitter_cal") == "single" and rd.get("primary") != "lm":
+            e1 = rb.scores(self.span(HH, sp))
+            h1 = hb.scores(np.stack([descriptor(st["kpi"], st["sc"], a, b) for a, b in spans])) if hb is not None else np.full_like(e1, -2.0)
+            f1 = fuse(e1, h1, w)
+            if lw and lb is not None and self.lm is not None:
+                f1 = fuse(f1, lm if not rd.get("jitter_lm", 1) else lb.scores(self.lm.spans(st["kpi"], st["sc"], spans)), lw)
+            feat = (e1, h1, f1)
+        for k, (s, e, h, f, fr) in enumerate(zip(segs, feat[0], feat[1], feat[2], fused)):
+            if tail_best is not None:
+                s["tail_gap"] = float(e.max() - tail_best[k])
             if lm_top is not None:
-                s["lm_agree"] = float(int(lm_top[k]) == int(np.argmax(f)))
-            o = np.argsort(-f)[:5]
+                s["lm_agree"] = float(int(lm_top[k]) == int(np.argmax(fr)))
+            o = np.argsort(-fr)[:5]
             hv = h > -1.5
             zh = (h - h[hv].mean()) / (h[hv].std() + 1e-6) if hv.sum() > 2 else np.zeros_like(h)
-            s["candidates"] = [dict(word=self.concepts[int(j)], score=round(float(e[j]), 4), support=round(float(f[j]), 4)) for j in o]
+            s["candidates"] = [dict(word=self.concepts[int(j)], score=round(float(e[j]), 4), support=round(float(fr[j]), 4)) for j in o]   # ranking = jittered
             s.update(nearest=self.concepts[int(o[0])], score=float(e[o[0]]), margin=float(f[o[0]] - f[o[1]]),
                      support_ratio=float(f[o[0]] / max(f[o[1]], 1e-6)), hand_z=float(zh[o[0]]), hand_agree=float(int(np.argmax(h)) == int(o[0])))
         return segs
@@ -507,14 +653,45 @@ class SignPipeline:
         iso = self.cal.get("isotonic")           # v9: monotone re-mapping of P(correct) fitted out-of-fold on tune (flatter ECE)
         if iso and len(P):
             P = np.interp(P, iso["x"], iso["y"])
+        acc = self.cal.get("accept")             # v12 two-stage decision: the shipped calibration above marks structure (transition /
+        P2 = None                                # repeat guard, which were tuned with it); a second P(correct) fitted for THIS reader
+        if acc and len(P):                       # decides accepted / uncertain / unknown of the remaining words (scripts/v12_merge.py)
+            lr2 = getattr(self, "_lr2", None)
+            if lr2 is None or getattr(self, "_lr2_src", None) is not acc["model"]:
+                lr2 = LogReg.from_dict(acc["model"]); self._lr2, self._lr2_src = lr2, acc["model"]
+            P2 = lr2.predict(seg_features(segs, getattr(lr2, "feats", None)))
+            if acc.get("isotonic"):
+                P2 = np.interp(P2, acc["isotonic"]["x"], acc["isotonic"]["y"])
         decide(segs, P, self.cal)
         postprocess(segs, self.spot)
+        if P2 is not None:
+            for s, p2 in zip(segs, P2):
+                if s["status"] == "transition" or s.get("reason") == "repeated_word_guard":
+                    continue
+                s["p_struct"], s["p_correct"] = s.get("p_correct", 0.0), float(p2)
+                if p2 >= acc["tau_accept"] and not s.get("flags"):
+                    s["status"], s["reason"] = "accepted", "confident"
+                elif p2 >= acc["tau_uncertain"]:
+                    s["status"], s["reason"] = "uncertain", "below_accept"
+                else:
+                    s["status"], s["reason"] = "unknown", "no_reliable_word"
+        tg = self.cal.get("tail_guard")          # v12: an accepted word whose reading is about as close to a sign OUTSIDE the vocabulary
+        if tg:                                   # (Tail bank, "tail_gap") is offered as "[?]" instead of shown (scripts/v12_merge.py guard)
+            for s in segs:
+                if s["status"] == "accepted" and s.get("tail_gap") is not None and s["tail_gap"] < float(tg["min_gap"]):
+                    s["status"], s["reason"] = "uncertain", "near_unknown_sign"
         mh = self.spot.get("post", {}).get("min_hand_frac", 0.0)
         if segs and sc is not None:          # pitty: live webcams lose the hands (exposure, low fps) — a sign nobody saw the hands of is a transition
             seen = (sc[:, LH].mean(1) > 0.3) | (sc[:, RH].mean(1) > 0.3)
             for s in segs:
                 s["hand_frac"] = round(float(seen[s["f0"]:max(s["f1"], s["f0"] + 1)].mean()), 3)      # share of the sign's frames with a hand (the web: no teaching from hand-less signs)
-                if mh and s["status"] not in ("accepted", "transition") and s["hand_frac"] < mh:
+        v11 = self.cal.get("v11")
+        if v11 and segs:                     # v11 three-way decision (modules/openset.py): open-set head + per-group conformal sets
+            from .openset import three_way
+            three_way(segs, v11, v11.get("groups", []), verifier=getattr(self, "verifier", None), source=getattr(self, "source", "live"))
+        if segs and sc is not None:
+            for s in segs:
+                if mh and s["status"] not in ("accepted", "transition") and s.get("hand_frac", 1.0) < mh:
                     s["status"] = "transition"
         w = self.spot.get("grammar_rerank_weight", 0.0)
         live = [s for s in segs if s["status"] != "transition"]

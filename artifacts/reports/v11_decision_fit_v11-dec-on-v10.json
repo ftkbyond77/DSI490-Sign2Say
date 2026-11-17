@@ -1,0 +1,158 @@
+{
+  "tag": "v10",
+  "out": "artifacts\\v11\\v11-dec-on-v10",
+  "T": 0.10875351149965598,
+  "nll": 0.5663830927384226,
+  "cv_ECE": 0.03643318775182908,
+  "isotonic": false,
+  "open_auroc": 0.7901765662971346,
+  "known_bound": 0.9065280445026105,
+  "known_kept": 0.37835337650323775,
+  "conformal": {
+    "pooled": 0.8045664094190678,
+    "strict": 0.8045664094190678,
+    "groups": {
+      "flu|13-24|core": {
+        "n": 317,
+        "q": 0.7495944226634934
+      },
+      "flu|13-24|extended": {
+        "n": 26,
+        "q": 0.9769633051120573
+      },
+      "flu|<=12|core": {
+        "n": 27,
+        "q": 0.8585437907005726
+      },
+      "flu|<=12|extended": {
+        "n": 3,
+        "q": 0.8764637723069146
+      },
+      "flu|>24|core": {
+        "n": 171,
+        "q": 0.708264161633632
+      },
+      "flu|>24|extended": {
+        "n": 82,
+        "q": 0.9676926732952177
+      },
+      "iso|13-24|core": {
+        "n": 11,
+        "q": 0.879890999696452
+      },
+      "iso|13-24|extended": {
+        "n": 4,
+        "q": 0.9802733758462052
+      },
+      "iso|>24|core": {
+        "n": 113,
+        "q": 0.7381304964960416
+      },
+      "iso|>24|extended": {
+        "n": 22,
+        "q": 0.8953033376743079
+      },
+      "t51|13-24|core": {
+        "n": 86,
+        "q": 0.8080962776080352
+      },
+      "t51|13-24|extended": {
+        "n": 473,
+        "q": 0.8128940650070898
+      },
+      "t51|<=12|core": {
+        "n": 7,
+        "q": 0.835922032377254
+      },
+      "t51|<=12|extended": {
+        "n": 32,
+        "q": 0.8116074966907324
+      },
+      "t51|>24|core": {
+        "n": 54,
+        "q": 0.84742871068805
+      },
+      "t51|>24|extended": {
+        "n": 435,
+        "q": 0.7633511385827166
+      }
+    },
+    "coverage": {
+      "conditional": 0.9006977992485239,
+      "unconditional": 0.7761332099907493
+    }
+  },
+  "chosen": {
+    "bound": 0.9065280445026105,
+    "correct_accepted": 0.4282814614343708,
+    "accepted_error": 0.060830860534124676,
+    "unknown_accepted": 0.04044943820224719,
+    "max_group_error": 0.09722222222222222,
+    "alpha": 0.1
+  },
+  "grid": [
+    {
+      "bound": 0.0,
+      "correct_accepted": 0.4506089309878214,
+      "accepted_error": 0.06853146853146852,
+      "unknown_accepted": 0.0,
+      "max_group_error": 0.05670103092783505
+    },
+    {
+      "bound": 0.3536706674208245,
+      "correct_accepted": 0.4506089309878214,
+      "accepted_error": 0.06853146853146852,
+      "unknown_accepted": 0.0,
+      "max_group_error": 0.05670103092783505
+    },
+    {
+      "bound": 0.5114023406132865,
+      "correct_accepted": 0.44993234100135315,
+      "accepted_error": 0.06862745098039214,
+      "unknown_accepted": 0.0,
+      "max_group_error": 0.05670103092783505
+    },
+    {
+      "bound": 0.5815603471716584,
+      "correct_accepted": 0.44925575101488496,
+      "accepted_error": 0.0674157303370787,
+      "unknown_accepted": 0.0,
+      "max_group_error": 0.05670103092783505
+    },
+    {
+      "bound": 0.6601629285308044,
+      "correct_accepted": 0.4479025710419486,
+      "accepted_error": 0.06760563380281692,
+      "unknown_accepted": 0.0,
+      "max_group_error": 0.05670103092783505
+    },
+    {
+      "bound": 0.7537631586287814,
+      "correct_accepted": 0.4316644113667118,
+      "accepted_error": 0.06725146198830412,
+      "unknown_accepted": 0.0,
+      "max_group_error": 0.05759162303664921
+    },
+    {
+      "bound": 0.8680635979745679,
+      "correct_accepted": 0.5020297699594046,
+      "accepted_error": 0.06431273644388402,
+      "unknown_accepted": 0.0,
+      "max_group_error": 0.08974358974358974
+    },
+    {
+      "bound": 0.9065280445026105,
+      "correct_accepted": 0.4282814614343708,
+      "accepted_error": 0.060830860534124676,
+      "unknown_accepted": 0.04044943820224719,
+      "max_group_error": 0.09722222222222222,
+      "alpha": 0.1
+    }
+  ],
+  "tier_margin": {
+    "core": 0.0,
+    "extended": 0.0
+  },
+  "n_segments": 2339,
+  "n_unknown": 445
+}

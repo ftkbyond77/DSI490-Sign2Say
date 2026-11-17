@@ -204,6 +204,65 @@ class Bank:
         return out
 
 
+class FormBank:
+    """v11 bank scoring (prompt-opt-v11 §1B.3), same interface as Bank (.scores → [N, C], -2 where a concept has no example):
+
+        s(c) = max over forms f of c [ 0.5·cos(q, proto_f) + 0.5·mean top-2 cos(q, exemplars_f of DIFFERENT signers) ] − λ / √n_signers(f)
+
+    proto_f = mean of the per-signer means of form f (L2-normalised); the exemplar term takes each signer's best clip and averages the
+    two best signers (one signer: its best clip). λ shrinks forms seen from few people (the attractor rule: กลับ with 1 clip took 42/47
+    "ไป"). A word with one form and λ = 0 differs from Bank only by the prototype half and the one-best-clip-per-signer rule."""
+
+    def __init__(self, Z, c, n_concepts, signer, form=None, lam=0.0, allowed=None, w_proto=0.5):
+        Z, c = np.asarray(Z, np.float32), np.asarray(c, np.int64)
+        signer = np.asarray(signer).astype(str)
+        form = np.zeros(len(c), np.int64) if form is None else np.asarray(form, np.int64)
+        keep = np.ones(len(c), bool) if allowed is None else np.isin(c, np.asarray(sorted(allowed)))
+        Z, c, signer, form = Z[keep], c[keep], signer[keep], form[keep]
+        Z = Z / (np.linalg.norm(Z, axis=1, keepdims=True) + 1e-8)
+        cell_key = np.array([f"{a}|{b}|{s}" for a, b, s in zip(c, form, signer)])
+        o = np.lexsort((cell_key, form, c))
+        self.Z, self.c, self.form, self.signer = Z[o], c[o], form[o], signer[o]
+        ck = cell_key[o]
+        self.cell_starts = np.r_[0, np.flatnonzero(ck[1:] != ck[:-1]) + 1]               # (concept, form, signer) cells
+        cell_c, cell_f = self.c[self.cell_starts], self.form[self.cell_starts]
+        fk = cell_c * 1000 + cell_f
+        self.form_starts = np.r_[0, np.flatnonzero(fk[1:] != fk[:-1]) + 1]               # forms over cells
+        self.form_c = cell_c[self.form_starts]
+        self.n_sign = np.diff(np.r_[self.form_starts, len(self.cell_starts)])
+        self.cell_seg = np.repeat(np.arange(len(self.form_starts)), self.n_sign)
+        protos = []
+        for i, a in enumerate(self.form_starts):
+            b = self.form_starts[i + 1] if i + 1 < len(self.form_starts) else len(self.cell_starts)
+            ms = []
+            for j in range(a, b):
+                x0 = self.cell_starts[j]; x1 = self.cell_starts[j + 1] if j + 1 < len(self.cell_starts) else len(self.Z)
+                m = self.Z[x0:x1].mean(0); ms.append(m / (np.linalg.norm(m) + 1e-8))
+            p = np.mean(ms, 0); protos.append(p / (np.linalg.norm(p) + 1e-8))
+        self.P = np.stack(protos).astype(np.float32)
+        self.cstarts = np.r_[0, np.flatnonzero(self.form_c[1:] != self.form_c[:-1]) + 1]  # concepts over forms
+        self.concepts_present = self.form_c[self.cstarts]
+        self.n_concepts, self.lam, self.w_proto = n_concepts, lam, w_proto
+        self.starts = self.cstarts                                                      # (Bank compatibility)
+
+    def form_scores(self, Q):
+        Q = np.asarray(Q, np.float32)
+        S = Q @ self.Z.T
+        cell = np.maximum.reduceat(S, self.cell_starts, axis=1)                          # each signer's best clip
+        t1 = np.maximum.reduceat(cell, self.form_starts, axis=1)
+        is_max = cell >= t1[:, self.cell_seg] - 1e-7
+        t2 = np.maximum.reduceat(np.where(is_max, -2.0, cell), self.form_starts, axis=1)
+        ex = np.where(t2 > -1.5, (t1 + t2) / 2, t1)
+        return self.w_proto * (Q @ self.P.T) + (1 - self.w_proto) * ex - self.lam / np.sqrt(self.n_sign)[None]
+
+    def scores(self, Q, topm=2):
+        F = self.form_scores(Q)
+        top = np.maximum.reduceat(F, self.cstarts, axis=1)
+        out = np.full((len(F), self.n_concepts), -2.0, np.float32)
+        out[:, self.concepts_present] = top
+        return out
+
+
 def variant_lut(concepts, variants):
     """[C] concept index → the index it is read as. variants {"สวัสดี (อายุเท่ากันหรือน้อยกว่า)": "สวัสดี", …}: a style / school /
     politeness variant of a word is that word (models/vocab_conversation.json "variants"; v8.1)."""

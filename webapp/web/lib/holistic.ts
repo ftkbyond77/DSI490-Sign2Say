@@ -126,6 +126,16 @@ export function handsUp(f: LmFrame): boolean {
   return up(f.lh) || up(f.rh) || wrist(15) || wrist(16);
 }
 
+/** v12 (LM1): handsUp without the body-pose wrist guess — a real 21-point hand at signing height (1.5 shoulder widths). */
+export function handsUpReal(f: LmFrame): boolean {
+  if (f.pose.length < 17) return false;
+  const ls = f.pose[11], rs = f.pose[12];
+  const sw = Math.hypot(ls[0] - rs[0], ls[1] - rs[1]) || 0.2;
+  const midY = (ls[1] + rs[1]) / 2;
+  const up = (hand: number[][]) => hand.length === 21 && hand.reduce((s, p) => s + p[1], 0) / 21 < midY + 1.5 * sw;
+  return up(f.lh) || up(f.rh);
+}
+
 /** Stricter than handsUp, used only to START a live utterance: a REAL hand (all 21 points detected — never just the body's wrist guess, which a
  *  tight webcam frame invents for hands that are out of view) held at signing height. 0.8 shoulder widths below the shoulders passed 99.2 % of the
  *  0.6 s windows inside accepted signs in the 556 recorded live requests (a lower hand is a resting / idle hand); handsUp (1.5) keeps the end rule. */

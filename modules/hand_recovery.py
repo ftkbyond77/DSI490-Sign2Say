@@ -28,6 +28,19 @@ def enabled():
     return os.environ.get("THAISLM_HAND_RECOVERY", "1").strip().lower() not in ("0", "false", "off", "no")
 
 
+def reacquire():
+    """v11 arm X2: full-frame Hand Landmarker re-acquisition while the pose-guided ROI has lost a RAISED hand (adaptive Lab4 method D)"""
+    return os.environ.get("THAISLM_HAND_REACQUIRE", "0").strip().lower() in ("1", "true", "on", "yes")
+
+
+def detector_path():
+    """v11 arm X1: a pose-independent hand detector (YOLO, artifacts/runs/v11-hand-detector) — research / server opt-in (Ultralytics AGPL)"""
+    if os.environ.get("THAISLM_HAND_DETECTOR", "0").strip().lower() not in ("1", "true", "on", "yes"):
+        return None
+    p = Path(os.environ.get("THAISLM_HAND_DETECTOR_WEIGHTS", Path(__file__).resolve().parents[1] / "artifacts" / "runs" / "v11-hand-detector" / "weights" / "best.pt"))
+    return p if p.exists() else None
+
+
 def smoothing():
     return os.environ.get("THAISLM_HAND_SMOOTH", "0").strip().lower() in ("1", "true", "on", "yes")
 
@@ -174,7 +187,14 @@ class HandRecovery:
         self.fails = {"L": 0, "R": 0}
         self.filt = {"L": _HandSmoother(), "R": _HandSmoother()}
         self.i = 0
-        self.stats = {"holistic": 0, "recovered": 0, "frames": 0}
+        self.stats = {"holistic": 0, "recovered": 0, "frames": 0, "reacquired": 0, "detector": 0}
+        self.reacq = reacquire()
+        dp = detector_path()
+        self.det = None
+        if dp is not None:
+            from ultralytics import YOLO
+            self.det = YOLO(str(dp))
+        self._full = (-1, [])                                  # (frame index, full-frame candidates) — computed at most once per frame
 
     def close(self):
         self.net.close()
@@ -231,9 +251,43 @@ class HandRecovery:
                     continue                                                           # that is the other hand
                 self.fails[side] = 0
                 return lm
+        # v11 X1 / X2: candidates that do not depend on the pose ROI, tried only for a RAISED hand (or one whose wrist the pose lost)
+        if (self.reacq or self.det is not None) and (pr is None or _raised(pose, side)):
+            for lm, score, src in self._full_frame(rgb):
+                if score < 0.6:
+                    continue
+                if not _plausible(lm, pose, side, hw, 0.9) and not (pv is not None and self.i - pv[1] <= 2 and pose[SIDE[side]["wrist"], 3] < 0.3):
+                    continue
+                if not self._size_ok(lm, pose, side, hw):
+                    continue
+                if other is not None and np.linalg.norm(_px(lm, hw)[0] - _px(other, hw)[0]) < 0.25 * _size(_px(other, hw)):
+                    continue
+                self.fails[side] = 0
+                self.stats["detector" if src == "det" else "reacquired"] += 1
+                return lm
         self.fails[side] += 1
         self.cool[side] = 0 if not rois else 2 if self.fails[side] < 3 else min(2 * self.fails[side], 10)   # a hand that is really absent is tried less and less often
         return None
+
+    def _full_frame(self, rgb):
+        """hands found without the pose: X1 = detector boxes → zoomed crops → landmarks; X2 = the Hand Landmarker on the whole frame"""
+        if self._full[0] == self.i:
+            return self._full[1]
+        hw = rgb.shape[:2]
+        out = []
+        if self.det is not None:
+            r = self.det.predict(rgb, imgsz=640, conf=0.35, verbose=False)[0]
+            for (x0, y0, x1, y1) in r.boxes.xyxy.cpu().numpy():
+                c = np.array([(x0 + x1) / 2, (y0 + y1) / 2], np.float32); sz = 1.6 * max(x1 - x0, y1 - y0, 24.0)
+                crop, M = _crop(rgb, c, sz, self.out, 0.0)
+                for lm, score in self._detect(crop):
+                    out.append((_back(lm, M, self.out, hw), score, "det"))
+        if self.reacq:
+            for lm, score in self._detect(rgb):
+                lm = lm.copy()                                  # already in full-frame normalised coordinates
+                out.append((lm, score, "full"))
+        self._full = (self.i, out)
+        return out
 
     def apply(self, rgb, pose, lh, rh, t_ms=0.0):
         hw = rgb.shape[:2]

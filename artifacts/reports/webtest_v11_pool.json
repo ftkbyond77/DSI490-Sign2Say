@@ -1,0 +1,1597 @@
+[
+ {
+  "id": "biso_S_thsl_02_000",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\th_sl_dictionary\\videos\\th_sl\\th_sl_05632.mp4",
+  "ref": [
+   "ปลอบใจ"
+  ],
+  "signer": "S_thsl_02"
+ },
+ {
+  "id": "biso_S_thsl_02_001",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\th_sl_dictionary\\videos\\th_sl\\th_sl_06363.mp4",
+  "ref": [
+   "เจ็บ"
+  ],
+  "signer": "S_thsl_02"
+ },
+ {
+  "id": "biso_S_thsl_02_002",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\th_sl_dictionary\\videos\\th_sl\\th_sl_06134.mp4",
+  "ref": [
+   "น้องชาย"
+  ],
+  "signer": "S_thsl_02"
+ },
+ {
+  "id": "biso_S_thsl_02_003",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\th_sl_dictionary\\videos\\th_sl\\th_sl_06103.mp4",
+  "ref": [
+   "ไม่ได้"
+  ],
+  "signer": "S_thsl_02"
+ },
+ {
+  "id": "biso_S_thsl_02_004",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\th_sl_dictionary\\videos\\th_sl\\th_sl_05211.mp4",
+  "ref": [
+   "จูบ"
+  ],
+  "signer": "S_thsl_02"
+ },
+ {
+  "id": "biso_S_thsl_02_005",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\th_sl_dictionary\\videos\\th_sl\\th_sl_05970.mp4",
+  "ref": [
+   "โชคดี"
+  ],
+  "signer": "S_thsl_02"
+ },
+ {
+  "id": "biso_S_thsl_02_006",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\th_sl_dictionary\\videos\\th_sl\\th_sl_05273.mp4",
+  "ref": [
+   "ปรบมือ"
+  ],
+  "signer": "S_thsl_02"
+ },
+ {
+  "id": "biso_S_thsl_02_007",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\th_sl_dictionary\\videos\\th_sl\\th_sl_06295.mp4",
+  "ref": [
+   "กิน"
+  ],
+  "signer": "S_thsl_02"
+ },
+ {
+  "id": "biso_yt_person_004_008",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\WXpu-p9Pq_E.mp4",
+  "ref": [
+   "สบายดี"
+  ],
+  "signer": "yt_person_004"
+ },
+ {
+  "id": "biso_yt_person_004_009",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\D-l4RjB_lFk.mp4",
+  "ref": [
+   "เย็น"
+  ],
+  "signer": "yt_person_004"
+ },
+ {
+  "id": "biso_yt_person_004_010",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\DoO5EIOhU48.mp4",
+  "ref": [
+   "ห้องน้ำ"
+  ],
+  "signer": "yt_person_004"
+ },
+ {
+  "id": "biso_yt_person_004_011",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\oC9HKJR3pEE.mp4",
+  "ref": [
+   "เที่ยว"
+  ],
+  "signer": "yt_person_004"
+ },
+ {
+  "id": "biso_yt_person_004_012",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\uAlJGaqPXYU.mp4",
+  "ref": [
+   "โชคดี"
+  ],
+  "signer": "yt_person_004"
+ },
+ {
+  "id": "biso_yt_person_004_013",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\-JN0yBHG7Ps.mp4",
+  "ref": [
+   "เดือน"
+  ],
+  "signer": "yt_person_004"
+ },
+ {
+  "id": "biso_yt_person_004_014",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\7xiNFBS-WeE.mp4",
+  "ref": [
+   "พบกันใหม่"
+  ],
+  "signer": "yt_person_004"
+ },
+ {
+  "id": "biso_yt_person_004_015",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\toVo2SBpgRA.mp4",
+  "ref": [
+   "วันนี้"
+  ],
+  "signer": "yt_person_004"
+ },
+ {
+  "id": "biso_yt_person_004_016",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\UgQVR3h2Li0.mp4",
+  "ref": [
+   "เวลา"
+  ],
+  "signer": "yt_person_004"
+ },
+ {
+  "id": "biso_yt_person_004_017",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\q9NRuq8V0mU.mp4",
+  "ref": [
+   "เริ่ม"
+  ],
+  "signer": "yt_person_004"
+ },
+ {
+  "id": "biso_yt_person_030_018",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\_In2ShWNKNA.mp4",
+  "ref": [
+   "ข้าว"
+  ],
+  "signer": "yt_person_030"
+ },
+ {
+  "id": "biso_yt_person_030_019",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\fJl_Jl8frSU.mp4",
+  "ref": [
+   "หา"
+  ],
+  "signer": "yt_person_030"
+ },
+ {
+  "id": "biso_yt_person_030_020",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\H18yBG9Glg8.mp4",
+  "ref": [
+   "ปลา"
+  ],
+  "signer": "yt_person_030"
+ },
+ {
+  "id": "biso_yt_person_040_021",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\CgX-2E2kEAI.mp4",
+  "ref": [
+   "ขาย"
+  ],
+  "signer": "yt_person_040"
+ },
+ {
+  "id": "biso_S_ttrs_u00_022",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\ttrs_dictionary\\ttrs_UOxE2k.mp4",
+  "ref": [
+   "อยู่บ้าน"
+  ],
+  "signer": "S_ttrs_u00"
+ },
+ {
+  "id": "biso_S_ttrs_u00_023",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\ttrs_dictionary\\ttrs_XZ38Hi.mp4",
+  "ref": [
+   "ห้องน้ำ"
+  ],
+  "signer": "S_ttrs_u00"
+ },
+ {
+  "id": "biso_S_ttrs_u00_024",
+  "cat": "blind_iso",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\ttrs_dictionary\\ttrs_THz5Dx.mp4",
+  "ref": [
+   "เหงา"
+  ],
+  "signer": "S_ttrs_u00"
+ },
+ {
+  "id": "oov_S_thsl_02_025",
+  "cat": "oov",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\th_sl_dictionary\\videos\\th_sl\\th_sl_06394.mp4",
+  "ref": [],
+  "signer": "S_thsl_02",
+  "oov_concept": "มูลนิธินวัตกรรมทางสังคม"
+ },
+ {
+  "id": "oov_S_thsl_02_026",
+  "cat": "oov",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\th_sl_dictionary\\videos\\th_sl\\th_sl_05462.mp4",
+  "ref": [],
+  "signer": "S_thsl_02",
+  "oov_concept": "จังหวะ"
+ },
+ {
+  "id": "oov_S_thsl_02_027",
+  "cat": "oov",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\th_sl_dictionary\\videos\\th_sl\\th_sl_05882.mp4",
+  "ref": [],
+  "signer": "S_thsl_02",
+  "oov_concept": "วีวีไอพี VVIP"
+ },
+ {
+  "id": "oov_S_ttrs_u00_028",
+  "cat": "oov",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\ttrs_dictionary\\ttrs_LurxsO.mp4",
+  "ref": [],
+  "signer": "S_ttrs_u00",
+  "oov_concept": "ระบบไต่สวน"
+ },
+ {
+  "id": "oov_S_ttrs_u00_029",
+  "cat": "oov",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\ttrs_dictionary\\ttrs_QuYRhJ.mp4",
+  "ref": [],
+  "signer": "S_ttrs_u00",
+  "oov_concept": "ละเว้นการกระทำ"
+ },
+ {
+  "id": "oov_S_ttrs_u00_030",
+  "cat": "oov",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\ttrs_dictionary\\ttrs_XKweOm.mp4",
+  "ref": [],
+  "signer": "S_ttrs_u00",
+  "oov_concept": "ปฏิบัติหน้าที่ล่าช้า"
+ },
+ {
+  "id": "oov_yt_person_004_031",
+  "cat": "oov",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\Ueujz5FMF2k.mp4",
+  "ref": [],
+  "signer": "yt_person_004",
+  "oov_concept": "วงเวียน"
+ },
+ {
+  "id": "oov_yt_person_004_032",
+  "cat": "oov",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\ygK7x9fGjLU.mp4",
+  "ref": [],
+  "signer": "yt_person_004",
+  "oov_concept": "พิพิธภัณฑ์"
+ },
+ {
+  "id": "bt51_033",
+  "cat": "blind_t51",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\TSL51\\videos\\user_sentence\\ขนมปัง_var_1__ฉัน_var_2__กิน_var_1_no_space_0.mp4",
+  "ref": [
+   "ขนมปัง",
+   "ฉัน",
+   "กิน"
+  ],
+  "signer": "S_51_user"
+ },
+ {
+  "id": "bt51_034",
+  "cat": "blind_t51",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\TSL51\\videos\\user_sentence\\แม่_var_1__เกิด_var_2__หูหนวก_var_2_no_space_2.mp4",
+  "ref": [
+   "แม่",
+   "เกิด",
+   "หูหนวก"
+  ],
+  "signer": "S_51_user"
+ },
+ {
+  "id": "bt51_035",
+  "cat": "blind_t51",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\TSL51\\videos\\user_sentence\\ขนมปัง_var_1__แมว_var_1__กิน_var_1_no_space_4.mp4",
+  "ref": [
+   "ขนมปัง",
+   "แมว",
+   "กิน"
+  ],
+  "signer": "S_51_user"
+ },
+ {
+  "id": "bt51_036",
+  "cat": "blind_t51",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\TSL51\\videos\\user_sentence\\ขนมปัง_var_1__ฉัน_var_1__กิน_var_1_no_space_1.mp4",
+  "ref": [
+   "ขนมปัง",
+   "ฉัน",
+   "กิน"
+  ],
+  "signer": "S_51_user"
+ },
+ {
+  "id": "bt51_037",
+  "cat": "blind_t51",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\TSL51\\videos\\user_sentence\\ขนมปัง_var_1__แมว_var_1__กิน_var_1_with_space_2.mp4",
+  "ref": [
+   "ขนมปัง",
+   "แมว",
+   "กิน"
+  ],
+  "signer": "S_51_user"
+ },
+ {
+  "id": "bt51_038",
+  "cat": "blind_t51",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\TSL51\\videos\\user_sentence\\ภาษามือ_var_1__น้อง_var_1__เรียน_var_1__ชอบ_var_1_no_space_1.mp4",
+  "ref": [
+   "ภาษามือ",
+   "น้อง",
+   "เรียน",
+   "ชอบ"
+  ],
+  "signer": "S_51_user"
+ },
+ {
+  "id": "bt51_039",
+  "cat": "blind_t51",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\TSL51\\videos\\user_sentence\\ขนมปัง_var_1__ฉัน_var_2__กิน_var_1_no_space_1.mp4",
+  "ref": [
+   "ขนมปัง",
+   "ฉัน",
+   "กิน"
+  ],
+  "signer": "S_51_user"
+ },
+ {
+  "id": "bt51_040",
+  "cat": "blind_t51",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\TSL51\\videos\\user_sentence\\พรุ่งนี้_var_1__คุณ_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2__ที่ไหน_var_1_no_space_1.mp4",
+  "ref": [
+   "พรุ่งนี้",
+   "คุณ",
+   "ข้าว",
+   "กิน",
+   "ไป",
+   "ที่ไหน"
+  ],
+  "signer": "S_51_user"
+ },
+ {
+  "id": "bt51_041",
+  "cat": "blind_t51",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\TSL51\\videos\\user_sentence\\แฟน_var_1__เกิด_var_2__หูหนวก_var_2_no_space_2.mp4",
+  "ref": [
+   "แฟน",
+   "เกิด",
+   "หูหนวก"
+  ],
+  "signer": "S_51_user"
+ },
+ {
+  "id": "bt51_042",
+  "cat": "blind_t51",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\TSL51\\videos\\user_sentence\\คุณ_var_1__ฉัน_var_1__แฟน_var_1_no_space_0.mp4",
+  "ref": [
+   "คุณ",
+   "ฉัน",
+   "แฟน"
+  ],
+  "signer": "S_51_user"
+ },
+ {
+  "id": "bcat_S_thsl_02_043",
+  "cat": "blind_concat",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\th_sl_dictionary\\videos\\th_sl\\th_sl_06342.mp4+D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\th_sl_dictionary\\videos\\th_sl\\th_sl_05632.mp4+D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\th_sl_dictionary\\videos\\th_sl\\th_sl_06132.mp4",
+  "ref": [
+   "ถูกต้อง",
+   "ปลอบใจ",
+   "น้องสาว"
+  ],
+  "signer": "S_thsl_02"
+ },
+ {
+  "id": "bcat_S_thsl_02_044",
+  "cat": "blind_concat",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\th_sl_dictionary\\videos\\th_sl\\th_sl_06295.mp4+D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\th_sl_dictionary\\videos\\th_sl\\th_sl_06342.mp4+D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\th_sl_dictionary\\videos\\th_sl\\th_sl_05632.mp4+D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\th_sl_dictionary\\videos\\th_sl\\th_sl_06134.mp4",
+  "ref": [
+   "กิน",
+   "ถูกต้อง",
+   "ปลอบใจ",
+   "น้องชาย"
+  ],
+  "signer": "S_thsl_02"
+ },
+ {
+  "id": "bcat_S_thsl_02_045",
+  "cat": "blind_concat",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\th_sl_dictionary\\videos\\th_sl\\th_sl_06132.mp4+D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\th_sl_dictionary\\videos\\th_sl\\th_sl_06342.mp4+D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\word_level\\th_sl_dictionary\\videos\\th_sl\\th_sl_06295.mp4",
+  "ref": [
+   "น้องสาว",
+   "ถูกต้อง",
+   "กิน"
+  ],
+  "signer": "S_thsl_02"
+ },
+ {
+  "id": "bcat_yt_person_004_046",
+  "cat": "blind_concat",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\WXpu-p9Pq_E.mp4+D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\vBzQK427VME.mp4+D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\j2kQpHcJDVI.mp4",
+  "ref": [
+   "สบายดี",
+   "ร้านอาหาร",
+   "รถเมล์"
+  ],
+  "signer": "yt_person_004"
+ },
+ {
+  "id": "bcat_yt_person_004_047",
+  "cat": "blind_concat",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\TdmZPjXiKI8.mp4+D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\d7duq_rlhVU.mp4+D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\vp-wgVaNp8A.mp4+D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\PjxCu_xCUZI.mp4",
+  "ref": [
+   "สัปดาห์",
+   "วัด",
+   "ร้อน",
+   "โรงพยาบาล"
+  ],
+  "signer": "yt_person_004"
+ },
+ {
+  "id": "bcat_yt_person_004_048",
+  "cat": "blind_concat",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\vBzQK427VME.mp4+D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\TdmZPjXiKI8.mp4+D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\D-l4RjB_lFk.mp4",
+  "ref": [
+   "ร้านอาหาร",
+   "สัปดาห์",
+   "เย็น"
+  ],
+  "signer": "yt_person_004"
+ },
+ {
+  "id": "bcat_yt_person_030_049",
+  "cat": "blind_concat",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\_In2ShWNKNA.mp4+D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\fJl_Jl8frSU.mp4+D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\agent_data\\youtube_words\\videos\\H18yBG9Glg8.mp4",
+  "ref": [
+   "ข้าว",
+   "หา",
+   "ปลา"
+  ],
+  "signer": "yt_person_030"
+ },
+ {
+  "id": "dt_050",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\test1.mp4",
+  "ref": [
+   "สวัสดี",
+   "สบายดี",
+   "ชอบ",
+   "โกรธ",
+   "แมว",
+   "แฟน",
+   "ปรบมือ"
+  ],
+  "signer": "data_test"
+ },
+ {
+  "id": "dt_051",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\ฉันปลอบเพื่อนร้องไห้.mp4",
+  "ref": [
+   "ฉัน",
+   "ปลอบใจ",
+   "เพื่อน",
+   "ร้องไห้"
+  ],
+  "signer": "data_test"
+ },
+ {
+  "id": "dt_052",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\ฉันรักเพื่อน.mp4",
+  "ref": [
+   "ฉัน",
+   "รัก",
+   "เพื่อน"
+  ],
+  "signer": "data_test"
+ },
+ {
+  "id": "dt_053",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\พ่อดื่มน้ำ.mp4",
+  "ref": [
+   "พ่อ",
+   "ดื่ม",
+   "น้ำ"
+  ],
+  "signer": "data_test"
+ },
+ {
+  "id": "dt_054",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\ไปทานข้าวด้วยกันมั้ย.mp4",
+  "ref": [
+   "ไป",
+   "กิน",
+   "ข้าว",
+   "ด้วยกัน",
+   "ไหม"
+  ],
+  "signer": "data_test"
+ },
+ {
+  "id": "ip_word_IMG_3293",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Word-20261016T043445Z-1-001\\Word\\IMG_3293.MOV",
+  "ref": [
+   "สวัสดี"
+  ],
+  "signer": "owner_iphone"
+ },
+ {
+  "id": "ip_word_IMG_3295",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Word-20261016T043445Z-1-001\\Word\\IMG_3295.MOV",
+  "ref": [
+   "สวัสดี"
+  ],
+  "signer": "owner_iphone"
+ },
+ {
+  "id": "ip_word_IMG_3296",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Word-20261016T043445Z-1-001\\Word\\IMG_3296.MOV",
+  "ref": [
+   "ฉัน"
+  ],
+  "signer": "owner_iphone"
+ },
+ {
+  "id": "ip_word_IMG_3297",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Word-20261016T043445Z-1-001\\Word\\IMG_3297.MOV",
+  "ref": [
+   "ชื่อ"
+  ],
+  "signer": "owner_iphone"
+ },
+ {
+  "id": "ip_word_IMG_3298",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Word-20261016T043445Z-1-001\\Word\\IMG_3298.MOV",
+  "ref": [
+   "ชอบ"
+  ],
+  "signer": "owner_iphone"
+ },
+ {
+  "id": "ip_word_IMG_3299",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Word-20261016T043445Z-1-001\\Word\\IMG_3299.MOV",
+  "ref": [
+   "แมว"
+  ],
+  "signer": "owner_iphone"
+ },
+ {
+  "id": "ip_word_IMG_3308",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Word-20261016T043445Z-1-001\\Word\\IMG_3308.MOV",
+  "ref": [
+   "พรุ่งนี้"
+  ],
+  "signer": "owner_iphone"
+ },
+ {
+  "id": "ip_word_IMG_3309",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Word-20261016T043445Z-1-001\\Word\\IMG_3309.MOV",
+  "ref": [
+   "ไป"
+  ],
+  "signer": "owner_iphone"
+ },
+ {
+  "id": "ip_word_IMG_3311",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Word-20261016T043445Z-1-001\\Word\\IMG_3311.MOV",
+  "ref": [
+   "จีน"
+  ],
+  "signer": "owner_iphone"
+ },
+ {
+  "id": "ip_sentence_IMG_3302",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Sentence-20261016T043444Z-1-001\\Sentence\\IMG_3302.MOV",
+  "ref": [
+   "สวัสดี",
+   "ฉัน",
+   "ชื่อ",
+   "J",
+   "ฉัน",
+   "ชอบ",
+   "แมว"
+  ],
+  "signer": "owner_iphone"
+ },
+ {
+  "id": "ip_sentence_IMG_3303",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Sentence-20261016T043444Z-1-001\\Sentence\\IMG_3303.MOV",
+  "ref": [
+   "ฉัน",
+   "สบายดี",
+   "คุณ",
+   "สบายดี"
+  ],
+  "signer": "owner_iphone"
+ },
+ {
+  "id": "ip_sentence_IMG_3304",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Sentence-20261016T043444Z-1-001\\Sentence\\IMG_3304.MOV",
+  "ref": [
+   "วันนี้",
+   "ฉัน",
+   "นำเสนอ",
+   "งาน",
+   "ภาษามือ",
+   "A",
+   "I"
+  ],
+  "signer": "owner_iphone"
+ },
+ {
+  "id": "ip_sentence_IMG_3305",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Sentence-20261016T043444Z-1-001\\Sentence\\IMG_3305.MOV",
+  "ref": [
+   "วันนี้",
+   "ฉัน",
+   "อยาก",
+   "เรียน",
+   "ภาษามือ"
+  ],
+  "signer": "owner_iphone"
+ },
+ {
+  "id": "ip_sentence_IMG_3307",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Sentence-20261016T043444Z-1-001\\Sentence\\IMG_3307.MOV",
+  "ref": [
+   "พรุ่งนี้",
+   "ฉัน",
+   "ไป",
+   "เที่ยว",
+   "ประเทศ",
+   "จีน"
+  ],
+  "signer": "owner_iphone"
+ },
+ {
+  "id": "team_069",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Pitty\\พรุ่งนี้ฉันไปโรงเรียน.mp4",
+  "ref": [
+   "พรุ่งนี้",
+   "ฉัน",
+   "ไป",
+   "โรงเรียน"
+  ],
+  "signer": "team_Pitty"
+ },
+ {
+  "id": "team_070",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Pitty\\สวัสดีฉันชื่อ P.mp4",
+  "ref": [
+   "สวัสดี",
+   "ฉัน",
+   "ชื่อ",
+   "P"
+  ],
+  "signer": "team_Pitty"
+ },
+ {
+  "id": "team_071",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Pitty\\ฉันคิดถึงแม่.mp4",
+  "ref": [
+   "ฉัน",
+   "คิดถึง",
+   "แม่"
+  ],
+  "signer": "team_Pitty"
+ },
+ {
+  "id": "team_072",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Pitty\\ฉันชอบกินขนมปัง.mp4",
+  "ref": [
+   "ฉัน",
+   "ชอบ",
+   "กิน",
+   "ขนมปัง"
+  ],
+  "signer": "team_Pitty"
+ },
+ {
+  "id": "team_073",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Pitty\\พรุ่งนี้ฉันไปเที่ยว.mp4",
+  "ref": [
+   "พรุ่งนี้",
+   "ฉัน",
+   "ไป",
+   "เที่ยว"
+  ],
+  "signer": "team_Pitty"
+ },
+ {
+  "id": "team_074",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Pitty\\ฉันรักเพื่อน.mov",
+  "ref": [
+   "ฉัน",
+   "รัก",
+   "เพื่อน"
+  ],
+  "signer": "team_Pitty"
+ },
+ {
+  "id": "team_075",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Pitty\\วันหยุดพ่อชอบไปตลาด.mov",
+  "ref": [
+   "วันหยุด",
+   "พ่อ",
+   "ชอบ",
+   "ไป",
+   "ตลาด"
+  ],
+  "signer": "team_Pitty"
+ },
+ {
+  "id": "team_076",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Boom\\ฉันยังลืมคุณไม่ได้.MOV",
+  "ref": [
+   "ฉัน",
+   "ยัง",
+   "ลืม",
+   "คุณ",
+   "ไม่ได้"
+  ],
+  "signer": "team_Boom"
+ },
+ {
+  "id": "team_077",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Boom\\ฉันแอบชอบคุณ.MOV",
+  "ref": [
+   "ฉัน",
+   "แอบ",
+   "ชอบ",
+   "คุณ"
+  ],
+  "signer": "team_Boom"
+ },
+ {
+  "id": "team_078",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Boom\\ตอนนี้กำลังเรียนภาษา.MOV",
+  "ref": [
+   "ตอนนี้",
+   "กำลัง",
+   "เรียน",
+   "ภาษา"
+  ],
+  "signer": "team_Boom"
+ },
+ {
+  "id": "team_079",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Boom\\มีอะไรให้ฉันช่วยไหม.MOV",
+  "ref": [
+   "มี",
+   "อะไร",
+   "ให้",
+   "ฉัน",
+   "ช่วย",
+   "ไหม"
+  ],
+  "signer": "team_Boom"
+ },
+ {
+  "id": "team_080",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Boom\\เราจะเป็นเพื่อนกันตลอดไป.MOV",
+  "ref": [
+   "เรา",
+   "จะ",
+   "เป็น",
+   "เพื่อน",
+   "กัน",
+   "ตลอดไป"
+  ],
+  "signer": "team_Boom"
+ },
+ {
+  "id": "team_081",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Boom\\เล่นเกมส์กันไหม.MOV",
+  "ref": [
+   "เล่น",
+   "เกม",
+   "กัน",
+   "ไหม"
+  ],
+  "signer": "team_Boom"
+ },
+ {
+  "id": "team_082",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Jack\\ฉันสบายดี คุณสบายดี_.MOV",
+  "ref": [
+   "ฉัน",
+   "สบายดี",
+   "คุณ",
+   "สบายดี"
+  ],
+  "signer": "team_Jack"
+ },
+ {
+  "id": "team_083",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Jack\\พรุ่งนี้ผมจะไปเที่ยวประเทศจีน.MOV",
+  "ref": [
+   "พรุ่งนี้",
+   "ฉัน",
+   "ไป",
+   "เที่ยว",
+   "ประเทศ",
+   "จีน"
+  ],
+  "signer": "team_Jack"
+ },
+ {
+  "id": "team_084",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Jack\\วันนี้ฉันนำเสนองานเรื่องภาษามือกับ AI.MOV",
+  "ref": [
+   "วันนี้",
+   "ฉัน",
+   "นำเสนอ",
+   "งาน",
+   "ภาษามือ",
+   "A",
+   "I"
+  ],
+  "signer": "team_Jack"
+ },
+ {
+  "id": "team_085",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Jack\\วันนี้ผมอยากเรียนภาษามือ.MOV",
+  "ref": [
+   "วันนี้",
+   "ฉัน",
+   "อยาก",
+   "เรียน",
+   "ภาษามือ"
+  ],
+  "signer": "team_Jack"
+ },
+ {
+  "id": "team_086",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Jack\\สวัสดี ฉันชื่อ J ฉันชอบแมว.MOV",
+  "ref": [
+   "สวัสดี",
+   "ฉัน",
+   "ชื่อ",
+   "J",
+   "ฉัน",
+   "ชอบ",
+   "แมว"
+  ],
+  "signer": "team_Jack"
+ },
+ {
+  "id": "wr_087",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\word_ref\\อะไร\\thsl_00138.mp4",
+  "ref": [
+   "อะไร"
+  ],
+  "signer": "word_ref:thsl"
+ },
+ {
+  "id": "wr_088",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\word_ref\\อะไร\\thsl_02140.mp4",
+  "ref": [
+   "อะไร"
+  ],
+  "signer": "word_ref:thsl"
+ },
+ {
+  "id": "wr_089",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\word_ref\\อะไร\\tsl51_sentence_คุณชื่ออะไร_0.mp4",
+  "ref": [
+   "อะไร"
+  ],
+  "signer": "word_ref:tsl51"
+ },
+ {
+  "id": "wr_090",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\word_ref\\อะไร\\tsl51_user_0.mp4",
+  "ref": [
+   "อะไร"
+  ],
+  "signer": "word_ref:tsl51"
+ },
+ {
+  "id": "wr_091",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\word_ref\\อะไร\\tsl51_user_3.mp4",
+  "ref": [
+   "อะไร"
+  ],
+  "signer": "word_ref:tsl51"
+ },
+ {
+  "id": "wr_092",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\word_ref\\อะไร\\tsl51_user_6.mp4",
+  "ref": [
+   "อะไร"
+  ],
+  "signer": "word_ref:tsl51"
+ },
+ {
+  "id": "wr_093",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\word_ref\\อะไร\\ttrs_NyNJ8u_heldout.mp4",
+  "ref": [
+   "อะไร"
+  ],
+  "signer": "word_ref:ttrs"
+ },
+ {
+  "id": "wr_094",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\word_ref\\อะไร\\yt_bdaC1n3IeJw_คุณชื่ออะไร.mp4",
+  "ref": [
+   "อะไร"
+  ],
+  "signer": "word_ref:yt"
+ },
+ {
+  "id": "tc_095",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\teacher_clips\\ครู_th_sl_00791.mp4",
+  "ref": [
+   "ครู"
+  ],
+  "signer": "teacher:th"
+ },
+ {
+  "id": "tc_096",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\teacher_clips\\ครู_th_sl_00793.mp4",
+  "ref": [
+   "ครู"
+  ],
+  "signer": "teacher:th"
+ },
+ {
+  "id": "tc_097",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\teacher_clips\\ครู_ttrs_QY5h0P.mp4",
+  "ref": [
+   "ครู"
+  ],
+  "signer": "teacher:ttrs"
+ },
+ {
+  "id": "tc_098",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\teacher_clips\\ครู_yt_Asqs4Vr1cBM.mp4",
+  "ref": [
+   "ครู"
+  ],
+  "signer": "teacher:yt"
+ },
+ {
+  "id": "tc_099",
+  "cat": "data_test",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\teacher_clips\\คุณครู_ttrs_qCke5B.mp4",
+  "ref": [
+   "ครู"
+  ],
+  "signer": "teacher:ttrs"
+ },
+ {
+  "id": "hc_bottom_00",
+  "cat": "hardcase",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\artifacts\\eval\\hardcase_v11\\clips\\bottom_00.mp4",
+  "ref": [
+   "ฉัน"
+  ],
+  "signer": "own:word_IMG_3296",
+  "hc_cat": "bottom",
+  "ref_known": true
+ },
+ {
+  "id": "hc_bottom_01",
+  "cat": "hardcase",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\artifacts\\eval\\hardcase_v11\\clips\\bottom_01.mp4",
+  "ref": [
+   "ชอบ"
+  ],
+  "signer": "own:word_IMG_3298",
+  "hc_cat": "bottom",
+  "ref_known": true
+ },
+ {
+  "id": "hc_close_00",
+  "cat": "hardcase",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\artifacts\\eval\\hardcase_v11\\clips\\close_00.mp4",
+  "ref": [],
+  "signer": "t51s:ขนมปัง_var_1__แมว_var_1__กิน_var_1_with_space_3",
+  "hc_cat": "close",
+  "ref_known": false
+ },
+ {
+  "id": "hc_close_01",
+  "cat": "hardcase",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\artifacts\\eval\\hardcase_v11\\clips\\close_01.mp4",
+  "ref": [],
+  "signer": "t51s:ภาษามือ_var_1__แม่_var_1__เรียน_var_1_no_space_2",
+  "hc_cat": "close",
+  "ref_known": false
+ },
+ {
+  "id": "hc_crossing_04",
+  "cat": "hardcase",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\artifacts\\eval\\hardcase_v11\\clips\\crossing_04.mp4",
+  "ref": [
+   "ชื่อ"
+  ],
+  "signer": "own:word_IMG_3297",
+  "hc_cat": "crossing",
+  "ref_known": true
+ },
+ {
+  "id": "hc_crossing_05",
+  "cat": "hardcase",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\artifacts\\eval\\hardcase_v11\\clips\\crossing_05.mp4",
+  "ref": [
+   "แมว"
+  ],
+  "signer": "own:word_IMG_3299",
+  "hc_cat": "crossing",
+  "ref_known": true
+ },
+ {
+  "id": "hc_fast_00",
+  "cat": "hardcase",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\artifacts\\eval\\hardcase_v11\\clips\\fast_00.mp4",
+  "ref": [
+   "สวัสดี"
+  ],
+  "signer": "own:word_IMG_3295",
+  "hc_cat": "fast",
+  "ref_known": true
+ },
+ {
+  "id": "hc_lost_00",
+  "cat": "hardcase",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\artifacts\\eval\\hardcase_v11\\clips\\lost_00.mp4",
+  "ref": [
+   "ชอบ"
+  ],
+  "signer": "own:word_IMG_3298",
+  "hc_cat": "lost",
+  "ref_known": true
+ },
+ {
+  "id": "hc_over_face_00",
+  "cat": "hardcase",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\artifacts\\eval\\hardcase_v11\\clips\\over_face_00.mp4",
+  "ref": [
+   "สวัสดี"
+  ],
+  "signer": "own:word_IMG_3295",
+  "hc_cat": "over_face",
+  "ref_known": true
+ },
+ {
+  "id": "hc_side_on_00",
+  "cat": "hardcase",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\artifacts\\eval\\hardcase_v11\\clips\\side_on_00.mp4",
+  "ref": [
+   "พรุ่งนี้"
+  ],
+  "signer": "own:word_IMG_3308",
+  "hc_cat": "side_on",
+  "ref_known": true
+ },
+ {
+  "id": "st_zoom_team_079",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Boom\\มีอะไรให้ฉันช่วยไหม.MOV",
+  "ref": [
+   "มี",
+   "อะไร",
+   "ให้",
+   "ฉัน",
+   "ช่วย",
+   "ไหม"
+  ],
+  "signer": "team_Boom",
+  "stress": "zoom",
+  "base": "team_079"
+ },
+ {
+  "id": "st_fps12_team_079",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Boom\\มีอะไรให้ฉันช่วยไหม.MOV",
+  "ref": [
+   "มี",
+   "อะไร",
+   "ให้",
+   "ฉัน",
+   "ช่วย",
+   "ไหม"
+  ],
+  "signer": "team_Boom",
+  "stress": "fps12",
+  "base": "team_079"
+ },
+ {
+  "id": "st_mirror_team_079",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Boom\\มีอะไรให้ฉันช่วยไหม.MOV",
+  "ref": [
+   "มี",
+   "อะไร",
+   "ให้",
+   "ฉัน",
+   "ช่วย",
+   "ไหม"
+  ],
+  "signer": "team_Boom",
+  "stress": "mirror",
+  "base": "team_079"
+ },
+ {
+  "id": "st_zoom_team_078",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Boom\\ตอนนี้กำลังเรียนภาษา.MOV",
+  "ref": [
+   "ตอนนี้",
+   "กำลัง",
+   "เรียน",
+   "ภาษา"
+  ],
+  "signer": "team_Boom",
+  "stress": "zoom",
+  "base": "team_078"
+ },
+ {
+  "id": "st_fps12_team_078",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Boom\\ตอนนี้กำลังเรียนภาษา.MOV",
+  "ref": [
+   "ตอนนี้",
+   "กำลัง",
+   "เรียน",
+   "ภาษา"
+  ],
+  "signer": "team_Boom",
+  "stress": "fps12",
+  "base": "team_078"
+ },
+ {
+  "id": "st_mirror_team_078",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Boom\\ตอนนี้กำลังเรียนภาษา.MOV",
+  "ref": [
+   "ตอนนี้",
+   "กำลัง",
+   "เรียน",
+   "ภาษา"
+  ],
+  "signer": "team_Boom",
+  "stress": "mirror",
+  "base": "team_078"
+ },
+ {
+  "id": "st_zoom_ip_sentence_IMG_3304",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Sentence-20261016T043444Z-1-001\\Sentence\\IMG_3304.MOV",
+  "ref": [
+   "วันนี้",
+   "ฉัน",
+   "นำเสนอ",
+   "งาน",
+   "ภาษามือ",
+   "A",
+   "I"
+  ],
+  "signer": "owner_iphone",
+  "stress": "zoom",
+  "base": "ip_sentence_IMG_3304"
+ },
+ {
+  "id": "st_fps12_ip_sentence_IMG_3304",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Sentence-20261016T043444Z-1-001\\Sentence\\IMG_3304.MOV",
+  "ref": [
+   "วันนี้",
+   "ฉัน",
+   "นำเสนอ",
+   "งาน",
+   "ภาษามือ",
+   "A",
+   "I"
+  ],
+  "signer": "owner_iphone",
+  "stress": "fps12",
+  "base": "ip_sentence_IMG_3304"
+ },
+ {
+  "id": "st_mirror_ip_sentence_IMG_3304",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Sentence-20261016T043444Z-1-001\\Sentence\\IMG_3304.MOV",
+  "ref": [
+   "วันนี้",
+   "ฉัน",
+   "นำเสนอ",
+   "งาน",
+   "ภาษามือ",
+   "A",
+   "I"
+  ],
+  "signer": "owner_iphone",
+  "stress": "mirror",
+  "base": "ip_sentence_IMG_3304"
+ },
+ {
+  "id": "st_zoom_ip_word_IMG_3299",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Word-20261016T043445Z-1-001\\Word\\IMG_3299.MOV",
+  "ref": [
+   "แมว"
+  ],
+  "signer": "owner_iphone",
+  "stress": "zoom",
+  "base": "ip_word_IMG_3299"
+ },
+ {
+  "id": "st_fps12_ip_word_IMG_3299",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Word-20261016T043445Z-1-001\\Word\\IMG_3299.MOV",
+  "ref": [
+   "แมว"
+  ],
+  "signer": "owner_iphone",
+  "stress": "fps12",
+  "base": "ip_word_IMG_3299"
+ },
+ {
+  "id": "st_mirror_ip_word_IMG_3299",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Word-20261016T043445Z-1-001\\Word\\IMG_3299.MOV",
+  "ref": [
+   "แมว"
+  ],
+  "signer": "owner_iphone",
+  "stress": "mirror",
+  "base": "ip_word_IMG_3299"
+ },
+ {
+  "id": "st_zoom_dt_051",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\ฉันปลอบเพื่อนร้องไห้.mp4",
+  "ref": [
+   "ฉัน",
+   "ปลอบใจ",
+   "เพื่อน",
+   "ร้องไห้"
+  ],
+  "signer": "data_test",
+  "stress": "zoom",
+  "base": "dt_051"
+ },
+ {
+  "id": "st_fps12_dt_051",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\ฉันปลอบเพื่อนร้องไห้.mp4",
+  "ref": [
+   "ฉัน",
+   "ปลอบใจ",
+   "เพื่อน",
+   "ร้องไห้"
+  ],
+  "signer": "data_test",
+  "stress": "fps12",
+  "base": "dt_051"
+ },
+ {
+  "id": "st_mirror_dt_051",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\ฉันปลอบเพื่อนร้องไห้.mp4",
+  "ref": [
+   "ฉัน",
+   "ปลอบใจ",
+   "เพื่อน",
+   "ร้องไห้"
+  ],
+  "signer": "data_test",
+  "stress": "mirror",
+  "base": "dt_051"
+ },
+ {
+  "id": "st_zoom_dt_052",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\ฉันรักเพื่อน.mp4",
+  "ref": [
+   "ฉัน",
+   "รัก",
+   "เพื่อน"
+  ],
+  "signer": "data_test",
+  "stress": "zoom",
+  "base": "dt_052"
+ },
+ {
+  "id": "st_fps12_dt_052",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\ฉันรักเพื่อน.mp4",
+  "ref": [
+   "ฉัน",
+   "รัก",
+   "เพื่อน"
+  ],
+  "signer": "data_test",
+  "stress": "fps12",
+  "base": "dt_052"
+ },
+ {
+  "id": "st_mirror_dt_052",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\ฉันรักเพื่อน.mp4",
+  "ref": [
+   "ฉัน",
+   "รัก",
+   "เพื่อน"
+  ],
+  "signer": "data_test",
+  "stress": "mirror",
+  "base": "dt_052"
+ },
+ {
+  "id": "st_zoom_ip_word_IMG_3311",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Word-20261016T043445Z-1-001\\Word\\IMG_3311.MOV",
+  "ref": [
+   "จีน"
+  ],
+  "signer": "owner_iphone",
+  "stress": "zoom",
+  "base": "ip_word_IMG_3311"
+ },
+ {
+  "id": "st_fps12_ip_word_IMG_3311",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Word-20261016T043445Z-1-001\\Word\\IMG_3311.MOV",
+  "ref": [
+   "จีน"
+  ],
+  "signer": "owner_iphone",
+  "stress": "fps12",
+  "base": "ip_word_IMG_3311"
+ },
+ {
+  "id": "st_mirror_ip_word_IMG_3311",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Word-20261016T043445Z-1-001\\Word\\IMG_3311.MOV",
+  "ref": [
+   "จีน"
+  ],
+  "signer": "owner_iphone",
+  "stress": "mirror",
+  "base": "ip_word_IMG_3311"
+ },
+ {
+  "id": "st_zoom_team_074",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Pitty\\ฉันรักเพื่อน.mov",
+  "ref": [
+   "ฉัน",
+   "รัก",
+   "เพื่อน"
+  ],
+  "signer": "team_Pitty",
+  "stress": "zoom",
+  "base": "team_074"
+ },
+ {
+  "id": "st_fps12_team_074",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Pitty\\ฉันรักเพื่อน.mov",
+  "ref": [
+   "ฉัน",
+   "รัก",
+   "เพื่อน"
+  ],
+  "signer": "team_Pitty",
+  "stress": "fps12",
+  "base": "team_074"
+ },
+ {
+  "id": "st_mirror_team_074",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\team-drive\\Eval-Test\\Pitty\\ฉันรักเพื่อน.mov",
+  "ref": [
+   "ฉัน",
+   "รัก",
+   "เพื่อน"
+  ],
+  "signer": "team_Pitty",
+  "stress": "mirror",
+  "base": "team_074"
+ },
+ {
+  "id": "st_zoom_tc_096",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\teacher_clips\\ครู_th_sl_00793.mp4",
+  "ref": [
+   "ครู"
+  ],
+  "signer": "teacher:th",
+  "stress": "zoom",
+  "base": "tc_096"
+ },
+ {
+  "id": "st_fps12_tc_096",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\teacher_clips\\ครู_th_sl_00793.mp4",
+  "ref": [
+   "ครู"
+  ],
+  "signer": "teacher:th",
+  "stress": "fps12",
+  "base": "tc_096"
+ },
+ {
+  "id": "st_mirror_tc_096",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\teacher_clips\\ครู_th_sl_00793.mp4",
+  "ref": [
+   "ครู"
+  ],
+  "signer": "teacher:th",
+  "stress": "mirror",
+  "base": "tc_096"
+ },
+ {
+  "id": "st_zoom_ip_word_IMG_3293",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Word-20261016T043445Z-1-001\\Word\\IMG_3293.MOV",
+  "ref": [
+   "สวัสดี"
+  ],
+  "signer": "owner_iphone",
+  "stress": "zoom",
+  "base": "ip_word_IMG_3293"
+ },
+ {
+  "id": "st_fps12_ip_word_IMG_3293",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Word-20261016T043445Z-1-001\\Word\\IMG_3293.MOV",
+  "ref": [
+   "สวัสดี"
+  ],
+  "signer": "owner_iphone",
+  "stress": "fps12",
+  "base": "ip_word_IMG_3293"
+ },
+ {
+  "id": "st_mirror_ip_word_IMG_3293",
+  "cat": "stress",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\data_test\\iphone_test\\Word-20261016T043445Z-1-001\\Word\\IMG_3293.MOV",
+  "ref": [
+   "สวัสดี"
+  ],
+  "signer": "owner_iphone",
+  "stress": "mirror",
+  "base": "ip_word_IMG_3293"
+ },
+ {
+  "id": "idle_null_fidgeter_3",
+  "cat": "idle",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\TSL51\\videos\\user_sign\\null_fidgeter_3.mp4",
+  "ref": [],
+  "signer": "S_51_user"
+ },
+ {
+  "id": "idle_null_fidgeter_5",
+  "cat": "idle",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\TSL51\\videos\\user_sign\\null_fidgeter_5.mp4",
+  "ref": [],
+  "signer": "S_51_user"
+ },
+ {
+  "id": "idle_null_statue_6",
+  "cat": "idle",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\TSL51\\videos\\user_sign\\null_statue_6.mp4",
+  "ref": [],
+  "signer": "S_51_user"
+ },
+ {
+  "id": "idle_null_transition_0",
+  "cat": "idle",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\TSL51\\videos\\user_sign\\null_transition_0.mp4",
+  "ref": [],
+  "signer": "S_51_user"
+ },
+ {
+  "id": "idle_null_statue_1",
+  "cat": "idle",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\TSL51\\videos\\user_sign\\null_statue_1.mp4",
+  "ref": [],
+  "signer": "S_51_user"
+ },
+ {
+  "id": "idle_null_transition_2",
+  "cat": "idle",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\TSL51\\videos\\user_sign\\null_transition_2.mp4",
+  "ref": [],
+  "signer": "S_51_user"
+ },
+ {
+  "id": "idle_null_fidgeter_1",
+  "cat": "idle",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\TSL51\\videos\\user_sign\\null_fidgeter_1.mp4",
+  "ref": [],
+  "signer": "S_51_user"
+ },
+ {
+  "id": "idle_null_fidgeter_2",
+  "cat": "idle",
+  "src": "D:\\SLM-labs\\SLM-Labs-SignDINO\\cloud_s3\\raw_data\\TSL51\\videos\\user_sign\\null_fidgeter_2.mp4",
+  "ref": [],
+  "signer": "S_51_user"
+ }
+]

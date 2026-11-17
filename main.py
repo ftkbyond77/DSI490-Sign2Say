@@ -9,6 +9,8 @@ Data (S3 = source of truth, cloud_s3/ = local mirror, see cloud_s3/data_prep/SCH
   python main.py data pull data_prep           # download the prepared data (what training needs)
   python main.py data pull raw_data            # download raw videos / landmarks (only to rebuild data_prep)
   python main.py prep <step>                   # rebuild data_prep: pose_items | ingest | face_emb | signers | lexicon | manifest | shards | docs
+  python main.py prep v12 <step>               # v12 new sources: ingest | labels | annotate | qc | splits | eda | shards (scripts/v12_prep.py)
+  python main.py live-capture script|replay    # v12 prompted live capture: build a prompt script / score a session (live-replay <session>)
   python main.py extract [--datasets a,b]      # MediaPipe Holistic on every source video (the production extractor, local CPU)
   python main.py harvest <step>                # more signers for daily-conversation words: discover [--words a,b] | download | videos | signers | label
   python main.py letters <step>                # fingerspelling lessons → letter holds: discover | select | download | extract | label
@@ -18,6 +20,8 @@ Data (S3 = source of truth, cloud_s3/ = local mirror, see cloud_s3/data_prep/SCH
 Train (encoder on one Vertex AI GPU job, everything else local):
   python main.py cloud <vertex.py args>        # upload-code / upload-data / upload-models / launch / wait / status / cleanup
   python main.py train-seq --encoder_run <dir> # tagger + span head + decoder tables on the local GPU
+  python main.py v11 seal|tiers|forms|sheets       # v11 data roles + sealed BLIND split (prompt-opt-v11 TPH 1)
+  python main.py train-v11 --run <name>        # v11 encoder runs R0–R8 (local GPU or Modal: modal_v11.py)
   python main.py train-encoder --run <name>    # Thai-only landmark encoder (modules/lmenc.py) on the local GPU (v8; v10 extractor-mixed)
 
 Build, tune, evaluate (local):
@@ -43,14 +47,18 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-SCRIPTS = {"prep": "scripts/data_prep.py", "eval": "scripts/eval.py", "data": "scripts/s3_sync.py", "cloud": "GCP/script/vertex.py",
+SCRIPTS = {"prep": "scripts/data_prep.py", "prep-v12": "scripts/v12_prep.py", "e2e-eval": "scripts/e2e_eval.py", "live-capture": "scripts/live_capture.py", "eval": "scripts/eval.py", "data": "scripts/s3_sync.py", "cloud": "GCP/script/vertex.py",
            "export-onnx": "scripts/export_onnx.py", "infer": "scripts/infer.py", "pretrained": "scripts/pretrained.py",
            "extract": "scripts/extract_mp.py", "harvest": "scripts/harvest_words.py", "train-seq": "GCP/script/job_entry.py",
            "letters": "scripts/harvest_letters.py", "train-letters": "scripts/train_fingerspell.py",
            "study-clips": "scripts/study_clips.py", "decision": "scripts/decision.py", "diagnose": "scripts/diagnose.py",
            "face-data": "scripts/face_data.py",
            "face-model": "scripts/face_model.py", "speech": "scripts/speech.py", "extractor": "scripts/extractor.py",
-           "train-encoder": "scripts/train_encoder.py"}
+           "train-encoder": "scripts/train_encoder.py", "v11": "scripts/v11.py", "train-v11": "scripts/train_v11.py",
+           "v11-hardcase": "scripts/v11_hardcase.py", "v11-decision": "scripts/v11_decision.py",
+           "train-seg-v11": "scripts/train_seg_v11.py", "v11-detector": "scripts/v11_hand_detector.py",
+           "v11-verifier": "scripts/v11_verifier.py", "v11-adapt": "scripts/v11_adapt.py",
+           "v11-report": "scripts/v11_report.py"}
 
 
 def main():
@@ -66,6 +74,10 @@ def main():
     if cmd == "train-seq":
         rest = ["--stage", "sequence", "--run_id", "seq-local", "--data", str(ROOT / "cloud_s3" / "data_prep" / "shards"),
                 "--models", str(ROOT / "artifacts" / "pretrained"), "--out", str(ROOT / "artifacts" / "runs" / "seq-v7"), *rest]
+    if cmd == "prep" and rest[:1] == ["v12"]:          # v12 data preparation (scripts/v12_prep.py: ingest | labels | annotate | qc | splits | eda | shards)
+        cmd, rest = "prep-v12", rest[1:]
+    if cmd == "live-replay":                           # v12: score a prompted live capture session (scripts/live_capture.py)
+        cmd, rest = "live-capture", ["replay", *rest]
     if cmd not in SCRIPTS:
         sys.exit(f"unknown command {cmd!r}\n{__doc__}")
     sys.path.insert(0, str(ROOT))

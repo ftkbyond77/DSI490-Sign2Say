@@ -51,7 +51,9 @@ def image_for(region: str) -> str:
 def _region_of(job):
     return job.split("/locations/")[1].split("/")[0]
 
-CODE_DIRS = ["modules", "scripts", "GCP/script", "models/unisign/stgcn_layers"]
+CODE_DIRS = ["modules", "scripts", "GCP/script", "models/unisign/stgcn_layers", "pitty/scripts", "cloud_s3/data_prep/manifest"]
+CODE_FILES = ["main.py", "artifacts/eval/blind_v11_manifest.json", "models/model-v10/vocab_conversation.json",   # v11 stage inputs
+              "artifacts/runs/seq-v7/tsl51_alignment.json"]
 CODE_SKIP = ("__pycache__", ".pyc", ".ipynb_checkpoints")
 TERMINAL = {"JOB_STATE_SUCCEEDED", "JOB_STATE_FAILED", "JOB_STATE_CANCELLED", "JOB_STATE_EXPIRED", "JOB_STATE_PARTIALLY_SUCCEEDED"}
 
@@ -68,6 +70,9 @@ def cmd_upload_code(a):
             for p in (ROOT / d).rglob("*"):
                 if p.is_file() and not any(s in str(p) for s in CODE_SKIP):
                     tf.add(p, arcname=str(p.relative_to(ROOT)).replace("\\", "/"))
+        for f in CODE_FILES:
+            if (ROOT / f).exists():
+                tf.add(ROOT / f, arcname=f)
     gcloud("storage", "cp", str(tmp), gs(f"code/{a.tag}.tar.gz"))
     print(f"code → {gs(f'code/{a.tag}.tar.gz')} ({tmp.stat().st_size / 1e6:.2f} MB)")
 

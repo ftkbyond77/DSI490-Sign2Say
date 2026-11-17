@@ -1,0 +1,36 @@
+{
+ "v10": {
+  "n_sentences": 204,
+  "caption_words": 1025,
+  "recall": 0.05853658536585366,
+  "precision": 0.5454545454545454,
+  "accepted_words": 110,
+  "top1_recall": 0.17365853658536584
+ },
+ "v11": {
+  "n_sentences": 204,
+  "caption_words": 1025,
+  "recall": 0.06146341463414634,
+  "precision": 0.6057692307692307,
+  "accepted_words": 104,
+  "top1_recall": 0.17365853658536584,
+  "recall_diff_vs_v10": 0.0029268292682926786,
+  "recall_ci": [
+   -0.003957069253140827,
+   0.009963425812391189
+  ]
+ },
+ "v12": {
+  "n_sentences": 204,
+  "caption_words": 1025,
+  "recall": 0.06341463414634146,
+  "precision": 0.5508474576271186,
+  "accepted_words": 118,
+  "top1_recall": 0.17073170731707318,
+  "recall_diff_vs_v10": 0.004878048780487802,
+  "recall_ci": [
+   0.0009920634920634953,
+   0.009308101943577304
+  ]
+ }
+}

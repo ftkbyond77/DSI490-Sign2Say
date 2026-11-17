@@ -100,6 +100,93 @@ def features(kp, sc, thr=0.3):
     return np.nan_to_num(f).clip(-6, 6)
 
 
+# ----------------------------------------------------------------------------- input v11 (prompt-opt-v11 R5, feature_version 11)
+# 133-layout face points kept by the schema: jaw 23..39 (odd), chin 31, nose tip 53, inner lips 83..90 (corners 83 / 87)
+CHIN, NOSE_TIP, MOUTH_L, MOUTH_R = 31, 53, 83, 87
+TIPS = [4, 8, 12, 16, 20]                                    # fingertips inside a 21-point hand
+N_MOTION = 14 * 2 * 3 + 4 * 3                                 # (2 wrists + 2 centres + 10 tips) × xy × lags 1/2/4 + 4 × (unit dir + speed)
+N_DIST = 2 * 7                                                # dominant index tip + dominant centre → 7 references
+N_VIS = 2                                                     # per-hand confidence scalar
+N_FEAT_V11 = N_FEAT + N_MOTION + N_DIST + N_VIS               # 122 + 96 + 14 + 2 = 234
+OK_COLS = (14 + 47, 14 + 48 + 47)                             # columns of the per-hand "seen" flag inside the v10 block (for the learned vector)
+
+
+def features_v11(kp, sc, thr=0.3):
+    """Input v11 = the v10 features (unchanged, first 122 columns) + motion stream (1-, 2-, 4-frame differences of wrists, hand
+    centres and fingertips; unit direction + speed of wrists / centres) + distances of the dominant (right, canonical) index tip and
+    hand centre to nose, chin, both mouth corners, forehead, chest centre and the other wrist (shoulder widths) + per-hand landmark
+    confidence. A hand that is not observed keeps zeros here; the model adds a learned "not observed" vector (cfg fv=11)."""
+    base = features(kp, sc, thr)
+    kp = np.asarray(kp, np.float32); sc = np.asarray(sc, np.float32)
+    T = len(kp)
+    if T == 0:
+        return np.zeros((0, N_FEAT_V11), np.float32)
+    sh_ok = (sc[:, SH_L] > thr) & (sc[:, SH_R] > thr)
+    mid = (kp[:, SH_L] + kp[:, SH_R]) / 2
+    sw = np.linalg.norm(kp[:, SH_L] - kp[:, SH_R], axis=1)
+    if sh_ok.any():
+        mid = _interp_missing(mid, sh_ok); S = max(float(np.median(sw[sh_ok])), 1e-3)
+    else:
+        mid = np.repeat(np.zeros((1, 2), np.float32), T, 0); S = 0.25
+    P = (kp - mid[:, None]) / S                                                       # body frame, all 133 points
+    okh = [sc[:, LH].mean(1) > thr, sc[:, RH].mean(1) > thr]
+    # wrists / centres follow v10 (a missing hand keeps its pose wrist); tips are zero when the hand is missing
+    pts, pt_ok = [], []
+    for k, (hand, wr) in enumerate(((LH, WR_L), (RH, WR_R))):
+        h = P[:, hand]
+        pw = P[:, wr]
+        pts += [np.where(okh[k][:, None], h[:, 0], pw), np.where(okh[k][:, None], h.mean(1), pw)]
+        pt_ok += [np.ones(T, bool), np.ones(T, bool)]
+        for t in TIPS:
+            pts.append(np.where(okh[k][:, None], h[:, t], 0.0)); pt_ok.append(okh[k])
+    X = np.stack(pts, 1)                                                              # [T,14,2]
+    OKp = np.stack(pt_ok, 1)
+    mot = []
+    for lag in (1, 2, 4):
+        d = np.zeros_like(X)
+        if T > lag:
+            d[lag:] = (X[lag:] - X[:-lag]) * (FPS / (10.0 * lag))
+            both = OKp[lag:] & OKp[:-lag]
+            d[lag:] *= both[..., None]
+        mot.append(d.reshape(T, -1))
+    d2 = np.zeros((T, 4, 2), np.float32)
+    if T > 2:
+        d2[2:] = X[2:, [0, 1, 7, 8]] - X[:-2, [0, 1, 7, 8]]
+    sp = np.linalg.norm(d2, axis=2)
+    unit = d2 / np.maximum(sp, 1e-4)[..., None] * (sp > 1e-3)[..., None]
+    mot.append(np.concatenate([unit.reshape(T, -1), sp * FPS / 20.0], 1))
+    nose, chin = P[:, NOSE_TIP], P[:, CHIN]
+    face_ok = (sc[:, NOSE_TIP] > thr) & (sc[:, CHIN] > thr)
+    fore = nose + (nose - chin) * 0.9                                                 # above the eyes (no brow points in the schema)
+    chest = np.zeros_like(nose); chest[:, 1] = 0.6                                    # shoulder centre + 0.6 shoulder widths down
+    refs = [nose, chin, P[:, MOUTH_L], P[:, MOUTH_R], fore, chest, X[:, 0]]           # X[:,0] = left (other) wrist
+    tip, cen = X[:, 2 + 7 + 1], X[:, 8]                                                # right index tip (12 = right block start 7 → +2+1)
+    dist = []
+    for q, qok in ((tip, okh[1]), (cen, np.ones(T, bool))):
+        for k, r in enumerate(refs):
+            rok = face_ok if k < 5 else np.ones(T, bool)
+            dist.append(np.where(qok & rok, np.linalg.norm(q - r, axis=1), 0.0))
+    vis = np.stack([sc[:, LH].mean(1), sc[:, RH].mean(1)], 1)
+    f = np.concatenate([base] + mot + [np.stack(dist, 1).clip(0, 6), vis], 1).astype(np.float32)
+    return np.nan_to_num(f).clip(-6, 6)
+
+
+def feats_fn(fv=10):
+    return features_v11 if int(fv) == 11 else features
+
+
+def prep_v11(kp_iso, sc, max_len=MAX_LEN):
+    f = features_v11(kp_iso, sc)
+    return resample_feats(f, max_len) if len(f) > max_len else f
+
+
+def prep_for(cfg):
+    """the input function of a checkpoint config (v10 features unless cfg says feature_version 11; ensembles use their first member's)"""
+    if "members" in cfg:
+        cfg = cfg["members"][0]
+    return prep_v11 if int(cfg.get("fv", 10)) == 11 else prep
+
+
 def resample_feats(f, n_out):
     n = len(f)
     if n_out == n or n < 2:
@@ -118,7 +205,8 @@ def prep(kp_iso, sc, max_len=MAX_LEN):
 def collate_np(feats_list):
     L = max(len(f) for f in feats_list)
     B = len(feats_list)
-    x = np.zeros((B, L, N_FEAT), np.float32); m = np.zeros((B, L), np.float32)
+    nf = feats_list[0].shape[1] if len(feats_list) and feats_list[0].ndim == 2 else N_FEAT
+    x = np.zeros((B, L, nf), np.float32); m = np.zeros((B, L), np.float32)
     for b, f in enumerate(feats_list):
         x[b, :len(f)] = f; m[b, :len(f)] = 1.0
     return x, m
@@ -181,9 +269,14 @@ def build_model(**kw):
             return x + self.drop(self.ff(self.n2(x)))
 
     class LandmarkEncoder(nn.Module):
-        def __init__(self, n_feat=N_FEAT, d=256, emb=256, depth=4, heads=4, k=7, drop=0.1, max_len=1024):
+        def __init__(self, n_feat=N_FEAT, d=256, emb=256, depth=4, heads=4, k=7, drop=0.1, max_len=1024, fv=10, drop_path=0.0, phon=0):
             super().__init__()
             self.cfg = dict(n_feat=n_feat, d=d, emb=emb, depth=depth, heads=heads, k=k, drop=drop, max_len=max_len)
+            if fv != 10 or drop_path or phon:            # v11 options (absent keys = the v10 model, identical state dict)
+                self.cfg.update(fv=fv, drop_path=drop_path, phon=phon)
+            self.fv, self.drop_path, self.phon = fv, drop_path, phon
+            if fv == 11:                                 # learned "hand not observed" vectors (input v11)
+                self.miss = nn.Parameter(torch.zeros(2, d))
             self.inp = nn.Sequential(nn.Linear(n_feat, d), nn.LayerNorm(d), nn.GELU(), nn.Linear(d, d))
             pe = torch.zeros(max_len, d)
             pos = torch.arange(max_len)[:, None].float(); div = torch.exp(torch.arange(0, d, 2).float() * (-math.log(10000.0) / d))
@@ -200,17 +293,34 @@ def build_model(**kw):
         def frames(self, x, m):
             T = x.shape[1]
             h = self.inp(x) + self.pe[:T][None]
+            if self.fv == 11:
+                for k_, col in enumerate(OK_COLS):
+                    h = h + (1.0 - x[..., col:col + 1]) * self.miss[k_]
             h = h * m[..., None]
             for b in self.blocks:
-                h = b(h, m)
+                if self.training and self.drop_path > 0:          # stochastic depth (size M)
+                    keep = (torch.rand(h.shape[0], 1, 1, device=h.device) >= self.drop_path).to(h.dtype)
+                    h = h + (b(h, m) - h) * keep / (1 - self.drop_path)
+                else:
+                    h = b(h, m)
             return self.out_norm(h)
 
-        def pool(self, h, m):
+        def pool_raw(self, h, m):
             mm = m[..., None]
             mean = (h * mm).sum(1) / mm.sum(1).clamp(min=1)
             a = self.att_pool(h).squeeze(-1).masked_fill(m < 0.5, -1e4).softmax(1)
             att = (h * a[..., None]).sum(1)
-            return F.normalize(self.head(torch.cat([mean, att], -1)).float(), dim=-1)
+            return self.head(torch.cat([mean, att], -1)).float()
+
+        def parts(self, z):
+            """phonology-factorised embedding: [hs | or | loc | mov] sub-spaces, each L2-normalised"""
+            return [F.normalize(c, dim=-1) for c in z.chunk(self.phon, -1)]
+
+        def pool(self, h, m):
+            z = self.pool_raw(h, m)
+            if self.phon:
+                return torch.cat(self.parts(z), -1) / math.sqrt(self.phon)
+            return F.normalize(z, dim=-1)
 
         def forward(self, x, m):
             return self.pool(self.frames(x, m), m)
@@ -278,7 +388,8 @@ def embed(model, feats_list, device=None, bs=256):
 def frames_long(model, kp_iso, sc, device="cpu", chunk=400, overlap=50):
     """Contextual frame states [T, d] of a whole utterance (chunks of `chunk` frames blended over `overlap`, as the v7 runtime)."""
     import torch
-    f = features(kp_iso, sc)
+    cfg = model.cfg["members"][0] if "members" in model.cfg else model.cfg
+    f = feats_fn(cfg.get("fv", 10))(kp_iso, sc)
     T = len(f)
     out = np.zeros((T, model.dim), np.float32); wsum = np.zeros(T, np.float32)
     step = chunk - overlap
@@ -300,12 +411,38 @@ def export_onnx(ckpt, out_path):
     import onnxruntime as ort
     import torch
     model = load_model(ckpt, "cpu")
-    x = torch.randn(2, 40, N_FEAT); m = torch.ones(2, 40); m[1, 30:] = 0
+    nf = (model.cfg["members"][0] if "members" in model.cfg else model.cfg)["n_feat"]
+    x = torch.randn(2, 40, nf); m = torch.ones(2, 40); m[1, 30:] = 0
     torch.onnx.export(model, (x, m), str(out_path), input_names=["x", "m"], output_names=["emb"], opset_version=17,
                       dynamic_axes={"x": {0: "B", 1: "T"}, "m": {0: "B", 1: "T"}, "emb": {0: "B"}})
-    x2 = torch.randn(3, 77, N_FEAT); m2 = torch.ones(3, 77); m2[2, 50:] = 0
+    x2 = torch.randn(3, 77, nf); m2 = torch.ones(3, 77); m2[2, 50:] = 0
+    x2[..., [c for c in OK_COLS if c < nf]] = (torch.rand(3, 77, len(OK_COLS)) > 0.3).float()
     with torch.no_grad():
         ref = model(x2, m2).numpy()
+    got = ort.InferenceSession(str(out_path), providers=["CPUExecutionProvider"]).run(None, {"x": x2.numpy(), "m": m2.numpy()})[0]
+    return float(np.abs(ref - got).max())
+
+
+def export_frames_onnx(ckpt, out_path):
+    """v11: the encoder's contextual frame states as their own graph (x [B,T,F], m [B,T] → H [B,T,d]) for the NumPy verifier; returns parity"""
+    import onnxruntime as ort
+    import torch
+
+    class F_(torch.nn.Module):
+        def __init__(self, m):
+            super().__init__(); self.m = m
+
+        def forward(self, x, m):
+            return self.m.frames(x, m)
+    model = load_model(ckpt, "cpu")
+    nf = (model.cfg["members"][0] if "members" in model.cfg else model.cfg)["n_feat"]
+    w = F_(model).eval()
+    x = torch.randn(1, 40, nf); m = torch.ones(1, 40)
+    torch.onnx.export(w, (x, m), str(out_path), input_names=["x", "m"], output_names=["H"], opset_version=17,
+                      dynamic_axes={"x": {0: "B", 1: "T"}, "m": {0: "B", 1: "T"}, "H": {0: "B", 1: "T"}})
+    x2 = torch.randn(1, 77, nf); m2 = torch.ones(1, 77)
+    with torch.no_grad():
+        ref = w(x2, m2).numpy()
     got = ort.InferenceSession(str(out_path), providers=["CPUExecutionProvider"]).run(None, {"x": x2.numpy(), "m": m2.numpy()})[0]
     return float(np.abs(ref - got).max())
 
@@ -321,6 +458,8 @@ class OnnxLM:
         if threads or os.environ.get("ORT_THREADS"):
             so.intra_op_num_threads = int(threads or os.environ["ORT_THREADS"])
         self.sess = ort_session(path, so, ort_providers(device))
+        nf = self.sess.get_inputs()[0].shape[-1]
+        self.prep_fn = prep_v11 if nf == N_FEAT_V11 else prep          # v11 encoders read input v11 (detected from the graph)
 
     def embed(self, feats_list, bs=64):
         out = None
@@ -335,7 +474,8 @@ class OnnxLM:
         return out if out is not None else np.zeros((0, 768), np.float32)
 
     def spans(self, kp_iso, sc, spans):
-        return self.embed([prep(kp_iso[a:b], sc[a:b]) for a, b in spans])
+        p = getattr(self, "prep_fn", prep)
+        return self.embed([p(kp_iso[a:b], sc[a:b]) for a, b in spans])
 
 
 class EncoderAPI:
@@ -350,7 +490,7 @@ class EncoderAPI:
             self.kind = "lmenc"
             self.model = load_model(ckpt, device)
             self.dim = self.model.emb_dim
-            self.prep = prep
+            self.prep = prep_for(self.model.cfg)
         else:
             from .encoder import load_encoder, prep as up
             self.kind = "unisign"

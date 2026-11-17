@@ -1,0 +1,874 @@
+{
+  "created": "2026-11-15 20:40",
+  "n": 66,
+  "parts": {
+    "tsl51_blind": 30,
+    "rid_blind": 30,
+    "negative": 6
+  },
+  "note": "built once after the BLIND opening; ids frozen",
+  "items": [
+    {
+      "id": "t51s:กรุงเทพ_var_1__แฟน_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_2",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\กรุงเทพ_var_1__แฟน_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_2.npz",
+      "gt": "แฟนชอบเที่ยวกรุงเทพ",
+      "gloss": [
+        "กรุงเทพ",
+        "แฟน",
+        "เที่ยว",
+        "ชอบ"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:กรุงเทพ_var_1__แฟน_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_3",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\กรุงเทพ_var_1__แฟน_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_3.npz",
+      "gt": "แฟนชอบเที่ยวกรุงเทพ",
+      "gloss": [
+        "กรุงเทพ",
+        "แฟน",
+        "เที่ยว",
+        "ชอบ"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:กรุงเทพ_var_1__แฟน_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_4",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\กรุงเทพ_var_1__แฟน_var_1__เที่ยว_var_1__ชอบ_var_1_no_space_4.npz",
+      "gt": "แฟนชอบเที่ยวกรุงเทพ",
+      "gloss": [
+        "กรุงเทพ",
+        "แฟน",
+        "เที่ยว",
+        "ชอบ"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:ขนมปัง_var_1__ฉัน_var_1__กิน_var_1_no_space_0",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\ขนมปัง_var_1__ฉัน_var_1__กิน_var_1_no_space_0.npz",
+      "gt": "ฉันกินขนมปัง",
+      "gloss": [
+        "ขนมปัง",
+        "ฉัน",
+        "กิน"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:ขนมปัง_var_1__ฉัน_var_1__กิน_var_1_no_space_1",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\ขนมปัง_var_1__ฉัน_var_1__กิน_var_1_no_space_1.npz",
+      "gt": "ฉันกินขนมปัง",
+      "gloss": [
+        "ขนมปัง",
+        "ฉัน",
+        "กิน"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:ขนมปัง_var_1__ฉัน_var_1__กิน_var_1_no_space_2",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\ขนมปัง_var_1__ฉัน_var_1__กิน_var_1_no_space_2.npz",
+      "gt": "ฉันกินขนมปัง",
+      "gloss": [
+        "ขนมปัง",
+        "ฉัน",
+        "กิน"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:ขนมปัง_var_1__แมว_var_1__กิน_var_1_no_space_2",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\ขนมปัง_var_1__แมว_var_1__กิน_var_1_no_space_2.npz",
+      "gt": "แมวกินขนมปัง",
+      "gloss": [
+        "ขนมปัง",
+        "แมว",
+        "กิน"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:ขนมปัง_var_1__แมว_var_1__กิน_var_1_no_space_3",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\ขนมปัง_var_1__แมว_var_1__กิน_var_1_no_space_3.npz",
+      "gt": "แมวกินขนมปัง",
+      "gloss": [
+        "ขนมปัง",
+        "แมว",
+        "กิน"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:ขนมปัง_var_1__แมว_var_1__กิน_var_1_no_space_4",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\ขนมปัง_var_1__แมว_var_1__กิน_var_1_no_space_4.npz",
+      "gt": "แมวกินขนมปัง",
+      "gloss": [
+        "ขนมปัง",
+        "แมว",
+        "กิน"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__หูหนวก_var_2_no_space_0",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__หูหนวก_var_2_no_space_0.npz",
+      "gt": "ขอโทษ ฉันหูหนวก",
+      "gloss": [
+        "ขอโทษ",
+        "ฉัน",
+        "หูหนวก"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__หูหนวก_var_2_no_space_1",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__หูหนวก_var_2_no_space_1.npz",
+      "gt": "ขอโทษ ฉันหูหนวก",
+      "gloss": [
+        "ขอโทษ",
+        "ฉัน",
+        "หูหนวก"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__หูหนวก_var_2_no_space_2",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\ขอโทษ_อายุเท่ากันหรือน้อยกว่า__ฉัน_var_1__หูหนวก_var_2_no_space_2.npz",
+      "gt": "ขอโทษ ฉันหูหนวก",
+      "gloss": [
+        "ขอโทษ",
+        "ฉัน",
+        "หูหนวก"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:คุณ_var_1__ฉัน_var_1__แฟน_var_1_no_space_0",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\คุณ_var_1__ฉัน_var_1__แฟน_var_1_no_space_0.npz",
+      "gt": "คุณเป็นแฟนฉัน",
+      "gloss": [
+        "คุณ",
+        "ฉัน",
+        "แฟน"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:คุณ_var_1__ฉัน_var_1__แฟน_var_1_no_space_1",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\คุณ_var_1__ฉัน_var_1__แฟน_var_1_no_space_1.npz",
+      "gt": "คุณเป็นแฟนฉัน",
+      "gloss": [
+        "คุณ",
+        "ฉัน",
+        "แฟน"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:คุณ_var_1__ฉัน_var_1__แฟน_var_1_no_space_2",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\คุณ_var_1__ฉัน_var_1__แฟน_var_1_no_space_2.npz",
+      "gt": "คุณเป็นแฟนฉัน",
+      "gloss": [
+        "คุณ",
+        "ฉัน",
+        "แฟน"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:น้อง_var_1__เกิด_var_2__หูหนวก_var_2_no_space_0",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\น้อง_var_1__เกิด_var_2__หูหนวก_var_2_no_space_0.npz",
+      "gt": "น้องเกิดหูหนวก",
+      "gloss": [
+        "น้อง",
+        "เกิด",
+        "หูหนวก"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:น้อง_var_1__เกิด_var_2__หูหนวก_var_2_no_space_1",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\น้อง_var_1__เกิด_var_2__หูหนวก_var_2_no_space_1.npz",
+      "gt": "น้องเกิดหูหนวก",
+      "gloss": [
+        "น้อง",
+        "เกิด",
+        "หูหนวก"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:น้อง_var_1__เกิด_var_2__หูหนวก_var_2_no_space_2",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\น้อง_var_1__เกิด_var_2__หูหนวก_var_2_no_space_2.npz",
+      "gt": "น้องเกิดหูหนวก",
+      "gloss": [
+        "น้อง",
+        "เกิด",
+        "หูหนวก"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:พรุ่งนี้_var_1__คุณ_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2__ที่ไหน_var_1_no_space_0",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\พรุ่งนี้_var_1__คุณ_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2__ที่ไหน_var_1_no_space_0.npz",
+      "gt": "พรุ่งนี้คุณจะไปกินข้าวที่ไหน",
+      "gloss": [
+        "พรุ่งนี้",
+        "คุณ",
+        "ข้าว",
+        "กิน",
+        "ไป",
+        "ที่ไหน"
+      ],
+      "question": true
+    },
+    {
+      "id": "t51s:พรุ่งนี้_var_1__คุณ_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2__ที่ไหน_var_1_no_space_1",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\พรุ่งนี้_var_1__คุณ_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2__ที่ไหน_var_1_no_space_1.npz",
+      "gt": "พรุ่งนี้คุณจะไปกินข้าวที่ไหน",
+      "gloss": [
+        "พรุ่งนี้",
+        "คุณ",
+        "ข้าว",
+        "กิน",
+        "ไป",
+        "ที่ไหน"
+      ],
+      "question": true
+    },
+    {
+      "id": "t51s:พรุ่งนี้_var_1__คุณ_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2__ที่ไหน_var_1_no_space_2",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\พรุ่งนี้_var_1__คุณ_var_1__ข้าว_var_1__กิน_var_1__ไป_var_2__ที่ไหน_var_1_no_space_2.npz",
+      "gt": "พรุ่งนี้คุณจะไปกินข้าวที่ไหน",
+      "gloss": [
+        "พรุ่งนี้",
+        "คุณ",
+        "ข้าว",
+        "กิน",
+        "ไป",
+        "ที่ไหน"
+      ],
+      "question": true
+    },
+    {
+      "id": "t51s:ภาษามือ_var_1__ฉัน_var_1__เรียน_var_1_no_space_0",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\ภาษามือ_var_1__ฉัน_var_1__เรียน_var_1_no_space_0.npz",
+      "gt": "ฉันเรียนภาษามือ",
+      "gloss": [
+        "ภาษามือ",
+        "ฉัน",
+        "เรียน"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:ภาษามือ_var_1__ฉัน_var_1__เรียน_var_1_no_space_1",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\ภาษามือ_var_1__ฉัน_var_1__เรียน_var_1_no_space_1.npz",
+      "gt": "ฉันเรียนภาษามือ",
+      "gloss": [
+        "ภาษามือ",
+        "ฉัน",
+        "เรียน"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:ภาษามือ_var_1__ฉัน_var_1__เรียน_var_1_no_space_2",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\ภาษามือ_var_1__ฉัน_var_1__เรียน_var_1_no_space_2.npz",
+      "gt": "ฉันเรียนภาษามือ",
+      "gloss": [
+        "ภาษามือ",
+        "ฉัน",
+        "เรียน"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:ภาษามือ_var_1__น้อง_var_1__เรียน_var_1__ชอบ_var_1_no_space_0",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\ภาษามือ_var_1__น้อง_var_1__เรียน_var_1__ชอบ_var_1_no_space_0.npz",
+      "gt": "น้องชอบเรียนภาษามือ",
+      "gloss": [
+        "ภาษามือ",
+        "น้อง",
+        "เรียน",
+        "ชอบ"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:ภาษามือ_var_1__น้อง_var_1__เรียน_var_1__ชอบ_var_1_no_space_1",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\ภาษามือ_var_1__น้อง_var_1__เรียน_var_1__ชอบ_var_1_no_space_1.npz",
+      "gt": "น้องชอบเรียนภาษามือ",
+      "gloss": [
+        "ภาษามือ",
+        "น้อง",
+        "เรียน",
+        "ชอบ"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:ภาษามือ_var_1__น้อง_var_1__เรียน_var_1__ชอบ_var_1_no_space_2",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\ภาษามือ_var_1__น้อง_var_1__เรียน_var_1__ชอบ_var_1_no_space_2.npz",
+      "gt": "น้องชอบเรียนภาษามือ",
+      "gloss": [
+        "ภาษามือ",
+        "น้อง",
+        "เรียน",
+        "ชอบ"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:ภาษามือ_var_1__พี่_var_1__เรียน_var_1__ชอบ_var_1_no_space_0",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\ภาษามือ_var_1__พี่_var_1__เรียน_var_1__ชอบ_var_1_no_space_0.npz",
+      "gt": "พี่ชอบเรียนภาษามือ",
+      "gloss": [
+        "ภาษามือ",
+        "พี่",
+        "เรียน",
+        "ชอบ"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:ภาษามือ_var_1__พี่_var_1__เรียน_var_1__ชอบ_var_1_no_space_1",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\ภาษามือ_var_1__พี่_var_1__เรียน_var_1__ชอบ_var_1_no_space_1.npz",
+      "gt": "พี่ชอบเรียนภาษามือ",
+      "gloss": [
+        "ภาษามือ",
+        "พี่",
+        "เรียน",
+        "ชอบ"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51s:ภาษามือ_var_1__พี่_var_1__เรียน_var_1__ชอบ_var_1_no_space_2",
+      "part": "tsl51_blind",
+      "raw": "pose_mp_raw\\tsl51_user_sentence\\ภาษามือ_var_1__พี่_var_1__เรียน_var_1__ชอบ_var_1_no_space_2.npz",
+      "gt": "พี่ชอบเรียนภาษามือ",
+      "gloss": [
+        "ภาษามือ",
+        "พี่",
+        "เรียน",
+        "ชอบ"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:คุณ เมื่อวานนี้ผมไม่ได้มาประชุม คุณช่วยเล่าให้ผมฟังหน่อยว่า ประชุมเรื่__g4e8_se4",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_คุณ เมื่อวานนี้ผมไม่ได้มาประชุม คุณช่วยเล่าให้ผมฟังหน่อยว่า ประชุมเรื่__g4e8_se4.npz",
+      "gt": "คุณ เมื่อวานนี้ผมไม่ได้มาประชุม คุณช่วยเล่าให้ผมฟังหน่อยว่า ประชุมเรื่องอะไรบ้าง",
+      "gloss": [
+        "คุณ",
+        "เมื่อวานนี้",
+        "ผม",
+        "ไม่",
+        "ช่วย",
+        "ให้",
+        "ฟัง",
+        "อะไร",
+        "ไม่ได้"
+      ],
+      "question": true
+    },
+    {
+      "id": "rid:ฝรั่งชอบเนกไทที่เป็นผ้าไหมมาก__g16e5_se1",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_ฝรั่งชอบเนกไทที่เป็นผ้าไหมมาก__g16e5_se1.npz",
+      "gt": "ฝรั่งชอบเนกไทที่เป็นผ้าไหมมาก",
+      "gloss": [
+        "ชอบ",
+        "เป็น",
+        "มาก"
+      ],
+      "question": true
+    },
+    {
+      "id": "rid:เมื่อตอนที่ป่วยอยู่โรงพยาบาล กินอาหารอะไรก็รู้สึกจืดไปหมด__g9e4_se1",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_เมื่อตอนที่ป่วยอยู่โรงพยาบาล กินอาหารอะไรก็รู้สึกจืดไปหมด__g9e4_se1.npz",
+      "gt": "เมื่อตอนที่ป่วยอยู่โรงพยาบาล กินอาหารอะไรก็รู้สึกจืดไปหมด",
+      "gloss": [
+        "ป่วย",
+        "อยู่",
+        "โรงพยาบาล",
+        "กิน",
+        "อาหาร",
+        "อะไร",
+        "รู้สึก",
+        "ไป"
+      ],
+      "question": true
+    },
+    {
+      "id": "rid:คุณ อย่าซื้อทุเรียนนะ เพราะโรงแรมนี้ห้ามไว้__g10e2_se4",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_คุณ อย่าซื้อทุเรียนนะ เพราะโรงแรมนี้ห้ามไว้__g10e2_se4.npz",
+      "gt": "คุณ อย่าซื้อทุเรียนนะ เพราะโรงแรมนี้ห้ามไว้",
+      "gloss": [
+        "คุณ",
+        "อย่า",
+        "ซื้อ",
+        "เรียน",
+        "ห้า"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:คนหูหนวกผู้ใหญ่ใช้ภาษามือได้ดีมาก__g5e6_se1",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_คนหูหนวกผู้ใหญ่ใช้ภาษามือได้ดีมาก__g5e6_se1.npz",
+      "gt": "คนหูหนวกผู้ใหญ่ใช้ภาษามือได้ดีมาก",
+      "gloss": [
+        "คน",
+        "หูหนวก",
+        "ใช้",
+        "ภาษามือ",
+        "ได้",
+        "ใหญ่",
+        "มาก"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:เดือนมิถุนายนมี 30 วัน__g2e30_se1",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_เดือนมิถุนายนมี 30 วัน__g2e30_se1.npz",
+      "gt": "เดือนมิถุนายนมี 30 วัน",
+      "gloss": [
+        "เดือน",
+        "มี",
+        "วัน"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:ฉันฝากซื้อส้ม 2 ลัง ด้วยนะ__g10e6_se4",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_ฉันฝากซื้อส้ม 2 ลัง ด้วยนะ__g10e6_se4.npz",
+      "gt": "ฉันฝากซื้อส้ม 2 ลัง ด้วยนะ",
+      "gloss": [
+        "ฉัน",
+        "ซื้อ",
+        "ด้วย"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:รถสตาร์ตไม่ติด หนุ่ม ๆ มาช่วยเข็นรถหน่อย__g5e9_se4",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_รถสตาร์ตไม่ติด หนุ่ม ๆ มาช่วยเข็นรถหน่อย__g5e9_se4.npz",
+      "gt": "รถสตาร์ตไม่ติด หนุ่ม ๆ มาช่วยเข็นรถหน่อย",
+      "gloss": [
+        "ไม่",
+        "มา",
+        "ช่วย"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:ถ้าสวัสดีผู้อาวุโสให้ทำท่านี้ แต่ถ้าสวัสดีผู้ที่มีอายุใกล้เคียงกันให้ท__g1e7_se1",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_ถ้าสวัสดีผู้อาวุโสให้ทำท่านี้ แต่ถ้าสวัสดีผู้ที่มีอายุใกล้เคียงกันให้ท__g1e7_se1.npz",
+      "gt": "ถ้าสวัสดีผู้อาวุโสให้ทำท่านี้ แต่ถ้าสวัสดีผู้ที่มีอายุใกล้เคียงกันให้ทำท่านี้",
+      "gloss": [
+        "ถ้า",
+        "สวัสดี",
+        "ให้",
+        "แต่",
+        "อายุ",
+        "ใกล้"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:คุณ ช่วยขนของใส่รถกระบะด้วย__g19e7_se4",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_คุณ ช่วยขนของใส่รถกระบะด้วย__g19e7_se4.npz",
+      "gt": "คุณ ช่วยขนของใส่รถกระบะด้วย",
+      "gloss": [
+        "คุณ",
+        "ช่วย",
+        "ด้วย"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:คุณ เครื่องบินออกตอนเที่ยงคืนตรง อย่าลืมมาให้ตรงเวลานะ__g3e6_se4",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_คุณ เครื่องบินออกตอนเที่ยงคืนตรง อย่าลืมมาให้ตรงเวลานะ__g3e6_se4.npz",
+      "gt": "คุณ เครื่องบินออกตอนเที่ยงคืนตรง อย่าลืมมาให้ตรงเวลานะ",
+      "gloss": [
+        "คุณ",
+        "เครื่องบิน",
+        "อย่า",
+        "ลืม",
+        "มา",
+        "ให้",
+        "เวลา",
+        "คืน"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:คุณ ช่วยบอกคนหูตึงไปรับเครื่องช่วยฟังฟรีที่โรงพยาบาลด้วย__g1e4_se4",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_คุณ ช่วยบอกคนหูตึงไปรับเครื่องช่วยฟังฟรีที่โรงพยาบาลด้วย__g1e4_se4.npz",
+      "gt": "คุณ ช่วยบอกคนหูตึงไปรับเครื่องช่วยฟังฟรีที่โรงพยาบาลด้วย",
+      "gloss": [
+        "คุณ",
+        "ช่วย",
+        "บอก",
+        "คน",
+        "ไป",
+        "โรงพยาบาล",
+        "ด้วย",
+        "ฟัง"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:คุณ อย่ากินของหวานมากนักเพราะน้ำหนักจะขึ้น__g9e6_se4",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_คุณ อย่ากินของหวานมากนักเพราะน้ำหนักจะขึ้น__g9e6_se4.npz",
+      "gt": "คุณ อย่ากินของหวานมากนักเพราะน้ำหนักจะขึ้น",
+      "gloss": [
+        "คุณ",
+        "อย่า",
+        "กิน",
+        "มาก",
+        "หวาน",
+        "น้ำ"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:เพื่อนของผมคนนี้เราเรียนมาด้วยกันตั้งแต่เด็ก__g7e3_se1",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_เพื่อนของผมคนนี้เราเรียนมาด้วยกันตั้งแต่เด็ก__g7e3_se1.npz",
+      "gt": "เพื่อนของผมคนนี้เราเรียนมาด้วยกันตั้งแต่เด็ก",
+      "gloss": [
+        "เพื่อน",
+        "ผม",
+        "คน",
+        "เรา",
+        "เรียน",
+        "มา",
+        "ด้วยกัน",
+        "เด็ก",
+        "แต่"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:นกมี 2 ขา__g2e2_se1",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_นกมี 2 ขา__g2e2_se1.npz",
+      "gt": "นกมี 2 ขา",
+      "gloss": [
+        "นก",
+        "มี"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:ผมไม่แต่งงาน ขออยู่เป็นโสดดีกว่า__g7e5_se1",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_ผมไม่แต่งงาน ขออยู่เป็นโสดดีกว่า__g7e5_se1.npz",
+      "gt": "ผมไม่แต่งงาน ขออยู่เป็นโสดดีกว่า",
+      "gloss": [
+        "ผม",
+        "ไม่",
+        "แต่งงาน",
+        "ขอ",
+        "อยู่",
+        "เป็น",
+        "โสด"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:ขนมปังราดนมข้นหวานอร่อย__g9e6_se1",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_ขนมปังราดนมข้นหวานอร่อย__g9e6_se1.npz",
+      "gt": "ขนมปังราดนมข้นหวานอร่อย",
+      "gloss": [
+        "ขนมปัง",
+        "อร่อย",
+        "หวาน"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:ผมคบกับแฟนนาน 5 ปีแล้วจึงแต่งงาน__g7e1_se1",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_ผมคบกับแฟนนาน 5 ปีแล้วจึงแต่งงาน__g7e1_se1.npz",
+      "gt": "ผมคบกับแฟนนาน 5 ปีแล้วจึงแต่งงาน",
+      "gloss": [
+        "ผม",
+        "แฟน",
+        "ปี",
+        "แต่งงาน"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:ผมชอบมะม่วงดิบที่มีรสเปรี้ยว__g9e5_se1",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_ผมชอบมะม่วงดิบที่มีรสเปรี้ยว__g9e5_se1.npz",
+      "gt": "ผมชอบมะม่วงดิบที่มีรสเปรี้ยว",
+      "gloss": [
+        "ผม",
+        "ชอบ",
+        "มี",
+        "เปรี้ยว"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:คุณ ช่วยเอาเช็ค 100,000 บาทใบนี้ไปเข้าบัญชีให้หน่อย__g2e100000_se4",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_คุณ ช่วยเอาเช็ค 100,000 บาทใบนี้ไปเข้าบัญชีให้หน่อย__g2e100000_se4.npz",
+      "gt": "คุณ ช่วยเอาเช็ค 100,000 บาทใบนี้ไปเข้าบัญชีให้หน่อย",
+      "gloss": [
+        "คุณ",
+        "ช่วย",
+        "เอา",
+        "ไป",
+        "ให้"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:น้องชายของฉันทำงานที่บริษัทประกันชีวิต__g6e9_se1",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_น้องชายของฉันทำงานที่บริษัทประกันชีวิต__g6e9_se1.npz",
+      "gt": "น้องชายของฉันทำงานที่บริษัทประกันชีวิต",
+      "gloss": [
+        "น้องชาย",
+        "ฉัน",
+        "ทำงาน",
+        "ชีวิต"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:คุณ พรุ่งนี้มาพบผมที่คอนโดชั้น 11 อย่าลืมนะ__g2e11_se4",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_คุณ พรุ่งนี้มาพบผมที่คอนโดชั้น 11 อย่าลืมนะ__g2e11_se4.npz",
+      "gt": "คุณ พรุ่งนี้มาพบผมที่คอนโดชั้น 11 อย่าลืมนะ",
+      "gloss": [
+        "คุณ",
+        "พรุ่งนี้",
+        "มา",
+        "ผม",
+        "อย่า",
+        "ลืม"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:คุณ ช่วยโอนเงิน 10,000 บาทให้ลูกผมหน่อย__g2e10000_se4",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_คุณ ช่วยโอนเงิน 10,000 บาทให้ลูกผมหน่อย__g2e10000_se4.npz",
+      "gt": "คุณ ช่วยโอนเงิน 10,000 บาทให้ลูกผมหน่อย",
+      "gloss": [
+        "คุณ",
+        "ช่วย",
+        "เงิน",
+        "ให้",
+        "ลูก"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:คุณ ช่วยเขียนประกาศขายบ้านเก่าราคา 1,000,000 บาท แล้วนำไปติดประกาศให้ด__g2e1000000_se4",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_คุณ ช่วยเขียนประกาศขายบ้านเก่าราคา 1,000,000 บาท แล้วนำไปติดประกาศให้ด__g2e1000000_se4.npz",
+      "gt": "คุณ ช่วยเขียนประกาศขายบ้านเก่าราคา 1,000,000 บาท แล้วนำไปติดประกาศให้ด้วย",
+      "gloss": [
+        "คุณ",
+        "ช่วย",
+        "เขียน",
+        "ขาย",
+        "ไป",
+        "ให้",
+        "ด้วย",
+        "บ้าน",
+        "เก่า"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:ไฟที่เสาชิงช้าตอนกลางคืนสวยมาก เราสองคนไปถ่ายรูปกัน__g27e5_se4",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_ไฟที่เสาชิงช้าตอนกลางคืนสวยมาก เราสองคนไปถ่ายรูปกัน__g27e5_se4.npz",
+      "gt": "ไฟที่เสาชิงช้าตอนกลางคืนสวยมาก เราสองคนไปถ่ายรูปกัน",
+      "gloss": [
+        "สวย",
+        "มาก",
+        "เรา",
+        "สอง",
+        "คน",
+        "ไป",
+        "กลางคืน",
+        "ช้า"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:ลุงให้กล้วยฉัน 1 เครือ__g10e1_se1",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_ลุงให้กล้วยฉัน 1 เครือ__g10e1_se1.npz",
+      "gt": "ลุงให้กล้วยฉัน 1 เครือ",
+      "gloss": [
+        "ลุง",
+        "ให้",
+        "ฉัน"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:สมัยผมยังหนุ่มได้ไปเที่ยวทั่วประเทศเลย ตอนนี้อายุมากแล้วได้แต่อยู่บ้าน__g5e9_se1",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_สมัยผมยังหนุ่มได้ไปเที่ยวทั่วประเทศเลย ตอนนี้อายุมากแล้วได้แต่อยู่บ้าน__g5e9_se1.npz",
+      "gt": "สมัยผมยังหนุ่มได้ไปเที่ยวทั่วประเทศเลย ตอนนี้อายุมากแล้วได้แต่อยู่บ้าน",
+      "gloss": [
+        "ผม",
+        "ยัง",
+        "ได้",
+        "ตอนนี้",
+        "อายุ",
+        "มาก",
+        "แต่",
+        "อยู่",
+        "บ้าน",
+        "อยู่บ้าน",
+        "ประเทศ",
+        "เที่ยว"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:คุณ ฝนตกแล้วถนนลื่น ขับรถจักรยานยนต์ระวังด้วยนะ__g23e4_se4",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_คุณ ฝนตกแล้วถนนลื่น ขับรถจักรยานยนต์ระวังด้วยนะ__g23e4_se4.npz",
+      "gt": "คุณ ฝนตกแล้วถนนลื่น ขับรถจักรยานยนต์ระวังด้วยนะ",
+      "gloss": [
+        "คุณ",
+        "ด้วย",
+        "ขับรถ"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:มะม่วงบ้านฉันมีลูกดกมาก__g10e4_se1",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_มะม่วงบ้านฉันมีลูกดกมาก__g10e4_se1.npz",
+      "gt": "มะม่วงบ้านฉันมีลูกดกมาก",
+      "gloss": [
+        "บ้าน",
+        "ฉัน",
+        "มี",
+        "มาก",
+        "ลูก"
+      ],
+      "question": false
+    },
+    {
+      "id": "rid:พี่ชายผมเป็นทหาร และขับรถแท็กซี่เป็นอาชีพเสริม__g6e8_se1",
+      "part": "rid_blind",
+      "raw": "pose_mp_raw\\royal_institute\\rid_พี่ชายผมเป็นทหาร และขับรถแท็กซี่เป็นอาชีพเสริม__g6e8_se1.npz",
+      "gt": "พี่ชายผมเป็นทหาร และขับรถแท็กซี่เป็นอาชีพเสริม",
+      "gloss": [
+        "พี่ชาย",
+        "ผม",
+        "เป็น",
+        "และ",
+        "ขับรถ"
+      ],
+      "question": false
+    },
+    {
+      "id": "t51u:null_fidgeter_0",
+      "part": "negative",
+      "raw": "pose_mp_raw\\tsl51_user_sign\\null_fidgeter_0.npz",
+      "gt": "",
+      "gloss": [],
+      "question": false
+    },
+    {
+      "id": "t51u:null_fidgeter_1",
+      "part": "negative",
+      "raw": "pose_mp_raw\\tsl51_user_sign\\null_fidgeter_1.npz",
+      "gt": "",
+      "gloss": [],
+      "question": false
+    },
+    {
+      "id": "t51u:null_fidgeter_2",
+      "part": "negative",
+      "raw": "pose_mp_raw\\tsl51_user_sign\\null_fidgeter_2.npz",
+      "gt": "",
+      "gloss": [],
+      "question": false
+    },
+    {
+      "id": "t51u:null_fidgeter_3",
+      "part": "negative",
+      "raw": "pose_mp_raw\\tsl51_user_sign\\null_fidgeter_3.npz",
+      "gt": "",
+      "gloss": [],
+      "question": false
+    },
+    {
+      "id": "t51u:null_fidgeter_4",
+      "part": "negative",
+      "raw": "pose_mp_raw\\tsl51_user_sign\\null_fidgeter_4.npz",
+      "gt": "",
+      "gloss": [],
+      "question": false
+    },
+    {
+      "id": "t51u:null_fidgeter_5",
+      "part": "negative",
+      "raw": "pose_mp_raw\\tsl51_user_sign\\null_fidgeter_5.npz",
+      "gt": "",
+      "gloss": [],
+      "question": false
+    }
+  ]
+}

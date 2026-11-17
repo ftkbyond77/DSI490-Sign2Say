@@ -1,0 +1,992 @@
+{
+  "enc-v8": {
+    "tune_MRR": 0.45668056873699514,
+    "sets": {
+      "E1_ttrs_val|open_vocab": {
+        "R1": 0.2125,
+        "MRR": 0.2707,
+        "n": 80
+      },
+      "ONE_val|open_vocab": {
+        "R1": 0.8516,
+        "MRR": 0.9016,
+        "n": 512
+      },
+      "THSL_val|open_vocab": {
+        "R1": 0.2093,
+        "MRR": 0.2767,
+        "n": 430
+      },
+      "AGENT_val|open_vocab": {
+        "R1": 0.3333,
+        "MRR": 0.3776,
+        "n": 18
+      }
+    },
+    "min_signer_R1": 0.14814814814814814,
+    "per_signer": {
+      "S_one_06": 0.8695652173913043,
+      "S_one_11": 0.8633879781420765,
+      "S_one_19": 0.8137931034482758,
+      "S_thsl_03": 0.20930232558139536,
+      "S_ttrs_00": 0.14814814814814814,
+      "S_ttrs_01": 0.16666666666666666,
+      "S_ttrs_02": 0.32142857142857145,
+      "yt_person_018": 0.4
+    },
+    "confusion_margin": {
+      "mean": 0.2660976787182418,
+      "n": 44,
+      "pos_share": 0.7272727272727273
+    },
+    "daily": {
+      "E1_ttrs_val|daily_vocab": 0.3846,
+      "ONE_val|daily_vocab": 0.8981,
+      "THSL_val|daily_vocab": 0.3333,
+      "AGENT_val|daily_vocab": 0.5,
+      "E1_ttrs_test|daily_vocab": 0.2222,
+      "ONE_test|daily_vocab": 0.9259,
+      "AGENT_test|daily_vocab": 1.0,
+      "T51U|daily_vocab": 0.6721
+    },
+    "clips_seen": null,
+    "best_step": null,
+    "steps": null,
+    "still_improving": null,
+    "signer_probe_acc": 0.4026666666666666,
+    "in_sentence": {
+      "aligned": {
+        "n": 417,
+        "R1": 0.4796,
+        "R5": 0.6739
+      },
+      "moved": {
+        "n": 417,
+        "R1": 0.4508,
+        "R5": 0.6259
+      }
+    }
+  },
+  "enc-v8a": {
+    "tune_MRR": 0.4474075579948554,
+    "sets": {
+      "E1_ttrs_val|open_vocab": {
+        "R1": 0.175,
+        "MRR": 0.2383,
+        "n": 80
+      },
+      "ONE_val|open_vocab": {
+        "R1": 0.8242,
+        "MRR": 0.8782,
+        "n": 512
+      },
+      "THSL_val|open_vocab": {
+        "R1": 0.1651,
+        "MRR": 0.2245,
+        "n": 430
+      },
+      "AGENT_val|open_vocab": {
+        "R1": 0.4444,
+        "MRR": 0.4486,
+        "n": 18
+      }
+    },
+    "min_signer_R1": 0.1111111111111111,
+    "per_signer": {
+      "S_one_06": 0.8586956521739131,
+      "S_one_11": 0.8306010928961749,
+      "S_one_19": 0.7724137931034483,
+      "S_thsl_03": 0.16511627906976745,
+      "S_ttrs_00": 0.1111111111111111,
+      "S_ttrs_01": 0.125,
+      "S_ttrs_02": 0.2857142857142857,
+      "yt_person_018": 0.4666666666666667
+    },
+    "confusion_margin": {
+      "mean": 0.2502536250447685,
+      "n": 44,
+      "pos_share": 0.7045454545454546
+    },
+    "daily": {
+      "E1_ttrs_val|daily_vocab": 0.3846,
+      "ONE_val|daily_vocab": 0.8981,
+      "THSL_val|daily_vocab": 0.3667,
+      "AGENT_val|daily_vocab": 0.5,
+      "E1_ttrs_test|daily_vocab": 0.3333,
+      "ONE_test|daily_vocab": 0.8796,
+      "AGENT_test|daily_vocab": 1.0,
+      "T51U|daily_vocab": 0.6478
+    },
+    "clips_seen": null,
+    "best_step": null,
+    "steps": null,
+    "still_improving": null,
+    "in_sentence": {
+      "aligned": {
+        "n": 417,
+        "R1": 0.3981,
+        "R5": 0.5564
+      },
+      "moved": {
+        "n": 417,
+        "R1": 0.3885,
+        "R5": 0.5132
+      }
+    }
+  },
+  "enc-v8b": {
+    "tune_MRR": 0.40900258407466583,
+    "sets": {
+      "E1_ttrs_val|open_vocab": {
+        "R1": 0.1875,
+        "MRR": 0.2457,
+        "n": 80
+      },
+      "ONE_val|open_vocab": {
+        "R1": 0.8125,
+        "MRR": 0.8733,
+        "n": 512
+      },
+      "THSL_val|open_vocab": {
+        "R1": 0.1605,
+        "MRR": 0.2209,
+        "n": 430
+      },
+      "AGENT_val|open_vocab": {
+        "R1": 0.2222,
+        "MRR": 0.2962,
+        "n": 18
+      }
+    },
+    "min_signer_R1": 0.125,
+    "per_signer": {
+      "S_one_06": 0.8478260869565217,
+      "S_one_11": 0.8360655737704918,
+      "S_one_19": 0.7379310344827587,
+      "S_thsl_03": 0.16046511627906976,
+      "S_ttrs_00": 0.14814814814814814,
+      "S_ttrs_01": 0.125,
+      "S_ttrs_02": 0.2857142857142857,
+      "yt_person_018": 0.26666666666666666
+    },
+    "confusion_margin": {
+      "mean": 0.2537825078788129,
+      "n": 44,
+      "pos_share": 0.75
+    },
+    "daily": {
+      "E1_ttrs_val|daily_vocab": 0.2308,
+      "ONE_val|daily_vocab": 0.9074,
+      "THSL_val|daily_vocab": 0.3,
+      "AGENT_val|daily_vocab": 0.5,
+      "E1_ttrs_test|daily_vocab": 0.2222,
+      "ONE_test|daily_vocab": 0.8889,
+      "AGENT_test|daily_vocab": 0.0,
+      "T51U|daily_vocab": 0.6457
+    },
+    "clips_seen": null,
+    "best_step": null,
+    "steps": null,
+    "still_improving": null
+  },
+  "enc-v8c": {
+    "tune_MRR": 0.42886034250322147,
+    "sets": {
+      "E1_ttrs_val|open_vocab": {
+        "R1": 0.175,
+        "MRR": 0.2513,
+        "n": 80
+      },
+      "ONE_val|open_vocab": {
+        "R1": 0.8281,
+        "MRR": 0.8809,
+        "n": 512
+      },
+      "THSL_val|open_vocab": {
+        "R1": 0.1744,
+        "MRR": 0.2342,
+        "n": 430
+      },
+      "AGENT_val|open_vocab": {
+        "R1": 0.3333,
+        "MRR": 0.349,
+        "n": 18
+      }
+    },
+    "min_signer_R1": 0.08333333333333333,
+    "per_signer": {
+      "S_one_06": 0.8369565217391305,
+      "S_one_11": 0.8743169398907104,
+      "S_one_19": 0.7586206896551724,
+      "S_thsl_03": 0.1744186046511628,
+      "S_ttrs_00": 0.2222222222222222,
+      "S_ttrs_01": 0.08333333333333333,
+      "S_ttrs_02": 0.21428571428571427,
+      "yt_person_018": 0.4
+    },
+    "confusion_margin": {
+      "mean": 0.2482209742407907,
+      "n": 44,
+      "pos_share": 0.75
+    },
+    "daily": {
+      "E1_ttrs_val|daily_vocab": 0.4615,
+      "ONE_val|daily_vocab": 0.8981,
+      "THSL_val|daily_vocab": 0.2333,
+      "AGENT_val|daily_vocab": 0.25,
+      "E1_ttrs_test|daily_vocab": 0.1111,
+      "ONE_test|daily_vocab": 0.8611,
+      "AGENT_test|daily_vocab": 1.0,
+      "T51U|daily_vocab": 0.6316
+    },
+    "clips_seen": null,
+    "best_step": null,
+    "steps": null,
+    "still_improving": null
+  },
+  "v11-R2": {
+    "tune_MRR": 0.42092694882539056,
+    "sets": {
+      "E1_ttrs_val|open_vocab": {
+        "R1": 0.225,
+        "MRR": 0.282,
+        "n": 80
+      },
+      "ONE_val|open_vocab": {
+        "R1": 0.793,
+        "MRR": 0.8456,
+        "n": 512
+      },
+      "THSL_val|open_vocab": {
+        "R1": 0.1419,
+        "MRR": 0.2021,
+        "n": 430
+      },
+      "AGENT_val|open_vocab": {
+        "R1": 0.3333,
+        "MRR": 0.3541,
+        "n": 18
+      }
+    },
+    "min_signer_R1": 0.125,
+    "per_signer": {
+      "S_one_06": 0.8260869565217391,
+      "S_one_11": 0.825136612021858,
+      "S_one_19": 0.7103448275862069,
+      "S_thsl_03": 0.14186046511627906,
+      "S_ttrs_00": 0.2222222222222222,
+      "S_ttrs_01": 0.125,
+      "S_ttrs_02": 0.32142857142857145,
+      "yt_person_018": 0.4
+    },
+    "confusion_margin": {
+      "mean": 0.3756824360144409,
+      "n": 44,
+      "pos_share": 0.7954545454545454
+    },
+    "daily": {
+      "E1_ttrs_val|daily_vocab": 0.3846,
+      "ONE_val|daily_vocab": 0.9352,
+      "THSL_val|daily_vocab": 0.4,
+      "AGENT_val|daily_vocab": 0.25,
+      "E1_ttrs_test|daily_vocab": 0.3333,
+      "ONE_test|daily_vocab": 0.8796,
+      "AGENT_test|daily_vocab": 1.0,
+      "T51U|daily_vocab": 0.6336
+    },
+    "clips_seen": 11406688,
+    "best_step": 8000,
+    "steps": 19532,
+    "still_improving": false,
+    "in_sentence": {
+      "aligned": {
+        "n": 417,
+        "R1": 0.3597,
+        "R5": 0.4341
+      },
+      "moved": {
+        "n": 417,
+        "R1": 0.3453,
+        "R5": 0.4173
+      }
+    }
+  },
+  "v11-R3": {
+    "tune_MRR": 0.44450140482200323,
+    "sets": {
+      "E1_ttrs_val|open_vocab": {
+        "R1": 0.3,
+        "MRR": 0.3723,
+        "n": 80
+      },
+      "ONE_val|open_vocab": {
+        "R1": 0.8379,
+        "MRR": 0.8812,
+        "n": 512
+      },
+      "THSL_val|open_vocab": {
+        "R1": 0.1349,
+        "MRR": 0.2019,
+        "n": 430
+      },
+      "AGENT_val|open_vocab": {
+        "R1": 0.2778,
+        "MRR": 0.3227,
+        "n": 18
+      }
+    },
+    "min_signer_R1": 0.13488372093023257,
+    "per_signer": {
+      "S_one_06": 0.8641304347826086,
+      "S_one_11": 0.8743169398907104,
+      "S_one_19": 0.7586206896551724,
+      "S_thsl_03": 0.13488372093023257,
+      "S_ttrs_00": 0.2222222222222222,
+      "S_ttrs_01": 0.25,
+      "S_ttrs_02": 0.42857142857142855,
+      "yt_person_018": 0.3333333333333333
+    },
+    "confusion_margin": {
+      "mean": 0.4041613469069654,
+      "n": 44,
+      "pos_share": 0.8181818181818182
+    },
+    "daily": {
+      "E1_ttrs_val|daily_vocab": 0.4615,
+      "ONE_val|daily_vocab": 0.8981,
+      "THSL_val|daily_vocab": 0.3333,
+      "AGENT_val|daily_vocab": 0.25,
+      "E1_ttrs_test|daily_vocab": 0.1111,
+      "ONE_test|daily_vocab": 0.8611,
+      "AGENT_test|daily_vocab": 1.0,
+      "T51U|daily_vocab": 0.6296
+    },
+    "clips_seen": 11406688,
+    "best_step": 8000,
+    "steps": 19532,
+    "still_improving": false,
+    "signer_probe_acc": 0.288,
+    "in_sentence": {
+      "aligned": {
+        "n": 417,
+        "R1": 0.4245,
+        "R5": 0.5348
+      },
+      "moved": {
+        "n": 417,
+        "R1": 0.4077,
+        "R5": 0.5228
+      }
+    }
+  },
+  "v11-R0": {
+    "tune_MRR": 0.4230390679996765,
+    "sets": {
+      "E1_ttrs_val|open_vocab": {
+        "R1": 0.2,
+        "MRR": 0.2587,
+        "n": 80
+      },
+      "ONE_val|open_vocab": {
+        "R1": 0.8262,
+        "MRR": 0.8725,
+        "n": 512
+      },
+      "THSL_val|open_vocab": {
+        "R1": 0.1558,
+        "MRR": 0.2191,
+        "n": 430
+      },
+      "AGENT_val|open_vocab": {
+        "R1": 0.2778,
+        "MRR": 0.3418,
+        "n": 18
+      }
+    },
+    "min_signer_R1": 0.125,
+    "per_signer": {
+      "S_one_06": 0.8695652173913043,
+      "S_one_11": 0.8415300546448088,
+      "S_one_19": 0.7517241379310344,
+      "S_thsl_03": 0.1558139534883721,
+      "S_ttrs_00": 0.18518518518518517,
+      "S_ttrs_01": 0.125,
+      "S_ttrs_02": 0.2857142857142857,
+      "yt_person_018": 0.3333333333333333
+    },
+    "confusion_margin": {
+      "mean": 0.2898265785452994,
+      "n": 44,
+      "pos_share": 0.7727272727272727
+    },
+    "daily": {
+      "E1_ttrs_val|daily_vocab": 0.3077,
+      "ONE_val|daily_vocab": 0.9074,
+      "THSL_val|daily_vocab": 0.3667,
+      "AGENT_val|daily_vocab": 0.5,
+      "E1_ttrs_test|daily_vocab": 0.4444,
+      "ONE_test|daily_vocab": 0.8704,
+      "AGENT_test|daily_vocab": 0.0,
+      "T51U|daily_vocab": 0.6053
+    },
+    "clips_seen": 10801196,
+    "best_step": 6000,
+    "steps": 19532,
+    "still_improving": false,
+    "in_sentence": {
+      "aligned": {
+        "n": 417,
+        "R1": 0.3861,
+        "R5": 0.5204
+      },
+      "moved": {
+        "n": 417,
+        "R1": 0.3741,
+        "R5": 0.482
+      }
+    }
+  },
+  "v11-R1": {
+    "tune_MRR": 0.41035198116337457,
+    "sets": {
+      "E1_ttrs_val|open_vocab": {
+        "R1": 0.2125,
+        "MRR": 0.2671,
+        "n": 80
+      },
+      "ONE_val|open_vocab": {
+        "R1": 0.8184,
+        "MRR": 0.862,
+        "n": 512
+      },
+      "THSL_val|open_vocab": {
+        "R1": 0.1395,
+        "MRR": 0.1985,
+        "n": 430
+      },
+      "AGENT_val|open_vocab": {
+        "R1": 0.2222,
+        "MRR": 0.3137,
+        "n": 18
+      }
+    },
+    "min_signer_R1": 0.13953488372093023,
+    "per_signer": {
+      "S_one_06": 0.8478260869565217,
+      "S_one_11": 0.8579234972677595,
+      "S_one_19": 0.7310344827586207,
+      "S_thsl_03": 0.13953488372093023,
+      "S_ttrs_00": 0.14814814814814814,
+      "S_ttrs_01": 0.16666666666666666,
+      "S_ttrs_02": 0.32142857142857145,
+      "yt_person_018": 0.26666666666666666
+    },
+    "confusion_margin": {
+      "mean": 0.2754264644939791,
+      "n": 44,
+      "pos_share": 0.6818181818181818
+    },
+    "daily": {
+      "E1_ttrs_val|daily_vocab": 0.2308,
+      "ONE_val|daily_vocab": 0.8704,
+      "THSL_val|daily_vocab": 0.3667,
+      "AGENT_val|daily_vocab": 0.5,
+      "E1_ttrs_test|daily_vocab": 0.1111,
+      "ONE_test|daily_vocab": 0.8704,
+      "AGENT_test|daily_vocab": 0.0,
+      "T51U|daily_vocab": 0.5931
+    },
+    "clips_seen": 8575924,
+    "best_step": 6000,
+    "steps": 15508,
+    "still_improving": false,
+    "in_sentence": {
+      "aligned": {
+        "n": 417,
+        "R1": 0.3693,
+        "R5": 0.5156
+      },
+      "moved": {
+        "n": 417,
+        "R1": 0.3549,
+        "R5": 0.482
+      }
+    }
+  },
+  "v11-R6": {
+    "tune_MRR": 0.35302629003543673,
+    "sets": {
+      "E1_ttrs_val|open_vocab": {
+        "R1": 0.1375,
+        "MRR": 0.1798,
+        "n": 80
+      },
+      "ONE_val|open_vocab": {
+        "R1": 0.7754,
+        "MRR": 0.8369,
+        "n": 512
+      },
+      "THSL_val|open_vocab": {
+        "R1": 0.0953,
+        "MRR": 0.1447,
+        "n": 430
+      },
+      "AGENT_val|open_vocab": {
+        "R1": 0.1667,
+        "MRR": 0.2507,
+        "n": 18
+      }
+    },
+    "min_signer_R1": 0.08333333333333333,
+    "per_signer": {
+      "S_one_06": 0.7880434782608695,
+      "S_one_11": 0.8087431693989071,
+      "S_one_19": 0.7172413793103448,
+      "S_thsl_03": 0.09534883720930233,
+      "S_ttrs_00": 0.14814814814814814,
+      "S_ttrs_01": 0.08333333333333333,
+      "S_ttrs_02": 0.17857142857142858,
+      "yt_person_018": 0.2
+    },
+    "confusion_margin": {
+      "mean": 0.17205723781477322,
+      "n": 44,
+      "pos_share": 0.7727272727272727
+    },
+    "daily": {
+      "E1_ttrs_val|daily_vocab": 0.3077,
+      "ONE_val|daily_vocab": 0.8981,
+      "THSL_val|daily_vocab": 0.2,
+      "AGENT_val|daily_vocab": 0.25,
+      "E1_ttrs_test|daily_vocab": 0.1111,
+      "ONE_test|daily_vocab": 0.8889,
+      "AGENT_test|daily_vocab": 1.0,
+      "T51U|daily_vocab": 0.7004
+    },
+    "clips_seen": null,
+    "best_step": null,
+    "steps": null,
+    "still_improving": null,
+    "signer_probe_acc": 0.3331666666666666,
+    "in_sentence": {
+      "aligned": {
+        "n": 417,
+        "R1": 0.4484,
+        "R5": 0.6451
+      },
+      "moved": {
+        "n": 417,
+        "R1": 0.4341,
+        "R5": 0.6259
+      }
+    }
+  },
+  "v11-R5": {
+    "tune_MRR": 0.45857312934712613,
+    "sets": {
+      "E1_ttrs_val|open_vocab": {
+        "R1": 0.2125,
+        "MRR": 0.2803,
+        "n": 80
+      },
+      "ONE_val|open_vocab": {
+        "R1": 0.8438,
+        "MRR": 0.8891,
+        "n": 512
+      },
+      "THSL_val|open_vocab": {
+        "R1": 0.1581,
+        "MRR": 0.2199,
+        "n": 430
+      },
+      "AGENT_val|open_vocab": {
+        "R1": 0.4444,
+        "MRR": 0.445,
+        "n": 18
+      }
+    },
+    "min_signer_R1": 0.08333333333333333,
+    "per_signer": {
+      "S_one_06": 0.8586956521739131,
+      "S_one_11": 0.8907103825136612,
+      "S_one_19": 0.7655172413793103,
+      "S_thsl_03": 0.15813953488372093,
+      "S_ttrs_00": 0.2222222222222222,
+      "S_ttrs_01": 0.08333333333333333,
+      "S_ttrs_02": 0.32142857142857145,
+      "yt_person_018": 0.5333333333333333
+    },
+    "confusion_margin": {
+      "mean": 0.4068165926093405,
+      "n": 44,
+      "pos_share": 0.7954545454545454
+    },
+    "daily": {
+      "E1_ttrs_val|daily_vocab": 0.3077,
+      "ONE_val|daily_vocab": 0.8981,
+      "THSL_val|daily_vocab": 0.3667,
+      "AGENT_val|daily_vocab": 0.25,
+      "E1_ttrs_test|daily_vocab": 0.2222,
+      "ONE_test|daily_vocab": 0.8981,
+      "AGENT_test|daily_vocab": 1.0,
+      "T51U|daily_vocab": 0.6579
+    },
+    "clips_seen": null,
+    "best_step": null,
+    "steps": null,
+    "still_improving": null,
+    "signer_probe_acc": 0.28650000000000003,
+    "in_sentence": {
+      "aligned": {
+        "n": 417,
+        "R1": 0.4029,
+        "R5": 0.4748
+      },
+      "moved": {
+        "n": 417,
+        "R1": 0.3717,
+        "R5": 0.4628
+      }
+    }
+  },
+  "v11-R4": {
+    "tune_MRR": 0.4379627039276719,
+    "sets": {
+      "E1_ttrs_val|open_vocab": {
+        "R1": 0.2125,
+        "MRR": 0.2864,
+        "n": 80
+      },
+      "ONE_val|open_vocab": {
+        "R1": 0.8359,
+        "MRR": 0.8751,
+        "n": 512
+      },
+      "THSL_val|open_vocab": {
+        "R1": 0.1372,
+        "MRR": 0.1899,
+        "n": 430
+      },
+      "AGENT_val|open_vocab": {
+        "R1": 0.3889,
+        "MRR": 0.4005,
+        "n": 18
+      }
+    },
+    "min_signer_R1": 0.08333333333333333,
+    "per_signer": {
+      "S_one_06": 0.875,
+      "S_one_11": 0.8633879781420765,
+      "S_one_19": 0.7517241379310344,
+      "S_thsl_03": 0.1372093023255814,
+      "S_ttrs_00": 0.18518518518518517,
+      "S_ttrs_01": 0.08333333333333333,
+      "S_ttrs_02": 0.35714285714285715,
+      "yt_person_018": 0.4666666666666667
+    },
+    "confusion_margin": {
+      "mean": 0.39997101930732076,
+      "n": 44,
+      "pos_share": 0.75
+    },
+    "daily": {
+      "E1_ttrs_val|daily_vocab": 0.3077,
+      "ONE_val|daily_vocab": 0.8796,
+      "THSL_val|daily_vocab": 0.3667,
+      "AGENT_val|daily_vocab": 0.25,
+      "E1_ttrs_test|daily_vocab": 0.3333,
+      "ONE_test|daily_vocab": 0.8889,
+      "AGENT_test|daily_vocab": 1.0,
+      "T51U|daily_vocab": 0.6275
+    },
+    "clips_seen": null,
+    "best_step": null,
+    "steps": null,
+    "still_improving": null,
+    "signer_probe_acc": 0.2806666666666666,
+    "in_sentence": {
+      "aligned": {
+        "n": 417,
+        "R1": 0.3717,
+        "R5": 0.4365
+      },
+      "moved": {
+        "n": 417,
+        "R1": 0.3573,
+        "R5": 0.4197
+      }
+    }
+  },
+  "v11-R8": {
+    "tune_MRR": 0.44735428749253153,
+    "sets": {
+      "E1_ttrs_val|open_vocab": {
+        "R1": 0.2,
+        "MRR": 0.2652,
+        "n": 80
+      },
+      "ONE_val|open_vocab": {
+        "R1": 0.8418,
+        "MRR": 0.8812,
+        "n": 512
+      },
+      "THSL_val|open_vocab": {
+        "R1": 0.1302,
+        "MRR": 0.1982,
+        "n": 430
+      },
+      "AGENT_val|open_vocab": {
+        "R1": 0.4444,
+        "MRR": 0.4449,
+        "n": 18
+      }
+    },
+    "min_signer_R1": 0.08333333333333333,
+    "per_signer": {
+      "S_one_06": 0.8586956521739131,
+      "S_one_11": 0.9016393442622951,
+      "S_one_19": 0.7448275862068966,
+      "S_thsl_03": 0.13023255813953488,
+      "S_ttrs_00": 0.25925925925925924,
+      "S_ttrs_01": 0.08333333333333333,
+      "S_ttrs_02": 0.25,
+      "yt_person_018": 0.5333333333333333
+    },
+    "confusion_margin": {
+      "mean": 0.4070279142734679,
+      "n": 44,
+      "pos_share": 0.7954545454545454
+    },
+    "daily": {
+      "E1_ttrs_val|daily_vocab": 0.3846,
+      "ONE_val|daily_vocab": 0.8889,
+      "THSL_val|daily_vocab": 0.2,
+      "AGENT_val|daily_vocab": 0.25,
+      "E1_ttrs_test|daily_vocab": 0.3333,
+      "ONE_test|daily_vocab": 0.8889,
+      "AGENT_test|daily_vocab": 1.0,
+      "T51U|daily_vocab": 0.5729
+    },
+    "clips_seen": null,
+    "best_step": null,
+    "steps": null,
+    "still_improving": null,
+    "signer_probe_acc": 0.20416666666666666,
+    "in_sentence": {
+      "aligned": {
+        "n": 417,
+        "R1": 0.3309,
+        "R5": 0.3765
+      },
+      "moved": {
+        "n": 417,
+        "R1": 0.3141,
+        "R5": 0.3645
+      }
+    }
+  },
+  "v11-R3-s1": {
+    "tune_MRR": 0.45099203736703364,
+    "sets": {
+      "E1_ttrs_val|open_vocab": {
+        "R1": 0.2,
+        "MRR": 0.2819,
+        "n": 80
+      },
+      "ONE_val|open_vocab": {
+        "R1": 0.8457,
+        "MRR": 0.8932,
+        "n": 512
+      },
+      "THSL_val|open_vocab": {
+        "R1": 0.1605,
+        "MRR": 0.2253,
+        "n": 430
+      },
+      "AGENT_val|open_vocab": {
+        "R1": 0.3889,
+        "MRR": 0.4036,
+        "n": 18
+      }
+    },
+    "min_signer_R1": 0.041666666666666664,
+    "per_signer": {
+      "S_one_06": 0.875,
+      "S_one_11": 0.8579234972677595,
+      "S_one_19": 0.7931034482758621,
+      "S_thsl_03": 0.16046511627906976,
+      "S_ttrs_00": 0.2222222222222222,
+      "S_ttrs_01": 0.041666666666666664,
+      "S_ttrs_02": 0.32142857142857145,
+      "yt_person_018": 0.4666666666666667
+    },
+    "confusion_margin": {
+      "mean": 0.370349200273102,
+      "n": 44,
+      "pos_share": 0.7954545454545454
+    },
+    "daily": {
+      "E1_ttrs_val|daily_vocab": 0.3846,
+      "ONE_val|daily_vocab": 0.9352,
+      "THSL_val|daily_vocab": 0.3667,
+      "AGENT_val|daily_vocab": 0.25,
+      "E1_ttrs_test|daily_vocab": 0.4444,
+      "ONE_test|daily_vocab": 0.9352,
+      "AGENT_test|daily_vocab": 1.0,
+      "T51U|daily_vocab": 0.6417
+    },
+    "clips_seen": 5874456,
+    "best_step": 6000,
+    "steps": 10059,
+    "still_improving": false,
+    "signer_probe_acc": 0.30133333333333334,
+    "in_sentence": {
+      "aligned": {
+        "n": 417,
+        "R1": 0.4604,
+        "R5": 0.5899
+      },
+      "moved": {
+        "n": 417,
+        "R1": 0.4484,
+        "R5": 0.5683
+      }
+    }
+  },
+  "v11-R3-s2": {
+    "tune_MRR": 0.44308152561071135,
+    "sets": {
+      "E1_ttrs_val|open_vocab": {
+        "R1": 0.25,
+        "MRR": 0.3099,
+        "n": 80
+      },
+      "ONE_val|open_vocab": {
+        "R1": 0.8398,
+        "MRR": 0.8842,
+        "n": 512
+      },
+      "THSL_val|open_vocab": {
+        "R1": 0.1512,
+        "MRR": 0.2179,
+        "n": 430
+      },
+      "AGENT_val|open_vocab": {
+        "R1": 0.3333,
+        "MRR": 0.3603,
+        "n": 18
+      }
+    },
+    "min_signer_R1": 0.1511627906976744,
+    "per_signer": {
+      "S_one_06": 0.8641304347826086,
+      "S_one_11": 0.8633879781420765,
+      "S_one_19": 0.7793103448275862,
+      "S_thsl_03": 0.1511627906976744,
+      "S_ttrs_00": 0.2222222222222222,
+      "S_ttrs_01": 0.25,
+      "S_ttrs_02": 0.2857142857142857,
+      "yt_person_018": 0.4
+    },
+    "confusion_margin": {
+      "mean": 0.38711109452626924,
+      "n": 44,
+      "pos_share": 0.8181818181818182
+    },
+    "daily": {
+      "E1_ttrs_val|daily_vocab": 0.5385,
+      "ONE_val|daily_vocab": 0.9352,
+      "THSL_val|daily_vocab": 0.3333,
+      "AGENT_val|daily_vocab": 0.25,
+      "E1_ttrs_test|daily_vocab": 0.3333,
+      "ONE_test|daily_vocab": 0.8889,
+      "AGENT_test|daily_vocab": 0.0,
+      "T51U|daily_vocab": 0.7045
+    },
+    "clips_seen": 6614384,
+    "best_step": 8000,
+    "steps": 11326,
+    "still_improving": false,
+    "signer_probe_acc": 0.28633333333333333,
+    "in_sentence": {
+      "aligned": {
+        "n": 417,
+        "R1": 0.4436,
+        "R5": 0.5516
+      },
+      "moved": {
+        "n": 417,
+        "R1": 0.4149,
+        "R5": 0.5204
+      }
+    }
+  },
+  "v11-final": {
+    "tune_MRR": 0.4724405115982875,
+    "sets": {
+      "E1_ttrs_val|open_vocab": {
+        "R1": 0.275,
+        "MRR": 0.3648,
+        "n": 80
+      },
+      "ONE_val|open_vocab": {
+        "R1": 0.8555,
+        "MRR": 0.9023,
+        "n": 512
+      },
+      "THSL_val|open_vocab": {
+        "R1": 0.1837,
+        "MRR": 0.2597,
+        "n": 430
+      },
+      "AGENT_val|open_vocab": {
+        "R1": 0.3333,
+        "MRR": 0.363,
+        "n": 18
+      }
+    },
+    "min_signer_R1": 0.18372093023255814,
+    "per_signer": {
+      "S_one_06": 0.8967391304347826,
+      "S_one_11": 0.8743169398907104,
+      "S_one_19": 0.7793103448275862,
+      "S_thsl_03": 0.18372093023255814,
+      "S_ttrs_00": 0.25925925925925924,
+      "S_ttrs_01": 0.20833333333333334,
+      "S_ttrs_02": 0.35714285714285715,
+      "yt_person_018": 0.4
+    },
+    "confusion_margin": {
+      "mean": 0.3929564595137807,
+      "n": 44,
+      "pos_share": 0.7954545454545454
+    },
+    "daily": {
+      "E1_ttrs_val|daily_vocab": 0.4615,
+      "ONE_val|daily_vocab": 0.9259,
+      "THSL_val|daily_vocab": 0.4333,
+      "AGENT_val|daily_vocab": 0.25,
+      "E1_ttrs_test|daily_vocab": 0.3333,
+      "ONE_test|daily_vocab": 0.9074,
+      "AGENT_test|daily_vocab": 1.0,
+      "T51U|daily_vocab": 0.6721
+    },
+    "clips_seen": null,
+    "best_step": null,
+    "steps": null,
+    "still_improving": null,
+    "signer_probe_acc": 0.33516666666666667,
+    "in_sentence": {
+      "aligned": {
+        "n": 417,
+        "R1": 0.4796,
+        "R5": 0.6763
+      },
+      "moved": {
+        "n": 417,
+        "R1": 0.458,
+        "R5": 0.6283
+      }
+    }
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "v10": {
+    "t51_tune_x1.0": {
+      "WER": 0.2716,
+      "displayed_WER": 0.5878,
+      "acc_cover": 0.4077,
+      "acc_prec": 0.9884,
+      "false_accept_rate": 0.0183
+    },
+    "t51_tune_x1.5": {
+      "WER": 0.2763,
+      "displayed_WER": 0.5993,
+      "acc_cover": 0.3957,
+      "acc_prec": 0.9821,
+      "false_accept_rate": 0.0312
+    },
+    "t51_tune_x2.0": {
+      "WER": 0.3077,
+      "displayed_WER": 0.5978,
+      "acc_cover": 0.3981,
+      "acc_prec": 0.9822,
+      "false_accept_rate": 0.0309
+    },
+    "iso_tune": {
+      "WER": 0.4419,
+      "displayed_WER": 0.4884,
+      "acc_cover": 0.4942,
+      "acc_prec": 0.9043,
+      "false_accept_rate": 0.1084
+    },
+    "flu_tune": {
+      "WER": 0.4642,
+      "displayed_WER": 0.6933,
+      "acc_cover": 0.2926,
+      "acc_prec": 0.9228,
+      "false_accept_rate": 0.0599
+    },
+    "tail_tune": {
+      "tail_false_accept": 0.1733
+    },
+    "idle_tune": {
+      "idle_words_per_10s": 0.0
+    },
+    "mean": {
+      "WER": 0.3523,
+      "displayed_WER": 0.5933,
+      "acc_cover": 0.3976
+    }
+  },
+  "v11-m-r": {
+    "t51_tune_x1.0": {
+      "WER": 0.2937,
+      "displayed_WER": 0.588,
+      "acc_cover": 0.4101,
+      "acc_prec": 0.9771,
+      "false_accept_rate": 0.0336
+    },
+    "t51_tune_x1.5": {
+      "WER": 0.2955,
+      "displayed_WER": 0.5892,
+      "acc_cover": 0.4077,
+      "acc_prec": 0.9884,
+      "false_accept_rate": 0.02
+    },
+    "t51_tune_x2.0": {
+      "WER": 0.3103,
+      "displayed_WER": 0.5802,
+      "acc_cover": 0.4173,
+      "acc_prec": 0.9831,
+      "false_accept_rate": 0.0309
+    },
+    "iso_tune": {
+      "WER": 0.4419,
+      "displayed_WER": 0.4651,
+      "acc_cover": 0.5174,
+      "acc_prec": 0.9082,
+      "false_accept_rate": 0.1084
+    },
+    "flu_tune": {
+      "WER": 0.4606,
+      "displayed_WER": 0.689,
+      "acc_cover": 0.2968,
+      "acc_prec": 0.8942,
+      "false_accept_rate": 0.0873
+    },
+    "tail_tune": {
+      "tail_false_accept": 0.1867
+    },
+    "idle_tune": {
+      "idle_words_per_10s": 0.0
+    },
+    "mean": {
+      "WER": 0.3604,
+      "displayed_WER": 0.5823,
+      "acc_cover": 0.4099
+    }
+  },
+  "v11-m-rb": {
+    "t51_tune_x1.0": {
+      "WER": 0.289,
+      "displayed_WER": 0.6019,
+      "acc_cover": 0.3981,
+      "acc_prec": 0.9765,
+      "false_accept_rate": 0.0348
+    },
+    "t51_tune_x1.5": {
+      "WER": 0.2776,
+      "displayed_WER": 0.5997,
+      "acc_cover": 0.3981,
+      "acc_prec": 0.9881,
+      "false_accept_rate": 0.0213
+    },
+    "t51_tune_x2.0": {
+      "WER": 0.2958,
+      "displayed_WER": 0.5848,
+      "acc_cover": 0.4149,
+      "acc_prec": 0.9886,
+      "false_accept_rate": 0.0222
+    },
+    "iso_tune": {
+      "WER": 0.4419,
+      "displayed_WER": 0.4709,
+      "acc_cover": 0.5116,
+      "acc_prec": 0.9167,
+      "false_accept_rate": 0.0976
+    },
+    "flu_tune": {
+      "WER": 0.4638,
+      "displayed_WER": 0.7027,
+      "acc_cover": 0.2851,
+      "acc_prec": 0.8993,
+      "false_accept_rate": 0.0785
+    },
+    "tail_tune": {
+      "tail_false_accept": 0.1767
+    },
+    "idle_tune": {
+      "idle_words_per_10s": 0.0
+    },
+    "mean": {
+      "WER": 0.3536,
+      "displayed_WER": 0.592,
+      "acc_cover": 0.4016
+    }
+  },
+  "v11": {
+    "t51_tune_x1.0": {
+      "WER": 0.289,
+      "displayed_WER": 0.6019,
+      "acc_cover": 0.3981,
+      "acc_prec": 0.9765,
+      "false_accept_rate": 0.0348
+    },
+    "t51_tune_x1.5": {
+      "WER": 0.2776,
+      "displayed_WER": 0.5997,
+      "acc_cover": 0.3981,
+      "acc_prec": 0.9881,
+      "false_accept_rate": 0.0213
+    },
+    "t51_tune_x2.0": {
+      "WER": 0.2958,
+      "displayed_WER": 0.5848,
+      "acc_cover": 0.4149,
+      "acc_prec": 0.9886,
+      "false_accept_rate": 0.0222
+    },
+    "iso_tune": {
+      "WER": 0.4419,
+      "displayed_WER": 0.4709,
+      "acc_cover": 0.5116,
+      "acc_prec": 0.9167,
+      "false_accept_rate": 0.0976
+    },
+    "flu_tune": {
+      "WER": 0.4638,
+      "displayed_WER": 0.7027,
+      "acc_cover": 0.2851,
+      "acc_prec": 0.8993,
+      "false_accept_rate": 0.0785
+    },
+    "tail_tune": {
+      "tail_false_accept": 0.1767
+    },
+    "idle_tune": {
+      "idle_words_per_10s": 0.0
+    },
+    "mean": {
+      "WER": 0.3536,
+      "displayed_WER": 0.592,
+      "acc_cover": 0.4016
+    }
+  }
+}

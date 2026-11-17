@@ -1,0 +1,468 @@
+{
+  "created": "2026-11-15 17:04",
+  "sources": {
+    "agent": {
+      "volume": {
+        "clips": 525,
+        "signers": 23,
+        "concepts": 441,
+        "hours": 0.6508888888888889,
+        "by_kind": {
+          "isolated": 525
+        },
+        "by_role": {
+          "train": 394,
+          "test": 113,
+          "val": 18
+        },
+        "resolution": {}
+      },
+      "landmarks": {
+        "n": 200.0,
+        "frames": 104.0,
+        "any_hand": 0.6299,
+        "both_hands": 0.5053,
+        "hand_loss_share": 0.0077,
+        "loss_runs_gt03": 1.26,
+        "hand_size_sw": 0.2399,
+        "sw_frac": 0.1988,
+        "bone_cv": 0.1045,
+        "span": 59.5,
+        "stroke": 27.0,
+        "rest_before": 23.0,
+        "rest_after": 19.5,
+        "two_handed": 0.37,
+        "left": 0.285
+      }
+    },
+    "th_sl": {
+      "volume": {
+        "clips": 7716,
+        "signers": 8,
+        "concepts": 6760,
+        "hours": 6.600677777777777,
+        "by_kind": {
+          "isolated": 7716
+        },
+        "by_role": {
+          "train": 5175,
+          "test": 1338,
+          "val": 1203
+        },
+        "resolution": {
+          "600.0x600.0": 7131,
+          "550.0x550.0": 198,
+          "480.0x480.0": 193
+        }
+      },
+      "landmarks": {
+        "n": 200.0,
+        "frames": 71.5,
+        "any_hand": 0.6525,
+        "both_hands": 0.384,
+        "hand_loss_share": 0.0054,
+        "loss_runs_gt03": 1.71,
+        "hand_size_sw": 0.262,
+        "sw_frac": 0.405,
+        "bone_cv": 0.1058,
+        "span": 47.0,
+        "stroke": 24.0,
+        "rest_before": 12.0,
+        "rest_after": 7.0,
+        "two_handed": 0.4,
+        "left": 0.23
+      }
+    },
+    "tsl51_expert": {
+      "volume": {
+        "clips": 1050,
+        "signers": 24,
+        "concepts": 51,
+        "hours": 0.6741333333333334,
+        "by_kind": {
+          "isolated": 1016,
+          "null": 34
+        },
+        "by_role": {
+          "train": 1050
+        },
+        "resolution": {
+          "1920.0x1080.0": 547,
+          "1192.0x954.0": 40,
+          "1186.0x950.0": 30
+        }
+      },
+      "landmarks": {
+        "n": 200.0,
+        "frames": 53.0,
+        "any_hand": 0.8478,
+        "both_hands": 0.6112,
+        "hand_loss_share": 0.0037,
+        "loss_runs_gt03": 0.535,
+        "hand_size_sw": 0.2477,
+        "sw_frac": 0.2157,
+        "bone_cv": 0.0771,
+        "span": 38.5,
+        "stroke": 13.0,
+        "rest_before": 4.0,
+        "rest_after": 7.0,
+        "two_handed": 0.38,
+        "left": 0.12
+      }
+    },
+    "tsl51_user_sentence": {
+      "volume": {
+        "clips": 252,
+        "signers": 1,
+        "concepts": 62,
+        "hours": 0.6182666666666667,
+        "by_kind": {
+          "sentence": 252
+        },
+        "by_role": {
+          "sentence_test": 126,
+          "tagger_train": 126
+        },
+        "resolution": {
+          "640.0x480.0": 252
+        }
+      }
+    },
+    "tsl51_user_sign": {
+      "volume": {
+        "clips": 547,
+        "signers": 1,
+        "concepts": 51,
+        "hours": 0.4559888888888889,
+        "by_kind": {
+          "isolated": 524,
+          "null": 23
+        },
+        "by_role": {
+          "test": 547
+        },
+        "resolution": {
+          "640.0x480.0": 547
+        }
+      },
+      "landmarks": {
+        "n": 200.0,
+        "frames": 76.0,
+        "any_hand": 0.6,
+        "both_hands": 0.2793,
+        "hand_loss_share": 0.0,
+        "loss_runs_gt03": 1.6,
+        "hand_size_sw": 0.2796,
+        "sw_frac": 0.273,
+        "bone_cv": 0.1056,
+        "span": 47.0,
+        "stroke": 22.0,
+        "rest_before": 13.0,
+        "rest_after": 14.0,
+        "two_handed": 0.275,
+        "left": 0.185
+      }
+    },
+    "tslone": {
+      "volume": {
+        "clips": 4147,
+        "signers": 29,
+        "concepts": 184,
+        "hours": 2.2131777777777777,
+        "by_kind": {
+          "isolated": 4147
+        },
+        "by_role": {
+          "train": 2762,
+          "test": 873,
+          "val": 512
+        },
+        "resolution": {
+          "885.0x1000.0": 22,
+          "1038.0x1000.0": 19,
+          "878.0x1000.0": 19
+        }
+      },
+      "landmarks": {
+        "n": 200.0,
+        "frames": 45.0,
+        "any_hand": 1.0,
+        "both_hands": 0.9177,
+        "hand_loss_share": 0.0006,
+        "loss_runs_gt03": 0.005,
+        "hand_size_sw": 0.2518,
+        "sw_frac": 0.3767,
+        "bone_cv": 0.0791,
+        "span": 42.0,
+        "stroke": 19.0,
+        "rest_before": 1.0,
+        "rest_after": 0.0,
+        "two_handed": 0.395,
+        "left": 0.11
+      }
+    },
+    "ttrs": {
+      "volume": {
+        "clips": 5042,
+        "signers": 9,
+        "concepts": 4537,
+        "hours": 6.175777777777777,
+        "by_kind": {
+          "isolated": 5042
+        },
+        "by_role": {
+          "train": 4850,
+          "val": 97,
+          "test": 95
+        },
+        "resolution": {
+          "854.0x480.0": 4837,
+          "1280.0x720.0": 205
+        }
+      },
+      "landmarks": {
+        "n": 200.0,
+        "frames": 100.0,
+        "any_hand": 1.0,
+        "both_hands": 0.9756,
+        "hand_loss_share": 0.0007,
+        "loss_runs_gt03": 0.035,
+        "hand_size_sw": 0.233,
+        "sw_frac": 0.169,
+        "bone_cv": 0.0952,
+        "span": 59.5,
+        "stroke": 29.0,
+        "rest_before": 16.0,
+        "rest_after": 19.0,
+        "two_handed": 0.78,
+        "left": 0.215
+      }
+    },
+    "youtube_sentence": {
+      "volume": {
+        "clips": 16,
+        "signers": 12,
+        "concepts": 0,
+        "hours": 0.45203333333333334,
+        "by_kind": {
+          "continuous": 16
+        },
+        "by_role": {
+          "unlabeled": 16
+        },
+        "resolution": {
+          "1280.0x720.0": 14,
+          "640.0x344.0": 1,
+          "854.0x480.0": 1
+        }
+      }
+    },
+    "etsl": {
+      "volume": {
+        "clips_total": 2191,
+        "extracted": 2191,
+        "signers": 1,
+        "concepts": 2000,
+        "hours": 4.7632,
+        "by_kind": {
+          "isolated": 1775,
+          "compound": 264,
+          "letter": 129,
+          "sentence": 23
+        },
+        "by_role": {
+          "train": 2154,
+          "newsig_dev": 36,
+          "unassigned": 1
+        },
+        "resolution": {
+          "1280x720": 2191
+        },
+        "two_person_clips": 0,
+        "views": {
+          "frontal": 2191
+        }
+      },
+      "landmarks": {
+        "n": 300.0,
+        "frames": 201.0,
+        "any_hand": 1.0,
+        "both_hands": 0.9941,
+        "hand_loss_share": 0.0,
+        "loss_runs_gt03": 0.0,
+        "hand_size_sw": 0.2421,
+        "sw_frac": 0.2078,
+        "bone_cv": 0.1059,
+        "span": 67.0,
+        "stroke": 32.0,
+        "rest_before": 66.5,
+        "rest_after": 58.0,
+        "two_handed": 0.7233,
+        "left": 0.2
+      }
+    },
+    "royal_institute": {
+      "volume": {
+        "clips_total": 1249,
+        "extracted": 1249,
+        "signers": 3,
+        "concepts": 243,
+        "hours": 2.803811111111111,
+        "by_kind": {
+          "sentence": 725,
+          "classifier": 324,
+          "isolated": 200
+        },
+        "by_role": {
+          "blind_v12": 828,
+          "train": 418,
+          "newsig_dev": 3
+        },
+        "resolution": {
+          "640x480": 1249
+        },
+        "two_person_clips": 354,
+        "views": {
+          "frontal": 895,
+          "turned": 354
+        }
+      },
+      "landmarks": {
+        "n": 200.0,
+        "frames": 117.0,
+        "any_hand": 0.411,
+        "both_hands": 0.2072,
+        "hand_loss_share": 0.0102,
+        "loss_runs_gt03": 2.025,
+        "hand_size_sw": 0.2581,
+        "sw_frac": 0.2741,
+        "bone_cv": 0.104,
+        "span": 52.0,
+        "stroke": 21.0,
+        "rest_before": 28.0,
+        "rest_after": 32.0,
+        "two_handed": 0.055,
+        "left": 0.15
+      }
+    }
+  },
+  "LOG_reference": {
+    "note": "EA-v12 section 3: saved live requests vs dataset video (hand-loss runs > 0.3 s 32 % vs 14 %; flips 1.43 vs 0.67 /s; hand / shoulder 0.68 vs 0.61)",
+    "file": "artifacts/eval/ea_v12/live_handloss.json"
+  },
+  "vocab_overlap": {
+    "agent": {
+      "agent": 119,
+      "etsl": 99,
+      "royal_institute": 38,
+      "th_sl": 107,
+      "tsl51_expert": 25,
+      "tsl51_user_sign": 25,
+      "tslone": 11,
+      "ttrs": 102
+    },
+    "etsl": {
+      "agent": 99,
+      "etsl": 229,
+      "royal_institute": 55,
+      "th_sl": 216,
+      "tsl51_expert": 45,
+      "tsl51_user_sign": 45,
+      "tslone": 30,
+      "ttrs": 186
+    },
+    "royal_institute": {
+      "agent": 38,
+      "etsl": 55,
+      "royal_institute": 66,
+      "th_sl": 62,
+      "tsl51_expert": 19,
+      "tsl51_user_sign": 19,
+      "tslone": 21,
+      "ttrs": 64
+    },
+    "th_sl": {
+      "agent": 107,
+      "etsl": 216,
+      "royal_institute": 62,
+      "th_sl": 302,
+      "tsl51_expert": 45,
+      "tsl51_user_sign": 45,
+      "tslone": 37,
+      "ttrs": 216
+    },
+    "tsl51_expert": {
+      "agent": 25,
+      "etsl": 45,
+      "royal_institute": 19,
+      "th_sl": 45,
+      "tsl51_expert": 50,
+      "tsl51_user_sign": 50,
+      "tslone": 3,
+      "ttrs": 45
+    },
+    "tsl51_user_sign": {
+      "agent": 25,
+      "etsl": 45,
+      "royal_institute": 19,
+      "th_sl": 45,
+      "tsl51_expert": 50,
+      "tsl51_user_sign": 50,
+      "tslone": 3,
+      "ttrs": 45
+    },
+    "tslone": {
+      "agent": 11,
+      "etsl": 30,
+      "royal_institute": 21,
+      "th_sl": 37,
+      "tsl51_expert": 3,
+      "tsl51_user_sign": 3,
+      "tslone": 38,
+      "ttrs": 38
+    },
+    "ttrs": {
+      "agent": 102,
+      "etsl": 186,
+      "royal_institute": 64,
+      "th_sl": 216,
+      "tsl51_expert": 45,
+      "tsl51_user_sign": 45,
+      "tslone": 38,
+      "ttrs": 240
+    }
+  },
+  "vocab_per_source": {
+    "agent": 119,
+    "th_sl": 302,
+    "tsl51_expert": 50,
+    "tsl51_user_sign": 50,
+    "tslone": 38,
+    "ttrs": 240,
+    "etsl": 229,
+    "royal_institute": 66
+  },
+  "signer_depth": {
+    "before": {
+      "<=1": 96,
+      "2": 92,
+      "3-4": 76,
+      "5-9": 26,
+      ">=10": 38
+    },
+    "after": {
+      "<=1": 55,
+      "2": 70,
+      "3-4": 111,
+      "5-9": 54,
+      ">=10": 38
+    },
+    "words_gaining": 211,
+    "thin_words_gaining": 106,
+    "note": "TRAIN role only; new signers counted once extracted + QC-passed (extraction may still run)"
+  },
+  "collection_list": {
+    "words_below_5_signers": 236,
+    "file": "result_reporting/collection_list_v12.csv"
+  }
+}
