@@ -59,7 +59,8 @@ def emotionize(y, emo, s, sr=24000):
     call(dur, "Add point", 0.0, r); call(dur, "Add point", snd.xmax, r)
     call([dur, man], "Replace duration tier")
     out = call(man, "Get resynthesis (overlap-add)").values[0].astype(np.float32) * 10 ** (s * db / 20)
-    return np.clip(out, -0.99, 0.99)
+    pk = float(np.max(np.abs(out))) if len(out) else 0.0
+    return (out * (0.95 / pk)).astype(np.float32) if pk > 0.95 else out   # scale down instead of hard-clip (was np.clip: audible crackle on happy/angry)
 
 
 class Speech:

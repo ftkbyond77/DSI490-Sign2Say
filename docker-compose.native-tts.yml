@@ -1,0 +1,9 @@
+# Try the v4 voice (+ emotion mix) on a Mac: the tts service runs NATIVELY (TTS-Lab/run_tts_native.sh, port 8001); the container named "tts" only forwards to it,
+# so sign-api and the gateway work unchanged.   docker compose -f docker-compose.yml -f docker-compose.native-tts.yml up --build
+services:
+  tts:
+    image: alpine/socat
+    build: !reset null
+    volumes: !reset []
+    deploy: !reset {}
+    command: tcp-listen:8001,fork,reuseaddr tcp:host.docker.internal:8001

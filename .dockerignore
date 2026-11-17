@@ -17,3 +17,8 @@ webapp/web/public/mediapipe
 webapp/web/public/models
 **/__pycache__
 **/*.pyc
+# tts emotion voice mix (TTS-Lab/emo_ref, boom): code + policy + the 16 THAI-SER reference clips (clips are local-only, not in git)
+!TTS-Lab/emo_ref/speech_mix.py
+!TTS-Lab/emo_ref/policy.json
+!TTS-Lab/emo_ref/refs_final.csv
+!TTS-Lab/emo_ref/refs_final/**

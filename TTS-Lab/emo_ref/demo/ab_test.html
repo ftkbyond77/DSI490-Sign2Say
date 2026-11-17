@@ -1,0 +1,36 @@
+<!doctype html><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>ทดสอบฟังเสียง: เก่า vs ปัจจุบัน</title>
+<style>body{font-family:-apple-system,'Sarabun',sans-serif;max-width:720px;margin:1.5em auto;padding:0 1em}
+.card{border:1px solid #ccd;border-radius:10px;padding:1em;margin:1em 0}button{font-size:1em;padding:.6em 1em;margin:.3em;border-radius:8px;border:1px solid #889;background:#f3f3ff;cursor:pointer}
+button.p{background:#4a5bd8;color:#fff}.row{display:flex;gap:1em;flex-wrap:wrap}.opt{flex:1;min-width:200px;text-align:center;border:1px solid #ddd;border-radius:8px;padding:.6em}
+small{color:#666}progress{width:100%}table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid #ddd;padding:.3em;text-align:left}</style>
+<h2>ทดสอบฟังเสียง: วิธีเดิม vs ปัจจุบัน</h2>
+<p>ฟังเสียง <b>A</b> และ <b>B</b> (ประโยคเดียวกัน ลำดับสุ่ม ไม่บอกว่าอันไหนเก่า/ใหม่) แล้วเลือกว่าอันไหน<b>ฟังเป็นอารมณ์ที่ถามชัดกว่า</b> ใช้หูฟังจะดีที่สุด · ใช้เวลา ~3 นาที</p>
+<div id=app></div>
+<script>
+const T=[{"spk": "f005", "sent": "0", "text": "วันนี้ฉันไปตลาดมา", "emo": "happy", "th": "ดีใจ", "old": "c4012.wav", "new": "d5249.wav", "gender": "female"}, {"spk": "f005", "sent": "0", "text": "วันนี้ฉันไปตลาดมา", "emo": "angry", "th": "โกรธ", "old": "c5260.wav", "new": "c8807.wav", "gender": "female"}, {"spk": "f005", "sent": "4", "text": "ฉันได้รับข้อความแล้ว", "emo": "happy", "th": "ดีใจ", "old": "c6493.wav", "new": "d9863.wav", "gender": "female"}, {"spk": "f005", "sent": "4", "text": "ฉันได้รับข้อความแล้ว", "emo": "angry", "th": "โกรธ", "old": "c5440.wav", "new": "c2919.wav", "gender": "female"}, {"spk": "m003", "sent": "0", "text": "วันนี้ฉันไปตลาดมา", "emo": "happy", "th": "ดีใจ", "old": "c5932.wav", "new": "d4799.wav", "gender": "male"}, {"spk": "m003", "sent": "0", "text": "วันนี้ฉันไปตลาดมา", "emo": "angry", "th": "โกรธ", "old": "c9251.wav", "new": "c8653.wav", "gender": "male"}, {"spk": "m003", "sent": "4", "text": "ฉันได้รับข้อความแล้ว", "emo": "happy", "th": "ดีใจ", "old": "c6851.wav", "new": "d1248.wav", "gender": "male"}, {"spk": "m003", "sent": "4", "text": "ฉันได้รับข้อความแล้ว", "emo": "angry", "th": "โกรธ", "old": "c1203.wav", "new": "c8503.wav", "gender": "male"}, {"spk": "f004", "sent": "0", "text": "วันนี้ฉันไปตลาดมา", "emo": "happy", "th": "ดีใจ", "old": "c7890.wav", "new": "d4898.wav", "gender": "female"}, {"spk": "f004", "sent": "0", "text": "วันนี้ฉันไปตลาดมา", "emo": "angry", "th": "โกรธ", "old": "c8961.wav", "new": "c7634.wav", "gender": "female"}, {"spk": "m009", "sent": "0", "text": "วันนี้ฉันไปตลาดมา", "emo": "happy", "th": "ดีใจ", "old": "c1001.wav", "new": "d5935.wav", "gender": "male"}, {"spk": "m009", "sent": "0", "text": "วันนี้ฉันไปตลาดมา", "emo": "angry", "th": "โกรธ", "old": "c6112.wav", "new": "c8649.wav", "gender": "male"}];
+const rnd=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+let order=rnd(T).map(t=>({...t,flip:Math.random()<.5})), i=0, res=[], who="";
+const app=document.getElementById('app');
+function start(){app.innerHTML=`<div class=card><p>ชื่อเล่นผู้ฟัง (ไม่บังคับ):</p><input id=nm style="font-size:1em;padding:.4em"><p><button class=p onclick="who=document.getElementById('nm').value||'anon';show()">เริ่ม</button></p></div>`}
+function show(){
+ if(i>=order.length) return done();
+ const t=order[i], A=t.flip?t.new:t.old, B=t.flip?t.old:t.new;
+ app.innerHTML=`<progress value=${i} max=${order.length}></progress><small> ข้อ ${i+1}/${order.length}</small>
+ <div class=card><p>ประโยค: <b>${t.text}</b><br>อารมณ์ที่ถาม: <b>${t.th}</b></p>
+ <div class=row><div class=opt><b>A</b><br><audio controls src="${A}"></audio></div><div class=opt><b>B</b><br><audio controls src="${B}"></audio></div></div>
+ <p>อันไหนฟังเป็น <b>${t.th}</b> ชัดกว่า?</p>
+ <button class=p onclick="pick('A')">A ชัดกว่า</button><button class=p onclick="pick('B')">B ชัดกว่า</button><button onclick="pick('same')">ไม่ต่างกัน / ไม่รู้</button></div>`}
+function pick(c){const t=order[i];const win=c==='same'?'same':((c==='A')===!t.flip?'old':'new');
+ res.push({who,spk:t.spk,gender:t.gender,sent:t.sent,emo:t.emo,choice:c,winner:win});i++;show()}
+function done(){
+ const agg={};for(const r of res){const k=r.emo;agg[k]=agg[k]||{old:0,new:0,same:0};agg[k][r.winner]++}
+ const tot={old:0,new:0,same:0};res.forEach(r=>tot[r.winner]++);
+ const csv="who,spk,gender,sent,emo,choice,winner\n"+res.map(r=>[r.who,r.spk,r.gender,r.sent,r.emo,r.choice,r.winner].join(',')).join("\n");
+ const url=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
+ app.innerHTML=`<div class=card><h3>เสร็จแล้ว ขอบคุณครับ</h3><table><tr><th>อารมณ์</th><th>เดิม</th><th>ปัจจุบัน</th><th>ไม่ต่าง</th></tr>`+
+ Object.entries(agg).map(([k,v])=>`<tr><td>${k}</td><td>${v.old}</td><td>${v.new}</td><td>${v.same}</td></tr>`).join('')+
+ `<tr><th>รวม</th><th>${tot.old}</th><th>${tot.new}</th><th>${tot.same}</th></tr></table>
+ <p><a download="ab_${who}.csv" href="${url}"><button class=p>ดาวน์โหลดผล (CSV)</button></a> <button onclick="location.reload()">ทำใหม่</button></p>
+ <small>ส่งไฟล์ CSV ให้คนจัดการรวมผล (ผลนี้ไม่ถูกส่งไปที่ไหนอัตโนมัติ)</small></div>`}
+start();
+</script>

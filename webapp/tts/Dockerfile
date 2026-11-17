@@ -16,7 +16,11 @@ RUN pip freeze | grep -E '^(torch|torchaudio|numpy)==' > /tmp/c.txt \
 RUN python -c "from vocos import Vocos; Vocos.from_pretrained('charactr/vocos-mel-24khz')" \
  && python -c "from transformers import AutoTokenizer, VitsModel; AutoTokenizer.from_pretrained('facebook/mms-tts-tha'); VitsModel.from_pretrained('facebook/mms-tts-tha')"
 COPY modules/__init__.py modules/tts.py modules/utils.py /app/modules/
-COPY webapp/tts/app.py /app/app.py
+COPY webapp/tts/app.py webapp/tts/text_emotion.py /app/
+# emotion voice mix (TTS-Lab/emo_ref): per-emotion method + 16 reference clips from THAI-SER (CC BY-SA 4.0, airesearch/thai-ser); SPEECH_MIX=0 turns it off
+COPY TTS-Lab/emo_ref/speech_mix.py TTS-Lab/emo_ref/policy.json TTS-Lab/emo_ref/refs_final.csv /app/mix/
+COPY TTS-Lab/emo_ref/refs_final /app/mix/refs_final
+ENV SPEECH_MIX_DIR=/app/mix
 EXPOSE 8001
 HEALTHCHECK --interval=20s --timeout=5s --start-period=240s --start-interval=3s CMD curl -fs http://localhost:8001/v1/health || exit 1
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8001", "--workers", "1"]

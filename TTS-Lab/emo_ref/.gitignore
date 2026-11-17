@@ -1,0 +1,7 @@
+out/
+thai-ser/
+refs/
+*.wav
+*.flac
+*.zip
+out_old_happy/
