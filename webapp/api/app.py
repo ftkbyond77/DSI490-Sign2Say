@@ -107,7 +107,10 @@ def warm():
         fb = face_branch()
         if fb is not None:
             import numpy as np
-            fb.live([dict(t=0.0, g=np.full(2304, 128, np.uint8), side_px=80)])                  # first-call latency
+            w = dict(t=0.0, g=np.full(2304, 128, np.uint8), side_px=80)
+            if getattr(fb.model, "wants_96", False):         # ravhead-v1: the 96x96 AffectNet net too, else the first live call (1.5 s deadline) times out
+                w["g96"] = np.full(9216, 128, np.uint8)
+            fb.live([w])                                                                          # first-call latency
     except Exception as e:  # noqa: BLE001
         print("face warm-up skipped:", e)
     p = pipe()

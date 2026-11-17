@@ -84,6 +84,12 @@ def _load_mix(e):
     """MixSpeech on top of the loaded v4 model (weights unchanged); None when its files are missing or it fails to start (plain v4 then answers)."""
     if not (USE_MIX and getattr(e, "tags", None) and (MIX_DIR / "speech_mix.py").exists() and (MIX_DIR / "refs_final.csv").exists()):
         return None
+    import csv
+    with open(MIX_DIR / "refs_final.csv", encoding="utf-8") as f:
+        missing = [r["path"] for r in csv.DictReader(f) if not (MIX_DIR / r["path"]).exists()]
+    if missing:                                                     # the THAI-SER reference clips are local-only (not in git): get them from TTS-Lab/emo_ref
+        log.warning("speech mix off: %d reference clips missing under %s (e.g. %s) — plain v4", len(missing), MIX_DIR, missing[0])
+        return None
     try:
         sys.path.insert(0, str(MIX_DIR))
         from speech_mix import MixSpeech                            # noqa: E402
