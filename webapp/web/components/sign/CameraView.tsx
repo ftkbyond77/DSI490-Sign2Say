@@ -23,27 +23,40 @@ export function Dot({ tone }: { tone: Tone }) {
   return <span className={`dot ${tone === "live" ? "live" : tone === "rec" ? "rec" : tone === "busy" ? "busy" : tone === "off" ? "off" : ""}`} />;
 }
 
-/** <video> + <canvas> of the engine; while the camera is off: a framed empty state with a button that opens it (`onOpen`). */
-export function CameraFeed({ engine: e, onOpen, label = "เปิดกล้อง", hint = "ยืนให้เห็นตัวถึงเอว มือทั้งสองข้างอยู่ในกรอบ", compact = false }: {
-  engine: SignEngine; onOpen?: () => void; label?: string; hint?: string; compact?: boolean;
+const CAM_ICON = <path d="M15 10l4.55-2.28A1 1 0 0 1 21 8.62v6.76a1 1 0 0 1-1.45.9L15 14" />;
+const READY_CHECKS = ["ยืนให้เห็นตัวถึงเอว", "มือทั้งสองข้างอยู่ในกรอบ", "แสงพอ ไม่ย้อนแสง"];
+
+/** <video> + <canvas> of the engine; while the camera is off: “พร้อมแปลภาษามือ” — a person icon, a three-step checklist and the
+ *  button that opens the camera (`onOpen`). compact (the /chat tile): icon + button only. */
+export function CameraFeed({ engine: e, onOpen, label = "เปิดกล้อง", compact = false }: {
+  engine: SignEngine; onOpen?: () => void; label?: string; compact?: boolean;
 }) {
   const filter = e.autoLight && (e.tone.brightness !== 1 || e.tone.contrast !== 1)
     ? { filter: `brightness(${e.tone.brightness.toFixed(2)}) contrast(${e.tone.contrast.toFixed(2)})` } : undefined;
+  const loading = e.status === "loading";
   return (
     <>
       <video ref={e.videoRef} playsInline muted className="mirror" style={{ ...filter, visibility: e.camOn ? "visible" : "hidden" }} />
       <canvas ref={e.canvasRef} className="mirror" style={{ visibility: e.camOn ? "visible" : "hidden" }} />
       {!e.camOn && (
         <div className={`cam-empty ${compact ? "compact" : ""}`}>
-          <span className="corners" aria-hidden><i /><i /><i /><i /></span>
-          {e.status === "loading" ? <div className="cam-open busy"><span className="spinner teal" /></div> : onOpen && (
-            <button className="cam-open" onClick={onOpen} aria-label={label}>
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                <path d="M15 10l4.55-2.28A1 1 0 0 1 21 8.62v6.76a1 1 0 0 1-1.45.9L15 14" /><rect x="3" y="6" width="12" height="12" rx="3" /></svg>
-            </button>
-          )}
-          <b>{e.status === "loading" ? "กำลังโหลดโมเดล MediaPipe…" : label}</b>
-          {!compact && <small>{hint}</small>}
+          <div className="cam-ill" aria-hidden>
+            <svg viewBox="0 0 100 100"><circle cx="50" cy="34" r="17" /><path d="M18 96 C20 66 34 56 50 56 C66 56 80 66 82 96Z" opacity=".65" /></svg>
+            <span className="cam-badge">{loading ? <span className="spinner" />
+              : <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                {CAM_ICON}<rect x="3" y="6" width="12" height="12" rx="3" /></svg>}</span>
+          </div>
+          <div className="cam-text">
+            {!compact && <b>{loading ? "กำลังเตรียมกล้อง…" : "พร้อมแปลภาษามือ"}</b>}
+            {!compact && <ol className="cam-checks">{READY_CHECKS.map((t, i) => <li key={t}><span>{i + 1}</span>{t}</li>)}</ol>}
+            {loading ? <small className="cam-wait">กำลังโหลดโมเดล MediaPipe…</small> : onOpen && (
+              <button className="cam-go" onClick={onOpen}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  {CAM_ICON}<rect x="3" y="6" width="12" height="12" rx="3" /></svg>
+                {label}
+              </button>
+            )}
+          </div>
         </div>
       )}
     </>

@@ -1,0 +1,39 @@
+{
+ "n_clips": 1440,
+ "ensemble": {
+  "clips_acc": 0.5,
+  "clips_macro_f1": 0.456,
+  "windows_acc": 0.494,
+  "windows_macro_f1": 0.452,
+  "strong_intensity_acc": 0.522,
+  "neutral_vs_emotion_acc": 0.592,
+  "valence_sign_agreement": 0.566,
+  "per_class_recall": {
+   "neutral": 0.865,
+   "happy": 0.917,
+   "sad": 0.349,
+   "angry": 0.057,
+   "fear": 0.141,
+   "disgust": 0.771,
+   "surprise": 0.219
+  }
+ },
+ "ensemble_brow": {
+  "clips_acc": 0.549,
+  "clips_macro_f1": 0.527,
+  "windows_acc": 0.535,
+  "windows_macro_f1": 0.509,
+  "strong_intensity_acc": 0.591,
+  "neutral_vs_emotion_acc": 0.699,
+  "valence_sign_agreement": 0.655,
+  "per_class_recall": {
+   "neutral": 0.753,
+   "happy": 0.917,
+   "sad": 0.354,
+   "angry": 0.557,
+   "fear": 0.146,
+   "disgust": 0.771,
+   "surprise": 0.245
+  }
+ }
+}

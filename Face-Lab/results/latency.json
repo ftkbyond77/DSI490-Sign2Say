@@ -1,0 +1,142 @@
+{
+ "note": "How long the LIVE label (/v1/face: head over a trailing window → unknown rule → ExpressionSmoother) takes to show an expression, and what\nfaster settings cost in false alarms.\n RAVDESS (24 actors, out-of-fold heads: each actor is run through a head trained without its fold, as rav_prior.py): for every strong-\n   intensity emotion clip, a neutral clip of the same actor is played first, then the emotion clip (crops every 0.2 s, as the web's\n   ~180 ms). Latency = time from the emotion clip's first frame to the first frame the shown label is (a) that emotion (b) any emotion.\n Team clips (check_ravhead.app_path, deployed head): false emotion on neutral frames.\n Server time (~0.25–0.35 s per call) comes on top of the numbers here.\n  python latency.py → results/latency.json",
+ "n_sequences": 576,
+ "variants": {
+  "now (2 s, prior 0.5, tau 0.35, hold 0.3)": {
+   "window_s": 2.0,
+   "prior": 0.5,
+   "smoother": {
+    "tau_s": 0.35,
+    "switch_margin": 0.12,
+    "min_hold_s": 0.3,
+    "strong": 0.8,
+    "lost_s": 1.5,
+    "min_conf": 0.45
+   },
+   "correct_shown": 0.955,
+   "median_s_to_correct": 1.8,
+   "p90_s_to_correct": 2.6,
+   "any_emotion_shown": 0.991,
+   "median_s_to_any": 1.8,
+   "ravdess_false_on_neutral_lead_in": 0.146,
+   "team": {
+    "shown_neutral": 0.938,
+    "wrong": 0.039,
+    "unknown": 0.023,
+    "smiles": "0/3",
+    "wrong_as": {
+     "sad": 10
+    }
+   }
+  },
+  "smoother faster (tau 0.2, hold 0.15)": {
+   "window_s": 2.0,
+   "prior": 0.5,
+   "smoother": {
+    "tau_s": 0.2,
+    "switch_margin": 0.12,
+    "min_hold_s": 0.15,
+    "strong": 0.8,
+    "lost_s": 1.5,
+    "min_conf": 0.45
+   },
+   "correct_shown": 0.967,
+   "median_s_to_correct": 1.6,
+   "p90_s_to_correct": 2.2,
+   "any_emotion_shown": 0.993,
+   "median_s_to_any": 1.4,
+   "ravdess_false_on_neutral_lead_in": 0.167,
+   "team": {
+    "shown_neutral": 0.938,
+    "wrong": 0.039,
+    "unknown": 0.023,
+    "smiles": "0/3",
+    "wrong_as": {
+     "sad": 10
+    }
+   }
+  },
+  "window 1 s": {
+   "window_s": 1.0,
+   "prior": 0.5,
+   "smoother": {
+    "tau_s": 0.35,
+    "switch_margin": 0.12,
+    "min_hold_s": 0.3,
+    "strong": 0.8,
+    "lost_s": 1.5,
+    "min_conf": 0.45
+   },
+   "correct_shown": 0.965,
+   "median_s_to_correct": 1.4,
+   "p90_s_to_correct": 2.0,
+   "any_emotion_shown": 0.995,
+   "median_s_to_any": 1.2,
+   "ravdess_false_on_neutral_lead_in": 0.167,
+   "team": {
+    "shown_neutral": 0.953,
+    "wrong": 0.023,
+    "unknown": 0.023,
+    "smiles": "0/3",
+    "wrong_as": {
+     "sad": 6
+    }
+   }
+  },
+  "window 1 s + smoother faster": {
+   "window_s": 1.0,
+   "prior": 0.5,
+   "smoother": {
+    "tau_s": 0.2,
+    "switch_margin": 0.12,
+    "min_hold_s": 0.15,
+    "strong": 0.8,
+    "lost_s": 1.5,
+    "min_conf": 0.45
+   },
+   "correct_shown": 0.977,
+   "median_s_to_correct": 1.0,
+   "p90_s_to_correct": 1.8,
+   "any_emotion_shown": 0.998,
+   "median_s_to_any": 0.8,
+   "ravdess_false_on_neutral_lead_in": 0.198,
+   "team": {
+    "shown_neutral": 0.945,
+    "wrong": 0.031,
+    "unknown": 0.023,
+    "smiles": "0/3",
+    "wrong_as": {
+     "fear": 2,
+     "sad": 6
+    }
+   }
+  },
+  "window 1.5 s + smoother faster": {
+   "window_s": 1.5,
+   "prior": 0.5,
+   "smoother": {
+    "tau_s": 0.2,
+    "switch_margin": 0.12,
+    "min_hold_s": 0.15,
+    "strong": 0.8,
+    "lost_s": 1.5,
+    "min_conf": 0.45
+   },
+   "correct_shown": 0.974,
+   "median_s_to_correct": 1.4,
+   "p90_s_to_correct": 2.0,
+   "any_emotion_shown": 0.995,
+   "median_s_to_any": 1.2,
+   "ravdess_false_on_neutral_lead_in": 0.177,
+   "team": {
+    "shown_neutral": 0.941,
+    "wrong": 0.027,
+    "unknown": 0.031,
+    "smiles": "0/3",
+    "wrong_as": {
+     "sad": 7
+    }
+   }
+  }
+ }
+}

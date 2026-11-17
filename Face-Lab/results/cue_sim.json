@@ -1,0 +1,626 @@
+{
+ "happy_mix_0.0__eye_thr_None": {
+  "ravdess": {
+   "clips_acc": 0.726,
+   "clips_macro_f1": 0.723,
+   "windows_acc": 0.711,
+   "windows_macro_f1": 0.705,
+   "strong_intensity_acc": 0.786,
+   "neutral_vs_emotion_acc": 0.874,
+   "valence_sign_agreement": 0.799,
+   "per_class_recall": {
+    "neutral": 0.809,
+    "happy": 0.875,
+    "sad": 0.594,
+    "angry": 0.734,
+    "fear": 0.635,
+    "disgust": 0.906,
+    "surprise": 0.484
+   }
+  },
+  "team": {
+   "shown_neutral": 0.938,
+   "wrong": 0.039,
+   "smiles": "0/3",
+   "wrong_as": {
+    "sad": 10
+   },
+   "expressive": {
+    "smile@12:1.5": "neutral",
+    "smile@15:0.0": "neutral",
+    "smile@15:1.5": "neutral",
+    "question brows@3:10.5": "neutral",
+    "question brows@5:7.5": "neutral",
+    "question brows@5:9.0": "neutral",
+    "sad line@0:0.0": "neutral",
+    "sad line@0:1.5": "neutral",
+    "head back@9:3.0": "neutral"
+   }
+  }
+ },
+ "happy_mix_0.0__eye_thr_2.0": {
+  "ravdess": {
+   "clips_acc": 0.715,
+   "clips_macro_f1": 0.72,
+   "windows_acc": 0.702,
+   "windows_macro_f1": 0.703,
+   "strong_intensity_acc": 0.792,
+   "neutral_vs_emotion_acc": 0.894,
+   "valence_sign_agreement": 0.791,
+   "per_class_recall": {
+    "neutral": 0.663,
+    "happy": 0.875,
+    "sad": 0.594,
+    "angry": 0.734,
+    "fear": 0.635,
+    "disgust": 0.906,
+    "surprise": 0.62
+   }
+  },
+  "team": {
+   "shown_neutral": 0.938,
+   "wrong": 0.035,
+   "smiles": "0/3",
+   "wrong_as": {
+    "sad": 9
+   },
+   "expressive": {
+    "smile@12:1.5": "neutral",
+    "smile@15:0.0": "neutral",
+    "smile@15:1.5": "neutral",
+    "question brows@3:10.5": "neutral",
+    "question brows@5:7.5": "neutral",
+    "question brows@5:9.0": "neutral",
+    "sad line@0:0.0": "neutral",
+    "sad line@0:1.5": "neutral",
+    "head back@9:3.0": "neutral"
+   }
+  }
+ },
+ "happy_mix_0.0__eye_thr_3.0": {
+  "ravdess": {
+   "clips_acc": 0.719,
+   "clips_macro_f1": 0.72,
+   "windows_acc": 0.705,
+   "windows_macro_f1": 0.704,
+   "strong_intensity_acc": 0.79,
+   "neutral_vs_emotion_acc": 0.876,
+   "valence_sign_agreement": 0.793,
+   "per_class_recall": {
+    "neutral": 0.736,
+    "happy": 0.875,
+    "sad": 0.594,
+    "angry": 0.734,
+    "fear": 0.635,
+    "disgust": 0.906,
+    "surprise": 0.542
+   }
+  },
+  "team": {
+   "shown_neutral": 0.938,
+   "wrong": 0.039,
+   "smiles": "0/3",
+   "wrong_as": {
+    "sad": 10
+   },
+   "expressive": {
+    "smile@12:1.5": "neutral",
+    "smile@15:0.0": "neutral",
+    "smile@15:1.5": "neutral",
+    "question brows@3:10.5": "neutral",
+    "question brows@5:7.5": "neutral",
+    "question brows@5:9.0": "neutral",
+    "sad line@0:0.0": "neutral",
+    "sad line@0:1.5": "neutral",
+    "head back@9:3.0": "neutral"
+   }
+  }
+ },
+ "happy_mix_0.0__eye_thr_4.0": {
+  "ravdess": {
+   "clips_acc": 0.718,
+   "clips_macro_f1": 0.718,
+   "windows_acc": 0.704,
+   "windows_macro_f1": 0.701,
+   "strong_intensity_acc": 0.784,
+   "neutral_vs_emotion_acc": 0.872,
+   "valence_sign_agreement": 0.792,
+   "per_class_recall": {
+    "neutral": 0.76,
+    "happy": 0.875,
+    "sad": 0.594,
+    "angry": 0.734,
+    "fear": 0.635,
+    "disgust": 0.906,
+    "surprise": 0.5
+   }
+  },
+  "team": {
+   "shown_neutral": 0.938,
+   "wrong": 0.039,
+   "smiles": "0/3",
+   "wrong_as": {
+    "sad": 10
+   },
+   "expressive": {
+    "smile@12:1.5": "neutral",
+    "smile@15:0.0": "neutral",
+    "smile@15:1.5": "neutral",
+    "question brows@3:10.5": "neutral",
+    "question brows@5:7.5": "neutral",
+    "question brows@5:9.0": "neutral",
+    "sad line@0:0.0": "neutral",
+    "sad line@0:1.5": "neutral",
+    "head back@9:3.0": "neutral"
+   }
+  }
+ },
+ "happy_mix_0.25__eye_thr_None": {
+  "ravdess": {
+   "clips_acc": 0.725,
+   "clips_macro_f1": 0.722,
+   "windows_acc": 0.709,
+   "windows_macro_f1": 0.703,
+   "strong_intensity_acc": 0.783,
+   "neutral_vs_emotion_acc": 0.874,
+   "valence_sign_agreement": 0.799,
+   "per_class_recall": {
+    "neutral": 0.792,
+    "happy": 0.896,
+    "sad": 0.594,
+    "angry": 0.734,
+    "fear": 0.635,
+    "disgust": 0.906,
+    "surprise": 0.484
+   }
+  },
+  "team": {
+   "shown_neutral": 0.938,
+   "wrong": 0.039,
+   "smiles": "0/3",
+   "wrong_as": {
+    "sad": 10
+   },
+   "expressive": {
+    "smile@12:1.5": "neutral",
+    "smile@15:0.0": "neutral",
+    "smile@15:1.5": "neutral",
+    "question brows@3:10.5": "neutral",
+    "question brows@5:7.5": "neutral",
+    "question brows@5:9.0": "neutral",
+    "sad line@0:0.0": "neutral",
+    "sad line@0:1.5": "neutral",
+    "head back@9:3.0": "neutral"
+   }
+  }
+ },
+ "happy_mix_0.25__eye_thr_2.0": {
+  "ravdess": {
+   "clips_acc": 0.715,
+   "clips_macro_f1": 0.719,
+   "windows_acc": 0.7,
+   "windows_macro_f1": 0.7,
+   "strong_intensity_acc": 0.79,
+   "neutral_vs_emotion_acc": 0.894,
+   "valence_sign_agreement": 0.792,
+   "per_class_recall": {
+    "neutral": 0.653,
+    "happy": 0.896,
+    "sad": 0.594,
+    "angry": 0.734,
+    "fear": 0.635,
+    "disgust": 0.906,
+    "surprise": 0.615
+   }
+  },
+  "team": {
+   "shown_neutral": 0.938,
+   "wrong": 0.035,
+   "smiles": "0/3",
+   "wrong_as": {
+    "sad": 9
+   },
+   "expressive": {
+    "smile@12:1.5": "neutral",
+    "smile@15:0.0": "neutral",
+    "smile@15:1.5": "neutral",
+    "question brows@3:10.5": "neutral",
+    "question brows@5:7.5": "neutral",
+    "question brows@5:9.0": "neutral",
+    "sad line@0:0.0": "neutral",
+    "sad line@0:1.5": "neutral",
+    "head back@9:3.0": "neutral"
+   }
+  }
+ },
+ "happy_mix_0.25__eye_thr_3.0": {
+  "ravdess": {
+   "clips_acc": 0.717,
+   "clips_macro_f1": 0.718,
+   "windows_acc": 0.703,
+   "windows_macro_f1": 0.701,
+   "strong_intensity_acc": 0.786,
+   "neutral_vs_emotion_acc": 0.875,
+   "valence_sign_agreement": 0.793,
+   "per_class_recall": {
+    "neutral": 0.719,
+    "happy": 0.896,
+    "sad": 0.594,
+    "angry": 0.734,
+    "fear": 0.635,
+    "disgust": 0.906,
+    "surprise": 0.536
+   }
+  },
+  "team": {
+   "shown_neutral": 0.938,
+   "wrong": 0.039,
+   "smiles": "0/3",
+   "wrong_as": {
+    "sad": 10
+   },
+   "expressive": {
+    "smile@12:1.5": "neutral",
+    "smile@15:0.0": "neutral",
+    "smile@15:1.5": "neutral",
+    "question brows@3:10.5": "neutral",
+    "question brows@5:7.5": "neutral",
+    "question brows@5:9.0": "neutral",
+    "sad line@0:0.0": "neutral",
+    "sad line@0:1.5": "neutral",
+    "head back@9:3.0": "neutral"
+   }
+  }
+ },
+ "happy_mix_0.25__eye_thr_4.0": {
+  "ravdess": {
+   "clips_acc": 0.717,
+   "clips_macro_f1": 0.717,
+   "windows_acc": 0.702,
+   "windows_macro_f1": 0.698,
+   "strong_intensity_acc": 0.781,
+   "neutral_vs_emotion_acc": 0.872,
+   "valence_sign_agreement": 0.792,
+   "per_class_recall": {
+    "neutral": 0.743,
+    "happy": 0.896,
+    "sad": 0.594,
+    "angry": 0.734,
+    "fear": 0.635,
+    "disgust": 0.906,
+    "surprise": 0.5
+   }
+  },
+  "team": {
+   "shown_neutral": 0.938,
+   "wrong": 0.039,
+   "smiles": "0/3",
+   "wrong_as": {
+    "sad": 10
+   },
+   "expressive": {
+    "smile@12:1.5": "neutral",
+    "smile@15:0.0": "neutral",
+    "smile@15:1.5": "neutral",
+    "question brows@3:10.5": "neutral",
+    "question brows@5:7.5": "neutral",
+    "question brows@5:9.0": "neutral",
+    "sad line@0:0.0": "neutral",
+    "sad line@0:1.5": "neutral",
+    "head back@9:3.0": "neutral"
+   }
+  }
+ },
+ "happy_mix_0.5__eye_thr_None": {
+  "ravdess": {
+   "clips_acc": 0.724,
+   "clips_macro_f1": 0.722,
+   "windows_acc": 0.71,
+   "windows_macro_f1": 0.703,
+   "strong_intensity_acc": 0.78,
+   "neutral_vs_emotion_acc": 0.872,
+   "valence_sign_agreement": 0.799,
+   "per_class_recall": {
+    "neutral": 0.778,
+    "happy": 0.911,
+    "sad": 0.594,
+    "angry": 0.734,
+    "fear": 0.635,
+    "disgust": 0.906,
+    "surprise": 0.484
+   }
+  },
+  "team": {
+   "shown_neutral": 0.938,
+   "wrong": 0.039,
+   "smiles": "0/3",
+   "wrong_as": {
+    "sad": 10
+   },
+   "expressive": {
+    "smile@12:1.5": "neutral",
+    "smile@15:0.0": "neutral",
+    "smile@15:1.5": "neutral",
+    "question brows@3:10.5": "neutral",
+    "question brows@5:7.5": "neutral",
+    "question brows@5:9.0": "neutral",
+    "sad line@0:0.0": "neutral",
+    "sad line@0:1.5": "neutral",
+    "head back@9:3.0": "neutral"
+   }
+  }
+ },
+ "happy_mix_0.5__eye_thr_2.0": {
+  "ravdess": {
+   "clips_acc": 0.715,
+   "clips_macro_f1": 0.719,
+   "windows_acc": 0.701,
+   "windows_macro_f1": 0.701,
+   "strong_intensity_acc": 0.787,
+   "neutral_vs_emotion_acc": 0.894,
+   "valence_sign_agreement": 0.793,
+   "per_class_recall": {
+    "neutral": 0.642,
+    "happy": 0.911,
+    "sad": 0.594,
+    "angry": 0.734,
+    "fear": 0.635,
+    "disgust": 0.906,
+    "surprise": 0.62
+   }
+  },
+  "team": {
+   "shown_neutral": 0.938,
+   "wrong": 0.035,
+   "smiles": "0/3",
+   "wrong_as": {
+    "sad": 9
+   },
+   "expressive": {
+    "smile@12:1.5": "neutral",
+    "smile@15:0.0": "neutral",
+    "smile@15:1.5": "neutral",
+    "question brows@3:10.5": "neutral",
+    "question brows@5:7.5": "neutral",
+    "question brows@5:9.0": "neutral",
+    "sad line@0:0.0": "neutral",
+    "sad line@0:1.5": "neutral",
+    "head back@9:3.0": "neutral"
+   }
+  }
+ },
+ "happy_mix_0.5__eye_thr_3.0": {
+  "ravdess": {
+   "clips_acc": 0.717,
+   "clips_macro_f1": 0.718,
+   "windows_acc": 0.704,
+   "windows_macro_f1": 0.701,
+   "strong_intensity_acc": 0.783,
+   "neutral_vs_emotion_acc": 0.874,
+   "valence_sign_agreement": 0.793,
+   "per_class_recall": {
+    "neutral": 0.708,
+    "happy": 0.911,
+    "sad": 0.594,
+    "angry": 0.734,
+    "fear": 0.635,
+    "disgust": 0.906,
+    "surprise": 0.536
+   }
+  },
+  "team": {
+   "shown_neutral": 0.938,
+   "wrong": 0.039,
+   "smiles": "0/3",
+   "wrong_as": {
+    "sad": 10
+   },
+   "expressive": {
+    "smile@12:1.5": "neutral",
+    "smile@15:0.0": "neutral",
+    "smile@15:1.5": "neutral",
+    "question brows@3:10.5": "neutral",
+    "question brows@5:7.5": "neutral",
+    "question brows@5:9.0": "neutral",
+    "sad line@0:0.0": "neutral",
+    "sad line@0:1.5": "neutral",
+    "head back@9:3.0": "neutral"
+   }
+  }
+ },
+ "happy_mix_0.5__eye_thr_4.0": {
+  "ravdess": {
+   "clips_acc": 0.717,
+   "clips_macro_f1": 0.717,
+   "windows_acc": 0.703,
+   "windows_macro_f1": 0.699,
+   "strong_intensity_acc": 0.778,
+   "neutral_vs_emotion_acc": 0.871,
+   "valence_sign_agreement": 0.792,
+   "per_class_recall": {
+    "neutral": 0.733,
+    "happy": 0.911,
+    "sad": 0.594,
+    "angry": 0.734,
+    "fear": 0.635,
+    "disgust": 0.906,
+    "surprise": 0.5
+   }
+  },
+  "team": {
+   "shown_neutral": 0.938,
+   "wrong": 0.039,
+   "smiles": "0/3",
+   "wrong_as": {
+    "sad": 10
+   },
+   "expressive": {
+    "smile@12:1.5": "neutral",
+    "smile@15:0.0": "neutral",
+    "smile@15:1.5": "neutral",
+    "question brows@3:10.5": "neutral",
+    "question brows@5:7.5": "neutral",
+    "question brows@5:9.0": "neutral",
+    "sad line@0:0.0": "neutral",
+    "sad line@0:1.5": "neutral",
+    "head back@9:3.0": "neutral"
+   }
+  }
+ },
+ "happy_mix_1.0__eye_thr_None": {
+  "ravdess": {
+   "clips_acc": 0.721,
+   "clips_macro_f1": 0.718,
+   "windows_acc": 0.705,
+   "windows_macro_f1": 0.698,
+   "strong_intensity_acc": 0.774,
+   "neutral_vs_emotion_acc": 0.872,
+   "valence_sign_agreement": 0.797,
+   "per_class_recall": {
+    "neutral": 0.75,
+    "happy": 0.927,
+    "sad": 0.594,
+    "angry": 0.734,
+    "fear": 0.635,
+    "disgust": 0.906,
+    "surprise": 0.484
+   }
+  },
+  "team": {
+   "shown_neutral": 0.938,
+   "wrong": 0.039,
+   "smiles": "0/3",
+   "wrong_as": {
+    "sad": 10
+   },
+   "expressive": {
+    "smile@12:1.5": "neutral",
+    "smile@15:0.0": "neutral",
+    "smile@15:1.5": "neutral",
+    "question brows@3:10.5": "neutral",
+    "question brows@5:7.5": "neutral",
+    "question brows@5:9.0": "neutral",
+    "sad line@0:0.0": "neutral",
+    "sad line@0:1.5": "neutral",
+    "head back@9:3.0": "neutral"
+   }
+  }
+ },
+ "happy_mix_1.0__eye_thr_2.0": {
+  "ravdess": {
+   "clips_acc": 0.71,
+   "clips_macro_f1": 0.714,
+   "windows_acc": 0.696,
+   "windows_macro_f1": 0.695,
+   "strong_intensity_acc": 0.781,
+   "neutral_vs_emotion_acc": 0.892,
+   "valence_sign_agreement": 0.79,
+   "per_class_recall": {
+    "neutral": 0.618,
+    "happy": 0.927,
+    "sad": 0.594,
+    "angry": 0.734,
+    "fear": 0.635,
+    "disgust": 0.906,
+    "surprise": 0.604
+   }
+  },
+  "team": {
+   "shown_neutral": 0.938,
+   "wrong": 0.035,
+   "smiles": "0/3",
+   "wrong_as": {
+    "sad": 9
+   },
+   "expressive": {
+    "smile@12:1.5": "neutral",
+    "smile@15:0.0": "neutral",
+    "smile@15:1.5": "neutral",
+    "question brows@3:10.5": "neutral",
+    "question brows@5:7.5": "neutral",
+    "question brows@5:9.0": "neutral",
+    "sad line@0:0.0": "neutral",
+    "sad line@0:1.5": "neutral",
+    "head back@9:3.0": "neutral"
+   }
+  }
+ },
+ "happy_mix_1.0__eye_thr_3.0": {
+  "ravdess": {
+   "clips_acc": 0.715,
+   "clips_macro_f1": 0.715,
+   "windows_acc": 0.7,
+   "windows_macro_f1": 0.697,
+   "strong_intensity_acc": 0.78,
+   "neutral_vs_emotion_acc": 0.876,
+   "valence_sign_agreement": 0.793,
+   "per_class_recall": {
+    "neutral": 0.688,
+    "happy": 0.927,
+    "sad": 0.594,
+    "angry": 0.734,
+    "fear": 0.635,
+    "disgust": 0.906,
+    "surprise": 0.536
+   }
+  },
+  "team": {
+   "shown_neutral": 0.938,
+   "wrong": 0.039,
+   "smiles": "0/3",
+   "wrong_as": {
+    "sad": 10
+   },
+   "expressive": {
+    "smile@12:1.5": "neutral",
+    "smile@15:0.0": "neutral",
+    "smile@15:1.5": "neutral",
+    "question brows@3:10.5": "neutral",
+    "question brows@5:7.5": "neutral",
+    "question brows@5:9.0": "neutral",
+    "sad line@0:0.0": "neutral",
+    "sad line@0:1.5": "neutral",
+    "head back@9:3.0": "neutral"
+   }
+  }
+ },
+ "happy_mix_1.0__eye_thr_4.0": {
+  "ravdess": {
+   "clips_acc": 0.714,
+   "clips_macro_f1": 0.713,
+   "windows_acc": 0.698,
+   "windows_macro_f1": 0.694,
+   "strong_intensity_acc": 0.774,
+   "neutral_vs_emotion_acc": 0.871,
+   "valence_sign_agreement": 0.791,
+   "per_class_recall": {
+    "neutral": 0.708,
+    "happy": 0.927,
+    "sad": 0.594,
+    "angry": 0.734,
+    "fear": 0.635,
+    "disgust": 0.906,
+    "surprise": 0.495
+   }
+  },
+  "team": {
+   "shown_neutral": 0.938,
+   "wrong": 0.039,
+   "smiles": "0/3",
+   "wrong_as": {
+    "sad": 10
+   },
+   "expressive": {
+    "smile@12:1.5": "neutral",
+    "smile@15:0.0": "neutral",
+    "smile@15:1.5": "neutral",
+    "question brows@3:10.5": "neutral",
+    "question brows@5:7.5": "neutral",
+    "question brows@5:9.0": "neutral",
+    "sad line@0:0.0": "neutral",
+    "sad line@0:1.5": "neutral",
+    "head back@9:3.0": "neutral"
+   }
+  }
+ }
+}

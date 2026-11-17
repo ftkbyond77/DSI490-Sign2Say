@@ -138,8 +138,10 @@ class Frame(BaseModel):
 class FaceCrop(BaseModel):
     t: float = Field(..., description="timestamp in ms, same clock as the frames of the request")
     g: str = Field(..., description="base64 of the 48x48 uint8 grayscale face crop (2304 bytes)")
+    g96: str | None = Field(None, description="base64 of the 96x96 uint8 grayscale crop of the same box (9216 bytes); sent when /v1/face/info says wants_96")
     side: float | None = Field(None, description="face size in the camera picture, px")
     occ: float = Field(0.0, ge=0, le=1, description="share of a hand's points inside the face box")
+    pts: list[float] | None = Field(None, description="the 68 face points in camera pixels, x0,y0,x1,y1,… (136 numbers): the brow-furrow cue")
 
 
 def _crops(items):
@@ -149,6 +151,12 @@ def _crops(items):
             b = base64.b64decode(c.g)
             if len(b) == 2304:
                 out.append(dict(t=c.t / 1000.0, g=b, side_px=c.side, occluded=c.occ))
+                if c.g96:
+                    b96 = base64.b64decode(c.g96)
+                    if len(b96) == 9216:
+                        out[-1]["g96"] = b96
+                if c.pts and len(c.pts) == 136:
+                    out[-1]["pts"] = c.pts
         except Exception:  # noqa: BLE001
             continue
     return out
@@ -293,10 +301,33 @@ def face_live(req: FaceRequest):
     Independent of the sign endpoints; any failure answers `unknown` (200) so the overlay degrades, never the sign path."""
     if len(req.crops) > 64:
         raise HTTPException(413, "too many crops")
-    res = _face_call("live", _crops(req.crops), req.state, timeout=1.5)
+    crops = _crops(req.crops)
+    res = _face_call("live", crops, req.state, timeout=1.5)
     if res is None:
         return dict(ok=False, error="face branch unavailable", frames=[], smoothed=dict(expression="unknown", confidence=0.0, probs=None, valid=False), state=req.state)
+    if FACE_DEBUG_DIR and crops:
+        _face_debug(crops, res)
     return res
+
+
+FACE_DEBUG_DIR = os.environ.get("FACE_DEBUG_DIR", "")      # diagnosis only: save each live call's face crops + the model's probabilities (off when empty)
+
+
+def _face_debug(crops, res):
+    """Save one /v1/face call (crops, per-frame probabilities, what was shown) to FACE_DEBUG_DIR as .npz. Never raises."""
+    try:
+        import numpy as np
+        fb = face_branch()
+        t, G, Q, G96 = fb._frames(crops)
+        P = fb.model.probs(G, G96)
+        d = Path(FACE_DEBUG_DIR); d.mkdir(parents=True, exist_ok=True)
+        np.savez_compressed(d / f"face_{time.time():.3f}.npz", t=t, g=G, q=Q, has96=np.array([h is not None for h in G96]),
+                            g96=np.stack([h if h is not None else np.zeros((96, 96), np.uint8) for h in G96]), probs=P,
+                            side=np.array([c.get("side_px") or 0 for c in crops], np.float32), occ=np.array([c.get("occluded", 0.0) for c in crops], np.float32),
+                            frames=np.array([f["expression"] for f in res.get("frames", [])]), shown=str(res.get("smoothed", {}).get("expression")),
+                            pts=np.array([c["pts"] if c.get("pts") else [np.nan] * 136 for c in crops], np.float32))
+    except Exception as e:  # noqa: BLE001
+        logging.getLogger("sign-api").warning("face debug dump failed: %s", e)
 
 
 @app.get("/v1/face/info")
@@ -306,7 +337,7 @@ def face_info():
         return dict(ok=False)
     c = fb.model.cfg
     return dict(ok=True, name=fb.model.version, classes=fb.model.classes, crop=c.get("crop"), unknown=fb.model.unk, smoother=fb.sm_cfg, input=c.get("input"),
-                providers=fb.model.sess.get_providers())
+                wants_96=bool(getattr(fb.model, "wants_96", False)), wants_pts=bool(getattr(fb, "brow", None)), providers=fb.model.sess.get_providers())
 
 
 @app.get("/v1/health")
@@ -446,7 +477,7 @@ def _video_job(path, name, vocab, llm, speak, face_question, progress=None, spea
     if face_branch() is not None:                       # the face pictures come from the same video at the face points MediaPipe found (read only)
         try:
             from modules.face_fer import crops_from_video
-            _attach_face_fer(out, crops_from_video(path, raw, **(face_branch().model.cfg.get("crop") or {})))
+            _attach_face_fer(out, crops_from_video(path, raw, with96=bool(getattr(face_branch().model, "wants_96", False)), **(face_branch().model.cfg.get("crop") or {})))
         except Exception as e:  # noqa: BLE001
             logging.getLogger("sign-api").warning("face crops from video failed: %s", e)
     if speak:

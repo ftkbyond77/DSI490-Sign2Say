@@ -1,0 +1,32 @@
+{
+ "ravdess": {
+  "actors": 24,
+  "clips": 1440,
+  "clips_per_class": {
+   "neutral": 288,
+   "happy": 192,
+   "sad": 192,
+   "angry": 192,
+   "fear": 192,
+   "disgust": 192,
+   "surprise": 192
+  },
+  "samples_clip_plus_windows": 4630,
+  "crops_5fps": 27145,
+  "crops_quality_ok": 27123
+ },
+ "signing_neutral": {
+  "clips": 53,
+  "crops_5fps": 653,
+  "crops_quality_ok": 588,
+  "samples": 120
+ },
+ "team": {
+  "clips": 18,
+  "frames_every_0_5s": 356,
+  "neutral": 256,
+  "smile": 3,
+  "ambiguous": 55,
+  "covered_or_poor": 42
+ }
+}

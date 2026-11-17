@@ -124,7 +124,7 @@ def prepare(seed=42, val_frac=0.1):
     seen_md5 = set(h)
     seen_dh = {dhash(x) for x in X}
     clean = np.array([hashlib.md5(x.tobytes()).hexdigest() not in seen_md5 and dhash(x) not in seen_dh for x in Xt])
-    return dict(train=(X[tr_i], y[tr_i]), val=(X[va_i], y[va_i]), test=(Xt, yt), clean_test=clean,
+    return dict(train=(X[tr_i], y[tr_i]), val=(X[va_i], y[va_i]), test=(Xt, yt), clean_test=clean, train_idx=tr_i, val_idx=va_i,   # idx = rows of load_raw()["train"]
                 excluded=dict(flat_images=int(flat.sum()), label_conflict_duplicates=int(conflict.sum()), total=int((~keep).sum()),
                               test_not_clean=int((~clean).sum())))
 
@@ -177,3 +177,20 @@ def augment(x, res, strength=1.0, gen=None):
             x0, y0 = np.random.randint(0, res - w), np.random.randint(0, res - h)
             y[i, :, y0:y0 + h, x0:x0 + w] = float(np.random.uniform(0.1, 0.9))
     return y.clamp(0, 1)
+
+
+def random_erase(x, p=0.5, area=(0.02, 0.25), ratio=(0.3, 3.3)):
+    """Random erasing as in EAC / torchvision RandomErasing, vectorised on the GPU: x [N,1,H,W] in 0..1; with probability p a rectangle
+    (2-25% of the image, aspect 0.3-3.3) is filled with a random gray. Applied BEFORE the mirror, so both views hide the same face part."""
+    import torch
+    n, _, H, W = x.shape
+    dev = x.device
+    u = lambda lo, hi: torch.empty(n, device=dev).uniform_(lo, hi)       # noqa: E731
+    a = u(*area) * H * W
+    r = torch.exp(u(math.log(ratio[0]), math.log(ratio[1])))
+    h, w = (a * r).sqrt().clamp(max=H), (a / r).sqrt().clamp(max=W)
+    y0, x0 = u(0, 1) * (H - h), u(0, 1) * (W - w)
+    rows, cols = torch.arange(H, device=dev).view(1, H, 1), torch.arange(W, device=dev).view(1, 1, W)
+    m = (rows >= y0.view(-1, 1, 1)) & (rows < (y0 + h).view(-1, 1, 1)) & (cols >= x0.view(-1, 1, 1)) & (cols < (x0 + w).view(-1, 1, 1))
+    m = (m & (torch.rand(n, device=dev) < p).view(-1, 1, 1)).unsqueeze(1)
+    return torch.where(m, u(0.1, 0.9).view(-1, 1, 1, 1).expand_as(x), x)

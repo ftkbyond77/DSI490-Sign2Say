@@ -3,7 +3,7 @@ face crops are sampled every 0.5 s (cached in cache/real_faces.npz), then every 
 There are NO expression labels for these clips. The judged set below is a SMALL, hand-made one (looked at the crops): 3 clear smiles, the frames that are
 ambiguous are left out, every other frame with a usable face (quality >= 0.25) counts as neutral. It tells "stable / over-reacting", not accuracy.
 
-  python real_check.py [--bundles efficientnetb0 resnet18]     -> results/real_check.json
+  python real_check.py [--bundles efficientnetb0 candidates/face-model-efficientnetb0-v2-ferplus]     -> results/real_check.json
 """
 from __future__ import annotations
 
@@ -101,7 +101,8 @@ def main():
     lab = judged(clip, t, q); n, h = lab == 6, lab == 3
     out = dict(n_frames=int(len(g)), judged=dict(neutral=int(n.sum()), happy=int(h.sum()), ambiguous=int((lab == -2).sum()), face_covered=int((lab == -1).sum())), models={})
     for nm in a.bundles:
-        B = ROOT / "models" / f"face-model-{nm}-v1"
+        B = Path(nm) if Path(nm).is_dir() else ROOT / "models" / f"face-model-{nm}-v1"     # a bundle folder path, or an arch name of a shipped v1
+        nm = B.name.replace("face-model-", "")
         if not B.exists():
             continue
         rows = {}

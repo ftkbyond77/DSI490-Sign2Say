@@ -1,0 +1,56 @@
+{
+ "neutral_prior_0.0": {
+  "clips_acc": 0.728,
+  "clips_macro_f1": 0.726,
+  "windows_acc": 0.712,
+  "windows_macro_f1": 0.708,
+  "strong_intensity_acc": 0.772,
+  "neutral_vs_emotion_acc": 0.882,
+  "valence_sign_agreement": 0.802,
+  "per_class_recall": {
+   "neutral": 0.74,
+   "happy": 0.891,
+   "sad": 0.625,
+   "angry": 0.771,
+   "fear": 0.646,
+   "disgust": 0.906,
+   "surprise": 0.51
+  }
+ },
+ "neutral_prior_0.5": {
+  "clips_acc": 0.726,
+  "clips_macro_f1": 0.723,
+  "windows_acc": 0.711,
+  "windows_macro_f1": 0.705,
+  "strong_intensity_acc": 0.786,
+  "neutral_vs_emotion_acc": 0.874,
+  "valence_sign_agreement": 0.799,
+  "per_class_recall": {
+   "neutral": 0.809,
+   "happy": 0.875,
+   "sad": 0.594,
+   "angry": 0.734,
+   "fear": 0.635,
+   "disgust": 0.906,
+   "surprise": 0.484
+  }
+ },
+ "neutral_prior_1.0": {
+  "clips_acc": 0.713,
+  "clips_macro_f1": 0.711,
+  "windows_acc": 0.701,
+  "windows_macro_f1": 0.695,
+  "strong_intensity_acc": 0.78,
+  "neutral_vs_emotion_acc": 0.858,
+  "valence_sign_agreement": 0.784,
+  "per_class_recall": {
+   "neutral": 0.844,
+   "happy": 0.823,
+   "sad": 0.562,
+   "angry": 0.708,
+   "fear": 0.62,
+   "disgust": 0.906,
+   "surprise": 0.464
+  }
+ }
+}

@@ -1,0 +1,262 @@
+{
+ "happy": {
+  "corner_lift@p50": {
+   "vs_neutral": 0.963,
+   "vs_rest": 0.902
+  },
+  "mouth_width@p50": {
+   "vs_neutral": 0.959,
+   "vs_rest": 0.956
+  },
+  "corner_lift@p30": {
+   "vs_neutral": 0.958,
+   "vs_rest": 0.89
+  },
+  "mouth_width@p30": {
+   "vs_neutral": 0.95,
+   "vs_rest": 0.945
+  },
+  "bs_smile@p50": {
+   "vs_neutral": 0.937,
+   "vs_rest": 0.952
+  },
+  "bs_cheek_squint@p50": {
+   "vs_neutral": 0.937,
+   "vs_rest": 0.884
+  },
+  "bs_smile@p30": {
+   "vs_neutral": 0.932,
+   "vs_rest": 0.944
+  },
+  "bs_cheek_squint@p30": {
+   "vs_neutral": 0.927,
+   "vs_rest": 0.872
+  },
+  "jaw@p50": {
+   "vs_neutral": 0.83,
+   "vs_rest": 0.618
+  },
+  "corner_rise@p50": {
+   "vs_neutral": 0.806,
+   "vs_rest": 0.92
+  },
+  "brow_nose_outer@p30": {
+   "vs_neutral": 0.799,
+   "vs_rest": 0.552
+  },
+  "jaw@p30": {
+   "vs_neutral": 0.796,
+   "vs_rest": 0.606
+  },
+  "corner_rise@p30": {
+   "vs_neutral": 0.794,
+   "vs_rest": 0.911
+  },
+  "brow_nose_outer@p50": {
+   "vs_neutral": 0.792,
+   "vs_rest": 0.549
+  },
+  "brow_nose_all@p50": {
+   "vs_neutral": 0.777,
+   "vs_rest": 0.587
+  },
+  "brow_nose_all@p30": {
+   "vs_neutral": 0.776,
+   "vs_rest": 0.585
+  },
+  "brow_nose_inner@p50": {
+   "vs_neutral": 0.759,
+   "vs_rest": 0.622
+  },
+  "brow_nose_inner@p30": {
+   "vs_neutral": 0.751,
+   "vs_rest": 0.614
+  },
+  "bs_eye_wide@p50": {
+   "vs_neutral": 0.678,
+   "vs_rest": 0.506
+  },
+  "bs_eye_wide@p30": {
+   "vs_neutral": 0.66,
+   "vs_rest": 0.501
+  },
+  "brow_outer@p50": {
+   "vs_neutral": 0.625,
+   "vs_rest": 0.651
+  },
+  "brow_outer@p30": {
+   "vs_neutral": 0.623,
+   "vs_rest": 0.645
+  },
+  "brow_all@p50": {
+   "vs_neutral": 0.602,
+   "vs_rest": 0.725
+  },
+  "brow_all@p30": {
+   "vs_neutral": 0.595,
+   "vs_rest": 0.711
+  },
+  "bs_brow_outer@p30": {
+   "vs_neutral": 0.586,
+   "vs_rest": 0.653
+  },
+  "bs_brow_inner@p50": {
+   "vs_neutral": 0.585,
+   "vs_rest": 0.685
+  },
+  "bs_brow_outer@p50": {
+   "vs_neutral": 0.58,
+   "vs_rest": 0.663
+  },
+  "brow_inner@p50": {
+   "vs_neutral": 0.576,
+   "vs_rest": 0.729
+  },
+  "bs_brow_inner@p30": {
+   "vs_neutral": 0.575,
+   "vs_rest": 0.663
+  },
+  "brow_inner@p30": {
+   "vs_neutral": 0.568,
+   "vs_rest": 0.716
+  },
+  "eye_open@p30": {
+   "vs_neutral": 0.476,
+   "vs_rest": 0.37
+  },
+  "eye_open@p50": {
+   "vs_neutral": 0.469,
+   "vs_rest": 0.354
+  }
+ },
+ "surprise": {
+  "bs_eye_wide@p50": {
+   "vs_neutral": 0.884,
+   "vs_rest": 0.777
+  },
+  "eye_open@p50": {
+   "vs_neutral": 0.883,
+   "vs_rest": 0.794
+  },
+  "brow_nose_outer@p30": {
+   "vs_neutral": 0.861,
+   "vs_rest": 0.665
+  },
+  "brow_nose_outer@p50": {
+   "vs_neutral": 0.859,
+   "vs_rest": 0.666
+  },
+  "bs_eye_wide@p30": {
+   "vs_neutral": 0.855,
+   "vs_rest": 0.756
+  },
+  "eye_open@p30": {
+   "vs_neutral": 0.849,
+   "vs_rest": 0.773
+  },
+  "brow_nose_all@p30": {
+   "vs_neutral": 0.825,
+   "vs_rest": 0.668
+  },
+  "brow_nose_all@p50": {
+   "vs_neutral": 0.823,
+   "vs_rest": 0.669
+  },
+  "brow_nose_inner@p30": {
+   "vs_neutral": 0.773,
+   "vs_rest": 0.651
+  },
+  "brow_nose_inner@p50": {
+   "vs_neutral": 0.773,
+   "vs_rest": 0.654
+  },
+  "corner_lift@p30": {
+   "vs_neutral": 0.708,
+   "vs_rest": 0.489
+  },
+  "corner_lift@p50": {
+   "vs_neutral": 0.702,
+   "vs_rest": 0.484
+  },
+  "jaw@p50": {
+   "vs_neutral": 0.685,
+   "vs_rest": 0.465
+  },
+  "bs_cheek_squint@p50": {
+   "vs_neutral": 0.684,
+   "vs_rest": 0.473
+  },
+  "bs_cheek_squint@p30": {
+   "vs_neutral": 0.68,
+   "vs_rest": 0.479
+  },
+  "jaw@p30": {
+   "vs_neutral": 0.658,
+   "vs_rest": 0.462
+  },
+  "brow_outer@p30": {
+   "vs_neutral": 0.623,
+   "vs_rest": 0.647
+  },
+  "brow_outer@p50": {
+   "vs_neutral": 0.622,
+   "vs_rest": 0.65
+  },
+  "bs_brow_outer@p30": {
+   "vs_neutral": 0.587,
+   "vs_rest": 0.648
+  },
+  "bs_brow_outer@p50": {
+   "vs_neutral": 0.576,
+   "vs_rest": 0.655
+  },
+  "bs_brow_inner@p30": {
+   "vs_neutral": 0.505,
+   "vs_rest": 0.583
+  },
+  "bs_brow_inner@p50": {
+   "vs_neutral": 0.495,
+   "vs_rest": 0.583
+  },
+  "brow_all@p30": {
+   "vs_neutral": 0.482,
+   "vs_rest": 0.594
+  },
+  "brow_all@p50": {
+   "vs_neutral": 0.481,
+   "vs_rest": 0.597
+  },
+  "bs_smile@p30": {
+   "vs_neutral": 0.411,
+   "vs_rest": 0.383
+  },
+  "bs_smile@p50": {
+   "vs_neutral": 0.404,
+   "vs_rest": 0.379
+  },
+  "brow_inner@p30": {
+   "vs_neutral": 0.4,
+   "vs_rest": 0.542
+  },
+  "brow_inner@p50": {
+   "vs_neutral": 0.399,
+   "vs_rest": 0.543
+  },
+  "mouth_width@p30": {
+   "vs_neutral": 0.375,
+   "vs_rest": 0.331
+  },
+  "mouth_width@p50": {
+   "vs_neutral": 0.375,
+   "vs_rest": 0.327
+  },
+  "corner_rise@p30": {
+   "vs_neutral": 0.23,
+   "vs_rest": 0.376
+  },
+  "corner_rise@p50": {
+   "vs_neutral": 0.223,
+   "vs_rest": 0.37
+  }
+ }
+}

@@ -3,9 +3,12 @@
 // MediaPipe face points that are already extracted (read only), the pictures go to their own endpoint / their own request field, and
 // every failure just means "no label" (the blendshape label takes over) — never a change to the landmarks or the sign request.
 // ≤ ~5 crops/s; the label on screen is the server's smoothed (EMA + hysteresis) answer, carried between calls as a small state.
+// When the server's model asks for it (/v1/face/info wants_96: an ensemble with an AffectNet net), the 96×96 gray picture of the same box
+// is sent too (`g96`, 9216 bytes); without it the server answers with its 48×48 net only. With wants_pts the 68 face points (camera px)
+// go along for the server's brow-furrow cue (a frown the picture models read as neutral).
 import type { Emotion } from "./holistic";
 
-export type FaceCrop = { t: number; g: string; side: number; occ: number };
+export type FaceCrop = { t: number; g: string; g96?: string; side: number; occ: number; pts?: number[] };
 type Resp = { ok: boolean; smoothed?: { expression: string; confidence: number; valid: boolean }; state?: unknown };
 
 const B64 = (u: Uint8Array) => { let s = ""; for (let i = 0; i < u.length; i += 0x2000) s += String.fromCharCode(...u.subarray(i, i + 0x2000)); return btoa(s); };
@@ -13,6 +16,8 @@ const B64 = (u: Uint8Array) => { let s = ""; for (let i = 0; i < u.length; i += 
 export class ExpressionModel {
   failed = false;
   private cfg = { scale: 1.22, shift_up: 0.16 };
+  private wants96 = false;
+  private wantsPts = false;
   private every = 180;                                  // ms between crops
   private busy = false;
   private last = 0;
@@ -32,6 +37,8 @@ export class ExpressionModel {
         const j = await r.json();
         if (!r.ok || !j.ok) throw new Error("face model not loaded");
         if (j.crop) this.cfg = { scale: j.crop.scale ?? this.cfg.scale, shift_up: j.crop.shift_up ?? this.cfg.shift_up };
+        this.wants96 = !!j.wants_96;
+        this.wantsPts = !!j.wants_pts;
         if (this.c96 && this.c48) { this.c96.width = this.c96.height = 96; this.c48.width = this.c48.height = 48; }
         this.failed = false;
       } catch (e) { this.failed = true; this.loading = null; console.warn("face expression model unavailable, using blendshapes", e); }   // loading = null: asked again when the camera opens
@@ -58,7 +65,14 @@ export class ExpressionModel {
       let n = 0; for (const p of h) if (p[0] > x0 - 0.05 && p[0] < x1 + 0.05 && p[1] > y0 - 0.1 && p[1] < y1 + 0.05) n++;
       occ = Math.max(occ, n / h.length);
     }
-    return { t: Math.round(t), g: B64(g), side: Math.round(side), occ: Math.round(occ * 100) / 100 };
+    const out: FaceCrop = { t: Math.round(t), g: B64(g), side: Math.round(side), occ: Math.round(occ * 100) / 100 };
+    if (this.wantsPts) out.pts = face.flatMap((p) => [Math.round(p[0] * vw * 10) / 10, Math.round(p[1] * vh * 10) / 10]);   // brow-furrow cue (camera px)
+    if (this.wants96) {
+      const d96 = a.getImageData(0, 0, 96, 96).data, g96 = new Uint8Array(9216);
+      for (let i = 0; i < 9216; i++) g96[i] = Math.round(0.299 * d96[4 * i] + 0.587 * d96[4 * i + 1] + 0.114 * d96[4 * i + 2]);
+      out.g96 = B64(g96);
+    }
+    return out;
   }
 
   private flush() {

@@ -1,0 +1,39 @@
+{
+ "parity_max_abs_diff": 1.8869975249025117e-08,
+ "ensemble (deployed)": {
+  "shown_neutral": 0.977,
+  "wrong": 0.02,
+  "unknown": 0.004,
+  "smiles": "2/3",
+  "wrong_as": {
+   "happy": 5
+  }
+ },
+ "ravhead neutral_prior 0.0": {
+  "shown_neutral": 0.879,
+  "wrong": 0.09,
+  "unknown": 0.031,
+  "smiles": "0/3",
+  "wrong_as": {
+   "sad": 23
+  }
+ },
+ "ravhead neutral_prior 0.5": {
+  "shown_neutral": 0.938,
+  "wrong": 0.039,
+  "unknown": 0.023,
+  "smiles": "0/3",
+  "wrong_as": {
+   "sad": 10
+  }
+ },
+ "ravhead neutral_prior 1.0": {
+  "shown_neutral": 0.977,
+  "wrong": 0.023,
+  "unknown": 0.0,
+  "smiles": "0/3",
+  "wrong_as": {
+   "sad": 6
+  }
+ }
+}
